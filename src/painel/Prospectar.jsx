@@ -18,7 +18,7 @@ const etapaDo = (l) => {
 
 // Uma tela para o dia inteiro: primeiro os follow-ups, depois as primeiras mensagens
 export default function Prospectar() {
-  const { irPara } = usePainel()
+  const { irPara, versao } = usePainel()
   const [dados, setDados] = useState(null)
   const [feitos, setFeitos] = useState({ whatsapp: 0, instagram: 0 })
   const [ocultos, setOcultos] = useState(() => new Set())
@@ -43,9 +43,8 @@ export default function Prospectar() {
     const { wa, dm } = separarFilas(fila.data || [], filaDm.data || [], CONFIG.META_DM)
     setDados({ wa, dm, fups, resumo: resumo.data || {}, briefings: brief.count || 0 })
     setFeitos({ whatsapp: resumo.data?.envios_hoje_wa || 0, instagram: resumo.data?.envios_hoje_dm || 0 })
-    setOcultos(new Set())
   }
-  useEffect(() => { carregar() }, [])
+  useEffect(() => { carregar() }, [versao]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const concluir = (c) => (id, modo) => {
     setOcultos((s) => new Set(s).add(id))

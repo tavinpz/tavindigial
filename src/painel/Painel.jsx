@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { carregarMensagens } from './api'
 import { marcarDono } from '../lib/fn'
@@ -67,7 +67,7 @@ function Login() {
 export default function Painel() {
   const [sessao, setSessao] = useState(undefined)
   const [admin, setAdmin] = useState(null)
-  const [aba, setAba] = useState(() => { try { const a = localStorage.getItem('p-aba'); return ['inicio', 'prospectar', 'crm', 'leads', 'conteudo', 'briefings', 'mensagens'].includes(a) ? a : 'inicio' } catch { return 'inicio' } })
+  const [aba, setAba] = useState(() => { try { const a = localStorage.getItem('p-aba'); return ['inicio', 'prospectar', 'crm', 'leads', 'conteudo', 'coleta', 'briefings', 'mensagens'].includes(a) ? a : 'inicio' } catch { return 'inicio' } })
   const [mensagens, setMensagens] = useState([])
   const [prontas, setProntas] = useState(false)
   const [leadAberto, setLeadAberto] = useState(null)
@@ -97,6 +97,62 @@ export default function Painel() {
 
   const avisar = useCallback((t) => { setAviso(t); setTimeout(() => setAviso(''), 2600) }, [])
   const atualizar = useCallback(() => setVersao((v) => v + 1), [])
+
+  // ── Ao vivo: o que muda no celular aparece no computador (e vice-versa) sem recarregar ──
+  const [aoVivo, setAoVivo] = useState(false)
+  const [novaVersao, setNovaVersao] = useState(false)
+  const ultimo = useRef(0)
+  const timer = useRef(null)
+  const sincronizar = useCallback(() => {
+    // junta rajadas de mudanças (a coleta grava dezenas de leads de uma vez) num recarregamento só
+    clearTimeout(timer.current)
+    const espera = Math.max(800, 4000 - (Date.now() - ultimo.current))
+    timer.current = setTimeout(() => { ultimo.current = Date.now(); setVersao((v) => v + 1) }, espera)
+  }, [])
+
+  useEffect(() => {
+    if (!admin) return
+    const canal = supabase.channel('painel-ao-vivo')
+    for (const t of ['leads', 'envios', 'eventos', 'negocios', 'briefings', 'coleta_buscas']) {
+      canal.on('postgres_changes', { event: '*', schema: 'public', table: t }, sincronizar)
+    }
+    canal.subscribe((st) => setAoVivo(st === 'SUBSCRIBED'))
+    return () => { supabase.removeChannel(canal) }
+  }, [admin, sincronizar])
+
+  // Painel novo publicado: troca sozinho para a versão nova (o celular costuma guardar a antiga)
+  const conferirVersao = useCallback(async () => {
+    try {
+      const r = await fetch(`/versao.json?t=${Date.now()}`, { cache: 'no-store' })
+      if (!r.ok) return
+      const { versao: v } = await r.json()
+      if (!v || v === __VERSAO__) return
+      const digitando = ['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName)
+      let jaTentou = false
+      try { jaTentou = sessionStorage.getItem('p-recarregou') === v; sessionStorage.setItem('p-recarregou', v) } catch { /* sem storage */ }
+      // recarrega sozinho uma vez por versão; se não pegar (cache teimoso), mostra o botão
+      if (!digitando && !jaTentou && !document.querySelector('.p-drawer, .p-rajada')) window.location.reload()
+      else setNovaVersao(true)
+    } catch { /* sem rede: tenta depois */ }
+  }, [])
+
+  // Voltou para a aba (ex.: depois de mandar no WhatsApp/Instagram) ou passou 1 minuto: busca de novo
+  useEffect(() => {
+    if (!admin) return
+    const voltou = () => { if (document.visibilityState === 'visible') { sincronizar(); conferirVersao() } }
+    document.addEventListener('visibilitychange', voltou)
+    window.addEventListener('focus', voltou)
+    window.addEventListener('online', voltou)
+    const relogio = setInterval(() => { if (document.visibilityState === 'visible') sincronizar() }, 60000)
+    const versaoRelogio = setInterval(conferirVersao, 5 * 60000)
+    conferirVersao()
+    return () => {
+      document.removeEventListener('visibilitychange', voltou)
+      window.removeEventListener('focus', voltou)
+      window.removeEventListener('online', voltou)
+      clearInterval(relogio); clearInterval(versaoRelogio)
+    }
+  }, [admin, sincronizar, conferirVersao])
 
   if (sessao === undefined) return <div className="p-carregando">Carregando…</div>
   if (!sessao) return <Login />
@@ -129,6 +185,7 @@ export default function Painel() {
             ))}
           </nav>
           <div className="p-lateral-pe">
+            <span className={`p-vivo ${aoVivo ? 'on' : ''}`} title={aoVivo ? 'Atualizando sozinho' : 'Reconectando…'}>{aoVivo ? 'Ao vivo' : 'Reconectando…'}</span>
             {EXTRAS.map(([id, nome]) => (
               <button key={id} className={id === aba ? 'ativa' : ''} onClick={() => irPara(id)}>{nome}</button>
             ))}
@@ -137,10 +194,13 @@ export default function Painel() {
           </div>
         </aside>
         <main className="p-conteudo">
-          {prontas ? <Atual key={`${aba}-${versao}`} /> : <p className="p-vazio">Carregando…</p>}
+          {prontas ? <Atual key={aba} /> : <p className="p-vazio">Carregando…</p>}
         </main>
         {leadAberto && <LeadDrawer key={leadAberto.id} id={leadAberto.id} iniciarPagamento={!!leadAberto.pagar} fechar={() => setLeadAberto(null)} />}
         {aviso && <div className="p-toast" role="status">{aviso}</div>}
+        {novaVersao && (
+          <button className="p-nova-versao" onClick={() => window.location.reload()}>Painel atualizado. Toque para carregar a versão nova</button>
+        )}
       </div>
     </Ctx.Provider>
   )

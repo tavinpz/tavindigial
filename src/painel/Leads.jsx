@@ -23,7 +23,8 @@ export default function Leads() {
     else q = q.neq('status', 'arquivado')
     if (tipo) q = q.eq('tipo_site', tipo)
     const { data, count } = await q.order('created_at', { ascending: false }).limit(200)
-    setLista(data || []); setTotal(count || 0); setSel(new Set())
+    setLista(data || []); setTotal(count || 0)
+    setSel((s) => new Set([...s].filter((id) => (data || []).some((l) => l.id === id))))
   }
   useEffect(() => { const t = setTimeout(carregar, 250); return () => clearTimeout(t) }, [busca, status, tipo, versao])
 

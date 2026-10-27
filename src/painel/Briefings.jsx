@@ -12,7 +12,7 @@ const CAMPOS = [
 ]
 
 export default function Briefings() {
-  const { abrirLead, avisar } = usePainel()
+  const { abrirLead, avisar, versao } = usePainel()
   const [lista, setLista] = useState(null)
   const [aberto, setAberto] = useState(null)
 
@@ -20,7 +20,7 @@ export default function Briefings() {
     const { data } = await supabase.from('briefings').select('*').order('created_at', { ascending: false }).limit(200)
     setLista(data || [])
   }
-  useEffect(() => { carregar() }, [])
+  useEffect(() => { carregar() }, [versao])
 
   async function mudar(b, status) {
     await supabase.from('briefings').update({ status }).eq('id', b.id)

@@ -8,7 +8,7 @@ const pct = (x) => (x == null ? '—' : `${Math.round(x * 100)}%`)
 
 // Coleta de leads pela API oficial do Google Places: automática às 7h e busca manual quando quiser
 export default function Coleta() {
-  const { avisar } = usePainel()
+  const { avisar, versao } = usePainel()
   const [st, setSt] = useState(null)
   const [termos, setTermos] = useState([])
   const [bairros, setBairros] = useState('')
@@ -31,7 +31,7 @@ export default function Coleta() {
     setSt(x); setConf({ dia: x.buscas_dia ?? 30, mes: x.limite_mes ?? 950, apify: x.apify_buscas_dia ?? 6 })
     setTermos(t.data || []); setBairros((b.data || []).map((r) => r.bairro).join('\n')); setBuscas(h.data || [])
   }
-  useEffect(() => { carregar() }, [])
+  useEffect(() => { carregar() }, [versao]) // eslint-disable-line react-hooks/exhaustive-deps
 
   async function chamar(body, rotulo) {
     setRodando(rotulo); setResultado(null)

@@ -25,14 +25,15 @@ export default function Crm() {
   const quadro = useRef(null)
   const drag = useRef(null)
 
+  const pedido = useRef(0)
   const carregar = useCallback(async () => {
+    if (drag.current?.ativo) { setTimeout(() => carregar(), 1200); return } // espera soltar o card
+    const meu = ++pedido.current
     const [fw, fd, rs] = await Promise.all([
       supabase.from('v_fila_hoje').select('*'),
       supabase.from('v_fila_dm').select('*'),
       supabase.from('v_resumo').select('envios_hoje_wa,envios_hoje_dm').single(),
     ])
-    setFila(separarFilas(fw.data || [], fd.data || [], CONFIG.META_DM))
-    setFeitos({ whatsapp: rs.data?.envios_hoje_wa || 0, instagram: rs.data?.envios_hoje_dm || 0 })
     const { data } = await supabase
       .from('leads')
       .select('id,nome,status,bairro,nicho,tipo_site,updated_at,proximo_contato,eventos(tipo,meta,created_at),negocios(valor,valor_mensal,status)')
@@ -41,7 +42,11 @@ export default function Crm() {
       .order('created_at', { referencedTable: 'eventos', ascending: false })
       .limit(1, { referencedTable: 'eventos' })
       .limit(800)
-    setLeads(data || [])
+    if (meu !== pedido.current) return // chegou uma resposta mais nova no meio do caminho
+    if (fw.error || fd.error || !data) return // falha de rede: mantém o que está na tela
+    setFila(separarFilas(fw.data || [], fd.data || [], CONFIG.META_DM))
+    setFeitos({ whatsapp: rs.data?.envios_hoje_wa || 0, instagram: rs.data?.envios_hoje_dm || 0 })
+    setLeads(data)
   }, [])
   useEffect(() => { carregar() }, [carregar, versao])
 

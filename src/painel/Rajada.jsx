@@ -5,9 +5,14 @@ import { usePainel } from './Painel'
 import { abrirCanal, dicaDm, etapaNoCanal, mensagemPara } from './envio'
 
 // Modo rajada: um lead por vez. Enter copia o texto e abre a conversa, e o próximo já fica pronto.
-export default function Rajada({ lista, canal, feitos, meta, onFeito, fechar }) {
+export default function Rajada({ lista: listaAoVivo, canal, feitos, meta, onFeito, fechar }) {
   const { mensagens, avisar, abrirLead } = usePainel()
   const [i, setI] = useState(0)
+  // A fila congela ao abrir: o painel atualiza sozinho e a ordem não pode mudar no meio da rajada
+  const [base] = useState(listaAoVivo)
+  const [saiu, setSaiu] = useState(() => new Set())
+  const lista = base.filter((l) => !saiu.has(l.id))
+  const tirar = (id) => setSaiu((s) => new Set(s).add(id))
   const [texto, setTexto] = useState('')
   const [ocupado, setOcupado] = useState(false)
   const dm = canal === 'instagram'
@@ -25,13 +30,13 @@ export default function Rajada({ lista, canal, feitos, meta, onFeito, fechar }) 
     try {
       await registrarEnvio({ lead, mensagem: msg.modelo, etapa, texto, canal })
       if (dm) avisar(dicaDm(lead))
-      onFeito(lead.id) // sai da lista: o próximo sobe para a mesma posição
+      tirar(lead.id); onFeito(lead.id) // sai da lista: o próximo sobe para a mesma posição
     } catch { avisar('Abriu a conversa, mas não registrou. Tente de novo.') } finally { setOcupado(false) }
   }
 
   async function descartar() {
     if (!lead) return
-    try { await registrarEvento(lead.id, 'perdeu', { motivo: 'descartado na rajada' }); onFeito(lead.id, 'descartado') } catch { avisar('Não deu certo') }
+    try { await registrarEvento(lead.id, 'perdeu', { motivo: 'descartado na rajada' }); tirar(lead.id); onFeito(lead.id, 'descartado') } catch { avisar('Não deu certo') }
   }
 
   // Atalhos: Enter envia, S pula, D descarta, Esc sai (fora da caixa de texto)
