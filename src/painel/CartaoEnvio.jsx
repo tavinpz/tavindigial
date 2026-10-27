@@ -95,7 +95,7 @@ export default function CartaoEnvio({ lead, etapa: etapaBase, canal: canalPedido
         )}
       </div>
       {modelo ? (
-        <textarea className="p-texto" value={texto} onChange={(e) => { setTexto(e.target.value); setEditado(true) }} rows={5} />
+        <textarea className="p-texto" value={texto} onChange={(e) => { setTexto(e.target.value); setEditado(true) }} rows={8} />
       ) : (
         <p className="p-erro">Nenhuma mensagem ativa para “{ETAPAS[etapa] || etapa}”. Crie em Mensagens.</p>
       )}

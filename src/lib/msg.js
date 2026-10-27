@@ -49,7 +49,24 @@ export function destinoDoLink(site = '') {
 
 const nota = (v) => (v == null ? '' : String(Number(v).toFixed(1)).replace('.', ','))
 
+// "a {negocio}" quando o nome já tem artigo: "O Barbeiro da Esquina" vira "o Barbeiro da Esquina", "da" vira "do"
+function ajustarArtigo(texto, nome = '') {
+  const m = String(nome).match(/^(o|a|os|as)\s+(.+)$/i)
+  if (!m) return texto
+  const art = m[1].toLowerCase()
+  const resto = m[2]
+  const de = { o: 'do', a: 'da', os: 'dos', as: 'das' }[art]
+  return String(texto)
+    .replace(/\b([Dd])a \{negocio\}/g, (_, d) => `${d === 'D' ? de[0].toUpperCase() + de.slice(1) : de} ${resto}`)
+    .replace(/\bpra \{negocio\}/g, `${{ o: 'pro', a: 'pra', os: 'pros', as: 'pras' }[art]} ${resto}`)
+    .replace(/\b([Aa]) \{negocio\}/g, (_, x) => `${x === 'A' ? art[0].toUpperCase() + art.slice(1) : art} ${resto}`)
+}
+
+// Nome com artigo para frases fora das mensagens: comArtigo('O Barbeiro', 'da') -> 'do Barbeiro'
+export const comArtigo = (nome = '', forma = 'a') => ajustarArtigo(`${forma} {negocio}`, nome).replace('{negocio}', nome)
+
 export function preencher(texto, lead, extra = {}) {
+  texto = ajustarArtigo(texto, lead?.nome)
   const vars = {
     negocio: lead?.nome || 'sua empresa',
     avaliacoes: lead?.avaliacoes ?? '',

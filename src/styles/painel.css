@@ -400,3 +400,25 @@ body:has(.p-fantasma) { cursor: grabbing; }
 .p-motores { margin: 4px 0 8px; flex-wrap: wrap; }
 .p-motor-agora { margin: 4px 0 8px; font-weight: 700; color: var(--grafite); }
 .p-detalhes .p-passos { margin-top: 12px; }
+
+/* Textos das mensagens: editor + prévia como chega no celular */
+.p-vars { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 0 0 22px; padding: 12px 14px; background: var(--branco); border: 1px solid var(--linha); border-radius: 14px; font-size: 13.5px; color: var(--cinza); }
+.p-vars code { font: 600 13px var(--f-texto); color: var(--tinta); background: #F6EEFB; padding: 1px 6px; border-radius: 6px; }
+.p-msgs .p-grupo { margin: 0 0 30px; }
+.p-msgs .p-grupo h2 { display: flex; align-items: center; gap: 10px; font-family: var(--f-display); font-size: 20px; margin: 0 0 4px; }
+.p-grupo-n { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--tinta); color: #fff; font: 700 13px var(--f-texto); flex: none; }
+.p-msgs .p-grupo > .p-meta { margin: 0 0 12px 36px; max-width: 70ch; }
+.p-msg-lista { display: flex; flex-direction: column; gap: 12px; }
+.p-msg { background: var(--branco); border: 1px solid var(--linha); border-radius: 18px; padding: 16px; }
+.p-msg-topo { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 12px; }
+.p-msg-topo strong { font-size: 15.5px; margin-right: 4px; }
+.p-msg-corpo { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 16px; margin: 0 0 12px; }
+.p-msg-editar { display: flex; flex-direction: column; gap: 6px; }
+.p-msg-editar > span, .p-msg-previa > span { font-size: 12.5px; font-weight: 700; color: var(--cinza); }
+.p-msg-editar small { color: var(--cinza); font-size: 12px; }
+.p-msg-editar .p-texto { margin: 0; }
+.p-msg-previa { display: flex; flex-direction: column; gap: 6px; padding: 12px; border-radius: 14px; background: #EFE8F3; }
+.p-bolha { align-self: flex-end; max-width: 92%; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 14px; line-height: 1.45; padding: 9px 12px 10px; border-radius: 14px 14px 4px 14px; box-shadow: 0 1px 1px rgba(0,0,0,.06); }
+.p-bolha--whatsapp { background: #D9FDD3; color: #111B21; }
+.p-bolha--instagram { background: #7B2FF7; background: linear-gradient(135deg, #6A2BE8, #B600F6); color: #fff; border-radius: 20px 20px 6px 20px; }
+@media (max-width: 860px) { .p-msg-corpo { grid-template-columns: 1fr; } }

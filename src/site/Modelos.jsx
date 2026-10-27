@@ -2,7 +2,7 @@ import { useEffect, useMemo } from 'react'
 import { Link, useParams, useSearchParams } from 'react-router-dom'
 import { CONFIG, brl } from '../config'
 import { modelosDoNicho, NOMES_NICHO } from '../data/modelos'
-import { slugDominio } from '../lib/msg'
+import { slugDominio, comArtigo } from '../lib/msg'
 import { callFn } from '../lib/fn'
 import { Header, Footer, Dominio, Previa, waVendas } from './Layout'
 
@@ -33,7 +33,7 @@ export default function Modelos() {
     const qs2 = q.toString()
     return qs2 ? `${m.url}?${qs2}` : m.url
   }
-  const quero = (m) => waVendas(`Oi! Vi os modelos e quero o ${m.titulo}${nome ? ` para a ${nome}` : ''}.`)
+  const quero = (m) => waVendas(`Oi! Vi os modelos e quero o ${m.titulo}${nome ? ` para ${comArtigo(nome)}` : ''}.`)
   const marcarClique = (m) => {
     if (r) callFn('track', { r, pagina: `m/${slug}`, modelo: m.id }).catch(() => {})
   }
@@ -48,9 +48,9 @@ export default function Modelos() {
         <section className="s-pers">
           <div className="s-wrap">
             {nome && <Dominio antes="linktr.ee/…" depois={dominio} />}
-            <h1>{nome ? `Modelos de site para a ${nome}` : `Modelos de site para ${NOMES_NICHO[slug]}`}</h1>
+            <h1>{nome ? `Modelos de site para ${comArtigo(nome)}` : `Modelos de site para ${NOMES_NICHO[slug]}`}</h1>
             <p>
-              Abra um modelo no celular. Eu coloco o nome, as cores e os serviços{nome ? ` da ${nome}` : ''} e deixo a página no ar em até {CONFIG.PRAZO_BIO_HORAS} horas,
+              Abra um modelo no celular. Eu coloco o nome, as cores e os serviços{nome ? ` ${comArtigo(nome, 'da')}` : ''} e deixo a página no ar em até {CONFIG.PRAZO_BIO_HORAS} horas,
               por {brl(CONFIG.PRECO_BIO)}. Você só paga se aprovar.
             </p>
           </div>
@@ -82,7 +82,7 @@ export default function Modelos() {
             </p>
             <div className="s-acoes" style={{ marginTop: 24 }}>
               <Link className="s-btn" to={briefing}>Já quero começar</Link>
-              <a className="s-btn s-btn--linha" href={waVendas(`Oi! Tenho uma dúvida sobre o site${nome ? ` da ${nome}` : ''}.`)} target="_blank" rel="noreferrer">
+              <a className="s-btn s-btn--linha" href={waVendas(`Oi! Tenho uma dúvida sobre o site${nome ? ` ${comArtigo(nome, 'da')}` : ''}.`)} target="_blank" rel="noreferrer">
                 Tirar uma dúvida
               </a>
             </div>

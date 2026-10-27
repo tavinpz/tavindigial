@@ -70,7 +70,7 @@ export default function Rajada({ lista, canal, feitos, meta, onFeito, fechar }) 
             <b>{lead.nome}</b>
             <span>{dm ? `@${igHandle(lead.instagram)}` : formatTel(lead.whatsapp)} · {[lead.categoria, lead.bairro].filter(Boolean).join(' · ')}</span>
           </button>
-          <textarea className="p-texto" rows={5} value={texto} onChange={(e) => setTexto(e.target.value)} />
+          <textarea className="p-texto" rows={8} value={texto} onChange={(e) => setTexto(e.target.value)} />
           <button className="p-btn p-btn--forte p-btn--grande p-rajada-ir" onClick={enviar} disabled={ocupado || !texto}>
             {dm ? 'Copiar e abrir DM' : 'Abrir no WhatsApp'} <kbd>Enter</kbd>
           </button>
