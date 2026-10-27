@@ -95,22 +95,27 @@ export function desenharSlide(canvas, slide, i, total, arroba = '@tavindigital')
   const tipo = slide.tipo || 'texto'
 
   if (tipo === 'capa') {
-    ctx.fillStyle = COR.noite; ctx.fillRect(0, 0, W, H)
+    // Capa escura (seda preta) ou clara (papel): alterne entre um post e outro
+    const claro = slide.fundo === 'claro'
+    const c = claro
+      ? { fundo: COR.papel, titulo: COR.noite, destaque: COR.eletrico, sub: COR.texto, marca: COR.noite, mono: COR.eletrico, rodape: COR.cinza }
+      : { fundo: COR.noite, titulo: COR.branco, destaque: COR.rosa, sub: '#CFC6D6', marca: COR.branco, mono: COR.rosa, rodape: '#9C92A5' }
+    ctx.fillStyle = c.fundo; ctx.fillRect(0, 0, W, H)
     // faixa vertical do pattern, como no banner da identidade
     const lado = 150
     desenharPadrao(ctx, W - lado, 0, 1, Math.ceil(H / lado), lado, 11 + i)
-    marca(ctx, M, M + 24, COR.branco, COR.rosa)
+    marca(ctx, M, M + 24, c.marca, c.mono)
 
     const larg = W - M - lado - 72
     const t = ajustar(ctx, slide.titulo, DISPLAY, 800, 104, 64, larg, 6)
     ctx.font = `800 ${t.tamanho}px ${DISPLAY}`
-    const y = escrever(ctx, t.linhas, M, 380 + t.tamanho, t.tamanho * 1.08, COR.branco, COR.rosa)
+    const y = escrever(ctx, t.linhas, M, 380 + t.tamanho, t.tamanho * 1.08, c.titulo, c.destaque)
 
     if (slide.texto) {
       ctx.font = `500 40px ${CORPO}`
-      escrever(ctx, quebrar(ctx, slide.texto, larg), M, y + 70, 56, '#CFC6D6', COR.rosa)
+      escrever(ctx, quebrar(ctx, slide.texto, larg), M, y + 70, 56, c.sub, c.destaque)
     }
-    ctx.fillStyle = '#9C92A5'; ctx.font = `700 28px ${CORPO}`
+    ctx.fillStyle = c.rodape; ctx.font = `700 28px ${CORPO}`
     ctx.fillText('Arraste para o lado', M, H - M + 10)
     return
   }

@@ -7,7 +7,8 @@
       {
         "tipo": "capa",
         "titulo": "Seu Linktree está *escondendo* o seu negócio",
-        "texto": "Por que a lista de botões afasta cliente, e o que colocar no lugar."
+        "texto": "Por que a lista de botões afasta cliente, e o que colocar no lugar.",
+        "fundo": "escuro"
       },
       {
         "tipo": "texto",
@@ -44,7 +45,8 @@
       {
         "tipo": "capa",
         "titulo": "Seu negócio aparece no Google. *E depois?*",
-        "texto": "O que acontece quando alguém clica em \"Site\" no seu perfil."
+        "texto": "O que acontece quando alguém clica em \"Site\" no seu perfil.",
+        "fundo": "claro"
       },
       {
         "tipo": "texto",
@@ -81,7 +83,8 @@
       {
         "tipo": "capa",
         "titulo": "4 coisas que fazem o cliente *marcar* na sua barbearia",
-        "texto": "E nenhuma delas é desconto."
+        "texto": "E nenhuma delas é desconto.",
+        "fundo": "escuro"
       },
       {
         "tipo": "texto",
@@ -118,7 +121,8 @@
       {
         "tipo": "capa",
         "titulo": "5 coisas que o cliente olha *antes de te chamar*",
-        "texto": "Se faltar uma, ele chama o concorrente."
+        "texto": "Se faltar uma, ele chama o concorrente.",
+        "fundo": "claro"
       },
       {
         "tipo": "texto",
@@ -160,7 +164,8 @@
       {
         "tipo": "capa",
         "titulo": "Como passar *confiança* antes da primeira consulta",
-        "texto": "Para clínicas de estética que querem mais avaliações marcadas."
+        "texto": "Para clínicas de estética que querem mais avaliações marcadas.",
+        "fundo": "escuro"
       },
       {
         "tipo": "texto",
@@ -197,7 +202,8 @@
       {
         "tipo": "capa",
         "titulo": "Como pedir avaliação no Google *sem parecer chato*",
-        "texto": "Quatro passos que você pode começar hoje."
+        "texto": "Quatro passos que você pode começar hoje.",
+        "fundo": "claro"
       },
       {
         "tipo": "texto",
@@ -235,7 +241,8 @@
       {
         "tipo": "capa",
         "titulo": "Por que o paciente escolhe *outro consultório*",
-        "texto": "Quatro motivos que não têm nada a ver com a sua técnica."
+        "texto": "Quatro motivos que não têm nada a ver com a sua técnica.",
+        "fundo": "escuro"
       },
       {
         "tipo": "texto",
@@ -272,7 +279,8 @@
       {
         "tipo": "capa",
         "titulo": "Checklist: a sua bio está *vendendo?*",
-        "texto": "Abra o seu perfil e confira os 5 itens."
+        "texto": "Abra o seu perfil e confira os 5 itens.",
+        "fundo": "claro"
       },
       {
         "tipo": "texto",
@@ -315,7 +323,8 @@
       {
         "tipo": "capa",
         "titulo": "O que muda quando o seu negócio tem *uma página*",
-        "texto": "Quatro coisas que você sente já na primeira semana."
+        "texto": "Quatro coisas que você sente já na primeira semana.",
+        "fundo": "escuro"
       },
       {
         "tipo": "texto",

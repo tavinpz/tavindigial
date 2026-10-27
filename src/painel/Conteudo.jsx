@@ -180,6 +180,12 @@ function Editor({ item, fechar, recarregar }) {
                 <select value={s.tipo} onChange={(e) => mudarSlide(i, 'tipo', e.target.value)}>
                   {Object.entries(TIPOS).map(([k, n]) => <option key={k} value={k}>{n}</option>)}
                 </select>
+                {s.tipo === 'capa' && (
+                  <select value={s.fundo || 'escuro'} onChange={(e) => mudarSlide(i, 'fundo', e.target.value)} aria-label="Fundo da capa">
+                    <option value="escuro">Fundo escuro</option>
+                    <option value="claro">Fundo claro</option>
+                  </select>
+                )}
                 <span className="p-slide-mover">
                   <button onClick={() => mover(i, -1)} aria-label="Subir slide" disabled={i === 0}>↑</button>
                   <button onClick={() => mover(i, 1)} aria-label="Descer slide" disabled={i === slides.length - 1}>↓</button>
@@ -259,7 +265,11 @@ export default function Conteudo() {
   useEffect(() => { carregar() }, [])
 
   async function novo() {
-    const { data, error } = await supabase.from('conteudo').insert({ formato: 'carrossel', titulo: 'Novo carrossel', slides: NOVO, status: 'ideia' }).select().single()
+    // a capa alterna: se o último foi escuro, este nasce claro
+    const ultimo = (lista || []).at(-1)
+    const fundo = ultimo?.slides?.[0]?.fundo === 'claro' ? 'escuro' : 'claro'
+    const slides = NOVO.map((s, k) => (k === 0 ? { ...s, fundo } : s))
+    const { data, error } = await supabase.from('conteudo').insert({ formato: 'carrossel', titulo: 'Novo carrossel', slides, status: 'ideia' }).select().single()
     if (error) { avisar('Não criou'); return }
     await carregar(); setAberto(data)
   }
