@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { preencher, waLink, formatTel, linkModelos, igHandle, igPerfil } from '../lib/msg'
 import { brl, CONFIG } from '../config'
@@ -6,7 +6,10 @@ import { STATUS, ETAPAS, EVENTOS, PRODUTOS, COLUNAS, escolherMensagem, registrar
 import { usePainel } from './Painel'
 import { abrirCanal, dicaDm, mensagemPara } from './envio'
 
-const RESPOSTAS = ['resp_preco', 'resp_pensar', 'resp_ja_tenho', 'followup_proposta', 'pos_venda', 'upsell_30d', 'followup_1', 'followup_2', 'abertura']
+const RESPOSTAS = ['abertura', 'followup_1', 'followup_2', 'resp_preco', 'resp_pensar', 'resp_ja_tenho', 'followup_proposta', 'pos_venda', 'upsell_30d']
+
+// A mensagem que faz sentido para a etapa em que o lead está (evita mandar preço para quem nunca foi chamado)
+const ETAPA_PADRAO = { novo: 'abertura', na_fila: 'abertura', enviado: 'followup_1', abriu: 'followup_1', respondeu: 'resp_preco', proposta: 'followup_proposta', ganho: 'pos_venda', recorrente: 'upsell_30d' }
 
 export default function LeadDrawer({ id, fechar, iniciarPagamento = false }) {
   const { mensagens, avisar, atualizar } = usePainel()
@@ -38,6 +41,13 @@ export default function LeadDrawer({ id, fechar, iniciarPagamento = false }) {
     setHist(h)
   }
   useEffect(() => { carregar() }, [id])
+  // Ao abrir a ficha, já escolhe a mensagem certa para o momento do lead (só na primeira carga)
+  const etapaDefinida = useRef(null)
+  useEffect(() => {
+    if (!lead || etapaDefinida.current === lead.id) return
+    etapaDefinida.current = lead.id
+    setEtapa(ETAPA_PADRAO[lead.status] || 'resp_preco')
+  }, [lead])
 
   const publico = lead?.tipo_site === 'site_falso' ? 'site_falso' : 'sem_site'
   const modelo = useMemo(() => (lead ? escolherMensagem(mensagens, etapa, publico, 'A') : null), [mensagens, etapa, publico, lead])
@@ -192,7 +202,7 @@ export default function LeadDrawer({ id, fechar, iniciarPagamento = false }) {
         <select className="p-select" value={etapa} onChange={(e) => setEtapa(e.target.value)}>
           {RESPOSTAS.map((k) => <option key={k} value={k}>{ETAPAS[k]}</option>)}
         </select>
-        {modelo ? <textarea className="p-texto" rows={5} value={texto} onChange={(e) => setTexto(e.target.value)} /> : <p className="p-erro">Sem mensagem ativa para esta etapa.</p>}
+        {modelo ? <textarea className="p-texto" rows={8} value={texto} onChange={(e) => setTexto(e.target.value)} /> : <p className="p-erro">Sem mensagem ativa para esta etapa.</p>}
         <div className="p-acoes">
           <button className="p-btn p-btn--forte" disabled={!lead.whatsapp || !texto} onClick={enviar}>Enviar no WhatsApp</button>
           <button className="p-btn" onClick={() => navigator.clipboard.writeText(texto).then(() => avisar('Copiado'))}>Copiar</button>

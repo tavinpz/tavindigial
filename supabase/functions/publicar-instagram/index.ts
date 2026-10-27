@@ -126,6 +126,33 @@ Deno.serve(async (req) => {
     }
   }
 
+  // Teste completo sem publicar: gera 2 JPEGs, sobe no Storage, monta o carrossel no Instagram e para antes do media_publish
+  if (body.testar_post) {
+    const { Image } = await import("https://deno.land/x/imagescript@1.3.0/mod.ts");
+    const caminhos: string[] = [];
+    try {
+      const urls: string[] = [];
+      for (const [i, cor] of [[1, 0x17121BFF], [2, 0xB600F6FF]] as [number, number][]) {
+        const jpg = await new Image(1080, 1350).fill(cor).encodeJPEG(85);
+        const caminho = `teste/${Date.now()}-${i}.jpg`;
+        const up = await db.storage.from("carrosseis").upload(caminho, jpg, { contentType: "image/jpeg" });
+        if (up.error) throw new Error(`Storage: ${up.error.message}`);
+        caminhos.push(caminho);
+        urls.push(db.storage.from("carrosseis").getPublicUrl(caminho).data.publicUrl);
+      }
+      const filhos: string[] = [];
+      for (const url of urls) filhos.push((await graph(c, `${c.userId}/media`, { image_url: url, is_carousel_item: "true" })).id);
+      for (const f of filhos) await aguardar(c, f);
+      const car = await graph(c, `${c.userId}/media`, { media_type: "CAROUSEL", children: filhos.join(","), caption: "teste" });
+      await aguardar(c, car.id);
+      return json(200, { ok: true, etapa: "carrossel pronto no Instagram (não publicado)", container: car.id });
+    } catch (e) {
+      return json(200, { ok: false, erro: (e as Error).message });
+    } finally {
+      if (caminhos.length) await db.storage.from("carrosseis").remove(caminhos);
+    }
+  }
+
   // Um carrossel por chamada: o vencido mais antigo (ou o pedido pelo painel)
   let q = db.from("conteudo").select("id,legenda,imagens").eq("status", "agendado");
   // Atrasado mais de 6 h (ex.: Instagram estava desconectado) não sai sozinho: evita postar vários de uma vez
