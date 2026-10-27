@@ -1,15 +1,16 @@
 import { Link } from 'react-router-dom'
 import { CONFIG } from '../config'
 import { waLink } from '../lib/msg'
+import Logo from './Logo'
 
 export const waVendas = (texto) =>
   CONFIG.WHATSAPP_VENDAS ? waLink(CONFIG.WHATSAPP_VENDAS, texto) : `https://instagram.com/${CONFIG.INSTAGRAM}`
 
-export function Header() {
+export function Header({ escuro = false }) {
   return (
-    <header className="s-header">
+    <header className={`s-header ${escuro ? 's-header--escuro' : ''}`}>
       <div className="s-wrap">
-        <Link to="/" className="s-logo">Tavin<span>.</span>Digital</Link>
+        <Link to="/" className="s-logo" aria-label="Tavin Digital, página inicial"><Logo /></Link>
         <nav aria-label="Principal">
           <a href="/#modelos">Modelos</a>
           <a href="/#precos">Preços</a>

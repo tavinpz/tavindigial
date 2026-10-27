@@ -2,6 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useState } from 'rea
 import { supabase } from '../lib/supabase'
 import { carregarMensagens } from './api'
 import { marcarDono } from '../lib/fn'
+import Logo from '../site/Logo'
 import Hoje from './Hoje'
 import Funil from './Funil'
 import Leads from './Leads'
@@ -113,11 +114,11 @@ export default function Painel() {
       <div className={`p-app ${menuAberto ? 'menu-aberto' : ''}`}>
         <header className="p-barra">
           <button className="p-hamb" onClick={() => setMenuAberto(true)} aria-label="Abrir menu"><Ico d="M4 7h16M4 12h16M4 17h16" /></button>
-          <strong className="p-logo">Tavin<span>.</span>Digital</strong>
+          <strong className="p-logo"><Logo /></strong>
         </header>
         <div className="p-veu" onClick={() => setMenuAberto(false)} aria-hidden="true" />
         <aside className="p-lateral">
-          <strong className="p-logo">Tavin<span>.</span>Digital</strong>
+          <strong className="p-logo"><Logo /></strong>
           <nav className="p-menu" aria-label="Seções do painel">
             {ABAS.map(([id, nome, , ico]) => (
               <button key={id} className={id === aba ? 'ativa' : ''} onClick={() => { setAba(id); setMenuAberto(false) }} aria-current={id === aba ? 'page' : undefined}>

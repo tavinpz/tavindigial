@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { CONFIG, brl } from '../config'
 import { MODELOS, PORTFOLIO } from '../data/modelos'
 import { Header, Footer, Dominio, Previa, waVendas } from './Layout'
+import Padrao from './Padrao'
 
 const EXTRAS = [
   ['Perfil no Google otimizado + pedido de avaliação automático', `${brl(97)}/mês`],
@@ -44,6 +45,7 @@ function CelularAoVivo() {
   const [atual, setAtual] = useState('estetica')
   return (
     <div className="s-aovivo">
+      <Padrao className="s-aovivo-padrao" colunas={4} linhas={6} semente={11} />
       <div className="s-cel">
         <span className="s-cel-ilha" aria-hidden="true" />
         <iframe key={atual} src={`/demo/${atual}`} title={`Exemplo de bio animada: ${AO_VIVO.find(([id]) => id === atual)[1]}`} loading="lazy" />
@@ -62,13 +64,13 @@ export default function Home() {
   const vitrine = MODELOS.filter((m) => m.url).slice(0, 6)
   return (
     <>
-      <Header />
+      <Header escuro />
       <main>
         <section className="s-hero">
           <div className="s-wrap s-hero-grade">
             <div className="s-hero-texto">
               <Dominio antes="linktr.ee/seunegocio" depois="seunegocio.com.br" />
-              <h1>A página que faz o cliente chamar você no WhatsApp.</h1>
+              <h1>A página que faz o cliente <em>chamar você</em> no WhatsApp.</h1>
               <p className="s-lead">
                 Para quem ainda não tem site ou só tem um Linktree: uma página animada com seus serviços, preços, avaliações e agendamento no WhatsApp.
               </p>

@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { preencher, waLink, formatTel, linkModelos } from '../lib/msg'
-import { brl } from '../config'
+import { brl, CONFIG } from '../config'
 import { STATUS, ETAPAS, EVENTOS, PRODUTOS, escolherMensagem, registrarEnvio, registrarEvento, linkMaps, dataCurta } from './api'
 import { usePainel } from './Painel'
 
@@ -16,7 +16,7 @@ export default function LeadDrawer({ id, fechar }) {
   const [texto, setTexto] = useState('')
   const [obs, setObs] = useState('')
   const [pagando, setPagando] = useState(false)
-  const [venda, setVenda] = useState({ produto: 'bio_297', valor: 297, valor_mensal: 39 })
+  const [venda, setVenda] = useState({ produto: 'bio', valor: CONFIG.PRECO_BIO, valor_mensal: CONFIG.HOSPEDAGEM_BIO })
 
   async function carregar() {
     const [{ data: l }, { data: en }, { data: ev }, { data: ng }] = await Promise.all([

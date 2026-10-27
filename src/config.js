@@ -24,7 +24,7 @@ export const CONFIG = {
 
   // Preços (aparecem no site e nas mensagens)
   // Bio animada = oferta de entrada. Site completo = upgrade.
-  PRECO_BIO: 297,
+  PRECO_BIO: 147,
   PRAZO_BIO_HORAS: 24,
   HOSPEDAGEM_BIO: 39,
   PRECO_SITE: 497,

@@ -35,7 +35,7 @@ export default function Briefing() {
       <>
         <Header />
         <main className="s-wrap s-legal">
-          <h1>Recebido. Já começo o seu {f.produto === 'bio' ? 'bio animada' : 'site'}.</h1>
+          <h1>Recebido. Já começo {f.produto === 'bio' ? 'a sua bio animada' : 'o seu site'}.</h1>
           <p>Agora me mande pelo WhatsApp o logo e de 3 a 8 fotos do seu negócio. A prévia chega em até {f.produto === 'bio' ? CONFIG.PRAZO_BIO_HORAS : CONFIG.PRAZO_HORAS} horas.</p>
           <div className="s-acoes" style={{ marginTop: 20 }}>
             <a className="s-btn" href={waVendas(`Oi! Preenchi o formulário da ${f.negocio}. Vou mandar o logo e as fotos.`)} target="_blank" rel="noreferrer">
