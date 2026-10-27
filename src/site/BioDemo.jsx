@@ -2,7 +2,7 @@ import { Suspense, useEffect, useMemo, useRef, useState } from 'react'
 import { useParams, useSearchParams, Navigate } from 'react-router-dom'
 import { CONFIG, brl } from '../config'
 import { waLink } from '../lib/msg'
-import { callFn } from '../lib/fn'
+import { callFn, quandoHumano } from '../lib/fn'
 import '../styles/bio.css'
 import { DEMOS } from './demos'
 
@@ -109,8 +109,8 @@ function Classico() {
     const meta = document.createElement('meta')
     meta.name = 'robots'; meta.content = 'noindex'
     document.head.appendChild(meta)
-    if (r) callFn('track', { r, pagina: `demo/${id}`, modelo: id }).catch(() => {})
-    return () => meta.remove()
+    const parar = r ? quandoHumano(() => callFn('track', { r, pagina: `demo/${id}`, modelo: id }).catch(() => {})) : () => {}
+    return () => { meta.remove(); parar() }
   }, [tema, nome, r, id])
 
   // Inclina o avatar seguindo o dedo/mouse (desligado com movimento reduzido)

@@ -33,7 +33,19 @@ Deno.serve(async (req) => {
 
   if (!UUID.test(r)) return new Response(null, { status: 204, headers: cors });
 
+  // Robôs que abrem links sozinhos (verificação de segurança do Instagram/WhatsApp, buscadores)
+  const ua = req.headers.get("user-agent") ?? "";
+  if (/bot|crawl|spider|facebookexternalhit|meta-external|whatsapp|headless|preview|slurp|bingpreview|python|curl|wget/i.test(ua)) {
+    return new Response(null, { status: 204, headers: cors });
+  }
+
   const db = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
+
+  // Ninguém recebe, lê, abre e mexe na página em menos de 30 s: isso é o verificador de links
+  const { data: ultimo } = await db.from("envios").select("enviado_em").eq("lead_id", r).order("enviado_em", { ascending: false }).limit(1).maybeSingle();
+  if (ultimo && Date.now() - new Date(ultimo.enviado_em).getTime() < 30_000) {
+    return new Response(null, { status: 204, headers: cors });
+  }
 
   const { data: lead } = await db.from("leads").select("id").eq("id", r).maybeSingle();
   if (!lead) return new Response(null, { status: 204, headers: cors });
@@ -50,7 +62,7 @@ Deno.serve(async (req) => {
     await db.from("eventos").insert({
       lead_id: r,
       tipo: "abriu_pagina",
-      meta: { pagina, modelo, ua: (req.headers.get("user-agent") ?? "").slice(0, 200) },
+      meta: { pagina, modelo, ua: ua.slice(0, 200), humano: true },
     });
   }
 

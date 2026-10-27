@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { CONFIG, brl } from '../../config'
 import { waLink } from '../../lib/msg'
-import { callFn } from '../../lib/fn'
+import { callFn, quandoHumano } from '../../lib/fn'
 import '../../styles/demos.css'
 
 // Horário de Brasília, de onde quer que a pessoa abra
@@ -40,8 +40,8 @@ export default function Casca({ id, base, fontes, className = '', children }) {
     const meta = document.createElement('meta')
     meta.name = 'robots'; meta.content = 'noindex'
     document.head.appendChild(meta)
-    if (r) callFn('track', { r, pagina: `demo/${id}`, modelo: id }).catch(() => {})
-    return () => meta.remove()
+    const parar = r ? quandoHumano(() => callFn('track', { r, pagina: `demo/${id}`, modelo: id }).catch(() => {})) : () => {}
+    return () => { meta.remove(); parar() }
   }, [nome, r, id])
 
   const quero = waLink(CONFIG.WHATSAPP_VENDAS, `Oi! Vi a demonstração ${base.nome} e quero uma página assim${nomeLead ? ` para a ${nomeLead}` : ''}.`)

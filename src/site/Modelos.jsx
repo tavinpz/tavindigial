@@ -3,7 +3,7 @@ import { Link, useParams, useSearchParams } from 'react-router-dom'
 import { CONFIG, brl } from '../config'
 import { modelosDoNicho, NOMES_NICHO } from '../data/modelos'
 import { slugDominio, comArtigo } from '../lib/msg'
-import { callFn } from '../lib/fn'
+import { callFn, quandoHumano } from '../lib/fn'
 import { Header, Footer, Dominio, Previa, waVendas } from './Layout'
 
 // Página que vai no link da mensagem: /m/<nicho>?n=<nome do negócio>&r=<id do lead>
@@ -21,8 +21,8 @@ export default function Modelos() {
     meta.name = 'robots'
     meta.content = 'noindex'
     document.head.appendChild(meta)
-    if (r) callFn('track', { r, pagina: `m/${slug}` }).catch(() => {})
-    return () => meta.remove()
+    const parar = r ? quandoHumano(() => callFn('track', { r, pagina: `m/${slug}` }).catch(() => {})) : () => {}
+    return () => { meta.remove(); parar() }
   }, [nome, r, slug])
 
   const aoVivo = (m) => {
