@@ -116,7 +116,11 @@ Deno.serve(async (req) => {
   if (body.verificar) {
     try {
       const d = await graph(c, c.userId, { fields: "username" }, "GET");
-      return json(200, { ok: true, username: d.username });
+      // Confere também a permissão de publicar (sem ela, o post falha na hora)
+      let publicar: unknown = null;
+      try { publicar = (await graph(c, `${c.userId}/content_publishing_limit`, { fields: "quota_usage,config" }, "GET")).data?.[0] ?? true; }
+      catch (e) { return json(200, { ok: false, username: d.username, erro: `Conectado como @${d.username}, mas sem permissão de publicar: ${(e as Error).message}` }); }
+      return json(200, { ok: true, username: d.username, publicar });
     } catch (e) {
       return json(200, { ok: false, erro: (e as Error).message });
     }

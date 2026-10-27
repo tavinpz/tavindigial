@@ -382,3 +382,18 @@ body:has(.p-fantasma) { cursor: grabbing; }
 .p-rajada-fim { margin: 16px 0 4px; }
 @media (max-width: 700px) { .p-rajada { right: 16px; left: 16px; bottom: 16px; width: auto; } .p-rajada kbd { display: none; } }
 .p-rajada-abrir { margin: 0 0 10px; }
+
+/* Coleta de leads */
+.p-passos { margin: 0 0 14px; padding-left: 20px; line-height: 1.6; }
+.p-passos a { color: var(--tinta); }
+.p-uso { margin: 10px 0 14px; max-width: 420px; }
+.p-uso small { color: var(--cinza); }
+.p-coleta-conf { display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-end; margin: 0 0 12px; }
+.p-coleta-conf label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--cinza); }
+.p-coleta-conf input { width: 120px; font: inherit; font-size: 15px; padding: 8px 10px; border: 1px solid var(--linha); border-radius: var(--r-peq); }
+.p-aviso-fixo { padding: 12px 14px; border-radius: 12px; background: #F6EEFB; color: #4A1470; font-weight: 600; }
+.p-painel--erro { border-color: #F1C9CC; background: #FDF3F3; }
+.p-off td { opacity: .45; }
+.p-btn--mini { padding: 4px 10px; font-size: 13px; }
+.p-erro-txt { color: var(--erro); }
+.p-coleta-pg .p-venda textarea { font: inherit; font-size: 15px; padding: 9px 12px; border: 1px solid var(--linha); border-radius: var(--r-peq); resize: vertical; }

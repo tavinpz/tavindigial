@@ -10,6 +10,7 @@ import Leads from './Leads'
 import Briefings from './Briefings'
 import Mensagens from './Mensagens'
 import Conteudo from './Conteudo'
+import Coleta from './Coleta'
 import LeadDrawer from './LeadDrawer'
 import '../styles/painel.css'
 
@@ -25,6 +26,7 @@ const ABAS = [
   ['conteudo', 'Carrosséis', Conteudo, 'M3 6h13v13H3zM19 4v13M22 2v13'],
 ]
 const EXTRAS = [
+  ['coleta', 'Coleta de leads', Coleta],
   ['briefings', 'Briefings', Briefings],
   ['mensagens', 'Textos das mensagens', Mensagens],
 ]
@@ -131,7 +133,6 @@ export default function Painel() {
               <button key={id} className={id === aba ? 'ativa' : ''} onClick={() => irPara(id)}>{nome}</button>
             ))}
             <a href="/" target="_blank" rel="noreferrer">Ver o site</a>
-            <a href="https://api.thata.online/form/coleta-tavin" target="_blank" rel="noreferrer">Nova coleta de leads</a>
             <button onClick={() => supabase.auth.signOut()}>Sair</button>
           </div>
         </aside>

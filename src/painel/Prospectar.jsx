@@ -72,7 +72,7 @@ export default function Prospectar() {
             {resumo.ultima_coleta
               ? `Última coleta ${dataCurta(resumo.ultima_coleta)}, ${resumo.leads_24h} leads novos em 24h.`
               : 'Nenhuma coleta ainda.'}
-            {atrasada && ' A coleta das 7h não trouxe nada há mais de 30 horas: veja o erro no n8n.'}
+            {atrasada && ' A coleta das 7h não trouxe nada há mais de 30 horas: veja em Coleta de leads.'}
           </p>
         </div>
         <div className="p-meta-dia" aria-label={`${total} de ${CONFIG.META_DIARIA} envios hoje`}>
@@ -125,7 +125,7 @@ export default function Prospectar() {
       {novos.length === 0 ? (
         <div className="p-vazio"><p>{dm
           ? <><strong>Nenhum negócio com Instagram na fila.</strong> O @ é buscado sozinho a cada 10 minutos no link que o negócio colocou no Google. Você também pode colar o @ na ficha do lead.</>
-          : <><strong>Fila vazia.</strong> A coleta roda sozinha todo dia às 7h. Para buscar agora, use “Nova coleta de leads” no menu.</>}</p></div>
+          : <><strong>Fila vazia.</strong> A coleta roda sozinha todo dia às 7h. Para buscar agora, abra “Coleta de leads” no menu.</>}</p></div>
       ) : (
         <div className="p-lista">
           {novos.slice(0, qtd).map((l) => <CartaoEnvio key={`${canal}-${l.id}`} lead={l} etapa="abertura" canal={canal} onFeito={concluir(canal)} />)}
