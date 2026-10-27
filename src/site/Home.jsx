@@ -81,7 +81,7 @@ function Nav({ escuro, compacto }) {
           <a href="#preco">Preço</a>
           <a href="#duvidas">Dúvidas</a>
         </div>
-        <a className="td-btn td-btn--p td-btn--sm" href={waVendas('Oi! Quero ver a prévia da minha página.')} target="_blank" rel="noreferrer">Quero a minha</a>
+        <a className="td-btn td-btn--nav td-btn--sm" href={waVendas('Oi! Quero ver a prévia da minha página.')} target="_blank" rel="noreferrer">Quero a minha</a>
       </div>
     </nav>
   )
@@ -195,6 +195,19 @@ function AntesDepois() {
   )
 }
 
+// Faixa de nichos correndo (contorno e preenchido alternados)
+const LISTA_NICHOS = ['Barbearias', 'Clínicas de estética', 'Dentistas', 'Salões', 'Pet shops', 'Nutricionistas', 'Estúdios']
+function Nichos() {
+  const itens = [...LISTA_NICHOS, ...LISTA_NICHOS]
+  return (
+    <div className="td-nichos" aria-label={`Para ${LISTA_NICHOS.join(', ').toLowerCase()}`}>
+      <div className="td-nichos-in" aria-hidden="true">
+        {itens.map((n, i) => <span key={i} className={i % 2 ? 'cheio' : ''}>{n}</span>)}
+      </div>
+    </div>
+  )
+}
+
 // Frase que acende palavra por palavra conforme o scroll
 function Frase() {
   const ref = useRef(null)
@@ -285,6 +298,16 @@ export default function Home() {
 
   const vitrine = MODELOS.filter((m) => m.url)
 
+  // luz que acompanha o dedo/mouse no herói (sem re-render)
+  const luz = (e) => {
+    const el = heroi.current
+    if (!el) return
+    const t = e.touches?.[0] || e
+    const r = el.getBoundingClientRect()
+    el.style.setProperty('--mx', `${((t.clientX - r.left) / r.width) * 100}%`)
+    el.style.setProperty('--my', `${((t.clientY - r.top) / r.height) * 100}%`)
+  }
+
   return (
     <div className={`td ${pronto ? 'pronto' : ''}`}>
       <div className="td-atmo" aria-hidden="true"><i className="a1" /><i className="a2" /><i className="a3" /></div>
@@ -292,7 +315,7 @@ export default function Home() {
       <Nav escuro={escuro} compacto={compacto} />
 
       <main>
-        <section className="td-heroi" data-tema="escuro" ref={heroi}>
+        <section className="td-heroi" data-tema="escuro" ref={heroi} onPointerMove={luz} onTouchMove={luz}>
           <div className="td-sec">
             <p className="td-pilula" data-r><b><i className="td-vivo" /> Prévia grátis</b> Você só paga se aprovar</p>
             <h1 className="td-h1">
@@ -312,7 +335,11 @@ export default function Home() {
 
         <Palco />
 
-        <section className="td-bloco td-claro r-t r-b" id="antes-depois">
+        <Nichos />
+
+        <Frase />
+
+        <section className="td-bloco td-claro r-t" id="antes-depois">
           <div className="td-sec td-ad-grade">
             <div data-r>
               <p className="td-sobre">Arraste para comparar</p>
@@ -323,18 +350,18 @@ export default function Home() {
           </div>
         </section>
 
-        <Frase />
 
-        <section className="td-bloco td-claro r-t">
+        <section className="td-bloco td-claro">
           <div className="td-sec">
             <h2 className="td-h2" data-r>Serve para quem está em uma destas situações</h2>
             <div className="td-publicos">
               {PUBLICOS.map((p, i) => (
                 <article key={p.titulo} className="td-publico" data-r style={{ transitionDelay: `${i * 120}ms` }}>
+                  <span className="td-publico-n">{String(i + 1).padStart(2, '0')}</span>
                   <h3>{p.titulo}</h3>
                   <p className="td-publico-antes">{p.antes}</p>
                   <p>{p.dor}</p>
-                  <p className="td-publico-vira">{p.vira}</p>
+                  <div className="td-publico-vira"><b>Com a Tavin</b><p>{p.vira}</p></div>
                 </article>
               ))}
             </div>
@@ -391,7 +418,10 @@ export default function Home() {
 
         <section className="td-bloco td-preco" id="preco" data-tema="escuro">
           <div className="td-sec">
-            <h2 className="td-h2" data-r>Preço fechado. <em>Sem surpresa.</em></h2>
+            <div className="td-hd2" data-r>
+              <h2 className="td-h2">Preço fechado. <em>Sem surpresa.</em></h2>
+              <p>Você vê a prévia antes de pagar qualquer coisa. Hospedagem sem fidelidade.</p>
+            </div>
             <div className="td-precos">
               <article className="td-plano td-plano--forte" data-r>
                 <div className="td-plano-in">
@@ -427,7 +457,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="td-bloco td-claro r-t r-b" id="duvidas">
+        <section className="td-bloco td-escuro" id="duvidas" data-tema="escuro">
           <div className="td-sec td-faq">
             <h2 className="td-h2" data-r>Dúvidas comuns</h2>
             <div>
