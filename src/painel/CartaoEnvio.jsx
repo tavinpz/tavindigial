@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { preencher, varianteDe, formatTel, igPerfil } from '../lib/msg'
 import { escolherMensagem, variantesDe, registrarEnvio, registrarEvento, linkMaps, ETAPAS, tempoAtras, STATUS } from './api'
 import { usePainel } from './Painel'
-import { abrirCanal, canalDe, etapaNoCanal } from './envio'
+import { abrirCanal, canalDe, dicaDm, etapaNoCanal } from './envio'
 
 const hostDe = (site) => {
   if (!site) return ''
@@ -41,7 +41,7 @@ export default function CartaoEnvio({ lead, etapa: etapaBase, canal: canalPedido
     setOcupado(true)
     try {
       await registrarEnvio({ lead, mensagem: modelo, etapa, texto, canal })
-      avisar(dm ? `Texto copiado. Cole na DM de ${lead.instagram}` : `Envio registrado: ${lead.nome}`)
+      avisar(dm ? dicaDm(lead) : `Envio registrado: ${lead.nome}`)
       onFeito?.(lead.id)
     } catch {
       avisar(`Abriu o ${dm ? 'Instagram' : 'WhatsApp'}, mas não registrou o envio. Tente de novo.`)

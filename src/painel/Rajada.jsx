@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
-import { igHandle, formatTel } from '../lib/msg'
+import { igHandle, formatTel, ehCelular } from '../lib/msg'
 import { registrarEnvio, registrarEvento } from './api'
 import { usePainel } from './Painel'
-import { abrirCanal, etapaNoCanal, mensagemPara } from './envio'
+import { abrirCanal, dicaDm, etapaNoCanal, mensagemPara } from './envio'
 
 // Modo rajada: um lead por vez. Enter copia o texto e abre a conversa, e o próximo já fica pronto.
 export default function Rajada({ lista, canal, feitos, meta, onFeito, fechar }) {
@@ -24,6 +24,7 @@ export default function Rajada({ lista, canal, feitos, meta, onFeito, fechar }) 
     setOcupado(true)
     try {
       await registrarEnvio({ lead, mensagem: msg.modelo, etapa, texto, canal })
+      if (dm) avisar(dicaDm(lead))
       onFeito(lead.id) // sai da lista: o próximo sobe para a mesma posição
     } catch { avisar('Abriu a conversa, mas não registrou. Tente de novo.') } finally { setOcupado(false) }
   }
@@ -77,7 +78,9 @@ export default function Rajada({ lista, canal, feitos, meta, onFeito, fechar }) 
             <button className="p-btn" onClick={proximo}>Pular <kbd>S</kbd></button>
             <button className="p-btn p-btn--fraco" onClick={descartar}>Descartar <kbd>D</kbd></button>
           </div>
-          {dm && <p className="p-meta">Na DM: cola (Ctrl+V ou segurar e colar no celular), envia e volta para esta aba. O próximo já está pronto.</p>}
+          {dm && <p className="p-meta">{ehCelular()
+            ? 'Abre a conversa no app: segure, cole, envie e volte para cá. O próximo já está pronto.'
+            : 'Abre o perfil numa aba só do Instagram: clique em "Enviar mensagem", cole (Ctrl+V), envie e volte para cá. O próximo já está pronto.'}</p>}
         </>
       )}
     </div>

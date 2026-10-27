@@ -4,7 +4,7 @@ import { CONFIG, brl } from '../config'
 import { formatTel } from '../lib/msg'
 import { COLUNAS, EVENTOS, STATUS, moverEtapa, registrarEnvio, registrarEvento, tempoAtras } from './api'
 import { usePainel } from './Painel'
-import { abrirCanal, etapaNoCanal, mensagemPara, separarFilas } from './envio'
+import { abrirCanal, dicaDm, etapaNoCanal, mensagemPara, separarFilas } from './envio'
 
 // Colunas de quem ainda não foi chamado: arrastar para "Enviado" já abre a conversa com o texto pronto
 const CHAMAR = { chamar_wa: 'whatsapp', chamar_dm: 'instagram' }
@@ -75,7 +75,7 @@ export default function Crm() {
     setFeitos((f) => ({ ...f, [canal]: f[canal] + 1 }))
     try {
       await registrarEnvio({ lead, mensagem: modelo, etapa, texto, canal })
-      avisar(canal === 'instagram' ? `Texto copiado. Cole na DM de ${lead.instagram}` : `Enviado: ${lead.nome}`)
+      avisar(canal === 'instagram' ? dicaDm(lead) : `Enviado: ${lead.nome}`)
     } catch {
       avisar('Abriu a conversa, mas não registrou o envio. Arraste de novo.')
       carregar()

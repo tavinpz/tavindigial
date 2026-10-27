@@ -1,4 +1,4 @@
-import { igDm, preencher, varianteDe, waLink } from '../lib/msg'
+import { ehCelular, igDm, preencher, varianteDe, waLink } from '../lib/msg'
 import { escolherMensagem, variantesDe } from './api'
 
 // Canal padrão de um lead: o do último contato, senão WhatsApp se tiver, senão Instagram
@@ -16,12 +16,18 @@ export function mensagemPara(mensagens, lead, etapa, variante) {
   return { modelo, texto: modelo ? preencher(modelo.texto, lead) : '', variante: v, variantes: vs }
 }
 
+// O que fazer depois que a DM abre
+export const dicaDm = (lead) => (ehCelular()
+  ? `Texto copiado. Na conversa com ${lead.instagram}, segure e cole.`
+  : `Texto copiado. No perfil ${lead.instagram}, clique em "Enviar mensagem" e cole (Ctrl+V).`)
+
 // Abre o canal SEM await antes (o navegador só deixa abrir janela dentro do clique/soltar).
 // No Instagram, copia o texto e abre a DM: é só colar e enviar.
 export function abrirCanal(canal, lead, texto) {
   if (canal === 'instagram') {
     try { navigator.clipboard?.writeText(texto) } catch { /* sem permissão de cópia */ }
-    window.open(igDm(lead.instagram), '_blank', 'noopener')
+    // sempre na mesma aba do Instagram (não abre uma aba nova a cada DM)
+    window.open(igDm(lead.instagram), 'tavin-instagram')
   } else {
     window.open(waLink(lead.whatsapp, texto), '_blank', 'noopener')
   }

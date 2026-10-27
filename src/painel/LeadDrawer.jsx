@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from 'react'
 import { supabase } from '../lib/supabase'
-import { preencher, waLink, formatTel, linkModelos, igDm, igHandle, igPerfil } from '../lib/msg'
+import { preencher, waLink, formatTel, linkModelos, igHandle, igPerfil } from '../lib/msg'
 import { brl, CONFIG } from '../config'
 import { STATUS, ETAPAS, EVENTOS, PRODUTOS, COLUNAS, escolherMensagem, registrarEnvio, registrarEvento, moverEtapa, linkMaps, dataCurta, arquivarLeads, apagarLeads } from './api'
 import { usePainel } from './Painel'
+import { abrirCanal, dicaDm, mensagemPara } from './envio'
 
 const RESPOSTAS = ['resp_preco', 'resp_pensar', 'resp_ja_tenho', 'followup_proposta', 'pos_venda', 'upsell_30d', 'followup_1', 'followup_2', 'abertura']
 
@@ -53,6 +54,18 @@ export default function LeadDrawer({ id, fechar, iniciarPagamento = false }) {
     await registrarEnvio({ lead, mensagem: modelo, etapa, texto })
     avisar('Envio registrado')
     carregar(); atualizar()
+  }
+
+  // DM: quem ainda não foi chamado recebe a abertura de DM; depois disso, vai o texto da caixa abaixo
+  async function chamarDm() {
+    const novo = ['novo', 'na_fila'].includes(lead.status)
+    const m = novo ? mensagemPara(mensagens, lead, 'abertura_dm') : { modelo, texto }
+    if (!m.texto) return avisar('Sem mensagem para mandar')
+    abrirCanal('instagram', lead, m.texto)
+    try {
+      await registrarEnvio({ lead, mensagem: m.modelo, etapa: novo ? 'abertura_dm' : etapa, texto: m.texto, canal: 'instagram' })
+      avisar(dicaDm(lead)); carregar(); atualizar()
+    } catch { avisar('Abriu o Instagram, mas não registrou o envio') }
   }
 
   async function evento(tipo) {
@@ -127,9 +140,13 @@ export default function LeadDrawer({ id, fechar, iniciarPagamento = false }) {
           {lead.whatsapp && <a href={waLink(lead.whatsapp)} target="_blank" rel="noreferrer">{formatTel(lead.whatsapp)}</a>}
           {maps && <a href={maps} target="_blank" rel="noreferrer">Google Maps</a>}
           {lead.instagram && <a href={igPerfil(lead.instagram)} target="_blank" rel="noreferrer">@{igHandle(lead.instagram)}</a>}
-          {lead.instagram && <a href={igDm(lead.instagram)} target="_blank" rel="noreferrer">Abrir DM</a>}
           <a href={linkModelos(lead, { rastrear: false })} target="_blank" rel="noreferrer">Página de modelos dele</a>
         </p>
+        {lead.instagram && (
+          <div className="p-acoes">
+            <button className="p-btn p-btn--forte" onClick={chamarDm}>Copiar mensagem e abrir DM</button>
+          </div>
+        )}
         {!lead.instagram && (
           <form className="p-ig-form" onSubmit={salvarIg}>
             <input value={ig} onChange={(e) => setIg(e.target.value)} placeholder="@ do Instagram (para chamar na DM)" aria-label="Instagram do negócio" />

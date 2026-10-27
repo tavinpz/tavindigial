@@ -64,7 +64,11 @@ export function preencher(texto, lead, extra = {}) {
 
 // DM do Instagram: abre a conversa (o Instagram não aceita texto pronto no link)
 export const igHandle = (ig = '') => String(ig || '').replace(/^@/, '').trim()
-export const igDm = (ig) => `https://ig.me/m/${igHandle(ig)}`
+export const ehCelular = () => typeof navigator !== 'undefined'
+  && (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (typeof matchMedia !== 'undefined' && matchMedia('(pointer: coarse)').matches))
+// Celular: ig.me abre a conversa direto no app. Computador: ig.me cai numa tela preta,
+// então abre o perfil, que tem o botão "Enviar mensagem".
+export const igDm = (ig) => (ehCelular() ? `https://ig.me/m/${igHandle(ig)}` : `https://www.instagram.com/${igHandle(ig)}/`)
 export const igPerfil = (ig) => `https://instagram.com/${igHandle(ig)}`
 
 export const waLink = (numero, texto = '') =>
