@@ -3,6 +3,7 @@ import { supabase } from '../lib/supabase'
 import { CONFIG } from '../config'
 import { dataCurta } from './api'
 import CartaoEnvio from './CartaoEnvio'
+import Rajada from './Rajada'
 import { usePainel } from './Painel'
 import { canalDe, separarFilas } from './envio'
 
@@ -24,6 +25,7 @@ export default function Prospectar() {
   const [filtro, setFiltro] = useState('todos')
   const [canal, setCanal] = useState('whatsapp')
   const [qtd, setQtd] = useState(20)
+  const [rajada, setRajada] = useState(false)
   const [erro, setErro] = useState('')
 
   async function carregar() {
@@ -106,6 +108,7 @@ export default function Prospectar() {
             </button>
           ))}
         </div>
+        <button className="p-btn p-btn--forte p-rajada-abrir" onClick={() => setRajada(true)} disabled={!novos.length}>Modo rajada</button>
         <div className="p-filtros" role="group" aria-label="Filtrar">
           {[['todos', 'Todos'], ['site_falso', 'Link fraco'], ['sem_site', 'Sem site']].map(([v, n]) => (
             <button key={v} className={filtro === v ? 'ativa' : ''} onClick={() => setFiltro(v)}>{n}</button>
@@ -115,6 +118,10 @@ export default function Prospectar() {
       </div>
       {dm && feitos.instagram >= CONFIG.META_DM && <p className="p-meta">Meta de DMs batida. Mais que isso por dia aumenta a chance de o Instagram limitar a conta.</p>}
       {!dm && feitos.whatsapp >= CONFIG.META_WHATS && <p className="p-meta">Meta do WhatsApp batida. Em número não oficial, passar disso aumenta o risco de bloqueio.</p>}
+      {rajada && (
+        <Rajada lista={novos} canal={canal} feitos={feitos[canal]} meta={META[canal]}
+          onFeito={(id, modo) => concluir(canal)(id, modo)} fechar={() => setRajada(false)} />
+      )}
       {novos.length === 0 ? (
         <div className="p-vazio"><p>{dm
           ? <><strong>Nenhum negócio com Instagram na fila.</strong> O @ é buscado sozinho a cada 10 minutos no link que o negócio colocou no Google. Você também pode colar o @ na ficha do lead.</>

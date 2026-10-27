@@ -367,3 +367,19 @@ body:has(.p-fantasma) { cursor: grabbing; }
 .p-col-meta { margin: -6px 6px 8px; font-size: 12.5px; color: var(--cinza); }
 .p-col-meta.feita { color: #138048; font-weight: 700; }
 .p-mais { display: block; margin: 16px auto 0; }
+
+/* Modo rajada */
+.p-rajada { position: fixed; z-index: 60; right: 24px; bottom: 24px; width: min(440px, calc(100vw - 32px)); max-height: calc(100vh - 48px); overflow: auto;
+  background: var(--branco); border: 1px solid #E2D3EE; border-radius: 20px; padding: 18px; box-shadow: 0 30px 60px -30px rgba(46, 38, 51, .55); }
+.p-rajada-topo { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.p-rajada-topo strong { font-family: var(--f-display); font-size: 18px; display: block; }
+.p-rajada-topo small { color: var(--cinza); }
+.p-rajada-lead { display: block; width: 100%; text-align: left; font: inherit; background: #F6F0FA; border: 0; border-radius: 12px; padding: 12px; margin: 12px 0 10px; cursor: pointer; }
+.p-rajada-lead b { display: block; font-size: 16px; }
+.p-rajada-lead span { font-size: 13.5px; color: var(--cinza); }
+.p-rajada-ir { width: 100%; margin: 10px 0; justify-content: center; }
+.p-rajada kbd { font: 600 11px var(--f-texto); padding: 2px 6px; border-radius: 6px; background: rgba(255,255,255,.22); margin-left: 6px; }
+.p-rajada .p-btn:not(.p-btn--forte) kbd { background: #F0EAF4; color: var(--cinza); }
+.p-rajada-fim { margin: 16px 0 4px; }
+@media (max-width: 700px) { .p-rajada { right: 16px; left: 16px; bottom: 16px; width: auto; } .p-rajada kbd { display: none; } }
+.p-rajada-abrir { margin: 0 0 10px; }
