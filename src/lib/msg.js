@@ -1,0 +1,58 @@
+import { CONFIG } from '../config'
+
+// Nichos que têm página de modelos própria. O resto cai em "geral".
+const NICHOS = {
+  odontologia: ['odonto', 'dentista', 'dental', 'odontologia', 'ortodont', 'implante'],
+  estetica: ['estetica', 'beleza', 'harmoniza', 'depila', 'sobrancelha', 'cilios', 'spa', 'salao', 'cabelo', 'unha', 'manicure'],
+  barbearia: ['barbearia', 'barbeiro', 'barber'],
+  pet: ['pet', 'veterin', 'banho e tosa', 'tosa', 'animal'],
+  saude: ['clinica', 'fisioterap', 'nutri', 'psicolog', 'medic', 'pilates', 'fono'],
+  alimentacao: ['restaurante', 'lanchonete', 'pizzaria', 'hamburguer', 'doceria', 'confeitaria', 'cafeteria', 'padaria', 'acai', 'marmita'],
+}
+
+export const semAcento = (s = '') => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
+
+export function nichoSlug(nicho = '', categoria = '') {
+  const alvo = semAcento(`${nicho} ${categoria}`)
+  for (const [slug, termos] of Object.entries(NICHOS)) {
+    if (termos.some((t) => alvo.includes(t))) return slug
+  }
+  return 'geral'
+}
+
+// Link curto para a página de modelos, personalizado e rastreado
+export function linkModelos(lead) {
+  const slug = nichoSlug(lead.nicho, lead.categoria)
+  const n = encodeURIComponent(lead.nome || '')
+  return `${CONFIG.SITE_URL}/m/${slug}?n=${n}&r=${lead.id}`
+}
+
+const nota = (v) => (v == null ? '' : String(Number(v).toFixed(1)).replace('.', ','))
+
+export function preencher(texto, lead, extra = {}) {
+  const vars = {
+    negocio: lead?.nome || 'sua empresa',
+    avaliacoes: lead?.avaliacoes ?? '',
+    nota: nota(lead?.nota),
+    link: lead ? linkModelos(lead) : CONFIG.SITE_URL,
+    link_avaliacao: CONFIG.LINK_AVALIACAO || CONFIG.SITE_URL,
+    ...extra,
+  }
+  return String(texto).replace(/\{(\w+)\}/g, (m, k) => (vars[k] !== undefined && vars[k] !== '' ? String(vars[k]) : m))
+}
+
+export const waLink = (numero, texto = '') =>
+  `https://wa.me/${String(numero || '').replace(/\D/g, '')}${texto ? `?text=${encodeURIComponent(texto)}` : ''}`
+
+// Divide os leads entre A e B de forma estável (o mesmo lead sempre cai na mesma variante)
+export const varianteDe = (id = '') => (parseInt(String(id).replace(/-/g, '').slice(-2), 16) % 2 === 0 ? 'A' : 'B')
+
+export const formatTel = (d = '') => {
+  const x = String(d).replace(/\D/g, '').replace(/^55/, '')
+  if (x.length === 11) return `(${x.slice(0, 2)}) ${x.slice(2, 7)}-${x.slice(7)}`
+  if (x.length === 10) return `(${x.slice(0, 2)}) ${x.slice(2, 6)}-${x.slice(6)}`
+  return d
+}
+
+export const slugDominio = (nome = '') =>
+  semAcento(nome).replace(/[^a-z0-9]+/g, '').slice(0, 28) || 'suaempresa'

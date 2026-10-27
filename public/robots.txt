@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /painel
+Disallow: /m/
+Disallow: /modelos/
+Disallow: /briefing
