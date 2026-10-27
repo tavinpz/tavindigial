@@ -2,21 +2,48 @@
 .p-app { min-height: 100vh; background: var(--papel); font-size: 16px; }
 .p-carregando { padding: 40px; color: var(--cinza); }
 
-.p-topo {
-  position: sticky; top: 0; z-index: 10; background: var(--branco); border-bottom: 1px solid var(--linha);
-  display: flex; align-items: center; gap: 16px; padding: 10px 16px;
+.p-logo { font-family: var(--f-display); font-size: 19px; white-space: nowrap; letter-spacing: -0.01em; }
+.p-logo span { color: var(--marca-texto); }
+
+/* Menu lateral fixo (desktop) / gaveta (celular) */
+.p-lateral {
+  position: fixed; inset: 0 auto 0 0; width: 236px; z-index: 30;
+  background: var(--grafite); color: #C9CCDC;
+  display: flex; flex-direction: column; padding: 22px 14px 18px;
 }
-.p-topo > strong { font-family: var(--f-display); font-size: 18px; white-space: nowrap; }
-.p-topo > strong span { color: var(--tinta); }
-.p-abas { display: flex; gap: 4px; overflow-x: auto; flex: 1; scrollbar-width: none; }
-.p-abas::-webkit-scrollbar { display: none; }
-.p-abas button, .p-filtros button, .p-variantes button {
-  font: inherit; font-size: 15px; border: 0; background: transparent; color: var(--cinza);
-  padding: 8px 12px; border-radius: var(--r-pilula); cursor: pointer; white-space: nowrap;
+.p-lateral > .p-logo { color: var(--branco); padding: 0 10px 22px; }
+.p-menu { display: flex; flex-direction: column; gap: 2px; }
+.p-menu button {
+  font: inherit; font-size: 15px; display: flex; align-items: center; gap: 12px;
+  border: 0; background: transparent; color: inherit; text-align: left;
+  padding: 10px 12px; border-radius: 10px; cursor: pointer;
 }
-.p-abas button.ativa { background: var(--tinta); color: var(--branco); font-weight: 700; }
-.p-abas button:hover:not(.ativa) { background: var(--papel); color: var(--grafite); }
-.p-sair { font: inherit; font-size: 14px; border: 0; background: none; color: var(--cinza); cursor: pointer; text-decoration: underline; }
+.p-menu button svg { flex: none; opacity: 0.75; }
+.p-menu button:hover:not(.ativa) { background: rgba(255,255,255,0.06); color: var(--branco); }
+.p-menu button.ativa { background: var(--tinta); color: var(--branco); font-weight: 700; }
+.p-menu button.ativa svg { opacity: 1; }
+.p-lateral-pe { margin-top: auto; display: flex; flex-direction: column; gap: 4px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08); }
+.p-lateral-pe a, .p-lateral-pe button {
+  font: inherit; font-size: 14px; color: #A9ADC2; background: none; border: 0; text-align: left;
+  padding: 8px 12px; border-radius: 8px; cursor: pointer; text-decoration: none;
+}
+.p-lateral-pe a:hover, .p-lateral-pe button:hover { color: var(--branco); background: rgba(255,255,255,0.06); }
+.p-barra, .p-veu { display: none; }
+.p-app > .p-conteudo { margin-left: 236px; }
+
+@media (max-width: 900px) {
+  .p-barra {
+    display: flex; align-items: center; gap: 10px; position: sticky; top: 0; z-index: 20;
+    background: var(--grafite); color: var(--branco); padding: 10px 12px;
+  }
+  .p-hamb { display: grid; place-items: center; width: 40px; height: 40px; border: 0; border-radius: 10px; background: rgba(255,255,255,0.08); color: inherit; cursor: pointer; }
+  .p-lateral { transform: translateX(-100%); transition: transform 0.25s ease; width: 260px; }
+  .menu-aberto .p-lateral { transform: none; }
+  .p-veu { display: block; position: fixed; inset: 0; z-index: 25; background: rgba(23,26,46,0.45); opacity: 0; pointer-events: none; transition: opacity 0.25s; }
+  .menu-aberto .p-veu { opacity: 1; pointer-events: auto; }
+  .p-app > .p-conteudo { margin-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .p-lateral, .p-veu { transition: none; } }
 
 .p-conteudo { max-width: 1180px; margin: 0 auto; padding: 24px 16px 80px; }
 .p-cab { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
@@ -31,6 +58,10 @@
 .p-barra { height: 6px; background: var(--linha); border-radius: 3px; margin: 6px 0 2px; overflow: hidden; }
 .p-barra div { height: 100%; background: var(--tinta); transition: width .3s ease; }
 
+.p-filtros button, .p-variantes button {
+  font: inherit; font-size: 15px; border: 0; background: transparent; color: var(--cinza);
+  padding: 8px 12px; border-radius: var(--r-pilula); cursor: pointer; white-space: nowrap;
+}
 .p-filtros { display: flex; gap: 6px; flex-wrap: wrap; margin: 0 0 16px; align-items: center; }
 .p-filtros button { background: var(--branco); border: 1px solid var(--linha); }
 .p-filtros button.ativa { border-color: var(--tinta); color: var(--tinta); font-weight: 700; }

@@ -7,9 +7,9 @@
 // =============================================================
 
 export const MODELOS = [
-  { id: 'bio-estetica', titulo: 'Lumi', tipo: 'bio', nichos: ['estetica', 'saude'], cor: '#C77DD1', destaque: 'Bio animada em tons de seda', url: '/demo/estetica', imagem: '' },
-  { id: 'bio-odonto', titulo: 'Prime', tipo: 'bio', nichos: ['odontologia', 'saude'], cor: '#0B8A86', destaque: 'Bio animada clara e confiável', url: '/demo/odontologia', imagem: '' },
-  { id: 'bio-barbearia', titulo: 'Navalha', tipo: 'bio', nichos: ['barbearia', 'geral'], cor: '#C9A04A', destaque: 'Bio animada com poste de barbeiro', url: '/demo/barbearia', imagem: '' },
+  { id: 'bio-estetica', titulo: 'Lumi', tipo: 'bio', nichos: ['estetica', 'saude'], cor: '#C77DD1', destaque: 'Bio animada em tons de seda', url: '/demo/estetica', imagem: '/modelos/bio-estetica.webp' },
+  { id: 'bio-odonto', titulo: 'Prime', tipo: 'bio', nichos: ['odontologia', 'saude'], cor: '#0B8A86', destaque: 'Bio animada clara e confiável', url: '/demo/odontologia', imagem: '/modelos/bio-odonto.webp' },
+  { id: 'bio-barbearia', titulo: 'Navalha', tipo: 'bio', nichos: ['barbearia', 'geral'], cor: '#C9A04A', destaque: 'Bio animada com poste de barbeiro', url: '/demo/barbearia', imagem: '/modelos/bio-barbearia.webp' },
   { id: 'sorriso', titulo: 'Clínica Clara', tipo: 'site', nichos: ['odontologia', 'saude'], cor: '#1F6FB2', destaque: 'Agendamento direto no WhatsApp', url: '', imagem: '' },
   { id: 'consultorio', titulo: 'Consultório', tipo: 'site', nichos: ['odontologia', 'saude'], cor: '#0F7B6C', destaque: 'Convênios, equipe e mapa', url: '', imagem: '' },
   { id: 'studio', titulo: 'Studio Beleza', tipo: 'site', nichos: ['estetica'], cor: '#B4456E', destaque: 'Tabela de serviços e antes/depois', url: '', imagem: '' },

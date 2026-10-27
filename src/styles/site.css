@@ -61,7 +61,62 @@ a { color: var(--tinta); }
 .s-btn[disabled] { opacity: .6; cursor: progress; }
 
 /* ===== Hero ===== */
-.s-hero { padding: 40px 0 72px; }
+.s-hero { padding: 32px 0 72px; overflow: hidden; }
+.s-hero-grade { display: grid; gap: 48px; align-items: center; }
+@media (min-width: 960px) { .s-hero-grade { grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); } }
+
+/* Fatos curtos abaixo do texto */
+.s-fatos { list-style: none; margin: 0 0 28px; padding: 0; display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 10px 28px; }
+@media (max-width: 420px) { .s-fatos { gap: 10px 18px; } .s-fatos li { font-size: 14px; } .s-fatos b { font-size: 23px; } }
+.s-fatos li { font-size: 16px; color: var(--cinza); line-height: 1.3; }
+.s-fatos b { display: block; font-family: var(--f-display); font-weight: 800; font-size: 26px; color: var(--grafite); letter-spacing: -0.02em; }
+
+/* Celular com a bio rodando de verdade */
+.s-aovivo { display: flex; flex-direction: column; align-items: center; gap: 16px; position: relative; }
+.s-aovivo::before {
+  content: ''; position: absolute; z-index: -1; width: 120%; aspect-ratio: 1; top: 4%; left: -10%;
+  background: radial-gradient(closest-side, rgba(255, 228, 92, 0.55), rgba(255, 228, 92, 0) 70%);
+}
+.s-cel {
+  --w: 300px; --esc: 0.8;
+  width: var(--w); height: calc(var(--w) * 2.03); position: relative;
+  border-radius: 46px; background: var(--grafite); padding: 11px;
+  box-shadow: 0 0 0 2px #2C3150 inset, 0 30px 60px -20px rgba(23, 26, 46, 0.45), 0 12px 24px -12px rgba(23, 26, 46, 0.3);
+}
+.s-cel iframe {
+  border: 0; display: block; border-radius: 36px; background: #fff;
+  width: calc((var(--w) - 22px) / var(--esc)); height: calc((var(--w) * 2.03 - 22px) / var(--esc));
+  transform: scale(var(--esc)); transform-origin: 0 0;
+}
+.s-cel-ilha { position: absolute; z-index: 2; top: 20px; left: 50%; width: 84px; height: 24px; margin-left: -42px; border-radius: 14px; background: var(--grafite); }
+.s-troca { display: inline-flex; gap: 4px; padding: 4px; border-radius: var(--r-pilula); background: var(--branco); border: 1px solid var(--linha); }
+.s-troca button {
+  font: inherit; font-size: 15px; font-weight: 700; border: 0; cursor: pointer;
+  padding: 9px 16px; border-radius: var(--r-pilula); background: transparent; color: var(--cinza);
+}
+.s-troca button.ativa { background: var(--grafite); color: var(--branco); }
+.s-troca button:hover:not(.ativa) { color: var(--grafite); }
+.s-aovivo-dica { margin: 0; font-size: 14px; color: var(--cinza); text-align: center; }
+@media (max-width: 400px) { .s-cel { --w: 272px; } }
+
+/* Para quem é */
+.s-publicos-grade { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin-top: 28px; }
+.s-publico { background: var(--branco); border: 1px solid var(--linha); border-radius: var(--r-card); padding: 28px; display: flex; flex-direction: column; gap: 4px; }
+.s-publico h3 { font-family: var(--f-display); font-weight: 800; font-size: 24px; letter-spacing: -0.015em; margin: 0; }
+.s-publico p { margin: 0; color: var(--cinza); }
+.s-publico-antes { margin: 6px 0 12px !important; }
+.s-publico-antes span {
+  font-family: var(--f-display); font-weight: 700; font-size: 17px; color: var(--cinza);
+  text-decoration: line-through; text-decoration-thickness: 2px; text-decoration-color: var(--grafite);
+}
+.s-publico .s-publico-vira { margin-top: 16px; padding-top: 16px; border-top: 1px dashed var(--linha); color: var(--grafite); font-weight: 700; }
+
+/* Chamada final */
+.s-final { background: var(--grafite); color: var(--branco); border-top: 0; }
+.s-final h2 { color: var(--branco); }
+.s-final .s-sub { color: #B9BDD3; margin-bottom: 28px; }
+.s-final .s-btn--linha { color: var(--branco); border-color: rgba(255,255,255,0.5); }
+.s-final .s-btn--linha:hover { background: rgba(255,255,255,0.08); }
 .s-dominio {
   font-family: var(--f-display); font-weight: 700;
   font-size: clamp(26px, 6.2vw, 64px); line-height: 1.05; letter-spacing: -0.03em;
@@ -137,10 +192,12 @@ a { color: var(--tinta); }
 
 /* Modelos */
 .s-grade { display: grid; gap: 22px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
-.s-modelo { background: var(--branco); border: 1px solid var(--linha); border-radius: var(--r-card); overflow: hidden; display: flex; flex-direction: column; }
+.s-modelo { background: var(--branco); border: 1px solid var(--linha); border-radius: var(--r-card); overflow: hidden; display: flex; flex-direction: column; transition: border-color .15s ease; }
+.s-modelo:hover { border-color: #B8BDD6; }
 .s-modelo .info { padding: 18px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
 .s-modelo h3 { font-family: var(--f-display); font-size: 20px; margin: 0; }
-.s-modelo .tipo { font-size: 14px; color: var(--cinza); }
+.s-modelo .tipo { font-size: 14px; font-weight: 700; color: var(--tinta); }
+.s-modelo .destaque { margin: 0; font-size: 16px; color: var(--cinza); line-height: 1.4; }
 .s-modelo .acoes { display: flex; flex-direction: column; gap: 8px; margin-top: auto; padding-top: 12px; }
 .s-modelo .acoes .s-btn { min-height: 46px; font-size: 16px; }
 .s-modelo img { aspect-ratio: 4 / 5; object-fit: cover; object-position: top; width: 100%; background: var(--papel); }
@@ -202,3 +259,5 @@ a { color: var(--tinta); }
   .s-previa, .s-modelo img { aspect-ratio: 1 / 1; }
   .s-previa .tela { width: 52%; }
 }
+
+@media (min-width: 960px) { .s-hero-grade .s-dominio { font-size: clamp(30px, 3.6vw, 50px); } }

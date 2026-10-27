@@ -53,7 +53,7 @@ export default function Leads() {
           <label>Cidade<input value={novo.cidade} onChange={(e) => setNovo({ ...novo, cidade: e.target.value })} /></label>
           <label>Situação
             <select value={novo.tipo_site} onChange={(e) => setNovo({ ...novo, tipo_site: e.target.value })}>
-              <option value="site_falso">Usa Linktree / só Instagram</option>
+              <option value="site_falso">Link fraco (Linktree, Insta, app de agenda)</option>
               <option value="sem_site">Sem site</option>
             </select>
           </label>
@@ -70,7 +70,7 @@ export default function Leads() {
         </select>
         <select className="p-select" value={tipo} onChange={(e) => setTipo(e.target.value)} aria-label="Situação do site">
           <option value="">Qualquer site</option>
-          <option value="site_falso">Linktree / Instagram</option>
+          <option value="site_falso">Link fraco</option>
           <option value="sem_site">Sem site</option>
           <option value="site_ok">Já tem site</option>
         </select>
@@ -87,7 +87,7 @@ export default function Leads() {
                 <tr key={l.id} onClick={() => abrirLead(l.id)} tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && abrirLead(l.id)}>
                   <td><strong>{l.nome}</strong></td>
                   <td>{STATUS[l.status]}</td>
-                  <td>{l.tipo_site === 'site_falso' ? 'Linktree/IG' : l.tipo_site === 'sem_site' ? 'Sem site' : 'Tem site'}</td>
+                  <td>{l.tipo_site === 'site_falso' ? 'Link fraco' : l.tipo_site === 'sem_site' ? 'Sem site' : 'Tem site'}</td>
                   <td>{l.nota != null ? `${String(l.nota).replace('.', ',')} (${l.avaliacoes})` : '—'}</td>
                   <td>{formatTel(l.whatsapp) || '—'}</td>
                   <td>{[l.bairro, l.cidade].filter(Boolean).join(', ')}</td>

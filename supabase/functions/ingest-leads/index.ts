@@ -16,6 +16,10 @@ const FALSOS = [
   "m.facebook.com", "beacons.ai", "bio.link", "linkin.bio", "taplink.cc", "taplink.at", "lnk.bio",
   "campsite.bio", "linkbio", "msha.ke", "linkme.bio", "solo.to", "tiktok.com", "linkr.bio", "bio.site",
   "contate.me", "comunidade.ifood", "ifood.com.br", "goo.gl", "g.page", "business.site", "linklist.bio",
+  // Encurtadores e páginas de app de agendamento: o cliente cai numa tela genérica, não num site da marca
+  "bit.ly", "tinyurl.com", "sites.google.com", "avec.app", "booksy.com", "trinks.com", "appbarber.com.br",
+  "gestaoparabarbearia.com.br", "bemp.online", "bethelapp.com.br", "agendasalao.com.br", "simplesagenda.com.br",
+  "agendaedu", "linkagenda", "calendly.com", "wixsite.com", "negocio.site",
 ];
 
 function classificar(site: string): "sem_site" | "site_falso" | "site_ok" {

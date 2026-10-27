@@ -3,7 +3,7 @@ import { supabase } from '../lib/supabase'
 import { ETAPAS } from './api'
 import { usePainel } from './Painel'
 
-const PUBLICOS = { sem_site: 'Sem site', site_falso: 'Linktree / Instagram', todos: 'Todos' }
+const PUBLICOS = { sem_site: 'Sem site', site_falso: 'Link fraco (Linktree, Insta, app)', todos: 'Todos' }
 
 function Item({ m }) {
   const { recarregarMensagens, avisar } = usePainel()
@@ -50,7 +50,7 @@ export default function Mensagens() {
       <div className="p-cab">
         <div>
           <h1>Mensagens</h1>
-          <p className="p-sub">Variáveis: {'{negocio} {avaliacoes} {nota} {link} {link_avaliacao}'}. A variante que responde mais aparece em Métricas.</p>
+          <p className="p-sub">Variáveis: {'{negocio} {avaliacoes} {nota} {link} {destino} {link_avaliacao}'}. A variante que responde mais aparece em Métricas.</p>
         </div>
       </div>
       {etapas.map((e) => (

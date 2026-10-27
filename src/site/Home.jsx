@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { CONFIG, brl } from '../config'
 import { MODELOS, PORTFOLIO } from '../data/modelos'
@@ -18,22 +19,85 @@ const DUVIDAS = [
   ['Quanto tempo leva?', `A bio animada fica pronta em até ${CONFIG.PRAZO_BIO_HORAS} horas e o site em até ${CONFIG.PRAZO_HORAS} horas, depois que você manda as informações e as fotos.`],
 ]
 
+const AO_VIVO = [
+  ['estetica', 'Estética'],
+  ['odontologia', 'Odonto'],
+  ['barbearia', 'Barbearia'],
+]
+
+const PUBLICOS = [
+  {
+    titulo: 'Ainda não tenho site',
+    dor: 'Quem te encontra no Google vê um endereço e um telefone. Sem foto, sem preço e sem um jeito fácil de marcar horário.',
+    vira: 'Sua página vira o link do Google e do Instagram, com serviços, avaliações e o botão do WhatsApp.',
+    antes: 'Só o perfil do Google',
+  },
+  {
+    titulo: 'Uso Linktree',
+    dor: 'A lista de botões é igual à de todo mundo e não conta nada sobre o seu trabalho. Quem clica não vê serviço, preço nem avaliação.',
+    vira: 'No lugar dos botões soltos entra uma página com o seu nome, suas cores e tudo que o cliente precisa para chamar você.',
+    antes: 'linktr.ee/seunegocio',
+  },
+]
+
+function CelularAoVivo() {
+  const [atual, setAtual] = useState('estetica')
+  return (
+    <div className="s-aovivo">
+      <div className="s-cel">
+        <span className="s-cel-ilha" aria-hidden="true" />
+        <iframe key={atual} src={`/demo/${atual}`} title={`Exemplo de bio animada: ${AO_VIVO.find(([id]) => id === atual)[1]}`} loading="lazy" />
+      </div>
+      <div className="s-troca" role="group" aria-label="Trocar o exemplo">
+        {AO_VIVO.map(([id, nome]) => (
+          <button key={id} className={id === atual ? 'ativa' : ''} aria-pressed={id === atual} onClick={() => setAtual(id)}>{nome}</button>
+        ))}
+      </div>
+      <p className="s-aovivo-dica">Role e toque dentro do celular. É a página funcionando.</p>
+    </div>
+  )
+}
+
 export default function Home() {
-  const vitrine = MODELOS.slice(0, 6)
+  const vitrine = MODELOS.filter((m) => m.url).slice(0, 6)
   return (
     <>
       <Header />
       <main>
         <section className="s-hero">
+          <div className="s-wrap s-hero-grade">
+            <div className="s-hero-texto">
+              <Dominio antes="linktr.ee/seunegocio" depois="seunegocio.com.br" />
+              <h1>A página que faz o cliente chamar você no WhatsApp.</h1>
+              <p className="s-lead">
+                Para quem ainda não tem site ou só tem um Linktree: uma página animada com seus serviços, preços, avaliações e agendamento no WhatsApp.
+              </p>
+              <ul className="s-fatos">
+                <li><b>{brl(CONFIG.PRECO_BIO)}</b> preço fechado</li>
+                <li><b>{CONFIG.PRAZO_BIO_HORAS}h</b> para ficar pronta</li>
+                <li><b>50%</b> só depois de aprovar</li>
+              </ul>
+              <div className="s-acoes">
+                <a className="s-btn" href={waVendas('Oi! Quero uma página para o meu negócio.')} target="_blank" rel="noreferrer">Quero a minha página</a>
+                <a className="s-btn s-btn--linha" href="#modelos">Ver os modelos</a>
+              </div>
+            </div>
+            <CelularAoVivo />
+          </div>
+        </section>
+
+        <section className="s-sec s-publicos">
           <div className="s-wrap">
-            <Dominio antes="linktr.ee/suaclinica" depois="suaclinica.com.br" />
-            <h1>Troque o Linktree por uma página animada com a cara do seu negócio.</h1>
-            <p className="s-lead">
-              {brl(CONFIG.PRECO_BIO)}, pronta em {CONFIG.PRAZO_BIO_HORAS} horas. Agendamento no WhatsApp, serviços e localização numa página que ninguém esquece. Você só paga se aprovar.
-            </p>
-            <div className="s-acoes">
-              <Link className="s-btn" to="/demo/estetica">Ver uma ao vivo</Link>
-              <a className="s-btn s-btn--linha" href="#modelos">Ver todos os modelos</a>
+            <h2>Serve para quem está em uma destas duas situações</h2>
+            <div className="s-publicos-grade">
+              {PUBLICOS.map((p) => (
+                <article key={p.titulo} className="s-publico">
+                  <h3>{p.titulo}</h3>
+                  <p className="s-publico-antes"><span>{p.antes}</span></p>
+                  <p>{p.dor}</p>
+                  <p className="s-publico-vira">{p.vira}</p>
+                </article>
+              ))}
             </div>
           </div>
         </section>
@@ -48,7 +112,8 @@ export default function Home() {
                   <Previa modelo={m} />
                   <div className="info">
                     <h3>{m.titulo}</h3>
-                    <span className="tipo">{m.tipo === 'bio' ? `Bio animada · ${brl(CONFIG.PRECO_BIO)}` : `Site completo · ${brl(CONFIG.PRECO_SITE)}`} · {m.destaque}</span>
+                    <span className="tipo">{m.tipo === 'bio' ? `Bio animada, ${brl(CONFIG.PRECO_BIO)}` : `Site completo, ${brl(CONFIG.PRECO_SITE)}`}</span>
+                    <p className="destaque">{m.destaque}</p>
                     <div className="acoes">
                       {m.url && <a className="s-btn s-btn--linha" href={m.url} target="_blank" rel="noreferrer">Ver ao vivo</a>}
                       <a className="s-btn" href={waVendas(`Oi! Quero o modelo ${m.titulo} para o meu negócio.`)} target="_blank" rel="noreferrer">
@@ -149,10 +214,11 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="s-sec">
+        <section className="s-sec s-final">
           <div className="s-wrap">
             <h2>Seu negócio já é bom. Falta a sua página mostrar isso.</h2>
-            <div className="s-acoes" style={{ marginTop: 20 }}>
+            <p className="s-sub">Mande um oi no WhatsApp com o nome do seu negócio. A gente responde com a sua página de exemplo.</p>
+            <div className="s-acoes">
               <a className="s-btn" href={waVendas('Oi! Quero um site para o meu negócio.')} target="_blank" rel="noreferrer">Falar no WhatsApp</a>
               <Link className="s-btn s-btn--linha" to="/briefing">Já quero começar</Link>
             </div>

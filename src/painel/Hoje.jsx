@@ -35,7 +35,7 @@ export default function Hoje() {
       <div className="p-cab">
         <div>
           <h1>Quem chamar hoje</h1>
-          <p className="p-sub">Os de maior chance primeiro: Linktree e muitas avaliações no topo.</p>
+          <p className="p-sub">Os de maior chance primeiro: link fraco (Linktree, Instagram, app de agenda) e muitas avaliações no topo.</p>
         </div>
         <div className="p-meta-dia" aria-label={`${feitos} de ${CONFIG.META_DIARIA} envios hoje`}>
           <strong>{feitos}<span>/{CONFIG.META_DIARIA}</span></strong>
@@ -45,7 +45,7 @@ export default function Hoje() {
       </div>
 
       <div className="p-filtros" role="group" aria-label="Filtrar fila">
-        {[['todos', 'Todos'], ['site_falso', 'Linktree / Instagram'], ['sem_site', 'Sem site']].map(([v, n]) => (
+        {[['todos', 'Todos'], ['site_falso', 'Link fraco'], ['sem_site', 'Sem site']].map(([v, n]) => (
           <button key={v} className={filtro === v ? 'ativa' : ''} onClick={() => setFiltro(v)}>{n}</button>
         ))}
         <button onClick={carregar}>Atualizar</button>

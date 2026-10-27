@@ -27,6 +27,25 @@ export function linkModelos(lead) {
   return `${CONFIG.SITE_URL}/m/${slug}?n=${n}&r=${lead.id}`
 }
 
+// Para onde o link do Google leva hoje (usado nas mensagens de quem tem "site falso")
+const DESTINOS = [
+  [/linktr\.ee|beacons|bio\.link|linkin\.bio|taplink|lnk\.bio|linkme|solo\.to|linkr|bio\.site|linklist|campsite/, 'um Linktree'],
+  [/instagram\./, 'o Instagram'],
+  [/facebook\.|fb\.com/, 'o Facebook'],
+  [/wa\.me|whatsapp\./, 'o WhatsApp direto, sem uma página'],
+  [/tiktok\./, 'o TikTok'],
+  [/ifood/, 'o iFood'],
+  [/trinks|avec\.app|booksy|appbarber|gestaoparabarbearia|bemp\.online|bethelapp|agendasalao|simplesagenda|calendly/, 'a tela do app de agendamento'],
+  [/bit\.ly|tinyurl|goo\.gl/, 'um link encurtado'],
+  [/sites\.google|wixsite|business\.site|negocio\.site|g\.page/, 'uma página genérica'],
+]
+export function destinoDoLink(site = '') {
+  const s = String(site || '').toLowerCase()
+  if (!s) return 'lugar nenhum'
+  const achado = DESTINOS.find(([re]) => re.test(s))
+  return achado ? achado[1] : 'uma página que não é sua'
+}
+
 const nota = (v) => (v == null ? '' : String(Number(v).toFixed(1)).replace('.', ','))
 
 export function preencher(texto, lead, extra = {}) {
@@ -35,6 +54,7 @@ export function preencher(texto, lead, extra = {}) {
     avaliacoes: lead?.avaliacoes ?? '',
     nota: nota(lead?.nota),
     link: lead ? linkModelos(lead) : CONFIG.SITE_URL,
+    destino: destinoDoLink(lead?.site_raw),
     link_avaliacao: CONFIG.LINK_AVALIACAO || CONFIG.SITE_URL,
     ...extra,
   }

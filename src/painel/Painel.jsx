@@ -16,15 +16,19 @@ const Ctx = createContext(null)
 export const usePainel = () => useContext(Ctx)
 
 const ABAS = [
-  ['hoje', 'Hoje', Hoje],
-  ['followups', 'Follow-ups', Followups],
-  ['funil', 'Funil', Funil],
-  ['leads', 'Leads', Leads],
-  ['briefings', 'Briefings', Briefings],
-  ['metricas', 'Métricas', Metricas],
-  ['mensagens', 'Mensagens', Mensagens],
-  ['conteudo', 'Conteúdo', Conteudo],
+  ['hoje', 'Hoje', Hoje, 'M4 12h4l3-8 4 16 3-8h2'],
+  ['followups', 'Follow-ups', Followups, 'M12 7v5l3 2M21 12a9 9 0 1 1-9-9'],
+  ['funil', 'Funil', Funil, 'M3 5h18l-7 8v6l-4 2v-8L3 5Z'],
+  ['leads', 'Leads', Leads, 'M16 19v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1M9.5 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM21 19v-1a4 4 0 0 0-3-3.9M16 4.1a3 3 0 0 1 0 5.8'],
+  ['briefings', 'Briefings', Briefings, 'M9 4h6v3H9zM7 5H5v16h14V5h-2M8 12h8M8 16h5'],
+  ['metricas', 'Métricas', Metricas, 'M4 20V10M10 20V4M16 20v-7M22 20H2'],
+  ['mensagens', 'Mensagens', Mensagens, 'M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z'],
+  ['conteudo', 'Conteúdo', Conteudo, 'M4 5h16v14H4zM4 9h16M9 9v10'],
 ]
+
+const Ico = ({ d }) => (
+  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={d} /></svg>
+)
 
 function Login() {
   const [email, setEmail] = useState('')
@@ -62,6 +66,7 @@ export default function Painel() {
   const [leadAberto, setLeadAberto] = useState(null)
   const [aviso, setAviso] = useState('')
   const [versao, setVersao] = useState(0)
+  const [menuAberto, setMenuAberto] = useState(false)
 
   useEffect(() => {
     const meta = document.createElement('meta')
@@ -100,18 +105,27 @@ export default function Painel() {
 
   return (
     <Ctx.Provider value={{ mensagens, recarregarMensagens, abrirLead: setLeadAberto, avisar, versao, atualizar }}>
-      <div className="p-app">
-        <header className="p-topo">
-          <strong>Tavin<span>.</span>Digital</strong>
-          <nav className="p-abas" aria-label="Seções do painel">
-            {ABAS.map(([id, nome]) => (
-              <button key={id} className={id === aba ? 'ativa' : ''} onClick={() => setAba(id)} aria-current={id === aba ? 'page' : undefined}>
-                {nome}
+      <div className={`p-app ${menuAberto ? 'menu-aberto' : ''}`}>
+        <header className="p-barra">
+          <button className="p-hamb" onClick={() => setMenuAberto(true)} aria-label="Abrir menu"><Ico d="M4 7h16M4 12h16M4 17h16" /></button>
+          <strong className="p-logo">Tavin<span>.</span>Digital</strong>
+        </header>
+        <div className="p-veu" onClick={() => setMenuAberto(false)} aria-hidden="true" />
+        <aside className="p-lateral">
+          <strong className="p-logo">Tavin<span>.</span>Digital</strong>
+          <nav className="p-menu" aria-label="Seções do painel">
+            {ABAS.map(([id, nome, , ico]) => (
+              <button key={id} className={id === aba ? 'ativa' : ''} onClick={() => { setAba(id); setMenuAberto(false) }} aria-current={id === aba ? 'page' : undefined}>
+                <Ico d={ico} />{nome}
               </button>
             ))}
           </nav>
-          <button className="p-sair" onClick={() => supabase.auth.signOut()}>Sair</button>
-        </header>
+          <div className="p-lateral-pe">
+            <a href="/" target="_blank" rel="noreferrer">Ver o site</a>
+            <a href="https://api.thata.online/form/coleta-tavin" target="_blank" rel="noreferrer">Nova coleta de leads</a>
+            <button onClick={() => supabase.auth.signOut()}>Sair</button>
+          </div>
+        </aside>
         <main className="p-conteudo">
           <Atual key={`${aba}-${versao}`} />
         </main>
