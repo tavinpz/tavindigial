@@ -1,9 +1,10 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { Suspense, useEffect, useMemo, useRef, useState } from 'react'
 import { useParams, useSearchParams, Navigate } from 'react-router-dom'
 import { CONFIG, brl } from '../config'
 import { waLink } from '../lib/msg'
 import { callFn } from '../lib/fn'
 import '../styles/bio.css'
+import { DEMOS } from './demos'
 
 // Negócios fictícios usados nas demonstrações. O ?n= troca o nome pelo do lead.
 const TEMAS = {
@@ -81,7 +82,15 @@ function useFonte(familias) {
   }, [familias])
 }
 
+// /demo/:id → demos com layout próprio (pasta demos) ou o layout clássico com tema
 export default function BioDemo() {
+  const { id } = useParams()
+  const Extra = DEMOS[id]
+  if (Extra) return <Suspense fallback={null}><Extra /></Suspense>
+  return <Classico />
+}
+
+function Classico() {
   const { id } = useParams()
   const [qs] = useSearchParams()
   const tema = TEMAS[id]

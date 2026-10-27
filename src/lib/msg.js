@@ -6,7 +6,7 @@ const NICHOS = {
   estetica: ['estetica', 'beleza', 'harmoniza', 'depila', 'sobrancelha', 'cilios', 'spa', 'salao', 'cabelo', 'unha', 'manicure'],
   barbearia: ['barbearia', 'barbeiro', 'barber'],
   pet: ['pet', 'veterin', 'banho e tosa', 'tosa', 'animal'],
-  saude: ['clinica', 'fisioterap', 'nutri', 'psicolog', 'medic', 'pilates', 'fono'],
+  saude: ['clinica', 'fisioterap', 'nutri', 'psicolog', 'medic', 'pilates', 'fono', 'academia', 'crossfit', 'personal', 'studio', 'funcional'],
   alimentacao: ['restaurante', 'lanchonete', 'pizzaria', 'hamburguer', 'doceria', 'confeitaria', 'cafeteria', 'padaria', 'acai', 'marmita'],
 }
 
