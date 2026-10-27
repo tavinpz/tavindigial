@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { preencher, waLink, varianteDe, formatTel } from '../lib/msg'
 import { escolherMensagem, variantesDe, registrarEnvio, registrarEvento, linkMaps, ETAPAS, tempoAtras, STATUS } from './api'
 import { usePainel } from './Painel'
@@ -13,19 +13,21 @@ export default function CartaoEnvio({ lead, etapa, onFeito, mostrarStatus = fals
   const { mensagens, abrirLead, avisar } = usePainel()
   const publico = lead.tipo_site === 'site_falso' ? 'site_falso' : 'sem_site'
   const variantes = variantesDe(mensagens, etapa, publico)
-  const [variante, setVariante] = useState(() => {
-    const v = varianteDe(lead.id)
-    return variantes.includes(v) ? v : variantes[0] || 'A'
-  })
+  // Cada lead cai sempre na mesma variante (A/B), a não ser que você troque na mão
+  const preferida = varianteDe(lead.id)
+  const [escolhida, setEscolhida] = useState(null)
+  const variante = escolhida || (variantes.includes(preferida) ? preferida : variantes[0] || 'A')
   const modelo = useMemo(() => escolherMensagem(mensagens, etapa, publico, variante), [mensagens, etapa, publico, variante])
-  const [texto, setTexto] = useState(() => (modelo ? preencher(modelo.texto, lead) : ''))
+  const [texto, setTexto] = useState('')
+  const [editado, setEditado] = useState(false)
   const [ocupado, setOcupado] = useState(false)
 
-  const trocarVariante = (v) => {
-    setVariante(v)
-    const m = escolherMensagem(mensagens, etapa, publico, v)
-    if (m) setTexto(preencher(m.texto, lead))
-  }
+  // Preenche (ou repreenche) o texto quando o modelo muda, sem apagar o que você editou
+  useEffect(() => {
+    if (!editado) setTexto(modelo ? preencher(modelo.texto, lead) : '')
+  }, [modelo, lead, editado])
+
+  const trocarVariante = (v) => { setEscolhida(v); setEditado(false) }
 
   async function enviar() {
     if (!lead.whatsapp || !texto) return
@@ -87,7 +89,7 @@ export default function CartaoEnvio({ lead, etapa, onFeito, mostrarStatus = fals
         )}
       </div>
       {modelo ? (
-        <textarea className="p-texto" value={texto} onChange={(e) => setTexto(e.target.value)} rows={5} />
+        <textarea className="p-texto" value={texto} onChange={(e) => { setTexto(e.target.value); setEditado(true) }} rows={5} />
       ) : (
         <p className="p-erro">Nenhuma mensagem ativa para “{ETAPAS[etapa] || etapa}”. Crie em Mensagens.</p>
       )}

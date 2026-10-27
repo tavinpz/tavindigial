@@ -21,10 +21,10 @@ export function nichoSlug(nicho = '', categoria = '') {
 }
 
 // Link curto para a página de modelos, personalizado e rastreado
-export function linkModelos(lead) {
+export function linkModelos(lead, { rastrear = true } = {}) {
   const slug = nichoSlug(lead.nicho, lead.categoria)
   const n = encodeURIComponent(lead.nome || '')
-  return `${CONFIG.SITE_URL}/m/${slug}?n=${n}&r=${lead.id}`
+  return `${CONFIG.SITE_URL}/m/${slug}?n=${n}${rastrear ? `&r=${lead.id}` : ''}`
 }
 
 // Para onde o link do Google leva hoje (usado nas mensagens de quem tem "site falso")

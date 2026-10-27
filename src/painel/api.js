@@ -64,9 +64,10 @@ export function inicioDoDia() {
   return d.toISOString()
 }
 
+// Dia de Brasília, calculado no banco (mesmo número da tela Métricas)
 export async function enviosHoje() {
-  const { count } = await supabase.from('envios').select('id', { count: 'exact', head: true }).gte('enviado_em', inicioDoDia())
-  return count || 0
+  const { data } = await supabase.from('v_resumo').select('envios_hoje').single()
+  return data?.envios_hoje || 0
 }
 
 export const linkMaps = (lead) => {

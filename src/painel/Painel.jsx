@@ -1,6 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { carregarMensagens } from './api'
+import { marcarDono } from '../lib/fn'
 import Hoje from './Hoje'
 import Followups from './Followups'
 import Funil from './Funil'
@@ -63,6 +64,7 @@ export default function Painel() {
   const [admin, setAdmin] = useState(null)
   const [aba, setAba] = useState(() => localStorage.getItem('p-aba') || 'hoje')
   const [mensagens, setMensagens] = useState([])
+  const [prontas, setProntas] = useState(false)
   const [leadAberto, setLeadAberto] = useState(null)
   const [aviso, setAviso] = useState('')
   const [versao, setVersao] = useState(0)
@@ -80,10 +82,10 @@ export default function Painel() {
 
   useEffect(() => {
     if (!sessao) { setAdmin(null); return }
-    supabase.rpc('is_admin').then(({ data }) => setAdmin(!!data))
+    supabase.rpc('is_admin').then(({ data }) => { setAdmin(!!data); if (data) marcarDono() })
   }, [sessao])
 
-  const recarregarMensagens = useCallback(() => carregarMensagens().then(setMensagens).catch(() => {}), [])
+  const recarregarMensagens = useCallback(() => carregarMensagens().then(setMensagens).catch(() => {}).finally(() => setProntas(true)), [])
   useEffect(() => { if (admin) recarregarMensagens() }, [admin, recarregarMensagens])
 
   useEffect(() => { try { localStorage.setItem('p-aba', aba) } catch { /* sem storage */ } }, [aba])
@@ -127,7 +129,7 @@ export default function Painel() {
           </div>
         </aside>
         <main className="p-conteudo">
-          <Atual key={`${aba}-${versao}`} />
+          {prontas ? <Atual key={`${aba}-${versao}`} /> : <p className="p-vazio">Carregando…</p>}
         </main>
         {leadAberto && <LeadDrawer id={leadAberto} fechar={() => setLeadAberto(null)} />}
         {aviso && <div className="p-toast" role="status">{aviso}</div>}

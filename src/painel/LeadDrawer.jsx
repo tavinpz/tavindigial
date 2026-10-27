@@ -104,7 +104,7 @@ export default function LeadDrawer({ id, fechar }) {
           {lead.whatsapp && <a href={waLink(lead.whatsapp)} target="_blank" rel="noreferrer">{formatTel(lead.whatsapp)}</a>}
           {maps && <a href={maps} target="_blank" rel="noreferrer">Google Maps</a>}
           {lead.instagram && <a href={`https://instagram.com/${lead.instagram.replace('@', '')}`} target="_blank" rel="noreferrer">Instagram</a>}
-          <a href={linkModelos(lead)} target="_blank" rel="noreferrer">Página de modelos dele</a>
+          <a href={linkModelos(lead, { rastrear: false })} target="_blank" rel="noreferrer">Página de modelos dele</a>
         </p>
         {lead.nota != null && <p className="p-meta">★ {String(lead.nota).replace('.', ',')} · {lead.avaliacoes} avaliações · {lead.tipo_site === 'site_falso' ? `Link atual: ${lead.site_raw}` : 'Sem site'}</p>}
 

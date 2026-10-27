@@ -3,7 +3,7 @@ import { supabase } from '../lib/supabase'
 import CartaoEnvio from './CartaoEnvio'
 
 const etapaDo = (l) => {
-  if (l.status === 'proposta') return 'followup_proposta'
+  if (l.status === 'proposta' || l.status === 'respondeu') return 'followup_proposta'
   if (l.status === 'ganho') return 'upsell_30d'
   return (l.total_envios || 0) <= 1 ? 'followup_1' : 'followup_2'
 }
@@ -28,7 +28,7 @@ export default function Followups() {
       <div className="p-cab">
         <div>
           <h1>Follow-ups de hoje</h1>
-          <p className="p-sub">D+2 depois da abertura, depois o último contato. Quem abriu a página aparece primeiro.</p>
+          <p className="p-sub">2 dias depois da abertura, depois o último contato. Quem pediu preço e sumiu volta aqui em 2 dias. Quem abriu a página aparece primeiro.</p>
         </div>
         <div className="p-meta-dia"><strong>{visiveis.length}</strong><small>pendentes</small></div>
       </div>
