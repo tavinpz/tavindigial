@@ -33,7 +33,7 @@ async function gerarESubir(id, slides) {
     desenharSlide(c, slides[i], i, slides.length)
     const blob = await paraJpeg(c)
     const caminho = `${id}/${versao}-${i + 1}.jpg`
-    const { error } = await supabase.storage.from('carrosseis').upload(caminho, blob, { contentType: 'image/jpeg', upsert: true })
+    const { error } = await supabase.storage.from('carrosseis').upload(caminho, blob, { contentType: 'image/jpeg', upsert: false, cacheControl: '31536000' })
     if (error) throw error
     urls.push(supabase.storage.from('carrosseis').getPublicUrl(caminho).data.publicUrl)
   }
