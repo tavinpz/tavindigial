@@ -6,7 +6,7 @@ import { callFn } from '../lib/fn'
 import { Header, Footer, waVendas } from './Layout'
 
 const VAZIO = {
-  produto: 'site', negocio: '', responsavel: '', whatsapp: '', email: '', cidade: '', endereco: '',
+  produto: 'bio', negocio: '', responsavel: '', whatsapp: '', email: '', cidade: '', endereco: '',
   instagram: '', servicos: '', horarios: '', diferenciais: '', cores: '', referencias: '',
   modelo_escolhido: '', observacoes: '', site_empresa: '', aceite_termos: false,
 }
@@ -35,8 +35,8 @@ export default function Briefing() {
       <>
         <Header />
         <main className="s-wrap s-legal">
-          <h1>Recebido. Já começo o seu {f.produto === 'bio' ? 'link de bio' : 'site'}.</h1>
-          <p>Agora me mande pelo WhatsApp o logo e de 3 a 8 fotos do seu negócio. A prévia chega em até {CONFIG.PRAZO_HORAS} horas.</p>
+          <h1>Recebido. Já começo o seu {f.produto === 'bio' ? 'bio animada' : 'site'}.</h1>
+          <p>Agora me mande pelo WhatsApp o logo e de 3 a 8 fotos do seu negócio. A prévia chega em até {f.produto === 'bio' ? CONFIG.PRAZO_BIO_HORAS : CONFIG.PRAZO_HORAS} horas.</p>
           <div className="s-acoes" style={{ marginTop: 20 }}>
             <a className="s-btn" href={waVendas(`Oi! Preenchi o formulário da ${f.negocio}. Vou mandar o logo e as fotos.`)} target="_blank" rel="noreferrer">
               Mandar logo e fotos
@@ -52,15 +52,15 @@ export default function Briefing() {
     <>
       <Header />
       <main className="s-wrap s-legal">
-        <h1>Vamos montar o seu site</h1>
+        <h1>Vamos montar a sua página</h1>
         <p>Leva 3 minutos. Quanto mais detalhe, mais a prévia já sai com a sua cara.</p>
 
         <form className="s-form" onSubmit={enviar} noValidate style={{ marginTop: 28 }}>
           <div className="s-campo">
             <label htmlFor="produto">O que você quer</label>
             <select id="produto" value={f.produto} onChange={set('produto')}>
+              <option value="bio">Bio animada · {brl(CONFIG.PRECO_BIO)} + {brl(CONFIG.HOSPEDAGEM_BIO)}/mês</option>
               <option value="site">Site completo · {brl(CONFIG.PRECO_SITE)} + {brl(CONFIG.HOSPEDAGEM_SITE)}/mês</option>
-              <option value="bio">Página de bio · {brl(CONFIG.PRECO_BIO)} + {brl(CONFIG.HOSPEDAGEM_BIO)}/mês</option>
               <option value="outro">Outro (explico abaixo)</option>
             </select>
           </div>

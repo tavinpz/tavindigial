@@ -28,11 +28,11 @@ export function Termos() {
 
       <h2>1. O que está incluso</h2>
       <p><strong>Site completo ({brl(CONFIG.PRECO_SITE)}):</strong> uma página responsiva com apresentação, serviços, fotos, avaliações, horários, mapa e botão de WhatsApp, a partir de um dos nossos modelos.</p>
-      <p><strong>Página de bio ({brl(CONFIG.PRECO_BIO)}):</strong> uma página de links com a sua marca, para usar no Instagram.</p>
+      <p><strong>Bio animada ({brl(CONFIG.PRECO_BIO)}):</strong> uma página única e animada com a sua marca, para usar no link do Instagram: agendamento no WhatsApp, serviços, localização e avaliações.</p>
       <p>Não estão inclusos: loja virtual, área de login, sistemas sob medida, textos longos de blog ou páginas extras. Se você pedir algo fora do escopo, enviamos o orçamento antes de fazer.</p>
 
       <h2>2. Prazo</h2>
-      <p>A prévia fica pronta em até {CONFIG.PRAZO_HORAS} horas úteis depois que recebemos o formulário, o logo e as fotos. O prazo conta a partir do recebimento de todo o material.</p>
+      <p>A prévia da bio animada fica pronta em até {CONFIG.PRAZO_BIO_HORAS} horas e a do site em até {CONFIG.PRAZO_HORAS} horas úteis depois que recebemos o formulário, o logo e as fotos. O prazo conta a partir do recebimento de todo o material.</p>
 
       <h2>3. Pagamento e garantia</h2>
       <p>Você só paga se aprovar. Depois de ver a prévia, paga 50% para seguirmos. Os outros 50% são pagos quando o site estiver publicado. Se não aprovar a prévia, não paga nada.</p>
@@ -42,7 +42,7 @@ export function Termos() {
       <p>Antes da publicação, está inclusa uma rodada de ajustes sobre a prévia (textos, cores, fotos e ordem das seções). Com a hospedagem ativa, você tem direito a 1 ajuste simples por mês.</p>
 
       <h2>5. Hospedagem e domínio</h2>
-      <p>A hospedagem custa {brl(CONFIG.HOSPEDAGEM_SITE)}/mês para o site e {brl(CONFIG.HOSPEDAGEM_BIO)}/mês para a página de bio, e inclui domínio, certificado de segurança e manutenção técnica. Não há fidelidade: você pode cancelar quando quiser, com aviso de 7 dias.</p>
+      <p>A hospedagem custa {brl(CONFIG.HOSPEDAGEM_BIO)}/mês para a bio animada e {brl(CONFIG.HOSPEDAGEM_SITE)}/mês para o site, e inclui domínio, certificado de segurança e manutenção técnica. Não há fidelidade: você pode cancelar quando quiser, com aviso de 7 dias.</p>
       <p>Se cancelar, o site sai do ar ao fim do mês já pago. Se o domínio estiver registrado por nós, transferimos para você a pedido, sem custo além das taxas do órgão registrador.</p>
       <p>Mensalidade em atraso por mais de 15 dias pode levar à suspensão do site até a regularização.</p>
 

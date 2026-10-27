@@ -23,7 +23,7 @@ export const EVENTOS = {
 }
 
 export const PRODUTOS = {
-  site_297: 'Site completo', bio_197: 'Página de bio', hospedagem: 'Hospedagem', google: 'Kit Google',
+  bio_297: 'Bio animada', site_497: 'Site completo', hospedagem: 'Hospedagem', google: 'Kit Google',
   criativos: 'Criativos com IA', conteudo: 'Conteúdo com IA', ia_whatsapp: 'Atendente IA',
 }
 

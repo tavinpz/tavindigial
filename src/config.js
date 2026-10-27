@@ -7,8 +7,8 @@ export const CONFIG = {
   // Endereço público do site (sem barra no final)
   SITE_URL: import.meta.env.VITE_SITE_URL || 'https://tavindigital.online',
 
-  // PREENCHER: WhatsApp de vendas (o chip), só números, com 55 + DDD
-  WHATSAPP_VENDAS: import.meta.env.VITE_WHATSAPP_VENDAS || '',
+  // WhatsApp de vendas (o chip), só números, com 55 + DDD
+  WHATSAPP_VENDAS: import.meta.env.VITE_WHATSAPP_VENDAS || '5527992886950',
 
   INSTAGRAM: 'tavindigital',
 
@@ -22,11 +22,13 @@ export const CONFIG = {
   LINK_AVALIACAO: '',
 
   // Preços (aparecem no site e nas mensagens)
-  PRECO_SITE: 297,
-  PRECO_BIO: 197,
-  HOSPEDAGEM_SITE: 59,
+  // Bio animada = oferta de entrada. Site completo = upgrade.
+  PRECO_BIO: 297,
+  PRAZO_BIO_HORAS: 24,
   HOSPEDAGEM_BIO: 39,
+  PRECO_SITE: 497,
   PRAZO_HORAS: 48,
+  HOSPEDAGEM_SITE: 59,
 
   // Meta diária de envios mostrada no painel
   META_DIARIA: 40,

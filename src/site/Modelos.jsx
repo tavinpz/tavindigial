@@ -25,6 +25,14 @@ export default function Modelos() {
     return () => meta.remove()
   }, [nome, r, slug])
 
+  const aoVivo = (m) => {
+    if (!m.url || !m.url.startsWith('/demo')) return m.url
+    const q = new URLSearchParams()
+    if (nome) q.set('n', nome)
+    if (r) q.set('r', r)
+    const qs2 = q.toString()
+    return qs2 ? `${m.url}?${qs2}` : m.url
+  }
   const quero = (m) => waVendas(`Oi! Vi os modelos e quero o ${m.titulo}${nome ? ` para a ${nome}` : ''}.`)
   const marcarClique = (m) => {
     if (r) callFn('track', { r, pagina: `m/${slug}`, modelo: m.id }).catch(() => {})
@@ -42,8 +50,8 @@ export default function Modelos() {
             {nome && <Dominio antes="linktr.ee/…" depois={dominio} />}
             <h1>{nome ? `Modelos de site para a ${nome}` : `Modelos de site para ${NOMES_NICHO[slug]}`}</h1>
             <p>
-              Escolha o que mais combina. Eu coloco o nome, as cores e os serviços{nome ? ` da ${nome}` : ''} e deixo no ar em até {CONFIG.PRAZO_HORAS} horas,
-              por {brl(CONFIG.PRECO_SITE)}. Você só paga se aprovar.
+              Abra um modelo no celular. Eu coloco o nome, as cores e os serviços{nome ? ` da ${nome}` : ''} e deixo a página no ar em até {CONFIG.PRAZO_BIO_HORAS} horas,
+              por {brl(CONFIG.PRECO_BIO)}. Você só paga se aprovar.
             </p>
           </div>
         </section>
@@ -56,10 +64,10 @@ export default function Modelos() {
                   <Previa modelo={m} nome={nome} />
                   <div className="info">
                     <h3>{m.titulo}</h3>
-                    <span className="tipo">{m.tipo === 'bio' ? `Página de bio · ${brl(CONFIG.PRECO_BIO)}` : `Site completo · ${brl(CONFIG.PRECO_SITE)}`}</span>
+                    <span className="tipo">{m.tipo === 'bio' ? `Bio animada · ${brl(CONFIG.PRECO_BIO)}` : `Site completo · ${brl(CONFIG.PRECO_SITE)}`}</span>
                     <span className="tipo">{m.destaque}</span>
                     <div className="acoes">
-                      {m.url && <a className="s-btn s-btn--linha" href={m.url} target="_blank" rel="noreferrer">Ver ao vivo</a>}
+                      {m.url && <a className="s-btn s-btn--linha" href={aoVivo(m)} target="_blank" rel="noreferrer">{nome && m.url.startsWith('/demo') ? `Ver com o nome da ${nome}` : 'Ver ao vivo'}</a>}
                       <a className="s-btn" href={quero(m)} onClick={() => marcarClique(m)} target="_blank" rel="noreferrer">Quero este modelo</a>
                     </div>
                   </div>
@@ -69,7 +77,8 @@ export default function Modelos() {
 
             <p className="s-garantia">
               <strong>Como funciona:</strong> você escolhe o modelo, manda as informações em 3 minutos e vê a prévia pronta.
-              Paga 50% quando aprovar e 50% quando estiver no ar. Hospedagem e domínio: {brl(CONFIG.HOSPEDAGEM_SITE)}/mês, sem fidelidade.
+              Paga 50% quando aprovar e 50% quando estiver no ar. Hospedagem e domínio: {brl(CONFIG.HOSPEDAGEM_BIO)}/mês, sem fidelidade.
+              Quer mais seções e aparecer no Google? O site completo sai por {brl(CONFIG.PRECO_SITE)}.
             </p>
             <div className="s-acoes" style={{ marginTop: 24 }}>
               <Link className="s-btn" to={briefing}>Já quero começar</Link>

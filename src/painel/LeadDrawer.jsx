@@ -16,7 +16,7 @@ export default function LeadDrawer({ id, fechar }) {
   const [texto, setTexto] = useState('')
   const [obs, setObs] = useState('')
   const [pagando, setPagando] = useState(false)
-  const [venda, setVenda] = useState({ produto: 'site_297', valor: 297, valor_mensal: 59 })
+  const [venda, setVenda] = useState({ produto: 'bio_297', valor: 297, valor_mensal: 39 })
 
   async function carregar() {
     const [{ data: l }, { data: en }, { data: ev }, { data: ng }] = await Promise.all([
