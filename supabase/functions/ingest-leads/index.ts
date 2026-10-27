@@ -115,6 +115,18 @@ Deno.serve(async (req) => {
     });
   }
 
+  // Quem foi apagado no painel não volta
+  const ids = linhas.map((l) => l.place_id as string);
+  const apagados = new Set<string>();
+  for (let i = 0; i < ids.length; i += 150) {
+    const { data } = await db.from("leads_apagados").select("place_id").in("place_id", ids.slice(i, i + 150));
+    (data ?? []).forEach((r: { place_id: string }) => apagados.add(r.place_id));
+  }
+  if (apagados.size) {
+    stats.descartados += apagados.size;
+    linhas.splice(0, linhas.length, ...linhas.filter((l) => !apagados.has(l.place_id as string)));
+  }
+
   for (let i = 0; i < linhas.length; i += 200) {
     const lote = linhas.slice(i, i + 200);
     const { data, error } = await db

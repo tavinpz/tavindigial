@@ -23,6 +23,7 @@ export default function Prospectar() {
   const [ocultos, setOcultos] = useState(() => new Set())
   const [filtro, setFiltro] = useState('todos')
   const [canal, setCanal] = useState('whatsapp')
+  const [qtd, setQtd] = useState(20)
   const [erro, setErro] = useState('')
 
   async function carregar() {
@@ -100,7 +101,7 @@ export default function Prospectar() {
         <h2 className="p-h2">Primeira mensagem <span className="p-conta">{novos.length}</span></h2>
         <div className="p-canais" role="tablist" aria-label="Canal">
           {[['whatsapp', 'WhatsApp'], ['instagram', 'Instagram']].map(([c, n]) => (
-            <button key={c} role="tab" aria-selected={canal === c} className={canal === c ? 'ativa' : ''} onClick={() => setCanal(c)}>
+            <button key={c} role="tab" aria-selected={canal === c} className={canal === c ? 'ativa' : ''} onClick={() => { setCanal(c); setQtd(20) }}>
               {n} <b>{feitos[c]}/{META[c]}</b>
             </button>
           ))}
@@ -120,8 +121,11 @@ export default function Prospectar() {
           : <><strong>Fila vazia.</strong> A coleta roda sozinha todo dia às 7h. Para buscar agora, use “Nova coleta de leads” no menu.</>}</p></div>
       ) : (
         <div className="p-lista">
-          {novos.map((l) => <CartaoEnvio key={`${canal}-${l.id}`} lead={l} etapa="abertura" canal={canal} onFeito={concluir(canal)} />)}
+          {novos.slice(0, qtd).map((l) => <CartaoEnvio key={`${canal}-${l.id}`} lead={l} etapa="abertura" canal={canal} onFeito={concluir(canal)} />)}
         </div>
+      )}
+      {novos.length > qtd && (
+        <button className="p-btn p-mais" onClick={() => setQtd((n) => n + 20)}>Mostrar mais ({novos.length - qtd} restantes)</button>
       )}
     </section>
   )

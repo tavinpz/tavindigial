@@ -352,5 +352,18 @@ body:has(.p-fantasma) { cursor: grabbing; }
 .p-card-canal--whatsapp { background: #E7F6EE; color: #116B3C; }
 .p-card-canal--instagram { background: #FBEAF6; color: #9A1B7A; }
 .p-col-mais--btn { font: inherit; font-size: 13px; border: 0; background: transparent; color: var(--tinta); font-weight: 700; cursor: pointer; text-align: left; padding: 6px; }
-.p-ig { display: flex; gap: 8px; margin: 0 0 12px; }
-.p-ig input { flex: 1; min-width: 0; font: inherit; font-size: 15px; padding: 9px 12px; border: 1px solid var(--linha); border-radius: var(--r-peq); background: var(--branco); }
+.p-ig-form { display: flex; gap: 8px; margin: 0 0 12px; }
+.p-ig-form input { flex: 1; min-width: 0; font: inherit; font-size: 15px; padding: 9px 12px; border: 1px solid var(--linha); border-radius: var(--r-peq); background: var(--branco); }
+
+/* Arquivar / apagar */
+.p-btn--perigo { border-color: #F1C9CC; color: var(--erro, #B42318); background: var(--branco); }
+.p-btn--perigo:hover { background: #FDECEC; }
+.p-massa { position: sticky; top: 8px; z-index: 5; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 10px 12px; margin: 0 0 12px;
+  background: var(--branco); border: 1px solid var(--tinta); border-radius: 14px; box-shadow: 0 10px 24px -18px rgba(93, 4, 135, .6); }
+.p-massa strong { margin-right: auto; font-size: 15px; }
+.p-check { width: 36px; }
+.p-check input { width: 18px; height: 18px; accent-color: var(--tinta); cursor: pointer; }
+.p-drawer-fim { margin-top: 28px; padding-top: 16px; border-top: 1px solid var(--linha); }
+.p-col-meta { margin: -6px 6px 8px; font-size: 12.5px; color: var(--cinza); }
+.p-col-meta.feita { color: #138048; font-weight: 700; }
+.p-mais { display: block; margin: 16px auto 0; }

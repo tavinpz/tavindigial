@@ -27,12 +27,9 @@ export function abrirCanal(canal, lead, texto) {
   }
 }
 
-// Divide a fila do dia entre os canais sem chamar o mesmo negócio duas vezes:
-// quem tem Instagram vai para a DM (até a meta), o resto vai para o WhatsApp.
+// Todo o estoque nos dois canais. Os primeiros da DM (a meta do dia) saem da lista do WhatsApp
+// para você não gastar no WhatsApp quem já está separado para a DM. Chamou por um canal, sai dos dois.
 export function separarFilas(filaWa = [], filaDm = [], metaDm = 20) {
-  const dm = filaDm.slice(0, metaDm)
-  const naDm = new Set(dm.map((l) => l.id))
-  const wa = filaWa.filter((l) => !naDm.has(l.id))
-  // sobra de DM (além da meta) que não tem WhatsApp continua disponível no fim da lista de DM
-  return { wa, dm: [...dm, ...filaDm.slice(metaDm).filter((l) => !l.whatsapp)] }
+  const naDm = new Set(filaDm.slice(0, metaDm).map((l) => l.id))
+  return { wa: filaWa.filter((l) => !naDm.has(l.id)), dm: filaDm }
 }

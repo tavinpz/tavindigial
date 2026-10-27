@@ -16,7 +16,7 @@ export const MODELOS = [
   { id: 'bio-academia', titulo: 'Pulse', tipo: 'bio', nichos: ['saude', 'geral'], cor: '#C6FF3D', destaque: 'Grade de aulas com vagas e reserva', url: '/demo/academia', imagem: '/modelos/bio-academia.webp' },
   { id: 'bio-nutricionista', titulo: 'Helena', tipo: 'bio', nichos: ['saude'], cor: '#2F6B4F', destaque: 'Editorial: o objetivo muda o texto e o agendamento', url: '/demo/nutricionista', imagem: '/modelos/bio-nutricionista.webp' },
   { id: 'bio-psicologa', titulo: 'Marina', tipo: 'bio', nichos: ['saude'], cor: '#6C63B5', destaque: 'Calma, com respiração guiada na própria página', url: '/demo/psicologa', imagem: '/modelos/bio-psicologa.webp' },
-  { id: 'bio-tatuagem', titulo: 'Tinta Crua', tipo: 'bio', nichos: ['geral'], cor: '#E5383B', destaque: 'Flash que se desenha e montador de orçamento', url: '/demo/tatuagem', imagem: '/modelos/bio-tatuagem.webp' },
+  { id: 'bio-tatuagem', titulo: 'Tinta Crua', tipo: 'bio', nichos: ['tatuagem', 'geral'], cor: '#E5383B', destaque: 'Flash que se desenha e montador de orçamento', url: '/demo/tatuagem', imagem: '/modelos/bio-tatuagem.webp' },
   { id: 'sorriso', titulo: 'Clínica Clara', tipo: 'site', nichos: ['odontologia', 'saude'], cor: '#1F6FB2', destaque: 'Agendamento direto no WhatsApp', url: '', imagem: '' },
   { id: 'consultorio', titulo: 'Consultório', tipo: 'site', nichos: ['odontologia', 'saude'], cor: '#0F7B6C', destaque: 'Convênios, equipe e mapa', url: '', imagem: '' },
   { id: 'studio', titulo: 'Studio Beleza', tipo: 'site', nichos: ['estetica'], cor: '#B4456E', destaque: 'Tabela de serviços e antes/depois', url: '', imagem: '' },
@@ -34,6 +34,7 @@ export const NOMES_NICHO = {
   pet: 'pet shops e veterinárias',
   saude: 'clínicas e consultórios',
   alimentacao: 'restaurantes e delivery',
+  tatuagem: 'estúdios de tatuagem',
   geral: 'negócios locais',
 }
 

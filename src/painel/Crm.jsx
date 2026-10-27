@@ -18,6 +18,7 @@ export default function Crm() {
   const [fila, setFila] = useState({ wa: [], dm: [] })
   const [feitos, setFeitos] = useState({ whatsapp: 0, instagram: 0 })
   const [extra, setExtra] = useState({ wa: 0, dm: 0 })
+  const VISIVEIS = 40
   const [busca, setBusca] = useState('')
   const [alvo, setAlvo] = useState(null)
   const [arrastando, setArrastando] = useState(null)
@@ -215,12 +216,13 @@ export default function Crm() {
       <div className="p-quadro" ref={quadro}>
         {[['chamar_wa', 'Chamar no WhatsApp', 'wa', CONFIG.META_WHATS], ['chamar_dm', 'Chamar no Instagram', 'dm', CONFIG.META_DM]].map(([col, nome, k, meta]) => {
           const canal = CHAMAR[col]
-          const falta = Math.max(0, meta - feitos[canal]) + extra[k]
           const lista = fila[k].filter((l) => !filtro || l.nome.toLowerCase().includes(filtro))
-          const mostrar = lista.slice(0, falta)
+          const mostrar = lista.slice(0, VISIVEIS + extra[k])
+          const bateu = feitos[canal] >= meta
           return (
             <div key={col} className={`p-col p-col--chamar p-col--${col} ${alvo === col && arrastando ? 'alvo' : ''}`} data-coluna={col}>
-              <h2><span>{nome}</span><b>{feitos[canal]}/{meta}</b></h2>
+              <h2><span>{nome}</span><b>{lista.length}</b></h2>
+              <p className={`p-col-meta ${bateu ? 'feita' : ''}`}>Hoje {feitos[canal]}/{meta}{bateu ? ' · meta batida' : ''}</p>
               <div className="p-col-cards">
                 {mostrar.map((l) => (
                   <div key={l.id} className={`p-card p-card--chamar ${arrastando === l.id ? 'saindo' : ''}`} role="button" tabIndex={0}
@@ -233,11 +235,11 @@ export default function Crm() {
                   </div>
                 ))}
                 {mostrar.length === 0 && (
-                  <p className="p-col-vazia">{lista.length ? 'Meta do dia batida' : canal === 'instagram' ? 'Ninguém com Instagram na fila' : 'Fila vazia'}</p>
+                  <p className="p-col-vazia">{canal === 'instagram' ? 'Ninguém com Instagram na fila' : 'Fila vazia'}</p>
                 )}
                 {lista.length > mostrar.length && (
-                  <button className="p-col-mais p-col-mais--btn" onClick={() => setExtra((x) => ({ ...x, [k]: x[k] + 5 }))}>
-                    Mostrar mais 5 ({lista.length - mostrar.length} na fila)
+                  <button className="p-col-mais p-col-mais--btn" onClick={() => setExtra((x) => ({ ...x, [k]: x[k] + 40 }))}>
+                    Mostrar mais ({lista.length - mostrar.length} restantes)
                   </button>
                 )}
               </div>

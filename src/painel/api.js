@@ -2,7 +2,7 @@ import { supabase } from '../lib/supabase'
 
 export const STATUS = {
   novo: 'Novo', na_fila: 'Na fila', enviado: 'Enviado', abriu: 'Abriu a página', respondeu: 'Respondeu',
-  proposta: 'Proposta', ganho: 'Fechou', recorrente: 'Recorrente', perdido: 'Perdido', nao_contatar: 'Não contatar',
+  proposta: 'Proposta', ganho: 'Fechou', recorrente: 'Recorrente', perdido: 'Perdido', nao_contatar: 'Não contatar', arquivado: 'Arquivado',
 }
 
 export const ETAPAS = {
@@ -51,6 +51,18 @@ export async function registrarEnvio({ lead, mensagem, etapa, texto, canal = 'wh
   const { error } = await supabase.from('envios').insert({
     lead_id: lead.id, mensagem_id: mensagem?.id ?? null, etapa, canal, texto_enviado: texto,
   })
+  if (error) throw error
+}
+
+// Arquivar: some das filas e do CRM, fica guardado e não volta na coleta. Desarquivar volta para a fila.
+export async function arquivarLeads(ids, voltar = false) {
+  const { error } = await supabase.from('leads').update(voltar ? { status: 'novo' } : { status: 'arquivado', proximo_contato: null }).in('id', ids)
+  if (error) throw error
+}
+
+// Apagar: remove o lead e o histórico dele de vez (o negócio não volta na coleta)
+export async function apagarLeads(ids) {
+  const { error } = await supabase.from('leads').delete().in('id', ids)
   if (error) throw error
 }
 

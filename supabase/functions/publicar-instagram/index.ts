@@ -18,13 +18,36 @@ const espera = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 type Conta = { token: string; userId: string; host: string };
 
+const salvar = (db: SupabaseClient, key: string, value: string) =>
+  db.from("app_config").upsert({ key, value, updated_at: new Date().toISOString() }, { onConflict: "key" });
+
 async function conta(db: SupabaseClient): Promise<Conta | null> {
-  const { data } = await db.from("app_config").select("key,value").in("key", ["instagram_token", "instagram_user_id"]);
-  const m = Object.fromEntries((data ?? []).map((r: { key: string; value: string }) => [r.key, r.value]));
-  if (!m.instagram_token || !m.instagram_user_id) return null;
+  const { data } = await db.from("app_config").select("key,value,updated_at").in("key", ["instagram_token", "instagram_user_id"]);
+  const linhas = (data ?? []) as { key: string; value: string; updated_at: string }[];
+  const m = Object.fromEntries(linhas.map((r) => [r.key, r.value]));
+  if (!m.instagram_token) return null;
   // Token do "Login do Instagram" começa com IG; token de Página do Facebook (EAA...) usa graph.facebook.com
   const host = m.instagram_token.startsWith("IG") ? "graph.instagram.com" : "graph.facebook.com";
-  return { token: m.instagram_token, userId: m.instagram_user_id, host };
+  const c: Conta = { token: m.instagram_token, userId: m.instagram_user_id ?? "", host };
+
+  if (host === "graph.instagram.com") {
+    // Sem ID colado: descobre pelo próprio token
+    if (!c.userId) {
+      try {
+        const me = await (await fetch(`https://graph.instagram.com/${VERSAO}/me?fields=user_id,username&access_token=${c.token}`)).json();
+        if (me.user_id) { c.userId = String(me.user_id); await salvar(db, "instagram_user_id", c.userId); }
+      } catch { /* segue sem ID */ }
+    }
+    // O token dura 60 dias: renova sozinho a cada 15 dias
+    const salvoEm = new Date(linhas.find((r) => r.key === "instagram_token")?.updated_at ?? 0).getTime();
+    if (Date.now() - salvoEm > 15 * 86400000) {
+      try {
+        const r = await (await fetch(`https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=${c.token}`)).json();
+        if (r.access_token) { c.token = r.access_token; await salvar(db, "instagram_token", r.access_token); }
+      } catch { /* tenta de novo na próxima rodada */ }
+    }
+  }
+  return c.userId ? c : null;
 }
 
 async function graph(c: Conta, caminho: string, params: Record<string, string>, metodo = "POST") {
@@ -88,7 +111,7 @@ Deno.serve(async (req) => {
   if (!autorizado) return json(401, { ok: false, erro: "não autorizado" });
 
   const c = await conta(db);
-  if (!c) return json(200, { ok: false, erro: "Instagram ainda não conectado no painel" });
+  if (!c) return json(200, { ok: false, erro: "Instagram ainda não conectado no painel (ou o ID da conta não foi encontrado)" });
 
   if (body.verificar) {
     try {

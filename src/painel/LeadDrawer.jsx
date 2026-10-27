@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { preencher, waLink, formatTel, linkModelos, igDm, igHandle, igPerfil } from '../lib/msg'
 import { brl, CONFIG } from '../config'
-import { STATUS, ETAPAS, EVENTOS, PRODUTOS, COLUNAS, escolherMensagem, registrarEnvio, registrarEvento, moverEtapa, linkMaps, dataCurta } from './api'
+import { STATUS, ETAPAS, EVENTOS, PRODUTOS, COLUNAS, escolherMensagem, registrarEnvio, registrarEvento, moverEtapa, linkMaps, dataCurta, arquivarLeads, apagarLeads } from './api'
 import { usePainel } from './Painel'
 
 const RESPOSTAS = ['resp_preco', 'resp_pensar', 'resp_ja_tenho', 'followup_proposta', 'pos_venda', 'upsell_30d', 'followup_1', 'followup_2', 'abertura']
@@ -88,6 +88,16 @@ export default function LeadDrawer({ id, fechar, iniciarPagamento = false }) {
     setIg(''); avisar('Instagram salvo'); carregar(); atualizar()
   }
 
+  async function arquivar() {
+    const voltar = lead.status === 'arquivado'
+    try { await arquivarLeads([lead.id], voltar); avisar(voltar ? 'De volta na fila' : 'Arquivado'); atualizar(); fechar() } catch { avisar('Não deu certo') }
+  }
+
+  async function apagar() {
+    if (!window.confirm(`Apagar ${lead.nome} de vez, com o histórico? Ele não volta na coleta. Para só tirar da frente, use Arquivar.`)) return
+    try { await apagarLeads([lead.id]); avisar('Lead apagado'); atualizar(); fechar() } catch { avisar('Não deu certo') }
+  }
+
   async function salvarObs() {
     await supabase.from('leads').update({ observacoes: obs }).eq('id', lead.id)
     avisar('Observação salva')
@@ -121,7 +131,7 @@ export default function LeadDrawer({ id, fechar, iniciarPagamento = false }) {
           <a href={linkModelos(lead, { rastrear: false })} target="_blank" rel="noreferrer">Página de modelos dele</a>
         </p>
         {!lead.instagram && (
-          <form className="p-ig" onSubmit={salvarIg}>
+          <form className="p-ig-form" onSubmit={salvarIg}>
             <input value={ig} onChange={(e) => setIg(e.target.value)} placeholder="@ do Instagram (para chamar na DM)" aria-label="Instagram do negócio" />
             <button className="p-btn" disabled={!ig.trim()}>Salvar</button>
           </form>
@@ -194,6 +204,11 @@ export default function LeadDrawer({ id, fechar, iniciarPagamento = false }) {
             ))}
           </ul>
         )}
+
+        <div className="p-acoes p-drawer-fim">
+          <button className="p-btn p-btn--fraco" onClick={arquivar}>{lead.status === 'arquivado' ? 'Voltar para a fila' : 'Arquivar'}</button>
+          <button className="p-btn p-btn--perigo" onClick={apagar}>Apagar</button>
+        </div>
       </aside>
     </div>
   )

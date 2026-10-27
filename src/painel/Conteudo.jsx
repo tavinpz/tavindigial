@@ -243,7 +243,7 @@ function ConexaoInstagram() {
       </div>
       {form && (
         <form className="p-venda" onSubmit={salvar}>
-          <label>ID da conta do Instagram<input required value={form.user_id} onChange={(e) => setForm({ ...form, user_id: e.target.value })} placeholder="1784…" /></label>
+          <label>ID da conta (opcional com token IGAA)<input value={form.user_id} onChange={(e) => setForm({ ...form, user_id: e.target.value })} placeholder="1784…" /></label>
           <label className="p-largo">Token de acesso<input required type="password" value={form.token} onChange={(e) => setForm({ ...form, token: e.target.value })} placeholder="IGAA… ou EAA…" /></label>
           <div className="p-acoes"><button className="p-btn p-btn--forte">Salvar e testar</button></div>
         </form>

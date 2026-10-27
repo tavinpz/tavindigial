@@ -2,8 +2,9 @@ import { CONFIG } from '../config'
 
 // Nichos que têm página de modelos própria. O resto cai em "geral".
 const NICHOS = {
+  tatuagem: ['tatua', 'tattoo', 'piercing'], // antes de saude: "estúdio" contém "studio"
   odontologia: ['odonto', 'dentista', 'dental', 'odontologia', 'ortodont', 'implante'],
-  estetica: ['estetica', 'beleza', 'harmoniza', 'depila', 'sobrancelha', 'cilios', 'spa', 'salao', 'cabelo', 'unha', 'manicure'],
+  estetica: ['estetica', 'beleza', 'harmoniza', 'depila', 'sobrancelha', 'cilios', 'spa', 'salao', 'cabelo', 'unha', 'manicure', 'nail', 'lash', 'micropigment'],
   barbearia: ['barbearia', 'barbeiro', 'barber'],
   pet: ['pet', 'veterin', 'banho e tosa', 'tosa', 'animal'],
   saude: ['clinica', 'fisioterap', 'nutri', 'psicolog', 'medic', 'pilates', 'fono', 'academia', 'crossfit', 'personal', 'studio', 'funcional'],
