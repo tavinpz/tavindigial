@@ -70,6 +70,21 @@ Deno.serve(async (req) => {
   const body = await req.json().catch(() => null);
   if (!body) return json(400, { ok: false, erro: "corpo inválido" });
 
+  // O n8n avisa quando o Apify falha (ex.: limite do mês): vira linha de erro no histórico da Coleta
+  if (body.erro) {
+    const buscas: string[] = Array.isArray(body.buscas) ? body.buscas.map(String) : [];
+    await db.from("coleta_buscas").insert((buscas.length ? buscas : ["(Apify)"]).map((b) => ({
+      termo: b, nicho: s(body.nicho) || "geral", bairro: null, cidade: s(body.cidade) || "São Paulo, SP",
+      origem: "apify-erro", paginas: 0, erro: String(body.erro).slice(0, 300),
+    })));
+    // A busca não aconteceu: libera a combinação termo + bairro para tentar de novo
+    const { data: pend } = await db.from("coleta_buscas").select("id,termo,bairro").like("origem", "apify-%").neq("origem", "apify-erro")
+      .gte("feita_em", new Date(Date.now() - 2 * 3600000).toISOString());
+    const soltar = (pend ?? []).filter((r: { termo: string; bairro: string | null }) => buscas.includes(r.bairro ? `${r.termo} ${r.bairro}` : r.termo)).map((r: { id: number }) => r.id);
+    if (soltar.length) await db.from("coleta_buscas").delete().in("id", soltar);
+    return json(200, { ok: true, registrado: "erro" });
+  }
+
   const nicho = s(body.nicho).toLowerCase() || "geral";
   const cidadePadrao = s(body.cidade);
   const minAval = n(body.min_avaliacoes) ?? 0;

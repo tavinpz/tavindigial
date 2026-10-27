@@ -1,4 +1,7 @@
-// coletar-leads — coleta própria pela API oficial do Google Places (Text Search, New).
+// coletar-leads — coleta de leads com dois motores:
+//  • Google: API oficial do Google Places (Text Search, New), quando tem chave salva e ela funciona;
+//  • Apify (reserva): manda o pedido para o webhook do n8n, que roda o Apify e grava pelo ingest-leads.
+// "auto" (padrão) usa o Google e cai para o Apify sozinho se não tiver chave, se a chave falhar ou se acabar o teto do mês.
 // A Google cobra por BUSCA (até 20 negócios por página), não por negócio: 1.000 páginas/mês grátis.
 // Automático (pg_cron, 7h): escolhe termo x bairro ainda não buscados, priorizando os termos que mais
 // trazem negócio sem site ou com link fraco. Manual (painel): { termo, nicho, bairros[], ... }.
@@ -182,6 +185,32 @@ async function planoDoDia(db: SupabaseClient, quantas: number): Promise<Busca[]>
   return plano;
 }
 
+// Reserva: o n8n roda o Apify (credencial fica lá) e devolve os leads pelo ingest-leads
+const WEBHOOK_APIFY = "https://api.thata.online/webhook/coleta-tavin-api";
+async function viaApify(db: SupabaseClient, buscas: Busca[], origem: string) {
+  const { data: tk } = await db.from("app_config").select("value").eq("key", "ingest_token").maybeSingle();
+  const grupos = new Map<string, Busca[]>();
+  for (const b of buscas) grupos.set(b.nicho, [...(grupos.get(b.nicho) ?? []), b]);
+  let enviadas = 0;
+  const erros: string[] = [];
+  for (const [nicho, bs] of grupos) {
+    try {
+      const res = await fetch(WEBHOOK_APIFY, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "x-ingest-token": tk?.value ?? "" },
+        body: JSON.stringify({
+          nicho, cidade: bs[0].cidade, quantidade: 40, min_avaliacoes: Math.min(...bs.map((b) => b.min)),
+          buscas: bs.map((b) => (b.bairro ? `${b.termo} ${b.bairro}` : b.termo)),
+        }),
+      });
+      if (!res.ok) throw new Error(`n8n respondeu ${res.status}`);
+      enviadas += bs.length;
+      await db.from("coleta_buscas").insert(bs.map((b) => ({ termo: b.termo, nicho: b.nicho, bairro: b.bairro, cidade: b.cidade, origem: `apify-${origem}`, paginas: 0 })));
+    } catch (e) { erros.push(`${nicho}: ${(e as Error).message}`); }
+  }
+  return { ok: enviadas > 0, motor: "apify", buscas: enviadas, aviso: "Pedido enviado ao Apify: os leads chegam na fila em 3 a 10 minutos.", erro: erros.join("; ") || undefined };
+}
+
 async function autorizado(db: SupabaseClient, req: Request) {
   const { data: cfg } = await db.from("app_config").select("value").eq("key", "ingest_token").maybeSingle();
   if (cfg && req.headers.get("x-ingest-token") === cfg.value) return true;
@@ -199,30 +228,36 @@ Deno.serve(async (req) => {
   if (!(await autorizado(db, req))) return json(401, { ok: false, erro: "não autorizado" });
   const body = await req.json().catch(() => ({}));
 
-  const { data: cfg } = await db.from("app_config").select("key,value").in("key", ["google_places_key", "coleta_buscas_dia", "coleta_limite_mes"]);
+  const { data: cfg } = await db.from("app_config").select("key,value")
+    .in("key", ["google_places_key", "coleta_buscas_dia", "coleta_limite_mes", "coleta_motor", "coleta_apify_buscas_dia"]);
   const c = Object.fromEntries((cfg ?? []).map((r: { key: string; value: string }) => [r.key, r.value]));
-  if (!c.google_places_key) return json(200, { ok: false, erro: "Cole a chave da API do Google em Coleta de leads" });
+  const motor = String(body.motor || c.coleta_motor || "auto");
 
-  // Teto do mês: para de buscar antes de sair do grátis
+  // Teto do mês do Google: para antes de sair do grátis
   const inicioMes = new Date(new Date().toLocaleString("en-US", { timeZone: "America/Sao_Paulo" }));
   inicioMes.setDate(1); inicioMes.setHours(0, 0, 0, 0);
   const { data: mes } = await db.from("coleta_buscas").select("paginas").gte("feita_em", new Date(inicioMes.getTime() + 3 * 3600000).toISOString());
   const usadas = (mes ?? []).reduce((s: number, x: { paginas: number }) => s + x.paginas, 0);
   const limite = Number(c.coleta_limite_mes || 950);
   let saldo = Math.max(0, limite - usadas);
-  if (!saldo) return json(200, { ok: false, erro: `Limite do mês atingido (${usadas}/${limite} páginas)` });
 
   if (body.verificar) {
+    if (!c.google_places_key) return json(200, { ok: false, erro: "Nenhuma chave do Google salva (a coleta usa o Apify)" });
     try { await pagina(c.google_places_key, "barbearia em Moema, São Paulo"); return json(200, { ok: true }); }
     catch (e) { return json(200, { ok: false, erro: (e as Error).message }); }
   }
 
-  let buscas: Busca[];
+  const usarGoogle = motor !== "apify" && !!c.google_places_key && saldo > 0;
+  if (motor === "google" && !usarGoogle) return json(200, { ok: false, erro: c.google_places_key ? `Teto do mês atingido (${usadas}/${limite})` : "Cole a chave da API do Google em Coleta de leads" });
+
   const origem = body.auto ? "auto" : "manual";
+  let buscas: Busca[];
   if (body.auto) {
-    const porDia = Math.min(Number(c.coleta_buscas_dia || 30), saldo);
-    buscas = await planoDoDia(db, Math.ceil(porDia / 1.5)); // em média 1,5 página por busca
-    saldo = porDia;
+    const quantas = usarGoogle
+      ? Math.ceil(Math.min(Number(c.coleta_buscas_dia || 30), saldo) / 1.5) // em média 1,5 página por busca
+      : Number(c.coleta_apify_buscas_dia || 6); // Apify: ~40 negócios por busca
+    buscas = await planoDoDia(db, quantas);
+    if (usarGoogle) saldo = Math.min(Number(c.coleta_buscas_dia || 30), saldo);
   } else {
     const termo = String(body.termo ?? "").trim();
     if (!termo) return json(400, { ok: false, erro: "Informe o termo da busca" });
@@ -232,16 +267,28 @@ Deno.serve(async (req) => {
       termo, nicho: String(body.nicho || "geral").trim().toLowerCase(), bairro, cidade, min: Number(body.min_avaliacoes ?? 5),
     }));
   }
+  if (!buscas.length) return json(200, { ok: false, erro: "Todas as combinações de termo e bairro já foram buscadas nos últimos 60 dias: adicione termos ou bairros" });
+
+  if (!usarGoogle) return json(200, await viaApify(db, buscas, origem));
 
   const maxPaginas = Math.min(3, Math.max(1, Number(body.paginas ?? 3)));
   const resultado = [];
-  for (const b of buscas) {
+  let i = 0;
+  for (; i < buscas.length; i++) {
     if (saldo <= 0) break;
-    const r = await rodarBusca(db, c.google_places_key, b, Math.min(maxPaginas, saldo), origem);
+    const r = await rodarBusca(db, c.google_places_key, buscas[i], Math.min(maxPaginas, saldo), origem);
     saldo -= r.paginas;
     resultado.push(r);
-    if (r.erro && /API key|PERMISSION|billing|not been used|disabled/i.test(r.erro)) break; // chave com problema: para tudo
+    if (r.erro && /API key|PERMISSION|billing|not been used|disabled|quota|Google respondeu (4|5)/i.test(r.erro)) { i++; break; } // Google com problema
   }
+  // Google falhou (chave, cobrança, fora do ar): o resto vai pelo Apify, se o motor permitir
+  const falhou = resultado.length > 0 && resultado.every((r) => r.erro);
+  let reserva = null;
+  if (falhou && motor === "auto") reserva = await viaApify(db, buscas, origem);
   const soma = (k: "paginas" | "novos" | "qualificados") => resultado.reduce((s, r) => s + r[k], 0);
-  return json(200, { ok: true, buscas: resultado.length, paginas: soma("paginas"), novos: soma("novos"), qualificados: soma("qualificados"), detalhes: resultado });
+  return json(200, {
+    ok: !falhou || !!reserva?.ok, motor: reserva ? "apify" : "google",
+    buscas: resultado.length, paginas: soma("paginas"), novos: soma("novos"), qualificados: soma("qualificados"), detalhes: resultado,
+    ...(reserva ? { aviso: `O Google falhou (${resultado[0].erro}). ${reserva.aviso}` } : {}),
+  });
 });

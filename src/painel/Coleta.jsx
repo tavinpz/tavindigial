@@ -18,7 +18,7 @@ export default function Coleta() {
   const [resultado, setResultado] = useState(null)
   const [manual, setManual] = useState({ termo: '', nicho: 'estetica', bairros: '', min_avaliacoes: 5, paginas: 3 })
   const [novoTermo, setNovoTermo] = useState({ termo: '', nicho: 'estetica', min_avaliacoes: 5 })
-  const [conf, setConf] = useState({ dia: '', mes: '' })
+  const [conf, setConf] = useState({ dia: '', mes: '', apify: '' })
 
   async function carregar() {
     const [s, t, b, h] = await Promise.all([
@@ -28,7 +28,7 @@ export default function Coleta() {
       supabase.from('coleta_buscas').select('*').order('feita_em', { ascending: false }).limit(40),
     ])
     const x = s.data?.[0] || { google_conectado: false }
-    setSt(x); setConf({ dia: x.buscas_dia ?? 30, mes: x.limite_mes ?? 950 })
+    setSt(x); setConf({ dia: x.buscas_dia ?? 30, mes: x.limite_mes ?? 950, apify: x.apify_buscas_dia ?? 6 })
     setTermos(t.data || []); setBairros((b.data || []).map((r) => r.bairro).join('\n')); setBuscas(h.data || [])
   }
   useEffect(() => { carregar() }, [])
@@ -54,7 +54,14 @@ export default function Coleta() {
   async function salvarLimites() {
     await supabase.rpc('salvar_config', { p_key: 'coleta_buscas_dia', p_value: String(conf.dia) })
     await supabase.rpc('salvar_config', { p_key: 'coleta_limite_mes', p_value: String(conf.mes) })
+    await supabase.rpc('salvar_config', { p_key: 'coleta_apify_buscas_dia', p_value: String(conf.apify) })
     avisar('Limites salvos'); carregar()
+  }
+
+  async function trocarMotor(m) {
+    const { error } = await supabase.rpc('salvar_config', { p_key: 'coleta_motor', p_value: m })
+    if (error) return avisar('Não salvou')
+    avisar(m === 'auto' ? 'Automático: Google quando der, Apify como reserva' : m === 'google' ? 'Só Google' : 'Só Apify'); carregar()
   }
 
   async function rodarManual(e) {
@@ -83,6 +90,9 @@ export default function Coleta() {
   }
 
   if (!st) return <p className="p-vazio">Carregando…</p>
+  const motorAgora = st.motor === 'apify' ? 'Usando o Apify.'
+    : st.google_conectado ? (st.motor === 'auto' ? 'Usando o Google. Se ele falhar ou o teto do mês acabar, passa para o Apify sozinho.' : 'Usando só o Google.')
+    : st.motor === 'auto' ? 'Usando o Apify (o Google ainda não foi conectado).' : 'Só Google escolhido, mas a chave ainda não foi salva: a coleta não roda.'
   const usoPct = Math.min(100, Math.round(((st.paginas_mes || 0) / (st.limite_mes || 950)) * 100))
 
   return (
@@ -90,48 +100,57 @@ export default function Coleta() {
       <div className="p-cab">
         <div>
           <h1>Coleta de leads</h1>
-          <p className="p-sub">Busca no Google Maps pela API oficial do Google. Só entra na fila quem não tem site ou usa link fraco, sem repetir ninguém.</p>
+          <p className="p-sub">Traz negócios do Google Maps para a fila todo dia. Só entra quem não tem site ou usa link fraco, sem repetir ninguém.</p>
         </div>
       </div>
 
-      {!st.google_conectado ? (
-        <article className="p-painel p-coleta-chave">
-          <header><h2>Conectar a API do Google</h2></header>
-          <ol className="p-passos">
-            <li>Abra <a href="https://console.cloud.google.com/apis/library/places.googleapis.com" target="_blank" rel="noreferrer">Places API (New) no Google Cloud</a> e clique em <b>Ativar</b> (pede um cartão de cobrança no projeto).</li>
-            <li>Em <a href="https://console.cloud.google.com/apis/credentials" target="_blank" rel="noreferrer">Credenciais</a>, clique em <b>Criar credenciais → Chave de API</b>.</li>
-            <li>Na chave, em <b>Restrições de API</b>, deixe só a <b>Places API (New)</b>. Copie e cole aqui.</li>
-          </ol>
-          <form className="p-ig-form" onSubmit={salvarChave}>
-            <input type="password" value={chave} onChange={(e) => setChave(e.target.value)} placeholder="AIza…" aria-label="Chave da API do Google" />
-            <button className="p-btn p-btn--forte" disabled={!chave.trim() || !!rodando}>Salvar e testar</button>
-          </form>
-          <p className="p-meta">O Google cobra por busca (cada uma traz até 20 negócios), não por negócio: as primeiras 1.000 buscas do mês são grátis. O painel para em {st.limite_mes} para não passar disso.</p>
-        </article>
-      ) : (
-        <article className="p-painel">
-          <header><h2>Coleta automática</h2><span>todo dia às 7h</span></header>
-          <p className="p-meta">Escolhe sozinha termo + bairro ainda não buscados, começando pelos termos que mais trazem negócio sem site ou com link fraco. {st.ultima ? `Última busca ${dataCurta(st.ultima)}.` : 'Ainda não rodou.'}</p>
+      <article className="p-painel">
+        <header><h2>Como a coleta funciona</h2><span>todo dia às 7h, sozinha</span></header>
+        <div className="p-canais p-motores" role="radiogroup" aria-label="Motor da coleta">
+          {[['auto', 'Automático (recomendado)'], ['google', 'Só Google'], ['apify', 'Só Apify']].map(([m, n]) => (
+            <button key={m} role="radio" aria-checked={st.motor === m} className={st.motor === m ? 'ativa' : ''} onClick={() => trocarMotor(m)}>{n}</button>
+          ))}
+        </div>
+        <p className="p-motor-agora">{motorAgora}</p>
+        <p className="p-meta">{st.ultima ? `Última busca ${dataCurta(st.ultima)}. ` : ''}Escolhe sozinha termo + bairro ainda não buscados, começando pelos termos que mais trazem negócio sem site ou com link fraco.</p>
+        <div className="p-coleta-conf">
+          <label>Buscas por dia no Google<input type="number" min="1" max="200" value={conf.dia} onChange={(e) => setConf({ ...conf, dia: e.target.value })} /></label>
+          <label>Buscas por dia no Apify<input type="number" min="1" max="30" value={conf.apify} onChange={(e) => setConf({ ...conf, apify: e.target.value })} /></label>
+          <label>Teto do Google no mês<input type="number" min="1" max="10000" value={conf.mes} onChange={(e) => setConf({ ...conf, mes: e.target.value })} /></label>
+          <button className="p-btn" onClick={salvarLimites}>Salvar</button>
+        </div>
+        {st.google_conectado && (
           <div className="p-uso">
             <div className="p-barra"><div style={{ width: `${usoPct}%` }} /></div>
-            <small>{st.paginas_mes || 0} de {st.limite_mes} buscas usadas neste mês (1.000 grátis)</small>
+            <small>Google: {st.paginas_mes || 0} de {st.limite_mes} buscas usadas neste mês (1.000 grátis)</small>
           </div>
-          <div className="p-coleta-conf">
-            <label>Buscas por dia<input type="number" min="1" max="200" value={conf.dia} onChange={(e) => setConf({ ...conf, dia: e.target.value })} /></label>
-            <label>Teto do mês<input type="number" min="1" max="10000" value={conf.mes} onChange={(e) => setConf({ ...conf, mes: e.target.value })} /></label>
-            <button className="p-btn" onClick={salvarLimites}>Salvar</button>
-          </div>
-          <div className="p-acoes">
-            <button className="p-btn p-btn--forte" disabled={!!rodando} onClick={() => chamar({ auto: true }, 'Rodando a coleta do dia…')}>Rodar a coleta do dia agora</button>
-            <button className="p-btn p-btn--fraco" disabled={!!rodando} onClick={() => chamar({ verificar: true }, 'Testando…').then((r) => r && avisar('Chave funcionando'))}>Testar chave</button>
-          </div>
-        </article>
-      )}
+        )}
+        <div className="p-acoes">
+          <button className="p-btn p-btn--forte" disabled={!!rodando} onClick={() => chamar({ auto: true }, 'Rodando a coleta do dia…')}>Rodar a coleta do dia agora</button>
+          {st.google_conectado && <button className="p-btn p-btn--fraco" disabled={!!rodando} onClick={() => chamar({ verificar: true }, 'Testando…').then((r) => r && avisar('Chave do Google funcionando'))}>Testar chave do Google</button>}
+        </div>
+      </article>
+
+      <details className="p-painel p-detalhes" open={!st.google_conectado && st.motor === 'google'}>
+        <summary>{st.google_conectado ? 'Google conectado · trocar a chave' : 'Conectar o Google (opcional: mais barato que o Apify)'}</summary>
+        <ol className="p-passos">
+          <li>Abra <a href="https://console.cloud.google.com/apis/library/places.googleapis.com" target="_blank" rel="noreferrer">Places API (New) no Google Cloud</a> e clique em <b>Ativar</b> (pede um cartão de cobrança no projeto).</li>
+          <li>Em <a href="https://console.cloud.google.com/apis/credentials" target="_blank" rel="noreferrer">Credenciais</a>, clique em <b>Criar credenciais → Chave de API</b>.</li>
+          <li>Na chave, em <b>Restrições de API</b>, deixe só a <b>Places API (New)</b>. Copie e cole aqui.</li>
+        </ol>
+        <form className="p-ig-form" onSubmit={salvarChave}>
+          <input type="password" value={chave} onChange={(e) => setChave(e.target.value)} placeholder="AIza…" aria-label="Chave da API do Google" />
+          <button className="p-btn p-btn--forte" disabled={!chave.trim() || !!rodando}>Salvar e testar</button>
+        </form>
+        <p className="p-meta">O Google cobra por busca (cada uma traz até 20 negócios): as primeiras 1.000 do mês são grátis. Sem a chave, ou se ela falhar, a coleta usa o Apify sozinha.</p>
+      </details>
 
       {rodando && <p className="p-aviso-fixo">{rodando} (pode levar até 1 minuto)</p>}
       {resultado && (
         <article className={`p-painel ${resultado.erro ? 'p-painel--erro' : ''}`}>
-          {resultado.erro ? <p><b>Erro:</b> {resultado.erro}</p> : resultado.buscas != null ? (
+          {resultado.erro ? <p><b>Erro:</b> {resultado.erro}</p> : resultado.motor === 'apify' ? (
+            <p><b>{resultado.buscas} {resultado.buscas === 1 ? 'busca enviada' : 'buscas enviadas'} ao Apify.</b> {resultado.aviso}</p>
+          ) : resultado.buscas != null ? (
             <p><b>{resultado.qualificados} leads novos na fila</b> · {resultado.buscas} buscas · {resultado.paginas} páginas · {resultado.novos} negócios que ainda não estavam no painel</p>
           ) : <p><b>Chave funcionando.</b></p>}
         </article>
@@ -147,7 +166,7 @@ export default function Coleta() {
               <label>Mín. avaliações<input type="number" min="0" value={manual.min_avaliacoes} onChange={(e) => setManual({ ...manual, min_avaliacoes: e.target.value })} /></label>
               <label className="p-largo">Bairros (um por linha; vazio = cidade toda)<textarea rows={4} value={manual.bairros} onChange={(e) => setManual({ ...manual, bairros: e.target.value })} placeholder={'Moema\nPinheiros'} /></label>
               <label>Páginas por bairro<select value={manual.paginas} onChange={(e) => setManual({ ...manual, paginas: Number(e.target.value) })}><option value={1}>1 (20 negócios)</option><option value={2}>2 (40)</option><option value={3}>3 (60)</option></select></label>
-              <div className="p-acoes"><button className="p-btn p-btn--forte" disabled={!st.google_conectado || !!rodando}>Buscar</button></div>
+              <div className="p-acoes"><button className="p-btn p-btn--forte" disabled={!!rodando}>Buscar</button></div>
             </form>
           </article>
 
@@ -186,8 +205,8 @@ export default function Coleta() {
                 <tbody>{buscas.map((b) => (
                   <tr key={b.id}>
                     <td>{dataCurta(b.feita_em)}</td>
-                    <td>{b.termo}{b.bairro ? ` · ${b.bairro}` : ''} <small>{b.origem}</small>{b.erro && <small className="p-erro-txt"> {b.erro}</small>}</td>
-                    <td>{b.paginas}</td><td>{b.origem === 'apify' ? '—' : b.qualificados}</td>
+                    <td>{b.termo}{b.bairro ? ` · ${b.bairro}` : ''} <small>{b.origem.startsWith('apify') ? 'Apify' : b.origem === 'auto' ? 'Google, automática' : 'Google, manual'}</small>{b.erro && <small className="p-erro-txt"> {b.erro}</small>}</td>
+                    <td>{b.paginas}</td><td>{b.origem.startsWith('apify') ? '—' : b.qualificados}</td>
                   </tr>
                 ))}</tbody>
               </table></div>

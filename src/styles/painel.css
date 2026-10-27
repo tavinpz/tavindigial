@@ -397,3 +397,6 @@ body:has(.p-fantasma) { cursor: grabbing; }
 .p-btn--mini { padding: 4px 10px; font-size: 13px; }
 .p-erro-txt { color: var(--erro); }
 .p-coleta-pg .p-venda textarea { font: inherit; font-size: 15px; padding: 9px 12px; border: 1px solid var(--linha); border-radius: var(--r-peq); resize: vertical; }
+.p-motores { margin: 4px 0 8px; flex-wrap: wrap; }
+.p-motor-agora { margin: 4px 0 8px; font-weight: 700; color: var(--grafite); }
+.p-detalhes .p-passos { margin-top: 12px; }
