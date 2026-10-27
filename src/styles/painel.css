@@ -3,7 +3,6 @@
 .p-carregando { padding: 40px; color: var(--cinza); }
 
 .p-logo { white-space: nowrap; font-weight: 400; }
-.p-logo .logo svg { color: var(--rosa); }
 .p-logo .logo-nome { font-size: 17px; }
 
 /* Menu lateral fixo (desktop) / gaveta (celular) */

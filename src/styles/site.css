@@ -47,7 +47,8 @@ a { color: var(--tinta); }
 
 /* Logo: monograma + TAVÍN espaçado */
 .logo { display: inline-flex; align-items: center; gap: 10px; line-height: 1; }
-.logo svg { width: 26px; height: 26px; color: var(--tinta); flex: none; }
+.logo .logo-marca { width: 26px; height: 25px; flex: none; background: currentColor;
+  -webkit-mask: url(/marca/logo-160.png) center / contain no-repeat; mask: url(/marca/logo-160.png) center / contain no-repeat; }
 .logo-nome { font-family: var(--f-display); font-weight: 500; font-size: 19px; letter-spacing: 0.32em; margin-right: -0.32em; }
 .logo-sub { font-family: var(--f-texto); font-weight: 600; font-size: 13px; letter-spacing: 0.08em; opacity: 0.6; }
 .s-header nav { display: flex; gap: 20px; font-size: 16px; }
@@ -56,7 +57,6 @@ a { color: var(--tinta); }
 .s-header--escuro { background: var(--noite); }
 .s-header--escuro .s-logo, .s-header--escuro nav a { color: var(--branco); }
 .s-header--escuro nav a:hover { color: var(--rosa); }
-.s-header--escuro .logo svg { color: var(--rosa); }
 @media (max-width: 640px) { .s-header nav a:not(.s-nav-cta) { display: none; } }
 
 /* ===== Botões ===== */

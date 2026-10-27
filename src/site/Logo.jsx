@@ -1,12 +1,10 @@
-// Monograma T + "TAVÍN" espaçado, como na identidade do Behance
-export default function Logo({ className = '' }) {
+// Símbolo oficial da Tavin Digital (PNG usado como máscara: pega a cor do texto em volta) + nome
+export default function Logo({ className = '', nome = true }) {
   return (
     <span className={`logo ${className}`}>
-      <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-        <path d="M2 4H30V8H26V13H22V8H18V27L16 30L14 27V8H10V13H6V8H2Z" fill="currentColor" />
-      </svg>
-      <span className="logo-nome">TAVÍN</span>
-      <span className="logo-sub">digital</span>
+      <span className="logo-marca" aria-hidden="true" />
+      {nome && <span className="logo-nome">TAVÍN</span>}
+      {nome && <span className="logo-sub">digital</span>}
     </span>
   )
 }

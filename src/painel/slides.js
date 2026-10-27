@@ -14,13 +14,37 @@ const COR = {
 }
 const DISPLAY = '"Raleway", "Segoe UI", sans-serif'
 const CORPO = '"Urbanist", "Segoe UI", sans-serif'
-const MONOGRAMA = new Path2D('M2 4H30V8H26V13H22V8H18V27L16 30L14 27V8H10V13H6V8H2Z')
+// Símbolo oficial (PNG com transparência), tingido na cor de cada slide
+let SIMBOLO = null
+const carregarSimbolo = () => new Promise((ok) => {
+  if (SIMBOLO) return ok()
+  const img = new Image()
+  img.onload = () => { SIMBOLO = img; ok() }
+  img.onerror = () => ok()
+  img.src = '/marca/logo-160.png'
+})
+const tingidos = {}
+function simboloNaCor(cor) {
+  if (!SIMBOLO) return null
+  if (!tingidos[cor]) {
+    const c = document.createElement('canvas')
+    c.width = SIMBOLO.width; c.height = SIMBOLO.height
+    const x = c.getContext('2d')
+    x.drawImage(SIMBOLO, 0, 0)
+    x.globalCompositeOperation = 'source-in'
+    x.fillStyle = cor; x.fillRect(0, 0, c.width, c.height)
+    tingidos[cor] = c
+  }
+  return tingidos[cor]
+}
 
 export const TIPOS = { capa: 'Capa', texto: 'Conteúdo', cta: 'Chamada final' }
 
 export async function carregarFontes() {
-  if (!document.fonts?.load) return
+  const simbolo = carregarSimbolo()
+  if (!document.fonts?.load) return simbolo
   await Promise.all([
+    simbolo,
     document.fonts.load(`800 80px ${DISPLAY}`),
     document.fonts.load(`500 40px ${DISPLAY}`),
     document.fonts.load(`500 40px ${CORPO}`),
@@ -81,9 +105,11 @@ function escrever(ctx, linhas, x, y, altura, cor, corDestaque) {
 }
 
 function marca(ctx, x, y, cor, corMono) {
-  ctx.save(); ctx.translate(x, y - 30); ctx.scale(1.25, 1.25); ctx.fillStyle = corMono; ctx.fill(MONOGRAMA); ctx.restore()
+  const s = simboloNaCor(corMono)
+  const alt = 46
+  if (s) ctx.drawImage(s, x, y - 36, Math.round(alt * s.width / s.height), alt)
   ctx.fillStyle = cor; ctx.font = `500 30px ${DISPLAY}`
-  ctx.letterSpacing = '9px'; ctx.fillText('TAVÍN', x + 56, y); ctx.letterSpacing = '0px'
+  ctx.letterSpacing = '9px'; ctx.fillText('TAVÍN', x + 64, y); ctx.letterSpacing = '0px'
 }
 
 export function desenharSlide(canvas, slide, i, total, arroba = '@tavindigital') {
@@ -98,8 +124,8 @@ export function desenharSlide(canvas, slide, i, total, arroba = '@tavindigital')
     // Capa escura (seda preta) ou clara (papel): alterne entre um post e outro
     const claro = slide.fundo === 'claro'
     const c = claro
-      ? { fundo: COR.papel, titulo: COR.noite, destaque: COR.eletrico, sub: COR.texto, marca: COR.noite, mono: COR.eletrico, rodape: COR.cinza }
-      : { fundo: COR.noite, titulo: COR.branco, destaque: COR.rosa, sub: '#CFC6D6', marca: COR.branco, mono: COR.rosa, rodape: '#9C92A5' }
+      ? { fundo: COR.papel, titulo: COR.noite, destaque: COR.eletrico, sub: COR.texto, marca: COR.noite, mono: COR.noite, rodape: COR.cinza }
+      : { fundo: COR.noite, titulo: COR.branco, destaque: COR.rosa, sub: '#CFC6D6', marca: COR.branco, mono: COR.branco, rodape: '#9C92A5' }
     ctx.fillStyle = c.fundo; ctx.fillRect(0, 0, W, H)
     // faixa vertical do pattern, como no banner da identidade
     const lado = 150
@@ -124,7 +150,7 @@ export function desenharSlide(canvas, slide, i, total, arroba = '@tavindigital')
     ctx.fillStyle = COR.eletrico; ctx.fillRect(0, 0, W, H)
     const lado = W / 7
     desenharPadrao(ctx, 0, H - lado, 7, 1, lado, 23 + i)
-    marca(ctx, M, M + 24, COR.branco, COR.noite)
+    marca(ctx, M, M + 24, COR.branco, COR.branco)
 
     const t = ajustar(ctx, slide.titulo, DISPLAY, 800, 92, 60, largura, 5)
     ctx.font = `800 ${t.tamanho}px ${DISPLAY}`
@@ -149,6 +175,8 @@ export function desenharSlide(canvas, slide, i, total, arroba = '@tavindigital')
   ctx.fillText(String(i).padStart(2, '0'), M, M + 24)
   ctx.fillStyle = COR.cinza; ctx.font = `700 28px ${CORPO}`
   ctx.textAlign = 'right'; ctx.fillText(arroba, W - M, M + 20); ctx.textAlign = 'left'
+  const sb = simboloNaCor(COR.noite)
+  if (sb) { const lw = ctx.measureText(arroba).width; ctx.drawImage(sb, W - M - lw - 50, M - 8, Math.round(34 * sb.width / sb.height), 34) }
 
   const t = ajustar(ctx, slide.titulo, DISPLAY, 800, 84, 54, largura, 4)
   ctx.font = `800 ${t.tamanho}px ${DISPLAY}`
