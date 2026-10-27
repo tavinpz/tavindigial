@@ -4,8 +4,9 @@
 // =============================================================
 
 export const CONFIG = {
-  // Endereço público do site (sem barra no final)
-  SITE_URL: import.meta.env.VITE_SITE_URL || 'https://tavindigital.online',
+  // Endereço público do site (sem barra no final). Sem VITE_SITE_URL, usa o endereço
+  // onde o painel está aberto: assim o link da mensagem sempre funciona (workers.dev hoje, domínio depois).
+  SITE_URL: import.meta.env.VITE_SITE_URL || (typeof window !== 'undefined' ? window.location.origin : 'https://tavindigital.online'),
 
   // WhatsApp de vendas (o chip), só números, com 55 + DDD
   WHATSAPP_VENDAS: import.meta.env.VITE_WHATSAPP_VENDAS || '5527992886950',

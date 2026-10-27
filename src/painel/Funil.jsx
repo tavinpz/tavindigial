@@ -3,7 +3,8 @@ import { supabase } from '../lib/supabase'
 import { STATUS, tempoAtras } from './api'
 import { usePainel } from './Painel'
 
-const COLUNAS = ['enviado', 'abriu', 'respondeu', 'proposta', 'ganho', 'recorrente', 'perdido']
+// Só quem precisa de você. Quem só recebeu a mensagem fica em Hoje (follow-ups).
+const COLUNAS = ['abriu', 'respondeu', 'proposta', 'ganho', 'recorrente']
 
 export default function Funil() {
   const { abrirLead } = usePainel()
@@ -25,8 +26,8 @@ export default function Funil() {
     <section>
       <div className="p-cab">
         <div>
-          <h1>Funil</h1>
-          <p className="p-sub">Clique num lead para registrar resposta, proposta ou pagamento.</p>
+          <h1>Conversas</h1>
+          <p className="p-sub">Quem abriu a página, respondeu ou está fechando. Clique para registrar o próximo passo.</p>
         </div>
       </div>
       <div className="p-kanban">

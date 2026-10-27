@@ -3,7 +3,6 @@ import { supabase } from '../lib/supabase'
 import { carregarMensagens } from './api'
 import { marcarDono } from '../lib/fn'
 import Hoje from './Hoje'
-import Followups from './Followups'
 import Funil from './Funil'
 import Leads from './Leads'
 import Briefings from './Briefings'
@@ -16,16 +15,19 @@ import '../styles/painel.css'
 const Ctx = createContext(null)
 export const usePainel = () => useContext(Ctx)
 
+// Menu principal: o trabalho do dia. Rodapé: o que se mexe de vez em quando.
 const ABAS = [
   ['hoje', 'Hoje', Hoje, 'M4 12h4l3-8 4 16 3-8h2'],
-  ['followups', 'Follow-ups', Followups, 'M12 7v5l3 2M21 12a9 9 0 1 1-9-9'],
-  ['funil', 'Funil', Funil, 'M3 5h18l-7 8v6l-4 2v-8L3 5Z'],
+  ['conversas', 'Conversas', Funil, 'M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z'],
   ['leads', 'Leads', Leads, 'M16 19v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1M9.5 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM21 19v-1a4 4 0 0 0-3-3.9M16 4.1a3 3 0 0 1 0 5.8'],
-  ['briefings', 'Briefings', Briefings, 'M9 4h6v3H9zM7 5H5v16h14V5h-2M8 12h8M8 16h5'],
   ['metricas', 'Métricas', Metricas, 'M4 20V10M10 20V4M16 20v-7M22 20H2'],
-  ['mensagens', 'Mensagens', Mensagens, 'M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z'],
-  ['conteudo', 'Conteúdo', Conteudo, 'M4 5h16v14H4zM4 9h16M9 9v10'],
+  ['conteudo', 'Carrosséis', Conteudo, 'M3 6h13v13H3zM19 4v13M22 2v13'],
 ]
+const EXTRAS = [
+  ['briefings', 'Briefings', Briefings],
+  ['mensagens', 'Textos das mensagens', Mensagens],
+]
+const TODAS = [...ABAS, ...EXTRAS]
 
 const Ico = ({ d }) => (
   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={d} /></svg>
@@ -103,10 +105,11 @@ export default function Painel() {
     )
   }
 
-  const Atual = (ABAS.find(([id]) => id === aba) || ABAS[0])[2]
+  const Atual = (TODAS.find(([id]) => id === aba) || ABAS[0])[2]
+  const irPara = (id) => { setAba(id); setMenuAberto(false) }
 
   return (
-    <Ctx.Provider value={{ mensagens, recarregarMensagens, abrirLead: setLeadAberto, avisar, versao, atualizar }}>
+    <Ctx.Provider value={{ mensagens, recarregarMensagens, abrirLead: setLeadAberto, avisar, versao, atualizar, irPara }}>
       <div className={`p-app ${menuAberto ? 'menu-aberto' : ''}`}>
         <header className="p-barra">
           <button className="p-hamb" onClick={() => setMenuAberto(true)} aria-label="Abrir menu"><Ico d="M4 7h16M4 12h16M4 17h16" /></button>
@@ -123,6 +126,9 @@ export default function Painel() {
             ))}
           </nav>
           <div className="p-lateral-pe">
+            {EXTRAS.map(([id, nome]) => (
+              <button key={id} className={id === aba ? 'ativa' : ''} onClick={() => irPara(id)}>{nome}</button>
+            ))}
             <a href="/" target="_blank" rel="noreferrer">Ver o site</a>
             <a href="https://api.thata.online/form/coleta-tavin" target="_blank" rel="noreferrer">Nova coleta de leads</a>
             <button onClick={() => supabase.auth.signOut()}>Sair</button>
