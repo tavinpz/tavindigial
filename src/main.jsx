@@ -10,6 +10,7 @@ import { Termos, Privacidade } from './site/Legal'
 // O painel só carrega para quem entra em /painel (deixa o site leve)
 const Painel = lazy(() => import('./painel/Painel'))
 const BioDemo = lazy(() => import('./site/BioDemo'))
+const SiteDemo = lazy(() => import('./site/SiteDemo'))
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -20,6 +21,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/modelos/:nicho" element={<Modelos />} />
         <Route path="/modelos" element={<Navigate to="/m/geral" replace />} />
         <Route path="/demo/:id" element={<Suspense fallback={null}><BioDemo /></Suspense>} />
+        <Route path="/site/:id" element={<Suspense fallback={null}><SiteDemo /></Suspense>} />
         <Route path="/briefing" element={<Briefing />} />
         <Route path="/termos" element={<Termos />} />
         <Route path="/privacidade" element={<Privacidade />} />

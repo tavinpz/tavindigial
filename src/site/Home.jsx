@@ -5,13 +5,16 @@ import { MODELOS, PORTFOLIO } from '../data/modelos'
 import { waVendas } from './Layout'
 import Logo from './Logo'
 import Padrao from './Padrao'
+import { Celular, Navegador } from './Telas'
+import { SITES } from '../data/sites'
 import { clamp, progresso, semMovimento, useReveal, useScroll } from './fx'
 import '../styles/home.css'
 
-const NICHOS = [
-  ['estetica', 'Estética'],
-  ['odontologia', 'Odonto'],
-  ['barbearia', 'Barbearia'],
+const VITRINE = [
+  ['barbearia', 'Barbearia', 'barbeariaoficio.com.br'],
+  ['estetica', 'Estética', 'clinicalumi.com.br'],
+  ['odontologia', 'Odonto', 'drahelenaprado.com.br'],
+  ['pet', 'Pet', 'patasebolhas.com.br'],
 ]
 
 const PUBLICOS = [
@@ -87,53 +90,45 @@ function Nav({ escuro, compacto }) {
   )
 }
 
-// Celular com a bio funcionando de verdade: endireita conforme rola, troca de nicho por toque ou deslize
+// Vitrine: o site completo rodando num notebook e num celular. Endireita conforme rola; troca de nicho nas abas.
 function Palco() {
   const palco = useRef(null)
   const [p, setP] = useState(0)
   const [nicho, setNicho] = useState(0)
-  const toque = useRef(null)
+  const [mexivel] = useState(() => typeof window !== 'undefined' && !!window.matchMedia?.('(hover: hover) and (min-width: 760px)').matches)
+  useScroll(() => setP(semMovimento() ? 1 : progresso(palco.current, 1, 0.4)))
 
-  useScroll(() => setP(semMovimento() ? 1 : progresso(palco.current, 1, 0.35)))
-
-  const trocar = (d) => setNicho((n) => (n + d + NICHOS.length) % NICHOS.length)
-  const inicio = (e) => { toque.current = e.touches?.[0]?.clientX ?? null }
-  const fim = (e) => {
-    if (toque.current == null) return
-    const dx = (e.changedTouches?.[0]?.clientX ?? toque.current) - toque.current
-    if (Math.abs(dx) > 40) trocar(dx < 0 ? 1 : -1)
-    toque.current = null
-  }
-
-  const giro = (1 - p) * 26
-  const escala = 0.86 + p * 0.14
-  const abre = p * 46
+  const [id, rotulo, dominio] = VITRINE[nicho]
+  const site = SITES[id]
+  const giro = (1 - p) * 22
+  const escala = 0.9 + p * 0.1
+  const cel = (1 - p) * 60
 
   return (
-    <section className="td-palco" id="ao-vivo" data-tema="escuro" ref={palco} onTouchStart={inicio} onTouchEnd={fim}>
+    <section className="td-palco" id="ao-vivo" data-tema="escuro" ref={palco}>
       <div className="td-sec td-palco-in">
-        <div className="td-palco-cena" style={{ '--abre': `${abre}px` }}>
-          <Padrao className="td-tile t1" colunas={2} linhas={2} semente={3} />
-          <Padrao className="td-tile t2" colunas={1} linhas={3} semente={9} />
-          <Padrao className="td-tile t3" colunas={2} linhas={1} semente={14} />
-          <Padrao className="td-tile t4" colunas={1} linhas={1} semente={21} />
-
-          <div className="td-cel" style={{ transform: `perspective(1400px) rotateX(${giro}deg) scale(${escala})` }}>
-            <span className="td-cel-ilha" aria-hidden="true" />
-            <iframe key={NICHOS[nicho][0]} src={`/demo/${NICHOS[nicho][0]}`} title={`Exemplo de bio animada: ${NICHOS[nicho][1]}`} loading="lazy" />
-          </div>
-
-          <span className={`td-chip c1 ${p > 0.55 ? 'on' : ''}`}><Ico n="zap" s={14} /> Agenda no WhatsApp</span>
-          <span className={`td-chip c2 ${p > 0.7 ? 'on' : ''}`}><Ico n="estrela" s={14} /> 4,9 no Google</span>
-          <span className={`td-chip c3 ${p > 0.85 ? 'on' : ''}`}><i className="td-vivo" /> Aberto agora</span>
-        </div>
-
-        <div className="td-troca" role="group" aria-label="Trocar o exemplo">
-          {NICHOS.map(([id, nome], i) => (
-            <button key={id} className={i === nicho ? 'ativa' : ''} aria-pressed={i === nicho} onClick={() => setNicho(i)}>{nome}</button>
+        <div className="td-troca" role="tablist" aria-label="Escolha um exemplo">
+          {VITRINE.map(([k, nome], i) => (
+            <button key={k} role="tab" className={i === nicho ? 'ativa' : ''} aria-selected={i === nicho} onClick={() => setNicho(i)}>{nome}</button>
           ))}
         </div>
-        <p className="td-dica">Role e toque dentro do celular. Deslize para o lado para trocar de nicho.</p>
+
+        <div className="td-vitrine" style={{ '--giro': `${giro}deg`, '--esc': escala, '--cel': `${cel}px`, '--luz': p }}>
+          <div className="td-vitrine-nb">
+            <Navegador key={`n-${id}`} src={`/site/${id}`} dominio={dominio} titulo={`Exemplo de site completo: ${rotulo}`} />
+            <span className="td-vitrine-base" aria-hidden="true" />
+          </div>
+          <Celular key={`c-${id}`} className="td-vitrine-cel" vivo={mexivel} src={`/site/${id}`} titulo={`O mesmo site no celular: ${rotulo}`} />
+        </div>
+
+        <div className="td-vitrine-leg">
+          <p><b>{site.nome}</b> é um exemplo de site completo ({brl(CONFIG.PRECO_SITE)}). O seu sai com o seu nome, suas fotos e seus preços.</p>
+          <div>
+            <a className="td-btn td-btn--s" href={`/site/${id}`} target="_blank" rel="noreferrer">Abrir este site</a>
+            <Link className="td-vitrine-mais" to="/m/geral">Ver todos os modelos</Link>
+          </div>
+        </div>
+        {mexivel && <p className="td-dica">O celular funciona: role a tela dele e teste a agenda.</p>}
       </div>
     </section>
   )
