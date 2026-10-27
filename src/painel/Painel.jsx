@@ -107,8 +107,8 @@ export default function Painel() {
     // junta rajadas de mudanças (a coleta grava dezenas de leads de uma vez) num recarregamento só
     clearTimeout(timer.current)
     const espera = Math.max(800, 4000 - (Date.now() - ultimo.current))
-    timer.current = setTimeout(() => { ultimo.current = Date.now(); setVersao((v) => v + 1) }, espera)
-  }, [])
+    timer.current = setTimeout(() => { ultimo.current = Date.now(); setVersao((v) => v + 1); recarregarMensagens() }, espera)
+  }, [recarregarMensagens])
 
   useEffect(() => {
     if (!admin) return
@@ -116,9 +116,10 @@ export default function Painel() {
     for (const t of ['leads', 'envios', 'eventos', 'negocios', 'briefings', 'coleta_buscas']) {
       canal.on('postgres_changes', { event: '*', schema: 'public', table: t }, sincronizar)
     }
+    canal.on('postgres_changes', { event: '*', schema: 'public', table: 'mensagens' }, () => recarregarMensagens())
     canal.subscribe((st) => setAoVivo(st === 'SUBSCRIBED'))
     return () => { supabase.removeChannel(canal) }
-  }, [admin, sincronizar])
+  }, [admin, sincronizar, recarregarMensagens])
 
   // Painel novo publicado: troca sozinho para a versão nova (o celular costuma guardar a antiga)
   const conferirVersao = useCallback(async () => {
