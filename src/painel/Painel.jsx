@@ -3,12 +3,12 @@ import { supabase } from '../lib/supabase'
 import { carregarMensagens } from './api'
 import { marcarDono } from '../lib/fn'
 import Logo from '../site/Logo'
-import Hoje from './Hoje'
-import Funil from './Funil'
+import Inicio from './Inicio'
+import Prospectar from './Prospectar'
+import Crm from './Crm'
 import Leads from './Leads'
 import Briefings from './Briefings'
 import Mensagens from './Mensagens'
-import Metricas from './Metricas'
 import Conteudo from './Conteudo'
 import LeadDrawer from './LeadDrawer'
 import '../styles/painel.css'
@@ -18,10 +18,10 @@ export const usePainel = () => useContext(Ctx)
 
 // Menu principal: o trabalho do dia. Rodapé: o que se mexe de vez em quando.
 const ABAS = [
-  ['hoje', 'Hoje', Hoje, 'M4 12h4l3-8 4 16 3-8h2'],
-  ['conversas', 'Conversas', Funil, 'M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z'],
+  ['inicio', 'Início', Inicio, 'M4 20V10M10 20V4M16 20v-7M22 20H2'],
+  ['prospectar', 'Prospectar', Prospectar, 'm22 2-7 20-4-9-9-4 20-7Z'],
+  ['crm', 'CRM', Crm, 'M4 4h5v16H4zM10 4h5v10h-5zM16 4h4v13h-4z'],
   ['leads', 'Leads', Leads, 'M16 19v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1M9.5 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM21 19v-1a4 4 0 0 0-3-3.9M16 4.1a3 3 0 0 1 0 5.8'],
-  ['metricas', 'Métricas', Metricas, 'M4 20V10M10 20V4M16 20v-7M22 20H2'],
   ['conteudo', 'Carrosséis', Conteudo, 'M3 6h13v13H3zM19 4v13M22 2v13'],
 ]
 const EXTRAS = [
@@ -65,7 +65,7 @@ function Login() {
 export default function Painel() {
   const [sessao, setSessao] = useState(undefined)
   const [admin, setAdmin] = useState(null)
-  const [aba, setAba] = useState(() => localStorage.getItem('p-aba') || 'hoje')
+  const [aba, setAba] = useState(() => { try { const a = localStorage.getItem('p-aba'); return ['inicio', 'prospectar', 'crm', 'leads', 'conteudo', 'briefings', 'mensagens'].includes(a) ? a : 'inicio' } catch { return 'inicio' } })
   const [mensagens, setMensagens] = useState([])
   const [prontas, setProntas] = useState(false)
   const [leadAberto, setLeadAberto] = useState(null)
@@ -110,9 +110,9 @@ export default function Painel() {
   const irPara = (id) => { setAba(id); setMenuAberto(false) }
 
   return (
-    <Ctx.Provider value={{ mensagens, recarregarMensagens, abrirLead: setLeadAberto, avisar, versao, atualizar, irPara }}>
+    <Ctx.Provider value={{ mensagens, recarregarMensagens, abrirLead: (id, opcoes = {}) => setLeadAberto({ id, ...opcoes }), avisar, versao, atualizar, irPara }}>
       <div className={`p-app ${menuAberto ? 'menu-aberto' : ''}`}>
-        <header className="p-barra">
+        <header className="p-topbar">
           <button className="p-hamb" onClick={() => setMenuAberto(true)} aria-label="Abrir menu"><Ico d="M4 7h16M4 12h16M4 17h16" /></button>
           <strong className="p-logo"><Logo /></strong>
         </header>
@@ -138,7 +138,7 @@ export default function Painel() {
         <main className="p-conteudo">
           {prontas ? <Atual key={`${aba}-${versao}`} /> : <p className="p-vazio">Carregando…</p>}
         </main>
-        {leadAberto && <LeadDrawer id={leadAberto} fechar={() => setLeadAberto(null)} />}
+        {leadAberto && <LeadDrawer key={leadAberto.id} id={leadAberto.id} iniciarPagamento={!!leadAberto.pagar} fechar={() => setLeadAberto(null)} />}
         {aviso && <div className="p-toast" role="status">{aviso}</div>}
       </div>
     </Ctx.Provider>

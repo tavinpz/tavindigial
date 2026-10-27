@@ -2,12 +2,12 @@ import { useEffect, useMemo, useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { preencher, waLink, formatTel, linkModelos } from '../lib/msg'
 import { brl, CONFIG } from '../config'
-import { STATUS, ETAPAS, EVENTOS, PRODUTOS, escolherMensagem, registrarEnvio, registrarEvento, linkMaps, dataCurta } from './api'
+import { STATUS, ETAPAS, EVENTOS, PRODUTOS, COLUNAS, escolherMensagem, registrarEnvio, registrarEvento, moverEtapa, linkMaps, dataCurta } from './api'
 import { usePainel } from './Painel'
 
 const RESPOSTAS = ['resp_preco', 'resp_pensar', 'resp_ja_tenho', 'followup_proposta', 'pos_venda', 'upsell_30d', 'followup_1', 'followup_2', 'abertura']
 
-export default function LeadDrawer({ id, fechar }) {
+export default function LeadDrawer({ id, fechar, iniciarPagamento = false }) {
   const { mensagens, avisar, atualizar } = usePainel()
   const [lead, setLead] = useState(null)
   const [hist, setHist] = useState([])
@@ -15,7 +15,8 @@ export default function LeadDrawer({ id, fechar }) {
   const [etapa, setEtapa] = useState('resp_preco')
   const [texto, setTexto] = useState('')
   const [obs, setObs] = useState('')
-  const [pagando, setPagando] = useState(false)
+  const [pagando, setPagando] = useState(iniciarPagamento)
+  const [resumo, setResumo] = useState('')
   const [venda, setVenda] = useState({ produto: 'bio', valor: CONFIG.PRECO_BIO, valor_mensal: CONFIG.HOSPEDAGEM_BIO })
 
   async function carregar() {
@@ -30,7 +31,7 @@ export default function LeadDrawer({ id, fechar }) {
     setNegocios(ng || [])
     const h = [
       ...(en || []).map((x) => ({ quando: x.enviado_em, titulo: `Enviado: ${ETAPAS[x.etapa] || x.etapa}`, detalhe: x.texto_enviado })),
-      ...(ev || []).map((x) => ({ quando: x.created_at, titulo: EVENTOS[x.tipo] || x.tipo, detalhe: x.meta?.modelo ? `Modelo: ${x.meta.modelo}` : '' })),
+      ...(ev || []).map((x) => ({ quando: x.created_at, titulo: EVENTOS[x.tipo] || x.tipo, detalhe: x.meta?.resumo ? `“${x.meta.resumo}”` : x.meta?.modelo ? `Modelo: ${x.meta.modelo}` : '' })),
     ].sort((a, b) => new Date(b.quando) - new Date(a.quando))
     setHist(h)
   }
@@ -56,7 +57,10 @@ export default function LeadDrawer({ id, fechar }) {
   async function evento(tipo) {
     if (tipo === 'pagou') { setPagando(true); return }
     if (tipo === 'saiu' && !confirm('Bloquear este número para sempre?')) return
-    await registrarEvento(lead.id, tipo, { origem: 'painel' })
+    await registrarEvento(lead.id, tipo, { origem: 'painel', ...(resumo.trim() ? { resumo: resumo.trim().slice(0, 300) } : {}) })
+    // sugere a resposta certa para o que ele disse
+    if (tipo === 'pediu_preco') setEtapa('resp_preco')
+    setResumo('')
     avisar(EVENTOS[tipo])
     carregar(); atualizar()
   }
@@ -109,12 +113,24 @@ export default function LeadDrawer({ id, fechar }) {
         {lead.nota != null && <p className="p-meta">★ {String(lead.nota).replace('.', ',')} · {lead.avaliacoes} avaliações · {lead.tipo_site === 'site_falso' ? `Link atual: ${lead.site_raw}` : 'Sem site'}</p>}
 
         <h3>Registrar</h3>
+        <input className="p-resumo" value={resumo} onChange={(e) => setResumo(e.target.value)} placeholder="O que ele disse? (opcional, aparece no Início)" maxLength={300} />
         <div className="p-acoes p-acoes--quebra">
           {['respondeu', 'pediu_preco', 'proposta_enviada', 'pagou', 'perdeu', 'saiu'].map((t) => (
             <button key={t} className={`p-btn ${t === 'pagou' ? 'p-btn--forte' : ''}`} onClick={() => evento(t)}>{EVENTOS[t]}</button>
           ))}
           {lead.status === 'ganho' && <button className="p-btn" onClick={marcarRecorrente}>Virou recorrente</button>}
         </div>
+        <label className="p-etapa">Etapa no CRM
+          <select value={COLUNAS.some(([k]) => k === lead.status) ? lead.status : ''} onChange={async (e) => {
+            const alvo = e.target.value
+            if (!alvo) return
+            if (alvo === 'ganho') { setPagando(true); return }
+            await moverEtapa(lead.id, alvo); avisar(`Movido para ${STATUS[alvo]}`); carregar(); atualizar()
+          }}>
+            <option value="">Fora do CRM ({STATUS[lead.status]})</option>
+            {COLUNAS.map(([k, n]) => <option key={k} value={k}>{n}</option>)}
+          </select>
+        </label>
 
         {pagando && (
           <form className="p-venda" onSubmit={confirmarPagamento}>

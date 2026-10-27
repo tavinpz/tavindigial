@@ -58,6 +58,23 @@ export async function registrarEvento(leadId, tipo, meta = {}) {
   if (error) throw error
 }
 
+// Etapas do CRM (colunas do quadro), na ordem
+export const COLUNAS = [
+  ['enviado', 'Enviado'], ['abriu', 'Abriu a página'], ['respondeu', 'Respondeu'],
+  ['proposta', 'Proposta'], ['ganho', 'Fechou'], ['recorrente', 'Recorrente'], ['perdido', 'Perdido'],
+]
+// Etapas que também contam nas métricas viram evento (o gatilho agenda o próximo contato)
+const EVENTO_DA_ETAPA = { respondeu: 'respondeu', proposta: 'proposta_enviada', perdido: 'perdeu' }
+
+// Move o lead de etapa (arrastar no CRM ou escolher no lead). "Fechou" é tratado na tela (abre a venda).
+export async function moverEtapa(leadId, etapa, meta = {}) {
+  const ev = EVENTO_DA_ETAPA[etapa]
+  if (ev) await registrarEvento(leadId, ev, { origem: 'crm', ...meta })
+  const extra = etapa === 'perdido' ? { proximo_contato: null } : {}
+  const { error } = await supabase.from('leads').update({ status: etapa, ...extra }).eq('id', leadId)
+  if (error) throw error
+}
+
 export function inicioDoDia() {
   const d = new Date()
   d.setHours(0, 0, 0, 0)

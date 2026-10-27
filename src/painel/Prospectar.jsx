@@ -15,7 +15,7 @@ const etapaDo = (l) => {
 }
 
 // Uma tela para o dia inteiro: primeiro os follow-ups, depois as primeiras mensagens
-export default function Hoje() {
+export default function Prospectar() {
   const { irPara } = usePainel()
   const [dados, setDados] = useState(null)
   const [feitos, setFeitos] = useState(0)
@@ -57,7 +57,7 @@ export default function Hoje() {
     <section>
       <div className="p-cab">
         <div>
-          <h1>Hoje</h1>
+          <h1>Prospectar</h1>
           <p className={`p-coleta ${atrasada ? 'p-coleta--alerta' : ''}`}>
             {resumo.ultima_coleta
               ? `Última coleta ${dataCurta(resumo.ultima_coleta)}, ${resumo.leads_24h} leads novos em 24h.`
