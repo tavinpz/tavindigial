@@ -16,7 +16,7 @@ export default function Leads() {
   const [novo, setNovo] = useState(null)
 
   async function carregar() {
-    let q = supabase.from('leads').select('id,nome,nicho,cidade,bairro,whatsapp,tipo_site,status,avaliacoes,nota', { count: 'exact' })
+    let q = supabase.from('leads').select('id,nome,nicho,cidade,bairro,whatsapp,instagram,tipo_site,status,avaliacoes,nota', { count: 'exact' })
     if (busca) q = q.ilike('nome', `%${busca}%`)
     if (status) q = q.eq('status', status)
     if (tipo) q = q.eq('tipo_site', tipo)
@@ -81,7 +81,7 @@ export default function Leads() {
       ) : (
         <div className="p-tabela-wrap">
           <table className="p-tabela">
-            <thead><tr><th>Negócio</th><th>Status</th><th>Site</th><th>Nota</th><th>WhatsApp</th><th>Local</th></tr></thead>
+            <thead><tr><th>Negócio</th><th>Status</th><th>Site</th><th>Nota</th><th>WhatsApp</th><th>Instagram</th><th>Local</th></tr></thead>
             <tbody>
               {lista.map((l) => (
                 <tr key={l.id} onClick={() => abrirLead(l.id)} tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && abrirLead(l.id)}>
@@ -90,6 +90,7 @@ export default function Leads() {
                   <td>{l.tipo_site === 'site_falso' ? 'Link fraco' : l.tipo_site === 'sem_site' ? 'Sem site' : 'Tem site'}</td>
                   <td>{l.nota != null ? `${String(l.nota).replace('.', ',')} (${l.avaliacoes})` : '—'}</td>
                   <td>{formatTel(l.whatsapp) || '—'}</td>
+                  <td>{l.instagram || '—'}</td>
                   <td>{[l.bairro, l.cidade].filter(Boolean).join(', ')}</td>
                 </tr>
               ))}

@@ -338,3 +338,19 @@ body:has(.p-fantasma) { cursor: grabbing; }
 .p-etapa select { font: inherit; font-size: 14.5px; font-weight: 400; color: var(--grafite); padding: 9px 10px; border: 1px solid var(--linha); border-radius: var(--r-peq); background: var(--branco); }
 .p-kpi--meta > div { display: flex; flex-direction: column; gap: 2px; }
 @media (max-width: 1099px) { .p-kpi--meta, .p-kpi--dinheiro { grid-column: 1 / -1; } }
+
+/* Prospectar: abas de canal */
+.p-canais { display: inline-flex; gap: 4px; padding: 4px; background: #EEE9F2; border-radius: var(--r-pilula); margin: 0 0 10px; }
+.p-canais button { font: inherit; font-size: 15px; border: 0; background: transparent; color: var(--cinza); padding: 8px 14px; border-radius: var(--r-pilula); cursor: pointer; white-space: nowrap; }
+.p-canais button b { font-size: 12.5px; margin-left: 4px; color: inherit; opacity: .8; }
+.p-canais button.ativa { background: var(--branco); color: var(--tinta); font-weight: 700; box-shadow: 0 4px 12px -8px rgba(93, 4, 135, .5); }
+
+/* CRM: colunas de quem ainda não foi chamado */
+.p-col--chamar { background: #F3ECF8; border-style: dashed; }
+.p-col--chamar h2 b { background: var(--tinta); color: #fff; }
+.p-card-canal { margin-top: 5px; font-size: 12.5px; font-weight: 700; align-self: flex-start; padding: 3px 8px; border-radius: 999px; }
+.p-card-canal--whatsapp { background: #E7F6EE; color: #116B3C; }
+.p-card-canal--instagram { background: #FBEAF6; color: #9A1B7A; }
+.p-col-mais--btn { font: inherit; font-size: 13px; border: 0; background: transparent; color: var(--tinta); font-weight: 700; cursor: pointer; text-align: left; padding: 6px; }
+.p-ig { display: flex; gap: 8px; margin: 0 0 12px; }
+.p-ig input { flex: 1; min-width: 0; font: inherit; font-size: 15px; padding: 9px 12px; border: 1px solid var(--linha); border-radius: var(--r-peq); background: var(--branco); }

@@ -1,15 +1,23 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { supabase } from '../lib/supabase'
-import { brl } from '../config'
-import { COLUNAS, EVENTOS, STATUS, moverEtapa, tempoAtras } from './api'
+import { CONFIG, brl } from '../config'
+import { formatTel } from '../lib/msg'
+import { COLUNAS, EVENTOS, STATUS, moverEtapa, registrarEnvio, registrarEvento, tempoAtras } from './api'
 import { usePainel } from './Painel'
+import { abrirCanal, etapaNoCanal, mensagemPara, separarFilas } from './envio'
+
+// Colunas de quem ainda não foi chamado: arrastar para "Enviado" já abre a conversa com o texto pronto
+const CHAMAR = { chamar_wa: 'whatsapp', chamar_dm: 'instagram' }
 
 const POR_COLUNA = 60
 
 // Quadro arrastável: segure e arraste (no celular, toque longo). Toque rápido abre o lead.
 export default function Crm() {
-  const { abrirLead, avisar, versao } = usePainel()
+  const { abrirLead, avisar, versao, mensagens } = usePainel()
   const [leads, setLeads] = useState(null)
+  const [fila, setFila] = useState({ wa: [], dm: [] })
+  const [feitos, setFeitos] = useState({ whatsapp: 0, instagram: 0 })
+  const [extra, setExtra] = useState({ wa: 0, dm: 0 })
   const [busca, setBusca] = useState('')
   const [alvo, setAlvo] = useState(null)
   const [arrastando, setArrastando] = useState(null)
@@ -17,6 +25,13 @@ export default function Crm() {
   const drag = useRef(null)
 
   const carregar = useCallback(async () => {
+    const [fw, fd, rs] = await Promise.all([
+      supabase.from('v_fila_hoje').select('*'),
+      supabase.from('v_fila_dm').select('*'),
+      supabase.from('v_resumo').select('envios_hoje_wa,envios_hoje_dm').single(),
+    ])
+    setFila(separarFilas(fw.data || [], fd.data || [], CONFIG.META_DM))
+    setFeitos({ whatsapp: rs.data?.envios_hoje_wa || 0, instagram: rs.data?.envios_hoje_dm || 0 })
     const { data } = await supabase
       .from('leads')
       .select('id,nome,status,bairro,nicho,tipo_site,updated_at,proximo_contato,eventos(tipo,meta,created_at),negocios(valor,valor_mensal,status)')
@@ -29,7 +44,46 @@ export default function Crm() {
   }, [])
   useEffect(() => { carregar() }, [carregar, versao])
 
-  async function soltar(lead, para) {
+  const tirarDaFila = (id) => setFila((f) => ({ wa: f.wa.filter((l) => l.id !== id), dm: f.dm.filter((l) => l.id !== id) }))
+
+  // Saindo de "Chamar": tudo que abre janela roda ANTES do primeiro await (o navegador só deixa dentro do gesto)
+  async function chamar(lead, de, para) {
+    const canal = CHAMAR[de]
+    if (CHAMAR[para]) { // trocar de canal
+      const novo = CHAMAR[para]
+      if (novo === 'instagram' && !lead.instagram) return avisar('Esse negócio não tem Instagram. Cole o @ na ficha do lead.')
+      if (novo === 'whatsapp' && !lead.whatsapp) return avisar('Esse negócio não tem WhatsApp.')
+      setFila((f) => {
+        const sem = { wa: f.wa.filter((l) => l.id !== lead.id), dm: f.dm.filter((l) => l.id !== lead.id) }
+        return novo === 'instagram' ? { ...sem, dm: [lead, ...sem.dm] } : { ...sem, wa: [lead, ...sem.wa] }
+      })
+      return
+    }
+    if (para === 'perdido') {
+      tirarDaFila(lead.id)
+      try { await registrarEvento(lead.id, 'perdeu', { motivo: 'descartado no CRM' }); avisar(`${lead.nome} descartado`) } catch { avisar('Não consegui descartar. Tente de novo.'); carregar() }
+      return
+    }
+    if (para !== 'enviado') return avisar('Arraste para “Enviado” para chamar, ou para “Perdido” para descartar.')
+    const etapa = etapaNoCanal('abertura', canal)
+    const { modelo, texto } = mensagemPara(mensagens, lead, etapa)
+    if (!texto) return avisar('Não há mensagem ativa de abertura. Crie em Mensagens.')
+    abrirCanal(canal, lead, texto)
+    tirarDaFila(lead.id)
+    setLeads((ls) => [{ ...lead, status: 'enviado', updated_at: new Date().toISOString(), eventos: [] }, ...ls])
+    setFeitos((f) => ({ ...f, [canal]: f[canal] + 1 }))
+    try {
+      await registrarEnvio({ lead, mensagem: modelo, etapa, texto, canal })
+      avisar(canal === 'instagram' ? `Texto copiado. Cole na DM de ${lead.instagram}` : `Enviado: ${lead.nome}`)
+    } catch {
+      avisar('Abriu a conversa, mas não registrou o envio. Arraste de novo.')
+      carregar()
+    }
+  }
+
+  async function soltar(lead, para, de) {
+    if (CHAMAR[de]) return chamar(lead, de, para)
+    if (CHAMAR[para]) return avisar('Quem já foi chamado não volta para a fila.')
     if (!para || para === lead.status) return
     if (para === 'ganho') { abrirLead(lead.id, { pagar: true }); return }
     const antes = lead.status
@@ -79,7 +133,7 @@ export default function Crm() {
     d.fantasma?.remove()
     if (d.ativo) {
       const para = e.type === 'pointercancel' ? null : colunaEm(e.clientX, e.clientY)
-      soltar(d.lead, para)
+      if (para !== d.de) soltar(d.lead, para, d.de)
     } else if (e.type === 'pointerup' && !d.moveu) {
       abrirLead(d.lead.id)
     }
@@ -129,9 +183,9 @@ export default function Crm() {
     setAlvo(colunaEm(e.clientX, e.clientY))
   }
 
-  function inicio(e, lead) {
+  function inicio(e, lead, de) {
     if (e.button !== undefined && e.button !== 0) return
-    const d = { lead, el: e.currentTarget, x0: e.clientX, y0: e.clientY, x: e.clientX, y: e.clientY, ativo: false, moveu: false, toque: e.pointerType === 'touch' }
+    const d = { lead, de, el: e.currentTarget, x0: e.clientX, y0: e.clientY, x: e.clientX, y: e.clientY, ativo: false, moveu: false, toque: e.pointerType === 'touch' }
     drag.current = d
     window.addEventListener('pointermove', O.move)
     window.addEventListener('pointerup', O.up)
@@ -153,12 +207,43 @@ export default function Crm() {
       <div className="p-cab">
         <div>
           <h1>CRM</h1>
-          <p className="p-sub">Arraste o card para mudar de etapa. No celular, segure o card um instante antes de arrastar. Toque rápido abre o lead.</p>
+          <p className="p-sub">Arraste de “Chamar” para “Enviado” e a conversa abre com a mensagem pronta (na DM, o texto já vai copiado: é só colar). No celular, segure o card um instante antes de arrastar.</p>
         </div>
         <input className="p-busca" type="search" placeholder="Buscar negócio" value={busca} onChange={(e) => setBusca(e.target.value)} aria-label="Buscar no CRM" />
       </div>
 
       <div className="p-quadro" ref={quadro}>
+        {[['chamar_wa', 'Chamar no WhatsApp', 'wa', CONFIG.META_WHATS], ['chamar_dm', 'Chamar no Instagram', 'dm', CONFIG.META_DM]].map(([col, nome, k, meta]) => {
+          const canal = CHAMAR[col]
+          const falta = Math.max(0, meta - feitos[canal]) + extra[k]
+          const lista = fila[k].filter((l) => !filtro || l.nome.toLowerCase().includes(filtro))
+          const mostrar = lista.slice(0, falta)
+          return (
+            <div key={col} className={`p-col p-col--chamar p-col--${col} ${alvo === col && arrastando ? 'alvo' : ''}`} data-coluna={col}>
+              <h2><span>{nome}</span><b>{feitos[canal]}/{meta}</b></h2>
+              <div className="p-col-cards">
+                {mostrar.map((l) => (
+                  <div key={l.id} className={`p-card p-card--chamar ${arrastando === l.id ? 'saindo' : ''}`} role="button" tabIndex={0}
+                    onPointerDown={(e) => inicio(e, l, col)} onContextMenu={(e) => e.preventDefault()} onKeyDown={(e) => { if (e.key === 'Enter') abrirLead(l.id) }}
+                    aria-label={`${l.nome}, ainda não chamado. Enter abre o lead.`}>
+                    <strong>{l.nome}</strong>
+                    <small>{[l.nicho || l.categoria, l.bairro].filter(Boolean).join(' · ')}</small>
+                    <span className={`p-card-canal p-card-canal--${canal}`}>{canal === 'instagram' ? l.instagram : formatTel(l.whatsapp)}</span>
+                    <em>{l.tipo_site === 'site_falso' ? 'Link fraco' : 'Sem site'}{l.avaliacoes ? ` · ${l.avaliacoes} avaliações` : ''}</em>
+                  </div>
+                ))}
+                {mostrar.length === 0 && (
+                  <p className="p-col-vazia">{lista.length ? 'Meta do dia batida' : canal === 'instagram' ? 'Ninguém com Instagram na fila' : 'Fila vazia'}</p>
+                )}
+                {lista.length > mostrar.length && (
+                  <button className="p-col-mais p-col-mais--btn" onClick={() => setExtra((x) => ({ ...x, [k]: x[k] + 5 }))}>
+                    Mostrar mais 5 ({lista.length - mostrar.length} na fila)
+                  </button>
+                )}
+              </div>
+            </div>
+          )
+        })}
         {COLUNAS.map(([col, nome]) => {
           const daColuna = visiveis.filter((l) => l.status === col)
           const soma = col === 'ganho' || col === 'recorrente'
@@ -172,7 +257,7 @@ export default function Crm() {
                   const ev = l.eventos?.[0]
                   return (
                     <div key={l.id} className={`p-card ${arrastando === l.id ? 'saindo' : ''}`} role="button" tabIndex={0}
-                      onPointerDown={(e) => inicio(e, l)} onContextMenu={(e) => e.preventDefault()} onKeyDown={(e) => { if (e.key === 'Enter') abrirLead(l.id) }}
+                      onPointerDown={(e) => inicio(e, l, l.status)} onContextMenu={(e) => e.preventDefault()} onKeyDown={(e) => { if (e.key === 'Enter') abrirLead(l.id) }}
                       aria-label={`${l.nome}, ${STATUS[l.status]}. Enter abre o lead.`}>
                       <strong>{l.nome}</strong>
                       <small>{[l.nicho, l.bairro].filter(Boolean).join(' · ')}</small>

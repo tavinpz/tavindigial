@@ -78,7 +78,7 @@ export default function Inicio() {
       <div className="p-cab">
         <div>
           <h1>{saudacao()}, Tavin</h1>
-          <p className="p-sub">{new Date().toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' })} · {r.fila ?? 0} negócios na fila{r.followups_pendentes ? ` · ${r.followups_pendentes} follow-ups para hoje` : ''}</p>
+          <p className="p-sub">{new Date().toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' })} · {r.fila ?? 0} na fila do WhatsApp · {r.fila_dm ?? 0} com Instagram{r.followups_pendentes ? ` · ${r.followups_pendentes} follow-ups para hoje` : ''}</p>
         </div>
         <button className="p-btn p-btn--forte p-btn--grande" onClick={() => irPara('prospectar')}>Prospectar agora</button>
       </div>
@@ -92,7 +92,7 @@ export default function Inicio() {
       <div className="p-kpis">
         <div className="p-kpi p-kpi--meta">
           <Anel valor={r.envios_hoje || 0} meta={CONFIG.META_DIARIA} />
-          <div><strong>{r.envios_hoje || 0}<span>/{CONFIG.META_DIARIA}</span></strong><small>mensagens hoje</small></div>
+          <div><strong>{r.envios_hoje || 0}<span>/{CONFIG.META_DIARIA}</span></strong><small>mensagens hoje</small><em>WhatsApp {r.envios_hoje_wa || 0}/{CONFIG.META_WHATS} · DM {r.envios_hoje_dm || 0}/{CONFIG.META_DM}</em></div>
         </div>
         <div className="p-kpi"><strong>{pct(r.abriram_7d, r.abordados_7d)}%</strong><small>abriram a página</small><em>{r.abriram_7d || 0} de {r.abordados_7d || 0} em 7 dias</em></div>
         <div className="p-kpi"><strong>{pct(r.responderam_7d, r.abordados_7d)}%</strong><small>responderam</small><em>{r.responderam_7d || 0} de {r.abordados_7d || 0} em 7 dias</em></div>

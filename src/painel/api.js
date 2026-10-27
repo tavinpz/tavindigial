@@ -7,6 +7,7 @@ export const STATUS = {
 
 export const ETAPAS = {
   abertura: 'Abertura',
+  abertura_dm: 'Abertura (DM)',
   followup_1: 'Follow-up 1 (D+2)',
   followup_2: 'Follow-up 2 (último)',
   followup_proposta: 'Follow-up da proposta',

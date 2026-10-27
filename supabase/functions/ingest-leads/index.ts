@@ -30,9 +30,17 @@ function classificar(site: string): "sem_site" | "site_falso" | "site_ok" {
   return FALSOS.some((d) => host === d || host.endsWith(`.${d}`) || host.includes(d)) ? "site_falso" : "site_ok";
 }
 
+// Caminhos do Instagram que não são perfil
+const IG_RESERVADOS = new Set(["p", "reel", "reels", "explore", "accounts", "stories", "tv", "direct", "about", "developer", "legal", "web", "sharer", "share", "_u"]);
+
 function instagramDe(site: string): string | null {
-  const m = site.match(/instagram\.com\/([A-Za-z0-9_.]{2,30})/i);
-  return m ? `@${m[1].replace(/\.$/, "")}` : null;
+  const re = /instagram\.com(?:\.br)?\/(?:@)?([A-Za-z0-9_.]{2,30})/gi;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(site))) {
+    const h = m[1].replace(/\.+$/, "").toLowerCase();
+    if (!IG_RESERVADOS.has(h) && !/^\d+$/.test(h)) return `@${h}`;
+  }
+  return null;
 }
 
 // Retorna { whatsapp, fixo }. Celular BR = 55 + DDD + 9 + 8 dígitos (13 dígitos).
@@ -99,7 +107,7 @@ Deno.serve(async (req) => {
       telefone_fixo: fixo,
       site_raw: site || null,
       tipo_site: tipo,
-      instagram: s(it.instagram) || instagramDe(site),
+      instagram: s(it.instagram) || (Array.isArray(it.instagrams) ? instagramDe(it.instagrams.map(String).join(" ")) : null) || instagramDe(site),
       avaliacoes,
       nota: n(it.totalScore ?? it.nota),
       origem_dado: "google_maps_apify",

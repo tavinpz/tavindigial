@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { supabase } from '../lib/supabase'
-import { preencher, waLink, formatTel, linkModelos } from '../lib/msg'
+import { preencher, waLink, formatTel, linkModelos, igDm, igHandle, igPerfil } from '../lib/msg'
 import { brl, CONFIG } from '../config'
 import { STATUS, ETAPAS, EVENTOS, PRODUTOS, COLUNAS, escolherMensagem, registrarEnvio, registrarEvento, moverEtapa, linkMaps, dataCurta } from './api'
 import { usePainel } from './Painel'
@@ -17,6 +17,7 @@ export default function LeadDrawer({ id, fechar, iniciarPagamento = false }) {
   const [obs, setObs] = useState('')
   const [pagando, setPagando] = useState(iniciarPagamento)
   const [resumo, setResumo] = useState('')
+  const [ig, setIg] = useState('')
   const [venda, setVenda] = useState({ produto: 'bio', valor: CONFIG.PRECO_BIO, valor_mensal: CONFIG.HOSPEDAGEM_BIO })
 
   async function carregar() {
@@ -79,6 +80,14 @@ export default function LeadDrawer({ id, fechar, iniciarPagamento = false }) {
     carregar(); atualizar()
   }
 
+  async function salvarIg(e) {
+    e.preventDefault()
+    const h = igHandle(ig.replace(/^https?:\/\/(www\.)?instagram\.com(\.br)?\//i, '').split(/[/?#]/)[0])
+    if (!/^[A-Za-z0-9_.]{2,30}$/.test(h)) return avisar('Esse @ não parece válido')
+    await supabase.from('leads').update({ instagram: `@${h.toLowerCase()}`, ig_checado_em: new Date().toISOString() }).eq('id', lead.id)
+    setIg(''); avisar('Instagram salvo'); carregar(); atualizar()
+  }
+
   async function salvarObs() {
     await supabase.from('leads').update({ observacoes: obs }).eq('id', lead.id)
     avisar('Observação salva')
@@ -107,9 +116,16 @@ export default function LeadDrawer({ id, fechar, iniciarPagamento = false }) {
         <p className="p-links">
           {lead.whatsapp && <a href={waLink(lead.whatsapp)} target="_blank" rel="noreferrer">{formatTel(lead.whatsapp)}</a>}
           {maps && <a href={maps} target="_blank" rel="noreferrer">Google Maps</a>}
-          {lead.instagram && <a href={`https://instagram.com/${lead.instagram.replace('@', '')}`} target="_blank" rel="noreferrer">Instagram</a>}
+          {lead.instagram && <a href={igPerfil(lead.instagram)} target="_blank" rel="noreferrer">@{igHandle(lead.instagram)}</a>}
+          {lead.instagram && <a href={igDm(lead.instagram)} target="_blank" rel="noreferrer">Abrir DM</a>}
           <a href={linkModelos(lead, { rastrear: false })} target="_blank" rel="noreferrer">Página de modelos dele</a>
         </p>
+        {!lead.instagram && (
+          <form className="p-ig" onSubmit={salvarIg}>
+            <input value={ig} onChange={(e) => setIg(e.target.value)} placeholder="@ do Instagram (para chamar na DM)" aria-label="Instagram do negócio" />
+            <button className="p-btn" disabled={!ig.trim()}>Salvar</button>
+          </form>
+        )}
         {lead.nota != null && <p className="p-meta">★ {String(lead.nota).replace('.', ',')} · {lead.avaliacoes} avaliações · {lead.tipo_site === 'site_falso' ? `Link atual: ${lead.site_raw}` : 'Sem site'}</p>}
 
         <h3>Registrar</h3>
