@@ -1,0 +1,8 @@
+modelo/
+videos/*/c*.mp4
+videos/*/*.tmp.mp4
+videos/*/video.tmp.mp4
+videos/*/*.wav
+videos/*/q*_*.png
+videos/*/lista.txt
+saida/
