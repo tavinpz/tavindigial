@@ -32,9 +32,9 @@ export const CONFIG = {
   HOSPEDAGEM_SITE: 59,
 
   // Metas diárias de primeiro contato por canal (painel e CRM separam a fila assim)
-  META_WHATS: 25,
+  META_WHATS: 20,
   META_DM: 20,
-  META_DIARIA: 45,
+  META_DIARIA: 40,
 
   // Supabase (a chave anon é pública por natureza; o acesso aos dados é travado por RLS)
   SUPABASE_URL: import.meta.env.VITE_SUPABASE_URL || 'https://vvlzverpxojrecxysmhm.supabase.co',

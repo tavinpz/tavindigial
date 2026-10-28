@@ -10,7 +10,7 @@ const hostDe = (site) => {
 }
 
 // Um lead + a mensagem pronta + o botão que abre o WhatsApp e grava o envio
-export default function CartaoEnvio({ lead, etapa: etapaBase, canal: canalPedido, onFeito, mostrarStatus = false }) {
+export default function CartaoEnvio({ lead, etapa: etapaBase, canal: canalPedido, onFeito, mostrarStatus = false, marcarResposta = false }) {
   const { mensagens, abrirLead, avisar } = usePainel()
   const canal = canalPedido || canalDe(lead)
   const etapa = etapaNoCanal(etapaBase, canal)
@@ -58,6 +58,15 @@ export default function CartaoEnvio({ lead, etapa: etapaBase, canal: canalPedido
     } finally { setOcupado(false) }
   }
 
+  async function respondeu() {
+    setOcupado(true)
+    try {
+      await registrarEvento(lead.id, 'respondeu', { origem: 'painel', etapa })
+      avisar(`${lead.nome} subiu para "Responderam"`)
+      onFeito?.(lead.id, 'respondeu')
+    } catch { avisar('Não deu certo') } finally { setOcupado(false) }
+  }
+
   async function copiar() {
     try { await navigator.clipboard.writeText(texto); avisar('Texto copiado') } catch { avisar('Não deu para copiar') }
   }
@@ -103,6 +112,7 @@ export default function CartaoEnvio({ lead, etapa: etapaBase, canal: canalPedido
       <div className="p-acoes">
         <button className="p-btn p-btn--forte" onClick={enviar} disabled={ocupado || !podeEnviar || !texto}>{dm ? 'Copiar e abrir DM' : 'Enviar no WhatsApp'}</button>
         <button className="p-btn" onClick={copiar} disabled={!texto}>Copiar</button>
+        {marcarResposta && <button className="p-btn" onClick={respondeu} disabled={ocupado}>Respondeu</button>}
         <button className="p-btn p-btn--fraco" onClick={() => onFeito?.(lead.id, 'pular')}>Pular</button>
         <button className="p-btn p-btn--fraco" onClick={descartar} disabled={ocupado}>Descartar</button>
       </div>

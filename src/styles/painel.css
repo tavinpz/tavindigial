@@ -429,3 +429,12 @@ body:has(.p-fantasma) { cursor: grabbing; }
 .p-vivo.on { color: #CFC6D6; }
 .p-vivo.on::before { background: #2BD576; box-shadow: 0 0 0 3px rgba(43, 213, 118, .18); }
 .p-nova-versao { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); z-index: 90; font: 700 14px var(--f-texto); color: #fff; background: var(--tinta); border: 0; border-radius: 999px; padding: 12px 18px; box-shadow: 0 16px 30px -14px rgba(93, 4, 135, .7); cursor: pointer; max-width: calc(100vw - 32px); }
+
+/* Ordem do dia em Prospectar */
+.p-roteiro { list-style: none; counter-reset: passo; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin: 20px 0 0; padding: 0; }
+.p-roteiro li { counter-increment: passo; display: grid; gap: 2px; padding: 10px 12px 10px 40px; position: relative; border: 1px solid var(--linha); border-radius: 12px; background: var(--branco); }
+.p-roteiro li::before { content: counter(passo); position: absolute; left: 12px; top: 11px; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 700; background: var(--tinta); color: #fff; }
+.p-roteiro li.ok::before { content: '✓'; background: var(--ok); }
+.p-roteiro b { font-size: 14px; }
+.p-roteiro span { font-size: 13px; color: var(--cinza); }
+.p-dica-canal { margin: 0 0 12px; }
