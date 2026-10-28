@@ -10,7 +10,7 @@ export const etapaNoCanal = (etapa, canal) => (etapa === 'abertura' && canal ===
 export function mensagemPara(mensagens, lead, etapa, variante) {
   const publico = lead.tipo_site === 'site_falso' ? 'site_falso' : 'sem_site'
   const vs = variantesDe(mensagens, etapa, publico)
-  const pref = variante || varianteDe(lead.id)
+  const pref = variante || varianteDe(lead.id, vs)
   const v = vs.includes(pref) ? pref : vs[0] || 'A'
   const modelo = escolherMensagem(mensagens, etapa, publico, v)
   return { modelo, texto: modelo ? preencher(modelo.texto, lead) : '', variante: v, variantes: vs }

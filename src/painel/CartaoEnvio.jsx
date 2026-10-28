@@ -17,8 +17,8 @@ export default function CartaoEnvio({ lead, etapa: etapaBase, canal: canalPedido
   const dm = canal === 'instagram'
   const publico = lead.tipo_site === 'site_falso' ? 'site_falso' : 'sem_site'
   const variantes = variantesDe(mensagens, etapa, publico)
-  // Cada lead cai sempre na mesma variante (A/B), a não ser que você troque na mão
-  const preferida = varianteDe(lead.id)
+  // Cada lead cai sempre na mesma variante (A, B, C...), a não ser que você troque na mão
+  const preferida = varianteDe(lead.id, variantes)
   const [escolhida, setEscolhida] = useState(null)
   const variante = escolhida || (variantes.includes(preferida) ? preferida : variantes[0] || 'A')
   const modelo = useMemo(() => escolherMensagem(mensagens, etapa, publico, variante), [mensagens, etapa, publico, variante])

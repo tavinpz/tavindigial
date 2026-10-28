@@ -9,13 +9,13 @@ const PUBLICOS = { sem_site: 'Sem site', site_falso: 'Link fraco', todos: 'Todos
 // A ordem do funil: quando cada mensagem é usada
 const GRUPOS = [
   { titulo: 'Primeira mensagem no WhatsApp', canal: 'whatsapp', etapas: ['abertura'],
-    quando: 'Vai para quem nunca foi chamado. Metade dos leads recebe a A e metade a B; o Início mostra qual responde mais.' },
+    quando: 'Vai para quem nunca foi chamado. Sem link: só uma pergunta para a pessoa responder. Os leads se dividem entre as variantes ativas; o Início mostra qual responde mais.' },
   { titulo: 'Primeira mensagem no Instagram', canal: 'instagram', etapas: ['abertura_dm'],
-    quando: 'Vai na DM. Sem SAIR no fim: no Instagram a pessoa só ignora ou bloqueia.' },
+    quando: 'Vai na DM. Sem link na primeira mensagem: o Instagram esconde DM com link de quem não te segue.' },
   { titulo: 'Follow-ups', canal: 'whatsapp', etapas: ['followup_1', 'followup_2', 'followup_proposta'],
-    quando: 'Aparecem sozinhos em Prospectar: o 1º dois dias depois da abertura, o 2º três dias depois do 1º. O de proposta, dois dias depois de quem pediu preço.' },
-  { titulo: 'Respostas prontas', canal: 'whatsapp', etapas: ['resp_preco', 'resp_pensar', 'resp_ja_tenho'],
-    quando: 'Você escolhe na ficha do lead quando ele responde.' },
+    quando: 'Aparecem sozinhos em Prospectar: o 1º três dias depois da abertura, o último quatro dias depois do 1º (3 mensagens no total; a 4ª quase nunca responde). O de proposta, dois dias depois de mandar o link ou o preço.' },
+  { titulo: 'Respostas prontas', canal: 'whatsapp', etapas: ['resp_link', 'resp_preco', 'resp_pensar', 'resp_ja_tenho'],
+    quando: 'Você escolhe na ficha do lead quando ele responde. Respondeu "pode mandar"? Vai a de mandar o link.' },
   { titulo: 'Depois da venda', canal: 'whatsapp', etapas: ['pos_venda', 'upsell_30d'],
     quando: 'Quando a página vai ao ar e 30 dias depois, para pedir avaliação, indicação e oferecer o próximo serviço.' },
 ]

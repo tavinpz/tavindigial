@@ -6,10 +6,10 @@ import { STATUS, ETAPAS, EVENTOS, PRODUTOS, COLUNAS, escolherMensagem, registrar
 import { usePainel } from './Painel'
 import { abrirCanal, dicaDm, mensagemPara } from './envio'
 
-const RESPOSTAS = ['abertura', 'followup_1', 'followup_2', 'resp_preco', 'resp_pensar', 'resp_ja_tenho', 'followup_proposta', 'pos_venda', 'upsell_30d']
+const RESPOSTAS = ['abertura', 'resp_link', 'followup_1', 'followup_2', 'resp_preco', 'resp_pensar', 'resp_ja_tenho', 'followup_proposta', 'pos_venda', 'upsell_30d']
 
 // A mensagem que faz sentido para a etapa em que o lead está (evita mandar preço para quem nunca foi chamado)
-const ETAPA_PADRAO = { novo: 'abertura', na_fila: 'abertura', enviado: 'followup_1', abriu: 'followup_1', respondeu: 'resp_preco', proposta: 'followup_proposta', ganho: 'pos_venda', recorrente: 'upsell_30d' }
+const ETAPA_PADRAO = { novo: 'abertura', na_fila: 'abertura', enviado: 'followup_1', abriu: 'followup_1', respondeu: 'resp_link', proposta: 'followup_proposta', ganho: 'pos_venda', recorrente: 'upsell_30d' }
 
 export default function LeadDrawer({ id, fechar, iniciarPagamento = false }) {
   const { mensagens, avisar, atualizar } = usePainel()
@@ -84,6 +84,7 @@ export default function LeadDrawer({ id, fechar, iniciarPagamento = false }) {
     await registrarEvento(lead.id, tipo, { origem: 'painel', ...(resumo.trim() ? { resumo: resumo.trim().slice(0, 300) } : {}) })
     // sugere a resposta certa para o que ele disse
     if (tipo === 'pediu_preco') setEtapa('resp_preco')
+    if (tipo === 'respondeu') setEtapa('resp_link')
     setResumo('')
     avisar(EVENTOS[tipo])
     carregar(); atualizar()

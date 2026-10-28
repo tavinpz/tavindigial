@@ -64,17 +64,28 @@ export function destinoDoLink(site = '') {
 
 const nota = (v) => (v == null ? '' : String(Number(v).toFixed(1)).replace('.', ','))
 
-// "a {negocio}" quando o nome já tem artigo: "O Barbeiro da Esquina" vira "o Barbeiro da Esquina", "da" vira "do"
-function ajustarArtigo(texto, nome = '') {
+// "a {negocio}" com o artigo certo para o nome:
+// "O Barbeiro da Esquina" -> "o Barbeiro da Esquina" | "Studio Kellynha" -> "o Studio Kellynha" |
+// "Clínica Lumi" -> "a Clínica Lumi" | nome próprio sem pista ("Benbonzinho") -> sem artigo, "de Benbonzinho"
+const MASCULINOS = ['barbeiro', 'studio', 'estudio', 'espaco', 'salao', 'pet', 'petshop', 'instituto', 'centro', 'consultorio', 'atelie', 'atelier', 'clube', 'grupo', 'ponto', 'canto', 'recanto', 'mundo', 'universo', 'laboratorio', 'hospital', 'dr', 'dr.', 'restaurante', 'bar', 'cafe', 'empório', 'emporio', 'box', 'lar', 'hotel', 'spa', 'shopping', 'mercado', 'jardim', 'cantinho', 'refugio', 'nucleo']
+const FEMININOS = ['barbearia', 'clinica', 'casa', 'academia', 'estetica', 'loja', 'padaria', 'pizzaria', 'hamburgueria', 'doceria', 'confeitaria', 'cafeteria', 'farmacia', 'escola', 'oficina', 'dra', 'dra.', 'odonto', 'odontologia', 'vila', 'toca', 'boutique', 'agencia', 'tattoo', 'tatuagem', 'esmalteria', 'sorveteria', 'lanchonete', 'adega', 'distribuidora', 'rede', 'unidade', 'beauty']
+function artigoDe(nome = '') {
   const m = String(nome).match(/^(o|a|os|as)\s+(.+)$/i)
-  if (!m) return texto
-  const art = m[1].toLowerCase()
-  const resto = m[2]
-  const de = { o: 'do', a: 'da', os: 'dos', as: 'das' }[art]
+  if (m) return [m[1].toLowerCase(), m[2]]
+  const primeira = semAcento(String(nome).split(/\s+/)[0] || '')
+  if (MASCULINOS.includes(primeira)) return ['o', nome]
+  if (FEMININOS.includes(primeira)) return ['a', nome]
+  return ['', nome]
+}
+function ajustarArtigo(texto, nome = '') {
+  const [art, resto] = artigoDe(nome)
+  const de = { o: 'do', a: 'da', os: 'dos', as: 'das', '': 'de' }[art]
+  const pra = { o: 'pro', a: 'pra', os: 'pros', as: 'pras', '': 'pra' }[art]
+  const cap = (w) => w[0].toUpperCase() + w.slice(1)
   return String(texto)
-    .replace(/\b([Dd])a \{negocio\}/g, (_, d) => `${d === 'D' ? de[0].toUpperCase() + de.slice(1) : de} ${resto}`)
-    .replace(/\bpra \{negocio\}/g, `${{ o: 'pro', a: 'pra', os: 'pros', as: 'pras' }[art]} ${resto}`)
-    .replace(/\b([Aa]) \{negocio\}/g, (_, x) => `${x === 'A' ? art[0].toUpperCase() + art.slice(1) : art} ${resto}`)
+    .replace(/\b([Dd])a \{negocio\}/g, (_, d) => `${d === 'D' ? cap(de) : de} ${resto}`)
+    .replace(/\bpra \{negocio\}/g, `${pra} ${resto}`)
+    .replace(/\b([Aa]) \{negocio\}/g, (_, x) => (art ? `${x === 'A' ? cap(art) : art} ${resto}` : resto))
 }
 
 // Nome com artigo para frases fora das mensagens: comArtigo('O Barbeiro', 'da') -> 'do Barbeiro'
@@ -107,8 +118,12 @@ export const igPerfil = (ig) => `https://instagram.com/${igHandle(ig)}`
 export const waLink = (numero, texto = '') =>
   `https://wa.me/${String(numero || '').replace(/\D/g, '')}${texto ? `?text=${encodeURIComponent(texto)}` : ''}`
 
-// Divide os leads entre A e B de forma estável (o mesmo lead sempre cai na mesma variante)
-export const varianteDe = (id = '') => (parseInt(String(id).replace(/-/g, '').slice(-2), 16) % 2 === 0 ? 'A' : 'B')
+// Divide os leads entre as variantes ativas (A, B, C, D...) de forma estável: o mesmo lead sempre cai na mesma
+export const varianteDe = (id = '', variantes = ['A', 'B']) => {
+  const vs = variantes.length ? variantes : ['A']
+  const h = parseInt(String(id).replace(/-/g, '').slice(-6), 16) || 0
+  return vs[h % vs.length]
+}
 
 export const formatTel = (d = '') => {
   const x = String(d).replace(/\D/g, '').replace(/^55/, '')
