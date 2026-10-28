@@ -21,10 +21,25 @@ export function nichoSlug(nicho = '', categoria = '') {
   return 'geral'
 }
 
+// Nome do jeito que uma pessoa escreveria: o Google vem com SEO no nome
+// ("Pet Salon Aclimação - Banho & Tosa, Clínica Veterinária, Medicamentos..."), o que denuncia automação.
+const GENERICAS = new Set(['tattoo', 'tatuagem', 'piercing', 'body', 'e', '&', 'de', 'do', 'da', 'pet', 'shop', 'banho', 'tosa', 'estudio', 'studio', 'design', 'sobrancelhas', 'clinica', 'veterinaria', 'barbearia', 'barber', 'barbershop', 'estetica', 'salao', 'beleza', 'odontologia', 'na', 'no', 'em'])
+export function nomeCurto(nome = '') {
+  const original = String(nome || '').trim()
+  if (!original) return ''
+  const partes = original.split(/\s[|\-–—/•·]\s?|\s?[|/•·]\s|[“”"(,]/).map((p) => p.trim()).filter(Boolean)
+  const temNome = (p) => semAcento(p).split(/\s+/).some((w) => w && !GENERICAS.has(w))
+  let curto = partes.find(temNome) || partes[0] || original
+  if (curto.length > 40) curto = curto.slice(0, 40).replace(/\s+\S*$/, '')
+  // TUDO EM MAIÚSCULA vira Nome Próprio
+  if (curto === curto.toUpperCase() && /[A-ZÀ-Ú]{3}/.test(curto)) curto = curto.toLowerCase().replace(/(^|\s)(\S)/g, (_, e, l) => e + l.toUpperCase())
+  return curto
+}
+
 // Link curto para a página de modelos, personalizado e rastreado
 export function linkModelos(lead, { rastrear = true } = {}) {
   const slug = nichoSlug(lead.nicho, lead.categoria)
-  const n = encodeURIComponent(lead.nome || '')
+  const n = encodeURIComponent(nomeCurto(lead.nome))
   return `${CONFIG.SITE_URL}/m/${slug}?n=${n}${rastrear ? `&r=${lead.id}` : ''}`
 }
 
@@ -66,9 +81,10 @@ function ajustarArtigo(texto, nome = '') {
 export const comArtigo = (nome = '', forma = 'a') => ajustarArtigo(`${forma} {negocio}`, nome).replace('{negocio}', nome)
 
 export function preencher(texto, lead, extra = {}) {
-  texto = ajustarArtigo(texto, lead?.nome)
+  const nome = nomeCurto(lead?.nome)
+  texto = ajustarArtigo(texto, nome)
   const vars = {
-    negocio: lead?.nome || 'sua empresa',
+    negocio: nome || 'sua empresa',
     avaliacoes: lead?.avaliacoes ?? '',
     nota: nota(lead?.nota),
     link: lead ? linkModelos(lead) : CONFIG.SITE_URL,
