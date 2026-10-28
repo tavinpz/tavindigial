@@ -250,6 +250,13 @@ html.td-raiz body { background: #120E15; }
 .td-modelo-info small { color: var(--fg2); font-size: 14px; }
 .td-modelo-ver { margin-top: 8px; display: inline-flex; align-items: center; gap: 6px; font-weight: 700; color: var(--el); font-size: 14px; }
 .td-mais { margin-top: 18px !important; }
+.td-grupo { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 24px; margin-bottom: 18px; padding-top: 22px; border-top: 1px solid var(--linha); }
+.td-grupo + .td-trilho { margin-bottom: 40px; }
+.td-grupo h3 { margin: 0; font-family: var(--d); font-size: clamp(22px, 3vw, 28px); font-weight: 700; letter-spacing: -0.03em; color: var(--ink); }
+.td-grupo p { margin: 0; color: var(--fg2); font-size: 15px; max-width: 52ch; }
+.td-trilho--sites { grid-auto-columns: min(86vw, 520px); }
+@media (min-width: 1000px) { .td-trilho.td-trilho--sites { grid-template-columns: repeat(2, 1fr); gap: 22px; } }
+.td-modelo--site .tv-nav { border-radius: 0; box-shadow: none; }
 .td-mais a { color: var(--el); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 
 /* passos com linha que enche */

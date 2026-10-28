@@ -2,20 +2,14 @@ import { useEffect, useMemo } from 'react'
 import { Link, useParams, useSearchParams } from 'react-router-dom'
 import { CONFIG, brl } from '../config'
 import { MODELOS, modelosDoNicho, NOMES_NICHO } from '../data/modelos'
-import { SITES, ORDEM_SITES } from '../data/sites'
+import { SITES, ORDEM_SITES, RESUMO_SITES } from '../data/sites'
 import { slugDominio, comArtigo } from '../lib/msg'
 import { callFn, quandoHumano } from '../lib/fn'
 import { Header, Footer, Dominio, waVendas } from './Layout'
 import { Celular, Navegador } from './Telas'
 
 // Qual site completo aparece primeiro para cada nicho
-// O que cada site mostra de diferente (texto curto, sem repetir o que vale para todos)
-const RESUMO = {
-  barbearia: 'Escuro e marcante, com fotos grandes, clube de assinatura e agenda por barbeiro.',
-  estetica: 'Claro e sofisticado, com procedimentos por categoria, pacotes e agenda por profissional.',
-  odontologia: 'Limpo e de confiança, com tratamentos, convênios, botão de urgência e agenda.',
-  pet: 'Alegre e acolhedor: o tutor escolhe o porte do pet e o preço se ajusta sozinho.',
-}
+const RESUMO = RESUMO_SITES
 const SITE_DO_NICHO = { estetica: 'estetica', odontologia: 'odontologia', barbearia: 'barbearia', pet: 'pet', saude: 'estetica', tatuagem: 'barbearia', alimentacao: 'barbearia', geral: 'barbearia' }
 
 // Página que vai no link da mensagem: /m/<nicho>?n=<nome do negócio>&r=<id do lead>

@@ -6,7 +6,7 @@ import { waVendas } from './Layout'
 import Logo from './Logo'
 import Padrao from './Padrao'
 import { Celular, Navegador } from './Telas'
-import { SITES } from '../data/sites'
+import { SITES, ORDEM_SITES, ORDEM_BIOS, RESUMO_SITES } from '../data/sites'
 import { clamp, progresso, semMovimento, useReveal, useScroll } from './fx'
 import '../styles/home.css'
 
@@ -291,7 +291,8 @@ export default function Home() {
     setBarra(hb < 0 && ft > window.innerHeight * 0.8)
   })
 
-  const vitrine = MODELOS.filter((m) => m.url)
+  const bios = ORDEM_BIOS.map((id) => MODELOS.find((m) => m.id === id)).filter((m) => m?.url)
+  const sitesDemo = ORDEM_SITES.map((id) => SITES[id])
 
   // luz que acompanha o dedo/mouse no herói (sem re-render)
   const luz = (e) => {
@@ -367,11 +368,32 @@ export default function Home() {
           <div className="td-sec">
             <div className="td-hd2" data-r>
               <h2 className="td-h2">Escolha um modelo. <em>A gente coloca a sua cara.</em></h2>
-              <p>Toque para abrir: é exatamente o que o seu cliente vai ver, com o seu nome, cores e serviços.</p>
+              <p>Toque para abrir: funcionam de verdade. O seu sai com o seu nome, cores e serviços.</p>
             </div>
           </div>
+          <div className="td-sec td-grupo" data-r>
+            <h3>Site completo</h3>
+            <p>Agenda online, serviços com preço, fotos, avaliações e mapa. {brl(CONFIG.PRECO_SITE)}, no ar em até {CONFIG.PRAZO_HORAS} horas.</p>
+          </div>
+          <div className="td-trilho td-trilho--sites" data-r>
+            {sitesDemo.map((s) => (
+              <a key={s.id} className="td-modelo td-modelo--site" href={`/site/${s.id}`} target="_blank" rel="noreferrer">
+                <Navegador src={`/site/${s.id}`} dominio={VITRINE.find((v) => v[0] === s.id)?.[2]} titulo={`Site ${s.nome}`} />
+                <span className="td-modelo-info">
+                  <b>{s.nome}</b>
+                  <small>{RESUMO_SITES[s.id]}</small>
+                  <span className="td-modelo-ver">Ver ao vivo <Ico n="seta" s={14} /></span>
+                </span>
+              </a>
+            ))}
+          </div>
+
+          <div className="td-sec td-grupo" data-r>
+            <h3>Página para o link da bio</h3>
+            <p>Uma página só, animada, no lugar do Linktree. {brl(CONFIG.PRECO_BIO)}, no ar em até {CONFIG.PRAZO_BIO_HORAS} horas.</p>
+          </div>
           <div className="td-trilho" data-r>
-            {vitrine.map((m) => (
+            {bios.map((m) => (
               <a key={m.id} className="td-modelo" href={m.url} target="_blank" rel="noreferrer">
                 <img src={m.imagem} alt={`Modelo ${m.titulo}`} loading="lazy" />
                 <span className="td-modelo-info">

@@ -234,3 +234,14 @@ export const SITES = {
 }
 
 export const ORDEM_SITES = ['barbearia', 'estetica', 'odontologia', 'pet']
+
+// O que cada site tem de diferente (usado na home e na página de modelos)
+export const RESUMO_SITES = {
+  barbearia: 'Escuro e marcante, com fotos grandes, clube de assinatura e agenda por barbeiro.',
+  estetica: 'Claro e sofisticado, com procedimentos por categoria, pacotes e agenda por profissional.',
+  odontologia: 'Limpo e de confiança, com tratamentos, convênios, botão de urgência e agenda.',
+  pet: 'Alegre e acolhedor: o tutor escolhe o porte do pet e o preço se ajusta sozinho.',
+}
+
+// Bios na ordem de vitrine: as mais interativas primeiro
+export const ORDEM_BIOS = ['bio-hamburgueria', 'bio-pet', 'bio-tatuagem', 'bio-nail', 'bio-academia', 'bio-barbearia', 'bio-estetica', 'bio-nutricionista', 'bio-psicologa', 'bio-odonto']
