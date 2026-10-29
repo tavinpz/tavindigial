@@ -190,7 +190,7 @@ video("018-fehmarnbelt", "concrete_atlas_short_018_fehmarnbelt.mp4", "They're Si
     "Follow for a new megaproject every day. Bridge or tunnel, which would you build here?",
 ], [
     {"tipo": "mapa", "bbox": [9.5, 13.0, 53.3, 56.0], "titulo": "Fehmarnbelt", "sub": "Germany to Denmark", "gancho": "89 BLOCKS\nUNDER THE SEA",
-     "globo": [54.5758, 11.3056], "pins": [[9.99, 53.55, "Hamburg", "r"], [12.57, 55.68, "Copenhagen", "l"]],
+     "globo": [54.5758, 11.3056], "pins": [[12.57, 55.68, "Copenhagen", "l"]],
      "rota": [[11.22, 54.50], [11.35, 54.65]], "cor_rota": "amber", "largura_rota": 14},
     {"tipo": "numero", "valor": 18, "sufixo": " km", "label": "immersed tunnel", "nota": "the longest of its kind", "cor": "amber"},
     {"tipo": "perfil", "titulo": "Lowered into a trench", "sub": "about 40 m deep", "yrange": [-60, 12],
@@ -219,7 +219,7 @@ video("019-gibraltar-tunnel", "concrete_atlas_short_019_gibraltar_tunnel.mp4", "
      "globo": [35.95, -5.50], "pins": [[-5.60, 36.01, "Tarifa", "r"], [-5.83, 35.76, "Tangier", "l"]], "numero": "14 KM", "cor": "amber"},
     {"tipo": "perfil", "titulo": "Deeper than it looks", "sub": "Camarinal Sill: 280 m", "yrange": [-950, 120],
      "agua": [[0, 0], [1, 0]], "terreno": [[0, 60], [0.12, -120], [0.3, -260], [0.42, -280], [0.55, -420], [0.75, -800], [0.88, -500], [1, 60]], "cor_terreno": [80, 74, 62],
-     "cotas": [[0.42, 0, -280, "280 m"]], "nivel_mar": 0, "rotulos": [[0.08, 90, "Spain"], [0.92, 90, "Morocco"]]},
+     "cotas": [[0.42, 0, -280, "280 m"]], "nivel_mar": 0, "rotulos": [[0.08, 90, "Spain"], [0.84, 90, "Morocco"]]},
     {"tipo": "numero", "valor": 42, "sufixo": " km", "label": "tunnel route", "nota": "27.7 km under the sea", "cor": "amber",
      "segundo": {"valor": 475, "sufixo": " m", "label": "below sea level at its deepest", "cor": "water"}},
     {"tipo": "palpite", "pergunta": "When could it open?", "opcoes": ["2030 World Cup", "2035 to 2040", "Never"], "certa": 1, "revelar": True},
@@ -242,7 +242,7 @@ video("020-gerd", "concrete_atlas_short_020_gerd.mp4", "Africa's Biggest Dam and
     "Follow for a new megaproject every day. If you were Ethiopia or Egypt, what would you do?",
 ], [
     {"tipo": "mapa", "bbox": [32.0, 39.5, 8.5, 16.0], "destaque": ["ETH"], "titulo": "Blue Nile, Ethiopia", "sub": "17 km from Sudan", "gancho": "AFRICA'S\nBIGGEST DAM",
-     "globo": [11.2153, 35.0931], "pins": [[35.0931, 11.2153, "GERD", "r"], [32.56, 15.50, "Khartoum", "l"], [38.74, 9.03, "Addis Ababa", "l"]]},
+     "globo": [11.2153, 35.0931], "pins": [[35.0931, 11.2153, "GERD", "r"], [32.56, 15.50, "Khartoum", "l"]]},
     {"tipo": "numero", "valor": 5150, "sufixo": " MW", "label": "capacity", "nota": "13 turbines, opened September 2025", "cor": "amber"},
     {"tipo": "altura", "titulo": "145 m high", "sub": "1.8 km long", "itens": [["Statue of Liberty", 93, False, "bloco"], ["GERD", 145, True, "bloco"], ["Three Gorges", 181, False, "bloco"]], "unidade": "m",
      "lembrete": "for a new megaproject every day"},
