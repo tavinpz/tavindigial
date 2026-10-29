@@ -19,7 +19,7 @@
 - **Instagram:** o painel posta Reels agendados pela API da Meta depois que o token da conta do canal é salvo em Conexões.
 
 ## Nosso painel (tavindigital.online/painel → Vídeos)
-- Colunas: Em produção · Para programar · Programado · Postado.
+- Colunas: Em produção · Para programar · Upload feito · Programado · Postado. Arrastar o cartão muda as 3 redes juntas; clicar numa rede muda só ela.
 - Cada vídeo: **Baixar vídeo** (1080×1920, H.264, ~8–9 Mbps, qualidade de upload), capa, título, descrição, legendas TikTok/Instagram, comentário fixado, data.
 - Botões: Programei · Já postei · Cancelar · Painel posta sozinho (Instagram). No celular: "Mandar para o app".
 - Confere sozinho a cada 30 min (`conferir-postagens`): lê o feed do canal do YouTube e o Instagram, marca como Postado e traz as views. Para isso, o link do canal precisa estar salvo em Conexões.
