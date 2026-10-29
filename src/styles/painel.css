@@ -657,3 +657,38 @@ body:has(.p-fantasma) { cursor: grabbing; }
 .p-rajada-botoes { display: flex; gap: 8px; margin: 10px 0; }
 .p-rajada-botoes .p-rajada-ir { margin: 0; flex: 1; }
 .p-rajada-botoes .p-btn:not(.p-rajada-ir) { flex: none; }
+
+/* Onde abrir o WhatsApp (CRM, Prospectar) */
+.dw { display: flex; flex-direction: column; gap: 6px; position: relative; }
+.dw-troca { display: inline-flex; align-items: center; gap: 2px; padding: 3px; background: #EEE9F2; border-radius: var(--r-pilula); }
+.dw-troca > span { font-size: 12.5px; color: var(--cinza); padding: 0 6px 0 10px; }
+.dw-troca button { font: inherit; font-size: 13.5px; border: 0; background: transparent; color: var(--cinza); padding: 6px 12px; border-radius: var(--r-pilula); cursor: pointer; white-space: nowrap; }
+.dw-troca button.ativa { background: var(--branco); color: var(--tinta); font-weight: 700; box-shadow: 0 4px 12px -8px rgba(93, 4, 135, .5); }
+.dw-troca button:focus-visible { outline: 2px solid var(--tinta); }
+.dw-aviso { font: inherit; font-size: 12.5px; color: #8A4B00; background: #FFF4E0; border: 1px solid #F3D7A6; border-radius: 8px; padding: 4px 10px; cursor: pointer; align-self: flex-start; }
+.dw-ajuda { position: absolute; z-index: 45; top: calc(100% + 6px); right: 0; width: min(380px, calc(100vw - 32px)); background: var(--branco); border: 1px solid var(--linha); border-radius: 14px; padding: 12px 16px; box-shadow: 0 18px 40px -20px rgba(40, 10, 60, .45); font-size: 14px; }
+.dw-ajuda p { margin: 0 0 6px; }
+.dw-ajuda ol { margin: 0 0 8px; padding-left: 20px; display: grid; gap: 4px; }
+.dw-ajuda code { font-size: 12.5px; background: var(--papel); padding: 1px 5px; border-radius: 5px; }
+
+/* CRM: busca, grupos por dia e ações no card */
+.crm-ferr { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: flex-start; justify-content: flex-end; }
+.crm-busca { display: flex; flex-direction: column; gap: 4px; min-width: 240px; }
+.crm-busca .p-busca { max-width: none; width: 100%; }
+.crm-busca small { font-size: 12.5px; color: var(--cinza); padding-left: 12px; }
+.crm-item { display: flex; flex-direction: column; gap: 6px; }
+.crm-grupo { margin: 6px 4px 0; font-size: 12px; font-weight: 700; color: var(--cinza); display: flex; align-items: center; gap: 6px; }
+.crm-grupo b { font-size: 11px; background: var(--branco); border-radius: 999px; padding: 0 7px; }
+.crm-grupo--fup { color: var(--tinta); }
+.p-card--fup { border-color: var(--tinta); box-shadow: 0 0 0 1px var(--tinta) inset; }
+.crm-dias { margin-top: 3px; font-size: 12.5px; color: var(--cinza); line-height: 1.35; }
+.crm-dias b { font-weight: 600; color: var(--grafite, #2A2230); }
+.crm-dias b.crm-prox--hoje { color: var(--tinta); font-weight: 700; }
+.crm-prox { font-size: 12px; color: var(--cinza); }
+.crm-prox--hoje { color: var(--tinta); font-weight: 700; }
+.crm-botoes { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 7px; cursor: default; }
+.crm-btn { font: inherit; font-size: 12.5px; font-weight: 700; color: var(--tinta); background: var(--branco); border: 1px solid #E7C2FB; border-radius: 999px; padding: 4px 10px; cursor: pointer; white-space: nowrap; }
+.crm-btn:hover { border-color: var(--tinta); background: #FBF3FF; }
+.crm-btn--forte { background: var(--tinta); color: var(--branco); border-color: var(--tinta); }
+.crm-btn--forte:hover { background: var(--tinta); filter: brightness(1.08); }
+.crm-btn:focus-visible { outline: 2px solid var(--tinta); outline-offset: 1px; }

@@ -20,7 +20,7 @@ const ULTIMA = { abertura: '1ª mensagem', abertura_dm: '1ª mensagem (DM)', fol
 const nomeEtapa = (e) => ULTIMA[e] || ETAPAS[e] || e
 
 // O que vem depois, pela regra do banco: 1ª msg → follow-up 1 em 3 dias → follow-up 2 em 4 dias → fim
-function proximoPasso(l) {
+export function proximoPasso(l) {
   if (respondeu(l)) return { txt: 'Responder / combinar', quando: 'agora', urgente: true }
   if (!l.proximo_contato) return { txt: 'Sequência terminou', quando: '', fim: true }
   const qual = (l.total_envios || 0) <= 1 ? 'Follow-up 1' : l.status === 'proposta' ? 'Follow-up da proposta' : 'Follow-up 2'

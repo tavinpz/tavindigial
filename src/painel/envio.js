@@ -21,19 +21,26 @@ export const dicaDm = (lead) => (ehCelular()
   ? `Texto copiado. Na conversa com ${lead.instagram}, segure e cole.`
   : `Texto copiado. No perfil ${lead.instagram}, clique em "Enviar mensagem" e cole (Ctrl+V).`)
 
-// Onde abrir o WhatsApp (escolha fica salva neste navegador):
-//   'web'  = WhatsApp Web numa aba só do painel, reaproveitada a cada lead (não abre aba nova)
-//   'link' = link wa.me, que abre o app do WhatsApp (o outro número)
-export const DESTINOS_WA = { web: 'WhatsApp Web', link: 'App (link)' }
+// Onde abrir o WhatsApp (escolha fica salva neste navegador e vale para CRM, Prospectar e fichas):
+//   'web' = na aba do WhatsApp Web que já está aberta (com a extensão "Tavin Painel · WhatsApp")
+//   'app' = no app do WhatsApp do computador, direto, sem abrir página
+export const DESTINOS_WA = { web: 'WhatsApp Web', app: 'App do WhatsApp' }
+export const EVENTO_DESTINO = 'tavin-wa-destino'
 export const waDestino = () => {
-  if (ehCelular()) return 'link'
-  try { return localStorage.getItem('wa-destino') === 'link' ? 'link' : 'web' } catch { return 'web' }
+  if (ehCelular()) return 'app'
+  try { return localStorage.getItem('wa-destino') === 'app' ? 'app' : 'web' } catch { return 'web' }
 }
-export const salvarWaDestino = (d) => { try { localStorage.setItem('wa-destino', d) } catch { /* sem storage */ } }
-export const outroDestino = (d) => (d === 'web' ? 'link' : 'web')
+export const salvarWaDestino = (d) => {
+  try { localStorage.setItem('wa-destino', d) } catch { /* sem storage */ }
+  window.dispatchEvent(new CustomEvent(EVENTO_DESTINO, { detail: d }))
+}
+export const outroDestino = (d) => (d === 'web' ? 'app' : 'web')
+// a extensão marca o <html> quando está instalada
+export const temExtensao = () => typeof document !== 'undefined' && document.documentElement.dataset.tavinWa === '1'
 
-const waWeb = (numero, texto = '') =>
-  `https://web.whatsapp.com/send?phone=${String(numero || '').replace(/\D/g, '')}${texto ? `&text=${encodeURIComponent(texto)}` : ''}`
+const digitos = (n) => String(n || '').replace(/\D/g, '')
+const waWeb = (numero, texto = '') => `https://web.whatsapp.com/send?phone=${digitos(numero)}${texto ? `&text=${encodeURIComponent(texto)}` : ''}`
+const waApp = (numero, texto = '') => `whatsapp://send?phone=${digitos(numero)}${texto ? `&text=${encodeURIComponent(texto)}` : ''}`
 
 // Abre o canal SEM await antes (o navegador só deixa abrir janela dentro do clique/soltar).
 // No Instagram, copia o texto e abre a DM: é só colar e enviar.
@@ -42,11 +49,18 @@ export function abrirCanal(canal, lead, texto, destino) {
     try { navigator.clipboard?.writeText(texto) } catch { /* sem permissão de cópia */ }
     // sempre na mesma aba do Instagram (não abre uma aba nova a cada DM)
     window.open(igDm(lead.instagram), 'tavin-instagram')
-  } else if ((destino || waDestino()) === 'web' && !ehCelular()) {
-    // sempre a mesma aba: a conversa abre com o texto pronto, é só dar Enter
-    window.open(waWeb(lead.whatsapp, texto), 'tavin-whatsapp')
+    return
+  }
+  if (ehCelular()) { window.open(waLink(lead.whatsapp, texto), '_blank', 'noopener'); return }
+  const d = destino || waDestino()
+  if (d === 'app') {
+    // abre o app do WhatsApp do computador direto (na 1ª vez o Chrome pergunta: marque "Sempre permitir")
+    window.location.href = waApp(lead.whatsapp, texto)
+  } else if (temExtensao()) {
+    // a extensão leva a aba do WhatsApp Web que já está aberta até a conversa, com o texto pronto
+    window.postMessage({ tipo: 'tavin-wa', phone: digitos(lead.whatsapp), text: texto || '' }, window.location.origin)
   } else {
-    window.open(waLink(lead.whatsapp, texto), '_blank', 'noopener')
+    window.open(waWeb(lead.whatsapp, texto), 'tavin-whatsapp')
   }
 }
 

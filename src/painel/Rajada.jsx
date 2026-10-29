@@ -154,7 +154,7 @@ export default function Rajada({ lista: listaAoVivo, canal: canalFixo, etapaDe, 
             <button className="p-btn p-btn--fraco" onClick={descartar}>Descartar <kbd>D</kbd></button>
           </div>
           {!dm && !celular && destino === 'web' && (
-            <p className="p-meta">Abre sempre na mesma aba "WhatsApp Web" do painel, com o texto pronto: dê Enter lá e volte aqui (Ctrl+Tab ou Cmd+Option+→). Deixe o painel e o WhatsApp lado a lado para ir mais rápido.</p>
+            <p className="p-meta">Abre na aba do WhatsApp Web que já está aberta, com o texto pronto: dê Enter lá e volte aqui. Com o painel e o WhatsApp lado a lado (duas janelas) fica mais rápido.</p>
           )}
           {dm && <p className="p-meta">{celular
             ? 'Abre a conversa no app: segure, cole, envie e volte para cá. O próximo já está pronto.'

@@ -60,7 +60,7 @@ export default function LeadDrawer({ id, fechar, iniciarPagamento = false }) {
   }, [fechar])
 
   async function enviar() {
-    window.open(waLink(lead.whatsapp, texto), '_blank', 'noopener')
+    abrirCanal('whatsapp', lead, texto)
     await registrarEnvio({ lead, mensagem: modelo, etapa, texto })
     avisar('Envio registrado')
     carregar(); atualizar()
@@ -148,7 +148,7 @@ export default function LeadDrawer({ id, fechar, iniciarPagamento = false }) {
         </div>
 
         <p className="p-links">
-          {lead.whatsapp && <a href={waLink(lead.whatsapp)} target="_blank" rel="noreferrer">{formatTel(lead.whatsapp)}</a>}
+          {lead.whatsapp && <a href={waLink(lead.whatsapp)} onClick={(e) => { e.preventDefault(); abrirCanal('whatsapp', lead, '') }}>{formatTel(lead.whatsapp)}</a>}
           {maps && <a href={maps} target="_blank" rel="noreferrer">Google Maps</a>}
           {lead.instagram && <a href={igPerfil(lead.instagram)} target="_blank" rel="noreferrer">@{igHandle(lead.instagram)}</a>}
           <a href={linkModelos(lead, { rastrear: false })} target="_blank" rel="noreferrer">Página de modelos dele</a>

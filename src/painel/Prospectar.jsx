@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { CONFIG } from '../config'
-import { dataCurta } from './api'
 import CartaoEnvio from './CartaoEnvio'
 import Rajada from './Rajada'
 import { usePainel } from './Painel'
-import { DESTINOS_WA, canalDe, salvarWaDestino, separarFilas, waDestino } from './envio'
+import { canalDe, separarFilas } from './envio'
+import DestinoWa, { useDestino } from './DestinoWa'
 import Acompanhamento, { BuscaLead } from './Acompanhamento'
-import { ehCelular } from '../lib/msg'
 
 const coletaAtrasada = (iso) => !iso || Date.now() - new Date(iso).getTime() > 30 * 3600 * 1000
 
@@ -30,8 +29,7 @@ export default function Prospectar() {
   const [canal, setCanal] = useState('whatsapp')
   const [qtd, setQtd] = useState(20)
   const [rajada, setRajada] = useState(null) // 'novos' | 'fups' | 'resp'
-  const [destino, setDestinoSt] = useState(waDestino)
-  const setDestino = (d) => { setDestinoSt(d); salvarWaDestino(d) }
+  const [destino] = useDestino()
   const [vista, setVistaSt] = useState(() => { try { return localStorage.getItem('p-prosp-vista') || 'hoje' } catch { return 'hoje' } })
   const setVista = (v) => { setVistaSt(v); try { localStorage.setItem('p-prosp-vista', v) } catch { /* sem storage */ } }
   const [erro, setErro] = useState('')
@@ -72,17 +70,16 @@ export default function Prospectar() {
   const total = feitos.whatsapp + feitos.instagram
   const pct = Math.min(100, Math.round((total / CONFIG.META_DIARIA) * 100))
   const atrasada = coletaAtrasada(resumo.ultima_coleta)
+  const estoque = new Set([...dados.wa, ...dados.dm].map((l) => l.id)).size
 
   return (
     <section>
       <div className="p-cab">
         <div>
           <h1>Prospectar</h1>
-          <p className={`p-coleta ${atrasada ? 'p-coleta--alerta' : ''}`}>
-            {resumo.ultima_coleta
-              ? `Última coleta ${dataCurta(resumo.ultima_coleta)}, ${resumo.leads_24h} leads novos em 24h.`
-              : 'Nenhuma coleta ainda.'}
-            {atrasada && ' A coleta das 7h não trouxe nada há mais de 30 horas: veja em Coleta de leads.'}
+          <p className={`p-coleta ${atrasada && estoque < 60 ? 'p-coleta--alerta' : ''}`}>
+            {estoque} leads esperando a 1ª mensagem{estoque ? ` (dá para uns ${Math.max(1, Math.round(estoque / CONFIG.META_WHATS))} dias)` : ''}.
+            {atrasada && estoque < 60 && ' A coleta automática parou: veja em Coleta de leads.'}
           </p>
         </div>
         <div className="p-meta-dia" aria-label={`${total} de ${CONFIG.META_DIARIA} envios hoje`}>
@@ -94,14 +91,7 @@ export default function Prospectar() {
 
       <div className="a-barra">
         <BuscaLead destino={destino} />
-        {!ehCelular() && (
-          <div className="p-canais a-destino" role="group" aria-label="Onde abrir o WhatsApp">
-            <span>WhatsApp abre no</span>
-            {Object.entries(DESTINOS_WA).map(([k, t]) => (
-              <button key={k} aria-pressed={destino === k} className={destino === k ? 'ativa' : ''} onClick={() => setDestino(k)}>{t}</button>
-            ))}
-          </div>
-        )}
+        <DestinoWa />
       </div>
       <div className="p-canais a-vistas" role="tablist" aria-label="Ver">
         {[['hoje', 'Hoje'], ['acomp', 'Acompanhamento']].map(([k, t]) => (
@@ -170,11 +160,11 @@ export default function Prospectar() {
           <button onClick={carregar}>Atualizar</button>
         </div>
       </div>
-      <p className="p-meta p-dica-canal">{dm
-        ? 'Antes de cada DM: siga o perfil e curta 2 posts. Na rajada, a espera entre uma DM e outra começa em 90 s (dá para mudar no topo dela). Quando responderem, marque "Respondeu": o link vai depois.'
-        : 'Melhor horário: dia útil, das 9h às 11h ou das 14h às 16h. Na rajada, a espera entre um envio e outro começa em 20 s (dá para mudar no topo dela). Quando responderem, marque "Respondeu": o link vai depois.'}</p>
-      {dm && feitos.instagram >= CONFIG.META_DM && <p className="p-meta">Meta de DMs batida. Mais que isso por dia aumenta a chance de o Instagram limitar a conta.</p>}
-      {!dm && feitos.whatsapp >= CONFIG.META_WHATS && <p className="p-meta">Meta do WhatsApp batida. Em número não oficial, passar disso aumenta o risco de bloqueio.</p>}
+      <p className="p-meta p-dica-canal">
+        {(dm ? feitos.instagram >= CONFIG.META_DM : feitos.whatsapp >= CONFIG.META_WHATS)
+          ? 'Meta do dia batida: passar disso aumenta o risco de bloqueio.'
+          : dm ? 'Antes da DM: siga o perfil e curta 2 posts.' : 'Melhor horário: 9h–11h ou 14h–16h, em dia útil.'}
+      </p>
       {rajada === 'novos' && (
         <Rajada lista={novos} canal={canal} feitos={feitos[canal]} meta={META[canal]} destino={destino}
           onFeito={(id, modo) => concluir(canal)(id, modo)} fechar={() => setRajada(null)} />
