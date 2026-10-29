@@ -393,6 +393,7 @@ function Detalhe({ v, fechar, recarregar, igOk }) {
             {rede('yt', 'YouTube')}
             <Bloco titulo="Título" texto={v.yt_titulo} linhas={2} />
             <Bloco titulo="Descrição" texto={v.yt_descricao} linhas={4} />
+            {v.yt_tags && <Bloco titulo="Tags (campo Tags, em Mostrar mais)" texto={v.yt_tags} linhas={2} />}
             <Bloco titulo="Comentário para fixar" texto={v.comentario_fixado} linhas={2} />
             <p className="v-dica">No upload: não é para crianças · Conteúdo alterado ou sintético = Sim · Programar para {fmtQuando(sugestao(v))}.</p>
             <div className="p-acoes">
