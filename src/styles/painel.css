@@ -590,3 +590,70 @@ body:has(.p-fantasma) { cursor: grabbing; }
 .v-rede-mudar { font-size: 12px; color: var(--tinta); font-weight: 700; flex: none; }
 .v-rede--falta .v-rede-nome i { border-color: #B9AFC3; }
 .v-rede--erro .v-rede-nome i { border-color: var(--erro); background: var(--erro); color: var(--branco); }
+
+/* Prospectar: busca, destino do WhatsApp, vistas e acompanhamento */
+.a-barra { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; margin: 4px 0 14px; }
+.a-busca { position: relative; flex: 1; min-width: 240px; max-width: 460px; }
+.a-busca input { width: 100%; font: inherit; font-size: 15px; padding: 10px 14px; border: 1px solid var(--linha); border-radius: var(--r-pilula); background: var(--branco); }
+.a-busca input:focus-visible { outline: 2px solid var(--tinta); outline-offset: 1px; }
+.a-busca-res { position: absolute; z-index: 40; left: 0; right: 0; top: calc(100% + 6px); background: var(--branco); border: 1px solid var(--linha); border-radius: 14px; box-shadow: 0 18px 40px -20px rgba(40, 10, 60, .45); padding: 6px; max-height: 60vh; overflow: auto; }
+.a-busca-res .p-meta { margin: 8px 10px; }
+.a-busca-item { display: flex; align-items: center; gap: 8px; border-radius: 10px; }
+.a-busca-item:hover { background: var(--papel); }
+.a-busca-item > button:first-child { flex: 1; min-width: 0; font: inherit; text-align: left; background: none; border: 0; padding: 8px 10px; cursor: pointer; display: grid; gap: 2px; }
+.a-busca-item strong { font-size: 14.5px; }
+.a-busca-item span { font-size: 13px; color: var(--cinza); }
+.a-busca-item small { font-size: 12.5px; color: var(--tinta); font-weight: 600; }
+.a-busca-item .p-btn { margin-right: 6px; flex: none; }
+.a-destino { margin: 0; align-items: center; }
+.a-destino > span { font-size: 13px; color: var(--cinza); padding: 0 6px 0 10px; }
+.a-destino button { font-size: 14px; padding: 6px 12px; }
+.a-vistas { margin: 0 0 18px; }
+
+.a-numeros { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin: 0 0 12px; }
+.a-numeros > div { background: var(--branco); border: 1px solid var(--linha); border-radius: 12px; padding: 10px 12px; display: grid; gap: 2px; }
+.a-numeros b { font-family: var(--f-display); font-size: 24px; line-height: 1; }
+.a-numeros span { font-size: 12.5px; color: var(--cinza); }
+.a-numeros .a-num--hoje { border-color: var(--tinta); background: #FBF3FF; }
+.a-numeros .a-num--hoje b { color: var(--tinta); }
+.a-filtro { margin-bottom: 12px; }
+
+.a-grupo { background: var(--branco); border: 1px solid var(--linha); border-radius: 14px; margin: 0 0 10px; overflow: hidden; }
+.a-grupo-cab { width: 100%; font: inherit; color: inherit; text-align: left; background: none; border: 0; padding: 12px 14px; cursor: pointer; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.a-grupo-cab:hover { background: var(--papel); }
+.a-grupo-cab:focus-visible { outline: 2px solid var(--tinta); outline-offset: -2px; }
+.a-grupo-cab h3 { margin: 0; font-family: var(--f-display); font-size: 17px; }
+.a-grupo-cab small { color: var(--cinza); font-size: 13px; }
+.a-grupo-cab i { margin-left: auto; font-style: normal; font-size: 20px; color: var(--cinza); line-height: 1; }
+.a-grupo--resp { border-color: #BFE3CF; }
+.a-grupo--resp h3 { color: var(--ok); }
+.a-grupo--d3 { border-color: #E7C2FB; }
+.a-lista { list-style: none; margin: 0; padding: 0; }
+.a-linha { display: grid; grid-template-columns: minmax(180px, 1.4fr) minmax(170px, 1.2fr) minmax(150px, 1fr) auto; gap: 8px 14px; align-items: center; padding: 10px 14px; border-top: 1px solid var(--linha); }
+.a-quem { font: inherit; color: inherit; text-align: left; background: none; border: 0; padding: 0; cursor: pointer; display: grid; gap: 2px; min-width: 0; }
+.a-quem strong { font-size: 14.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.a-quem:hover strong { color: var(--tinta); }
+.a-quem span { font-size: 12.5px; color: var(--cinza); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.a-hist { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-size: 13.5px; }
+.a-hist .a-sub { flex-basis: 100%; font-size: 12px; color: var(--cinza); }
+.a-canal { font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 999px; background: #E3F4EA; color: var(--ok); }
+.a-canal--instagram { background: #FCE8FF; color: #A0179E; }
+.a-prox { display: grid; gap: 1px; font-size: 13.5px; }
+.a-prox small { font-size: 11px; color: var(--cinza); }
+.a-prox--hoje span { color: var(--tinta); font-weight: 700; }
+.a-prox--fim span { color: var(--cinza); }
+.a-acoes { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+@media (max-width: 860px) {
+  .a-numeros { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .a-linha { grid-template-columns: 1fr 1fr; }
+  .a-acoes { grid-column: 1 / -1; justify-content: flex-start; }
+}
+
+/* Rajada: espera ajustável, dois WhatsApps, etapa do lead */
+.p-rajada-topo { flex-wrap: wrap; }
+.p-rajada-int { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--cinza); margin-left: auto; }
+.p-rajada-int select { font: inherit; font-size: 13px; padding: 4px 6px; border: 1px solid var(--linha); border-radius: 8px; background: var(--branco); }
+.p-rajada-etapa { display: block; margin-top: 4px; font-size: 12.5px; color: var(--tinta) !important; font-weight: 600; }
+.p-rajada-botoes { display: flex; gap: 8px; margin: 10px 0; }
+.p-rajada-botoes .p-rajada-ir { margin: 0; flex: 1; }
+.p-rajada-botoes .p-btn:not(.p-rajada-ir) { flex: none; }

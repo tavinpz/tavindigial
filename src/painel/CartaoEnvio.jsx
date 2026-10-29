@@ -2,7 +2,8 @@ import { useEffect, useMemo, useState } from 'react'
 import { preencher, varianteDe, formatTel, igPerfil } from '../lib/msg'
 import { escolherMensagem, variantesDe, registrarEnvio, registrarEvento, linkMaps, ETAPAS, tempoAtras, STATUS } from './api'
 import { usePainel } from './Painel'
-import { abrirCanal, canalDe, dicaDm, etapaNoCanal } from './envio'
+import { DESTINOS_WA, abrirCanal, canalDe, dicaDm, etapaNoCanal, outroDestino, waDestino } from './envio'
+import { ehCelular } from '../lib/msg'
 
 const hostDe = (site) => {
   if (!site) return ''
@@ -10,7 +11,8 @@ const hostDe = (site) => {
 }
 
 // Um lead + a mensagem pronta + o botão que abre o WhatsApp e grava o envio
-export default function CartaoEnvio({ lead, etapa: etapaBase, canal: canalPedido, onFeito, mostrarStatus = false, marcarResposta = false }) {
+export default function CartaoEnvio({ lead, etapa: etapaBase, canal: canalPedido, onFeito, mostrarStatus = false, marcarResposta = false, destino: destinoPedido }) {
+  const destino = destinoPedido || waDestino()
   const { mensagens, abrirLead, avisar } = usePainel()
   const canal = canalPedido || canalDe(lead)
   const etapa = etapaNoCanal(etapaBase, canal)
@@ -35,9 +37,9 @@ export default function CartaoEnvio({ lead, etapa: etapaBase, canal: canalPedido
 
   const podeEnviar = dm ? !!lead.instagram : !!lead.whatsapp
 
-  async function enviar() {
+  async function enviar(dest) {
     if (!podeEnviar || !texto) return
-    abrirCanal(canal, lead, texto)
+    abrirCanal(canal, lead, texto, dest)
     setOcupado(true)
     try {
       await registrarEnvio({ lead, mensagem: modelo, etapa, texto, canal })
@@ -110,7 +112,8 @@ export default function CartaoEnvio({ lead, etapa: etapaBase, canal: canalPedido
       )}
 
       <div className="p-acoes">
-        <button className="p-btn p-btn--forte" onClick={enviar} disabled={ocupado || !podeEnviar || !texto}>{dm ? 'Copiar e abrir DM' : 'Enviar no WhatsApp'}</button>
+        <button className="p-btn p-btn--forte" onClick={() => enviar()} disabled={ocupado || !podeEnviar || !texto}>{dm ? 'Copiar e abrir DM' : `Enviar no ${DESTINOS_WA[destino]}`}</button>
+        {!dm && !ehCelular() && <button className="p-btn" onClick={() => enviar(outroDestino(destino))} disabled={ocupado || !podeEnviar || !texto}>{DESTINOS_WA[outroDestino(destino)]}</button>}
         <button className="p-btn" onClick={copiar} disabled={!texto}>Copiar</button>
         {marcarResposta && <button className="p-btn" onClick={respondeu} disabled={ocupado}>Respondeu</button>}
         <button className="p-btn p-btn--fraco" onClick={() => onFeito?.(lead.id, 'pular')}>Pular</button>
