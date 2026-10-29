@@ -717,3 +717,21 @@ body:has(.p-fantasma) { cursor: grabbing; }
 .rp-var span { margin-right: 4px; }
 .rp-var button { font: inherit; font-size: 13px; font-weight: 700; width: 32px; height: 28px; border: 1px solid var(--linha); background: var(--branco); color: var(--cinza); border-radius: 8px; cursor: pointer; }
 .rp-var button.ativa { border-color: var(--tinta); color: var(--tinta); background: #FBF3FF; }
+
+/* Textos das mensagens: abas por etapa e versões */
+.mg-abas { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; }
+.mg-abas button { font: inherit; font-size: 14.5px; border: 1px solid var(--linha); background: var(--branco); color: var(--grafite, #2A2230); padding: 8px 14px; border-radius: 999px; cursor: pointer; }
+.mg-abas button b { font-size: 12px; color: var(--cinza); margin-left: 4px; }
+.mg-abas button.ativa { border-color: var(--tinta); background: var(--tinta); color: var(--branco); font-weight: 700; }
+.mg-abas button.ativa b { color: rgba(255,255,255,.8); }
+.mg-abas button:focus-visible, .mg-vers button:focus-visible { outline: 2px solid var(--tinta); outline-offset: 2px; }
+.mg-onde { margin: 0 0 18px; padding: 10px 14px; background: #FBF3FF; border: 1px solid #E7C2FB; border-radius: 12px; font-size: 14px; }
+.mg-etapa { margin: 0 0 22px; }
+.mg-etapa-cab { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin: 0 0 8px; }
+.mg-etapa-cab h3 { margin: 0; font-family: var(--f-display); font-size: 18px; }
+.mg-vers { display: flex; flex-wrap: wrap; gap: 4px; }
+.mg-vers button { font: inherit; font-size: 13px; font-weight: 700; min-width: 34px; height: 30px; padding: 0 10px; border: 1px solid var(--linha); background: var(--branco); color: var(--cinza); border-radius: 8px; cursor: pointer; }
+.mg-vers button.ativa { border-color: var(--tinta); color: var(--tinta); background: #FBF3FF; }
+.mg-vers button.pausada { text-decoration: line-through; opacity: .6; }
+.p-vars-det { margin-top: 10px; font-size: 14px; }
+.p-vars-det summary { cursor: pointer; color: var(--cinza); }

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { preencher } from '../lib/msg'
 import { ETAPAS } from './api'
@@ -6,18 +6,18 @@ import { usePainel } from './Painel'
 
 const PUBLICOS = { sem_site: 'Sem site', site_falso: 'Link fraco', todos: 'Todos' }
 
-// A ordem do funil: quando cada mensagem é usada
+// A ordem do funil: quando cada mensagem é usada e onde ela aparece no painel
 const GRUPOS = [
-  { titulo: 'Primeira mensagem no WhatsApp', canal: 'whatsapp', etapas: ['abertura'],
-    quando: 'Vai para quem nunca foi chamado. Sem link: só uma pergunta para a pessoa responder. Os leads se dividem entre as variantes ativas; o Início mostra qual responde mais.' },
-  { titulo: 'Primeira mensagem no Instagram', canal: 'instagram', etapas: ['abertura_dm'],
-    quando: 'Vai na DM. Sem link na primeira mensagem: o Instagram esconde DM com link de quem não te segue.' },
-  { titulo: 'Follow-ups', canal: 'whatsapp', etapas: ['followup_1', 'followup_2', 'followup_proposta'],
-    quando: 'Aparecem sozinhos em Prospectar: o 1º três dias depois da abertura, o último quatro dias depois do 1º (3 mensagens no total; a 4ª quase nunca responde). O de proposta, dois dias depois de mandar o link ou o preço.' },
-  { titulo: 'Respostas prontas', canal: 'whatsapp', etapas: ['resp_link', 'resp_preco', 'resp_pensar', 'resp_ja_tenho'],
-    quando: 'Você escolhe na ficha do lead quando ele responde. Respondeu "pode mandar"? Vai a de mandar o link.' },
-  { titulo: 'Depois da venda', canal: 'whatsapp', etapas: ['pos_venda', 'upsell_30d'],
-    quando: 'Quando a página vai ao ar e 30 dias depois, para pedir avaliação, indicação e oferecer o próximo serviço.' },
+  { id: 'abertura', titulo: '1ª mensagem · WhatsApp', canal: 'whatsapp', etapas: ['abertura'],
+    quando: 'No CRM, coluna "Chamar no WhatsApp": botões Web / App (ou arrastando para "Enviado"). Sem link: só uma pergunta para a pessoa responder.' },
+  { id: 'dm', titulo: '1ª mensagem · Instagram', canal: 'instagram', etapas: ['abertura_dm'],
+    quando: 'No CRM, coluna "Chamar no Instagram": botão "Copiar e abrir DM". Sem link na primeira mensagem.' },
+  { id: 'followups', titulo: 'Follow-ups', canal: 'whatsapp', etapas: ['followup_1', 'followup_2', 'followup_proposta'],
+    quando: 'No CRM, coluna "Enviado", grupo "Follow-up hoje": botões Web / App. O 1º sai 3 dias depois da 1ª mensagem; o último, 4 dias depois do 1º.' },
+  { id: 'respostas', titulo: 'Respostas', canal: 'whatsapp', etapas: ['resp_link', 'resp_preco', 'resp_pensar', 'resp_ja_tenho'],
+    quando: 'No CRM, botão "Respondeu" em qualquer card (na coluna "Respondeu": "Mandar link / responder"). Você escolhe o que ele respondeu e a versão A, B, C ou D.' },
+  { id: 'venda', titulo: 'Depois da venda', canal: 'whatsapp', etapas: ['pos_venda', 'upsell_30d'],
+    quando: 'Quando a página vai ao ar e 30 dias depois: pedir avaliação, indicação e oferecer o próximo serviço.' },
 ]
 
 // Lead de exemplo para a prévia
@@ -29,7 +29,7 @@ const VARIAVEIS = [
 ]
 
 function Item({ m, canal }) {
-  const { recarregarMensagens, avisar } = usePainel()
+  const { recarregarMensagens, avisar, mensagens } = usePainel()
   const [texto, setTexto] = useState(m.texto)
   const mudou = texto !== m.texto
   const lead = m.publico === 'sem_site' ? { ...EXEMPLO, site_raw: null } : EXEMPLO
@@ -44,7 +44,10 @@ function Item({ m, canal }) {
     recarregarMensagens()
   }
   async function duplicar() {
-    const proxima = String.fromCharCode(m.variante.charCodeAt(0) + 1)
+    // próxima letra livre nesta etapa (A, B, C, D → E)
+    const usadas = new Set(mensagens.filter((x) => x.etapa === m.etapa && x.publico === m.publico).map((x) => x.variante))
+    let proxima = 'A'
+    while (usadas.has(proxima)) proxima = String.fromCharCode(proxima.charCodeAt(0) + 1)
     await supabase.from('mensagens').insert({ etapa: m.etapa, variante: proxima, publico: m.publico, texto: m.texto })
     avisar(`Variante ${proxima} criada`); recarregarMensagens()
   }
@@ -78,35 +81,66 @@ function Item({ m, canal }) {
   )
 }
 
+// Uma etapa: abas com as versões (A, B, C…) e um editor por vez
+function Etapa({ etapa, itens, canal }) {
+  const ordem = (m) => `${m.publico === 'site_falso' ? 0 : m.publico === 'sem_site' ? 1 : 2}${m.variante}`
+  const lista = [...itens].sort((a, b) => ordem(a).localeCompare(ordem(b)))
+  const [sel, setSel] = useState(lista[0]?.id)
+  const atual = lista.find((m) => m.id === sel) || lista[0]
+  return (
+    <section className="mg-etapa">
+      <div className="mg-etapa-cab">
+        <h3>{ETAPAS[etapa] || etapa}</h3>
+        <div className="mg-vers" role="tablist" aria-label={`Versões de ${ETAPAS[etapa] || etapa}`}>
+          {lista.map((m) => (
+            <button key={m.id} role="tab" aria-selected={atual?.id === m.id} className={`${atual?.id === m.id ? 'ativa' : ''} ${m.ativo ? '' : 'pausada'}`} onClick={() => setSel(m.id)}>
+              {m.publico !== 'todos' ? `${PUBLICOS[m.publico]} ` : ''}{m.variante}
+            </button>
+          ))}
+        </div>
+      </div>
+      {atual && <Item key={atual.id} m={atual} canal={canal} />}
+    </section>
+  )
+}
+
 export default function Mensagens() {
   const { mensagens } = usePainel()
-  const ordem = (m) => `${m.publico === 'site_falso' ? 0 : m.publico === 'sem_site' ? 1 : 2}${m.variante}`
+  const [aba, setAba] = useState(() => { try { return localStorage.getItem('mg-aba') || 'respostas' } catch { return 'respostas' } })
+  useEffect(() => { try { localStorage.setItem('mg-aba', aba) } catch { /* sem storage */ } }, [aba])
+  const g = GRUPOS.find((x) => x.id === aba) || GRUPOS[0]
+  const conta = (gr) => mensagens.filter((m) => gr.etapas.includes(m.etapa) && m.ativo).length
 
   return (
     <section className="p-msgs">
       <div className="p-cab">
         <div>
           <h1>Textos das mensagens</h1>
-          <p className="p-sub">Na ordem do funil. A prévia ao lado mostra como a mensagem chega para um negócio de exemplo.</p>
+          <p className="p-sub">Escolha a etapa em cima e a versão (A, B, C…) ao lado do nome. A prévia mostra como chega para um negócio de exemplo.</p>
         </div>
       </div>
 
-      <div className="p-vars" aria-label="Variáveis">
-        {VARIAVEIS.map(([v, d]) => <span key={v}><code>{v}</code> {d}</span>)}
+      <div className="mg-abas" role="tablist" aria-label="Etapas do funil">
+        {GRUPOS.map((x) => (
+          <button key={x.id} role="tab" aria-selected={aba === x.id} className={aba === x.id ? 'ativa' : ''} onClick={() => setAba(x.id)}>
+            {x.titulo} <b>{conta(x)}</b>
+          </button>
+        ))}
       </div>
 
-      {GRUPOS.map((g, i) => {
-        const itens = mensagens.filter((m) => g.etapas.includes(m.etapa))
-          .sort((a, b) => g.etapas.indexOf(a.etapa) - g.etapas.indexOf(b.etapa) || ordem(a).localeCompare(ordem(b)))
-        if (!itens.length) return null
-        return (
-          <div key={g.titulo} className="p-grupo">
-            <h2><span className="p-grupo-n">{i + 1}</span>{g.titulo}</h2>
-            <p className="p-meta">{g.quando}</p>
-            <div className="p-msg-lista">{itens.map((m) => <Item key={m.id} m={m} canal={g.canal} />)}</div>
-          </div>
-        )
+      <p className="mg-onde"><strong>Onde aparece:</strong> {g.quando}</p>
+
+      {g.etapas.map((e) => {
+        const itens = mensagens.filter((m) => m.etapa === e)
+        return itens.length ? <Etapa key={e} etapa={e} itens={itens} canal={g.canal} /> : null
       })}
+
+      <details className="p-vars-det">
+        <summary>Variáveis que você pode usar no texto</summary>
+        <div className="p-vars" aria-label="Variáveis">
+          {VARIAVEIS.map(([v, d]) => <span key={v}><code>{v}</code> {d}</span>)}
+        </div>
+      </details>
     </section>
   )
 }
