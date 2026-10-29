@@ -36,7 +36,9 @@ export const salvarWaDestino = (d) => {
 }
 export const outroDestino = (d) => (d === 'web' ? 'app' : 'web')
 // a extensão marca o <html> quando está instalada
-export const temExtensao = () => typeof document !== 'undefined' && document.documentElement.dataset.tavinWa === '1'
+export const temExtensao = () => typeof document !== 'undefined' && !!document.documentElement.dataset.tavinWa
+// a 1ª versão recarregava a aba; a partir da 1.1 a conversa abre direto
+export const extensaoVelha = () => typeof document !== 'undefined' && document.documentElement.dataset.tavinWa === '1'
 
 const digitos = (n) => String(n || '').replace(/\D/g, '')
 const waWeb = (numero, texto = '') => `https://web.whatsapp.com/send?phone=${digitos(numero)}${texto ? `&text=${encodeURIComponent(texto)}` : ''}`

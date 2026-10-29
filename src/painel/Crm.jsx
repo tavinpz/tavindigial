@@ -6,6 +6,7 @@ import { COLUNAS, EVENTOS, STATUS, moverEtapa, registrarEnvio, registrarEvento, 
 import { usePainel } from './Painel'
 import { abrirCanal, canalDe, dicaDm, etapaNoCanal, mensagemPara, separarFilas } from './envio'
 import DestinoWa from './DestinoWa'
+import Responder from './Responder'
 import { diasDesde, haDias, proximoPasso } from './Acompanhamento'
 
 // Busca: nome, @ ou número (com ou sem 55, com ou sem traço/parênteses)
@@ -45,6 +46,7 @@ export default function Crm() {
   const [fila, setFila] = useState({ wa: [], dm: [] })
   const [feitos, setFeitos] = useState({ whatsapp: 0, instagram: 0 })
   const [acomp, setAcomp] = useState({})
+  const [responder, setResponder] = useState(null)
   const [extra, setExtra] = useState({ wa: 0, dm: 0 })
   const VISIVEIS = 40
   const [busca, setBusca] = useState('')
@@ -83,7 +85,7 @@ export default function Crm() {
   const tirarDaFila = (id) => setFila((f) => ({ wa: f.wa.filter((l) => l.id !== id), dm: f.dm.filter((l) => l.id !== id) }))
 
   // Saindo de "Chamar": tudo que abre janela roda ANTES do primeiro await (o navegador só deixa dentro do gesto)
-  async function chamar(lead, de, para) {
+  async function chamar(lead, de, para, destino) {
     const canal = CHAMAR[de]
     if (CHAMAR[para]) { // trocar de canal
       const novo = CHAMAR[para]
@@ -104,9 +106,11 @@ export default function Crm() {
     const etapa = etapaNoCanal('abertura', canal)
     const { modelo, texto } = mensagemPara(mensagens, lead, etapa)
     if (!texto) return avisar('Não há mensagem ativa de abertura. Crie em Mensagens.')
-    abrirCanal(canal, lead, texto)
+    abrirCanal(canal, lead, texto, destino)
     tirarDaFila(lead.id)
-    setLeads((ls) => [{ ...lead, status: 'enviado', updated_at: new Date().toISOString(), eventos: [] }, ...ls])
+    const agora = new Date().toISOString()
+    setLeads((ls) => [{ ...lead, status: 'enviado', updated_at: agora, eventos: [] }, ...ls])
+    setAcomp((a) => ({ ...a, [lead.id]: { id: lead.id, status: 'enviado', ultimo_envio: agora, primeiro_envio: agora, total_envios: 1, ultima_etapa: etapa, ultimo_canal: canal, proximo_contato: new Date(Date.now() + 3 * 86400000).toISOString() } }))
     setFeitos((f) => ({ ...f, [canal]: f[canal] + 1 }))
     try {
       await registrarEnvio({ lead, mensagem: modelo, etapa, texto, canal })
@@ -118,23 +122,23 @@ export default function Crm() {
   }
 
   // Follow-up direto do card: abre a conversa com o texto certo e registra
-  async function mandarFollowup(lead) {
+  async function mandarFollowup(lead, destino) {
     const a = acomp[lead.id] || {}
     const canal = a.ultimo_canal || canalDe(lead)
     const etapa = etapaNoCanal(etapaFollowup({ ...a, status: lead.status }), canal)
     const { modelo, texto } = mensagemPara(mensagens, lead, etapa)
     if (!texto) return avisar('Não há mensagem ativa para esse follow-up. Crie em Textos das mensagens.')
-    abrirCanal(canal, lead, texto)
+    abrirCanal(canal, lead, texto, destino)
     try {
       await registrarEnvio({ lead, mensagem: modelo, etapa, texto, canal })
       avisar(canal === 'instagram' ? dicaDm(lead) : `Follow-up enviado: ${lead.nome}`)
       carregar()
     } catch { avisar('Abriu a conversa, mas não registrou. Tente de novo.') }
   }
-  const abrirConversa = (lead) => {
-    const a = acomp[lead.id] || {}
-    abrirCanal(a.ultimo_canal === 'instagram' || !lead.whatsapp ? 'instagram' : 'whatsapp', lead, '')
-  }
+  const canalDoLead = (lead) => ((acomp[lead.id]?.ultimo_canal === 'instagram' || !lead.whatsapp) ? 'instagram' : 'whatsapp')
+  const abrirConversa = (lead, destino) => abrirCanal(canalDoLead(lead), lead, '', destino)
+  // botões dentro do card não podem iniciar o arrastar
+  const parar = (e) => e.stopPropagation()
 
   async function soltar(lead, para, de) {
     if (CHAMAR[de]) return chamar(lead, de, para)
@@ -263,14 +267,14 @@ export default function Crm() {
       <div className="p-cab">
         <div>
           <h1>CRM</h1>
-          <p className="p-sub">Arraste de “Chamar” para “Enviado”: a conversa abre com a mensagem pronta.</p>
+          <p className="p-sub">Em cada card: <b>Web</b> abre na sua aba do WhatsApp Web, <b>App</b> abre no WhatsApp do computador. Lead respondeu? Clique em <b>Respondeu</b> e a mensagem certa (com o link) aparece pronta para copiar.</p>
         </div>
         <div className="crm-ferr">
           <div className="crm-busca">
             <input className="p-busca" type="search" placeholder="Buscar nome, número ou @" value={busca} onChange={(e) => setBusca(e.target.value)} aria-label="Buscar no CRM por nome, número ou @" />
             {filtro && <small>{achados ? `${achados} encontrado${achados > 1 ? 's' : ''}` : 'Ninguém com esse nome ou número'}</small>}
           </div>
-          <DestinoWa />
+          <DestinoWa rotulo="Ao arrastar, abrir no" />
         </div>
       </div>
 
@@ -293,6 +297,15 @@ export default function Crm() {
                     <small>{[l.nicho || l.categoria, l.bairro].filter(Boolean).join(' · ')}</small>
                     <span className={`p-card-canal p-card-canal--${canal}`}>{canal === 'instagram' ? l.instagram : formatTel(l.whatsapp)}</span>
                     <em>{l.tipo_site === 'site_falso' ? 'Link fraco' : 'Sem site'}{l.avaliacoes ? ` · ${l.avaliacoes} avaliações` : ''}</em>
+                    <span className="crm-botoes" onPointerDown={parar}>
+                      {canal === 'whatsapp' ? <>
+                        <span className="crm-rot">1ª mensagem:</span>
+                        <button type="button" className="crm-btn crm-btn--forte" onClick={(e) => { parar(e); chamar(l, col, 'enviado', 'web') }}>Web</button>
+                        <button type="button" className="crm-btn" onClick={(e) => { parar(e); chamar(l, col, 'enviado', 'app') }}>App</button>
+                      </> : (
+                        <button type="button" className="crm-btn crm-btn--forte" onClick={(e) => { parar(e); chamar(l, col, 'enviado') }}>Copiar e abrir DM</button>
+                      )}
+                    </span>
                   </div>
                 ))}
                 {mostrar.length === 0 && (
@@ -350,10 +363,18 @@ export default function Crm() {
                           )}
                         </span>
                       ) : <em>há {tempoAtras(l.updated_at)}</em>}
-                      {a && ['enviado', 'abriu', 'respondeu', 'proposta'].includes(col) && (
-                        <span className="crm-botoes" onPointerDown={(e) => e.stopPropagation()}>
-                          {g === 'fup' && <button type="button" className="crm-btn crm-btn--forte" onClick={(e) => { e.stopPropagation(); mandarFollowup(l) }}>Enviar follow-up</button>}
-                          <button type="button" className="crm-btn" title="Abrir a conversa sem texto" onClick={(e) => { e.stopPropagation(); abrirConversa(l) }}>Abrir</button>
+                      {['enviado', 'abriu', 'respondeu', 'proposta'].includes(col) && (l.whatsapp || l.instagram) && (
+                        <span className="crm-botoes" onPointerDown={parar}>
+                          {canalDoLead(l) === 'whatsapp' ? <>
+                            <span className="crm-rot">{g === 'fup' ? 'Follow-up:' : 'Conversa:'}</span>
+                            <button type="button" className={`crm-btn ${g === 'fup' ? 'crm-btn--forte' : ''}`} onClick={(e) => { parar(e); g === 'fup' ? mandarFollowup(l, 'web') : abrirConversa(l, 'web') }}>Web</button>
+                            <button type="button" className="crm-btn" onClick={(e) => { parar(e); g === 'fup' ? mandarFollowup(l, 'app') : abrirConversa(l, 'app') }}>App</button>
+                          </> : (
+                            <button type="button" className={`crm-btn ${g === 'fup' ? 'crm-btn--forte' : ''}`} onClick={(e) => { parar(e); g === 'fup' ? mandarFollowup(l) : abrirConversa(l) }}>{g === 'fup' ? 'Follow-up na DM' : 'Abrir DM'}</button>
+                          )}
+                          <button type="button" className={`crm-btn crm-btn--resp ${col === 'respondeu' ? 'crm-btn--forte' : ''}`} onClick={(e) => { parar(e); setResponder({ lead: l, canal: canalDoLead(l) }) }}>
+                            {col === 'respondeu' ? 'Mandar link / responder' : 'Respondeu'}
+                          </button>
                         </span>
                       )}
                     </div>
@@ -367,6 +388,7 @@ export default function Crm() {
           )
         })}
       </div>
+      {responder && <Responder lead={responder.lead} canal={responder.canal} fechar={() => setResponder(null)} depois={carregar} />}
     </section>
   )
 }

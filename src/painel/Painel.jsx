@@ -98,6 +98,16 @@ export default function Painel() {
   useEffect(() => { try { localStorage.setItem('p-aba', aba) } catch { /* sem storage */ } }, [aba])
 
   const avisar = useCallback((t) => { setAviso(t); setTimeout(() => setAviso(''), 2600) }, [])
+  // resposta da extensão do WhatsApp (ex.: número sem WhatsApp)
+  useEffect(() => {
+    const ouvir = (e) => {
+      if (e.source !== window || e.data?.tipo !== 'tavin-wa-resultado') return
+      if (e.data.resultado === 'nao-tem-whatsapp') avisar('Esse número não tem WhatsApp')
+      else if (e.data.resultado === 'aba-nova') avisar('Abri o WhatsApp Web numa aba nova: deixe ela aberta para as próximas')
+    }
+    window.addEventListener('message', ouvir)
+    return () => window.removeEventListener('message', ouvir)
+  }, [avisar])
   const atualizar = useCallback(() => setVersao((v) => v + 1), [])
 
   // ── Ao vivo: o que muda no celular aparece no computador (e vice-versa) sem recarregar ──

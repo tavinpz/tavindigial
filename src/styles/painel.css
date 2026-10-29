@@ -696,3 +696,20 @@ body:has(.p-fantasma) { cursor: grabbing; }
 .dw-sel select { font: inherit; font-size: 14px; font-weight: 700; color: var(--grafite, #2A2230); border: 0; background: var(--papel); border-radius: 8px; padding: 6px 8px; cursor: pointer; }
 .dw-sel select:focus-visible { outline: 2px solid var(--tinta); }
 .dw-ok { font-style: normal; font-size: 12px; font-weight: 700; color: var(--ok); background: #E3F4EA; border-radius: 999px; padding: 2px 8px; }
+
+/* CRM: rótulo dos botões e janela de resposta */
+.crm-rot { font-size: 11.5px; color: var(--cinza); align-self: center; }
+.crm-btn--resp { margin-left: auto; }
+.p-card--chamar .crm-botoes { margin-top: 8px; }
+.rp-fundo { position: fixed; inset: 0; z-index: 80; background: rgba(23, 18, 27, .45); display: grid; place-items: center; padding: 16px; }
+.rp { width: min(560px, 100%); max-height: calc(100vh - 32px); overflow: auto; background: var(--branco); border-radius: 18px; padding: 18px 20px; box-shadow: 0 30px 60px -30px rgba(40, 10, 60, .6); display: flex; flex-direction: column; gap: 10px; }
+.rp-topo { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.rp-topo strong { display: block; font-family: var(--f-display); font-size: 19px; }
+.rp-topo small { color: var(--cinza); font-size: 13.5px; }
+.rp-pergunta { margin: 4px 0 0; font-size: 13px; font-weight: 700; color: var(--cinza); }
+.rp-tipos { display: flex; flex-wrap: wrap; gap: 6px; }
+.rp-tipos button { font: inherit; font-size: 14px; border: 1px solid var(--linha); background: var(--branco); color: var(--grafite, #2A2230); padding: 7px 12px; border-radius: 999px; cursor: pointer; }
+.rp-tipos button.ativa { border-color: var(--tinta); background: #FBF3FF; color: var(--tinta); font-weight: 700; }
+.rp-tipos button:focus-visible { outline: 2px solid var(--tinta); }
+.rp-texto { min-height: 200px; }
+.rp-acoes { display: flex; flex-wrap: wrap; gap: 8px; }
