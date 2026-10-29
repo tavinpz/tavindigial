@@ -10,6 +10,7 @@ import Leads from './Leads'
 import Briefings from './Briefings'
 import Mensagens from './Mensagens'
 import Conteudo from './Conteudo'
+import Videos from './Videos'
 import Coleta from './Coleta'
 import LeadDrawer from './LeadDrawer'
 import '../styles/painel.css'
@@ -24,6 +25,7 @@ const ABAS = [
   ['crm', 'CRM', Crm, 'M4 4h5v16H4zM10 4h5v10h-5zM16 4h4v13h-4z'],
   ['leads', 'Leads', Leads, 'M16 19v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1M9.5 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM21 19v-1a4 4 0 0 0-3-3.9M16 4.1a3 3 0 0 1 0 5.8'],
   ['conteudo', 'Carrosséis', Conteudo, 'M3 6h13v13H3zM19 4v13M22 2v13'],
+  ['videos', 'Vídeos', Videos, 'M4 4h16v16H4zM10 9l5 3-5 3z'],
 ]
 const EXTRAS = [
   ['coleta', 'Coleta de leads', Coleta],
@@ -67,7 +69,7 @@ function Login() {
 export default function Painel() {
   const [sessao, setSessao] = useState(undefined)
   const [admin, setAdmin] = useState(null)
-  const [aba, setAba] = useState(() => { try { const a = localStorage.getItem('p-aba'); return ['inicio', 'prospectar', 'crm', 'leads', 'conteudo', 'coleta', 'briefings', 'mensagens'].includes(a) ? a : 'inicio' } catch { return 'inicio' } })
+  const [aba, setAba] = useState(() => { try { const a = localStorage.getItem('p-aba'); return ['inicio', 'prospectar', 'crm', 'leads', 'conteudo', 'videos', 'coleta', 'briefings', 'mensagens'].includes(a) ? a : 'inicio' } catch { return 'inicio' } })
   const [mensagens, setMensagens] = useState([])
   const [prontas, setProntas] = useState(false)
   const [leadAberto, setLeadAberto] = useState(null)
@@ -113,7 +115,7 @@ export default function Painel() {
   useEffect(() => {
     if (!admin) return
     const canal = supabase.channel('painel-ao-vivo')
-    for (const t of ['leads', 'envios', 'eventos', 'negocios', 'briefings', 'coleta_buscas']) {
+    for (const t of ['leads', 'envios', 'eventos', 'negocios', 'briefings', 'coleta_buscas', 'videos']) {
       canal.on('postgres_changes', { event: '*', schema: 'public', table: t }, sincronizar)
     }
     canal.on('postgres_changes', { event: '*', schema: 'public', table: 'mensagens' }, () => recarregarMensagens())
