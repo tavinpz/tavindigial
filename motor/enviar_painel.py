@@ -63,11 +63,11 @@ def main(ids):
             # vídeo ainda não renderizado: entra no painel só com textos e data
             fontes = 'array[' + ','.join(q(x) for x in v.get('fontes', [])) + ']::text[]'
             sql.append(
-                "insert into public.videos (id, canal, numero, titulo, arquivo, publicar_em, yt_titulo, yt_descricao, tt_legenda, ig_legenda, comentario_fixado, fontes) values ("
+                "insert into public.videos (id, canal, numero, titulo, arquivo, publicar_em, yt_titulo, yt_descricao, tt_legenda, ig_legenda, comentario_fixado, fontes, yt_tags) values ("
                 f"{q(v['id'])}, 'concrete-atlas', {v['numero']}, {q(v['yt_titulo'])}, {q(v['arquivo'])}, {q(v['publicar_em'])}, {q(v['yt_titulo'])}, {q(v['yt_descricao'])}, "
-                f"{q(v['tt_legenda'])}, {q(v['ig_legenda'])}, {q(v['comentario_fixado'])}, {fontes}) "
+                f"{q(v['tt_legenda'])}, {q(v['ig_legenda'])}, {q(v['comentario_fixado'])}, {fontes}, {q(v.get('yt_tags'))}) "
                 "on conflict (id) do update set titulo = excluded.titulo, publicar_em = excluded.publicar_em, yt_titulo = excluded.yt_titulo, yt_descricao = excluded.yt_descricao, "
-                "tt_legenda = excluded.tt_legenda, ig_legenda = excluded.ig_legenda, comentario_fixado = excluded.comentario_fixado, fontes = excluded.fontes;")
+                "tt_legenda = excluded.tt_legenda, ig_legenda = excluded.ig_legenda, comentario_fixado = excluded.comentario_fixado, fontes = excluded.fontes, yt_tags = excluded.yt_tags;")
             print('só textos', v['id']); continue
         if not os.path.exists(mp4) or os.path.getmtime(mp4) < os.path.getmtime(src):
             subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', src, '-c:v', 'libx264', '-preset', 'slow', '-crf', '21', '-maxrate', '9M', '-bufsize', '18M',
@@ -80,12 +80,12 @@ def main(ids):
                        f"on conflict (caminho) do update set sha256 = excluded.sha256, usado_em = null;")
         fontes = 'array[' + ','.join(q(x) for x in v.get('fontes', [])) + ']::text[]'
         sql.append(
-            "insert into public.videos (id, canal, numero, titulo, arquivo, video_url, capa_url, duracao, publicar_em, yt_titulo, yt_descricao, tt_legenda, ig_legenda, comentario_fixado, fontes) values ("
+            "insert into public.videos (id, canal, numero, titulo, arquivo, video_url, capa_url, duracao, publicar_em, yt_titulo, yt_descricao, tt_legenda, ig_legenda, comentario_fixado, fontes, yt_tags) values ("
             f"{q(v['id'])}, 'concrete-atlas', {v['numero']}, {q(v['yt_titulo'])}, {q(v['arquivo'])}, {q(f'{PUB}/{v['id']}.mp4')}, {q(f'{PUB}/{v['id']}.jpg')}, {dur:.1f}, "
-            f"{q(v['publicar_em'])}, {q(v['yt_titulo'])}, {q(v['yt_descricao'])}, {q(v['tt_legenda'])}, {q(v['ig_legenda'])}, {q(v['comentario_fixado'])}, {fontes}) "
+            f"{q(v['publicar_em'])}, {q(v['yt_titulo'])}, {q(v['yt_descricao'])}, {q(v['tt_legenda'])}, {q(v['ig_legenda'])}, {q(v['comentario_fixado'])}, {fontes}, {q(v.get('yt_tags'))}) "
             "on conflict (id) do update set titulo = excluded.titulo, arquivo = excluded.arquivo, video_url = excluded.video_url, capa_url = excluded.capa_url, "
             "duracao = excluded.duracao, publicar_em = excluded.publicar_em, yt_titulo = excluded.yt_titulo, yt_descricao = excluded.yt_descricao, tt_legenda = excluded.tt_legenda, "
-            "ig_legenda = excluded.ig_legenda, comentario_fixado = excluded.comentario_fixado, fontes = excluded.fontes;")
+            "ig_legenda = excluded.ig_legenda, comentario_fixado = excluded.comentario_fixado, fontes = excluded.fontes, yt_tags = excluded.yt_tags;")
         print('pronto', v['id'], f'{os.path.getsize(mp4) / 1e6:.1f} MB')
     open(os.path.join(ENVIO, 'registro.sql'), 'w').write('\n'.join(sql) + '\n')
     print('agora: rode envio/registro.sql no banco e depois  python3 motor/enviar_painel.py --push', ' '.join(v['id'] for v in vids))

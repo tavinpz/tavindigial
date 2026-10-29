@@ -24,6 +24,7 @@ Concrete Atlas: maps, data and engineering. Every script is researched and fact-
 #[lugar] #[assunto] #megaprojects #engineering #geography
 ```
 - **Padrão de hashtags (YouTube, TikTok e Instagram): sempre 5** = 2 do vídeo (lugar + assunto) + as 3 do canal `#megaprojects #engineering #geography`. As 3 primeiras aparecem sobre o título no YouTube. O Instagram aceita no máximo 5 por post (desde dez/2025); o YouTube ignora todas se passar de 15.
+- **Tags por vídeo:** campo `yt_tags` no `canal/videos.json` (6–8 termos do vídeo + as tags do canal, até ~450 caracteres); aparece no painel com botão Copiar.
 - **Tags padrão do canal** (Studio → Configurações → Padrões de upload → Tags), separadas por vírgula: `megaprojects, engineering, geography, maps, infrastructure, civil engineering, how it was built, explained, megaproject, world geography, concrete atlas`
 - Em vídeos longos: **capítulos** com tempo começando em `0:00` (o Google mostra como "momentos-chave" na busca).
 
