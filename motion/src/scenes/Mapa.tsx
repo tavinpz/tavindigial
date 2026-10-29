@@ -62,7 +62,7 @@ export const Mapa: React.FC<CenaProps> = ({ c, f, dur, id, geo, temGlobo, idx })
   // ---------- câmera ----------
   const g0 = temGlobo ? 40 : 0; // quando há globo antes, o mapa começa a aparecer no quadro ~40
   const fl = f - g0;
-  const zoomOut = temGlobo ? 2.8 : 1.65;
+  const zoomOut = temGlobo ? (lon1 - lon0 > 60 ? 1.35 : 2.8) : 1.65;
   const pm = prog(fl, -8, Math.min(dur * 0.55, 60), EIO);
   const empurra = prog(fl, 0, dur - g0, (x) => x);
   const s = lerp(1 / zoomOut, 1, pm) * (1 + (c.zoom ?? 0.08) * empurra);

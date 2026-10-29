@@ -60,13 +60,14 @@ export const Odometro: React.FC<{ f: number; valor: number; dec?: number; prefix
       {final.split('').map((ch, i) => {
         if (!/\d/.test(ch)) return <span key={i} style={{ width: ch === ',' ? tam * 0.2 : tam * 0.24, textAlign: 'center' }}>{ch}</span>;
         const d = parseInt(ch, 10);
+        if (p > 0.985) { di++; return <span key={i} style={{ display: 'inline-block', width: tam * 0.5, textAlign: 'center' }}>{ch}</span>; }
         const voltas = digitos - di - 1; // menos significativo gira mais
         di++;
         const alvo = d + 10 * Math.min(3, voltas + 1);
         const pos = alvo * p;
         const vel = Math.abs(alvo * (prog(f + 1, ini, fim, EO) - p));
         return (
-          <span key={i} style={{ display: 'inline-block', height: lh, overflow: 'hidden', width: tam * 0.5, position: 'relative' }}>
+          <span key={i} style={{ display: 'inline-block', height: lh, overflow: 'hidden', width: tam * 0.5, position: 'relative', WebkitMaskImage: 'linear-gradient(transparent 0%, black 18%, black 82%, transparent 100%)', maskImage: 'linear-gradient(transparent 0%, black 18%, black 82%, transparent 100%)' }}>
             <span style={{ position: 'absolute', left: 0, right: 0, top: -(pos % 10) * lh, filter: vel > 0.15 ? `blur(${Math.min(6, vel * 5)}px)` : undefined }}>
               {Array.from({ length: 11 }).map((_, k) => (
                 <span key={k} style={{ display: 'block', height: lh, textAlign: 'center' }}>{k % 10}</span>

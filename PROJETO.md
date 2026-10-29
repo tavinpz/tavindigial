@@ -12,9 +12,13 @@ Você produz vídeos para o canal do YouTube **Concrete Atlas** (inglês, sem ro
 
 ## Fazer um Short (motor de cenas)
 - Crie `videos/NNN-tema/spec.json` com `titulo`, `arquivo`, `falas` (1 fala = 1 cena) e `cenas`.
-- Tipos de cena: `mapa` (bbox, destaque, pins, rota/rotas, lacuna, enxame, numero, conter), `numero`, `barras`, `perfil` (corte com terreno, água, túnel, poços, cotas, caminho), `linha` (linha do tempo), `comportas`, `secao`, `salao`, `lista`, `cta`.
-- A cena 0 leva `gancho`: a frase de impacto que aparece no primeiro quadro.
-- Confira: `python3 motor/cenas.py videos/NNN-tema quadros` (gera quadros.png). Render final: `python3 motor/cenas.py videos/NNN-tema` (sai em `saida/`).
+- Tipos de cena: `mapa` (bbox, destaque, pins, rota/rotas, estilo_rota, lacuna, enxame, numero, conter), `numero` (com `segundo` e `fundo`), `barras`, `perfil` (corte com terreno, água, túnel, poços, cotas, caminho), `linha` (linha do tempo), `comportas`, `portoes`, `secao`, `salao`, `lista`, `cta`.
+- A cena 0 leva `gancho`: a frase de impacto que aparece no primeiro quadro, sobre o globo 3D.
+- O motor de produção é o de motion em `motion/` (Remotion). Passos (detalhes em `motion/README.md`):
+  1. `python3 motor/cenas.py videos/NNN-tema narrar` (voz Kokoro)
+  2. `python3 motor/prep_motion.py videos/NNN-tema` e `python3 motor/som.py NNN`
+  3. `node quadros.mjs NNN /tmp/q 0 150 400 …` para conferir quadros; `python3 render.py NNN` para o vídeo final (sai em `saida/`).
+- O motor antigo (`motor/cenas.py` sem `narrar`) fica só como reserva.
 
 ## Gancho (os 3 primeiros segundos)
 - A primeira fala é a afirmação mais surpreendente do vídeo, em até 3 s, sem "hoje vamos ver".

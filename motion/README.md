@@ -31,10 +31,3 @@ node quadros.mjs NNN /tmp/q 0 120 400             # quadros soltos para revisar
 
 ## Desempenho (2 CPUs, sem GPU)
 - 2D: ~0,37 s por quadro. Globo 3D: ~2,3 s por quadro (60 quadros). Um Short de 35 s leva ~10 min.
-
-## Instalação
-```bash
-cd motion && npm install
-mkdir -p public/tex && cp node_modules/three-globe/example/img/{earth-blue-marble.jpg,earth-night.jpg,earth-topology.png,earth-water.png,night-sky.png} public/tex/
-```
-`render.py` e `quadros.mjs` usam o Chromium em /opt/pw-browsers (ajuste `browserExecutable` em `remotion.config.ts` e `quadros.mjs` se mudar de máquina).

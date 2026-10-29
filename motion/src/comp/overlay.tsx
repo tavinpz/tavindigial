@@ -66,13 +66,13 @@ export const Legenda: React.FC<{ f: number; bl: Bloco[]; y?: number }> = ({ f, b
   const g = f - (b.t0 - 0.04) * 30;
   const s = spr(g, 0, { damping: 12, stiffness: 320, mass: 0.6 });
   return (
-    <div style={{ position: 'absolute', left: 90, width: W - 180, top: y, display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '0 18px', transform: `translateY(${(1 - s) * 30}px) scale(${0.82 + 0.18 * s})`, opacity: clamp(s * 2.5) }}>
+    <div style={{ position: 'absolute', left: 90, width: W - 180, top: y, display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '0 24px', transform: `translateY(${(1 - s) * 30}px) scale(${0.82 + 0.18 * s})`, opacity: clamp(s * 2.5) }}>
       {b.ws.map((w, k) => {
         const ativo = t >= w.t0 - 0.03;
         const agora = t >= w.t0 - 0.03 && t < w.t1;
         const num = /\d/.test(w.w);
         return (
-          <span key={k} style={{ fontFamily: F.cond, fontWeight: 800, fontSize: 82, lineHeight: 1.05, textTransform: 'uppercase', color: agora || (num && ativo) ? C.amber : ativo ? C.white : 'rgba(244,246,248,0.55)', WebkitTextStroke: '12px rgba(0,0,0,0.92)', paintOrder: 'stroke fill', textShadow: '0 8px 24px rgba(0,0,0,0.7)', transform: `scale(${agora ? 1.08 : 1})`, display: 'inline-block' }}>{w.w.replace(/[,.:;]$/, '')}</span>
+          <span key={k} style={{ fontFamily: F.cond, fontWeight: 800, fontSize: 82, lineHeight: 1.05, textTransform: 'uppercase', color: agora || (num && ativo) ? C.amber : ativo ? C.white : 'rgba(244,246,248,0.55)', WebkitTextStroke: '12px rgba(0,0,0,0.92)', paintOrder: 'stroke fill', textShadow: '0 8px 24px rgba(0,0,0,0.7)', transform: `scale(${agora ? 1.04 : 1})`, display: 'inline-block' }}>{w.w.replace(/[,.:;]$/, '')}</span>
         );
       })}
     </div>

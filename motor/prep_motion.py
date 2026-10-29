@@ -45,15 +45,16 @@ def recorta(bbox, margem=2.6):
     w, h = lon1 - lon0, lat1 - lat0
     cx, cy = (lon0 + lon1) / 2, (lat0 + lat1) / 2
     W, H = w * margem, h * margem * 1.4
-    caixa = box(max(-180, cx - W / 2), max(-85, cy - H / 2), min(180, cx + W / 2), min(85, cy + H / 2))
+    caixa = box(max(-180, cx - W / 2), max(-80, cy - H / 2), min(180, cx + W / 2), min(80, cy + H / 2))
     grande = max(w, h) > 14
     tol = max(w, h) / 1400
     saida = []
     paises = carrega('ne50.geojson' if grande else 'ne10.geojson')
     for f in paises:
+        if f['properties'].get('ADM0_A3') == 'ATA': continue
         g = shape(f['geometry'])
         if not g.intersects(caixa): continue
-        g = g.intersection(caixa).simplify(tol, preserve_topology=True)
+        g = g.intersection(caixa).simplify(tol, preserve_topology=True).segmentize(max(0.5, tol * 40))
         if g.is_empty: continue
         saida.append({'k': 'pais', 'a3': f['properties'].get('ADM0_A3'), 'nome': f['properties'].get('NAME'), 'g': mapping(horario(g))})
     if not grande:
@@ -62,7 +63,7 @@ def recorta(bbox, margem=2.6):
                 if f['geometry'] is None: continue
                 g = shape(f['geometry'])
                 if not g.intersects(caixa): continue
-                g = g.intersection(caixa).simplify(tol, preserve_topology=True)
+                g = g.intersection(caixa).simplify(tol, preserve_topology=True).segmentize(max(0.5, tol * 40))
                 if g.is_empty: continue
                 saida.append({'k': k, 'g': mapping(horario(g) if k != 'rio' else g)})
     return saida
