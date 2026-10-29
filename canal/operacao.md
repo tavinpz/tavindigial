@@ -22,6 +22,16 @@
 - Ritmo humano: 1 Short/dia nas semanas 1–2; no máximo 2/dia depois.
 - Pelo menos 1 vídeo longo por semana a partir do mês 2.
 
+## Como os concorrentes crescem (e o que copiamos)
+- **Título é metade do jogo.** Fórmulas que mais rendem no nicho: "How [país] Built the Impossible [coisa de $X]", "Why [lugar] Can't…", "The Insane Scale of…", "[$X bilhões] [obra] That…". O maior canal novo do nicho (NextGen Manufacturing, 170 mil inscritos em ~11 meses) cresceu só com títulos e temas assim.
+- **Temas que puxam views:** Japão, China, Dubai/Arábia Saudita, Holanda, Egito/Nilo, estreitos (Ormuz, Malaca), obras abandonadas ou com problema, ângulo de dinheiro e de crise.
+- **Pergunta no 1º segundo e fim na resposta.** O Short corta assim que responde; nada de enrolação no final (a chamada para seguir dura ~3 s).
+- **Séries numeradas** ajudam a pessoa a maratonar: "Impossible Builds #1, #2…".
+- **Comentário fixado** em todo vídeo com uma pergunta polêmica ("Qual é mais difícil: o Canal do Panamá ou o de Suez?") + fonte.
+- **Ligar o Short a um vídeo relacionado** (campo "Vídeo relacionado" no upload) assim que houver o primeiro longo.
+- **Mesmo arquivo no TikTok, Reels e Facebook Reels**, com legenda adaptada — custo zero e testa o tema antes.
+- **Volume:** o crescimento estável aparece depois de ~200 Shorts. 1 por dia é o mínimo; o painel do Studio mostra "visualizou vs. deslizou" — acima de 70% visualizou é sinal de gancho bom.
+
 ## Monetização (quando chegar)
 - YouTube: 1.000 inscritos + 4.000 h de vídeo longo em 12 meses, ou 1.000 + 10 mi de views em Shorts em 90 dias.
 - Afiliados: Amazon (livros de engenharia e geografia, globos, mapas, LEGO Architecture), viagens a obras famosas.

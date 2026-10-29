@@ -1,0 +1,212 @@
+{
+ "arquivo": "concrete_atlas_short_001_netherlands.mp4",
+ "titulo": "Why Isn't the Netherlands Underwater?",
+ "falas": [
+  "A quarter of the Netherlands sits below sea level. So why isn't it underwater?",
+  "Because the Dutch live behind walls. Dikes hold the sea higher than the land behind them.",
+  "On the night of January 31st, 1953, a storm surge smashed through those walls.",
+  "One thousand eight hundred and thirty six people died. Over thirteen hundred square kilometers went under the sea.",
+  "The answer was the Delta Works: thirteen dams and storm barriers, built over almost forty years.",
+  "The last piece guards Rotterdam. Two giant gates that swing shut on their own when the sea rises.",
+  "Today, the heart of the country is built to survive a storm expected once in ten thousand years.",
+  "Follow for a new megaproject every day."
+ ],
+ "cenas": [
+  {
+   "tipo": "mapa",
+   "bbox": [
+    2.9,
+    7.3,
+    50.7,
+    53.6
+   ],
+   "destaque": [
+    "NLD"
+   ],
+   "titulo": "The Netherlands",
+   "sub": "a quarter below sea level",
+   "pins": [
+    [
+     4.9,
+     52.37,
+     "Amsterdam",
+     "r"
+    ],
+    [
+     4.48,
+     51.92,
+     "Rotterdam",
+     "l"
+    ]
+   ],
+   "gancho": "WHY ISN'T IT\nUNDERWATER?"
+  },
+  {
+   "tipo": "perfil",
+   "titulo": "Living behind walls",
+   "sub": "the sea sits higher than the land",
+   "yrange": [
+    -12,
+    10
+   ],
+   "agua": [
+    [
+     0,
+     1.5
+    ],
+    [
+     0.43,
+     1.5
+    ]
+   ],
+   "terreno": [
+    [
+     0,
+     -9
+    ],
+    [
+     0.28,
+     -8
+    ],
+    [
+     0.36,
+     -3
+    ],
+    [
+     0.44,
+     5
+    ],
+    [
+     0.5,
+     5
+    ],
+    [
+     0.6,
+     -4
+    ],
+    [
+     1,
+     -4.5
+    ]
+   ],
+   "cor_terreno": [
+    46,
+    92,
+    60
+   ],
+   "nivel_mar": 0,
+   "rotulos": [
+    [
+     0.16,
+     4.5,
+     "North Sea"
+    ],
+    [
+     0.47,
+     7.5,
+     "Dike"
+    ],
+    [
+     0.8,
+     -1.8,
+     "Polder"
+    ],
+    [
+     0.8,
+     -7.5,
+     "below the sea"
+    ]
+   ]
+  },
+  {
+   "tipo": "mapa",
+   "bbox": [
+    1.2,
+    6.6,
+    50.6,
+    54.6
+   ],
+   "destaque": [
+    "NLD"
+   ],
+   "titulo": "January 31, 1953",
+   "sub": "North Sea storm surge",
+   "rota": [
+    [
+     1.0,
+     57.0
+    ],
+    [
+     1.6,
+     55.0
+    ],
+    [
+     2.6,
+     53.0
+    ],
+    [
+     3.8,
+     51.6
+    ]
+   ],
+   "estilo_rota": "tempestade",
+   "pins": [
+    [
+     3.9,
+     51.5,
+     "Zeeland",
+     "r"
+    ]
+   ],
+   "cor_pin": "red"
+  },
+  {
+   "tipo": "numero",
+   "valor": 1836,
+   "label": "lives lost",
+   "cor": "red",
+   "titulo": "The 1953 flood",
+   "segundo": {
+    "valor": 1365,
+    "sufixo": " km²",
+    "label": "under seawater",
+    "cor": "water"
+   }
+  },
+  {
+   "tipo": "numero",
+   "valor": 13,
+   "label": "dams and storm barriers",
+   "nota": "The Delta Works, 1958 to 1997",
+   "cor": "amber",
+   "titulo": "The answer",
+   "fundo": [
+    3.0,
+    5.0,
+    51.1,
+    52.2
+   ],
+   "destaque": [
+    "NLD"
+   ]
+  },
+  {
+   "tipo": "portoes",
+   "titulo": "Maeslantkering",
+   "sub": "Rotterdam's storm gates"
+  },
+  {
+   "tipo": "numero",
+   "valor": 10000,
+   "prefixo": "1 IN ",
+   "label": "year storm",
+   "nota": "what the heart of the country is built to survive",
+   "cor": "amber"
+  },
+  {
+   "tipo": "cta"
+  }
+ ],
+ "voz": "am_michael",
+ "velocidade": 1.08
+}

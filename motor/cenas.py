@@ -476,6 +476,8 @@ def main():
     else:
         falas = narrar(pasta, spec)
     durs = [d + 0.45 for d in falas]
+    if modo == 'narrar':  # só a voz, para o motor de motion (prep_motion.py)
+        print('voz ok', round(sum(falas), 1), 's'); return
     if modo == 'quadros':
         frames = []
         for i, dur in enumerate(durs):
