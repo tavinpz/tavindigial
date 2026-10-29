@@ -8,6 +8,9 @@ import Previa from './site/Previa'
 import Briefing from './site/Briefing'
 import { Termos, Privacidade } from './site/Legal'
 
+// página aberta dentro do celular da prévia: sem barra de rolagem aparecendo
+if (new URLSearchParams(window.location.search).get('e') === '1') document.documentElement.style.scrollbarWidth = 'none'
+
 // O painel só carrega para quem entra em /painel (deixa o site leve)
 const Painel = lazy(() => import('./painel/Painel'))
 const BioDemo = lazy(() => import('./site/BioDemo'))
