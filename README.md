@@ -8,12 +8,9 @@ Gerador de vídeos do canal Concrete Atlas (megaprojetos, cidades e geografia, e
 ```
 
 ## Fazer um vídeo
-1. Copie uma pasta de `videos/` (ex.: `001-netherlands`) para `videos/NNN-tema`.
-2. Em `tts.py`, troque as falas (`LINES`). Voz padrão: `am_michael`, velocidade 1.08.
-3. Rode `python3 tts.py` → gera `v0.wav…` e `narr.json` (duração de cada fala).
-4. Em `render.py`, ajuste as cenas (uma função por fala). Confira quadros: `python3 render.py quadros`.
-5. Renderize: `python3 render.py 0,1,2,...` → `c0.mp4…`
-6. Monte: `python3 motor/montar.py videos/NNN-tema concrete_atlas_short_NNN.mp4`
+Passo a passo atual (motor Remotion em `motion/`): `conhecimento/02_producao_e_edicao.md`.
+Instruções do projeto no Claude: `PROJETO.md`. Conhecimento (marca, viralização, SEO, ferramentas, políticas, agenda): `conhecimento/`.
+A agenda e os textos de cada vídeo ficam em `canal/videos.json` (o `canal/publicacoes.md` é o registro antigo das primeiras datas).
 
 ## Estilo
 - 1080×1920, 30 fps. Desenha em 2x e reduz (antialias).

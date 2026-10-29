@@ -7,3 +7,7 @@ videos/*/q*_*.png
 videos/*/lista.txt
 saida/
 envio/
+motion/node_modules/
+motion/public/v/
+motion/public/tex/
+__pycache__/

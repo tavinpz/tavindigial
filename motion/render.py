@@ -9,7 +9,8 @@ uso: python3 render.py 002 [003 ...]
 import json, os, subprocess, sys, time
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
-DEST = '/home/claude/concrete-atlas/saida'
+# o motor fica em concrete-atlas/motion (ou num link ../atlas-motion apontando para ele)
+DEST = os.path.normpath(os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', 'saida'))
 
 
 def remotion(args, gl):
