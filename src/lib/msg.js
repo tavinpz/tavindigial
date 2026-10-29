@@ -37,10 +37,16 @@ export function nomeCurto(nome = '') {
 }
 
 // Link curto para a página de modelos, personalizado e rastreado
+// Link curto e limpo da prévia: tavindigital.online/p/cilios-do-poder-00e3d653
+// (o final é o começo do id do lead: serve para mostrar o nome certo e saber que a pessoa abriu)
 export function linkModelos(lead, { rastrear = true } = {}) {
+  if (lead?.id && /^[0-9a-f]{8}-/i.test(lead.id)) {
+    const nome = semAcento(nomeCurto(lead.nome)).replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 32).replace(/-+$/, '') || 'previa'
+    return `${CONFIG.SITE_URL}/p/${nome}-${lead.id.slice(0, 8).toLowerCase()}`
+  }
   const slug = nichoSlug(lead.nicho, lead.categoria)
   const n = encodeURIComponent(nomeCurto(lead.nome))
-  return `${CONFIG.SITE_URL}/m/${slug}?n=${n}${rastrear ? `&r=${lead.id}` : ''}`
+  return `${CONFIG.SITE_URL}/m/${slug}?n=${n}${rastrear && lead.id ? `&r=${lead.id}` : ''}`
 }
 
 // Para onde o link do Google leva hoje (usado nas mensagens de quem tem "site falso")

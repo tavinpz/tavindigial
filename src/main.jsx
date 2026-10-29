@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import './styles/site.css'
 import Home from './site/Home'
 import Modelos from './site/Modelos'
+import Previa from './site/Previa'
 import Briefing from './site/Briefing'
 import { Termos, Privacidade } from './site/Legal'
 
@@ -18,6 +19,7 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/m/:nicho" element={<Modelos />} />
+        <Route path="/p/:codigo" element={<Previa />} />
         <Route path="/modelos/:nicho" element={<Modelos />} />
         <Route path="/modelos" element={<Navigate to="/m/geral" replace />} />
         <Route path="/demo/:id" element={<Suspense fallback={null}><BioDemo /></Suspense>} />

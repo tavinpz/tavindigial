@@ -93,7 +93,15 @@ export default function BioDemo() {
 function Classico() {
   const { id } = useParams()
   const [qs] = useSearchParams()
-  const tema = TEMAS[id]
+  const base = TEMAS[id]
+  // dados reais do negócio vindos da prévia (nota, avaliações e bairro do Google)
+  const g = qs.get('g'), av = qs.get('a'), bairro = (qs.get('b') || '').slice(0, 40)
+  const tema = base && {
+    ...base,
+    ...(g && /^\d([.,]\d)?$/.test(g) ? { nota: g.replace('.', ',') } : {}),
+    ...(av && /^\d{1,5}$/.test(av) ? { avaliacoes: av } : {}),
+    ...(bairro ? { bairro: base.bairro && base.bairro.includes(',') ? `${bairro}, ${base.bairro.split(',').pop().trim()}` : bairro } : {}),
+  }
   const nomeLead = (qs.get('n') || '').slice(0, 60).trim()
   const r = qs.get('r') || ''
   const nome = nomeLead || tema?.nome || ''
