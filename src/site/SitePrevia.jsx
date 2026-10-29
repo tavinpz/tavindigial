@@ -165,7 +165,7 @@ export default function SitePrevia({ nome, nicho, categoria, bairro, cidade, end
       </header>
 
       <section className="sp-hero">
-        <div className="sp-arte" {...entra(0)}>
+        <div {...entra(0)} className="sp-in sp-arte">
           <ArtePrevia tema={id} />
           {(categoria || bairro) && <span className="sp-selo">{[categoria, bairro].filter(Boolean).join(' · ')}</span>}
         </div>

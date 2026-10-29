@@ -1,8 +1,7 @@
 // previa — resolve o link curto da prévia (/p/<nome>-<código>) para os dados públicos do negócio.
 // Público (sem JWT): devolve só o que já está no Google (nome, categoria, bairro, nota, avaliações)
 // e o id usado para registrar que a pessoa abriu.
-import "jsr:@supabase/functions-js/edge-runtime.d.ts";
-import { createClient } from "jsr:@supabase/supabase-js@2";
+import { createClient } from "npm:@supabase/supabase-js@2";
 
 const cors = {
   "Access-Control-Allow-Origin": "*",
