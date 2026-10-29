@@ -19,8 +19,10 @@ export default function Responder({ lead, canal: canalPedido, inicial = 'resp_li
   const [tipo, setTipo] = useState(inicial)
   const [texto, setTexto] = useState('')
   const [ocupado, setOcupado] = useState(false)
-  const msg = mensagemPara(mensagens, lead, tipo)
-  useEffect(() => { setTexto(msg.texto || '') }, [tipo, lead.id]) // eslint-disable-line react-hooks/exhaustive-deps
+  const [variante, setVariante] = useState(null)
+  const msg = mensagemPara(mensagens, lead, tipo, variante)
+  useEffect(() => { setVariante(null) }, [tipo])
+  useEffect(() => { setTexto(msg.texto || '') }, [tipo, lead.id, msg.variante]) // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
     const esc = (e) => { if (e.key === 'Escape') fechar() }
     window.addEventListener('keydown', esc)
@@ -63,6 +65,14 @@ export default function Responder({ lead, canal: canalPedido, inicial = 'resp_li
             <button key={k} type="button" role="radio" aria-checked={tipo === k} className={tipo === k ? 'ativa' : ''} onClick={() => setTipo(k)}>{t}</button>
           ))}
         </div>
+        {msg.variantes.length > 1 && (
+          <div className="rp-var" role="group" aria-label="Versão da mensagem">
+            <span>Versão</span>
+            {msg.variantes.map((v) => (
+              <button key={v} type="button" aria-pressed={msg.variante === v} className={msg.variante === v ? 'ativa' : ''} onClick={() => setVariante(v)}>{v}</button>
+            ))}
+          </div>
+        )}
         {msg.modelo ? (
           <textarea className="p-texto rp-texto" rows={9} value={texto} onChange={(e) => setTexto(e.target.value)} aria-label="Mensagem de resposta" />
         ) : (

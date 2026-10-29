@@ -713,3 +713,7 @@ body:has(.p-fantasma) { cursor: grabbing; }
 .rp-tipos button:focus-visible { outline: 2px solid var(--tinta); }
 .rp-texto { min-height: 200px; }
 .rp-acoes { display: flex; flex-wrap: wrap; gap: 8px; }
+.rp-var { display: flex; align-items: center; gap: 4px; font-size: 12.5px; color: var(--cinza); }
+.rp-var span { margin-right: 4px; }
+.rp-var button { font: inherit; font-size: 13px; font-weight: 700; width: 32px; height: 28px; border: 1px solid var(--linha); background: var(--branco); color: var(--cinza); border-radius: 8px; cursor: pointer; }
+.rp-var button.ativa { border-color: var(--tinta); color: var(--tinta); background: #FBF3FF; }
