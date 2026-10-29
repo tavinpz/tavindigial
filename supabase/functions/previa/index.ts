@@ -21,10 +21,20 @@ Deno.serve(async (req) => {
   const db = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
   // o código é o começo do id do lead: procura no intervalo de ids que começam com ele
   const { data } = await db.from("leads")
-    .select("id,nome,nicho,categoria,bairro,cidade,nota,avaliacoes,status")
+    .select("id,nome,nicho,categoria,bairro,cidade,endereco,instagram,whatsapp,nota,avaliacoes,status")
     .gte("id", `${c}-0000-0000-0000-000000000000`).lte("id", `${c}-ffff-ffff-ffff-ffffffffffff`)
     .limit(2);
   if (!data || data.length !== 1 || ["nao_contatar", "arquivado"].includes(data[0].status)) return json(404, { ok: false });
   const l = data[0];
-  return json(200, { ok: true, r: l.id, nome: l.nome, nicho: l.nicho, categoria: l.categoria, bairro: l.bairro, cidade: l.cidade, nota: l.nota, avaliacoes: l.avaliacoes });
+  // a resposta do lead vai para o mesmo WhatsApp que falou com ele (Web ou App)
+  const [{ data: env }, { data: cfg }] = await Promise.all([
+    db.from("envios").select("origem").eq("lead_id", l.id).eq("canal", "whatsapp").order("enviado_em", { ascending: false }).limit(1).maybeSingle(),
+    db.from("app_config").select("key,value").in("key", ["wa_numero_web", "wa_numero_app"]),
+  ]);
+  const num = Object.fromEntries((cfg ?? []).map((x: { key: string; value: string }) => [x.key, x.value]));
+  const wa = (env?.origem === "app" && num.wa_numero_app) ? num.wa_numero_app : (num.wa_numero_web || null);
+  return json(200, {
+    ok: true, r: l.id, nome: l.nome, nicho: l.nicho, categoria: l.categoria, bairro: l.bairro, cidade: l.cidade,
+    endereco: l.endereco, instagram: l.instagram, telefone: l.whatsapp, nota: l.nota, avaliacoes: l.avaliacoes, wa,
+  });
 });

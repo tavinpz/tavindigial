@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Navigate, useParams } from 'react-router-dom'
-import { nichoSlug, nomeCurto, comArtigo } from '../lib/msg'
+import { nichoSlug, nomeCurto, comArtigo, slugDominio, waLink } from '../lib/msg'
 import { callFn, quandoHumano } from '../lib/fn'
 import { waVendas } from './Layout'
 import Logo from './Logo'
@@ -46,11 +46,22 @@ export default function Previa() {
     timer.current = setTimeout(() => setToast(''), 3600)
     marcar(`toque-${tema}`)
   }
+  // a resposta vai para o mesmo WhatsApp que falou com o lead
+  const para = (t) => (lead.wa ? waLink(lead.wa, t) : waVendas(t))
   const resp = {
-    gostei: waVendas(`Oi, Gustavo! Vi a prévia ${de} e gostei. Pode montar!`),
-    preco: waVendas(`Oi, Gustavo! Vi a prévia ${de}. Quanto fica?`),
-    mudar: waVendas(`Oi, Gustavo! Vi a prévia ${de}. Queria mudar: `),
+    gostei: para(`Oi, Gustavo! Vi a prévia ${de} e gostei. Pode montar!`),
+    preco: para(`Oi, Gustavo! Vi a prévia ${de}. Quanto fica?`),
+    mudar: para(`Oi, Gustavo! Vi a prévia ${de}. Queria mudar: `),
   }
+  const ig = lead.instagram ? String(lead.instagram).replace(/^@/, '') : ''
+  const feito = [
+    ['Nome', nome],
+    lead.nota != null && ['Nota do Google', `${String(lead.nota).replace('.', ',')} de 5`],
+    lead.avaliacoes && ['Avaliações', `${lead.avaliacoes} clientes`],
+    (lead.endereco || lead.bairro) && ['Endereço no mapa', lead.bairro || 'Google Maps'],
+    ig && ['Instagram', `@${ig}`],
+    ['Endereço do site', `${slugDominio(nome)}.com.br`],
+  ].filter(Boolean)
   const slug = nichoSlug(lead.nicho, lead.categoria)
   const n = encodeURIComponent(nome)
 
@@ -60,28 +71,28 @@ export default function Previa() {
         <a href="/" className="pv2-logo" aria-label="Tavin Digital"><Logo /></a>
         <p className="pv2-para">Prévia feita para</p>
         <h1>{nome}</h1>
-        <p className="pv2-sub">Montei esta página com o nome, a nota e o bairro {de} para você ver como fica. Toque, escolha um serviço e um horário: é assim que o cliente vai agendar.</p>
+        <p className="pv2-sub">Montei esta página para vocês com os dados reais do Google. Toque, escolha um serviço e um horário: é assim que o cliente vai agendar.</p>
+        <div className="pv2-feito">
+          <p>O que já está na página</p>
+          <ul>{feito.map(([k, v]) => <li key={k}><span>{k}</span><b>{v}</b></li>)}</ul>
+        </div>
         <div className="pv2-botoes">
           <a className="pv2-btn" href={resp.gostei} target="_blank" rel="noreferrer" onClick={() => marcar('gostei')}>Gostei, pode montar</a>
           <a className="pv2-btn pv2-btn--linha" href={resp.mudar} target="_blank" rel="noreferrer" onClick={() => marcar('mudar')}>Quero mudar algumas coisas</a>
           <a className="pv2-btn pv2-btn--linha" href={resp.preco} target="_blank" rel="noreferrer" onClick={() => marcar('preco')}>Quanto fica?</a>
         </div>
-        <ul className="pv2-lista">
-          <li>Com as cores, as fotos e os serviços {de}</li>
-          <li>No ar em até 24 horas</li>
-          <li>Você só paga depois de aprovar</li>
-        </ul>
+        <p className="pv2-nota-fim">Com as suas fotos, cores e serviços, no ar em até 24 horas. Você só paga depois de aprovar.</p>
         <a className="pv2-outros" href={`/m/${slug}?n=${n}&r=${lead.r}`} onClick={() => marcar('outros')}>Prefere outro estilo? Ver outros modelos</a>
       </aside>
 
       <main className="pv2-palco">
         <div className="pv2-tela">
-          <SitePrevia nome={nome} nicho={lead.nicho} categoria={lead.categoria} bairro={lead.bairro} cidade={lead.cidade} nota={lead.nota} avaliacoes={lead.avaliacoes} aviso={aviso} />
+          <SitePrevia nome={nome} nicho={lead.nicho} categoria={lead.categoria} bairro={lead.bairro} cidade={lead.cidade} endereco={lead.endereco} instagram={lead.instagram} nota={lead.nota} avaliacoes={lead.avaliacoes} aviso={aviso} />
         </div>
       </main>
 
       <div className="pv2-barra" role="region" aria-label="Responder sobre a prévia">
-        <p>Prévia {de} feita pela <b>Tavin Digital</b>. Gostou?</p>
+        <p>Prévia {de}, feita por Gustavo · <b>Tavin Digital</b></p>
         <div>
           <a className="pv2-btn" href={resp.gostei} target="_blank" rel="noreferrer" onClick={() => marcar('gostei')}>Gostei, pode montar</a>
           <a className="pv2-btn pv2-btn--linha" href={resp.preco} target="_blank" rel="noreferrer" onClick={() => marcar('preco')}>Quanto fica?</a>

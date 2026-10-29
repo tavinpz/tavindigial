@@ -756,3 +756,7 @@ body:has(.p-fantasma) { cursor: grabbing; }
 .rt-quando { margin: 0; font-size: 12.5px; color: var(--cinza); }
 .rt-botoes { display: flex; flex-wrap: wrap; gap: 6px; }
 @media (max-width: 600px) { .rt-corpo { padding-left: 12px; } }
+.dw-num { font: inherit; font-size: 12.5px; font-weight: 700; color: var(--tinta); background: none; border: 0; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; padding: 0 6px; }
+.dw-numeros label { display: grid; gap: 4px; font-size: 13px; font-weight: 700; margin: 6px 0; }
+.dw-numeros input { font: inherit; font-size: 15px; padding: 8px 10px; border: 1px solid var(--linha); border-radius: 8px; }
+.dw-numeros small { display: block; color: var(--cinza); margin: 4px 0 8px; }

@@ -20,7 +20,7 @@
 .pv2-outros { margin-top: auto; padding-top: 16px; color: #C9C0D2; font-size: 14.5px; }
 
 .pv2-palco { display: grid; place-items: center; padding: 32px; background: radial-gradient(120% 80% at 50% 0%, #2A2131 0%, var(--noite) 70%); }
-.pv2-tela { width: 400px; height: min(820px, calc(100vh - 64px)); border-radius: 44px; overflow: auto; border: 10px solid #0B090D; box-shadow: 0 0 0 1.5px #3A3340, 0 50px 80px -40px rgba(0, 0, 0, .8); scrollbar-width: none; background: #000; }
+.pv2-tela { position: relative; transform: translateZ(0); width: 400px; height: min(820px, calc(100vh - 64px)); border-radius: 44px; overflow: auto; border: 10px solid #0B090D; box-shadow: 0 0 0 1.5px #3A3340, 0 50px 80px -40px rgba(0, 0, 0, .8); scrollbar-width: none; background: #000; }
 .pv2-tela::-webkit-scrollbar { display: none; }
 .pv2-barra { display: none; }
 
@@ -31,7 +31,7 @@
   .pv2 { display: block; background: var(--papel); }
   .pv2-lado { display: none; }
   .pv2-palco { display: block; padding: 0; background: none; }
-  .pv2-tela { width: 100%; height: auto; border: 0; border-radius: 0; box-shadow: none; overflow: visible; background: none; }
+  .pv2-tela { width: 100%; height: auto; border: 0; border-radius: 0; box-shadow: none; overflow: visible; background: none; transform: none; }
   .pv2-tela .sp { padding-bottom: 132px; min-height: 100vh; }
   .pv2-barra { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; background: rgba(23, 18, 27, .96); color: var(--branco); padding: 10px 14px calc(12px + env(safe-area-inset-bottom)); backdrop-filter: blur(8px); }
   .pv2-barra p { margin: 0 0 8px; font-size: 13.5px; color: #D9D1E0; text-align: center; }
@@ -49,9 +49,11 @@
 .sp-barra strong { flex: 1; min-width: 0; font-family: var(--sp-titulo); font-size: 17px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .sp-barra button { border: 0; background: var(--sp-acento); color: var(--sp-sobre); font-weight: 700; font-size: 14px; padding: 8px 14px; border-radius: 999px; }
 
-.sp-hero { position: relative; overflow: hidden; padding: 44px 22px 36px; isolation: isolate; }
-.sp-hero::before { content: ''; position: absolute; z-index: -1; right: -90px; top: -80px; width: 280px; height: 280px; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--sp-acento) 32%, transparent) 0%, transparent 68%); }
-.sp-hero::after { content: attr(data-mono); position: absolute; z-index: -1; right: -8px; bottom: -34px; font-family: var(--sp-titulo); font-size: 190px; line-height: 1; color: color-mix(in srgb, var(--sp-acento) 12%, transparent); pointer-events: none; }
+.sp-hero { padding: 16px 16px 34px; }
+.sp-arte { position: relative; border-radius: 28px; overflow: hidden; aspect-ratio: 4 / 3; margin-bottom: 26px; background: linear-gradient(160deg, color-mix(in srgb, var(--sp-acento) 22%, var(--sp-papel)), var(--sp-papel)); border: 1px solid var(--sp-linha); }
+.sp-arte svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.sp-selo { position: absolute; left: 14px; bottom: 14px; background: color-mix(in srgb, var(--sp-papel) 88%, transparent); backdrop-filter: blur(6px); color: var(--sp-tinta); font-size: 12.5px; font-weight: 700; padding: 7px 12px; border-radius: 999px; border: 1px solid var(--sp-linha); max-width: calc(100% - 28px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sp-hero h1, .sp-hero .sp-chamada, .sp-hero .sp-nota, .sp-hero .sp-acoes { padding: 0 6px; }
 .sp-kicker { margin: 0 0 12px; font-size: 13px; letter-spacing: .02em; color: var(--sp-suave); font-weight: 600; }
 .sp-hero h1 { margin: 0 0 14px; font-family: var(--sp-titulo); font-weight: 700; font-size: clamp(40px, 12vw, 52px); line-height: 1; letter-spacing: -0.02em; overflow-wrap: anywhere; }
 .sp-chamada { margin: 0 0 16px; font-size: 18px; line-height: 1.45; color: var(--sp-suave); max-width: 30ch; }
@@ -105,3 +107,71 @@
 .sp--pet .sp-servicos button, .sp--pet .sp-dias button, .sp--pet .sp-horas button { border-radius: 18px; }
 .sp--estetica .sp-hero h1, .sp--nail .sp-hero h1, .sp--saude .sp-hero h1 { font-weight: 600; }
 @media (prefers-reduced-motion: reduce) { .pv2-toast { transition: none; } }
+
+/* barra do endereço: "o site já tem o endereço de vocês" */
+.sp-dominio { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 7px 12px; font-size: 12.5px; font-weight: 600; color: var(--sp-suave); background: var(--sp-papel); border-bottom: 1px solid var(--sp-linha); letter-spacing: .01em; }
+.sp-dominio svg { width: 12px; height: 12px; color: #2E9E5B; }
+
+/* entrada do topo (uma vez só) */
+.sp-in { animation: sp-entra .7s cubic-bezier(.2, .7, .2, 1) both; animation-delay: calc(var(--i, 0) * 90ms + 120ms); }
+@keyframes sp-entra { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.sp-arte-sobe { animation: sp-entra .8s cubic-bezier(.2, .7, .2, 1) both; transform-box: fill-box; }
+.sp-arte-brilho { animation: sp-brilho 2.8s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes sp-brilho { 0%, 100% { opacity: .25; transform: scale(.8); } 50% { opacity: 1; transform: scale(1.15); } }
+.sp-arte-traco { stroke-dasharray: 600; stroke-dashoffset: 600; animation: sp-traco 1.8s .3s ease forwards; }
+@keyframes sp-traco { to { stroke-dashoffset: 0; } }
+.sp-arte-poste { animation: sp-poste 3.5s linear infinite; }
+@keyframes sp-poste { to { transform: translateY(-112px); } }
+.sp-arte-gira { animation: sp-gira 24s linear infinite; }
+@keyframes sp-gira { to { transform: rotate(360deg); } }
+.sp-arte-vapor { animation: sp-vapor 2.4s ease-in-out infinite; transform-box: fill-box; }
+@keyframes sp-vapor { 0% { opacity: 0; transform: translateY(8px); } 40% { opacity: 1; } 100% { opacity: 0; transform: translateY(-10px); } }
+
+/* serviços com número e duração */
+.sp-servicos button { justify-content: flex-start; }
+.sp-serv-n { font-family: var(--sp-titulo); font-size: 13px; color: var(--sp-acento); width: 22px; flex: none; }
+.sp-serv-t { flex: 1; min-width: 0; display: grid; gap: 1px; }
+.sp-serv-t b { font-weight: 600; }
+.sp-serv-t small { font-size: 12.5px; color: var(--sp-suave); font-weight: 500; }
+
+/* Instagram */
+.sp-ig { display: flex; align-items: center; gap: 12px; }
+.sp-ig-foto { width: 52px; height: 52px; border-radius: 50%; padding: 2.5px; background: conic-gradient(#F9CE34, #EE2A7B, #6228D7, #F9CE34); flex: none; }
+.sp-ig-foto span { display: grid; place-items: center; width: 100%; height: 100%; border-radius: 50%; background: var(--sp-papel); border: 2px solid var(--sp-fundo); font-family: var(--sp-titulo); font-size: 15px; color: var(--sp-tinta); }
+.sp-ig div { flex: 1; min-width: 0; display: grid; }
+.sp-ig b { font-size: 15.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sp-ig small { font-size: 12.5px; color: var(--sp-suave); }
+.sp .sp-ig .sp-btn { min-height: 38px; padding: 0 14px; font-size: 14px; }
+
+/* mapa de verdade */
+.sp-mapa { border-radius: 18px; overflow: hidden; border: 1px solid var(--sp-linha); margin: 0 0 14px; aspect-ratio: 16 / 11; background: var(--sp-papel); }
+.sp-mapa iframe { width: 100%; height: 100%; border: 0; display: block; filter: saturate(.85); }
+.sp-rodape small + small { opacity: .8; }
+
+/* folha "como chega no WhatsApp" */
+.sp-folha-fundo { position: fixed; inset: 0; z-index: 40; background: rgba(10, 8, 12, .55); display: flex; align-items: flex-end; animation: sp-fade .2s ease both; }
+.sp-folha { width: 100%; background: var(--sp-papel); color: var(--sp-tinta); border-radius: 26px 26px 0 0; padding: 20px 18px calc(22px + env(safe-area-inset-bottom)); display: grid; gap: 12px; animation: sp-folha .35s cubic-bezier(.2, .8, .2, 1) both; }
+.sp-folha-tit { margin: 0; font-family: var(--sp-titulo); font-size: 20px; font-weight: 700; line-height: 1.2; }
+.sp-folha-txt { margin: 0; font-size: 14.5px; color: var(--sp-suave); line-height: 1.45; }
+.sp-wa { border-radius: 18px; overflow: hidden; border: 1px solid rgba(0, 0, 0, .08); }
+.sp-wa-topo { display: flex; align-items: center; gap: 8px; padding: 10px 12px; background: #075E54; color: #fff; font-size: 14.5px; }
+.sp-wa-topo .sp-mono { width: 28px; height: 28px; font-size: 12px; }
+.sp-wa-chat { padding: 14px 12px 16px; background: #ECE5DD; display: flex; justify-content: flex-end; }
+.sp-wa-bolha { max-width: 86%; background: #DCF8C6; color: #111; font-family: -apple-system, 'Segoe UI', Roboto, sans-serif; font-size: 14.5px; line-height: 1.4; padding: 8px 10px 6px; border-radius: 10px 0 10px 10px; box-shadow: 0 1px 1px rgba(0, 0, 0, .12); animation: sp-entra .4s .25s both; }
+.sp-wa-bolha small { display: block; text-align: right; font-size: 11px; color: #4FB6EC; margin-top: 2px; }
+@keyframes sp-fade { from { opacity: 0; } }
+@keyframes sp-folha { from { transform: translateY(100%); } }
+
+/* painel do computador: o que já foi feito */
+.pv2-feito { background: rgba(255, 255, 255, .04); border: 1px solid rgba(255, 255, 255, .1); border-radius: 16px; padding: 14px 16px; }
+.pv2-feito p { margin: 0 0 8px; font-size: 13px; font-weight: 700; color: var(--rosa); }
+.pv2-feito ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; }
+.pv2-feito li { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; padding-left: 22px; position: relative; }
+.pv2-feito li::before { content: '✓'; position: absolute; left: 0; color: #5BD69A; font-weight: 800; }
+.pv2-feito li span { color: #B9AFC3; }
+.pv2-feito li b { color: var(--branco); font-weight: 600; text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pv2-nota-fim { margin: 4px 0 0; color: #B9AFC3; font-size: 14px; line-height: 1.5; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sp-in, .sp-arte-sobe, .sp-arte-brilho, .sp-arte-traco, .sp-arte-poste, .sp-arte-gira, .sp-arte-vapor, .sp-folha, .sp-folha-fundo, .sp-wa-bolha { animation: none !important; stroke-dashoffset: 0; }
+}

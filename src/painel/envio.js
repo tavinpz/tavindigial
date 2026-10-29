@@ -46,6 +46,9 @@ const waApp = (numero, texto = '') => `whatsapp://send?phone=${digitos(numero)}$
 
 // Abre o canal SEM await antes (o navegador só deixa abrir janela dentro do clique/soltar).
 // No Instagram, copia o texto e abre a DM: é só colar e enviar.
+let ultimo = null
+export const ultimoDestinoWa = () => ultimo || waDestino()
+
 export function abrirCanal(canal, lead, texto, destino) {
   if (canal === 'instagram') {
     try { navigator.clipboard?.writeText(texto) } catch { /* sem permissão de cópia */ }
@@ -55,6 +58,7 @@ export function abrirCanal(canal, lead, texto, destino) {
   }
   if (ehCelular()) { window.open(waLink(lead.whatsapp, texto), '_blank', 'noopener'); return }
   const d = destino || waDestino()
+  ultimo = d
   if (d === 'app') {
     // abre o app do WhatsApp do computador direto (na 1ª vez o Chrome pergunta: marque "Sempre permitir")
     window.location.href = waApp(lead.whatsapp, texto)

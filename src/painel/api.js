@@ -1,4 +1,5 @@
 import { supabase } from '../lib/supabase'
+import { ultimoDestinoWa } from './envio'
 
 export const STATUS = {
   novo: 'Novo', na_fila: 'Na fila', enviado: 'Enviado', abriu: 'Abriu a página', respondeu: 'Respondeu',
@@ -49,8 +50,10 @@ export const variantesDe = (mensagens, etapa, publico) => {
 }
 
 export async function registrarEnvio({ lead, mensagem, etapa, texto, canal = 'whatsapp' }) {
+  // de qual WhatsApp saiu (o último que o painel abriu): a prévia manda a resposta do lead para esse número
+  const origem = canal === 'whatsapp' ? ultimoDestinoWa() : null
   const { error } = await supabase.from('envios').insert({
-    lead_id: lead.id, mensagem_id: mensagem?.id ?? null, etapa, canal, texto_enviado: texto,
+    lead_id: lead.id, mensagem_id: mensagem?.id ?? null, etapa, canal, texto_enviado: texto, ...(origem ? { origem } : {}),
   })
   if (error) throw error
 }
