@@ -218,11 +218,92 @@ function Detalhe({ v, fechar, recarregar }) {
   )
 }
 
+// Checklist das 3 redes, clicável direto no cartão do pipeline
+function Checklist({ v, recarregar }) {
+  const { avisar } = usePainel()
+  async function marcar(rede, e) {
+    e.stopPropagation()
+    let campos
+    if (rede === 'yt') campos = { yt_postado_em: v.yt_postado_em ? null : new Date().toISOString() }
+    else if (rede === 'tt') campos = { tt_postado_em: v.tt_postado_em ? null : new Date().toISOString() }
+    else campos = v.ig_status === 'publicado' ? { ig_status: 'pendente', ig_postado_em: null } : { ig_status: 'publicado', ig_postado_em: new Date().toISOString() }
+    const { error } = await supabase.from('videos').update(campos).eq('id', v.id)
+    if (error) avisar('Não salvou'); else recarregar()
+  }
+  const itens = [
+    ['yt', 'YouTube', !!v.yt_postado_em, ''],
+    ['tt', 'TikTok', !!v.tt_postado_em, ''],
+    ['ig', 'Insta', v.ig_status === 'publicado', v.ig_status === 'agendado' ? `agendado ${fmtHora(v.ig_agendado_para)}` : v.ig_status === 'processando' ? 'processando' : v.ig_status === 'erro' ? 'erro' : ''],
+  ]
+  return (
+    <ul className="v-checklist">
+      {itens.map(([k, nome, feito, extra]) => (
+        <li key={k}>
+          <button type="button" className={feito ? 'feito' : ''} onClick={(e) => marcar(k, e)} aria-pressed={feito}>
+            <span className="v-nome"><span className="v-caixa" aria-hidden="true">{feito ? '✓' : ''}</span>{nome}</span>{extra && <em>{extra}</em>}
+          </button>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+function Pipeline({ lista, abrir, recarregar, falta }) {
+  const hj = hoje()
+  const em7 = new Date(Date.now() + 7 * 86400000).toLocaleDateString('en-CA', { timeZone: FUSO })
+  const col = { atrasados: [], hoje: [], semana: [], depois: [], feitos: [] }
+  for (const v of lista) {
+    const d = v.publicar_em ? diaChave(v.publicar_em) : '9999'
+    if (!falta(v)) col.feitos.push(v)
+    else if (d < hj) col.atrasados.push(v)
+    else if (d === hj) col.hoje.push(v)
+    else if (d <= em7) col.semana.push(v)
+    else col.depois.push(v)
+  }
+  col.feitos.reverse()
+  const colunas = [
+    ['atrasados', 'Atrasados', 'Passou do dia e falta alguma rede'],
+    ['hoje', 'Hoje', 'Postar às 13h nas 3 redes'],
+    ['semana', 'Próximos 7 dias', 'Já dá para agendar no YouTube e no Instagram'],
+    ['depois', 'Depois', ''],
+    ['feitos', 'Concluídos', 'Nas 3 redes'],
+  ].filter(([k]) => k !== 'atrasados' || col.atrasados.length)
+  return (
+    <div className="v-pipe">
+      {colunas.map(([k, nome, dica]) => (
+        <section key={k} className={`v-coluna v-coluna--${k}`} aria-label={nome}>
+          <header><h2>{nome} <span>{col[k].length}</span></h2>{dica && <p>{dica}</p>}</header>
+          {col[k].length === 0 && <p className="v-vazia">{k === 'hoje' ? 'Nada marcado para hoje.' : 'Nenhum.'}</p>}
+          {col[k].map((v) => {
+            const feitos = (v.yt_postado_em ? 1 : 0) + (v.tt_postado_em ? 1 : 0) + (v.ig_status === 'publicado' ? 1 : 0)
+            return (
+              <article key={v.id} className="v-item" onClick={() => abrir(v.id)} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter') abrir(v.id) }}>
+                <div className="v-item-cab">
+                  {v.capa_url ? <img src={v.capa_url} alt="" loading="lazy" /> : <span className="v-item-sem">#{String(v.numero).padStart(3, '0')}</span>}
+                  <div>
+                    <small>#{String(v.numero).padStart(3, '0')} · {fmtDia(v.publicar_em)} {fmtHora(v.publicar_em)}</small>
+                    <strong>{v.yt_titulo}</strong>
+                    <span className="v-barra" aria-label={`${feitos} de 3 redes`}><i style={{ width: `${(feitos / 3) * 100}%` }} /></span>
+                    {!v.video_url && <em className="v-subindo">vídeo ainda subindo</em>}
+                  </div>
+                </div>
+                <Checklist v={v} recarregar={recarregar} />
+              </article>
+            )
+          })}
+        </section>
+      ))}
+    </div>
+  )
+}
+
 export default function Videos() {
   const { versao } = usePainel()
   const [lista, setLista] = useState(null)
   const [abertoId, setAbertoId] = useState(null)
   const [filtro, setFiltro] = useState('todos')
+  const [modo, setModo] = useState(() => { try { return localStorage.getItem('v-modo') || 'pipeline' } catch { return 'pipeline' } })
+  useEffect(() => { try { localStorage.setItem('v-modo', modo) } catch { /* sem storage */ } }, [modo])
 
   const carregar = async () => {
     const { data } = await supabase.from('videos').select('*').eq('canal', CANAL).order('publicar_em', { ascending: true, nullsFirst: false })
@@ -251,8 +332,11 @@ export default function Videos() {
           <h1>Vídeos</h1>
           <p className="p-sub">Concrete Atlas · 1 Short por dia às 13h · {contagem.completos} de {contagem.total} já estão nas 3 redes.</p>
         </div>
-        <div className="v-filtros" role="group" aria-label="Filtrar">
-          {[['todos', 'Todos'], ['falta', 'Falta postar'], ['feitos', 'Postados']].map(([k, t]) => (
+        <div className="v-filtros" role="group" aria-label="Modo de ver">
+          {[['pipeline', 'Pipeline'], ['grade', 'Grade']].map(([k, t]) => (
+            <button key={k} className={`p-btn p-btn--mini ${modo === k ? 'p-btn--forte' : ''}`} onClick={() => setModo(k)}>{t}</button>
+          ))}
+          {modo === 'grade' && [['todos', 'Todos'], ['falta', 'Falta postar'], ['feitos', 'Postados']].map(([k, t]) => (
             <button key={k} className={`p-btn p-btn--mini ${filtro === k ? 'p-btn--forte' : ''}`} onClick={() => setFiltro(k)}>{t}</button>
           ))}
         </div>
@@ -260,7 +344,7 @@ export default function Videos() {
 
       <ConexaoIG />
 
-      {doDia.map((v) => (
+      {modo === 'grade' && doDia.map((v) => (
         <button key={v.id} className="v-hoje" onClick={() => setAbertoId(v.id)}>
           {v.capa_url && <img src={v.capa_url} alt="" />}
           <span>
@@ -274,6 +358,8 @@ export default function Videos() {
 
       {lista.length === 0 ? (
         <div className="p-vazio"><p>Nenhum vídeo ainda.</p></div>
+      ) : modo === 'pipeline' ? (
+        <Pipeline lista={lista} abrir={setAbertoId} recarregar={carregar} falta={contagem.falta} />
       ) : (
         <div className="v-lista">
           {visiveis.map((v) => {
