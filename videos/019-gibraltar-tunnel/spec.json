@@ -1,0 +1,227 @@
+{
+ "arquivo": "concrete_atlas_short_019_gibraltar_tunnel.mp4",
+ "titulo": "Europe and Africa Are Only 14 km Apart",
+ "falas": [
+  "Europe and Africa are only 14 kilometers apart. So why would the tunnel be almost three times longer?",
+  "Because the strait is deep. Even at its shallowest point, the Camarinal Sill, the seabed is 280 meters down.",
+  "The current design runs 42 kilometers, dipping to 475 meters below sea level.",
+  "So when could it open? Comment your guess.",
+  "Not before 2035 to 2040. Spain and Morocco set up study companies for it back in 1980.",
+  "So far, the money goes to studies. Spain approved another 1.73 million euros in March 2026.",
+  "No tunnel boring machine has been ordered. For now, the way across is still the ferry.",
+  "Follow for a new megaproject every day. Would you take a train from Europe to Africa?"
+ ],
+ "cenas": [
+  {
+   "tipo": "mapa",
+   "bbox": [
+    -6.4,
+    -5.0,
+    35.6,
+    36.4
+   ],
+   "titulo": "Strait of Gibraltar",
+   "sub": "Spain to Morocco",
+   "gancho": "EUROPE TO AFRICA:\n14 KM",
+   "globo": [
+    35.95,
+    -5.5
+   ],
+   "pins": [
+    [
+     -5.6,
+     36.01,
+     "Tarifa",
+     "r"
+    ],
+    [
+     -5.83,
+     35.76,
+     "Tangier",
+     "l"
+    ]
+   ],
+   "numero": "14 KM",
+   "cor": "amber"
+  },
+  {
+   "tipo": "perfil",
+   "titulo": "Deeper than it looks",
+   "sub": "Camarinal Sill: 280 m",
+   "yrange": [
+    -950,
+    120
+   ],
+   "agua": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "terreno": [
+    [
+     0,
+     60
+    ],
+    [
+     0.12,
+     -120
+    ],
+    [
+     0.3,
+     -260
+    ],
+    [
+     0.42,
+     -280
+    ],
+    [
+     0.55,
+     -420
+    ],
+    [
+     0.75,
+     -800
+    ],
+    [
+     0.88,
+     -500
+    ],
+    [
+     1,
+     60
+    ]
+   ],
+   "cor_terreno": [
+    80,
+    74,
+    62
+   ],
+   "cotas": [
+    [
+     0.42,
+     0,
+     -280,
+     "280 m"
+    ]
+   ],
+   "nivel_mar": 0,
+   "rotulos": [
+    [
+     0.08,
+     90,
+     "Spain"
+    ],
+    [
+     0.92,
+     90,
+     "Morocco"
+    ]
+   ]
+  },
+  {
+   "tipo": "numero",
+   "valor": 42,
+   "sufixo": " km",
+   "label": "tunnel route",
+   "nota": "27.7 km under the sea",
+   "cor": "amber",
+   "segundo": {
+    "valor": 475,
+    "sufixo": " m",
+    "label": "below sea level at its deepest",
+    "cor": "water"
+   }
+  },
+  {
+   "tipo": "palpite",
+   "pergunta": "When could it open?",
+   "opcoes": [
+    "2030 World Cup",
+    "2035 to 2040",
+    "Never"
+   ],
+   "certa": 1,
+   "revelar": true
+  },
+  {
+   "tipo": "linha",
+   "titulo": "A very long study",
+   "eventos": [
+    [
+     1980,
+     "Study companies\ncreated"
+    ],
+    [
+     2003,
+     "Tunnel agreement"
+    ],
+    [
+     2026,
+     "Seabed surveys"
+    ]
+   ],
+   "lembrete": "for a new megaproject every day"
+  },
+  {
+   "tipo": "numero",
+   "valor": 1.73,
+   "decimais": 2,
+   "prefixo": "€",
+   "sufixo": "M",
+   "label": "more for studies",
+   "nota": "Spain, March 2026",
+   "cor": "amber"
+  },
+  {
+   "tipo": "mapa",
+   "bbox": [
+    -6.4,
+    -5.0,
+    35.6,
+    36.4
+   ],
+   "titulo": "For now: the ferry",
+   "rota": [
+    [
+     -5.6,
+     36.01
+    ],
+    [
+     -5.7,
+     35.9
+    ],
+    [
+     -5.81,
+     35.79
+    ]
+   ],
+   "cor_rota": "water",
+   "largura_rota": 12,
+   "pins": [
+    [
+     -5.6,
+     36.01,
+     "Tarifa",
+     "r"
+    ],
+    [
+     -5.83,
+     35.76,
+     "Tangier",
+     "l"
+    ]
+   ]
+  },
+  {
+   "tipo": "cta",
+   "pergunta": "Would you take a train to Africa?"
+  }
+ ],
+ "voz": "am_michael",
+ "velocidade": 1.08
+}

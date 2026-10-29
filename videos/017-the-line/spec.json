@@ -1,0 +1,144 @@
+{
+ "arquivo": "concrete_atlas_short_017_the_line.mp4",
+ "titulo": "The 170 km City That Stopped",
+ "falas": [
+  "Saudi Arabia planned a city 170 kilometers long, in a perfectly straight line. Here's what's left.",
+  "It was meant to be two mirrored walls, 500 meters tall, in a strip just 200 meters wide.",
+  "Home to 9 million people, with no cars and no streets.",
+  "Comment your guess first: what did one internal estimate say the whole city would cost?",
+  "A draft estimate reported by The Wall Street Journal said 8.8 trillion dollars.",
+  "In May 2026, work was put on hold until after 2030, and in October its World Cup stadium was reportedly shelved.",
+  "The first phase had already shrunk to about 2.5 kilometers, around 1.5 percent of the plan.",
+  "Follow for a new megaproject every day. Dream project, or never going to happen?"
+ ],
+ "cenas": [
+  {
+   "tipo": "mapa",
+   "bbox": [
+    34.4,
+    37.0,
+    27.4,
+    29.6
+   ],
+   "titulo": "The Line, NEOM",
+   "sub": "planned route, approximate",
+   "gancho": "170 KM\nIN A STRAIGHT LINE",
+   "globo": [
+    28.1,
+    35.3
+   ],
+   "rota": [
+    [
+     34.98,
+     27.98
+    ],
+    [
+     35.75,
+     28.27
+    ],
+    [
+     36.55,
+     28.56
+    ]
+   ],
+   "cor_rota": "amber",
+   "largura_rota": 12,
+   "pins": [
+    [
+     36.5789,
+     28.3972,
+     "Tabuk",
+     "r"
+    ]
+   ]
+  },
+  {
+   "tipo": "altura",
+   "titulo": "500 m walls",
+   "sub": "200 m wide",
+   "itens": [
+    [
+     "Eiffel Tower",
+     330,
+     false,
+     "trelica"
+    ],
+    [
+     "The Line",
+     500,
+     true,
+     "bloco"
+    ]
+   ],
+   "unidade": "m"
+  },
+  {
+   "tipo": "numero",
+   "valor": 9,
+   "sufixo": "M",
+   "label": "planned residents",
+   "nota": "no cars, no streets",
+   "cor": "amber",
+   "lembrete": "for a new megaproject every day"
+  },
+  {
+   "tipo": "palpite",
+   "pergunta": "What did one estimate say it costs?",
+   "opcoes": [
+    "$500 billion",
+    "$1.5 trillion",
+    "$8.8 trillion"
+   ],
+   "certa": 2,
+   "revelar": true
+  },
+  {
+   "tipo": "numero",
+   "valor": 8.8,
+   "decimais": 1,
+   "prefixo": "$",
+   "sufixo": "T",
+   "label": "reported estimate",
+   "nota": "2023 draft, via The Wall Street Journal",
+   "cor": "red"
+  },
+  {
+   "tipo": "linha",
+   "titulo": "From launch to pause",
+   "eventos": [
+    [
+     2021,
+     "Announced"
+    ],
+    [
+     2026,
+     "On hold until\nafter 2030"
+    ]
+   ]
+  },
+  {
+   "tipo": "barras",
+   "titulo": "Length",
+   "itens": [
+    [
+     "Original plan",
+     170,
+     false
+    ],
+    [
+     "First phase",
+     2.5,
+     true
+    ]
+   ],
+   "unidade": " km",
+   "decimais": 1
+  },
+  {
+   "tipo": "cta",
+   "pergunta": "Dream project or never happening?"
+  }
+ ],
+ "voz": "am_michael",
+ "velocidade": 1.08
+}

@@ -6,3 +6,4 @@ videos/*/*.wav
 videos/*/q*_*.png
 videos/*/lista.txt
 saida/
+envio/

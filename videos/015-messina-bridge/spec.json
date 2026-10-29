@@ -1,0 +1,160 @@
+{
+ "arquivo": "concrete_atlas_short_015_messina_bridge.mp4",
+ "titulo": "Italy Approved This Bridge, Then Blocked It",
+ "falas": [
+  "Italy approved the world's longest suspension bridge. Then its own auditors blocked it.",
+  "Its main span would be 3,300 meters, about 60 percent longer than today's record in Turkey.",
+  "Its towers would stand 399 meters tall, higher than the Eiffel Tower.",
+  "This is earthquake country. Guess what magnitude it's designed to survive, and comment it.",
+  "Magnitude 7.8. And the price tag is about 13.5 billion euros.",
+  "It was approved in August 2025, blocked by the Court of Auditors that October, and restarted by a new decree in 2026.",
+  "As of October 2026, not one tower has been built.",
+  "Follow to see if it ever happens. Will this bridge be built, yes or no?"
+ ],
+ "cenas": [
+  {
+   "tipo": "mapa",
+   "bbox": [
+    15.3,
+    16.0,
+    37.9,
+    38.5
+   ],
+   "titulo": "Strait of Messina",
+   "sub": "Sicily to mainland Italy",
+   "gancho": "APPROVED,\nTHEN BLOCKED",
+   "globo": [
+    38.2475,
+    15.6392
+   ],
+   "pins": [
+    [
+     15.55,
+     38.19,
+     "Messina",
+     "l"
+    ],
+    [
+     15.64,
+     38.22,
+     "Villa San Giovanni",
+     "r"
+    ]
+   ],
+   "rota": [
+    [
+     15.615,
+     38.262
+    ],
+    [
+     15.668,
+     38.234
+    ]
+   ],
+   "cor_rota": "amber",
+   "largura_rota": 14
+  },
+  {
+   "tipo": "barras",
+   "titulo": "Longest suspension spans",
+   "itens": [
+    [
+     "Çanakkale 1915, Turkey",
+     2023,
+     false
+    ],
+    [
+     "Messina (planned)",
+     3300,
+     true
+    ]
+   ],
+   "unidade": " m"
+  },
+  {
+   "tipo": "altura",
+   "titulo": "399 m towers",
+   "itens": [
+    [
+     "Eiffel Tower",
+     330,
+     false,
+     "trelica"
+    ],
+    [
+     "Messina tower",
+     399,
+     true,
+     "bloco"
+    ]
+   ],
+   "unidade": "m"
+  },
+  {
+   "tipo": "palpite",
+   "pergunta": "What earthquake is it built for?",
+   "opcoes": [
+    "Magnitude 6.0",
+    "Magnitude 7.0",
+    "Magnitude 7.8"
+   ],
+   "certa": 2,
+   "revelar": true
+  },
+  {
+   "tipo": "numero",
+   "valor": 13.5,
+   "decimais": 1,
+   "prefixo": "€",
+   "sufixo": "B",
+   "label": "estimated cost",
+   "cor": "amber",
+   "lembrete": "to see if it ever happens"
+  },
+  {
+   "tipo": "linha",
+   "titulo": "Approved, blocked, restarted",
+   "eventos": [
+    [
+     2025,
+     "Approved, then\nblocked"
+    ],
+    [
+     2026,
+     "Restarted by\nnew decree"
+    ]
+   ]
+  },
+  {
+   "tipo": "mapa",
+   "bbox": [
+    15.55,
+    15.75,
+    38.18,
+    38.3
+   ],
+   "titulo": "October 2026",
+   "sub": "construction not started",
+   "numero": "0 TOWERS",
+   "cor": "red",
+   "rota": [
+    [
+     15.615,
+     38.262
+    ],
+    [
+     15.668,
+     38.234
+    ]
+   ],
+   "cor_rota": "red",
+   "largura_rota": 10
+  },
+  {
+   "tipo": "cta",
+   "pergunta": "Will it be built? Yes or no?"
+  }
+ ],
+ "voz": "am_michael",
+ "velocidade": 1.08
+}

@@ -1,0 +1,261 @@
+{
+ "arquivo": "concrete_atlas_short_014_medog_dam.mp4",
+ "titulo": "China's Next Dam Is 3 Times the Three Gorges",
+ "falas": [
+  "China is turning a river that falls 2,000 meters into the biggest power project on Earth.",
+  "At the Great Bend in Tibet, the Yarlung Tsangpo drops about 2,000 meters in just 50 kilometers.",
+  "The plan is five power stations in a row, for about 1.2 trillion yuan, or 167 billion dollars.",
+  "Comment your guess: how much power is it planned for, compared with the Three Gorges Dam?",
+  "About 60 gigawatts in planning reports, close to three times the Three Gorges.",
+  "Downstream, the river becomes the Brahmaputra and flows into India and Bangladesh, and both are worried.",
+  "Construction started in July 2025, and it could take around a decade.",
+  "Follow for a new megaproject every day. Smart move or risky one? Tell me below."
+ ],
+ "cenas": [
+  {
+   "tipo": "mapa",
+   "bbox": [
+    93.8,
+    96.2,
+    28.6,
+    30.1
+   ],
+   "titulo": "Yarlung Tsangpo",
+   "sub": "Medog, Tibet",
+   "gancho": "BIGGER THAN\nTHREE GORGES",
+   "globo": [
+    29.46,
+    95.36
+   ],
+   "pins": [
+    [
+     95.3633,
+     29.4603,
+     "Medog",
+     "r"
+    ],
+    [
+     94.3614,
+     29.6488,
+     "Nyingchi",
+     "l"
+    ]
+   ]
+  },
+  {
+   "tipo": "perfil",
+   "titulo": "A 2,000 m drop",
+   "sub": "in about 50 km",
+   "yrange": [
+    600,
+    3600
+   ],
+   "agua": [
+    [
+     0,
+     3140
+    ],
+    [
+     0.1,
+     2990
+    ],
+    [
+     0.3,
+     2640
+    ],
+    [
+     0.5,
+     2140
+    ],
+    [
+     0.7,
+     1540
+    ],
+    [
+     0.9,
+     1040
+    ],
+    [
+     1,
+     940
+    ]
+   ],
+   "terreno": [
+    [
+     0,
+     3100
+    ],
+    [
+     0.1,
+     2950
+    ],
+    [
+     0.3,
+     2600
+    ],
+    [
+     0.5,
+     2100
+    ],
+    [
+     0.7,
+     1500
+    ],
+    [
+     0.9,
+     1000
+    ],
+    [
+     1,
+     900
+    ]
+   ],
+   "cor_terreno": [
+    92,
+    84,
+    70
+   ],
+   "cotas": [
+    [
+     0.93,
+     950,
+     2950,
+     "2,000 m"
+    ]
+   ],
+   "rotulos": [
+    [
+     0.5,
+     2600,
+     "50 km"
+    ]
+   ]
+  },
+  {
+   "tipo": "numero",
+   "valor": 167,
+   "prefixo": "$",
+   "sufixo": "B",
+   "label": "estimated cost",
+   "nota": "about 1.2 trillion yuan, five stations",
+   "cor": "amber",
+   "lembrete": "for a new megaproject every day"
+  },
+  {
+   "tipo": "palpite",
+   "pergunta": "How much power vs. Three Gorges?",
+   "opcoes": [
+    "The same",
+    "Twice",
+    "About three times"
+   ],
+   "certa": 2,
+   "revelar": true
+  },
+  {
+   "tipo": "barras",
+   "titulo": "Power capacity",
+   "itens": [
+    [
+     "Three Gorges",
+     22.5,
+     false
+    ],
+    [
+     "Medog (planned)",
+     60,
+     true
+    ]
+   ],
+   "unidade": " GW",
+   "decimais": 1
+  },
+  {
+   "tipo": "mapa",
+   "bbox": [
+    88.0,
+    96.5,
+    23.5,
+    30.5
+   ],
+   "titulo": "Downstream",
+   "sub": "India and Bangladesh",
+   "rota": [
+    [
+     95.36,
+     29.46
+    ],
+    [
+     95.02,
+     29.13
+    ],
+    [
+     94.9,
+     28.3
+    ],
+    [
+     95.3,
+     27.9
+    ],
+    [
+     94.5,
+     27.4
+    ],
+    [
+     93.0,
+     26.8
+    ],
+    [
+     91.74,
+     26.14
+    ],
+    [
+     90.5,
+     25.6
+    ],
+    [
+     89.7,
+     25.0
+    ],
+    [
+     89.8,
+     24.0
+    ]
+   ],
+   "pins": [
+    [
+     91.74,
+     26.14,
+     "Guwahati",
+     "l"
+    ],
+    [
+     90.41,
+     23.81,
+     "Dhaka",
+     "l"
+    ]
+   ]
+  },
+  {
+   "tipo": "linha",
+   "titulo": "A decade-long build",
+   "eventos": [
+    [
+     2025,
+     "Construction starts"
+    ],
+    [
+     2033,
+     "Possible finish\n(estimate)"
+    ]
+   ]
+  },
+  {
+   "tipo": "cta",
+   "pergunta": "Smart move or risky one?"
+  }
+ ],
+ "voz": "am_michael",
+ "velocidade": 1.08
+}

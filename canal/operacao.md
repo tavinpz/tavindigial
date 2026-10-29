@@ -14,6 +14,13 @@
 4. Tavin sobe tudo no YouTube Studio e **agenda** 1 Short por dia (ex.: 12h de Nova York = 13h/14h Brasília).
 5. Registrar em canal/publicacoes.md.
 
+## Fluxo com o painel (tavindigital.online/painel → Vídeos)
+1. Claude pesquisa temas (metade em alta, metade atemporais), confere cada número em fonte aberta e escreve o roteiro com uma pergunta para comentar no meio e a chamada no fim.
+2. Claude gera voz, animação e som, renderiza (~10 min por vídeo) e revisa quadro a quadro.
+3. `python3 motor/enviar_painel.py` sobe vídeo, capa, título, descrição, legendas de TikTok e Instagram, comentário fixado e dia/hora para o painel.
+4. Tavin abre o painel: baixa (ou "Mandar para o app" no celular), posta no YouTube (agendando) e no TikTok, e marca "Postei".
+5. Instagram: depois de conectar a conta do canal, é só clicar Agendar no painel; o Reel sai sozinho no horário.
+
 ## O que protege a monetização
 - Tema escolhido e roteiro aprovado por pessoa (guardar o registro).
 - Cada vídeo com estrutura e visual próprios; variar tipos de cena.

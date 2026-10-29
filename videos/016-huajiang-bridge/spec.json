@@ -1,0 +1,132 @@
+{
+ "arquivo": "concrete_atlas_short_016_huajiang_bridge.mp4",
+ "titulo": "The World's Highest Bridge: 625 m Above the River",
+ "falas": [
+  "This bridge puts you 625 meters above the river. No bridge on Earth is higher.",
+  "How many Eiffel Towers could stand under it? Comment your guess.",
+  "Almost two. 625 meters, from the river to the road.",
+  "It beat China's own previous record, the Duge Bridge, at 565 meters.",
+  "The main span is 1,420 meters long, and the whole bridge almost 2.9 kilometers.",
+  "State media say it turns a two-hour drive around the canyon into about two minutes.",
+  "And it's become an attraction, with about 3.3 million visits in its first year.",
+  "Follow for a new megaproject every day. Would you bungee jump from it?"
+ ],
+ "cenas": [
+  {
+   "tipo": "mapa",
+   "bbox": [
+    104.4,
+    106.9,
+    25.4,
+    26.9
+   ],
+   "titulo": "Huajiang Grand Canyon Bridge",
+   "sub": "Guizhou, China",
+   "gancho": "625 M ABOVE\nTHE RIVER",
+   "globo": [
+    25.7047,
+    105.5881
+   ],
+   "pins": [
+    [
+     105.5881,
+     25.7047,
+     "Huajiang Bridge",
+     "r"
+    ],
+    [
+     106.63,
+     26.647,
+     "Guiyang",
+     "l"
+    ],
+    [
+     104.6739,
+     26.3856,
+     "Duge Bridge",
+     "r"
+    ]
+   ]
+  },
+  {
+   "tipo": "palpite",
+   "pergunta": "How many Eiffel Towers fit under it?",
+   "opcoes": [
+    "One",
+    "Almost two",
+    "Three"
+   ],
+   "certa": 1,
+   "revelar": true
+  },
+  {
+   "tipo": "altura",
+   "titulo": "625 m",
+   "sub": "river to road",
+   "itens": [
+    [
+     "Eiffel Tower",
+     330,
+     false,
+     "trelica"
+    ],
+    [
+     "Huajiang Bridge",
+     625,
+     true,
+     "ponte"
+    ]
+   ],
+   "unidade": "m"
+  },
+  {
+   "tipo": "barras",
+   "titulo": "Highest bridges",
+   "itens": [
+    [
+     "Duge Bridge (2016)",
+     565,
+     false
+    ],
+    [
+     "Huajiang (2025)",
+     625,
+     true
+    ]
+   ],
+   "unidade": " m",
+   "lembrete": "for a new megaproject every day"
+  },
+  {
+   "tipo": "numero",
+   "valor": 1420,
+   "sufixo": " m",
+   "label": "main span",
+   "nota": "total length 2,890 m",
+   "cor": "amber"
+  },
+  {
+   "tipo": "numero",
+   "valor": 2,
+   "sufixo": " MIN",
+   "label": "to cross the canyon",
+   "nota": "state media estimate, instead of about 2 hours",
+   "cor": "water"
+  },
+  {
+   "tipo": "numero",
+   "valor": 3.3,
+   "decimais": 1,
+   "sufixo": "M",
+   "label": "visits in year one",
+   "nota": "Xinhua, October 2026",
+   "cor": "amber"
+  },
+  {
+   "tipo": "cta",
+   "pergunta": "Would you bungee jump from it?"
+  }
+ ],
+ "voz": "am_michael",
+ "velocidade": 1.08
+}

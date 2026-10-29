@@ -1,0 +1,192 @@
+{
+ "arquivo": "concrete_atlas_short_020_gerd.mp4",
+ "titulo": "Africa's Biggest Dam and the Fight Over the Nile",
+ "falas": [
+  "This is Africa's biggest hydropower dam, and the country downstream calls it an existential threat.",
+  "The Grand Ethiopian Renaissance Dam opened in September 2025, with 5,150 megawatts of capacity.",
+  "Its main wall is 145 meters high and almost 1.8 kilometers long.",
+  "How much water can its reservoir hold? Guess it in the comments.",
+  "74 billion cubic meters, on the Blue Nile, which supplies about 85 percent of the Nile's water.",
+  "Egypt depends on the Nile for about 90 percent of its water, and says the dam puts that at risk.",
+  "Building began in 2011, and 14 years later the countries still haven't agreed on how to share the river.",
+  "Follow for a new megaproject every day. If you were Ethiopia or Egypt, what would you do?"
+ ],
+ "cenas": [
+  {
+   "tipo": "mapa",
+   "bbox": [
+    32.0,
+    39.5,
+    8.5,
+    16.0
+   ],
+   "destaque": [
+    "ETH"
+   ],
+   "titulo": "Blue Nile, Ethiopia",
+   "sub": "17 km from Sudan",
+   "gancho": "AFRICA'S\nBIGGEST DAM",
+   "globo": [
+    11.2153,
+    35.0931
+   ],
+   "pins": [
+    [
+     35.0931,
+     11.2153,
+     "GERD",
+     "r"
+    ],
+    [
+     32.56,
+     15.5,
+     "Khartoum",
+     "l"
+    ],
+    [
+     38.74,
+     9.03,
+     "Addis Ababa",
+     "l"
+    ]
+   ]
+  },
+  {
+   "tipo": "numero",
+   "valor": 5150,
+   "sufixo": " MW",
+   "label": "capacity",
+   "nota": "13 turbines, opened September 2025",
+   "cor": "amber"
+  },
+  {
+   "tipo": "altura",
+   "titulo": "145 m high",
+   "sub": "1.8 km long",
+   "itens": [
+    [
+     "Statue of Liberty",
+     93,
+     false,
+     "bloco"
+    ],
+    [
+     "GERD",
+     145,
+     true,
+     "bloco"
+    ],
+    [
+     "Three Gorges",
+     181,
+     false,
+     "bloco"
+    ]
+   ],
+   "unidade": "m",
+   "lembrete": "for a new megaproject every day"
+  },
+  {
+   "tipo": "palpite",
+   "pergunta": "How much water can it hold?",
+   "opcoes": [
+    "7 billion m³",
+    "74 billion m³",
+    "740 billion m³"
+   ],
+   "certa": 1,
+   "revelar": true
+  },
+  {
+   "tipo": "numero",
+   "valor": 74,
+   "sufixo": "B m³",
+   "label": "reservoir",
+   "nota": "the Blue Nile carries about 85% of the Nile's water",
+   "cor": "water"
+  },
+  {
+   "tipo": "mapa",
+   "bbox": [
+    24.0,
+    42.0,
+    8.0,
+    32.0
+   ],
+   "destaque": [
+    "EGY"
+   ],
+   "titulo": "Downstream: Egypt",
+   "sub": "about 90% of its water from the Nile",
+   "rota": [
+    [
+     35.09,
+     11.21
+    ],
+    [
+     33.5,
+     13.5
+    ],
+    [
+     32.53,
+     15.6
+    ],
+    [
+     32.0,
+     18.0
+    ],
+    [
+     31.0,
+     21.5
+    ],
+    [
+     32.9,
+     24.1
+    ],
+    [
+     31.2,
+     30.0
+    ]
+   ],
+   "largura_rota": 12,
+   "pins": [
+    [
+     31.24,
+     30.04,
+     "Cairo",
+     "l"
+    ],
+    [
+     35.0931,
+     11.2153,
+     "GERD",
+     "r"
+    ]
+   ]
+  },
+  {
+   "tipo": "linha",
+   "titulo": "Still no deal",
+   "eventos": [
+    [
+     2011,
+     "Construction starts"
+    ],
+    [
+     2022,
+     "First power"
+    ],
+    [
+     2025,
+     "Inaugurated"
+    ]
+   ]
+  },
+  {
+   "tipo": "cta",
+   "pergunta": "Ethiopia or Egypt: what would you do?"
+  }
+ ],
+ "voz": "am_michael",
+ "velocidade": 1.08
+}

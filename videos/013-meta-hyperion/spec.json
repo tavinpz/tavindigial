@@ -1,0 +1,120 @@
+{
+ "arquivo": "concrete_atlas_short_013_meta_hyperion.mp4",
+ "titulo": "A $50 Billion AI Data Center in a Town of 2,000",
+ "falas": [
+  "A farm town of under 2,000 people is getting one of the biggest AI data centers ever built.",
+  "It's Meta's Hyperion campus in Louisiana, and Meta says it will cost more than 50 billion dollars.",
+  "Guess how much power it's designed to use. Comment before I say it.",
+  "Up to 5 gigawatts, with nearly 10 million square feet of buildings.",
+  "Zuckerberg says one campus like this covers a significant part of the footprint of Manhattan.",
+  "To feed it, the local utility is building 10 new gas power plants.",
+  "And at the peak of construction, 7,500 people will be working on it.",
+  "Follow for the megaprojects behind AI, and tell me: would you want one of these next to your town?"
+ ],
+ "cenas": [
+  {
+   "tipo": "mapa",
+   "bbox": [
+    -92.3,
+    -91.3,
+    32.2,
+    32.8
+   ],
+   "titulo": "Richland Parish, Louisiana",
+   "sub": "Holly Ridge, under 2,000 people",
+   "gancho": "THE $50 BILLION\nFARM TOWN",
+   "globo": [
+    32.4771,
+    -91.6323
+   ],
+   "pins": [
+    [
+     -91.6323,
+     32.4771,
+     "Hyperion",
+     "r"
+    ],
+    [
+     -92.1183,
+     32.5094,
+     "Monroe",
+     "l"
+    ]
+   ]
+  },
+  {
+   "tipo": "numero",
+   "valor": 50,
+   "prefixo": "$",
+   "sufixo": "B+",
+   "label": "investment",
+   "nota": "Meta and Louisiana, July 2026",
+   "cor": "amber"
+  },
+  {
+   "tipo": "palpite",
+   "pergunta": "How much power is it built for?",
+   "opcoes": [
+    "50 megawatts",
+    "500 megawatts",
+    "5 gigawatts"
+   ],
+   "certa": 2,
+   "revelar": true
+  },
+  {
+   "tipo": "numero",
+   "valor": 5,
+   "sufixo": " GW",
+   "label": "of computing power",
+   "nota": "the target, over several years",
+   "cor": "water",
+   "segundo": {
+    "valor": 10,
+    "sufixo": "M sq ft",
+    "label": "of buildings",
+    "cor": "amber"
+   }
+  },
+  {
+   "tipo": "mapa",
+   "bbox": [
+    -74.05,
+    -73.9,
+    40.68,
+    40.88
+   ],
+   "titulo": "Manhattan",
+   "sub": "\"a significant part of the footprint\"",
+   "pins": [
+    [
+     -74.0059,
+     40.7127,
+     "Manhattan",
+     "r"
+    ]
+   ],
+   "lembrete": "for the megaprojects behind AI"
+  },
+  {
+   "tipo": "numero",
+   "valor": 10,
+   "label": "new gas power plants",
+   "nota": "being built by the local utility, Entergy",
+   "cor": "red"
+  },
+  {
+   "tipo": "numero",
+   "valor": 7500,
+   "label": "construction workers",
+   "nota": "at the peak",
+   "cor": "amber"
+  },
+  {
+   "tipo": "cta",
+   "pergunta": "Would you want one next to your town?"
+  }
+ ],
+ "voz": "am_michael",
+ "velocidade": 1.08
+}

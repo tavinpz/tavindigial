@@ -1,0 +1,164 @@
+{
+ "arquivo": "concrete_atlas_short_012_jeddah_tower.mp4",
+ "titulo": "This Tower Isn't Even Halfway Up Yet",
+ "falas": [
+  "This tower is already one of the 15 tallest buildings on Earth, and it's not even halfway up.",
+  "Guess how tall it will be when it's finished. Comment your answer before I tell you.",
+  "Over 1,000 meters. The Jeddah Tower should beat the Burj Khalifa by about 180 meters.",
+  "Work started in 2013, stopped in 2018 around floor 63, and only restarted in 2025.",
+  "Now it's racing up: from 400 meters in April to about 470 meters by October.",
+  "That's roughly one new floor every five or six days, with 118 floors done so far.",
+  "If it's finished in late 2028, the world's tallest building won't be in Dubai anymore.",
+  "Follow so you see it pass the Burj Khalifa, and tell me: would you live on floor 150?"
+ ],
+ "cenas": [
+  {
+   "tipo": "mapa",
+   "bbox": [
+    38.95,
+    39.35,
+    21.4,
+    21.85
+   ],
+   "titulo": "Jeddah Tower",
+   "sub": "Jeddah, Saudi Arabia",
+   "gancho": "NOT EVEN\nHALFWAY UP",
+   "globo": [
+    21.734,
+    39.0829
+   ],
+   "pins": [
+    [
+     39.0829,
+     21.734,
+     "Jeddah Tower",
+     "r"
+    ],
+    [
+     39.1728,
+     21.5433,
+     "Jeddah",
+     "l"
+    ]
+   ]
+  },
+  {
+   "tipo": "palpite",
+   "pergunta": "How tall when it's finished?",
+   "opcoes": [
+    "828 meters",
+    "Over 1,000 meters",
+    "1,600 meters"
+   ],
+   "certa": 1,
+   "revelar": true
+  },
+  {
+   "tipo": "altura",
+   "titulo": "Over 1 km",
+   "sub": "planned height",
+   "itens": [
+    [
+     "Eiffel Tower",
+     330,
+     false,
+     "trelica"
+    ],
+    [
+     "Burj Khalifa",
+     828,
+     false,
+     "agulha"
+    ],
+    [
+     "Jeddah Tower",
+     1000,
+     true,
+     "agulha"
+    ]
+   ],
+   "unidade": "m"
+  },
+  {
+   "tipo": "linha",
+   "titulo": "Stop and start",
+   "eventos": [
+    [
+     2013,
+     "Construction starts"
+    ],
+    [
+     2018,
+     "Work stops\naround floor 63"
+    ],
+    [
+     2025,
+     "Work restarts"
+    ]
+   ]
+  },
+  {
+   "tipo": "barras",
+   "titulo": "Height built in 2026",
+   "itens": [
+    [
+     "April",
+     400,
+     false
+    ],
+    [
+     "August",
+     430,
+     false
+    ],
+    [
+     "October",
+     474,
+     true
+    ]
+   ],
+   "unidade": " m",
+   "lembrete": "to watch it pass the Burj Khalifa"
+  },
+  {
+   "tipo": "numero",
+   "valor": 118,
+   "label": "floors built",
+   "nota": "about 1 floor every 5 to 6 days",
+   "cor": "amber"
+  },
+  {
+   "tipo": "mapa",
+   "bbox": [
+    30.0,
+    60.0,
+    15.0,
+    32.0
+   ],
+   "titulo": "Tallest in the world",
+   "sub": "expected late 2028",
+   "numero": "LATE 2028",
+   "cor": "amber",
+   "pins": [
+    [
+     39.0829,
+     21.734,
+     "Jeddah",
+     "l"
+    ],
+    [
+     55.27,
+     25.2,
+     "Dubai",
+     "r"
+    ]
+   ]
+  },
+  {
+   "tipo": "cta",
+   "pergunta": "Would you live on floor 150?"
+  }
+ ],
+ "voz": "am_michael",
+ "velocidade": 1.08
+}

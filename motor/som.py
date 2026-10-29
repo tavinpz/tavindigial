@@ -167,6 +167,8 @@ def eventos(d):
         t0 = tp['ini']; dur = (tp['fim'] - tp['ini']) * FPS
         if i > 0:
             ev.append((t0 - T_TRANS / FPS - 0.12, 'whoosh', 0.6))
+        if c.get('lembrete'):
+            ev.append((t0 + 12 / FPS, 'pop', 0.45))
         if c['tipo'] == 'mapa':
             base = (40 if (i == 0 and globo) else 0) + 6
             for k, _ in enumerate(c.get('pins', [])):
@@ -209,6 +211,16 @@ def eventos(d):
             for k in range(len(c['circulos'])): ev.append((t0 + (8 + k * 10) / FPS, 'pop', 0.35))
         elif c['tipo'] == 'salao':
             ev.append((t0 + 22 / FPS, 'impacto', 0.55)); ev.append((t0 + 52 / FPS, 'impacto', 0.45))
+        elif c['tipo'] == 'palpite':
+            ev.append((t0 + 0.0, 'pop', 0.5))
+            for k in range(len(c.get('opcoes', []))): ev.append((t0 + (8 + k * 6) / FPS, 'whoosh_curto', 0.35))
+            fim = (dur - 26) if c.get('revelar') else (dur - 4)
+            ini_c = 24
+            for k in range(3): ev.append((t0 + (ini_c + k * (fim - ini_c) / 3) / FPS, 'tique', 0.45))
+            if c.get('revelar'): ev.append((t0 + fim / FPS, 'sino', 0.4)); ev.append((t0 + fim / FPS, 'impacto', 0.5))
+        elif c['tipo'] == 'altura':
+            for k in range(len(c['itens'])): ev.append((t0 + (-2 + k * 9) / FPS, 'riser', 0.18))
+            ev.append((t0 + (26 + (len(c['itens']) - 1) * 9) / FPS, 'impacto', 0.55))
         elif c['tipo'] == 'cta':
             ev.append((t0 - 1.2, 'riser', 0.35))
             ev.append((t0 + 2 / FPS, 'sino', 0.35)); ev.append((t0 + 44 / FPS, 'pop', 0.5))

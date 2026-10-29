@@ -1,0 +1,235 @@
+{
+ "arquivo": "concrete_atlas_short_011_hormuz.mp4",
+ "titulo": "A Fifth of the World's Oil Goes Through This Gap",
+ "falas": [
+  "One fifth of the world's oil sails through this one channel, and in 2026 it almost stopped.",
+  "The Strait of Hormuz is only about 33 kilometers wide. Tankers squeeze into two lanes, each about 3 kilometers wide.",
+  "In 2024, 20 million barrels of oil went through it every single day.",
+  "Quick, comment your guess before I tell you: how much of that could pipelines carry around the strait?",
+  "Less than a quarter. Saudi Arabia and the UAE have pipelines that skip it, but only a few million barrels a day of spare room.",
+  "So when traffic collapsed in 2026, oil shot past 100 dollars a barrel.",
+  "33 kilometers of water, and the whole world's fuel bill depends on it.",
+  "Follow for more places that run the world, and tell me which chokepoint we should map next."
+ ],
+ "cenas": [
+  {
+   "tipo": "mapa",
+   "bbox": [
+    54.5,
+    58.0,
+    24.8,
+    27.6
+   ],
+   "titulo": "Strait of Hormuz",
+   "sub": "Iran and Oman",
+   "gancho": "20% OF THE\nWORLD'S OIL",
+   "pins": [
+    [
+     56.27,
+     27.18,
+     "Bandar Abbas",
+     "r"
+    ],
+    [
+     56.25,
+     26.18,
+     "Khasab",
+     "l"
+    ]
+   ],
+   "rota": [
+    [
+     52.6,
+     26.7
+    ],
+    [
+     55.2,
+     26.45
+    ],
+    [
+     56.4,
+     26.55
+    ],
+    [
+     56.9,
+     26.0
+    ],
+    [
+     57.8,
+     25.2
+    ]
+   ],
+   "cor_rota": "amber",
+   "largura_rota": 14
+  },
+  {
+   "tipo": "mapa",
+   "bbox": [
+    55.6,
+    57.3,
+    25.7,
+    27.1
+   ],
+   "titulo": "About 33 km wide",
+   "sub": "two lanes, about 3 km each",
+   "numero": "33 KM",
+   "cor": "amber",
+   "rotas": [
+    [
+     [
+      55.7,
+      26.55
+     ],
+     [
+      56.35,
+      26.62
+     ],
+     [
+      56.75,
+      26.35
+     ],
+     [
+      57.1,
+      25.95
+     ]
+    ],
+    [
+     [
+      55.7,
+      26.42
+     ],
+     [
+      56.35,
+      26.48
+     ],
+     [
+      56.68,
+      26.22
+     ],
+     [
+      57.0,
+      25.85
+     ]
+    ]
+   ],
+   "largura_rota": 10
+  },
+  {
+   "tipo": "numero",
+   "valor": 20,
+   "sufixo": "M",
+   "label": "barrels of oil a day",
+   "nota": "2024, about a fifth of world use (EIA)",
+   "cor": "amber",
+   "lembrete": "for more places that run the world"
+  },
+  {
+   "tipo": "palpite",
+   "pergunta": "How much can pipelines carry around it?",
+   "opcoes": [
+    "Almost all of it",
+    "About half",
+    "Less than a quarter"
+   ],
+   "certa": 2,
+   "revelar": true
+  },
+  {
+   "tipo": "mapa",
+   "bbox": [
+    36.0,
+    60.0,
+    20.0,
+    30.0
+   ],
+   "titulo": "The bypass pipelines",
+   "sub": "Saudi Arabia and the UAE",
+   "rotas": [
+    [
+     [
+      49.68,
+      25.94
+     ],
+     [
+      46.7,
+      24.7
+     ],
+     [
+      42.0,
+      24.4
+     ],
+     [
+      38.06,
+      24.09
+     ]
+    ],
+    [
+     [
+      53.6,
+      23.83
+     ],
+     [
+      55.3,
+      24.4
+     ],
+     [
+      56.33,
+      25.12
+     ]
+    ]
+   ],
+   "cor_rota": "amber",
+   "largura_rota": 12,
+   "pins": [
+    [
+     38.06,
+     24.09,
+     "Yanbu",
+     "l"
+    ],
+    [
+     56.33,
+     25.12,
+     "Fujairah",
+     "r"
+    ]
+   ]
+  },
+  {
+   "tipo": "numero",
+   "valor": 100,
+   "prefixo": "$",
+   "sufixo": "+",
+   "label": "per barrel",
+   "nota": "Brent crude, March 2026",
+   "cor": "red"
+  },
+  {
+   "tipo": "mapa",
+   "bbox": [
+    44.0,
+    64.0,
+    18.0,
+    32.0
+   ],
+   "titulo": "One narrow gap",
+   "numero": "33 KM",
+   "cor": "amber",
+   "escuro": 0.15,
+   "pins": [
+    [
+     56.4,
+     26.5,
+     "Hormuz",
+     "r"
+    ]
+   ]
+  },
+  {
+   "tipo": "cta",
+   "pergunta": "Which chokepoint should we map next?"
+  }
+ ],
+ "voz": "am_michael",
+ "velocidade": 1.08
+}
