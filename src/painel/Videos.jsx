@@ -205,8 +205,23 @@ function Rede({ v, k, nome, recarregar, igOk, aberto, abrir }) {
   )
 }
 
-function Cartao({ v, abrir, recarregar, igOk, fase }) {
+// Arrastar o cartão para outra coluna muda as 3 redes de uma vez (sem abrir rede por rede)
+function dadosMover(v, alvo, igOk) {
+  let d = {}
+  const sug = sugestao(v)
+  for (const r of REDES) {
+    const st = situacao(v, r.k)
+    if (st.processando) continue
+    if (alvo === 'programar' && st.s !== 'pendente') d = { ...d, ...campos(r.k, 'desfazer') }
+    if (alvo === 'programado' && st.s !== 'programado') d = { ...d, ...campos(r.k, 'programar', sug, igOk) }
+    if (alvo === 'postado' && st.s !== 'postado') d = { ...d, ...campos(r.k, 'postei', null) }
+  }
+  return d
+}
+
+function Cartao({ v, abrir, recarregar, igOk, fase, arrastar, mover, arrastando }) {
   const salvar = useSalvar(v, recarregar)
+  const [pode, setPode] = useState(true)
   const pendentes = REDES.filter((r) => situacao(v, r.k).s === 'pendente')
   const sug = sugestao(v)
   const views = (v.yt_views || 0) + (v.ig_views || 0)
@@ -217,7 +232,11 @@ function Cartao({ v, abrir, recarregar, igOk, fase }) {
     await salvar(dados, `Programado para ${fmtQuando(sug)}`)
   }
   return (
-    <article className={`v-item v-item--${fase}`}>
+    <article className={`v-item v-item--${fase} ${arrastando ? 'v-item--arrastando' : ''}`}
+      draggable={fase !== 'producao' && pode}
+      onPointerDown={(e) => setPode(!e.target.closest('input, textarea, select'))}
+      onDragStart={(e) => { e.dataTransfer.effectAllowed = 'move'; e.dataTransfer.setData('text/plain', v.id); arrastar(v.id) }}
+      onDragEnd={() => arrastar(null)}>
       <button type="button" className="v-item-cab" onClick={() => abrir(v.id)}>
         {v.capa_url ? <img src={v.capa_url} alt="" loading="lazy" /> : <span className="v-item-sem">{num(v)}</span>}
         <span className="v-item-txt">
@@ -233,6 +252,12 @@ function Cartao({ v, abrir, recarregar, igOk, fase }) {
           Programei {pendentes.length === 3 ? 'as 3' : pendentes.map((r) => r.nome).join(' e ')} nesse horário
         </button>
       )}
+      {fase !== 'producao' && (
+        <select className="v-mover" value="" aria-label="Mover para outra coluna" onChange={(e) => e.target.value && mover(v.id, e.target.value)}>
+          <option value="">Mover para…</option>
+          {FASES.filter(([k]) => k !== 'producao' && k !== fase).map(([k, nome]) => <option key={k} value={k}>{nome}</option>)}
+        </select>
+      )}
     </article>
   )
 }
@@ -245,9 +270,27 @@ const FASES = [
 ]
 
 function Quadro({ lista, abrir, recarregar, igOk }) {
+  const { avisar } = usePainel()
   const [verTodos, setVerTodos] = useState(null)
+  const [arr, setArr] = useState(null)
+  const [sobre, setSobre] = useState(null)
+  const [local, setLocal] = useState({})
+  const fase = (v) => local[v.id] || etapa(v)
+  async function mover(id, alvo) {
+    const v = lista.find((x) => x.id === id)
+    if (!v || !v.video_url || alvo === 'producao' || fase(v) === alvo) return
+    const d = dadosMover(v, alvo, igOk)
+    if (!Object.keys(d).length) return
+    setLocal((l) => ({ ...l, [id]: alvo }))
+    const { error } = await supabase.from('videos').update(d).eq('id', id)
+    avisar(error ? 'Não salvou' : alvo === 'programado'
+      ? `${num(v)} programado nas 3 redes para ${fmtQuando(sugestao(v))}${igOk ? ' · Insta: o painel posta sozinho' : ''}`
+      : alvo === 'postado' ? `${num(v)} marcado como postado nas 3 redes` : `${num(v)} voltou para Para programar`)
+    await recarregar()
+    setLocal((l) => { const n = { ...l }; delete n[id]; return n })
+  }
   const col = { producao: [], programar: [], programado: [], postado: [] }
-  for (const v of lista) col[etapa(v)].push(v)
+  for (const v of lista) col[fase(v)].push(v)
   const proximo = (v) => Math.min(...REDES.map((r) => situacao(v, r.k)).filter((s) => s.s === 'programado').map((s) => new Date(s.quando).getTime()))
   const ultimo = (v) => Math.max(...REDES.map((r) => new Date(situacao(v, r.k).postado || 0).getTime()))
   col.programado.sort((a, b) => proximo(a) - proximo(b))
@@ -258,10 +301,13 @@ function Quadro({ lista, abrir, recarregar, igOk }) {
         const limite = k === 'postado' ? 6 : k === 'programar' ? 7 : 99
         const itens = verTodos === k ? col[k] : col[k].slice(0, limite)
         return (
-          <section key={k} className={`v-coluna v-coluna--${k}`} aria-label={nome}>
+          <section key={k} className={`v-coluna v-coluna--${k} ${arr && sobre === k ? 'v-coluna--sobre' : ''}`} aria-label={nome}
+            onDragOver={(e) => { if (arr && k !== 'producao') { e.preventDefault(); e.dataTransfer.dropEffect = 'move'; if (sobre !== k) setSobre(k) } }}
+            onDragLeave={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) setSobre((x) => (x === k ? null : x)) }}
+            onDrop={(e) => { e.preventDefault(); const id = arr || e.dataTransfer.getData('text/plain'); setArr(null); setSobre(null); if (id) mover(id, k) }}>
             <header><h2>{nome} <span>{col[k].length}</span></h2><p>{dica}</p></header>
             {col[k].length === 0 && <p className="v-vazia">{k === 'programar' ? 'Tudo programado. Hora de fazer mais vídeos.' : 'Nenhum ainda.'}</p>}
-            {itens.map((v) => <Cartao key={v.id} v={v} abrir={abrir} recarregar={recarregar} igOk={igOk} fase={k} />)}
+            {itens.map((v) => <Cartao key={v.id} v={v} abrir={abrir} recarregar={recarregar} igOk={igOk} fase={k} arrastar={(id) => { setArr(id); if (!id) setSobre(null) }} mover={mover} arrastando={arr === v.id} />)}
             {col[k].length > limite && (
               <button className="p-btn p-btn--mini p-btn--fraco" onClick={() => setVerTodos(verTodos === k ? null : k)}>{verTodos === k ? 'Mostrar menos' : `Ver mais ${col[k].length - limite}`}</button>
             )}
@@ -488,6 +534,7 @@ export default function Videos() {
             Concrete Atlas · {resumo.n.postado} postados · {resumo.n.programado} programados{resumo.ate ? ` (fila até ${fmtDia(resumo.ate)})` : ''} · {resumo.n.programar} para programar
             {resumo.views > 0 ? ` · ${fmtViews(resumo.views)} no YouTube e Insta` : ''}
           </p>
+          <p className="p-sub">Arraste o cartão para outra coluna e as 3 redes mudam juntas. Para uma rede só, clique nela no cartão.</p>
         </div>
       </div>
 
