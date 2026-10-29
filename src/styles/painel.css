@@ -735,3 +735,24 @@ body:has(.p-fantasma) { cursor: grabbing; }
 .mg-vers button.pausada { text-decoration: line-through; opacity: .6; }
 .p-vars-det { margin-top: 10px; font-size: 14px; }
 .p-vars-det summary { cursor: pointer; color: var(--cinza); }
+
+/* Ficha do lead: roteiro completo */
+.rt h3 { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+.rt h3 small { font-family: var(--f-texto); font-size: 12.5px; font-weight: 400; color: var(--cinza); }
+.rt-lista { list-style: none; margin: 0 0 8px; padding: 0; border: 1px solid var(--linha); border-radius: 14px; overflow: hidden; }
+.rt-passo + .rt-passo { border-top: 1px solid var(--linha); }
+.rt-cab { width: 100%; font: inherit; color: inherit; text-align: left; background: var(--branco); border: 0; padding: 10px 12px; cursor: pointer; display: flex; align-items: center; gap: 10px; }
+.rt-cab:hover { background: var(--papel); }
+.rt-cab:focus-visible { outline: 2px solid var(--tinta); outline-offset: -2px; }
+.rt-n { width: 30px; height: 30px; flex: none; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 800; background: #F0EAF4; color: var(--tinta); }
+.rt-passo.feito .rt-n { background: var(--ok); color: var(--branco); }
+.rt-passo.aberto .rt-n { background: var(--tinta); color: var(--branco); }
+.rt-tit { flex: 1; min-width: 0; display: grid; gap: 1px; }
+.rt-tit strong { font-size: 14.5px; }
+.rt-tit small { font-size: 12.5px; color: var(--cinza); }
+.rt-passo.feito .rt-tit small { color: var(--ok); font-weight: 600; }
+.rt-cab i { font-style: normal; font-size: 20px; color: var(--cinza); }
+.rt-corpo { padding: 4px 12px 14px 52px; background: #FCFAFD; display: flex; flex-direction: column; gap: 8px; }
+.rt-quando { margin: 0; font-size: 12.5px; color: var(--cinza); }
+.rt-botoes { display: flex; flex-wrap: wrap; gap: 6px; }
+@media (max-width: 600px) { .rt-corpo { padding-left: 12px; } }

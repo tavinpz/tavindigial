@@ -5,6 +5,7 @@ import { brl, CONFIG } from '../config'
 import { STATUS, ETAPAS, EVENTOS, PRODUTOS, COLUNAS, escolherMensagem, registrarEnvio, registrarEvento, moverEtapa, linkMaps, dataCurta, arquivarLeads, apagarLeads } from './api'
 import { usePainel } from './Painel'
 import { abrirCanal, dicaDm, mensagemPara } from './envio'
+import Roteiro from './Roteiro'
 
 const RESPOSTAS = ['abertura', 'resp_link', 'followup_1', 'followup_2', 'resp_preco', 'resp_pensar', 'resp_ja_tenho', 'followup_proposta', 'pos_venda', 'upsell_30d']
 
@@ -16,6 +17,7 @@ export default function LeadDrawer({ id, fechar, iniciarPagamento = false }) {
   const [lead, setLead] = useState(null)
   const [hist, setHist] = useState([])
   const [negocios, setNegocios] = useState([])
+  const [envios, setEnvios] = useState([])
   const [etapa, setEtapa] = useState('resp_preco')
   const [texto, setTexto] = useState('')
   const [obs, setObs] = useState('')
@@ -34,6 +36,7 @@ export default function LeadDrawer({ id, fechar, iniciarPagamento = false }) {
     setLead(l)
     setObs(l?.observacoes || '')
     setNegocios(ng || [])
+    setEnvios(en || [])
     const h = [
       ...(en || []).map((x) => ({ quando: x.enviado_em, titulo: `Enviado: ${ETAPAS[x.etapa] || x.etapa}`, detalhe: x.texto_enviado })),
       ...(ev || []).map((x) => ({ quando: x.created_at, titulo: EVENTOS[x.tipo] || x.tipo, detalhe: x.meta?.resumo ? `“${x.meta.resumo}”` : x.meta?.modelo ? `Modelo: ${x.meta.modelo}` : '' })),
@@ -153,11 +156,6 @@ export default function LeadDrawer({ id, fechar, iniciarPagamento = false }) {
           {lead.instagram && <a href={igPerfil(lead.instagram)} target="_blank" rel="noreferrer">@{igHandle(lead.instagram)}</a>}
           <a href={linkModelos(lead, { rastrear: false })} target="_blank" rel="noreferrer">Página de modelos dele</a>
         </p>
-        {lead.instagram && (
-          <div className="p-acoes">
-            <button className="p-btn p-btn--forte" onClick={chamarDm}>Copiar mensagem e abrir DM</button>
-          </div>
-        )}
         {!lead.instagram && (
           <form className="p-ig-form" onSubmit={salvarIg}>
             <input value={ig} onChange={(e) => setIg(e.target.value)} placeholder="@ do Instagram (para chamar na DM)" aria-label="Instagram do negócio" />
@@ -165,6 +163,8 @@ export default function LeadDrawer({ id, fechar, iniciarPagamento = false }) {
           </form>
         )}
         {lead.nota != null && <p className="p-meta">★ {String(lead.nota).replace('.', ',')} · {lead.avaliacoes} avaliações · {lead.tipo_site === 'site_falso' ? `Link atual: ${lead.site_raw}` : 'Sem site'}</p>}
+
+        <Roteiro key={lead.id} lead={lead} envios={envios} depois={() => { carregar(); atualizar() }} />
 
         <h3>Registrar</h3>
         <input className="p-resumo" value={resumo} onChange={(e) => setResumo(e.target.value)} placeholder="O que ele disse? (opcional, aparece no Início)" maxLength={300} />
@@ -198,16 +198,6 @@ export default function LeadDrawer({ id, fechar, iniciarPagamento = false }) {
             <div className="p-acoes"><button className="p-btn p-btn--forte">Salvar venda</button><button type="button" className="p-btn p-btn--fraco" onClick={() => setPagando(false)}>Cancelar</button></div>
           </form>
         )}
-
-        <h3>Responder</h3>
-        <select className="p-select" value={etapa} onChange={(e) => setEtapa(e.target.value)}>
-          {RESPOSTAS.map((k) => <option key={k} value={k}>{ETAPAS[k]}</option>)}
-        </select>
-        {modelo ? <textarea className="p-texto" rows={8} value={texto} onChange={(e) => setTexto(e.target.value)} /> : <p className="p-erro">Sem mensagem ativa para esta etapa.</p>}
-        <div className="p-acoes">
-          <button className="p-btn p-btn--forte" disabled={!lead.whatsapp || !texto} onClick={enviar}>Enviar no WhatsApp</button>
-          <button className="p-btn" onClick={() => navigator.clipboard.writeText(texto).then(() => avisar('Copiado'))}>Copiar</button>
-        </div>
 
         {negocios.length > 0 && (
           <>
