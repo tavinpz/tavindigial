@@ -66,7 +66,7 @@ function campos(k, acao, iso, igAuto) {
 function etapa(v) {
   if (!v.video_url) return 'producao'
   const ss = REDES.map((r) => situacao(v, r.k).s)
-  if (ss.includes('pendente')) return 'programar'
+  if (ss.includes('pendente')) return v.subido_em ? 'subido' : 'programar'
   if (ss.includes('programado')) return 'programado'
   return 'postado'
 }
@@ -209,10 +209,12 @@ function Rede({ v, k, nome, recarregar, igOk, aberto, abrir }) {
 function dadosMover(v, alvo, igOk) {
   let d = {}
   const sug = sugestao(v)
+  if (alvo === 'programar') d.subido_em = null
+  if (alvo === 'subido') d.subido_em = v.subido_em || new Date().toISOString()
   for (const r of REDES) {
     const st = situacao(v, r.k)
     if (st.processando) continue
-    if (alvo === 'programar' && st.s !== 'pendente') d = { ...d, ...campos(r.k, 'desfazer') }
+    if ((alvo === 'programar' || alvo === 'subido') && st.s !== 'pendente') d = { ...d, ...campos(r.k, 'desfazer') }
     if (alvo === 'programado' && st.s !== 'programado') d = { ...d, ...campos(r.k, 'programar', sug, igOk) }
     if (alvo === 'postado' && st.s !== 'postado') d = { ...d, ...campos(r.k, 'postei', null) }
   }
@@ -240,14 +242,14 @@ function Cartao({ v, abrir, recarregar, igOk, fase, arrastar, mover, arrastando 
       <button type="button" className="v-item-cab" onClick={() => abrir(v.id)}>
         {v.capa_url ? <img src={v.capa_url} alt="" loading="lazy" /> : <span className="v-item-sem">{num(v)}</span>}
         <span className="v-item-txt">
-          <small>{num(v)}{fase === 'programar' || fase === 'producao' ? ` · sugestão ${fmtQuando(sug)}` : ''}</small>
+          <small>{num(v)}{fase === 'programar' || fase === 'subido' || fase === 'producao' ? ` · sugestão ${fmtQuando(sug)}` : ''}{fase === 'subido' && v.subido_em ? ` · subiu ${fmtCurto(v.subido_em)}` : ''}</small>
           <strong>{v.yt_titulo}</strong>
           {fase === 'producao' && <em className="v-subindo">renderizando ou subindo o arquivo</em>}
           {fase === 'postado' && views > 0 && <em className="v-views">{fmtViews(views)}</em>}
         </span>
       </button>
       {fase !== 'producao' && <Redes v={v} recarregar={recarregar} igOk={igOk} />}
-      {fase === 'programar' && pendentes.length > 1 && (
+      {(fase === 'programar' || fase === 'subido') && pendentes.length > 1 && (
         <button type="button" className="v-tudo" onClick={programarTudo}>
           Programei {pendentes.length === 3 ? 'as 3' : pendentes.map((r) => r.nome).join(' e ')} nesse horário
         </button>
@@ -264,7 +266,8 @@ function Cartao({ v, abrir, recarregar, igOk, fase, arrastar, mover, arrastando 
 
 const FASES = [
   ['producao', 'Em produção', 'O vídeo ainda está sendo feito.'],
-  ['programar', 'Para programar', 'Programe no YouTube Studio e no TikTok, depois marque aqui.'],
+  ['programar', 'Para programar', 'Baixe e faça o upload. Arraste para "Upload feito".'],
+  ['subido', 'Upload feito', 'Já subiu: falta programar ou publicar.'],
   ['programado', 'Programado', 'Vira "postado" sozinho no horário.'],
   ['postado', 'Postado', 'Nas 3 redes. Links e views chegam sozinhos.'],
 ]
@@ -285,11 +288,12 @@ function Quadro({ lista, abrir, recarregar, igOk }) {
     const { error } = await supabase.from('videos').update(d).eq('id', id)
     avisar(error ? 'Não salvou' : alvo === 'programado'
       ? `${num(v)} programado nas 3 redes para ${fmtQuando(sugestao(v))}${igOk ? ' · Insta: o painel posta sozinho' : ''}`
-      : alvo === 'postado' ? `${num(v)} marcado como postado nas 3 redes` : `${num(v)} voltou para Para programar`)
+      : alvo === 'postado' ? `${num(v)} marcado como postado nas 3 redes`
+      : alvo === 'subido' ? `${num(v)}: upload feito` : `${num(v)} voltou para Para programar`)
     await recarregar()
     setLocal((l) => { const n = { ...l }; delete n[id]; return n })
   }
-  const col = { producao: [], programar: [], programado: [], postado: [] }
+  const col = { producao: [], programar: [], subido: [], programado: [], postado: [] }
   for (const v of lista) col[fase(v)].push(v)
   const proximo = (v) => Math.min(...REDES.map((r) => situacao(v, r.k)).filter((s) => s.s === 'programado').map((s) => new Date(s.quando).getTime()))
   const ultimo = (v) => Math.max(...REDES.map((r) => new Date(situacao(v, r.k).postado || 0).getTime()))
@@ -510,7 +514,7 @@ export default function Videos() {
 
   const resumo = useMemo(() => {
     const l = lista || []
-    const n = { producao: 0, programar: 0, programado: 0, postado: 0 }
+    const n = { producao: 0, programar: 0, subido: 0, programado: 0, postado: 0 }
     let ate = 0, views = 0
     for (const v of l) {
       n[etapa(v)]++
@@ -531,7 +535,7 @@ export default function Videos() {
         <div>
           <h1>Vídeos</h1>
           <p className="p-sub">
-            Concrete Atlas · {resumo.n.postado} postados · {resumo.n.programado} programados{resumo.ate ? ` (fila até ${fmtDia(resumo.ate)})` : ''} · {resumo.n.programar} para programar
+            Concrete Atlas · {resumo.n.postado} postados · {resumo.n.programado} programados{resumo.ate ? ` (fila até ${fmtDia(resumo.ate)})` : ''} · {resumo.n.programar} para programar{resumo.n.subido ? ` · ${resumo.n.subido} com upload feito` : ''}
             {resumo.views > 0 ? ` · ${fmtViews(resumo.views)} no YouTube e Insta` : ''}
           </p>
           <p className="p-sub">Arraste o cartão para outra coluna e as 3 redes mudam juntas. Para uma rede só, clique nela no cartão.</p>
