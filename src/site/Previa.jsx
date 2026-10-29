@@ -4,8 +4,17 @@ import { nichoSlug, nomeCurto, comArtigo, slugDominio, waLink } from '../lib/msg
 import { callFn, quandoHumano } from '../lib/fn'
 import { waVendas } from './Layout'
 import Logo from './Logo'
-import SitePrevia, { temaDe } from './SitePrevia'
+import { temaDe } from './SitePrevia'
 import '../styles/previa.css'
+
+// O modelo mais caprichado de cada tipo de negócio
+function melhorModelo(nicho, categoria = '', nome = '') {
+  const t = `${categoria} ${nome}`.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+  const slug = nichoSlug(nicho, categoria)
+  if (slug === 'estetica') return /unha|nail|manicure|esmalt/.test(t) ? 'nail' : 'estetica'
+  if (slug === 'saude') return /nutri/.test(t) ? 'nutricionista' : /psic|terap/.test(t) ? 'psicologa' : /academ|pilates|crossfit|fitness|treino|funcional/.test(t) ? 'academia' : 'odontologia'
+  return { odontologia: 'odontologia', barbearia: 'barbearia', pet: 'pet', tatuagem: 'tatuagem', alimentacao: 'hamburgueria' }[slug] || 'estetica'
+}
 
 // Página do link curto que vai na mensagem: /p/<nome>-<código>
 // O lead vê a página DELE (nome, nota, avaliações e bairro do Google), e responde com um toque.
@@ -54,13 +63,20 @@ export default function Previa() {
     mudar: para(`Oi, Gustavo! Vi a prévia ${de}. Queria mudar: `),
   }
   const ig = lead.instagram ? String(lead.instagram).replace(/^@/, '') : ''
+  // o modelo mais bonito do nicho, com o nome, a nota, as avaliações e o bairro deles, sem preço na tela
+  const modelo = melhorModelo(lead.nicho, lead.categoria, lead.nome)
+  const q = new URLSearchParams({ n: nome, e: '1' })
+  if (lead.nota != null) q.set('g', String(lead.nota))
+  if (lead.avaliacoes) q.set('a', String(lead.avaliacoes))
+  if (lead.bairro) q.set('b', lead.bairro)
+  const demoSrc = `/demo/${modelo}?${q}`
   const feito = [
     ['Nome', nome],
     lead.nota != null && ['Nota do Google', `${String(lead.nota).replace('.', ',')} de 5`],
     lead.avaliacoes && ['Avaliações', `${lead.avaliacoes} clientes`],
-    (lead.endereco || lead.bairro) && ['Endereço no mapa', lead.bairro || 'Google Maps'],
+    lead.bairro && ['Bairro', lead.bairro],
     ig && ['Instagram', `@${ig}`],
-    ['Endereço do site', `${slugDominio(nome)}.com.br`],
+    ['Sugestão de endereço', `${slugDominio(nome)}.com.br`],
   ].filter(Boolean)
   const slug = nichoSlug(lead.nicho, lead.categoria)
   const n = encodeURIComponent(nome)
@@ -86,8 +102,8 @@ export default function Previa() {
       </aside>
 
       <main className="pv2-palco">
-        <div className="pv2-tela">
-          <SitePrevia nome={nome} nicho={lead.nicho} categoria={lead.categoria} bairro={lead.bairro} cidade={lead.cidade} endereco={lead.endereco} instagram={lead.instagram} nota={lead.nota} avaliacoes={lead.avaliacoes} aviso={aviso} />
+        <div className="pv2-tela pv2-tela--demo">
+          <iframe src={demoSrc} title={`Página ${de}`} />
         </div>
       </main>
 

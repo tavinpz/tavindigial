@@ -20,7 +20,7 @@ export default function Nutricionista() {
   const [obj, setObj] = useState('Emagrecer')
   return (
     <Casca id="nutricionista" base={BASE} fontes="family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=DM+Sans:wght@400;500;700">
-      {({ nome, demo }) => (
+      {({ nome, demo, local }) => (
         <main className="nt">
           <header className="nt-topo">
             <p className="nt-quem"><span className="nt-av" aria-hidden="true">{nome.replace(/^(dra?\.?\s)/i, '').slice(0, 1)}</span>{nome}<small>Nutricionista · CRN-3 00000 (exemplo)</small></p>
@@ -56,7 +56,7 @@ export default function Nutricionista() {
             <cite>Renata, 38 · avaliação de exemplo</cite>
           </blockquote>
 
-          <p className="nt-local"><Ico n="mapa" s={16} /> Vila Madalena, São Paulo · Seg a sex, 8h às 18h</p>
+          <p className="nt-local"><Ico n="mapa" s={16} /> {local('Vila Madalena')}, São Paulo · Seg a sex, 8h às 18h</p>
         </main>
       )}
     </Casca>

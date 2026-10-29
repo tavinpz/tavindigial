@@ -104,6 +104,7 @@ function Classico() {
   }
   const nomeLead = (qs.get('n') || '').slice(0, 60).trim()
   const r = qs.get('r') || ''
+  const embutida = qs.get('e') === '1'
   const nome = nomeLead || tema?.nome || ''
   const [aberto, setAberto] = useState(null)
   const [aviso, setAviso] = useState('')
@@ -230,17 +231,19 @@ function Classico() {
         <p className="b-horario">{tema.horario.texto}</p>
 
         <footer className="b-rodape">
-          <a className="b-quero" href={quero} target="_blank" rel="noreferrer">
-            Quero uma página assim · {brl(CONFIG.PRECO_BIO)} em {CONFIG.PRAZO_BIO_HORAS}h
-          </a>
-          <small>Feito por <a href={CONFIG.SITE_URL} target="_blank" rel="noreferrer">Tavin Digital</a></small>
+          {!embutida && (
+            <a className="b-quero" href={quero} target="_blank" rel="noreferrer">
+              Quero uma página assim · {brl(CONFIG.PRECO_BIO)} em {CONFIG.PRAZO_BIO_HORAS}h
+            </a>
+          )}
+          <small>{embutida ? 'Página feita pela Tavin Digital' : <>Feito por <a href={CONFIG.SITE_URL} target="_blank" rel="noreferrer">Tavin Digital</a></>}</small>
         </footer>
       </main>
 
       {aviso && (
         <div className="b-aviso" role="status">
           <p>{aviso}</p>
-          <a href={quero} target="_blank" rel="noreferrer">Quero a minha</a>
+          {!embutida && <a href={quero} target="_blank" rel="noreferrer">Quero a minha</a>}
         </div>
       )}
     </div>

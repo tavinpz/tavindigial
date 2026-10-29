@@ -37,10 +37,10 @@ export default function Nail() {
   const [cor, setCor] = useState(CORES[0])
   return (
     <Casca id="nail" base={BASE} fontes="family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&family=Manrope:wght@400;600;800">
-      {({ nome, demo }) => (
+      {({ nome, demo, local, nota }) => (
         <main className="nl" style={{ '--cor': cor[0] === 'Francesinha' ? '#E8C9C0' : cor[1], '--cor-tx': cor[2] }}>
           <header className="nl-topo">
-            <p className="nl-sobre">Unhas, cílios e sobrancelhas · Tatuapé</p>
+            <p className="nl-sobre">Unhas, cílios e sobrancelhas · {local('Tatuapé')}</p>
             <h1>{nome}</h1>
             <p className="nl-frase">Atendimento com hora marcada, café e playlist boa.</p>
           </header>
@@ -75,7 +75,7 @@ export default function Nail() {
             {GALERIA.map((g, i) => <button key={i} style={{ background: g, '--d': i }} aria-label={`Trabalho ${i + 1}`} onClick={() => demo('abre o seu Instagram com os trabalhos')} />)}
           </section>
 
-          <p className="nl-local"><Ico n="mapa" s={16} /> Tatuapé, São Paulo · <Ico n="estrela" s={14} cheio /> 5,0 no Google</p>
+          <p className="nl-local"><Ico n="mapa" s={16} /> {local('Tatuapé')}, São Paulo · <Ico n="estrela" s={14} cheio /> {nota('5,0')} no Google</p>
         </main>
       )}
     </Casca>

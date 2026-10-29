@@ -32,6 +32,14 @@ export default function Casca({ id, base, fontes, className = '', children }) {
   const nomeLead = (qs.get('n') || '').slice(0, 60).trim()
   const r = qs.get('r') || ''
   const nome = nomeLead || base.nome
+  // dados reais do negócio vindos da prévia (?b= bairro, ?g= nota, ?a= avaliações) e modo dentro da prévia (?e=1)
+  const bQ = (qs.get('b') || '').slice(0, 40).trim()
+  const gQ = /^\d([.,]\d)?$/.test(qs.get('g') || '') ? qs.get('g').replace('.', ',') : ''
+  const aQ = /^\d{1,5}$/.test(qs.get('a') || '') ? qs.get('a') : ''
+  const embutida = qs.get('e') === '1'
+  const local = (padrao) => bQ || padrao
+  const nota = (padrao) => (gQ ? (gQ.includes(',') ? gQ : `${gQ},0`) : padrao)
+  const aval = (padrao) => aQ || padrao
   const [aviso, setAviso] = useState('')
   useFonte(fontes)
 
@@ -54,17 +62,21 @@ export default function Casca({ id, base, fontes, className = '', children }) {
   return (
     <div className={`dx dx--${id} ${className}`}>
       <p className="dx-selo">{nomeLead ? `Demonstração feita para ${nomeLead}` : 'Demonstração Tavin Digital'}</p>
-      {children({ nome, demo, quero, nomeLead })}
-      <footer className="dx-rodape">
-        <a className="dx-quero" href={quero} target="_blank" rel="noreferrer">
-          Quero uma página assim · {brl(CONFIG.PRECO_BIO)} em {CONFIG.PRAZO_BIO_HORAS}h
-        </a>
-        <small>Feito por <a href={CONFIG.SITE_URL} target="_blank" rel="noreferrer">Tavin Digital</a></small>
-      </footer>
+      {children({ nome, demo, quero, nomeLead, local, nota, aval })}
+      {embutida ? (
+        <footer className="dx-rodape dx-rodape--embutida"><small>Página feita pela Tavin Digital</small></footer>
+      ) : (
+        <footer className="dx-rodape">
+          <a className="dx-quero" href={quero} target="_blank" rel="noreferrer">
+            Quero uma página assim · {brl(CONFIG.PRECO_BIO)} em {CONFIG.PRAZO_BIO_HORAS}h
+          </a>
+          <small>Feito por <a href={CONFIG.SITE_URL} target="_blank" rel="noreferrer">Tavin Digital</a></small>
+        </footer>
+      )}
       {aviso && (
         <div className="dx-aviso" role="status">
           <p>{aviso}</p>
-          <a href={quero} target="_blank" rel="noreferrer">Quero a minha</a>
+          {!embutida && <a href={quero} target="_blank" rel="noreferrer">Quero a minha</a>}
         </div>
       )}
     </div>

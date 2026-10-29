@@ -23,7 +23,7 @@ export default function Tatuagem() {
   const resumo = `${flash ? `flash ${flash}, ` : ''}${orc.tamanho.toLowerCase()}, ${orc.local.toLowerCase()}, ${orc.cor.toLowerCase()}`
   return (
     <Casca id="tatuagem" base={BASE} fontes="family=Unbounded:wght@600;800&family=Space+Grotesk:wght@400;500;700">
-      {({ nome, demo }) => (
+      {({ nome, demo, local }) => (
         <main className="tt">
           <header className="tt-topo">
             <span className="tt-selo" aria-hidden="true">
@@ -31,7 +31,7 @@ export default function Tatuagem() {
                 <text><textPath href="#tt-c" textLength="236" lengthAdjust="spacing">AGENDA ABERTA · NOVEMBRO ·</textPath></text></svg>
             </span>
             <h1>{nome.split(' ').map((p, i) => <span key={i}>{p}</span>)}</h1>
-            <p>Fineline, blackwork e flash autoral. Vila Madalena.</p>
+            <p>Fineline, blackwork e flash autoral. {local('Vila Madalena')}.</p>
           </header>
 
           <section className="tt-flash">
@@ -62,7 +62,7 @@ export default function Tatuagem() {
 
           <div className="tt-links">
             <button onClick={() => demo('abre o portfólio no Instagram')}><Ico n="insta" /> Portfólio</button>
-            <button onClick={() => demo('abre a rota no Google Maps')}><Ico n="mapa" /> Vila Madalena</button>
+            <button onClick={() => demo('abre a rota no Google Maps')}><Ico n="mapa" /> {local('Vila Madalena')}</button>
           </div>
           <p className="tt-cuidados">Maiores de 18 anos · sinal de 30% para reservar · retoque grátis em 30 dias</p>
         </main>

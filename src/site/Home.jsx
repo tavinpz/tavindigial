@@ -6,6 +6,7 @@ import { waVendas } from './Layout'
 import Logo from './Logo'
 import Padrao from './Padrao'
 import { Celular, Navegador } from './Telas'
+import VitrinePrevia from './VitrinePrevia'
 import { SITES, ORDEM_SITES, ORDEM_BIOS, RESUMO_SITES } from '../data/sites'
 import { clamp, progresso, semMovimento, useReveal, useScroll } from './fx'
 import '../styles/home.css'
@@ -363,6 +364,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <VitrinePrevia />
 
         <section className="td-bloco td-claro td-modelos" id="modelos">
           <div className="td-sec">

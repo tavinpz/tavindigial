@@ -22,11 +22,11 @@ export default function Academia() {
 
   return (
     <Casca id="academia" base={BASE} fontes="family=Big+Shoulders+Display:wght@700;900&family=Inter+Tight:wght@400;600;800">
-      {({ nome, demo }) => (
+      {({ nome, demo, local }) => (
         <main className="ac">
           <header className="ac-topo">
             <h1>{nome.split(' ').map((p, i) => <span key={i} style={{ '--i': i }}>{p}</span>)}</h1>
-            <p>Funcional, HIIT e pilates em turmas pequenas. Perdizes.</p>
+            <p>Funcional, HIIT e pilates em turmas pequenas. {local('Perdizes')}.</p>
             <button className="ac-exp" onClick={() => demo('abre o WhatsApp para marcar a aula experimental grátis')}>
               <span className="ac-pulso" aria-hidden="true" />Aula experimental grátis
             </button>
@@ -64,7 +64,7 @@ export default function Academia() {
             ))}
           </section>
 
-          <p className="ac-local"><Ico n="mapa" s={16} /> Perdizes, São Paulo · Seg a sáb</p>
+          <p className="ac-local"><Ico n="mapa" s={16} /> {local('Perdizes')}, São Paulo · Seg a sáb</p>
         </main>
       )}
     </Casca>

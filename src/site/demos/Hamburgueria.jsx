@@ -48,16 +48,16 @@ export default function Hamburgueria() {
 
   return (
     <Casca id="hamburgueria" base={BASE} fontes="family=Archivo+Black&family=Archivo:wght@400;600;800">
-      {({ nome, demo }) => (
+      {({ nome, demo, local, nota }) => (
         <main className="hb">
           <header className="hb-topo">
             <div className="hb-brasas" aria-hidden="true">{Array.from({ length: 14 }, (_, i) => <i key={i} style={{ '--i': i }} />)}</div>
-            <p className="hb-tag">Smash burger na brasa · Pinheiros</p>
+            <p className="hb-tag">Smash burger na brasa · {local('Pinheiros')}</p>
             <h1>{nome}</h1>
             <div className="hb-chips">
               <span className={aberta ? 'on' : ''}><i />{aberta ? 'Aberto agora' : 'Abre às 18h'}</span>
               <span><Ico n="relogio" s={14} /> 30 a 40 min</span>
-              <span><Ico n="estrela" s={14} cheio /> 4,8</span>
+              <span><Ico n="estrela" s={14} cheio /> {nota('4,8')}</span>
             </div>
           </header>
 

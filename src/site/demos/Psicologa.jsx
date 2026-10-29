@@ -38,14 +38,14 @@ function Respiro() {
 export default function Psicologa() {
   return (
     <Casca id="psicologa" base={BASE} fontes="family=Lora:ital,wght@0,500;1,500&family=Nunito+Sans:wght@400;600;800">
-      {({ nome, demo }) => (
+      {({ nome, demo, local }) => (
         <main className="ps">
           <header className="ps-topo">
             <div className="ps-av" aria-hidden="true"><span /></div>
             <h1>{nome}</h1>
             <p className="ps-cargo">Psicóloga clínica · CRP 06/000000 (exemplo)</p>
             <p className="ps-frase">Um espaço seguro para entender o que você sente, no seu ritmo.</p>
-            <div className="ps-modos"><span><Ico n="video" s={16} /> Online</span><span><Ico n="casa" s={16} /> Presencial em Pinheiros</span></div>
+            <div className="ps-modos"><span><Ico n="video" s={16} /> Online</span><span><Ico n="casa" s={16} /> Presencial em {local('Pinheiros')}</span></div>
           </header>
 
           <Respiro />

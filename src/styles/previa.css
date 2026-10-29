@@ -175,3 +175,37 @@
 @media (prefers-reduced-motion: reduce) {
   .sp-in, .sp-arte-sobe, .sp-arte-brilho, .sp-arte-traco, .sp-arte-poste, .sp-arte-gira, .sp-arte-vapor, .sp-folha, .sp-folha-fundo, .sp-wa-bolha { animation: none !important; stroke-dashoffset: 0; }
 }
+
+/* prévia com o modelo do nicho (iframe) */
+.pv2-tela--demo { overflow: hidden; background: #fff; }
+.pv2-tela--demo iframe { width: 100%; height: 100%; border: 0; display: block; }
+@media (max-width: 860px) {
+  .pv2 { display: flex; flex-direction: column; height: 100vh; height: 100dvh; overflow: hidden; }
+  .pv2-palco { flex: 1; min-height: 0; }
+  .pv2-tela--demo { height: 100%; }
+  .pv2-barra { position: static; flex: none; }
+}
+
+/* ===== Home: "digite o nome do seu negócio" ===== */
+.vp-grade { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: clamp(32px, 6vw, 80px); align-items: center; }
+.vp-para { margin: 0 0 10px; color: var(--el); font-weight: 700; font-size: 15px; }
+.td .vp .vp-texto h2 { margin: 0 0 26px; font-family: var(--d); color: var(--ink); font-size: clamp(32px, 5.4vw, 52px); font-weight: 700; line-height: 1.04; letter-spacing: -0.04em; max-width: 16ch; }
+.vp-campo { display: grid; gap: 6px; max-width: 440px; margin-bottom: 16px; }
+.vp-campo span { font-size: 14px; font-weight: 700; color: var(--fg2); }
+.vp-campo input { font: inherit; font-size: 20px; font-weight: 600; color: var(--ink); padding: 14px 18px; border-radius: 16px; border: 2px solid var(--linha); background: var(--branco); }
+.vp-campo input:focus { outline: none; border-color: var(--el); box-shadow: 0 0 0 4px rgba(182, 0, 246, .14); }
+.vp-nichos { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; max-width: 520px; }
+.vp-nichos button { font: inherit; font-size: 15px; font-weight: 600; color: var(--fg); background: var(--branco); border: 1px solid var(--linha); border-radius: 999px; padding: 9px 16px; cursor: pointer; }
+.vp-nichos button.on { background: var(--ink); color: var(--branco); border-color: var(--ink); }
+.vp-nichos button:focus-visible { outline: 2px solid var(--el); outline-offset: 2px; }
+.vp-obs { margin: 0; color: var(--fg2); max-width: 44ch; font-size: 16px; }
+.vp-cel { position: relative; }
+.vp-tela { position: relative; transform: translateZ(0); width: 100%; height: 720px; border-radius: 44px; overflow: auto; border: 10px solid #0B090D; box-shadow: 0 0 0 1.5px #3A3340, 0 50px 80px -40px rgba(24, 10, 40, .55); scrollbar-width: none; background: #000; overscroll-behavior: contain; }
+.vp-tela::-webkit-scrollbar { display: none; }
+.vp-aviso { position: absolute; left: 50%; bottom: 22px; transform: translate(-50%, 10px); width: calc(100% - 48px); margin: 0; background: #fff; color: var(--ink); font-size: 14px; line-height: 1.4; padding: 10px 14px; border-radius: 12px; box-shadow: 0 14px 30px -14px rgba(0, 0, 0, .5); opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; }
+.vp-aviso.on { opacity: 1; transform: translate(-50%, 0); }
+@media (max-width: 860px) {
+  .vp-grade { grid-template-columns: 1fr; }
+  .vp-cel { max-width: 360px; margin: 0 auto; width: 100%; }
+  .vp-tela { height: 640px; }
+}

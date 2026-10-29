@@ -32,14 +32,14 @@ export default function Pet() {
 
   return (
     <Casca id="pet" base={BASE} fontes="family=Fredoka:wght@500;600;700&family=Nunito:wght@500;700;800">
-      {({ nome, demo }) => (
+      {({ nome, demo, local, nota, aval }) => (
         <main className="pt">
           <header className="pt-heroi">
             <div className="pt-patas" aria-hidden="true">{[0, 1, 2, 3, 4, 5].map((i) => <Pata key={i} className={`pt-pata p${i}`} />)}</div>
             <span className={`pt-status ${aberta ? 'on' : ''}`}><i />{aberta ? 'Aberto agora' : 'Fechado agora'}</span>
             <h1>{nome}</h1>
-            <p>Banho, tosa e carinho em Perdizes. Seu pet volta cheiroso e feliz.</p>
-            <div className="pt-selos"><span><Ico n="estrela" s={14} cheio /> 4,9 · 540 avaliações</span><span><Ico n="carro" s={14} /> Leva e traz</span></div>
+            <p>Banho, tosa e carinho em {local('Perdizes')}. Seu pet volta cheiroso e feliz.</p>
+            <div className="pt-selos"><span><Ico n="estrela" s={14} cheio /> {nota('4,9')} · {aval('540')} avaliações</span><span><Ico n="carro" s={14} /> Leva e traz</span></div>
           </header>
 
           <section className="pt-sec" id="pt-servicos">
@@ -69,7 +69,7 @@ export default function Pet() {
 
           <section className="pt-sec pt-info" id="pt-agenda">
             <div><Ico n="relogio" /><span><b>Seg a sáb</b><small>8h às 19h</small></span></div>
-            <div><Ico n="mapa" /><span><b>Perdizes</b><small>Rua de exemplo, 123</small></span></div>
+            <div><Ico n="mapa" /><span><b>{local('Perdizes')}</b><small>Rua de exemplo, 123</small></span></div>
             <button onClick={() => demo('abre a rota no Google Maps')}><Ico n="seta" /></button>
           </section>
 
