@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Enviar para o Supabase Storage
         run: |
-          set -e
+          falhas=0
           for f in envio/*.mp4 envio/*.jpg; do
             [ -e "$f" ] || continue
             nome=$(basename "$f"); caminho="concrete-atlas/$nome"
@@ -36,9 +36,13 @@ jobs:
             url=$(echo "$resp" | jq -r '.url // empty')
             if [ -z "$url" ]; then echo "pulou $nome: $resp"; continue; fi
             case "$nome" in *.mp4) tipo=video/mp4;; *) tipo=image/jpeg;; esac
-            curl -sS --fail -X PUT "$url" -H "content-type: $tipo" -H "x-upsert: true" -H "cache-control: max-age=31536000" --data-binary @"$f" > /dev/null
-            echo "ok $nome"
+            if curl -sS --fail --retry 4 --retry-all-errors --retry-delay 5 -X PUT "$url" -H "content-type: $tipo" -H "x-upsert: true" -H "cache-control: max-age=31536000" --data-binary @"$f" > /dev/null; then
+              echo "ok $nome"
+            else
+              echo "FALHOU $nome"; falhas=$((falhas+1))
+            fi
           done
+          [ "$falhas" -eq 0 ]
 """ % SUPA
 
 
@@ -54,6 +58,17 @@ def main(ids):
     for v in vids:
         src = os.path.join(RAIZ, 'saida', v['arquivo'])
         mp4 = os.path.join(ENVIO, f"{v['id']}.mp4"); jpg = os.path.join(ENVIO, f"{v['id']}.jpg")
+        tem = os.path.exists(src)
+        if not tem:
+            # vídeo ainda não renderizado: entra no painel só com textos e data
+            fontes = 'array[' + ','.join(q(x) for x in v.get('fontes', [])) + ']::text[]'
+            sql.append(
+                "insert into public.videos (id, canal, numero, titulo, arquivo, publicar_em, yt_titulo, yt_descricao, tt_legenda, ig_legenda, comentario_fixado, fontes) values ("
+                f"{q(v['id'])}, 'concrete-atlas', {v['numero']}, {q(v['yt_titulo'])}, {q(v['arquivo'])}, {q(v['publicar_em'])}, {q(v['yt_titulo'])}, {q(v['yt_descricao'])}, "
+                f"{q(v['tt_legenda'])}, {q(v['ig_legenda'])}, {q(v['comentario_fixado'])}, {fontes}) "
+                "on conflict (id) do update set titulo = excluded.titulo, publicar_em = excluded.publicar_em, yt_titulo = excluded.yt_titulo, yt_descricao = excluded.yt_descricao, "
+                "tt_legenda = excluded.tt_legenda, ig_legenda = excluded.ig_legenda, comentario_fixado = excluded.comentario_fixado, fontes = excluded.fontes;")
+            print('só textos', v['id']); continue
         if not os.path.exists(mp4) or os.path.getmtime(mp4) < os.path.getmtime(src):
             subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', src, '-c:v', 'libx264', '-preset', 'slow', '-crf', '21', '-maxrate', '9M', '-bufsize', '18M',
                             '-pix_fmt', 'yuv420p', '-profile:v', 'high', '-c:a', 'aac', '-b:a', '160k', '-ar', '48000', '-movflags', '+faststart', mp4], check=True)
@@ -69,7 +84,7 @@ def main(ids):
             f"{q(v['id'])}, 'concrete-atlas', {v['numero']}, {q(v['yt_titulo'])}, {q(v['arquivo'])}, {q(f'{PUB}/{v['id']}.mp4')}, {q(f'{PUB}/{v['id']}.jpg')}, {dur:.1f}, "
             f"{q(v['publicar_em'])}, {q(v['yt_titulo'])}, {q(v['yt_descricao'])}, {q(v['tt_legenda'])}, {q(v['ig_legenda'])}, {q(v['comentario_fixado'])}, {fontes}) "
             "on conflict (id) do update set titulo = excluded.titulo, arquivo = excluded.arquivo, video_url = excluded.video_url, capa_url = excluded.capa_url, "
-            "duracao = excluded.duracao, yt_titulo = excluded.yt_titulo, yt_descricao = excluded.yt_descricao, tt_legenda = excluded.tt_legenda, "
+            "duracao = excluded.duracao, publicar_em = excluded.publicar_em, yt_titulo = excluded.yt_titulo, yt_descricao = excluded.yt_descricao, tt_legenda = excluded.tt_legenda, "
             "ig_legenda = excluded.ig_legenda, comentario_fixado = excluded.comentario_fixado, fontes = excluded.fontes;")
         print('pronto', v['id'], f'{os.path.getsize(mp4) / 1e6:.1f} MB')
     open(os.path.join(ENVIO, 'registro.sql'), 'w').write('\n'.join(sql) + '\n')
@@ -86,13 +101,18 @@ def push(ids):
     os.makedirs(os.path.join(tmp, '.github', 'workflows')); os.makedirs(os.path.join(tmp, 'envio'))
     open(os.path.join(tmp, '.github', 'workflows', 'subir-videos.yml'), 'w').write(WORKFLOW)
     for v in vids:
-        for ext in ('mp4', 'jpg'): shutil.copy(os.path.join(ENVIO, f"{v['id']}.{ext}"), os.path.join(tmp, 'envio'))
+        for ext in EXTS:
+            f = os.path.join(ENVIO, f"{v['id']}.{ext}")
+            if os.path.exists(f): shutil.copy(f, os.path.join(tmp, 'envio'))
     cmds = [['git', 'add', '-A'], ['git', '-c', 'user.name=Claude', '-c', 'user.email=noreply@anthropic.com', 'commit', '-qm', f"Envio de {len(vids)} vídeos para o painel"],
             ['git', 'push', '-f', REPO, 'envio-videos']]
     for c in cmds: subprocess.run(c, cwd=tmp, check=True)
     print('branch envio-videos publicado: o GitHub Actions sobe os arquivos em ~2 min')
 
 
+EXTS = ('mp4', 'jpg')
+
 if __name__ == '__main__':
     a = sys.argv[1:]
+    if '--so-capa' in a: EXTS = ('jpg',); a = [x for x in a if x != '--so-capa']
     push([x for x in a if x != '--push']) if '--push' in a else main(a)

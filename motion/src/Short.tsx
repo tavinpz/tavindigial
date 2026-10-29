@@ -12,10 +12,11 @@ import { Perfil } from './scenes/Perfil';
 import { Linha, Lista, Secao, Comportas, Portoes, Cta } from './scenes/Outras';
 import { Salao } from './scenes/Salao';
 import { Globe } from './scenes/Globe';
+import { Palpite, Altura, LembreteSeguir } from './scenes/Interacao';
 
 const TIPOS: Record<string, React.FC<CenaProps>> = {
   mapa: Mapa, numero: Numero, barras: Barras, perfil: Perfil, linha: Linha, lista: Lista,
-  secao: Secao, comportas: Comportas, portoes: Portoes, cta: Cta, salao: Salao,
+  secao: Secao, comportas: Comportas, portoes: Portoes, cta: Cta, salao: Salao, palpite: Palpite, altura: Altura,
 };
 
 const T = 8; // quadros de transição
@@ -85,6 +86,7 @@ export const Short: React.FC<{ dados: Dados; semAudio?: boolean; pre3d?: boolean
       {/* flash curto em cada corte */}
       {ini.slice(1).map((s, k) => (frame >= s - 2 && frame < s + 3 ? <AbsoluteFill key={k} style={{ background: '#fff', opacity: 0.16 * (1 - Math.abs(frame - s) / 3) }} /> : null))}
       {c0.gancho && <Gancho f={frame} texto={c0.gancho} />}
+      {cenas.map((c, i) => (c.lembrete ? <LembreteSeguir key={`l${i}`} f={frame - ini[i] - 12} texto={c.lembrete} /> : null))}
       <Legenda f={frame} bl={bl} />
       <Marcas f={frame} total={dados.quadros} />
       <Grao f={frame} />

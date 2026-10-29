@@ -20,7 +20,7 @@ export const Linha: React.FC<CenaProps> = ({ c, f, dur }) => {
   for (let k = 0; k < n - 1; k++) {
     if (f >= tEv[k]) {
       k0 = k;
-      ano = lerp(ev[k][0], ev[k + 1][0], prog(f, tEv[k] + 4, tEv[k + 1], EIO));
+      ano = lerp(ev[k][0], ev[k + 1][0], prog(f, Math.max(tEv[k] + 4, tEv[k + 1] - 16), tEv[k + 1], EIO));
     }
   }
   if (f >= tEv[n - 1]) { ano = a1; k0 = n - 1; }
@@ -294,7 +294,7 @@ export const Portoes: React.FC<CenaProps> = ({ c, f, dur }) => {
 };
 
 /* ---------------- chamada final ---------------- */
-export const Cta: React.FC<CenaProps> = ({ f }) => {
+export const Cta: React.FC<CenaProps> = ({ f, c }) => {
   const s = spr(f, 2, { damping: 10, stiffness: 140 });
   const nome = prog(f, 8, 26, EO);
   const lin = prog(f, 16, 30, EO);
@@ -317,7 +317,8 @@ export const Cta: React.FC<CenaProps> = ({ f }) => {
         <Logo tam={340} />
       </div>
       <div style={{ position: 'absolute', width: W, top: 850, textAlign: 'center', fontFamily: F.cond, fontWeight: 900, fontSize: 104, letterSpacing: lerp(30, 4, nome), color: C.white, opacity: nome, textShadow: '0 6px 30px rgba(0,0,0,0.7)' }}>CONCRETE ATLAS</div>
-      <div style={{ position: 'absolute', width: W, top: 975, textAlign: 'center', fontFamily: F.sans, fontWeight: 600, fontSize: 42, color: C.amber, opacity: lin, transform: `translateY(${(1 - lin) * 20}px)` }}>A new megaproject every day</div>
+      <div style={{ position: 'absolute', width: W, top: 975, textAlign: 'center', fontFamily: F.sans, fontWeight: 600, fontSize: 42, color: C.amber, opacity: lin, transform: `translateY(${(1 - lin) * 20}px)` }}>{c.linha || 'A new megaproject every day'}</div>
+      {c.pergunta && <div style={{ position: 'absolute', width: W, top: 1240, textAlign: 'center', opacity: prog(f, 50, 62), transform: `translateY(${(1 - prog(f, 50, 62, EO)) * 20}px)`, fontFamily: F.cond, fontWeight: 800, fontSize: 46, color: C.white, padding: '0 80px' }}>💬 {c.pergunta}</div>}
       <div style={{ position: 'absolute', left: 540 - 230, top: 1080, width: 460, height: 120, borderRadius: 60, background: clicou ? '#2b3e52' : C.red, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, transform: `scale(${b * pulso})`, boxShadow: clicou ? 'none' : `0 0 50px ${C.red}88`, fontFamily: F.cond, fontWeight: 900, fontSize: 60, letterSpacing: 3, color: '#fff' }}>
         {clicou ? 'FOLLOWING ✓' : 'FOLLOW'}
       </div>

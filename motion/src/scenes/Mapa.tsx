@@ -267,7 +267,7 @@ export const Mapa: React.FC<CenaProps> = ({ c, f, dur, id, geo, temGlobo, idx })
         const cor = COR[c.cor || 'amber'] || C.amber;
         const m = String(c.numero).match(/^([^\d]*)([\d,.]+)(.*)$/);
         let txt = String(c.numero);
-        if (m) {
+        if (m && !/^(19|20)\d\d$/.test(m[2])) {
           const alvo = parseFloat(m[2].replace(/,/g, ''));
           const v = alvo * prog(f, ini, ini + 26, EO);
           txt = m[1] + fmt(Math.round(v)) + m[3];
