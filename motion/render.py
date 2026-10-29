@@ -35,6 +35,7 @@ def render(vid):
             print(f'  {vid} salão ok {time.time() - t0:.0f}s', flush=True)
     final = os.path.join(DEST, d['arquivo'])
     remotion(['Short', final, f'--props={json.dumps({"id": vid, "pre3d": True})}', '--crf=18', '--audio-codec=aac', '--audio-bitrate=192k'], 'swiftshader')
+    subprocess.run(['python3', os.path.join(AQUI, 'mux.py'), vid], check=True)  # garante a faixa de áudio
     print(f'OK {vid} -> {os.path.basename(final)} ({time.time() - t0:.0f}s)', flush=True)
 
 
