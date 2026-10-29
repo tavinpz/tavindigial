@@ -1,0 +1,169 @@
+{
+ "arquivo": "concrete_atlas_short_009_darien_gap.mp4",
+ "titulo": "Why You Can't Drive to South America",
+ "falas": [
+  "You can't drive from North America to South America. Here's why.",
+  "The Pan-American Highway network runs about 30,000 kilometers, except for one missing piece.",
+  "Between Panama and Colombia, 106 kilometers of jungle have no road at all. It's called the Darién Gap.",
+  "Plans to build it stopped in 1974, after environmental objections.",
+  "The US also feared cattle disease moving north, and Indigenous peoples want the forest left intact.",
+  "Follow for a new megaproject every day."
+ ],
+ "cenas": [
+  {
+   "tipo": "mapa",
+   "bbox": [
+    -170,
+    -30,
+    -56,
+    72
+   ],
+   "conter": true,
+   "titulo": "Pan-American Highway",
+   "zoom": 0.02,
+   "rotas": [
+    [
+     [
+      -148.4,
+      70.2
+     ],
+     [
+      -147.7,
+      64.8
+     ],
+     [
+      -135.0,
+      60.7
+     ],
+     [
+      -114.0,
+      51.0
+     ],
+     [
+      -105.0,
+      40.0
+     ],
+     [
+      -99.1,
+      19.4
+     ],
+     [
+      -90.5,
+      14.6
+     ],
+     [
+      -84.1,
+      9.9
+     ],
+     [
+      -79.5,
+      9.0
+     ],
+     [
+      -77.7,
+      8.2
+     ]
+    ],
+    [
+     [
+      -76.7,
+      8.1
+     ],
+     [
+      -74.1,
+      4.7
+     ],
+     [
+      -78.5,
+      -0.2
+     ],
+     [
+      -77.0,
+      -12.0
+     ],
+     [
+      -70.7,
+      -33.4
+     ],
+     [
+      -68.3,
+      -54.8
+     ]
+    ]
+   ],
+   "largura_rota": 12,
+   "gancho": "THE ROAD\nJUST ENDS"
+  },
+  {
+   "tipo": "numero",
+   "valor": 30000,
+   "sufixo": " km",
+   "label": "of highway",
+   "nota": "with one piece missing",
+   "cor": "amber"
+  },
+  {
+   "tipo": "mapa",
+   "bbox": [
+    -80,
+    -75,
+    4.1,
+    12.9
+   ],
+   "titulo": "The Darién Gap",
+   "sub": "106 km without a road",
+   "pins": [
+    [
+     -77.69,
+     8.16,
+     "Yaviza",
+     "l"
+    ],
+    [
+     -76.73,
+     8.09,
+     "Turbo",
+     "r"
+    ]
+   ],
+   "lacuna": [
+    [
+     -77.69,
+     8.16
+    ],
+    [
+     -76.73,
+     8.09
+    ]
+   ]
+  },
+  {
+   "tipo": "linha",
+   "titulo": "Why no road",
+   "eventos": [
+    [
+     1974,
+     "Planning stops"
+    ],
+    [
+     1978,
+     "US pulls support"
+    ]
+   ]
+  },
+  {
+   "tipo": "lista",
+   "titulo": "Why it stays closed",
+   "itens": [
+    "Rainforest protection",
+    "Stopping cattle disease",
+    "Indigenous lands"
+   ]
+  },
+  {
+   "tipo": "cta"
+  }
+ ],
+ "voz": "am_michael",
+ "velocidade": 1.08
+}

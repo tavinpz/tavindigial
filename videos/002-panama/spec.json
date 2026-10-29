@@ -1,0 +1,497 @@
+{
+ "arquivo": "concrete_atlas_short_002_panama.mp4",
+ "titulo": "Ships Climb a Lake 26 Meters Above the Sea",
+ "falas": [
+  "In Panama, ships climb a staircase of water to cross a continent.",
+  "The canal is 82 kilometers long, and its middle sits 26 meters above the sea.",
+  "Three locks lift every ship up to Gatun Lake, and three more lower it on the other side.",
+  "Each crossing drains about 200 million liters of fresh water into the ocean.",
+  "That water comes from rain. In 2023, the rain didn't come. By December, only 22 ships a day could cross, instead of 36.",
+  "A canal built in 1914 now depends on the weather.",
+  "Follow for a new megaproject every day."
+ ],
+ "cenas": [
+  {
+   "tipo": "mapa",
+   "bbox": [
+    -80.05,
+    -79.4,
+    8.7,
+    9.62
+   ],
+   "titulo": "Panama Canal",
+   "sub": "Atlantic to Pacific",
+   "rota": [
+    [
+     -79.9,
+     9.4
+    ],
+    [
+     -79.92,
+     9.27
+    ],
+    [
+     -79.86,
+     9.2
+    ],
+    [
+     -79.72,
+     9.12
+    ],
+    [
+     -79.65,
+     9.05
+    ],
+    [
+     -79.59,
+     9.0
+    ],
+    [
+     -79.56,
+     8.93
+    ],
+    [
+     -79.53,
+     8.85
+    ]
+   ],
+   "pins": [
+    [
+     -79.9,
+     9.36,
+     "Colón",
+     "r"
+    ],
+    [
+     -79.55,
+     8.95,
+     "Panama City",
+     "l"
+    ]
+   ],
+   "gancho": "SHIPS CLIMB\n26 METERS"
+  },
+  {
+   "tipo": "perfil",
+   "titulo": "26 meters up",
+   "sub": "and back down",
+   "yrange": [
+    -20,
+    45
+   ],
+   "agua": [
+    [
+     0,
+     0
+    ],
+    [
+     0.14,
+     0
+    ],
+    [
+     0.14,
+     8.7
+    ],
+    [
+     0.2,
+     8.7
+    ],
+    [
+     0.2,
+     17.3
+    ],
+    [
+     0.26,
+     17.3
+    ],
+    [
+     0.26,
+     26
+    ],
+    [
+     0.74,
+     26
+    ],
+    [
+     0.74,
+     17.3
+    ],
+    [
+     0.8,
+     17.3
+    ],
+    [
+     0.8,
+     8.7
+    ],
+    [
+     0.86,
+     8.7
+    ],
+    [
+     0.86,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "terreno": [
+    [
+     0,
+     -12
+    ],
+    [
+     0.12,
+     -12
+    ],
+    [
+     0.12,
+     -2
+    ],
+    [
+     0.14,
+     -2
+    ],
+    [
+     0.14,
+     6.5
+    ],
+    [
+     0.2,
+     6.5
+    ],
+    [
+     0.2,
+     15
+    ],
+    [
+     0.26,
+     15
+    ],
+    [
+     0.26,
+     14
+    ],
+    [
+     0.5,
+     12
+    ],
+    [
+     0.74,
+     14
+    ],
+    [
+     0.74,
+     15
+    ],
+    [
+     0.8,
+     15
+    ],
+    [
+     0.8,
+     6.5
+    ],
+    [
+     0.86,
+     6.5
+    ],
+    [
+     0.86,
+     -2
+    ],
+    [
+     0.88,
+     -2
+    ],
+    [
+     0.88,
+     -12
+    ],
+    [
+     1,
+     -12
+    ]
+   ],
+   "cor_terreno": [
+    46,
+    92,
+    60
+   ],
+   "cotas": [
+    [
+     0.5,
+     0,
+     26,
+     "26 m"
+    ]
+   ],
+   "nivel_mar": 0
+  },
+  {
+   "tipo": "perfil",
+   "titulo": "3 locks up, 3 locks down",
+   "yrange": [
+    -20,
+    45
+   ],
+   "agua": [
+    [
+     0,
+     0
+    ],
+    [
+     0.14,
+     0
+    ],
+    [
+     0.14,
+     8.7
+    ],
+    [
+     0.2,
+     8.7
+    ],
+    [
+     0.2,
+     17.3
+    ],
+    [
+     0.26,
+     17.3
+    ],
+    [
+     0.26,
+     26
+    ],
+    [
+     0.74,
+     26
+    ],
+    [
+     0.74,
+     17.3
+    ],
+    [
+     0.8,
+     17.3
+    ],
+    [
+     0.8,
+     8.7
+    ],
+    [
+     0.86,
+     8.7
+    ],
+    [
+     0.86,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "terreno": [
+    [
+     0,
+     -12
+    ],
+    [
+     0.12,
+     -12
+    ],
+    [
+     0.12,
+     -2
+    ],
+    [
+     0.14,
+     -2
+    ],
+    [
+     0.14,
+     6.5
+    ],
+    [
+     0.2,
+     6.5
+    ],
+    [
+     0.2,
+     15
+    ],
+    [
+     0.26,
+     15
+    ],
+    [
+     0.26,
+     14
+    ],
+    [
+     0.5,
+     12
+    ],
+    [
+     0.74,
+     14
+    ],
+    [
+     0.74,
+     15
+    ],
+    [
+     0.8,
+     15
+    ],
+    [
+     0.8,
+     6.5
+    ],
+    [
+     0.86,
+     6.5
+    ],
+    [
+     0.86,
+     -2
+    ],
+    [
+     0.88,
+     -2
+    ],
+    [
+     0.88,
+     -12
+    ],
+    [
+     1,
+     -12
+    ]
+   ],
+   "cor_terreno": [
+    46,
+    92,
+    60
+   ],
+   "caminho": [
+    [
+     0.04,
+     0
+    ],
+    [
+     0.14,
+     0
+    ],
+    [
+     0.14,
+     8.7
+    ],
+    [
+     0.2,
+     8.7
+    ],
+    [
+     0.2,
+     17.3
+    ],
+    [
+     0.26,
+     17.3
+    ],
+    [
+     0.26,
+     26
+    ],
+    [
+     0.74,
+     26
+    ],
+    [
+     0.74,
+     17.3
+    ],
+    [
+     0.8,
+     17.3
+    ],
+    [
+     0.8,
+     8.7
+    ],
+    [
+     0.86,
+     8.7
+    ],
+    [
+     0.86,
+     0
+    ],
+    [
+     0.96,
+     0
+    ]
+   ],
+   "rotulos": [
+    [
+     0.5,
+     33,
+     "Gatun Lake"
+    ]
+   ]
+  },
+  {
+   "tipo": "numero",
+   "valor": 200,
+   "sufixo": "M",
+   "label": "liters of fresh water",
+   "nota": "per ship, per crossing",
+   "cor": "water",
+   "titulo": "Every crossing"
+  },
+  {
+   "tipo": "barras",
+   "titulo": "Ships per day",
+   "sub": "2023 drought",
+   "itens": [
+    [
+     "Normal",
+     36,
+     false
+    ],
+    [
+     "December 2023",
+     22,
+     true
+    ]
+   ]
+  },
+  {
+   "tipo": "linha",
+   "titulo": "Panama Canal",
+   "eventos": [
+    [
+     1914,
+     "Opens"
+    ],
+    [
+     2016,
+     "Bigger locks"
+    ],
+    [
+     2023,
+     "Drought limits\nships"
+    ]
+   ]
+  },
+  {
+   "tipo": "cta"
+  }
+ ],
+ "voz": "am_michael",
+ "velocidade": 1.08
+}

@@ -1,0 +1,114 @@
+{
+ "arquivo": "concrete_atlas_short_004_three_gorges.mp4",
+ "titulo": "This Dam Made Earth's Day Longer",
+ "falas": [
+  "This dam in China made every day on Earth a little longer.",
+  "The Three Gorges Dam is 181 meters tall and more than 2 kilometers long.",
+  "Its reservoir stretches about 600 kilometers up the Yangtze River.",
+  "More than a million people had to move to make room for the water.",
+  "Its turbines can produce 22,500 megawatts. The most of any power station on the planet.",
+  "And NASA calculated that moving all that water made Earth's day 0.06 microseconds longer.",
+  "Follow for a new megaproject every day."
+ ],
+ "cenas": [
+  {
+   "tipo": "mapa",
+   "bbox": [
+    100,
+    122,
+    14,
+    45
+   ],
+   "destaque": [
+    "CHN"
+   ],
+   "titulo": "Three Gorges Dam",
+   "sub": "Yangtze River, China",
+   "pins": [
+    [
+     111.0,
+     30.82,
+     "Three Gorges",
+     "r"
+    ]
+   ],
+   "gancho": "THIS DAM\nSLOWED EARTH"
+  },
+  {
+   "tipo": "barras",
+   "titulo": "181 meters tall",
+   "itens": [
+    [
+     "Statue of Liberty",
+     93,
+     false
+    ],
+    [
+     "Three Gorges Dam",
+     181,
+     true
+    ]
+   ],
+   "unidade": " m"
+  },
+  {
+   "tipo": "numero",
+   "valor": 600,
+   "sufixo": " km",
+   "label": "of reservoir",
+   "fundo": [
+    104,
+    116,
+    24,
+    38
+   ],
+   "destaque": [],
+   "cor": "water"
+  },
+  {
+   "tipo": "numero",
+   "valor": 1.24,
+   "decimais": 2,
+   "sufixo": "M",
+   "label": "people relocated",
+   "nota": "by 2008",
+   "cor": "red"
+  },
+  {
+   "tipo": "barras",
+   "titulo": "Power capacity",
+   "itens": [
+    [
+     "Hoover Dam",
+     2080,
+     false
+    ],
+    [
+     "Itaipu",
+     14000,
+     false
+    ],
+    [
+     "Three Gorges",
+     22500,
+     true
+    ]
+   ],
+   "unidade": " MW"
+  },
+  {
+   "tipo": "numero",
+   "valor": 0.06,
+   "decimais": 2,
+   "sufixo": " µs",
+   "label": "longer day",
+   "nota": "NASA estimate, 2005",
+   "cor": "amber"
+  },
+  {
+   "tipo": "cta"
+  }
+ ],
+ "voz": "am_michael",
+ "velocidade": 1.08
+}

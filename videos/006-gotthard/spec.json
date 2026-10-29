@@ -1,0 +1,251 @@
+{
+ "arquivo": "concrete_atlas_short_006_gotthard.mp4",
+ "titulo": "2,450 Meters of Mountain Above This Train",
+ "falas": [
+  "There are 2,450 meters of mountain above this train.",
+  "It's the Gotthard Base Tunnel in Switzerland. 57 kilometers long, the longest railway tunnel in the world.",
+  "At its deepest point, there are 2,450 meters of mountain above the trains.",
+  "Inside, the rock reached 46 degrees Celsius before ventilation.",
+  "Builders removed 28 million tonnes of rock. Work started in 1999, and it opened in 2016.",
+  "The result is the first flat route through the Alps, never higher than 549 meters.",
+  "Follow for a new megaproject every day."
+ ],
+ "cenas": [
+  {
+   "tipo": "mapa",
+   "bbox": [
+    5.9,
+    10.5,
+    44.0,
+    49.6
+   ],
+   "destaque": [
+    "CHE"
+   ],
+   "titulo": "Gotthard Base Tunnel",
+   "sub": "Switzerland",
+   "rota": [
+    [
+     8.65,
+     46.82
+    ],
+    [
+     8.8,
+     46.6
+    ],
+    [
+     8.92,
+     46.38
+    ]
+   ],
+   "pins": [
+    [
+     8.65,
+     46.82,
+     "Erstfeld",
+     "r"
+    ],
+    [
+     8.92,
+     46.38,
+     "Bodio",
+     "r"
+    ]
+   ],
+   "gancho": "2,450 M\nOF ROCK ABOVE"
+  },
+  {
+   "tipo": "barras",
+   "titulo": "Longest rail tunnels",
+   "itens": [
+    [
+     "Channel Tunnel",
+     50.5,
+     false
+    ],
+    [
+     "Seikan Tunnel",
+     53.9,
+     false
+    ],
+    [
+     "Gotthard",
+     57.1,
+     true
+    ]
+   ],
+   "unidade": " km",
+   "decimais": 1
+  },
+  {
+   "tipo": "perfil",
+   "titulo": "2,450 m of mountain",
+   "yrange": [
+    0,
+    3300
+   ],
+   "terreno": [
+    [
+     0,
+     480
+    ],
+    [
+     0.08,
+     520
+    ],
+    [
+     0.2,
+     1600
+    ],
+    [
+     0.35,
+     2500
+    ],
+    [
+     0.5,
+     2970
+    ],
+    [
+     0.65,
+     2300
+    ],
+    [
+     0.8,
+     1300
+    ],
+    [
+     0.92,
+     350
+    ],
+    [
+     1,
+     300
+    ]
+   ],
+   "tunel": [
+    [
+     0.06,
+     470
+    ],
+    [
+     0.5,
+     520
+    ],
+    [
+     0.94,
+     312
+    ]
+   ],
+   "cotas": [
+    [
+     0.5,
+     520,
+     2970,
+     "2,450 m"
+    ]
+   ]
+  },
+  {
+   "tipo": "numero",
+   "valor": 46,
+   "sufixo": "°C",
+   "label": "rock temperature",
+   "nota": "inside the mountain, before ventilation",
+   "cor": "red"
+  },
+  {
+   "tipo": "linha",
+   "titulo": "28 million tonnes of rock",
+   "eventos": [
+    [
+     1999,
+     "Work starts"
+    ],
+    [
+     2016,
+     "Opens"
+    ]
+   ]
+  },
+  {
+   "tipo": "perfil",
+   "titulo": "A flat route",
+   "sub": "never above 549 m",
+   "yrange": [
+    0,
+    3300
+   ],
+   "terreno": [
+    [
+     0,
+     480
+    ],
+    [
+     0.08,
+     520
+    ],
+    [
+     0.2,
+     1600
+    ],
+    [
+     0.35,
+     2500
+    ],
+    [
+     0.5,
+     2970
+    ],
+    [
+     0.65,
+     2300
+    ],
+    [
+     0.8,
+     1300
+    ],
+    [
+     0.92,
+     350
+    ],
+    [
+     1,
+     300
+    ]
+   ],
+   "tunel": [
+    [
+     0.06,
+     470
+    ],
+    [
+     0.5,
+     549
+    ],
+    [
+     0.94,
+     312
+    ]
+   ],
+   "caminho": [
+    [
+     0.06,
+     470
+    ],
+    [
+     0.5,
+     549
+    ],
+    [
+     0.94,
+     312
+    ]
+   ]
+  },
+  {
+   "tipo": "cta"
+  }
+ ],
+ "voz": "am_michael",
+ "velocidade": 1.08
+}

@@ -15,6 +15,8 @@ Concrete Atlas explains megaprojects, cities and the geography that shapes them,
 
 New Shorts every day and a deep dive every week. Every fact comes with its source.
 
+How we make it: every topic is chosen and every script is researched, fact-checked and approved by a person. The maps and animations are drawn for each video from public data (Natural Earth). Narration uses a synthetic voice. Sources are listed in each description.
+
 ## Palavras-chave do canal
 megaprojects, engineering, infrastructure, geography, maps, cities, urbanism, explained, documentary, civil engineering, how it was built
 

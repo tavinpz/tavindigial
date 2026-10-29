@@ -1,0 +1,203 @@
+{
+ "arquivo": "concrete_atlas_short_005_channel_tunnel.mp4",
+ "titulo": "Trains Drive 75 Meters Under the Sea",
+ "falas": [
+  "Every day, trains drive 75 meters below the sea.",
+  "The Channel Tunnel runs 38 kilometers under the sea. No tunnel on Earth has a longer undersea section.",
+  "At its deepest, it runs 75 meters below sea level.",
+  "And it's actually three tunnels. Two for trains, and one in the middle for service.",
+  "Digging started in 1987. The tunnelers met under the sea in 1990, and it opened in 1994.",
+  "Follow for a new megaproject every day."
+ ],
+ "cenas": [
+  {
+   "tipo": "mapa",
+   "bbox": [
+    0.6,
+    2.4,
+    49.95,
+    51.95
+   ],
+   "titulo": "Channel Tunnel",
+   "sub": "England to France",
+   "rota": [
+    [
+     1.15,
+     51.09
+    ],
+    [
+     1.47,
+     51.01
+    ],
+    [
+     1.8,
+     50.93
+    ]
+   ],
+   "pins": [
+    [
+     1.15,
+     51.09,
+     "Folkestone",
+     "l"
+    ],
+    [
+     1.8,
+     50.93,
+     "Calais",
+     "r"
+    ]
+   ],
+   "gancho": "75 METERS\nUNDER THE SEA"
+  },
+  {
+   "tipo": "barras",
+   "titulo": "Longest under the sea",
+   "itens": [
+    [
+     "Seikan Tunnel, Japan",
+     23.3,
+     false
+    ],
+    [
+     "Channel Tunnel",
+     37.9,
+     true
+    ]
+   ],
+   "unidade": " km",
+   "decimais": 1
+  },
+  {
+   "tipo": "perfil",
+   "titulo": "75 m below the sea",
+   "yrange": [
+    -110,
+    40
+   ],
+   "agua": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "terreno": [
+    [
+     0,
+     15
+    ],
+    [
+     0.1,
+     15
+    ],
+    [
+     0.14,
+     -30
+    ],
+    [
+     0.3,
+     -45
+    ],
+    [
+     0.5,
+     -55
+    ],
+    [
+     0.7,
+     -48
+    ],
+    [
+     0.86,
+     -30
+    ],
+    [
+     0.9,
+     15
+    ],
+    [
+     1,
+     15
+    ]
+   ],
+   "tunel": [
+    [
+     0.04,
+     10
+    ],
+    [
+     0.15,
+     -50
+    ],
+    [
+     0.5,
+     -75
+    ],
+    [
+     0.85,
+     -50
+    ],
+    [
+     0.96,
+     10
+    ]
+   ],
+   "cotas": [
+    [
+     0.5,
+     0,
+     -75,
+     "75 m"
+    ]
+   ],
+   "nivel_mar": 0
+  },
+  {
+   "tipo": "secao",
+   "titulo": "Three tunnels",
+   "circulos": [
+    [
+     "Rail",
+     150,
+     "amber"
+    ],
+    [
+     "Service",
+     95,
+     "white"
+    ],
+    [
+     "Rail",
+     150,
+     "amber"
+    ]
+   ]
+  },
+  {
+   "tipo": "linha",
+   "titulo": "Channel Tunnel",
+   "eventos": [
+    [
+     1987,
+     "Digging starts"
+    ],
+    [
+     1990,
+     "Tunnelers meet"
+    ],
+    [
+     1994,
+     "Opens"
+    ]
+   ]
+  },
+  {
+   "tipo": "cta"
+  }
+ ],
+ "voz": "am_michael",
+ "velocidade": 1.08
+}

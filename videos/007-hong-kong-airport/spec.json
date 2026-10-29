@@ -1,0 +1,105 @@
+{
+ "arquivo": "concrete_atlas_short_007_hong_kong_airport.mp4",
+ "titulo": "Hong Kong Flattened Two Islands for an Airport",
+ "falas": [
+  "Hong Kong flattened two islands to build one airport.",
+  "The old airport, Kai Tak, sat in the middle of the city, with one runway sticking into the harbor.",
+  "By the 1990s, one in three flights was delayed.",
+  "So engineers flattened two small islands, and reclaimed more than 9 square kilometers from the sea.",
+  "Construction started in 1991. The new airport opened in July 1998.",
+  "Follow for a new megaproject every day."
+ ],
+ "cenas": [
+  {
+   "tipo": "mapa",
+   "bbox": [
+    113.75,
+    114.35,
+    21.95,
+    22.77
+   ],
+   "titulo": "Hong Kong",
+   "sub": "no room to land",
+   "pins": [
+    [
+     113.92,
+     22.31,
+     "New airport",
+     "r"
+    ]
+   ],
+   "zoom": 0.08,
+   "gancho": "THEY FLATTENED\n2 ISLANDS"
+  },
+  {
+   "tipo": "mapa",
+   "bbox": [
+    113.75,
+    114.35,
+    21.95,
+    22.77
+   ],
+   "titulo": "Kai Tak",
+   "sub": "1925 to 1998",
+   "pins": [
+    [
+     114.2,
+     22.32,
+     "Kai Tak",
+     "l"
+    ]
+   ]
+  },
+  {
+   "tipo": "numero",
+   "valor": 1,
+   "sufixo": " IN 3",
+   "label": "flights delayed",
+   "nota": "Kai Tak, 1990s",
+   "cor": "red"
+  },
+  {
+   "tipo": "barras",
+   "titulo": "The island",
+   "sub": "square kilometers",
+   "itens": [
+    [
+     "Lam Chau island",
+     0.08,
+     false
+    ],
+    [
+     "Chek Lap Kok island",
+     3.02,
+     false
+    ],
+    [
+     "Reclaimed from the sea",
+     9.38,
+     true
+    ]
+   ],
+   "unidade": " km²",
+   "decimais": 2
+  },
+  {
+   "tipo": "linha",
+   "titulo": "Hong Kong International",
+   "eventos": [
+    [
+     1991,
+     "Construction starts"
+    ],
+    [
+     1998,
+     "Opens"
+    ]
+   ]
+  },
+  {
+   "tipo": "cta"
+  }
+ ],
+ "voz": "am_michael",
+ "velocidade": 1.08
+}

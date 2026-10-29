@@ -1,0 +1,143 @@
+{
+ "arquivo": "concrete_atlas_short_010_tokyo_g_cans.mp4",
+ "titulo": "There's a Cathedral Under Tokyo",
+ "falas": [
+  "There's a cathedral 50 meters under Tokyo, and nobody prays there.",
+  "It sits 50 meters underground, linked by 6.4 kilometers of tunnels.",
+  "Its main tank is 177 meters long and 25 meters tall, held up by 59 giant pillars.",
+  "When rivers overflow, water drops into five huge silos, runs through the tunnels, and gets pumped into the Edo River.",
+  "The pumps can move up to 200 tonnes of water every second.",
+  "Work began in 1992 and finished in 2006.",
+  "Follow for a new megaproject every day."
+ ],
+ "cenas": [
+  {
+   "tipo": "mapa",
+   "bbox": [
+    139.3,
+    140.3,
+    35.2,
+    36.65
+   ],
+   "titulo": "Greater Tokyo",
+   "sub": "Saitama, Japan",
+   "pins": [
+    [
+     139.69,
+     35.69,
+     "Tokyo",
+     "l"
+    ],
+    [
+     139.8,
+     36.0,
+     "G-Cans",
+     "r"
+    ]
+   ],
+   "gancho": "A CATHEDRAL\nUNDER TOKYO"
+  },
+  {
+   "tipo": "perfil",
+   "titulo": "50 m underground",
+   "yrange": [
+    -90,
+    30
+   ],
+   "terreno": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "cor_terreno": [
+    70,
+    58,
+    44
+   ],
+   "pocos": [
+    0.1,
+    0.3,
+    0.5,
+    0.7,
+    0.9
+   ],
+   "prof_pocos": -55,
+   "tunel": [
+    [
+     0.1,
+     -50
+    ],
+    [
+     0.9,
+     -50
+    ]
+   ],
+   "cotas": [
+    [
+     0.96,
+     0,
+     -50,
+     "50 m"
+    ]
+   ]
+  },
+  {
+   "tipo": "salao",
+   "titulo": "The main tank",
+   "rotulos": [
+    [
+     "59 PILLARS",
+     540,
+     520
+    ],
+    [
+     "177 m LONG",
+     540,
+     1330
+    ]
+   ]
+  },
+  {
+   "tipo": "lista",
+   "titulo": "How it works",
+   "itens": [
+    "Rivers overflow",
+    "Water drops into 5 silos",
+    "Tunnels carry it",
+    "Pumped into the Edo River"
+   ]
+  },
+  {
+   "tipo": "numero",
+   "valor": 200,
+   "sufixo": " t/s",
+   "label": "of water pumped",
+   "nota": "every second",
+   "cor": "water"
+  },
+  {
+   "tipo": "linha",
+   "titulo": "G-Cans",
+   "eventos": [
+    [
+     1992,
+     "Work begins"
+    ],
+    [
+     2006,
+     "Completed"
+    ]
+   ]
+  },
+  {
+   "tipo": "cta"
+  }
+ ],
+ "voz": "am_michael",
+ "velocidade": 1.08
+}

@@ -1,0 +1,105 @@
+{
+ "arquivo": "concrete_atlas_short_008_venice_mose.mp4",
+ "titulo": "Venice Has a Wall You Can't See",
+ "falas": [
+  "Venice is protected by a wall you can't see.",
+  "It's called MOSE. 78 steel gates lying on the seabed across the three entrances to the lagoon.",
+  "Normally, they're full of water and stay out of sight.",
+  "When a high tide is coming, air is pumped in, the water is pushed out, and the gates rise.",
+  "Construction began in 2003. On October 3rd, 2020, the gates rose for the first time and kept Venice dry.",
+  "The bill: about five and a half billion euros.",
+  "Follow for a new megaproject every day."
+ ],
+ "cenas": [
+  {
+   "tipo": "mapa",
+   "bbox": [
+    12.05,
+    12.65,
+    45.05,
+    45.68
+   ],
+   "titulo": "Venice",
+   "sub": "a city in a lagoon",
+   "pins": [
+    [
+     12.335,
+     45.438,
+     "Venice",
+     "l"
+    ]
+   ],
+   "gancho": "AN INVISIBLE\nWALL"
+  },
+  {
+   "tipo": "mapa",
+   "bbox": [
+    12.05,
+    12.65,
+    45.05,
+    45.68
+   ],
+   "titulo": "78 gates",
+   "sub": "3 inlets",
+   "pins": [
+    [
+     12.42,
+     45.42,
+     "Lido",
+     "r"
+    ],
+    [
+     12.33,
+     45.33,
+     "Malamocco",
+     "r"
+    ],
+    [
+     12.3,
+     45.23,
+     "Chioggia",
+     "r"
+    ]
+   ],
+   "escuro": 0.15
+  },
+  {
+   "tipo": "comportas",
+   "titulo": "Hidden on the seabed",
+   "sobe": false
+  },
+  {
+   "tipo": "comportas",
+   "titulo": "Air in, gates up",
+   "inicio": 0.4
+  },
+  {
+   "tipo": "linha",
+   "titulo": "MOSE",
+   "eventos": [
+    [
+     2003,
+     "Construction starts"
+    ],
+    [
+     2020,
+     "First raised\nOct 3"
+    ]
+   ]
+  },
+  {
+   "tipo": "numero",
+   "valor": 5.5,
+   "decimais": 1,
+   "prefixo": "€",
+   "sufixo": "B",
+   "label": "total cost",
+   "cor": "amber"
+  },
+  {
+   "tipo": "cta"
+  }
+ ],
+ "voz": "am_michael",
+ "velocidade": 1.08
+}
