@@ -692,3 +692,7 @@ body:has(.p-fantasma) { cursor: grabbing; }
 .crm-btn--forte { background: var(--tinta); color: var(--branco); border-color: var(--tinta); }
 .crm-btn--forte:hover { background: var(--tinta); filter: brightness(1.08); }
 .crm-btn:focus-visible { outline: 2px solid var(--tinta); outline-offset: 1px; }
+.dw-sel { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--cinza); background: var(--branco); border: 1px solid var(--linha); border-radius: 12px; padding: 6px 6px 6px 12px; }
+.dw-sel select { font: inherit; font-size: 14px; font-weight: 700; color: var(--grafite, #2A2230); border: 0; background: var(--papel); border-radius: 8px; padding: 6px 8px; cursor: pointer; }
+.dw-sel select:focus-visible { outline: 2px solid var(--tinta); }
+.dw-ok { font-style: normal; font-size: 12px; font-weight: 700; color: var(--ok); background: #E3F4EA; border-radius: 999px; padding: 2px 8px; }

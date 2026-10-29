@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { ehCelular } from '../lib/msg'
-import { DESTINOS_WA, EVENTO_DESTINO, salvarWaDestino, temExtensao, waDestino } from './envio'
+import { EVENTO_DESTINO, salvarWaDestino, temExtensao, waDestino } from './envio'
 
 // Onde o WhatsApp abre: a mesma escolha vale no CRM, no Prospectar e na ficha do lead
 export function useDestino() {
@@ -20,12 +20,14 @@ export default function DestinoWa() {
   const semExt = destino === 'web' && !temExtensao()
   return (
     <div className="dw">
-      <div className="dw-troca" role="group" aria-label="Onde abrir o WhatsApp">
-        <span>Abrir no</span>
-        {Object.entries(DESTINOS_WA).map(([k, t]) => (
-          <button key={k} type="button" aria-pressed={destino === k} className={destino === k ? 'ativa' : ''} onClick={() => setDestino(k)}>{t}</button>
-        ))}
-      </div>
+      <label className="dw-sel">
+        <span>Conversas abrem no</span>
+        <select value={destino} onChange={(e) => setDestino(e.target.value)}>
+          <option value="web">WhatsApp Web (aba já aberta)</option>
+          <option value="app">App do WhatsApp (computador)</option>
+        </select>
+        {destino === 'web' && temExtensao() && <em className="dw-ok">extensão ativa</em>}
+      </label>
       {semExt && <button type="button" className="dw-aviso" onClick={() => setAjuda(!ajuda)}>Falta a extensão para usar a aba que já está aberta</button>}
       {ajuda && semExt && (
         <div className="dw-ajuda">
