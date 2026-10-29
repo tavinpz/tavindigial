@@ -365,15 +365,9 @@ export default function Home() {
           </div>
         </section>
 
-        <VitrinePrevia />
-
         <section className="td-bloco td-claro td-modelos" id="modelos">
-          <div className="td-sec">
-            <div className="td-hd2" data-r>
-              <h2 className="td-h2">Escolha um modelo. <em>A gente coloca a sua cara.</em></h2>
-              <p>Toque para abrir: funcionam de verdade. O seu sai com o seu nome, cores e serviços.</p>
-            </div>
-          </div>
+          <VitrinePrevia />
+          <div className="td-sec"><p className="vp-todos">Ou abra os modelos prontos, em tela cheia:</p></div>
           <div className="td-sec td-grupo" data-r>
             <h3>Site completo</h3>
             <p>Agenda online, serviços com preço, fotos, avaliações e mapa. {brl(CONFIG.PRECO_SITE)}, no ar em até {CONFIG.PRAZO_HORAS} horas.</p>
