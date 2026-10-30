@@ -1,0 +1,4 @@
+node_modules/
+saida/
+*.log
+saida_log*.txt
