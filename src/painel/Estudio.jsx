@@ -277,6 +277,22 @@ export default function Estudio({ canal = 'tavin-digital', nome = 'Tavin Digital
     carregar()
   }
 
+  // rascunhos de carrossel/estático que já têm data: gera as imagens e agenda todos de uma vez
+  const comData = (conteudo || []).filter((c) => ['carrossel', 'estatico'].includes(c.formato) && ['ideia', 'pronto', 'erro'].includes(c.status)
+    && c.agendado_para && new Date(c.agendado_para) > new Date() && c.slides?.length >= (c.formato === 'estatico' ? 1 : 2))
+  async function agendarComData() {
+    for (let k = 0; k < comData.length; k++) {
+      const c = comData[k]
+      setOcupado(`Gerando ${k + 1} de ${comData.length}…`)
+      try {
+        const imagens = await gerarESubir(c.id, c.slides)
+        const { error } = await supabase.from('conteudo').update({ imagens, status: 'agendado', erro: null }).eq('id', c.id)
+        if (error) throw error
+      } catch (e) { avisar(`Falhou em "${c.titulo}": ${e.message || 'erro'}`); break }
+    }
+    setOcupado(''); avisar('Agendados'); carregar()
+  }
+
   if (conteudo === null || videos === null) return <p className="p-vazio">Carregando…</p>
   if (aberto) {
     const fechar = () => setAberto(null)
@@ -306,6 +322,7 @@ export default function Estudio({ canal = 'tavin-digital', nome = 'Tavin Digital
           </p>
         </div>
         <div className="p-acoes">
+          {comData.length > 0 && <button className="p-btn p-btn--forte" onClick={agendarComData} disabled={!!ocupado}>{ocupado || `Agendar os ${comData.length} com data marcada`}</button>}
           <button className="p-btn" onClick={() => novo('carrossel')}>Novo carrossel</button>
           <button className="p-btn" onClick={() => novo('estatico')}>Novo estático</button>
           <button className="p-btn p-btn--forte" onClick={() => arquivo.current?.click()} disabled={!!ocupado}>{ocupado || 'Subir vídeo'}</button>
