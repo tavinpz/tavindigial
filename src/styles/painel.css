@@ -770,3 +770,72 @@ body:has(.p-fantasma) { cursor: grabbing; }
 .v-coluna--sobre::after { content: 'Solte aqui'; font-size: 12.5px; font-weight: 700; color: var(--tinta); text-align: center; padding: 14px 0; border: 2px dashed var(--tinta); border-radius: 12px; }
 .v-mover { display: none; font: inherit; font-size: 13px; padding: 6px 8px; border: 1px solid var(--linha); border-radius: 9px; background: var(--papel); color: var(--grafite, #2A2230); }
 @media (hover: none), (pointer: coarse) { .v-mover { display: block; } }
+
+/* Filtros do quadro de vídeos */
+.v-filtros { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0 0 12px; }
+.v-filtros > span { font-size: 12.5px; font-weight: 700; color: var(--cinza); margin-right: 2px; }
+.v-filtros button { font: inherit; font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--linha); background: var(--branco); color: var(--grafite, #2A2230); cursor: pointer; }
+.v-filtros button.on { background: var(--noite); border-color: var(--noite); color: var(--branco); }
+.v-filtros button:focus-visible { outline: 2px solid var(--tinta); outline-offset: 2px; }
+.v-filtro-check { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--cinza); cursor: pointer; }
+
+/* Canais no menu */
+.p-menu-grupo { margin: 14px 12px 4px; font-size: 11.5px; font-weight: 700; letter-spacing: .04em; color: rgba(255,255,255,.45); }
+.p-canal-sigla { width: 22px; height: 22px; flex: none; border-radius: 7px; display: grid; place-items: center; font-size: 10px; font-weight: 800; color: #120E16; background: var(--c); }
+
+/* Programação da Tavin Digital (Estudio) */
+.e-filtros button small { font-size: 11px; opacity: .65; margin-left: 2px; }
+.e-busca { font: inherit; font-size: 13.5px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--linha); background: var(--branco); min-width: 0; width: 170px; }
+.e-busca:focus { outline: 2px solid var(--tinta); outline-offset: 1px; }
+.e-visao { display: inline-flex; border: 1px solid var(--linha); border-radius: 999px; overflow: hidden; }
+.e-visao button { border: 0 !important; border-radius: 0 !important; }
+.e-pipe { grid-auto-columns: minmax(240px, 1fr); }
+.e-coluna--rascunho { background: #EFEDF2; }
+.e-coluna--pronto { background: #F3E3FF; box-shadow: inset 0 0 0 2px var(--tinta); }
+.e-coluna--agendado { background: #EAE6F7; }
+.e-coluna--publicado { background: #E6F4EC; }
+.e-item { background: var(--branco); border: 1px solid var(--linha); border-radius: 12px; padding: 8px; display: flex; flex-direction: column; gap: 6px; }
+.e-item[draggable="true"] { cursor: grab; }
+.e-item--arrastando { opacity: .45; }
+.e-item-cab { font: inherit; color: inherit; text-align: left; background: none; border: 0; padding: 0; cursor: pointer; display: flex; gap: 10px; align-items: flex-start; border-radius: 8px; }
+.e-item-cab:focus-visible { outline: 2px solid var(--tinta); outline-offset: 2px; }
+.e-item-cab:hover strong { color: var(--tinta); }
+.e-mini { width: 58px; flex: none; aspect-ratio: 4 / 5; border-radius: 7px; overflow: hidden; background: var(--noite); display: grid; place-items: center; }
+.e-item--video .e-mini { aspect-ratio: 9 / 16; width: 48px; }
+.e-mini img, .e-mini video, .e-mini canvas { width: 100%; height: 100%; object-fit: cover; display: block; }
+.e-mini-vazia { font-size: 9.5px; color: #A9ADC2; text-align: center; padding: 2px; line-height: 1.2; }
+.e-item-txt { display: flex; flex-direction: column; gap: 3px; min-width: 0; flex: 1; }
+.e-item-txt strong { font-size: 14px; line-height: 1.25; }
+.e-tipo { font-size: 10.5px; font-weight: 800; border-radius: 999px; padding: 1px 8px; background: #EFE7F6; color: #5B2C83; }
+.e-tipo--estatico { background: #E3F0FB; color: #1D4F7A; }
+.e-tipo--video { background: #FFE9D6; color: #8A3B00; }
+.e-quando { font-size: 12px; font-style: normal; font-weight: 700; color: #4B3B9A; }
+.e-quando--ok { color: var(--ok); }
+.e-quando--plano { color: var(--cinza); font-weight: 600; }
+.e-erro { font-size: 12px; font-style: normal; color: var(--erro); font-weight: 700; }
+.e-subir { position: relative; overflow: hidden; }
+.e-subir input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.e-ideia { max-width: 640px; }
+
+.e-agenda ol { list-style: none; margin: 0; padding: 0; border: 1px solid var(--linha); border-radius: 14px; overflow: hidden; background: var(--branco); }
+.e-agenda li { display: grid; grid-template-columns: 110px 1fr; gap: 12px; padding: 9px 12px; border-top: 1px solid var(--linha); align-items: start; }
+.e-agenda li:first-child { border-top: 0; }
+.e-agenda li.hoje { background: #FBF5FF; }
+.e-agenda li.hoje .e-dia { color: var(--tinta); }
+.e-dia { font-size: 13px; font-weight: 800; color: var(--grafite, #2A2230); padding-top: 4px; text-transform: capitalize; }
+.e-agenda li.livre .e-dia { color: var(--cinza); font-weight: 600; }
+.e-livre { font-size: 12.5px; color: #B9AFC3; padding-top: 4px; display: inline-block; }
+.e-dia-itens { display: flex; flex-wrap: wrap; gap: 6px; }
+.e-ag { font: inherit; text-align: left; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding: 6px 10px; border-radius: 10px; border: 1px solid var(--linha); background: var(--papel); cursor: pointer; color: var(--grafite, #2A2230); max-width: 100%; }
+.e-ag span { font-size: 13.5px; font-weight: 600; }
+.e-ag small { font-size: 11.5px; color: var(--cinza); }
+.e-ag:hover { border-color: var(--tinta); }
+.e-ag--agendado { background: #EFEBFB; }
+.e-ag--publicado { background: #E8F5EE; }
+.e-ag--pronto, .e-ag--rascunho { border-style: dashed; }
+.e-semdata { margin-top: 14px; }
+.e-semdata h3 { margin: 0 0 8px; font-size: 14px; }
+@media (max-width: 760px) {
+  .e-agenda li { grid-template-columns: 1fr; gap: 4px; }
+  .e-busca { width: 100%; order: 10; }
+}

@@ -142,7 +142,7 @@ export function desenharSlide(canvas, slide, i, total, arroba = '@tavindigital')
       escrever(ctx, quebrar(ctx, slide.texto, larg), M, y + 70, 56, c.sub, c.destaque)
     }
     ctx.fillStyle = c.rodape; ctx.font = `700 28px ${CORPO}`
-    ctx.fillText('Arraste para o lado', M, H - M + 10)
+    ctx.fillText(total > 1 ? 'Arraste para o lado' : arroba, M, H - M + 10)
     return
   }
 

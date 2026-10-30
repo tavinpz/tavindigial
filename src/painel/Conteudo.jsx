@@ -5,14 +5,17 @@ import { usePainel } from './Painel'
 import { TIPOS, carregarFontes, desenharSlide, paraJpeg } from './slides'
 
 const ESTADOS = { ideia: 'Rascunho', pronto: 'Pronto', agendado: 'Agendado', publicando: 'Publicando…', publicado: 'Publicado', erro: 'Erro ao publicar' }
-const NOVO = [
+export const NOVO_ESTATICO = [
+  { tipo: 'capa', fundo: 'escuro', titulo: 'Uma frase que faz parar o dedo', texto: 'Uma linha que diz o que a pessoa ganha.' },
+]
+export const NOVO = [
   { tipo: 'capa', titulo: 'Título que faz parar o dedo', texto: 'Uma linha explicando o que a pessoa ganha lendo.' },
   { tipo: 'texto', titulo: 'Primeiro ponto', texto: 'Explique em 2 ou 3 frases curtas.' },
   { tipo: 'cta', titulo: 'Quer uma página assim para o seu negócio?', texto: 'Pronta em 24 horas. Você vê a prévia antes de pagar.' },
 ]
 
 // Miniatura: desenha o slide num canvas pequeno (o canvas é 1080x1350, o CSS reduz)
-function Slide({ slide, i, total, onCanvas }) {
+export function Slide({ slide, i, total, onCanvas }) {
   const ref = useRef(null)
   useEffect(() => {
     let vivo = true
@@ -24,7 +27,7 @@ function Slide({ slide, i, total, onCanvas }) {
 }
 
 // Gera os JPEGs no navegador e sobe para o Storage público. Devolve as URLs.
-async function gerarESubir(id, slides) {
+export async function gerarESubir(id, slides) {
   await carregarFontes()
   const versao = Date.now()
   const urls = []
@@ -47,11 +50,14 @@ function paraLocal(iso) {
   return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}T${p(d.getHours())}:${p(d.getMinutes())}`
 }
 
-function Editor({ item, fechar, recarregar }) {
+export function Editor({ item, fechar, recarregar, voltar = 'Carrosséis' }) {
+  const formato = item.formato === 'estatico' ? 'estatico' : 'carrossel'
+  const minimo = formato === 'estatico' ? 1 : 2
+  const nomeFormato = formato === 'estatico' ? 'Estático' : 'Carrossel'
   const { avisar } = usePainel()
   const [titulo, setTitulo] = useState(item.titulo)
   const [legenda, setLegenda] = useState(item.legenda || '')
-  const [slides, setSlides] = useState(item.slides?.length ? item.slides : NOVO)
+  const [slides, setSlides] = useState(item.slides?.length ? item.slides : formato === 'estatico' ? NOVO_ESTATICO : NOVO)
   const [quando, setQuando] = useState(paraLocal(item.agendado_para))
   const [ocupado, setOcupado] = useState('')
   const canvases = useRef([])
@@ -70,7 +76,7 @@ function Editor({ item, fechar, recarregar }) {
   })
 
   async function salvar(extra = {}) {
-    const { error } = await supabase.from('conteudo').update({ titulo, legenda, slides, formato: 'carrossel', ...extra }).eq('id', item.id)
+    const { error } = await supabase.from('conteudo').update({ titulo, legenda, slides, formato, ...extra }).eq('id', item.id)
     if (error) throw error
   }
 
@@ -91,7 +97,7 @@ function Editor({ item, fechar, recarregar }) {
       const blobs = await gerarImagens()
       blobs.forEach((b, i) => {
         const a = document.createElement('a')
-        a.href = URL.createObjectURL(b); a.download = `${titulo.slice(0, 40) || 'carrossel'}-${i + 1}.jpg`
+        a.href = URL.createObjectURL(b); a.download = `${titulo.slice(0, 40) || formato}-${i + 1}.jpg`
         a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 4000)
       })
     } finally { setOcupado('') }
@@ -99,7 +105,7 @@ function Editor({ item, fechar, recarregar }) {
 
   async function agendar() {
     if (!quando) { avisar('Escolha o dia e a hora'); return }
-    if (slides.length < 2) { avisar('Carrossel precisa de pelo menos 2 slides'); return }
+    if (slides.length < minimo) { avisar('Carrossel precisa de pelo menos 2 slides'); return }
     setOcupado('agendar')
     try {
       const urls = await gerarESubir(item.id, slides)
@@ -135,7 +141,7 @@ function Editor({ item, fechar, recarregar }) {
   }
 
   async function apagar() {
-    if (!confirm('Apagar este carrossel?')) return
+    if (!confirm(`Apagar este ${nomeFormato.toLowerCase()}?`)) return
     await supabase.from('conteudo').delete().eq('id', item.id)
     recarregar(); fechar()
   }
@@ -144,9 +150,9 @@ function Editor({ item, fechar, recarregar }) {
     <section>
       <div className="p-cab">
         <div>
-          <button className="p-voltar" onClick={fechar}>Carrosséis</button>
+          <button className="p-voltar" onClick={fechar}>{voltar}</button>
           <h1>{titulo || 'Sem título'}</h1>
-          <p className="p-sub">{ESTADOS[item.status] || item.status}{item.agendado_para ? `, ${dataCurta(item.agendado_para)}` : ''}</p>
+          <p className="p-sub">{nomeFormato} · {ESTADOS[item.status] || item.status}{item.agendado_para ? `, ${dataCurta(item.agendado_para)}` : ''}</p>
           {item.erro && <p className="p-erro">Último erro: {item.erro}</p>}
         </div>
       </div>
@@ -189,14 +195,14 @@ function Editor({ item, fechar, recarregar }) {
                 <span className="p-slide-mover">
                   <button onClick={() => mover(i, -1)} aria-label="Subir slide" disabled={i === 0}>↑</button>
                   <button onClick={() => mover(i, 1)} aria-label="Descer slide" disabled={i === slides.length - 1}>↓</button>
-                  <button onClick={() => remover(i)} aria-label="Remover slide" disabled={slides.length <= 2}>✕</button>
+                  <button onClick={() => remover(i)} aria-label="Remover slide" disabled={slides.length <= minimo}>✕</button>
                 </span>
               </div>
               <input value={s.titulo} onChange={(e) => mudarSlide(i, 'titulo', e.target.value)} placeholder="Título" />
               <textarea rows={3} value={s.texto || ''} onChange={(e) => mudarSlide(i, 'texto', e.target.value)} placeholder="Texto (opcional)" />
             </li>
           ))}
-          <li className="p-slide-novo"><button className="p-btn" onClick={adicionar} disabled={slides.length >= 10}>Adicionar slide</button></li>
+          {formato === 'carrossel' && <li className="p-slide-novo"><button className="p-btn" onClick={adicionar} disabled={slides.length >= 10}>Adicionar slide</button></li>}
         </ol>
       </div>
     </section>
@@ -204,7 +210,7 @@ function Editor({ item, fechar, recarregar }) {
 }
 
 // Conexão com o Instagram: o token vai direto para o banco (o painel nunca lê de volta)
-function ConexaoInstagram() {
+export function ConexaoInstagram() {
   const { avisar } = usePainel()
   const [st, setSt] = useState(null)
   const [form, setForm] = useState(null)

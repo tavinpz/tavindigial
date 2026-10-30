@@ -9,8 +9,9 @@ import Crm from './Crm'
 import Leads from './Leads'
 import Briefings from './Briefings'
 import Mensagens from './Mensagens'
-import Conteudo from './Conteudo'
 import Videos from './Videos'
+import Estudio from './Estudio'
+import { CANAIS } from './canais'
 import Coleta from './Coleta'
 import LeadDrawer from './LeadDrawer'
 import '../styles/painel.css'
@@ -24,15 +25,18 @@ const ABAS = [
   ['prospectar', 'Prospectar', Prospectar, 'm22 2-7 20-4-9-9-4 20-7Z'],
   ['crm', 'CRM', Crm, 'M4 4h5v16H4zM10 4h5v10h-5zM16 4h4v13h-4z'],
   ['leads', 'Leads', Leads, 'M16 19v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1M9.5 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM21 19v-1a4 4 0 0 0-3-3.9M16 4.1a3 3 0 0 1 0 5.8'],
-  ['conteudo', 'Carrosséis', Conteudo, 'M3 6h13v13H3zM19 4v13M22 2v13'],
-  ['videos', 'Vídeos', Videos, 'M4 4h16v16H4zM10 9l5 3-5 3z'],
 ]
+// Um item de menu por canal (o componente muda conforme o tipo do canal)
+const ABAS_CANAIS = CANAIS.map((c) => [`canal:${c.id}`, c.nome, c.tipo === 'marca'
+  ? () => <Estudio canal={c.id} nome={c.nome} />
+  : () => <Videos canal={c.id} nome={c.nome} />, null, c])
 const EXTRAS = [
   ['coleta', 'Coleta de leads', Coleta],
   ['briefings', 'Briefings', Briefings],
   ['mensagens', 'Textos das mensagens', Mensagens],
 ]
-const TODAS = [...ABAS, ...EXTRAS]
+const TODAS = [...ABAS, ...ABAS_CANAIS, ...EXTRAS]
+const ANTIGAS = { conteudo: 'canal:tavin-digital', videos: 'canal:concrete-atlas' }
 
 const Ico = ({ d }) => (
   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={d} /></svg>
@@ -69,7 +73,9 @@ function Login() {
 export default function Painel() {
   const [sessao, setSessao] = useState(undefined)
   const [admin, setAdmin] = useState(null)
-  const [aba, setAba] = useState(() => { try { const a = localStorage.getItem('p-aba'); return ['inicio', 'prospectar', 'crm', 'leads', 'conteudo', 'videos', 'coleta', 'briefings', 'mensagens'].includes(a) ? a : 'inicio' } catch { return 'inicio' } })
+  const [aba, setAba] = useState(() => {
+    try { const a = ANTIGAS[localStorage.getItem('p-aba')] || localStorage.getItem('p-aba'); return TODAS.some(([id]) => id === a) ? a : 'inicio' } catch { return 'inicio' }
+  })
   const [mensagens, setMensagens] = useState([])
   const [prontas, setProntas] = useState(false)
   const [leadAberto, setLeadAberto] = useState(null)
@@ -125,7 +131,7 @@ export default function Painel() {
   useEffect(() => {
     if (!admin) return
     const canal = supabase.channel('painel-ao-vivo')
-    for (const t of ['leads', 'envios', 'eventos', 'negocios', 'briefings', 'coleta_buscas', 'videos']) {
+    for (const t of ['leads', 'envios', 'eventos', 'negocios', 'briefings', 'coleta_buscas', 'videos', 'conteudo']) {
       canal.on('postgres_changes', { event: '*', schema: 'public', table: t }, sincronizar)
     }
     canal.on('postgres_changes', { event: '*', schema: 'public', table: 'mensagens' }, () => recarregarMensagens())
@@ -194,6 +200,12 @@ export default function Painel() {
             {ABAS.map(([id, nome, , ico]) => (
               <button key={id} className={id === aba ? 'ativa' : ''} onClick={() => { setAba(id); setMenuAberto(false) }} aria-current={id === aba ? 'page' : undefined}>
                 <Ico d={ico} />{nome}
+              </button>
+            ))}
+            <p className="p-menu-grupo">Canais</p>
+            {ABAS_CANAIS.map(([id, nome, , , c]) => (
+              <button key={id} className={id === aba ? 'ativa' : ''} onClick={() => irPara(id)} aria-current={id === aba ? 'page' : undefined}>
+                <span className="p-canal-sigla" style={{ '--c': c.cor }} aria-hidden="true">{c.sigla}</span>{nome}
               </button>
             ))}
           </nav>

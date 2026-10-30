@@ -5,9 +5,8 @@
 // Chamado a cada 5 min pelo pg_cron (x-ingest-token) e pelo painel com o login do dono:
 //   { verificar: true, canal }  testa a conexão
 //   { id }                      publica agora esse vídeo
-// Token da conta: app_config ig_<canal>_token / ig_<canal>_user_id (nunca no código).
-import "jsr:@supabase/functions-js/edge-runtime.d.ts";
-import { createClient, type SupabaseClient } from "jsr:@supabase/supabase-js@2";
+// Token da conta: app_config ig_<canal>_token / ig_<canal>_user_id (Tavin Digital: instagram_token), nunca no código.
+import { createClient, type SupabaseClient } from "npm:@supabase/supabase-js@2";
 
 const cors = {
   "Access-Control-Allow-Origin": "*",
@@ -25,7 +24,9 @@ const salvar = (db: SupabaseClient, key: string, value: string) =>
   db.from("app_config").upsert({ key, value, updated_at: new Date().toISOString() }, { onConflict: "key" });
 
 async function conta(db: SupabaseClient, canal: string): Promise<Conta | null> {
-  const kt = `ig_${canal}_token`, ku = `ig_${canal}_user_id`;
+  // A Tavin Digital usa a conta principal do painel (a mesma dos carrosséis); os outros canais têm a sua
+  const principal = canal === "tavin-digital";
+  const kt = principal ? "instagram_token" : `ig_${canal}_token`, ku = principal ? "instagram_user_id" : `ig_${canal}_user_id`;
   const { data } = await db.from("app_config").select("key,value,updated_at").in("key", [kt, ku]);
   const linhas = (data ?? []) as { key: string; value: string; updated_at: string }[];
   const m = Object.fromEntries(linhas.map((r) => [r.key, r.value]));

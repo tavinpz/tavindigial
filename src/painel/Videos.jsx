@@ -5,7 +5,6 @@ import { usePainel } from './Painel'
 // Vídeos curtos do Concrete Atlas organizados por situação: em produção → para programar → programado → postado.
 // Cada rede (YouTube, TikTok, Instagram) tem a própria situação. O que foi programado vira "postado" sozinho no horário,
 // e a cada 30 min o servidor confere no YouTube (feed público) e no Instagram o que já saiu, com link e views.
-const CANAL = 'concrete-atlas'
 const FUSO = 'America/Sao_Paulo'
 
 const fmtDia = (iso) => iso ? new Date(iso).toLocaleDateString('pt-BR', { timeZone: FUSO, weekday: 'short', day: '2-digit', month: '2-digit' }) : '—'
@@ -63,9 +62,10 @@ function campos(k, acao, iso, igAuto) {
   return { [`${k}_status`]: 'pendente', [`${k}_programado_para`]: null, [`${k}_postado_em`]: null, ...(k === 'yt' ? { yt_confirmado: false } : {}) }
 }
 
-function etapa(v) {
+// rede = null: as 3 juntas; 'yt' | 'tt' | 'ig': só aquela rede (filtro do quadro)
+function etapa(v, rede = null) {
   if (!v.video_url) return 'producao'
-  const ss = REDES.map((r) => situacao(v, r.k).s)
+  const ss = (rede ? [rede] : REDES.map((r) => r.k)).map((k) => situacao(v, k).s)
   if (ss.includes('pendente')) return v.subido_em ? 'subido' : 'programar'
   if (ss.includes('programado')) return 'programado'
   return 'postado'
@@ -206,12 +206,12 @@ function Rede({ v, k, nome, recarregar, igOk, aberto, abrir }) {
 }
 
 // Arrastar o cartão para outra coluna muda as 3 redes de uma vez (sem abrir rede por rede)
-function dadosMover(v, alvo, igOk) {
+function dadosMover(v, alvo, igOk, rede = null) {
   let d = {}
   const sug = sugestao(v)
   if (alvo === 'programar') d.subido_em = null
   if (alvo === 'subido') d.subido_em = v.subido_em || new Date().toISOString()
-  for (const r of REDES) {
+  for (const r of REDES.filter((x) => !rede || x.k === rede)) {
     const st = situacao(v, r.k)
     if (st.processando) continue
     if ((alvo === 'programar' || alvo === 'subido') && st.s !== 'pendente') d = { ...d, ...campos(r.k, 'desfazer') }
@@ -272,23 +272,24 @@ const FASES = [
   ['postado', 'Postado', 'Nas 3 redes. Links e views chegam sozinhos.'],
 ]
 
-function Quadro({ lista, abrir, recarregar, igOk }) {
+function Quadro({ lista, abrir, recarregar, igOk, rede, verPostados, setVerPostados }) {
   const { avisar } = usePainel()
   const [verTodos, setVerTodos] = useState(null)
   const [arr, setArr] = useState(null)
   const [sobre, setSobre] = useState(null)
   const [local, setLocal] = useState({})
-  const fase = (v) => local[v.id] || etapa(v)
+  const fase = (v) => local[v.id] || etapa(v, rede)
+  const onde = rede ? REDES.find((r) => r.k === rede).nome : 'nas 3 redes'
   async function mover(id, alvo) {
     const v = lista.find((x) => x.id === id)
     if (!v || !v.video_url || alvo === 'producao' || fase(v) === alvo) return
-    const d = dadosMover(v, alvo, igOk)
+    const d = dadosMover(v, alvo, igOk, rede)
     if (!Object.keys(d).length) return
     setLocal((l) => ({ ...l, [id]: alvo }))
     const { error } = await supabase.from('videos').update(d).eq('id', id)
     avisar(error ? 'Não salvou' : alvo === 'programado'
-      ? `${num(v)} programado nas 3 redes para ${fmtQuando(sugestao(v))}${igOk ? ' · Insta: o painel posta sozinho' : ''}`
-      : alvo === 'postado' ? `${num(v)} marcado como postado nas 3 redes`
+      ? `${num(v)} programado ${rede ? `no ${onde}` : onde} para ${fmtQuando(sugestao(v))}${igOk && (!rede || rede === 'ig') ? ' · Insta: o painel posta sozinho' : ''}`
+      : alvo === 'postado' ? `${num(v)} marcado como postado ${rede ? `no ${onde}` : onde}`
       : alvo === 'subido' ? `${num(v)}: upload feito` : `${num(v)} voltou para Para programar`)
     await recarregar()
     setLocal((l) => { const n = { ...l }; delete n[id]; return n })
@@ -303,16 +304,18 @@ function Quadro({ lista, abrir, recarregar, igOk }) {
     <div className="v-pipe">
       {FASES.filter(([k]) => k !== 'producao' || col.producao.length).map(([k, nome, dica]) => {
         const limite = k === 'postado' ? 6 : k === 'programar' ? 7 : 99
-        const itens = verTodos === k ? col[k] : col[k].slice(0, limite)
+        const recolhida = k === 'postado' && !verPostados
+        const itens = recolhida ? [] : verTodos === k ? col[k] : col[k].slice(0, limite)
         return (
           <section key={k} className={`v-coluna v-coluna--${k} ${arr && sobre === k ? 'v-coluna--sobre' : ''}`} aria-label={nome}
             onDragOver={(e) => { if (arr && k !== 'producao') { e.preventDefault(); e.dataTransfer.dropEffect = 'move'; if (sobre !== k) setSobre(k) } }}
             onDragLeave={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) setSobre((x) => (x === k ? null : x)) }}
             onDrop={(e) => { e.preventDefault(); const id = arr || e.dataTransfer.getData('text/plain'); setArr(null); setSobre(null); if (id) mover(id, k) }}>
             <header><h2>{nome} <span>{col[k].length}</span></h2><p>{dica}</p></header>
+            {recolhida && col[k].length > 0 && <button className="p-btn p-btn--mini p-btn--fraco" onClick={() => setVerPostados(true)}>Mostrar os {col[k].length} postados</button>}
             {col[k].length === 0 && <p className="v-vazia">{k === 'programar' ? 'Tudo programado. Hora de fazer mais vídeos.' : 'Nenhum ainda.'}</p>}
             {itens.map((v) => <Cartao key={v.id} v={v} abrir={abrir} recarregar={recarregar} igOk={igOk} fase={k} arrastar={(id) => { setArr(id); if (!id) setSobre(null) }} mover={mover} arrastando={arr === v.id} />)}
-            {col[k].length > limite && (
+            {!recolhida && col[k].length > limite && (
               <button className="p-btn p-btn--mini p-btn--fraco" onClick={() => setVerTodos(verTodos === k ? null : k)}>{verTodos === k ? 'Mostrar menos' : `Ver mais ${col[k].length - limite}`}</button>
             )}
           </section>
@@ -322,7 +325,7 @@ function Quadro({ lista, abrir, recarregar, igOk }) {
   )
 }
 
-function Conexoes({ ig, yt, recarregarCx, recarregar }) {
+function Conexoes({ canal, ig, yt, recarregarCx, recarregar }) {
   const { avisar } = usePainel()
   const [aberto, setAberto] = useState(null)
   const [igForm, setIgForm] = useState({ user_id: '', token: '' })
@@ -332,12 +335,12 @@ function Conexoes({ ig, yt, recarregarCx, recarregar }) {
 
   async function testarIG() {
     setMsg('Testando o Instagram…')
-    const { data, error } = await supabase.functions.invoke('publicar-reels', { body: { verificar: true, canal: CANAL } })
+    const { data, error } = await supabase.functions.invoke('publicar-reels', { body: { verificar: true, canal } })
     setMsg(error ? 'Não consegui falar com o servidor.' : data?.ok ? `Instagram conectado como @${data.username}` : `Instagram: ${data?.erro}`)
   }
   async function salvarIG(e) {
     e.preventDefault()
-    const { error } = await supabase.rpc('salvar_instagram_canal', { p_canal: CANAL, p_user_id: igForm.user_id, p_token: igForm.token })
+    const { error } = await supabase.rpc('salvar_instagram_canal', { p_canal: canal, p_user_id: igForm.user_id, p_token: igForm.token })
     if (error) { avisar('Não salvou'); return }
     setAberto(null); await recarregarCx(); testarIG()
   }
@@ -350,7 +353,7 @@ function Conexoes({ ig, yt, recarregarCx, recarregar }) {
   }
   async function salvarYT(e) {
     e.preventDefault()
-    const { error } = await supabase.rpc('salvar_youtube_canal', { p_canal: CANAL, p_ref: ytRef })
+    const { error } = await supabase.rpc('salvar_youtube_canal', { p_canal: canal, p_ref: ytRef })
     if (error) { avisar('Não salvou'); return }
     setAberto(null); await recarregarCx(); conferir()
   }
@@ -359,13 +362,13 @@ function Conexoes({ ig, yt, recarregarCx, recarregar }) {
   return (
     <div className="v-cx">
       <div className="v-cx-linha">
-        <span className={`v-cx-item ${ytOk ? 'on' : ''}`}>
-          <b>YouTube</b> {ytOk ? 'conferido sozinho a cada 30 min' : 'falta o link do canal para conferir sozinho'}
-        </span>
         <span className={`v-cx-item ${ig.conectado ? 'on' : ''}`}>
-          <b>Instagram</b> {ig.conectado ? 'conectado: o painel posta e confere' : 'não conectado'}
+          <b>Instagram</b> {ig.conectado ? 'conectado: o painel posta os Reels no horário' : 'não conectado: poste pelo app'}
         </span>
-        <span className="v-cx-item"><b>TikTok</b> vira postado no horário programado</span>
+        <span className="v-cx-item"><b>TikTok</b> poste no app; vira postado sozinho no horário que você programou</span>
+        <span className={`v-cx-item ${ytOk ? 'on' : ''}`} title="O link do canal serve só para o painel perceber sozinho o que já foi ao ar e trazer as views. Não posta nada.">
+          <b>YouTube</b> {ytOk ? 'link salvo (só para marcar postado e trazer views; o YouTube está com isso instável, então arraste para Postado)' : 'opcional: o link só serve para marcar sozinho o que já foi ao ar'}
+        </span>
         <span className="v-cx-acoes">
           <button className="p-btn p-btn--mini" onClick={conferir} disabled={ocupado || (!ytOk && !ig.conectado)}>{ocupado ? 'Conferindo…' : 'Conferir agora'}</button>
           <button className="p-btn p-btn--mini p-btn--fraco" onClick={() => { setYtRef(yt.ref || ''); setAberto(aberto === 'yt' ? null : 'yt') }}>{ytOk ? 'Trocar canal' : 'Ligar YouTube'}</button>
@@ -490,21 +493,24 @@ function Detalhe({ v, fechar, recarregar, igOk }) {
   )
 }
 
-export default function Videos() {
+export default function Videos({ canal = 'concrete-atlas', nome = 'Concrete Atlas' }) {
   const { versao } = usePainel()
   const [lista, setLista] = useState(null)
   const [abertoId, setAbertoId] = useState(null)
   const [ig, setIg] = useState(null)
   const [yt, setYt] = useState(null)
+  const [rede, setRede] = useState(() => { try { return localStorage.getItem(`v-rede-${canal}`) || '' } catch { return '' } })
+  const [verPostados, setVerPostados] = useState(false)
+  useEffect(() => { try { localStorage.setItem(`v-rede-${canal}`, rede) } catch { /* sem storage */ } }, [rede, canal])
 
   const carregar = async () => {
-    const { data } = await supabase.from('videos').select('*').eq('canal', CANAL).order('publicar_em', { ascending: true, nullsFirst: false })
+    const { data } = await supabase.from('videos').select('*').eq('canal', canal).order('publicar_em', { ascending: true, nullsFirst: false })
     setLista(data || [])
   }
   const carregarCx = async () => {
     const [a, b] = await Promise.all([
-      supabase.rpc('instagram_status_canal', { p_canal: CANAL }),
-      supabase.rpc('youtube_status_canal', { p_canal: CANAL }),
+      supabase.rpc('instagram_status_canal', { p_canal: canal }),
+      supabase.rpc('youtube_status_canal', { p_canal: canal }),
     ])
     setIg(a.data?.[0] || { conectado: false })
     setYt(b.data?.[0] || { ref: null })
@@ -533,20 +539,28 @@ export default function Videos() {
     <section>
       <div className="p-cab">
         <div>
-          <h1>Vídeos</h1>
+          <h1>{nome}</h1>
           <p className="p-sub">
-            Concrete Atlas · {resumo.n.postado} postados · {resumo.n.programado} programados{resumo.ate ? ` (fila até ${fmtDia(resumo.ate)})` : ''} · {resumo.n.programar} para programar{resumo.n.subido ? ` · ${resumo.n.subido} com upload feito` : ''}
+            Vídeos curtos · {resumo.n.postado} postados · {resumo.n.programado} programados{resumo.ate ? ` (fila até ${fmtDia(resumo.ate)})` : ''} · {resumo.n.programar} para programar{resumo.n.subido ? ` · ${resumo.n.subido} com upload feito` : ''}
             {resumo.views > 0 ? ` · ${fmtViews(resumo.views)} no YouTube e Insta` : ''}
           </p>
-          <p className="p-sub">Arraste o cartão para outra coluna e as 3 redes mudam juntas. Para uma rede só, clique nela no cartão.</p>
+          <p className="p-sub">Arraste o cartão entre as colunas. {rede ? `Filtrando ${REDES.find((r) => r.k === rede).nome}: o arrastar muda só essa rede.` : 'Sem filtro, as 3 redes mudam juntas.'}</p>
         </div>
       </div>
 
-      <Conexoes ig={ig} yt={yt} recarregarCx={carregarCx} recarregar={carregar} />
+      <Conexoes canal={canal} ig={ig} yt={yt} recarregarCx={carregarCx} recarregar={carregar} />
+
+      <div className="v-filtros" role="toolbar" aria-label="Filtros do quadro">
+        <span>Rede</span>
+        {[['', 'Todas'], ...REDES.map((r) => [r.k, r.k === 'yt' ? 'YouTube' : r.nome === 'Insta' ? 'Instagram' : r.nome])].map(([k, n]) => (
+          <button key={k || 'todas'} type="button" className={rede === k ? 'on' : ''} aria-pressed={rede === k} onClick={() => setRede(k)}>{n}</button>
+        ))}
+        <label className="v-filtro-check"><input type="checkbox" checked={verPostados} onChange={(e) => setVerPostados(e.target.checked)} /> Mostrar postados</label>
+      </div>
 
       {lista.length === 0
         ? <div className="p-vazio"><p>Nenhum vídeo ainda.</p></div>
-        : <Quadro lista={lista} abrir={setAbertoId} recarregar={carregar} igOk={igOk} />}
+        : <Quadro lista={lista} abrir={setAbertoId} recarregar={carregar} igOk={igOk} rede={rede || null} verPostados={verPostados} setVerPostados={setVerPostados} />}
     </section>
   )
 }
