@@ -1,0 +1,58 @@
+{
+ "L1": {
+  "arq": "tavin_11_do_google_ao_horario.mp4",
+  "estilo": 0
+ },
+ "L2": {
+  "arq": "tavin_12_caminho_do_cliente.mp4",
+  "estilo": 1,
+  "vel": 1.08,
+  "dur": [
+   96,
+   96,
+   105,
+   90,
+   110,
+   160,
+   125
+  ],
+  "falas": [
+   "Seu cliente não chega do nada. Ele faz um caminho.",
+   "Ele vê o seu post e clica no link da bio.",
+   "Abre a sua página e confere os serviços e as avaliações.",
+   "E chama no WhatsApp pra marcar o horário.",
+   "Se uma dessas etapas falha, ele some no meio do caminho.",
+   "A gente monta o caminho inteiro: artes, página, Google e atendimento. Tudo conectado.",
+   "Me chama no direct que eu te mostro como fica o seu."
+  ]
+ },
+ "L3": {
+  "arq": "tavin_13_antes_e_depois_da_bio.mp4",
+  "estilo": 2,
+  "vel": 1.08,
+  "dur": [
+   80,
+   130,
+   80,
+   120,
+   90,
+   120
+  ],
+  "falas": [
+   "Esse é o link da bio da maioria dos negócios.",
+   "Quatro botões, nenhuma foto, nenhum preço. O cliente não entende o que você faz, e vai embora.",
+   "Agora olha a mesma bio, feita pra vender.",
+   "Serviços com preço, avaliações do Google e um botão direto pro WhatsApp.",
+   "É a mesma pessoa visitando. Só que agora ela chama.",
+   "Quer ver como fica a sua? A prévia é grátis. Me chama no direct."
+  ]
+ },
+ "L4": {
+  "arq": "tavin_14_motion_para_sua_marca.mp4",
+  "estilo": 1
+ },
+ "L5": {
+  "arq": "tavin_15_perto_de_mim.mp4",
+  "estilo": 2
+ }
+}
