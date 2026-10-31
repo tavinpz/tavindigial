@@ -72,3 +72,11 @@ FX.L5 = () => [
   ['swish', 158], ['pop', 174], ['pop', 178], ['pop', 182], ['swish', 270], ...teclas(PERGUNTA_L5, 290, 1).filter((_, i) => i % 2 === 0),
   ['pop', 352], ['chime', 372], ['swish', 444], ['pop', 466], ['pop', 472], ['pop', 478], ['pop', 484], ['sobe', 528], ['logo', 528],
 ];
+
+// ── lote 4 (keynote) ──
+const passos = (ini: number, n: number, cada: number, tipo = 'pop'): Fx => Array.from({ length: n }, (_, i) => [tipo, ini + i * cada] as [string, number]);
+FX.A1 = () => [['swish', 46], ...passos(62, 5, 6), ['vidro', 96], ['swish', 252], ['brilho', 262], ['swish', 306], ['grave', 366], ['sobe', 430], ['logo', 430]];
+FX.A2 = () => [['swish', 2], ['vidro', 48], ...passos(96, 7, 15), ['swish', 210], ['brilho', 250], ['swish', 326], ['sobe', 340], ['logo', 340]];
+FX.A3 = () => [['swish', 56], ...passos(60, 8, 15, 'toque'), ['grave', 195], ['brilho', 204], ['swish', 268], ['pop', 278], ['sobe', 398], ['logo', 398]];
+FX.A4 = () => [['swish', 4], ['vidro', 62], ['swish', 122], ['brilho', 186], ...passos(186, 5, 6), ['swish', 262], ['toque', 324], ['chime', 330], ['sobe', 368], ['logo', 368]];
+FX.A5 = () => [['pop', 12], ['pop', 18], ['swish', 58], ['grave', 98], ['vidro', 128], ...passos(186, 5, 4), ['swish', 214], ['toque', 296], ['toque', 306], ['toque', 316], ['swish', 360], ...passos(362, 4, 5), ['sobe', 448], ['logo', 448]];

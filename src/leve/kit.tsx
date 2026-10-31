@@ -247,6 +247,7 @@ const ESF: Record<string, string[]> = {
   lilas: ['#FFFFFF', '#F4ECFF', '#D9C3F7', '#B497E0', '#7E5CB0'],
   branca: ['#FFFFFF', '#FFFFFF', '#F1ECF6', '#D3C8DE', '#A497B2'],
   ambar: ['#FFFBEA', '#FFE08A', '#F5A524', '#C46F06', '#7A3D00'],
+  noite: ['#B9AEC4', '#4A3F54', '#1E1724', '#0E0A12', '#000000'],
 };
 export const Esfera: React.FC<{ x: number; y: number; r: number; cor?: keyof typeof ESF; sombra?: boolean; style?: React.CSSProperties; children?: React.ReactNode }> = ({ x, y, r, cor = 'roxo', sombra = true, style, children }) => {
   const c = ESF[cor];

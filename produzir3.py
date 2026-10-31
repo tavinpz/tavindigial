@@ -54,12 +54,12 @@ def render(comp):
     total = float(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', mudo], capture_output=True, text=True).stdout)
     fx = [[t, q / FPS] for t, q in fx_de(comp, props)]
     wav = os.path.join(SAIDA, f'{comp}.wav')
-    conf = {'saida': wav, 'dur': total, 'fx': fx, 'voz': vz, 'estilo': cfg.get('estilo', 0)}
+    conf = {'saida': wav, 'dur': total, 'fx': fx, 'voz': vz, 'estilo': cfg.get('estilo', 0), 'quebras': [q / FPS for q in cfg.get('quebras', [])], 'intro': cfg.get('intro', 1)}
     json.dump(conf, open(os.path.join(SAIDA, f'{comp}.json'), 'w'))
-    subprocess.run(['python3', os.path.join(AQUI, 'audio3.py'), os.path.join(SAIDA, f'{comp}.json')], check=True, cwd=AQUI)
+    subprocess.run(['python3', os.path.join(AQUI, cfg.get('audio', 'audio3.py')), os.path.join(SAIDA, f'{comp}.json')], check=True, cwd=AQUI)
     final = os.path.join(SAIDA, cfg['arq'])
     subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', mudo, '-i', wav, '-map', '0:v', '-map', '1:a', '-c:v', 'libx264', '-preset', 'medium', '-crf', '19',
-                    '-maxrate', '9M', '-bufsize', '18M', '-pix_fmt', 'yuv420p', '-af', 'loudnorm=I=-14:TP=-1.5:LRA=11,aresample=48000',
+                    '-maxrate', '9M', '-bufsize', '18M', '-pix_fmt', 'yuv420p', '-af', 'loudnorm=I=-14.5:TP=-2:LRA=11,aresample=48000,alimiter=limit=0.78:level=false',
                     '-c:a', 'aac', '-b:a', '192k', '-movflags', '+faststart', '-shortest', final], check=True)
     os.remove(mudo)
     print('OK', comp, final, f'{total:.1f}s', flush=True)

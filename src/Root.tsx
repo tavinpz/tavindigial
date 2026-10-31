@@ -11,6 +11,11 @@ import { L2, DUR_L2 } from './leve/L2Caminho';
 import { L3, DUR_L3 } from './leve/L3AntesDepois';
 import { L4, DUR_L4 } from './leve/L4Motion';
 import { L5, DUR_L5 } from './leve/L5Perto';
+import { A1, DUR_A1 } from './apple/A1Bento';
+import { A3, DUR_A3 } from './apple/A3Tipo';
+import { A2, DUR_A2 } from './apple/A2Ilha';
+import { A4, DUR_A4 } from './apple/A4Camadas';
+import { A5, DUR_A5 } from './apple/A5Liquido';
 
 const soma = (a: number[]) => a.reduce((x, y) => x + y, 0);
 const comp = (id: string, C: any, dur: number[]) => (
@@ -33,6 +38,11 @@ export const Root: React.FC = () => (
     {comp('L3', L3, DUR_L3)}
     <Composition id="L4" component={L4} width={1080} height={1920} fps={30} durationInFrames={DUR_L4} />
     <Composition id="L5" component={L5} width={1080} height={1920} fps={30} durationInFrames={DUR_L5} />
+    <Composition id="A1" component={A1} width={1080} height={1920} fps={30} durationInFrames={DUR_A1} />
+    <Composition id="A3" component={A3} width={1080} height={1920} fps={30} durationInFrames={DUR_A3} />
+    <Composition id="A2" component={A2} width={1080} height={1920} fps={30} durationInFrames={DUR_A2} />
+    <Composition id="A4" component={A4} width={1080} height={1920} fps={30} durationInFrames={DUR_A4} />
+    <Composition id="A5" component={A5} width={1080} height={1920} fps={30} durationInFrames={DUR_A5} />
     <Composition id="L1" component={L1} width={1080} height={1920} fps={30} durationInFrames={DUR_L1} />
   </>
 );

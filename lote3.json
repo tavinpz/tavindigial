@@ -54,5 +54,50 @@
  "L5": {
   "arq": "tavin_15_perto_de_mim.mp4",
   "estilo": 2
+ },
+ "A1": {
+  "arq": "tavin_16_tudo_que_sua_marca_precisa.mp4",
+  "audio": "audio4.py",
+  "estilo": 0,
+  "quebras": [
+   366
+  ],
+  "intro": 1
+ },
+ "A2": {
+  "arq": "tavin_17_o_celular_nao_para.mp4",
+  "audio": "audio4.py",
+  "estilo": 1,
+  "quebras": [
+   96
+  ],
+  "intro": 1
+ },
+ "A3": {
+  "arq": "tavin_18_pronta_em_24h.mp4",
+  "audio": "audio4.py",
+  "estilo": 2,
+  "quebras": [
+   195
+  ],
+  "intro": 1
+ },
+ "A4": {
+  "arq": "tavin_19_cada_detalhe.mp4",
+  "audio": "audio4.py",
+  "estilo": 0,
+  "quebras": [
+   186
+  ],
+  "intro": 1
+ },
+ "A5": {
+  "arq": "tavin_20_identidade_visual.mp4",
+  "audio": "audio4.py",
+  "estilo": 1,
+  "quebras": [
+   98
+  ],
+  "intro": 1
  }
 }
