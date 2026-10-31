@@ -1,0 +1,37 @@
+// efeitos sonoros por vídeo: [tipo, quadro]
+type L = [string, number][];
+const T1 = (): L => [
+  ['sobe', 22], ['msg', 104], ['tecla', 128], ['msg', 160], ['msg', 204], ['msg', 246], ['pop', 274], ['chime', 280],
+  ['swish', 312], ['grave', 318], ['sobe', 400], ['brilho', 452], ['pop', 492], ['pop', 508], ['pop', 524], ['swish', 590], ['logo', 600],
+];
+
+const T2 = (): L => [
+  ['tom', 6], ['tom', 46], ['swish', 66], ['pop', 104], ['tecla', 158], ['pop', 200], ['tecla', 250], ['pop', 272], ['pop', 312], ['chime', 318],
+  ['swish', 352], ['sobe', 384], ['brilho', 400], ['grave', 456], ['swish', 506], ['vidro', 530], ['logo', 590],
+];
+const T3 = (): L => [
+  ['pop', 14], ['erro', 70], ['erro', 80], ['erro', 90], ['erro', 100], ['erro', 110], ['rebobina', 152], ['grave', 214],
+  ['msg', 238], ['msg', 266], ['chime', 282], ['msg', 312], ['msg', 334], ['msg', 356], ['pop', 360], ['pop', 384],
+  ['vidro', 398], ['vidro', 406], ['vidro', 414], ['sobe', 470], ['brilho', 488], ['logo', 590],
+];
+const T4 = (): L => [
+  ...Array.from({ length: 30 }, (_, i): [string, number] => [i % 5 === 3 ? 'tom' : 'msg', Math.round(18 + i * 4.6)]).filter((_, i) => i % 2 === 0),
+  ['grave', 196], ['swish', 212], ...Array.from({ length: 10 }, (_, i): [string, number] => ['toque', 222 + i * 12]),
+  ['swish', 372], ['brilho', 404], ['pop', 470], ['logo', 572],
+];
+const T5 = (): L => [
+  ['swish', 4], ['grave', 92], ['pop', 150], ['msg', 168], ['msg', 196], ['chime', 214], ['msg', 228], ['msg', 256], ['chime', 274],
+  ['msg', 278], ['msg', 304], ['chime', 322], ['vidro', 352], ['vidro', 362], ['vidro', 372], ['swish', 404], ['sobe', 450], ['brilho', 470], ['logo', 562],
+];
+const E1 = (): L => [['sobe', 4], ['msg', 104], ['msg', 150], ['msg', 206], ['msg', 246], ['swish', 304], ['tecla', 336], ['tecla', 340], ['tecla', 344], ['tecla', 348], ['brilho', 352], ['pop', 420], ['pop', 432], ['chime', 450], ['logo', 498]];
+const C1 = (): L => [['pop', 4], ['swish', 92], ['msg', 100], ['msg', 120], ['msg', 140], ['chime', 150], ['chime', 176], ['chime', 202], ['chime', 228], ['chime', 254], ['chime', 280], ['swish', 340], ['brilho', 372], ['logo', 486]];
+const E2 = (): L => [['msg', 4], ['sobe', 100], ...Array.from({ length: 14 }, (_, i): [string, number] => ['tecla', 114 + i * 6]), ['brilho', 204], ['pop', 250], ['pop', 256], ['pop', 262], ['swish', 290], ['msg', 318], ['msg', 352], ['msg', 420], ['chime', 450], ['logo', 496]];
+const C2 = (): L => [...Array.from({ length: 11 }, (_, i): [string, number] => ['pop', 6 + i * 6]), ['msg', 110], ['msg', 148], ['erro', 196], ['rebobina', 226], ['msg', 282], ['msg', 330], ['msg', 360], ['msg', 396], ['chime', 420], ['sobe', 446], ...Array.from({ length: 8 }, (_, i): [string, number] => ['vidro', 462 + i * 5]), ['logo', 544]];
+const E3 = (): L => [['sobe', 6], ['msg', 100], ['msg', 156], ['msg', 206], ['swish', 262], ['swish', 300], ['tom', 330], ['msg', 392], ['brilho', 400], ['logo', 482]];
+const C3 = (): L => [['pop', 6], ['msg', 90], ['msg', 140], ['pop', 166], ['msg', 200], ['msg', 244], ['swish', 286], ['pop', 322], ['pop', 330], ['sobe', 430], ['chime', 434], ['logo', 496]];
+const E4 = (): L => [['sobe', 8], ['msg', 100], ['msg', 146], ['msg', 200], ['msg', 228], ['swish', 262], ...Array.from({ length: 4 }, (_, i): [string, number] => ['pop', 272 + i * 4]), ['swish', 318], ['brilho', 372], ['chime', 410], ['logo', 478]];
+const C4 = (): L => [['pop', 4], ['swish', 100], ['swish', 140], ['swish', 180], ['swish', 220], ['swish', 260], ['grave', 318], ['pop', 340], ['pop', 350], ['pop', 360], ['pop', 370], ['logo', 492]];
+const E5 = (): L => [['logo', 6], ['brilho', 18], ['msg', 112], ['msg', 150], ['msg', 200], ['msg', 232], ['swish', 262], ...Array.from({ length: 12 }, (_, i): [string, number] => ['vidro', 300 + i * 9]), ['logo', 474]];
+const C5 = (): L => [['grave', 4], ['msg', 104], ['msg', 150], ['msg', 210], ['msg', 246], ['msg', 300], ['msg', 330], ['sobe', 386], ['brilho', 404], ['logo', 494]];
+
+export const FX: Record<string, (p?: any) => L> = { T1, T2, T3, T4, T5, E1, C1, E2, C2, E3, C3, E4, C4, E5, C5 };

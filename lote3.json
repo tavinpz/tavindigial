@@ -1,0 +1,342 @@
+{
+ "T1": {
+  "arq": "thata_01_madrugada.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 0,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    312
+   ],
+   [
+    "tenso",
+    312,
+    446
+   ],
+   [
+    "cheio",
+    446,
+    690
+   ]
+  ],
+  "quebras": [
+   446
+  ]
+ },
+ "T2": {
+  "arq": "thata_02_ao_mesmo_tempo.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 1,
+  "secoes": [
+   [
+    "tenso",
+    0,
+    96
+   ],
+   [
+    "calmo",
+    96,
+    346
+   ],
+   [
+    "cheio",
+    346,
+    640
+   ]
+  ],
+  "quebras": [
+   352
+  ]
+ },
+ "T3": {
+  "arq": "thata_03_volta_a_semana.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 2,
+  "secoes": [
+   [
+    "tenso",
+    0,
+    214
+   ],
+   [
+    "calmo",
+    214,
+    440
+   ],
+   [
+    "cheio",
+    440,
+    660
+   ]
+  ],
+  "quebras": [
+   448
+  ]
+ },
+ "T4": {
+  "arq": "thata_04_segunda_8h01.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 0,
+  "secoes": [
+   [
+    "tenso",
+    0,
+    196
+   ],
+   [
+    "cheio",
+    196,
+    640
+   ]
+  ],
+  "quebras": [
+   196
+  ]
+ },
+ "T5": {
+  "arq": "thata_05_ninguem_chamou.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 1,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    400
+   ],
+   [
+    "cheio",
+    400,
+    620
+   ]
+  ],
+  "quebras": [
+   404
+  ]
+ },
+ "E1": {
+  "arq": "thata_06_domingo_21h.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 2,
+  "secoes": [
+   [
+    "tenso",
+    0,
+    96
+   ],
+   [
+    "calmo",
+    96,
+    318
+   ],
+   [
+    "cheio",
+    330,
+    590
+   ]
+  ],
+  "quebras": [
+   330
+  ]
+ },
+ "C1": {
+  "arq": "thata_07_volto_as_13h.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 0,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    96
+   ],
+   [
+    "cheio",
+    96,
+    590
+   ]
+  ],
+  "quebras": [
+   336
+  ]
+ },
+ "E2": {
+  "arq": "thata_08_audio_de_2_minutos.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 1,
+  "secoes": [
+   [
+    "tenso",
+    0,
+    104
+   ],
+   [
+    "calmo",
+    104,
+    300
+   ],
+   [
+    "cheio",
+    300,
+    600
+   ]
+  ],
+  "quebras": [
+   304
+  ]
+ },
+ "C2": {
+  "arq": "thata_09_quanto_custa.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 2,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    110
+   ],
+   [
+    "tenso",
+    110,
+    226
+   ],
+   [
+    "cheio",
+    262,
+    620
+   ]
+  ],
+  "quebras": [
+   262
+  ]
+ },
+ "E3": {
+  "arq": "thata_10_dois_dias_depois.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 0,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    262
+   ],
+   [
+    "tenso",
+    262,
+    330
+   ],
+   [
+    "cheio",
+    330,
+    600
+   ]
+  ],
+  "quebras": [
+   330
+  ]
+ },
+ "C3": {
+  "arq": "thata_11_onde_estaciona.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 1,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    90
+   ],
+   [
+    "cheio",
+    90,
+    600
+   ]
+  ],
+  "quebras": [
+   290
+  ]
+ },
+ "E4": {
+  "arq": "thata_12_preso_no_transito.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 2,
+  "secoes": [
+   [
+    "tenso",
+    0,
+    100
+   ],
+   [
+    "calmo",
+    100,
+    268
+   ],
+   [
+    "cheio",
+    268,
+    600
+   ]
+  ],
+  "quebras": [
+   372
+  ]
+ },
+ "C4": {
+  "arq": "thata_13_joana_de_ferias.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 0,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    100
+   ],
+   [
+    "cheio",
+    100,
+    600
+   ]
+  ],
+  "quebras": [
+   318
+  ]
+ },
+ "E5": {
+  "arq": "thata_14_aniversario.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 1,
+  "secoes": [
+   [
+    "cheio",
+    0,
+    600
+   ]
+  ],
+  "quebras": [
+   266
+  ]
+ },
+ "C5": {
+  "arq": "thata_15_pavor_de_dentista.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 2,
+  "secoes": [
+   [
+    "tenso",
+    0,
+    210
+   ],
+   [
+    "calmo",
+    210,
+    386
+   ],
+   [
+    "cheio",
+    386,
+    610
+   ]
+  ],
+  "quebras": [
+   386
+  ]
+ }
+}

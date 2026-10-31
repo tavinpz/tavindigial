@@ -1,0 +1,6 @@
+node_modules
+saida/
+__pycache__/
+.fx_tmp.mjs
+fila.txt
+feitos.txt
