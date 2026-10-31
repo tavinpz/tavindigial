@@ -16,6 +16,14 @@ import { E4, DUR_E4 } from './E4Transito';
 import { C4, DUR_C4 } from './C4Ferias';
 import { E5, DUR_E5 } from './E5Aniversario';
 import { C5, DUR_C5 } from './C5Medo';
+import { N1, DUR_N1 } from './N1Cronometro';
+import { N2, DUR_N2 } from './N2Lead';
+import { N3, DUR_N3 } from './N3Dicionario';
+import { N4, DUR_N4 } from './N4Espera';
+import { N5, DUR_N5 } from './N5Relogio';
+import { N6, DUR_N6 } from './N6AntesDepois';
+import { N7, DUR_N7 } from './N7Lista';
+import { N8, DUR_N8 } from './N8Ingles';
 const V = { fps: 30, width: 1080, height: 1920 };
 export const Root: React.FC = () => (
   <>
@@ -34,5 +42,13 @@ export const Root: React.FC = () => (
     <Composition id="C4" component={C4} durationInFrames={DUR_C4} {...V} />
     <Composition id="E5" component={E5} durationInFrames={DUR_E5} {...V} />
     <Composition id="C5" component={C5} durationInFrames={DUR_C5} {...V} />
+    <Composition id="N1" component={N1} durationInFrames={DUR_N1} {...V} />
+    <Composition id="N2" component={N2} durationInFrames={DUR_N2} {...V} />
+    <Composition id="N3" component={N3} durationInFrames={DUR_N3} {...V} />
+    <Composition id="N4" component={N4} durationInFrames={DUR_N4} {...V} />
+    <Composition id="N5" component={N5} durationInFrames={DUR_N5} {...V} />
+    <Composition id="N6" component={N6} durationInFrames={DUR_N6} {...V} />
+    <Composition id="N7" component={N7} durationInFrames={DUR_N7} {...V} />
+    <Composition id="N8" component={N8} durationInFrames={DUR_N8} {...V} />
   </>
 );

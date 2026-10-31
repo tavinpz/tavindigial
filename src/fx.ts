@@ -33,5 +33,13 @@ const E4 = (): L => [['sobe', 8], ['msg', 100], ['msg', 146], ['msg', 200], ['ms
 const C4 = (): L => [['pop', 4], ['swish', 100], ['swish', 140], ['swish', 180], ['swish', 220], ['swish', 260], ['grave', 318], ['pop', 340], ['pop', 350], ['pop', 360], ['pop', 370], ['logo', 492]];
 const E5 = (): L => [['logo', 6], ['brilho', 18], ['msg', 112], ['msg', 150], ['msg', 200], ['msg', 232], ['swish', 262], ...Array.from({ length: 12 }, (_, i): [string, number] => ['vidro', 300 + i * 9]), ['logo', 474]];
 const C5 = (): L => [['grave', 4], ['msg', 104], ['msg', 150], ['msg', 210], ['msg', 246], ['msg', 300], ['msg', 330], ['sobe', 386], ['brilho', 404], ['logo', 494]];
+const N1 = (): L => [['sobe', 40], ['tecla', 96], ['tecla', 130], ['erro', 164], ['grave', 190], ['rebobina', 214], ['msg', 244], ['msg', 296], ['chime', 298], ['swish', 392], ['brilho', 430], ['logo', 506]];
+const N2 = (): L => [['pop', 4], ...Array.from({ length: 8 }, (_, i): [string, number] => ['tecla', 16 + i * 4]), ['toque', 70], ['tom', 96], ['pop', 126], ['pop', 196], ['pop', 232], ['chime', 262], ['swish', 292], ['vidro', 306], ['vidro', 314], ['vidro', 322], ['vidro', 330], ['brilho', 388], ['logo', 478]];
+const N3 = (): L => [['pop', 6], ...Array.from({ length: 12 }, (_, i): [string, number] => ['tecla', 52 + i * 12]), ['swish', 236], ['swish', 246], ['swish', 256], ['brilho', 288], ...Array.from({ length: 8 }, (_, i): [string, number] => ['tecla', 294 + i * 6]), ['pop', 352], ['swish', 402], ['logo', 500]];
+const N4 = (): L => [['tom', 4], ['tom', 60], ['tom', 110], ['erro', 156], ['rebobina', 176], ['brilho', 214], ['grave', 222], ['pop', 232], ['pop', 290], ['pop', 318], ['chime', 350], ['logo', 468]];
+const N5 = (): L => [['pop', 4], ['sobe', 58], ...[7.0, 8.5, 10.2, 12.0, 14.6, 16.0, 18.0, 19.5, 21.1, 23.8, 27.2, 30.0].map((h): [string, number] => ['pop', Math.round(60 + ((h - 7) / 24) * 360)]), ['swish', 436], ['brilho', 470], ['logo', 530]];
+const N6 = (): L => [['swish', 20], ...Array.from({ length: 4 }, (_, i): [string, number] => ['erro', 60 + i * 50]), ...Array.from({ length: 4 }, (_, i): [string, number] => ['chime', 68 + i * 50]), ['swish', 300], ['swish', 350], ['brilho', 400], ['logo', 478]];
+const N7 = (): L => [['pop', 4], ...Array.from({ length: 6 }, (_, i): [string, number] => ['vidro', 154 + i * 30]), ['grave', 350], ['pop', 356], ['logo', 492]];
+const N8 = (): L => [['pop', 4], ['msg', 100], ['msg', 150], ['msg', 204], ['msg', 236], ['swish', 190], ['swish', 300], ['pop', 336], ['pop', 344], ['pop', 352], ['pop', 360], ['logo', 482]];
 
-export const FX: Record<string, (p?: any) => L> = { T1, T2, T3, T4, T5, E1, C1, E2, C2, E3, C3, E4, C4, E5, C5 };
+export const FX: Record<string, (p?: any) => L> = { T1, T2, T3, T4, T5, E1, C1, E2, C2, E3, C3, E4, C4, E5, C5, N1, N2, N3, N4, N5, N6, N7, N8 };

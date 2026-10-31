@@ -338,5 +338,180 @@
   "quebras": [
    386
   ]
+ },
+ "N1": {
+  "arq": "thata_16_cronometro.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 0,
+  "secoes": [
+   [
+    "tenso",
+    0,
+    214
+   ],
+   [
+    "calmo",
+    236,
+    392
+   ],
+   [
+    "cheio",
+    392,
+    560
+   ]
+  ],
+  "quebras": [
+   240
+  ]
+ },
+ "N2": {
+  "arq": "thata_17_lead_das_22h.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 2,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    96
+   ],
+   [
+    "cheio",
+    96,
+    290
+   ],
+   [
+    "tenso",
+    290,
+    388
+   ],
+   [
+    "cheio",
+    388,
+    580
+   ]
+  ],
+  "quebras": [
+   388
+  ]
+ },
+ "N3": {
+  "arq": "thata_18_dicionario.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 1,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    232
+   ],
+   [
+    "cheio",
+    232,
+    560
+   ]
+  ],
+  "quebras": [
+   286
+  ]
+ },
+ "N4": {
+  "arq": "thata_19_aguarde_na_linha.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 2,
+  "secoes": [
+   [
+    "tenso",
+    0,
+    214
+   ],
+   [
+    "cheio",
+    222,
+    580
+   ]
+  ],
+  "quebras": [
+   222
+  ]
+ },
+ "N5": {
+  "arq": "thata_20_24_horas.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 0,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    60
+   ],
+   [
+    "cheio",
+    60,
+    600
+   ]
+  ],
+  "quebras": [
+   448
+  ]
+ },
+ "N6": {
+  "arq": "thata_21_antes_depois.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 1,
+  "secoes": [
+   [
+    "tenso",
+    0,
+    290
+   ],
+   [
+    "cheio",
+    296,
+    580
+   ]
+  ],
+  "quebras": [
+   350
+  ]
+ },
+ "N7": {
+  "arq": "thata_22_lista_de_segunda.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 2,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    146
+   ],
+   [
+    "cheio",
+    146,
+    580
+   ]
+  ],
+  "quebras": [
+   350
+  ]
+ },
+ "N8": {
+  "arq": "thata_23_in_english.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 0,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    96
+   ],
+   [
+    "cheio",
+    96,
+    560
+   ]
+  ],
+  "quebras": [
+   318
+  ]
  }
 }

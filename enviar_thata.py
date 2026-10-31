@@ -32,6 +32,14 @@ VIDEOS = [
     ('th-v13-joana-de-ferias', 'thata_13_joana_de_ferias.mp4', 'Joana de férias', L('A recepcionista saiu de férias. A semana não parou.', 'Quando a Joana volta, encontra tudo em dia.'), 1.0),
     ('th-v14-aniversario', 'thata_14_aniversario.mp4', 'Aniversário (escuro)', L('Hoje é aniversário da Carla. A Thata lembra.', 'E cada parabéns vira um motivo pra voltar à clínica.'), 2.6),
     ('th-v15-pavor-de-dentista', 'thata_15_pavor_de_dentista.mp4', 'Pavor de dentista', L('Ela tem pavor de dentista. Faz 5 anos que não vai.', 'A Thata não empurra: acolhe, explica e marca no tempo dela.'), 1.0),
+    ('th-v16-cronometro', 'thata_16_cronometro.mp4', 'Cronômetro (tempo de resposta)', L('Quanto tempo a sua clínica leva pra responder um paciente?', 'Duas horas depois, ele já marcou em outro lugar. Com a Thata, a resposta sai em segundos.'), 4.0),
+    ('th-v17-lead-das-22h', 'thata_17_lead_das_22h.mp4', 'Lead das 22:10 (escuro)', L('Ele pediu orçamento pelo anúncio às 22:10. Em 41 segundos, o telefone tocou.', 'Pediu em 5 clínicas. Só uma ligou na hora, e foi essa que marcou.'), 2.6),
+    ('th-v18-dicionario', 'thata_18_dicionario.mp4', 'Dicionário (recepção)', L('re·cep·ção: lugar onde o telefone toca enquanto alguém responde o WhatsApp.', 'Hora de atualizar o dicionário: atende, liga, agenda e confirma, a qualquer hora.'), 3.4),
+    ('th-v19-aguarde-na-linha', 'thata_19_aguarde_na_linha.mp4', 'Aguarde na linha (escuro)', L('4 minutos e 32 segundos ouvindo musiquinha. E ele desligou.', 'Com a Thata, a ligação é atendida no primeiro toque.'), 2.4),
+    ('th-v20-24-horas', 'thata_20_24_horas.mp4', '24 horas (relógio)', L('Um dia inteiro da recepção em 20 segundos.', 'Inclusive quando a clínica está fechada: confirmações, ligações, áudios, encaixes e aniversários.'), 3.0),
+    ('th-v21-antes-depois', 'thata_21_antes_depois.mp4', 'Antes e depois (escuro)', L('Mesma clínica, mesma semana.', 'De um lado, mensagens esperando e cadeiras vazias. Do outro, tudo respondido e confirmado.'), 4.0),
+    ('th-v22-lista-de-segunda', 'thata_22_lista_de_segunda.mp4', 'Lista de segunda', L('A lista de toda segunda: responder, retornar, confirmar, remarcar…', 'A Thata risca tudo isso e deixa pra você o que só você faz: atender quem está na cadeira.'), 2.6),
+    ('th-v23-in-english', 'thata_23_in_english.mp4', 'In English (escuro)', L('Paciente estrangeiro no WhatsApp da clínica?', 'A Thata responde em português ou inglês, no idioma do paciente, e marca do mesmo jeito.'), 2.6),
 ]
 q = lambda s: 'null' if s is None else "'" + str(s).replace("'", "''") + "'"
 
