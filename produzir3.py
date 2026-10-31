@@ -49,12 +49,12 @@ def render(comp):
         dur, falas, vz = voz(cfg, comp); props = {'dur': dur, 'falas': falas}
     mudo = os.path.join(SAIDA, f'{comp}_mudo.mp4')
     r = subprocess.run(['npx', 'remotion', 'render', 'src/index.ts', comp, mudo, f'--props={json.dumps(props)}', '--crf=17', '--muted',
-                        '--gl=swiftshader', '--concurrency=2', '--timeout=300000', '--log=error'], cwd=AQUI, capture_output=True, text=True)
+                        '--gl=' + cfg.get('gl', 'swiftshader'), '--concurrency=2', '--timeout=300000', '--log=error'], cwd=AQUI, capture_output=True, text=True)
     if r.returncode != 0: raise RuntimeError(r.stderr[-1500:])
     total = float(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', mudo], capture_output=True, text=True).stdout)
     fx = [[t, q / FPS] for t, q in fx_de(comp, props)]
     wav = os.path.join(SAIDA, f'{comp}.wav')
-    conf = {'saida': wav, 'dur': total, 'fx': fx, 'voz': vz, 'estilo': cfg.get('estilo', 0), 'quebras': [q / FPS for q in cfg.get('quebras', [])], 'intro': cfg.get('intro', 1)}
+    conf = {'saida': wav, 'dur': total, 'fx': fx, 'voz': vz, 'estilo': cfg.get('estilo', 0), 'quebras': [q / FPS for q in cfg.get('quebras', [])], 'intro': cfg.get('intro', 1), 'secoes': [[c, a / FPS, b / FPS] for c, a, b in cfg.get('secoes', [])]}
     json.dump(conf, open(os.path.join(SAIDA, f'{comp}.json'), 'w'))
     subprocess.run(['python3', os.path.join(AQUI, cfg.get('audio', 'audio3.py')), os.path.join(SAIDA, f'{comp}.json')], check=True, cwd=AQUI)
     final = os.path.join(SAIDA, cfg['arq'])
