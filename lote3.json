@@ -99,5 +99,61 @@
    98
   ],
   "intro": 1
+ },
+ "R1": {
+  "arq": "tavin_21_enquanto_voce_dormia.mp4",
+  "audio": "audio5.py",
+  "gl": "swangle",
+  "secoes": [
+   [
+    "noite",
+    0,
+    106
+   ],
+   [
+    "leve",
+    100,
+    336
+   ],
+   [
+    "noite",
+    330,
+    582
+   ],
+   [
+    "keynote2",
+    576,
+    800
+   ]
+  ]
+ },
+ "R2": {
+  "arq": "tavin_22_anuncio_de_luxo.mp4",
+  "audio": "audio5.py",
+  "gl": "swangle",
+  "secoes": [
+   [
+    "luxo",
+    0,
+    228
+   ],
+   [
+    "keynote",
+    238,
+    540
+   ]
+  ]
+ },
+ "R3": {
+  "arq": "tavin_23_loop_do_bairro.mp4",
+  "audio": "audio5.py",
+  "gl": "swangle",
+  "secoes": [
+   [
+    "keynote2",
+    0,
+    600
+   ]
+  ]
  }
 }

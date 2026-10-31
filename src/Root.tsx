@@ -16,6 +16,10 @@ import { A3, DUR_A3 } from './apple/A3Tipo';
 import { A2, DUR_A2 } from './apple/A2Ilha';
 import { A4, DUR_A4 } from './apple/A4Camadas';
 import { A5, DUR_A5 } from './apple/A5Liquido';
+import { Teste } from './tres/Teste';
+import { R1, DUR_R1 } from './tres/R1Dormindo';
+import { R2, DUR_R2 } from './tres/R2Luxo';
+import { R3, DUR_R3 } from './tres/R3Loop';
 
 const soma = (a: number[]) => a.reduce((x, y) => x + y, 0);
 const comp = (id: string, C: any, dur: number[]) => (
@@ -43,6 +47,10 @@ export const Root: React.FC = () => (
     <Composition id="A2" component={A2} width={1080} height={1920} fps={30} durationInFrames={DUR_A2} />
     <Composition id="A4" component={A4} width={1080} height={1920} fps={30} durationInFrames={DUR_A4} />
     <Composition id="A5" component={A5} width={1080} height={1920} fps={30} durationInFrames={DUR_A5} />
+    <Composition id="Teste" component={Teste} width={1080} height={1920} fps={30} durationInFrames={60} />
+    <Composition id="R1" component={R1} width={1080} height={1920} fps={30} durationInFrames={DUR_R1} />
+    <Composition id="R2" component={R2} width={1080} height={1920} fps={30} durationInFrames={DUR_R2} />
+    <Composition id="R3" component={R3} width={1080} height={1920} fps={30} durationInFrames={DUR_R3} defaultProps={{ semCelular: false }} />
     <Composition id="L1" component={L1} width={1080} height={1920} fps={30} durationInFrames={DUR_L1} />
   </>
 );

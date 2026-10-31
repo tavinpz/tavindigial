@@ -80,3 +80,9 @@ FX.A2 = () => [['swish', 2], ['vidro', 48], ...passos(96, 7, 15), ['swish', 210]
 FX.A3 = () => [['swish', 56], ...passos(60, 8, 15, 'toque'), ['grave', 195], ['brilho', 204], ['swish', 268], ['pop', 278], ['sobe', 398], ['logo', 398]];
 FX.A4 = () => [['swish', 4], ['vidro', 62], ['swish', 122], ['brilho', 186], ...passos(186, 5, 6), ['swish', 262], ['toque', 324], ['chime', 330], ['sobe', 368], ['logo', 368]];
 FX.A5 = () => [['pop', 12], ['pop', 18], ['swish', 58], ['grave', 98], ['vidro', 128], ...passos(186, 5, 4), ['swish', 214], ['toque', 296], ['toque', 306], ['toque', 316], ['swish', 360], ...passos(362, 4, 5), ['sobe', 448], ['logo', 448]];
+
+// ── lote 5 (3D real) ──
+FX.R1 = () => [['vidro', 12], ['swish', 100], ['toque', 174], ['toque', 208], ['toque', 226], ['tecla', 234], ['tecla', 236], ['tecla', 238], ['tecla', 240], ['toque', 256], ['chime', 276],
+  ['swish', 328], ['vidro', 334], ['grave', 436], ['pop', 440], ['pop', 474], ['pop', 504], ['brilho', 578], ['vidro', 590], ['sobe', 748], ['logo', 748]];
+FX.R2 = () => [['brilho', 4], ['swish', 60], ['swish', 138], ['pop', 170], ['vidro', 198], ['parada', 226], ['grave', 238], ['pop', 272], ['pop', 300], ['pop', 318], ['pop', 336], ['pop', 354], ['swish', 452], ['sobe', 494], ['logo', 494]];
+FX.R3 = () => [['swish', 2], ...passos(20, 13, 5), ['grave', 112], ['vidro', 120], ['swish', 150], ['swish', 232], ['vidro', 300], ['swish', 340], ['brilho', 384], ['swish', 470], ['pop', 472]];

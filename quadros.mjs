@@ -8,6 +8,6 @@ const frames = resto.filter((a) => !a.startsWith('--')).map(Number);
 const url = await bundle({ entryPoint: path.resolve('src/index.ts') });
 const c = await selectComposition({ serveUrl: url, id: comp, inputProps: props, browserExecutable: '/opt/pw-browsers/chromium-1243/chrome-linux64/chrome' });
 for (const f of frames) {
-  await renderStill({ composition: c, serveUrl: url, output: `${saida}/${comp}_${String(f).padStart(4, '0')}.png`, frame: f, inputProps: props, scale: 0.5, browserExecutable: '/opt/pw-browsers/chromium-1243/chrome-linux64/chrome' });
+  await renderStill({ composition: c, serveUrl: url, chromiumOptions: { gl: 'swangle' }, output: `${saida}/${comp}_${String(f).padStart(4, '0')}.png`, frame: f, inputProps: props, scale: 0.5, browserExecutable: '/opt/pw-browsers/chromium-1243/chrome-linux64/chrome' });
 }
 console.log('ok', frames.length);
