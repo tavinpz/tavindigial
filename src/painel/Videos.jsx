@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { usePainel } from './Painel'
 
-// Vídeos curtos do Concrete Atlas organizados por situação: em produção → para programar → programado → postado.
+// Vídeos curtos de um canal (Concrete Atlas, Thata…) organizados por situação: em produção → para programar → programado → postado.
 // Cada rede (YouTube, TikTok, Instagram) tem a própria situação. O que foi programado vira "postado" sozinho no horário,
 // e a cada 30 min o servidor confere no YouTube (feed público) e no Instagram o que já saiu, com link e views.
 const FUSO = 'America/Sao_Paulo'
@@ -379,7 +379,7 @@ function Conexoes({ canal, ig, yt, recarregarCx, recarregar }) {
       {aberto === 'yt' && (
         <form className="v-cx-form" onSubmit={salvarYT}>
           <label className="p-campo">Link ou @ do canal no YouTube
-            <input required value={ytRef} onChange={(e) => setYtRef(e.target.value)} placeholder="https://youtube.com/@ConcreteAtlas" />
+            <input required value={ytRef} onChange={(e) => setYtRef(e.target.value)} placeholder="https://youtube.com/@seucanal" />
           </label>
           <button className="p-btn p-btn--forte">Salvar e conferir</button>
         </form>
