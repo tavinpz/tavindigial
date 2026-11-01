@@ -3,7 +3,7 @@
 // Padrões de estúdio: chuva em camadas com profundidade, objetos que "caem" com impacto, flip 3D, zoom-out de revelação, legenda cinética.
 import React from 'react';
 import { AbsoluteFill, Easing, interpolate, useCurrentFrame } from 'remotion';
-import { C, G, M, Fundo, Legenda, Fantasma, NumGrande, Titulo, Mono, Ponto, Fecho, lerp, saida, mola, molaViva, chaves, usaTema } from './kit';
+import { C, G, M, Fundo, Legenda, Fantasma, NumGrande, Titulo, Mono, Ponto, Fecho, lerp, saida, mola, molaViva, chaves, usaTema, Narrada } from './kit';
 
 export const DUR_Q1 = 600;
 const rnd = (i: number, k: number) => { const x = Math.sin(i * 12.9898 + k * 78.233) * 43758.5453; return x - Math.floor(x); };
@@ -183,11 +183,7 @@ export const Q1: React.FC = () => {
       </div>
       <div style={{ position: 'absolute', top: 1520, left: 0, right: 0, textAlign: 'center', fontFamily: M, fontSize: 22, color: C.fg3, opacity: Math.min(lerp(f, 420, 430, 0, 1), saida(f, 486, 8)) }}>clínica e pacientes fictícios · exemplo ilustrativo</div>
 
-      <Legenda frases={[
-        [70, 244, 'e as mensagens caem uma atrás da outra'],
-        [262, 404, 'A Thata responde cada paciente e remarca na hora'],
-        [404, 486, 'ninguém se perde no meio da chuva'],
-      ]} y={1640} />
+      <Narrada id="Q1" />
       {f >= 486 && <div style={{ position: 'absolute', inset: 0, zIndex: 100, opacity: lerp(f, 486, 498, 0, 1) }}><Fecho ini={492} frase={'Chove lá fora.\n*A agenda segue cheia.*'} /></div>}
     </AbsoluteFill>
   );

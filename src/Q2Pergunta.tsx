@@ -3,7 +3,7 @@
 // Padrões de estúdio: tipografia cinética que se reorganiza numa forma, ritmo acelerando, onda de cor percorrendo um caminho, colapso para um elemento só.
 import React from 'react';
 import { AbsoluteFill, Easing, interpolate, useCurrentFrame } from 'remotion';
-import { C, G, M, Fundo, Legenda, Fantasma, NumGrande, Titulo, Mono, Ponto, Bolha, Fecho, lerp, saida, mola, molaViva, chaves, usaTema } from './kit';
+import { C, G, M, Fundo, Legenda, Fantasma, NumGrande, Titulo, Mono, Ponto, Bolha, Fecho, lerp, saida, mola, molaViva, chaves, usaTema, Narrada } from './kit';
 
 export const DUR_Q2 = 600;
 const rnd = (i: number, k: number) => { const x = Math.sin(i * 12.9898 + k * 78.233) * 43758.5453; return x - Math.floor(x); };
@@ -109,11 +109,7 @@ export const Q2: React.FC = () => {
       </div>
       <div style={{ position: 'absolute', top: 1500, left: 0, right: 0, textAlign: 'center', fontFamily: M, fontSize: 22, color: C.fg3, opacity: Math.min(lerp(f, 410, 420, 0, 1), saida(f, 484, 8)) }}>clínica fictícia · Thata é uma IA</div>
 
-      <Legenda frases={[
-        [44, 196, 'a mesma dúvida chega de vários jeitos todo dia'],
-        [262, 372, 'A Thata responde cada uma do jeito certo'],
-        [398, 484, 'e já puxa o paciente para a agenda'],
-      ]} y={1640} />
+      <Narrada id="Q2" />
       {f >= 486 && <div style={{ position: 'absolute', inset: 0, zIndex: 100, opacity: lerp(f, 486, 498, 0, 1) }}><Fecho ini={492} frase={'Pergunta repetida?\n*Resposta na hora.*'} /></div>}
     </AbsoluteFill>
   );

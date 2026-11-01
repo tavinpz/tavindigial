@@ -129,10 +129,31 @@ def main():
         sinal = FX[tipo]()
         em = s - (len(sinal) / SR if tipo == 'sobe' else 0) - (0.3 if tipo == 'swish' else 0)
         mixar(fx, sinal, em, pan=rng.uniform(-0.25, 0.25) if tipo in ('pop', 'tecla', 'toque', 'msg') else 0)
+    voz = None
+    if cfg.get('voz'):
+        v, vsr = sf.read(cfg['voz'])
+        if v.ndim > 1: v = v.mean(axis=1)
+        if vsr != SR: v = np.interp(np.arange(int(len(v) * SR / vsr)) / SR, np.arange(len(v)) / vsr, v)
+        v = np.pad(v, (0, max(0, n - len(v))))[:n]
+        # voz suave: corta grave e chiado, compressão leve, um pouco de sala
+        v = filtro(v[None, :], 'highpass', 90)[0]
+        v = filtro(v[None, :], 'lowpass', 9500)[0]
+        v = np.tanh(v * 2.2) / np.tanh(2.2)
+        # abaixa a trilha e os efeitos enquanto a voz fala (ataque rápido, volta suave)
+        env = np.abs(v); janela = int(0.12 * SR)
+        env = np.convolve(env, np.ones(janela) / janela, mode='same')
+        fala = (env > 0.01).astype(float)
+        sol = int(0.35 * SR); fala = np.convolve(fala, np.ones(sol) / sol, mode='same').clip(0, 1)
+        duck = 1 - 0.68 * fala
+        mus *= duck[:, None]; fx *= (1 - 0.35 * fala)[:, None]
+        voz = np.stack([v, v], axis=1)
     mus[: int(0.3 * SR)] *= np.linspace(0, 1, int(0.3 * SR))[:, None]
     fim = int(1.2 * SR); mus[-fim:] *= np.linspace(1, 0, fim)[:, None] ** 1.5
     mix = reverb(mus * 0.9 + fx * 0.85, mix=0.18)
     mix = filtro(mix.T, 'highpass', 32).T
+    if voz is not None:
+        voz = voz * 10 ** ((-21 - rms_db(voz[np.abs(voz[:, 0]) > 0.003] if (np.abs(voz[:, 0]) > 0.003).any() else voz)) / 20)
+        mix = mix * 10 ** ((-30 - rms_db(mix)) / 20) + reverb(voz, mix=0.06)
     mix *= 10 ** ((-17 - rms_db(mix)) / 20)
     mix = 0.95 * np.tanh(mix * 1.1) / np.tanh(1.1)
     sf.write(cfg['saida'], mix.astype(np.float32), SR, subtype='PCM_16')

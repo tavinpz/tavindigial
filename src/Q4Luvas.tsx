@@ -3,7 +3,7 @@
 // Padrões de estúdio: repetição com variação (antes/depois no mesmo plano), rebobinar com glitch, legenda ao vivo dentro da tela, objeto que sai da tela para o mundo.
 import React from 'react';
 import { AbsoluteFill, Easing, useCurrentFrame } from 'remotion';
-import { C, G, M, Fundo, Legenda, Fantasma, Titulo, Fone, Onda, Ponto, Icone, Fecho, lerp, saida, mola, molaViva, chaves, usaTema } from './kit';
+import { C, G, M, Fundo, Legenda, Fantasma, Titulo, Fone, Onda, Ponto, Icone, Fecho, lerp, saida, mola, molaViva, chaves, usaTema, Narrada } from './kit';
 
 export const DUR_Q4 = 600;
 const TOCA1 = 64, PERDE = 176, REB0 = 192, REB1 = 224, TOCA2 = 226, ATENDE = 248;
@@ -26,11 +26,10 @@ const Tela: React.FC<{ w: number }> = ({ w }) => {
   const fase = f < PERDE ? 'toca' : f < REB1 ? 'perdida' : f < ATENDE ? 'toca' : 'thata';
   const anel = ((f % 30) / 30);
   const LEG: [number, string, boolean][] = [
-    [266, 'Clínica, boa tarde! Aqui é a Thata, assistente virtual.', true],
-    [302, 'Queria marcar uma avaliação.', false],
-    [330, 'Tenho quarta 9h ou quinta 14h. Qual prefere?', true],
-    [358, 'Quarta 9h.', false],
-    [378, 'Pronto, agendado ✓ Te mando a confirmação.', true],
+    [252, 'Clínica, boa tarde! Sou a Thata, assistente virtual.', true],
+    [334, 'Queria marcar uma avaliação.', false],
+    [376, 'Quarta às 9h, pode ser?', true],
+    [420, 'Pode!', false],
   ];
   if (fase === 'thata') {
     const vis = LEG.filter(([t]) => f >= t).slice(-3);
@@ -83,7 +82,7 @@ export const Q4: React.FC = () => {
   const tocando = (f >= TOCA1 && f < PERDE) || (f >= TOCA2 && f < ATENDE);
   const vib = tocando && Math.floor(f / 3) % 6 < 3 ? Math.sin(f * 2.6) * 7 : 0;
   const foneIn = mola(f, 50, { damping: 16, stiffness: 120, mass: 0.9 });
-  const foneOut = lerp(f, 404, 420, 0, 1, Easing.bezier(0.6, 0, 0.9, 0.5));
+  const foneOut = lerp(f, 452, 468, 0, 1, Easing.bezier(0.6, 0, 0.9, 0.5));
   const reb = f >= REB0 && f < REB1;
   const glitch = reb ? Math.sin(f * 7.3) * 18 : 0;
   // relógio do procedimento: corre, volta na rebobinada, segue correndo
@@ -92,7 +91,7 @@ export const Q4: React.FC = () => {
   const luvaY = chaves(f, [[60, 1500], [90, 1130], [150, 1100], [170, 1180], [REB1, 1180], [260, 1250]]);
   const luvaX = 640 + (f >= 110 && f < 170 ? Math.sin((f - 110) / 3) * 10 : 0);
   const pDot = mola(f, ATENDE - 14, { damping: 11, stiffness: 140, mass: 0.7 });
-  const agenda = mola(f, 386, { damping: 13, stiffness: 120, mass: 0.8 });
+  const agenda = mola(f, 440, { damping: 13, stiffness: 120, mass: 0.8 });
   return (
     <AbsoluteFill>
       <Fundo gy={chaves(f, [[0, 500], [ATENDE, 1000], [420, 900]])} brilho={chaves(f, [[0, 0.6], [REB1, 0.5], [ATENDE, 1]])} />
@@ -106,7 +105,7 @@ export const Q4: React.FC = () => {
       </div>
 
       {/* relógio do procedimento (continua em todo o vídeo) */}
-      <div style={{ position: 'absolute', top: 200, left: 0, right: 0, display: 'flex', justifyContent: 'center', opacity: Math.min(lerp(f, 30, 40, 0, 1), saida(f, 420, 8)) }}>
+      <div style={{ position: 'absolute', top: 200, left: 0, right: 0, display: 'flex', justifyContent: 'center', opacity: Math.min(lerp(f, 30, 40, 0, 1), saida(f, 468, 8)) }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '16px 28px', borderRadius: 999, background: '#fff', boxShadow: '0 20px 40px -24px rgba(11,20,17,.4)', border: `1.5px solid ${C.linha}`, fontFamily: G, fontWeight: 600, fontSize: 32, color: C.ink, transform: `translateX(${glitch}px)` }}>
           <span style={{ width: 14, height: 14, borderRadius: 99, background: C.alerta, opacity: Math.floor(f / 15) % 2 ? 1 : 0.4 }} />
           Na cadeira <span style={{ fontFamily: M, fontWeight: 500, color: C.fg2 }}>{relogio}</span>
@@ -125,7 +124,7 @@ export const Q4: React.FC = () => {
       )}
 
       {/* a mão enluvada que não pode atender */}
-      {f >= 60 && f < 420 && <Luva x={luvaX} y={luvaY} tam={300} rot={-18} />}
+      {f >= 60 && f < 468 && <Luva x={luvaX} y={luvaY} tam={300} rot={-18} />}
       {f >= 118 && f < 170 && <div style={{ position: 'absolute', left: 70, top: 1330, fontFamily: G, fontWeight: 700, fontSize: 40, color: C.alerta, transform: `rotate(-6deg) scale(${molaViva(f, 118)})`, zIndex: 31 }}>não dá pra atender</div>}
 
       {/* o ponto da Thata cai no botão verde */}
@@ -140,7 +139,7 @@ export const Q4: React.FC = () => {
       )}
 
       {/* a avaliação sai do celular e vai para a agenda */}
-      {f >= 386 && (
+      {f >= 440 && (
         <div style={{ position: 'absolute', left: 140, right: 140, top: 1240 - agenda * 120, opacity: Math.min(1, agenda * 2) * saida(f, 486, 10), transform: `scale(${0.7 + 0.3 * agenda})`, zIndex: 40 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 22, padding: '26px 30px', borderRadius: 30, background: '#fff', border: `2px solid ${C.verde}`, boxShadow: '0 40px 80px -30px rgba(21,167,99,.5)' }}>
             <div style={{ width: 70, height: 70, borderRadius: 22, background: C.verde, display: 'grid', placeItems: 'center' }}><Icone n="agenda" tam={40} cor="#fff" traco={2.3} /></div>
@@ -152,16 +151,11 @@ export const Q4: React.FC = () => {
         </div>
       )}
       <div style={{ position: 'absolute', top: 360, left: 60, right: 60 }}>
-        <Titulo t={'Você não tira *a luva.*'} ini={420} fim={486} tam={96} />
+        <Titulo t={'Você não tira *a luva.*'} ini={452} fim={486} tam={96} />
       </div>
       <div style={{ position: 'absolute', top: 1590, left: 0, right: 0, textAlign: 'center', fontFamily: M, fontSize: 22, color: C.fg3, opacity: Math.min(lerp(f, 270, 280, 0, 1), saida(f, 486, 8)), zIndex: 41 }}>paciente fictício · a Thata se apresenta como assistente virtual</div>
 
-      <Legenda frases={[
-        [64, 176, 'o telefone toca no meio do procedimento'],
-        [176, 192, 'e mais uma ligação perdida'],
-        [ATENDE, 386, 'A Thata atende, conversa e marca'],
-        [386, 486, 'enquanto você segue no paciente'],
-      ]} y={1640} />
+      <Narrada id="Q4" />
       {f >= 486 && <div style={{ position: 'absolute', inset: 0, zIndex: 100, opacity: lerp(f, 486, 498, 0, 1) }}><Fecho ini={492} frase={'Você segue no paciente.\n*Ela atende o telefone.*'} /></div>}
     </AbsoluteFill>
   );

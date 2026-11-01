@@ -731,7 +731,85 @@
   "quebras": [
    192,
    248,
-   420
+   452
+  ]
+ },
+ "R1": {
+  "arq": "thata_34_post_its.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 0,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    40
+   ],
+   [
+    "tenso",
+    40,
+    206
+   ],
+   [
+    "cheio",
+    206,
+    600
+   ]
+  ],
+  "quebras": [
+   206,
+   410
+  ]
+ },
+ "R2": {
+  "arq": "thata_35_quem_esta_na_frente.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 1,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    70
+   ],
+   [
+    "tenso",
+    70,
+    214
+   ],
+   [
+    "cheio",
+    214,
+    600
+   ]
+  ],
+  "quebras": [
+   206,
+   404
+  ]
+ },
+ "R3": {
+  "arq": "thata_36_confirmacoes_de_amanha.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 2,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    112
+   ],
+   [
+    "cheio",
+    112,
+    352
+   ],
+   [
+    "calmo",
+    352,
+    600
+   ]
+  ],
+  "quebras": [
+   112,
+   410
   ]
  }
 }

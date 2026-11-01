@@ -15,6 +15,8 @@ REPO = 'https://github.com/tavinpz/tavindigial'
 TAGS = '#clinica #odontologia #recepcao #atendimentoaopaciente #whatsappbusiness #inteligenciaartificial #gestaodeclinicas'
 CTA = 'Quer ver a Thata atendendo a sua clínica? Link na bio: ela te liga em segundos.'
 L = lambda *p: '\n\n'.join(p + (CTA, TAGS))
+# vídeos com narração: aviso de voz sintética no fim da legenda
+LV = lambda *p: '\n\n'.join(p + (CTA, 'Narração gerada por IA.', TAGS))
 
 VIDEOS = [
     ('th-v01-madrugada', 'thata_01_madrugada.mp4', '23:47 (clínica fechada)', L('23:47. Uma paciente chama no WhatsApp e sai com horário marcado.', 'A recepção fechou às 18h. Quem respondeu foi a Thata, a IA de voz e WhatsApp da clínica.'), 2.4),
@@ -46,10 +48,13 @@ VIDEOS = [
     ('th-v27-ferramentas-demais', 'thata_27_ferramentas_demais.mp4', 'Ferramentas demais (estúdio, escuro)', L('WhatsApp, planilha, caderno, telefone, Instagram, agenda: tudo espalhado.', 'Seis ferramentas, uma recepção. Deixa a Thata organizar.'), 2.0),
     ('th-v28-a-conta-da-recepcao', 'thata_28_a_conta_da_recepcao.mp4', 'A conta da recepção (estúdio)', L('Quanto custa a sua recepção por dia?', 'Responder preço, confirmar, retornar ligação, remarcar. A Thata corta tudo isso e deixa com você o que importa.'), 1.2),
     ('th-v29-segue-a-thata', 'thata_29_segue_a_thata.mp4', 'Segue a Thata (vinheta)', L('Uma recepção que atende, liga e agenda sozinha.', 'Segue o @thata.ia pra ver a recepção do futuro.'), 6.0),
-    ('th-v30-dia-de-chuva', 'thata_30_dia_de_chuva.mp4', 'Dia de chuva (escuro)', L('Choveu forte e às 7h já eram 6 desmarcações.', 'A Thata responde cada paciente e remarca na hora. Chove lá fora, a agenda segue cheia.'), 12.0),
-    ('th-v31-a-mesma-pergunta', 'thata_31_a_mesma_pergunta.mp4', 'A mesma pergunta (escuro)', L('"Aceita convênio?" Pela 38ª vez no mês.', 'A Thata responde a mesma pergunta, do jeito certo, toda vez, e já puxa o paciente para a agenda.'), 9.5),
-    ('th-v32-seis-meses-depois', 'thata_32_seis_meses_depois.mp4', 'Seis meses depois', L('"Volte em 6 meses." E ninguém lembrou.', 'A Thata passa pela base, manda a mensagem certa para cada paciente e quem tinha sumido volta para a agenda.'), 14.5),
-    ('th-v33-com-as-luvas', 'thata_33_com_as_luvas.mp4', 'Com as luvas', L('O telefone toca no meio do procedimento. E agora?', 'A Thata atende, conversa e marca a avaliação enquanto você segue no paciente.'), 11.5),
+    ('th-v30-dia-de-chuva', 'thata_30_dia_de_chuva.mp4', 'Dia de chuva (escuro)', LV('Choveu forte e às 7h já eram 6 desmarcações.', 'A Thata responde cada paciente e remarca na hora. Chove lá fora, a agenda segue cheia.'), 12.0),
+    ('th-v31-a-mesma-pergunta', 'thata_31_a_mesma_pergunta.mp4', 'A mesma pergunta (escuro)', LV('"Aceita convênio?" Pela 38ª vez no mês.', 'A Thata responde a mesma pergunta, do jeito certo, toda vez, e já puxa o paciente para a agenda.'), 9.5),
+    ('th-v32-seis-meses-depois', 'thata_32_seis_meses_depois.mp4', 'Seis meses depois', LV('"Volte em 6 meses." E ninguém lembrou.', 'A Thata passa pela base, manda a mensagem certa para cada paciente e quem tinha sumido volta para a agenda.'), 14.5),
+    ('th-v33-com-as-luvas', 'thata_33_com_as_luvas.mp4', 'Com as luvas', LV('O telefone toca no meio do procedimento. E agora?', 'A Thata atende, conversa e marca a avaliação enquanto você segue no paciente.'), 11.5),
+    ('th-v34-post-its', 'thata_34_post_its.mp4', 'Post-its', LV('Segunda, 8h: a tela da recepção já está coberta de recados.', 'A Thata resolve um por um: liga, responde, confirma e marca. Nenhum recado fica pra depois.'), 7.0),
+    ('th-v35-quem-esta-na-frente', 'thata_35_quem_esta_na_frente.mp4', 'Quem está na frente', LV('Paciente no balcão, telefone tocando e WhatsApp sem parar.', 'A Thata assume o telefone e as mensagens, e você atende quem está na sua frente.'), 5.0),
+    ('th-v36-confirmacoes-de-amanha', 'thata_36_confirmacoes_de_amanha.mp4', 'Confirmações de amanhã (escuro)', LV('18h40 e ainda faltam as confirmações de amanhã.', 'A Thata manda a mensagem para cada paciente, remarca quem pediu outro horário e lembra quem não respondeu. Pode ir pra casa.'), 8.5),
 ]
 q = lambda s: 'null' if s is None else "'" + str(s).replace("'", "''") + "'"
 

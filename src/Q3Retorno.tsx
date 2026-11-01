@@ -3,7 +3,7 @@
 // Padrões de estúdio: flip de calendário em 3D, número grande com desfoque, scanner de luz, profundidade (lista recua e a conversa vem para a frente).
 import React from 'react';
 import { AbsoluteFill, Easing, useCurrentFrame } from 'remotion';
-import { C, G, M, Fundo, Legenda, Fantasma, NumGrande, Titulo, Mono, Bolha, Obj3D, Fecho, sombra, lerp, saida, mola, molaViva, chaves, usaTema } from './kit';
+import { C, G, M, Fundo, Legenda, Fantasma, NumGrande, Titulo, Mono, Bolha, Obj3D, Fecho, sombra, lerp, saida, mola, molaViva, chaves, usaTema, Narrada } from './kit';
 
 export const DUR_Q3 = 600;
 const MESES = ['ABRIL', 'MAIO', 'JUNHO', 'JULHO', 'AGOSTO', 'SETEMBRO', 'OUTUBRO'];
@@ -123,12 +123,7 @@ export const Q3: React.FC = () => {
         </div>
       )}
 
-      <Legenda frases={[
-        [70, 214, 'o paciente sai com o retorno combinado e o tempo passa'],
-        [252, 322, 'A Thata passa pela base inteira'],
-        [326, 404, 'e manda a mensagem certa para cada um'],
-        [408, 486, 'quem tinha sumido volta para a agenda'],
-      ]} y={1640} />
+      <Narrada id="Q3" />
       {f >= 486 && <div style={{ position: 'absolute', inset: 0, zIndex: 100, opacity: lerp(f, 486, 498, 0, 1) }}><Fecho ini={492} frase={'Ela lembra.\n*O paciente volta.*'} /></div>}
     </AbsoluteFill>
   );

@@ -35,6 +35,44 @@ def voz(cfg, comp):
     return dur, falas, caminho
 
 
+VOZES = {'n': 'pf_dora', 't': 'pf_dora', 'p': 'pm_alex'}
+
+
+def narracao(comp):
+    """Narração em quadros fixos (src/narra.ts): cada fala começa no seu quadro; se não couber, acelera até 1.22x.
+    Devolve (falas com o tempo real, caminho do wav) para o vídeo sincronizar a legenda."""
+    global _k
+    r = subprocess.run(['node', 'narra.mjs', comp], cwd=AQUI, capture_output=True, text=True)
+    falas = json.loads(r.stdout.strip().splitlines()[-1]) if r.returncode == 0 and r.stdout.strip() else []
+    if not falas: return None, None
+    from kokoro_onnx import Kokoro
+    if _k is None:
+        m = '/home/claude/concrete-atlas/modelo'; _k = Kokoro(f'{m}/kokoro-v1.0.onnx', f'{m}/voices-v1.0.bin')
+    saida, partes, fim_max = [], [], 0
+    for fala in falas:
+        ini, lim, texto = fala[0], fala[1], fala[2]
+        voz = fala[3] if len(fala) > 3 and fala[3] else 'n'
+        leg = fala[4] if len(fala) > 4 else True
+        vel = 1.0 if voz == 'n' else 1.06
+        a, sr = _k.create(texto, voice=VOZES[voz], speed=vel, lang='pt-br')
+        cabe = (lim - ini) / FPS
+        if len(a) / sr > cabe:
+            vel = min(1.22, vel * (len(a) / sr) / cabe)
+            a, sr = _k.create(texto, voice=VOZES[voz], speed=vel, lang='pt-br')
+        d = len(a) / sr
+        if d > cabe + 0.05: print(f'  aviso {comp}: "{texto[:40]}" tem {d:.2f}s para {cabe:.2f}s', flush=True)
+        partes.append((ini / FPS, a, sr, voz))
+        saida.append({'ini': ini, 'fim': ini + math.ceil(d * FPS), 't': texto, 'voz': voz, 'leg': leg})
+        fim_max = max(fim_max, ini / FPS + d)
+    buf = np.zeros(int((fim_max + 1) * 48000))
+    for t0, a, sr, voz in partes:
+        a = np.interp(np.arange(int(len(a) * 48000 / sr)) / 48000, np.arange(len(a)) / sr, a)
+        a *= 0.82 if voz == 'p' else 1.0
+        i = int(t0 * 48000); buf[i:i + len(a)] += a
+    caminho = os.path.join(SAIDA, f'voz_{comp}.wav'); sf.write(caminho, buf, 48000)
+    return saida, caminho
+
+
 def fx_de(comp, props):
     # pede ao próprio projeto a lista de efeitos (em quadros) já com as durações finais
     r = subprocess.run(['node', 'fx.mjs', comp, json.dumps(props)], cwd=AQUI, capture_output=True, text=True)
@@ -47,6 +85,9 @@ def render(comp):
     props, vz = {}, None
     if cfg.get('falas'):
         dur, falas, vz = voz(cfg, comp); props = {'dur': dur, 'falas': falas}
+    else:
+        narra, vz = narracao(comp)
+        if narra: props = {'narra': narra}
     mudo = os.path.join(SAIDA, f'{comp}_mudo.mp4')
     r = subprocess.run(['npx', 'remotion', 'render', 'src/index.ts', comp, mudo, f'--props={json.dumps(props)}', '--crf=17', '--muted',
                         '--gl=' + cfg.get('gl', 'swiftshader'), '--concurrency=2', '--timeout=300000', '--log=error'], cwd=AQUI, capture_output=True, text=True)

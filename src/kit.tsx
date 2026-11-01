@@ -1,7 +1,8 @@
 // Kit da Thata: claro + verde. Assinatura: o ponto verde do logo, que pulsa e vira tudo
 // (notificação, onda de voz, check, íris de transição). Texto sobe por máscara (corte limpo, sem desfoque).
 import React from 'react';
-import { AbsoluteFill, Easing, continueRender, delayRender, interpolate, spring, staticFile, useCurrentFrame } from 'remotion';
+import { AbsoluteFill, Easing, continueRender, delayRender, getInputProps, interpolate, spring, staticFile, useCurrentFrame } from 'remotion';
+import { NARRA } from './narra';
 
 const CLARO = {
   fundo: '#F3F7F5', pontos: 'rgba(11,20,17,.11)', tela: '#FFFFFF', moldura: '#FBFDFC', papel: '#FFFFFF', ink: '#0B1411', fg: '#27342F', fg2: '#5D6C66', fg3: '#93A19B', linha: '#E2E8E5', linha2: '#D2DBD7',
@@ -512,5 +513,21 @@ export const Flutua: React.FC<{ x: number; y: number; w: number; ini: number; fi
     <div style={{ position: 'absolute', left: x + dx, top: y + dy + (1 - s) * 80, width: w, opacity: o * (1 - z * 0.35), transform: `scale(${esc}) rotate(${rot}deg)`, filter: z > 0.1 ? `blur(${z * 7}px)` : undefined, zIndex: Math.round(30 - z * 20) }}>
       {children}
     </div>
+  );
+};
+
+// Legenda da narração: usa os tempos reais da voz (props.narra, vindos do produzir3.py); no Studio, os tempos do roteiro.
+// Mostra também o aviso discreto de que a voz é gerada por IA.
+type FalaReal = { ini: number; fim: number; t: string; voz: string; leg: boolean };
+export const Narrada: React.FC<{ id: string; y?: number; tam?: number; ate?: number }> = ({ id, y = 1640, tam = 46, ate = 486 }) => {
+  const f = useCurrentFrame();
+  const vindas = (getInputProps() as { narra?: FalaReal[] }).narra;
+  const falas: FalaReal[] = vindas || (NARRA[id] || []).map(([ini, fim, t, voz, leg]) => ({ ini, fim, t, voz: voz || 'n', leg: leg !== false }));
+  const frases = falas.filter((x) => x.leg && x.ini < ate).map((x) => [x.ini, Math.min(ate, x.fim + 10), x.t] as [number, number, string]);
+  return (
+    <>
+      <Legenda frases={frases} y={y} tam={tam} />
+      {falas.length > 0 && f < ate && <div style={{ position: 'absolute', top: 1846, left: 0, right: 0, textAlign: 'center', fontFamily: M, fontSize: 20, color: C.fg3, opacity: 0.8, zIndex: 60 }}>narração gerada por IA</div>}
+    </>
   );
 };
