@@ -2,7 +2,8 @@
 //   YouTube: lê o feed público do canal (sem senha). Vídeo com o mesmo título = postado, com link e views.
 //   Instagram: com a conta do canal conectada, lê os posts recentes. Legenda igual = postado, com link e views.
 //   TikTok não tem leitura pública: lá vale o horário programado (videos_virar_postados no banco).
-// Chamado pelo pg_cron a cada 30 min (x-ingest-token) e pelo botão "Conferir agora" do painel (login do dono).
+// Chamado pelo pg_cron a cada 10 min (x-ingest-token) e pelo botão "Conferir agora" do painel (login do dono).
+//   { perfil: true } devolve só os números das contas (seguidores, posts) para o popup de Métricas.
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient, type SupabaseClient } from "jsr:@supabase/supabase-js@2";
 
@@ -31,7 +32,7 @@ const salvarCfg = (db: SupabaseClient, key: string, value: string) =>
   db.from("app_config").upsert({ key, value, updated_at: new Date().toISOString() }, { onConflict: "key" });
 
 type Video = {
-  id: string; canal: string; yt_titulo: string | null; yt_status: string; yt_confirmado: boolean; yt_postado_em: string | null;
+  id: string; canal: string; titulo: string | null; yt_titulo: string | null; yt_status: string; yt_confirmado: boolean; yt_postado_em: string | null;
   ig_legenda: string | null; ig_status: string; ig_confirmado: boolean; ig_media_id: string | null; ig_postado_em: string | null;
 };
 
@@ -64,7 +65,8 @@ async function conferirYouTube(db: SupabaseClient, canal: string, videos: Video[
   }));
   let achados = 0;
   for (const v of videos) {
-    const e = itens.find((i) => parecido(i.titulo, v.yt_titulo || ""));
+    // título do YouTube; sem ele, o título do painel ou a 1ª linha da legenda
+    const e = itens.find((i) => [v.yt_titulo, v.titulo, primeiraLinha(v.ig_legenda)].some((t) => t && parecido(i.titulo, t)));
     if (!e) continue;
     achados++;
     await db.from("videos").update({
@@ -78,7 +80,9 @@ async function conferirYouTube(db: SupabaseClient, canal: string, videos: Video[
 
 // ---------- Instagram ----------
 async function contaIG(db: SupabaseClient, canal: string) {
-  const kt = `ig_${canal}_token`, ku = `ig_${canal}_user_id`;
+  // a Tavin Digital usa a conta principal do painel (a mesma dos carrosséis); os outros canais têm a sua
+  const principal = canal === "tavin-digital";
+  const kt = principal ? "instagram_token" : `ig_${canal}_token`, ku = principal ? "instagram_user_id" : `ig_${canal}_user_id`;
   const { data } = await db.from("app_config").select("key,value,updated_at").in("key", [kt, ku]);
   const linhas = (data ?? []) as { key: string; value: string; updated_at: string }[];
   const m = Object.fromEntries(linhas.map((r) => [r.key, r.value]));
@@ -145,16 +149,36 @@ Deno.serve(async (req) => {
   }
   if (!autorizado) return json(401, { ok: false, erro: "não autorizado" });
 
+  const body = await req.json().catch(() => ({}));
+  if (body.perfil) {
+    // números das contas conectadas, para o popup de Métricas
+    const canais: string[] = Array.isArray(body.canais) ? body.canais : [];
+    const perfis: Record<string, unknown> = {};
+    for (const canal of canais) {
+      try {
+        const c = await contaIG(db, canal);
+        if (!c) { perfis[canal] = { conectado: false }; continue; }
+        const alvo = c.host === "graph.instagram.com" ? "me" : c.userId;
+        const r = await fetch(`https://${c.host}/${VERSAO}/${alvo}?fields=username,followers_count,media_count&access_token=${c.token}`);
+        const d = await r.json().catch(() => ({}));
+        perfis[canal] = d.error ? { conectado: true, erro: d.error.message } : { conectado: true, username: d.username, seguidores: d.followers_count, posts: d.media_count };
+      } catch (e) { perfis[canal] = { conectado: true, erro: (e as Error).message }; }
+    }
+    return json(200, { ok: true, perfis });
+  }
+
   await db.rpc("videos_virar_postados").then(() => {}, () => {});
   const { data } = await db.from("videos")
-    .select("id,canal,yt_titulo,yt_status,yt_confirmado,yt_postado_em,ig_legenda,ig_status,ig_confirmado,ig_media_id,ig_postado_em");
+    .select("id,canal,titulo,yt_titulo,yt_status,yt_confirmado,yt_postado_em,ig_legenda,ig_status,ig_confirmado,ig_media_id,ig_postado_em");
   const todos = (data ?? []) as Video[];
-  const resultado: Record<string, unknown> = {};
+  const canais: Record<string, Record<string, unknown>> = {};
   for (const canal of [...new Set(todos.map((v) => v.canal))]) {
     const doCanal = todos.filter((v) => v.canal === canal);
-    try { Object.assign(resultado, await conferirYouTube(db, canal, doCanal)); } catch (e) { resultado.youtube = `erro: ${(e as Error).message}`; }
-    try { Object.assign(resultado, await conferirInstagram(db, canal, doCanal)); } catch (e) { resultado.instagram = `erro: ${(e as Error).message}`; }
+    const r: Record<string, unknown> = {};
+    try { Object.assign(r, await conferirYouTube(db, canal, doCanal)); } catch (e) { r.youtube = `erro: ${(e as Error).message}`; }
+    try { Object.assign(r, await conferirInstagram(db, canal, doCanal)); } catch (e) { r.instagram = `erro: ${(e as Error).message}`; }
+    canais[canal] = r;
     await db.from("videos").update({ conferido_em: new Date().toISOString() }).eq("canal", canal);
   }
-  return json(200, { ok: true, ...resultado });
+  return json(200, { ok: true, canais });
 });

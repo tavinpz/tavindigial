@@ -66,6 +66,8 @@ function campos(k, acao, iso, igAuto) {
 function etapa(v, rede = null) {
   if (!v.video_url) return 'producao'
   const ss = (rede ? [rede] : REDES.map((r) => r.k)).map((k) => situacao(v, k).s)
+  // saiu em qualquer rede (YouTube, Insta ou TikTok) = já está no ar: vai sozinho para Postado
+  if (ss.includes('postado')) return 'postado'
   if (ss.includes('pendente')) return v.subido_em ? 'subido' : 'programar'
   if (ss.includes('programado')) return 'programado'
   return 'postado'
@@ -215,7 +217,8 @@ function dadosMover(v, alvo, igOk, rede = null) {
     const st = situacao(v, r.k)
     if (st.processando) continue
     if ((alvo === 'programar' || alvo === 'subido') && st.s !== 'pendente') d = { ...d, ...campos(r.k, 'desfazer') }
-    if (alvo === 'programado' && st.s !== 'programado') d = { ...d, ...campos(r.k, 'programar', sug, igOk) }
+    // o que já está no ar não volta a ser programado
+    if (alvo === 'programado' && st.s === 'pendente') d = { ...d, ...campos(r.k, 'programar', sug, igOk) }
     if (alvo === 'postado' && st.s !== 'postado') d = { ...d, ...campos(r.k, 'postei', null) }
   }
   return d
@@ -269,7 +272,7 @@ const FASES = [
   ['programar', 'Para programar', 'Baixe e faça o upload. Arraste para "Upload feito".'],
   ['subido', 'Upload feito', 'Já subiu: falta programar ou publicar.'],
   ['programado', 'Programado', 'Vira "postado" sozinho no horário.'],
-  ['postado', 'Postado', 'Nas 3 redes. Links e views chegam sozinhos.'],
+  ['postado', 'Postado', 'Já está no ar em pelo menos uma rede. Vem pra cá sozinho, com link e views.'],
 ]
 
 function Quadro({ lista, abrir, recarregar, igOk, rede, verPostados, setVerPostados }) {
@@ -348,7 +351,8 @@ function Conexoes({ canal, ig, yt, recarregarCx, recarregar }) {
     setOcupado(true); setMsg('Conferindo no YouTube e no Instagram…')
     const { data, error } = await supabase.functions.invoke('conferir-postagens', { body: {} })
     setOcupado(false)
-    setMsg(error ? 'Não consegui falar com o servidor.' : [data?.youtube && `YouTube: ${data.youtube}`, data?.instagram && `Instagram: ${data.instagram}`].filter(Boolean).join(' · '))
+    const r = data?.canais?.[canal] || data || {}
+    setMsg(error ? 'Não consegui falar com o servidor.' : [r.youtube && `YouTube: ${r.youtube}`, r.instagram && `Instagram: ${r.instagram}`].filter(Boolean).join(' · '))
     recarregarCx(); recarregar()
   }
   async function salvarYT(e) {

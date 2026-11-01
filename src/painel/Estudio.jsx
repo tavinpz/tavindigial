@@ -31,9 +31,11 @@ function doConteudo(c) {
 }
 function doVideo(v) {
   const st = v.ig_status
-  const fase = !v.video_url ? 'rascunho' : st === 'publicado' ? 'publicado' : ['agendado', 'processando', 'programado'].includes(st) ? 'agendado' : 'pronto'
+  // no ar no Insta ou no YouTube = Publicado (o servidor confere sozinho a cada 10 min)
+  const noAr = st === 'publicado' || v.yt_status === 'postado' || v.tt_status === 'postado'
+  const fase = !v.video_url ? 'rascunho' : noAr ? 'publicado' : ['agendado', 'processando', 'programado'].includes(st) ? 'agendado' : 'pronto'
   return { chave: `v-${v.id}`, origem: 'video', tipo: 'video', fase, titulo: v.titulo || v.yt_titulo || 'Vídeo', legenda: v.ig_legenda || '', quando: v.ig_agendado_para,
-    publicado: v.ig_postado_em, erro: st === 'erro' ? v.ig_erro || 'erro' : '', bruto: v }
+    publicado: v.ig_postado_em || v.yt_postado_em || v.tt_postado_em, erro: st === 'erro' ? v.ig_erro || 'erro' : '', bruto: v }
 }
 
 // Próximo dia livre no horário padrão (não empilha dois posts no mesmo dia)
