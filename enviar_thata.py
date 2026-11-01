@@ -40,6 +40,12 @@ VIDEOS = [
     ('th-v21-antes-depois', 'thata_21_antes_depois.mp4', 'Antes e depois (escuro)', L('Mesma clínica, mesma semana.', 'De um lado, mensagens esperando e cadeiras vazias. Do outro, tudo respondido e confirmado.'), 4.0),
     ('th-v22-lista-de-segunda', 'thata_22_lista_de_segunda.mp4', 'Lista de segunda', L('A lista de toda segunda: responder, retornar, confirmar, remarcar…', 'A Thata risca tudo isso e deixa pra você o que só você faz: atender quem está na cadeira.'), 2.6),
     ('th-v23-in-english', 'thata_23_in_english.mp4', 'In English (escuro)', L('Paciente estrangeiro no WhatsApp da clínica?', 'A Thata responde em português ou inglês, no idioma do paciente, e marca do mesmo jeito.'), 2.6),
+    ('th-v24-o-funil', 'thata_24_o_funil.mp4', 'O funil (estúdio)', L('Todo dia chegam dezenas de mensagens na clínica.', 'A Thata responde cada uma, e o que vira consulta cai direto na agenda.'), 3.0),
+    ('th-v25-round-1', 'thata_25_round_1.mp4', 'Round 1 (estúdio, escuro)', L('Round 1: a recepção contra a fila do WhatsApp.', 'Mensagens, ligações, remarcações e confirmações. A Thata atende, agenda, confirma e reativa, no automático.'), 1.0),
+    ('th-v26-enquanto-voce-cuida', 'thata_26_enquanto_voce_cuida.mp4', 'Enquanto você cuida (estúdio)', L('Sua recepção trabalhou o dia todo.', 'Pelo telefone e pelo WhatsApp, de manhã, de noite e no sábado. Enquanto você cuida dos pacientes, a Thata cuida da agenda.'), 1.2),
+    ('th-v27-ferramentas-demais', 'thata_27_ferramentas_demais.mp4', 'Ferramentas demais (estúdio, escuro)', L('WhatsApp, planilha, caderno, telefone, Instagram, agenda: tudo espalhado.', 'Seis ferramentas, uma recepção. Deixa a Thata organizar.'), 2.0),
+    ('th-v28-a-conta-da-recepcao', 'thata_28_a_conta_da_recepcao.mp4', 'A conta da recepção (estúdio)', L('Quanto custa a sua recepção por dia?', 'Responder preço, confirmar, retornar ligação, remarcar. A Thata corta tudo isso e deixa com você o que importa.'), 1.2),
+    ('th-v29-segue-a-thata', 'thata_29_segue_a_thata.mp4', 'Segue a Thata (vinheta)', L('Uma recepção que atende, liga e agenda sozinha.', 'Segue o @thata.ia pra ver a recepção do futuro.'), 6.0),
 ]
 q = lambda s: 'null' if s is None else "'" + str(s).replace("'", "''") + "'"
 

@@ -397,3 +397,120 @@ export const Local: React.FC<{ ini: number; t: string; eu?: boolean; w?: number 
     </div>
   );
 };
+
+// ════════ Kit "estúdio" (referências: legenda cinética, palavra-fantasma, objetos 3D, número grande, linhas que convergem) ════════
+
+// Legenda cinética: frases [início, fim, texto]; a palavra da vez ganha uma pílula
+export const Legenda: React.FC<{ frases: [number, number, string][]; y?: number; tam?: number }> = ({ frases, y = 1560, tam = 46 }) => {
+  const f = useCurrentFrame();
+  const fr = frases.find(([a, b]) => f >= a && f < b);
+  if (!fr) return null;
+  const [a, b, t] = fr;
+  const ps = t.split(' ');
+  const pos = Math.min(ps.length - 1, Math.floor(((f - a) / Math.max(1, b - a - 6)) * ps.length));
+  // blocos de até 4 palavras
+  const ini = Math.floor(pos / 4) * 4;
+  const bloco = ps.slice(ini, ini + 4);
+  const o = Math.min(lerp(f, a, a + 4, 0, 1), saida(f, b, 4));
+  return (
+    <div style={{ position: 'absolute', left: 40, right: 40, top: y, display: 'flex', justifyContent: 'center', gap: tam * 0.22, flexWrap: 'wrap', opacity: o, fontFamily: G, fontWeight: 600, fontSize: tam, letterSpacing: '-0.02em', zIndex: 60 }}>
+      {bloco.map((w, i) => {
+        const k = ini + i;
+        const ativo = k === pos;
+        const lido = k < pos;
+        return (
+          <span key={k} style={{ padding: `${tam * 0.06}px ${tam * 0.22}px`, borderRadius: tam * 0.3, background: ativo ? (escuro() ? C.verde : C.ink) : 'transparent', color: ativo ? (escuro() ? '#06100C' : '#fff') : lido ? C.ink : C.fg3, transform: `scale(${ativo ? 1.06 : 1})`, transition: 'none' }}>{w}</span>
+        );
+      })}
+    </div>
+  );
+};
+
+// Palavra gigante e fantasma ao fundo, que corre devagar
+export const Fantasma: React.FC<{ t: string; ini: number; fim?: number; y?: number; tam?: number; vel?: number }> = ({ t, ini, fim, y = 780, tam = 340, vel = 1.2 }) => {
+  const f = useCurrentFrame();
+  if (f < ini - 2 || (fim !== undefined && f > fim + 2)) return null;
+  const o = Math.min(lerp(f, ini, ini + 10, 0, 1), saida(f, fim, 10));
+  return (
+    <div style={{ position: 'absolute', left: 0, right: 0, top: y, overflow: 'hidden', opacity: o, pointerEvents: 'none' }}>
+      <div style={{ whiteSpace: 'nowrap', fontFamily: G, fontWeight: 700, fontSize: tam, letterSpacing: '-0.06em', lineHeight: 1, color: escuro() ? 'rgba(238,244,241,.05)' : 'rgba(11,20,17,.06)', transform: `translateX(${-((f - ini) * vel) % (tam * t.length * 0.6)}px)` }}>
+        {`${t} ${t} ${t} ${t}`}
+      </div>
+    </div>
+  );
+};
+
+// Objeto "3D": ladrilho brilhante com ícone, perspectiva, reflexo e sombra
+export const Obj3D: React.FC<{ x: number; y: number; tam?: number; ini: number; fim?: number; icone?: string; cor?: [string, string]; rx?: number; ry?: number; flutua?: number; children?: React.ReactNode; raio?: number }> = ({ x, y, tam = 220, ini, fim, icone, cor = ['#3BE08E', '#0B7A47'], rx = 14, ry = -18, flutua = 1, children, raio }) => {
+  const f = useCurrentFrame();
+  if (f < ini) return null;
+  const s = spring({ frame: f - ini, fps: 30, config: { damping: 12, stiffness: 120, mass: 0.9 } });
+  const o = Math.min(1, s * 2) * saida(f, fim, 8);
+  const fl = Math.sin((f - ini) / 22) * 10 * flutua;
+  const gira = (1 - s) * 70;
+  return (
+    <div style={{ position: 'absolute', left: x - tam / 2, top: y - tam / 2 + fl, width: tam, height: tam, perspective: 900, opacity: o, zIndex: 20 }}>
+      <div style={{ position: 'absolute', left: tam * 0.08, right: tam * 0.08, bottom: -tam * 0.22 - fl, height: tam * 0.16, borderRadius: '50%', background: 'radial-gradient(closest-side, rgba(0,0,0,.28), transparent)', filter: 'blur(6px)' }} />
+      <div style={{ position: 'absolute', inset: 0, borderRadius: raio ?? tam * 0.26, transform: `rotateX(${rx + gira * 0.3}deg) rotateY(${ry + gira}deg) scale(${0.5 + 0.5 * s})`, background: `linear-gradient(145deg, ${cor[0]}, ${cor[1]})`, boxShadow: `inset 0 ${tam * 0.04}px ${tam * 0.06}px rgba(255,255,255,.45), inset 0 -${tam * 0.06}px ${tam * 0.1}px rgba(0,0,0,.25), 0 ${tam * 0.2}px ${tam * 0.35}px -${tam * 0.12}px rgba(11,40,25,.55)`, display: 'grid', placeItems: 'center', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', left: '-30%', top: '-60%', width: '90%', height: '120%', background: 'linear-gradient(120deg, rgba(255,255,255,.55), rgba(255,255,255,0) 60%)', transform: 'rotate(20deg)' }} />
+        {icone && <Icone n={icone} tam={tam * 0.46} cor="#fff" traco={2.4} />}
+        {children}
+      </div>
+    </div>
+  );
+};
+
+// Número grande que conta com desfoque de movimento
+export const NumGrande: React.FC<{ de: number; ate: number; ini: number; dur?: number; pre?: string; pos?: string; tam?: number; cor?: string; casas?: number }> = ({ de, ate, ini, dur = 40, pre = '', pos = '', tam = 200, cor, casas = 0 }) => {
+  const f = useCurrentFrame();
+  const e = Easing.bezier(0.16, 1, 0.3, 1);
+  const v = lerp(f, ini, ini + dur, de, ate, e);
+  const v2 = lerp(f + 1, ini, ini + dur, de, ate, e);
+  const vel = Math.abs(v2 - v) / Math.max(1, Math.abs(ate - de)) * dur;
+  const txt = v.toLocaleString('pt-BR', { minimumFractionDigits: casas, maximumFractionDigits: casas });
+  return (
+    <div style={{ fontFamily: G, fontWeight: 600, fontSize: tam, letterSpacing: '-0.05em', color: cor || C.ink, lineHeight: 1, filter: vel > 0.05 ? `blur(${Math.min(10, vel * 6)}px)` : undefined, fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap' }}>
+      {pre}{txt}{pos}
+    </div>
+  );
+};
+
+// Linhas que convergem para um ponto (com faíscas andando)
+export const Convergem: React.FC<{ cx: number; cy: number; ini: number; n?: number; de?: 'esq' | 'dir'; cor?: string; comp?: number; abertura?: number }> = ({ cx, cy, ini, n = 14, de = 'esq', cor, comp = 520, abertura = 520 }) => {
+  const f = useCurrentFrame();
+  if (f < ini) return null;
+  const desenha = lerp(f, ini, ini + 24, 0, 1);
+  const lado = de === 'esq' ? -1 : 1;
+  const c = cor || (escuro() ? '#5FE3A1' : '#15A763');
+  return (
+    <svg style={{ position: 'absolute', left: 0, top: 0, overflow: 'visible', zIndex: 15 }} width={1} height={1}>
+      {Array.from({ length: n }, (_, i) => {
+        const yy = cy + (i / (n - 1) - 0.5) * abertura;
+        const x0 = cx + lado * comp;
+        const d = `M ${x0} ${yy} C ${cx + lado * comp * 0.45} ${yy}, ${cx + lado * comp * 0.35} ${cy}, ${cx + lado * 60} ${cy}`;
+        const t = (((f - ini) / 40 + i * 0.13) % 1);
+        return (
+          <g key={i}>
+            <path d={d} fill="none" stroke={c} strokeOpacity={0.35} strokeWidth={2} strokeDasharray="3 7" pathLength={1} style={{ strokeDashoffset: 0 }} opacity={desenha} />
+            <path d={d} fill="none" stroke={c} strokeWidth={4} strokeLinecap="round" pathLength={100} strokeDasharray={`3 100`} strokeDashoffset={-t * 100} opacity={desenha} />
+          </g>
+        );
+      })}
+    </svg>
+  );
+};
+
+// Cartão de interface flutuante com profundidade (desfoca quando "longe")
+export const Flutua: React.FC<{ x: number; y: number; w: number; ini: number; fim?: number; z?: number; rot?: number; children: React.ReactNode }> = ({ x, y, w, ini, fim, z = 0, rot = 0, children }) => {
+  const f = useCurrentFrame();
+  if (f < ini) return null;
+  const s = spring({ frame: f - ini, fps: 30, config: { damping: 16, stiffness: 110, mass: 0.9 } });
+  const o = Math.min(1, s * 2) * saida(f, fim, 8);
+  const esc = 1 - z * 0.25;
+  const dx = Math.sin((f + x) / 40) * 8, dy = Math.cos((f + y) / 50) * 8;
+  return (
+    <div style={{ position: 'absolute', left: x + dx, top: y + dy + (1 - s) * 80, width: w, opacity: o * (1 - z * 0.35), transform: `scale(${esc}) rotate(${rot}deg)`, filter: z > 0.1 ? `blur(${z * 7}px)` : undefined, zIndex: Math.round(30 - z * 20) }}>
+      {children}
+    </div>
+  );
+};

@@ -513,5 +513,124 @@
   "quebras": [
    318
   ]
+ },
+ "P1": {
+  "arq": "thata_24_o_funil.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 1,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    60
+   ],
+   [
+    "cheio",
+    60,
+    600
+   ]
+  ],
+  "quebras": [
+   196,
+   386
+  ]
+ },
+ "P2": {
+  "arq": "thata_25_round_1.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 0,
+  "secoes": [
+   [
+    "tenso",
+    0,
+    70
+   ],
+   [
+    "cheio",
+    70,
+    600
+   ]
+  ],
+  "quebras": [
+   176
+  ]
+ },
+ "P3": {
+  "arq": "thata_26_enquanto_voce_cuida.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 2,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    70
+   ],
+   [
+    "cheio",
+    70,
+    620
+   ]
+  ],
+  "quebras": [
+   56,
+   530
+  ]
+ },
+ "P4": {
+  "arq": "thata_27_ferramentas_demais.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 1,
+  "secoes": [
+   [
+    "tenso",
+    0,
+    214
+   ],
+   [
+    "cheio",
+    214,
+    600
+   ]
+  ],
+  "quebras": [
+   214
+  ]
+ },
+ "P5": {
+  "arq": "thata_28_a_conta_da_recepcao.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 0,
+  "secoes": [
+   [
+    "cheio",
+    0,
+    600
+   ]
+  ],
+  "quebras": [
+   58,
+   380
+  ]
+ },
+ "P6": {
+  "arq": "thata_29_segue_a_thata.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 1,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    146
+   ],
+   [
+    "cheio",
+    146,
+    420
+   ]
+  ],
+  "quebras": [
+   146,
+   330
+  ]
  }
 }
