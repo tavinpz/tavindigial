@@ -1,6 +1,6 @@
 #!/bin/bash
-# uso: ./folha.sh COMP f1 f2 ... → scratchpad/th/COMP_folha.jpg
-S=/tmp/claude-0/-home-claude/205b8eba-1017-59fb-8521-a92645448277/scratchpad/th; C=$1; shift
+# uso: ./folha.sh COMP f1 f2 ... → $FOLHA_DIR/COMP_folha.jpg (padrão /tmp/thata-folhas)
+S=${FOLHA_DIR:-/tmp/thata-folhas}; mkdir -p $S; C=$1; shift
 rm -f $S/${C}_0*.png; node quadros.mjs $C $S "$@" >/dev/null 2>&1 || { echo erro; exit 1; }
 python3 -c "
 from PIL import Image;import glob

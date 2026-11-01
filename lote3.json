@@ -811,5 +811,161 @@
    112,
    410
   ]
+ },
+ "S1": {
+  "arq": "thata_37_por_tras_da_resposta.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 1,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    210
+   ],
+   [
+    "cheio",
+    210,
+    404
+   ],
+   [
+    "calmo",
+    404,
+    600
+   ]
+  ],
+  "quebras": [
+   210,
+   404
+  ]
+ },
+ "S2": {
+  "arq": "thata_38_a_lista_parada.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 0,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    210
+   ],
+   [
+    "cheio",
+    210,
+    404
+   ],
+   [
+    "calmo",
+    404,
+    600
+   ]
+  ],
+  "quebras": [
+   210,
+   404
+  ]
+ },
+ "S3": {
+  "arq": "thata_39_a_planilha_esquecida.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 2,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    210
+   ],
+   [
+    "cheio",
+    210,
+    404
+   ],
+   [
+    "calmo",
+    404,
+    600
+   ]
+  ],
+  "quebras": [
+   210,
+   404
+  ]
+ },
+ "S4": {
+  "arq": "thata_40_o_quadro_da_recepcao.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 1,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    210
+   ],
+   [
+    "cheio",
+    210,
+    404
+   ],
+   [
+    "calmo",
+    404,
+    600
+   ]
+  ],
+  "quebras": [
+   210,
+   404
+  ]
+ },
+ "S5": {
+  "arq": "thata_41_de_qual_anuncio_veio.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 2,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    210
+   ],
+   [
+    "cheio",
+    210,
+    404
+   ],
+   [
+    "calmo",
+    404,
+    600
+   ]
+  ],
+  "quebras": [
+   210,
+   404
+  ]
+ },
+ "S6": {
+  "arq": "thata_42_segunda_oito_da_manha.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 0,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    210
+   ],
+   [
+    "cheio",
+    210,
+    404
+   ],
+   [
+    "calmo",
+    404,
+    600
+   ]
+  ],
+  "quebras": [
+   210,
+   404
+  ]
  }
 }

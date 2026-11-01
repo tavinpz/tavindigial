@@ -103,6 +103,7 @@ def render(comp):
                     '-maxrate', '9M', '-bufsize', '18M', '-pix_fmt', 'yuv420p', '-af', 'loudnorm=I=-14.5:TP=-2:LRA=11,aresample=48000,alimiter=limit=0.78:level=false',
                     '-c:a', 'aac', '-b:a', '192k', '-movflags', '+faststart', '-shortest', final], check=True)
     os.remove(mudo)
+    subprocess.run(['bash', os.path.join(AQUI, 'ajusta_lufs.sh'), final], check=True)  # garante -14,5 LUFS (o limitador deixa ~-15)
     print('OK', comp, final, f'{total:.1f}s', flush=True)
 
 

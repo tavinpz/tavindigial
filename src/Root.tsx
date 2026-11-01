@@ -37,6 +37,12 @@ import { Q4, DUR_Q4 } from './Q4Luvas';
 import { R1, DUR_R1 } from './R1PostIt';
 import { R2, DUR_R2 } from './R2Balcao';
 import { R3, DUR_R3 } from './R3Confirma';
+import { S1, DUR_S1 } from './S1Bastidor';
+import { S2, DUR_S2 } from './S2Lista';
+import { S3, DUR_S3 } from './S3Planilha';
+import { S4, DUR_S4 } from './S4Quadro';
+import { S5, DUR_S5 } from './S5Origem';
+import { S6, DUR_S6 } from './S6Painel';
 const V = { fps: 30, width: 1080, height: 1920 };
 export const Root: React.FC = () => (
   <>
@@ -76,5 +82,11 @@ export const Root: React.FC = () => (
     <Composition id="R1" component={R1} durationInFrames={DUR_R1} {...V} />
     <Composition id="R2" component={R2} durationInFrames={DUR_R2} {...V} />
     <Composition id="R3" component={R3} durationInFrames={DUR_R3} {...V} />
+    <Composition id="S1" component={S1} durationInFrames={DUR_S1} {...V} />
+    <Composition id="S2" component={S2} durationInFrames={DUR_S2} {...V} />
+    <Composition id="S3" component={S3} durationInFrames={DUR_S3} {...V} />
+    <Composition id="S4" component={S4} durationInFrames={DUR_S4} {...V} />
+    <Composition id="S5" component={S5} durationInFrames={DUR_S5} {...V} />
+    <Composition id="S6" component={S6} durationInFrames={DUR_S6} {...V} />
   </>
 );
