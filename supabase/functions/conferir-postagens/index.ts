@@ -3,7 +3,8 @@
 //   Instagram: com a conta do canal conectada, lê os posts recentes. Legenda igual = postado, com link e views.
 //   TikTok não tem leitura pública: lá vale o horário programado (videos_virar_postados no banco).
 // Chamado pelo pg_cron a cada 10 min (x-ingest-token) e pelo botão "Conferir agora" do painel (login do dono).
-//   { perfil: true } devolve só os números das contas (seguidores, posts) para o popup de Métricas.
+//   { perfil: true } devolve só os números das contas (seguidores, posts).
+//   { conta: canal, dias } devolve as métricas completas de UM canal (Instagram + YouTube) para o popup de Métricas dele.
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient, type SupabaseClient } from "jsr:@supabase/supabase-js@2";
 
@@ -133,6 +134,98 @@ async function conferirInstagram(db: SupabaseClient, canal: string, videos: Vide
   return { instagram: `${posts.length} posts lidos, ${achados} batem com o painel` };
 }
 
+// ---------- Métricas de uma conta (popup de cada canal) ----------
+async function metricasInstagram(db: SupabaseClient, canal: string, dias: number) {
+  const c = await contaIG(db, canal);
+  if (!c) return { conectado: false };
+  const get = async (caminho: string, params: Record<string, string>) => {
+    const r = await fetch(`https://${c.host}/${VERSAO}/${caminho}?${new URLSearchParams({ ...params, access_token: c.token })}`);
+    const d = await r.json().catch(() => ({}));
+    if (!r.ok || d.error) throw new Error(d.error?.message || `HTTP ${r.status}`);
+    return d;
+  };
+  const avisos: string[] = [];
+  const alvoPerfil = c.host === "graph.instagram.com" ? "me" : c.userId;
+  const p = await get(alvoPerfil, { fields: "username,name,profile_picture_url,followers_count,follows_count,media_count,biography" });
+
+  const ate = Math.floor(Date.now() / 1000), desde = ate - dias * 86400;
+  const janela = { period: "day", since: String(desde), until: String(ate) };
+  // um pedido por métrica: se a conta não tiver uma delas, as outras continuam
+  const total = async (metrica: string, extra: Record<string, string> = {}) => {
+    try {
+      const d = await get(`${c.userId}/insights`, { metric: metrica, metric_type: "total_value", ...janela, ...extra });
+      return d.data?.[0]?.total_value ?? null;
+    } catch (e) { avisos.push(`${metrica}: ${(e as Error).message}`); return null; }
+  };
+  const nomes = ["reach", "views", "accounts_engaged", "total_interactions", "profile_views", "likes", "comments", "shares", "saves", "profile_links_taps"];
+  const valores = await Promise.all(nomes.map((m) => total(m)));
+  const periodo: Record<string, number | null> = Object.fromEntries(nomes.map((m, i) => [m, valores[i]?.value ?? null]));
+  const fu = await total("follows_and_unfollows", { breakdown: "follow_type" });
+  const res = (fu?.breakdowns?.[0]?.results ?? []) as { dimension_values: string[]; value: number }[];
+  periodo.seguiu = res.find((r) => r.dimension_values?.[0] === "FOLLOWER")?.value ?? (fu ? 0 : null);
+  periodo.deixou = res.find((r) => r.dimension_values?.[0] === "NON_FOLLOWER")?.value ?? (fu ? 0 : null);
+
+  // alcance dia a dia (série) e seguidores ganhos por dia
+  const serie = async (metrica: string) => {
+    try {
+      const d = await get(`${c.userId}/insights`, { metric: metrica, ...janela });
+      return ((d.data?.[0]?.values ?? []) as { value: number; end_time: string }[]).map((v) => ({ dia: v.end_time.slice(0, 10), n: v.value }));
+    } catch { return []; }
+  };
+  const [alcanceDia, seguidoresDia] = await Promise.all([serie("reach"), serie("follower_count")]);
+
+  // posts recentes, com os números de cada um
+  const lista = await get(`${c.userId}/media`, { fields: "id,caption,media_type,media_product_type,permalink,timestamp,thumbnail_url,media_url,like_count,comments_count", limit: "12" });
+  const posts = await Promise.all(((lista.data ?? []) as Record<string, string | number>[]).map(async (m) => {
+    const num: Record<string, number> = {};
+    const ler = (d: { data?: { name: string; values?: { value: number }[]; total_value?: { value: number } }[] }) => {
+      for (const x of d.data ?? []) num[x.name] = Number(x.values?.[0]?.value ?? x.total_value?.value ?? 0);
+    };
+    try { ler(await get(`${m.id}/insights`, { metric: "views,reach,saved,shares,total_interactions" })); }
+    catch { try { ler(await get(`${m.id}/insights`, { metric: "reach" })); } catch { /* sem insights para este post */ } }
+    if (m.media_product_type === "REELS") {
+      try { ler(await get(`${m.id}/insights`, { metric: "ig_reels_avg_watch_time" })); } catch { /* nem toda conta tem */ }
+    }
+    return {
+      id: m.id, tipo: m.media_product_type === "REELS" ? "reel" : m.media_type === "CAROUSEL_ALBUM" ? "carrossel" : m.media_type === "VIDEO" ? "vídeo" : "foto",
+      legenda: String(m.caption ?? "").split("\n").find((l) => l.trim()) ?? "", link: m.permalink, quando: m.timestamp,
+      capa: m.thumbnail_url ?? (m.media_type === "IMAGE" || m.media_type === "CAROUSEL_ALBUM" ? m.media_url : null),
+      curtidas: m.like_count ?? null, comentarios: m.comments_count ?? null,
+      views: num.views ?? null, alcance: num.reach ?? null, salvos: num.saved ?? null, compart: num.shares ?? null,
+      interacoes: num.total_interactions ?? null, tempo_medio: num.ig_reels_avg_watch_time ? Math.round(num.ig_reels_avg_watch_time / 100) / 10 : null,
+    };
+  }));
+  return {
+    conectado: true,
+    perfil: { username: p.username, nome: p.name, foto: p.profile_picture_url ?? null, seguidores: p.followers_count ?? null, seguindo: p.follows_count ?? null, posts: p.media_count ?? null, bio: p.biography ?? "" },
+    periodo, alcance_dia: alcanceDia, seguidores_dia: seguidoresDia, posts,
+    sem_insights: valores.every((v) => v === null), avisos: avisos.slice(0, 3),
+  };
+}
+
+async function metricasYouTube(db: SupabaseClient, canal: string) {
+  const id = await canalId(db, canal);
+  if (!id) return { conectado: false };
+  const xml = await (await fetch(`https://www.youtube.com/feeds/videos.xml?channel_id=${id}`, { headers: { "User-Agent": UA } })).text();
+  const nome = ent(xml.match(/<author>\s*<name>([^<]*)/)?.[1] ?? "");
+  const videos = [...xml.matchAll(/<entry>([\s\S]*?)<\/entry>/g)].map((m) => {
+    const vid = m[1].match(/<yt:videoId>([^<]+)/)?.[1] ?? "";
+    const curt = Number(m[1].match(/<media:starRating count="(\d+)"/)?.[1] ?? NaN);
+    const views = Number(m[1].match(/<media:statistics views="(\d+)"/)?.[1] ?? NaN);
+    return {
+      titulo: ent(m[1].match(/<title>([^<]*)/)?.[1] ?? ""), link: `https://youtube.com/shorts/${vid}`, quando: m[1].match(/<published>([^<]+)/)?.[1] ?? null,
+      capa: `https://i.ytimg.com/vi/${vid}/hqdefault.jpg`, views: Number.isFinite(views) ? views : null, curtidas: Number.isFinite(curt) ? curt : null,
+    };
+  });
+  // inscritos: o YouTube só mostra o texto ("1,2 mil inscritos"); vem como texto mesmo
+  let inscritos: string | null = null;
+  try {
+    const html = await (await fetch(`https://www.youtube.com/channel/${id}`, { headers: { "User-Agent": UA, "Accept-Language": "pt-BR", Cookie: "CONSENT=YES+1; SOCS=CAI" } })).text();
+    inscritos = html.match(/"content":"([^"]{1,24}?(?:inscritos?|subscribers?))"/)?.[1] ?? html.match(/"subscriberCountText":\{[^}]*?"simpleText":"([^"]+)"/)?.[1] ?? null;
+  } catch { /* segue sem inscritos */ }
+  return { conectado: true, nome, link: `https://youtube.com/channel/${id}`, inscritos, videos, views: videos.reduce((a, v) => a + (v.views ?? 0), 0) };
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: cors });
   if (req.method !== "POST") return json(405, { ok: false });
@@ -150,6 +243,16 @@ Deno.serve(async (req) => {
   if (!autorizado) return json(401, { ok: false, erro: "não autorizado" });
 
   const body = await req.json().catch(() => ({}));
+  if (body.conta) {
+    // popup de Métricas de UM canal: a conta do Instagram e o canal do YouTube dele, ao vivo
+    const canal = String(body.conta);
+    const dias = [7, 14, 28].includes(Number(body.dias)) ? Number(body.dias) : 28;
+    const [instagram, youtube] = await Promise.all([
+      metricasInstagram(db, canal, dias).catch((e) => ({ conectado: true, erro: (e as Error).message })),
+      metricasYouTube(db, canal).catch((e) => ({ conectado: true, erro: (e as Error).message })),
+    ]);
+    return json(200, { ok: true, dias, instagram, youtube });
+  }
   if (body.perfil) {
     // números das contas conectadas, para o popup de Métricas
     const canais: string[] = Array.isArray(body.canais) ? body.canais : [];

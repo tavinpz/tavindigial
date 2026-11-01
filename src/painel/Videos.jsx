@@ -1,6 +1,9 @@
 import { useEffect, useMemo, useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { usePainel } from './Painel'
+import { MiniVideo, Previa } from './Previa'
+import Metricas from './Metricas'
+import { CANAIS } from './canais'
 
 // Vídeos curtos de um canal (Concrete Atlas, Thata…) organizados por situação: em produção → para programar → programado → postado.
 // Cada rede (YouTube, TikTok, Instagram) tem a própria situação. O que foi programado vira "postado" sozinho no horário,
@@ -22,7 +25,11 @@ const fmtCurto = (iso) => {
   return `${d} ${h.endsWith(':00') ? h.slice(0, 2) + 'h' : h}`
 }
 const fmtNum = (n) => Intl.NumberFormat('pt-BR', { notation: 'compact', maximumFractionDigits: 1 }).format(n)
-const num = (v) => `#${String(v.numero).padStart(3, '0')}`
+// número do vídeo: a coluna numero; sem ela, o número do id (th-v24-… → #024)
+const num = (v) => `#${String(v.numero ?? (v.id.match(/v(\d+)/)?.[1] || '')).padStart(3, '0')}`
+const baixarUrl = (v) => (v.video_url ? `${v.video_url}?download=${encodeURIComponent(v.arquivo || `${v.id}.mp4`)}` : null)
+// mais recente em cima: o último que entrou no painel primeiro
+const recente = (a, b) => (b.created_at || '').localeCompare(a.created_at || '') || (parseInt(num(b).slice(1), 10) || 0) - (parseInt(num(a).slice(1), 10) || 0)
 
 // Horário sugerido: o planejado; se já passou, a próxima hora cheia
 function sugestao(v) {
@@ -224,7 +231,7 @@ function dadosMover(v, alvo, igOk, rede = null) {
   return d
 }
 
-function Cartao({ v, abrir, recarregar, igOk, fase, arrastar, mover, arrastando }) {
+function Cartao({ v, abrir, previa, recarregar, igOk, fase, arrastar, mover, arrastando }) {
   const salvar = useSalvar(v, recarregar)
   const [pode, setPode] = useState(true)
   const pendentes = REDES.filter((r) => situacao(v, r.k).s === 'pendente')
@@ -242,15 +249,18 @@ function Cartao({ v, abrir, recarregar, igOk, fase, arrastar, mover, arrastando 
       onPointerDown={(e) => setPode(!e.target.closest('input, textarea, select'))}
       onDragStart={(e) => { e.dataTransfer.effectAllowed = 'move'; e.dataTransfer.setData('text/plain', v.id); arrastar(v.id) }}
       onDragEnd={() => arrastar(null)}>
-      <button type="button" className="v-item-cab" onClick={() => abrir(v.id)}>
-        {v.capa_url ? <img src={v.capa_url} alt="" loading="lazy" /> : <span className="v-item-sem">{num(v)}</span>}
-        <span className="v-item-txt">
+      <div className="v-item-cab">
+        <MiniVideo src={v.video_url} capa={v.capa_url} rotulo={v.video_url ? `Ver a prévia de ${v.yt_titulo || v.titulo}` : `Abrir ${num(v)}`}
+          onClick={() => (v.video_url ? previa(v.id) : abrir(v.id))}>
+          {v.capa_url ? <img src={v.capa_url} alt="" loading="lazy" /> : <span className="v-item-sem">{num(v)}</span>}
+        </MiniVideo>
+        <button type="button" className="v-item-txt" onClick={() => abrir(v.id)}>
           <small>{num(v)}{fase === 'programar' || fase === 'subido' || fase === 'producao' ? ` · sugestão ${fmtQuando(sug)}` : ''}{fase === 'subido' && v.subido_em ? ` · subiu ${fmtCurto(v.subido_em)}` : ''}</small>
           <strong>{v.yt_titulo}</strong>
           {fase === 'producao' && <em className="v-subindo">renderizando ou subindo o arquivo</em>}
           {fase === 'postado' && views > 0 && <em className="v-views">{fmtViews(views)}</em>}
-        </span>
-      </button>
+        </button>
+      </div>
       {fase !== 'producao' && <Redes v={v} recarregar={recarregar} igOk={igOk} />}
       {(fase === 'programar' || fase === 'subido') && pendentes.length > 1 && (
         <button type="button" className="v-tudo" onClick={programarTudo}>
@@ -281,6 +291,7 @@ function Quadro({ lista, abrir, recarregar, igOk, rede, verPostados, setVerPosta
   const [arr, setArr] = useState(null)
   const [sobre, setSobre] = useState(null)
   const [local, setLocal] = useState({})
+  const [previaId, setPreviaId] = useState(null)
   const fase = (v) => local[v.id] || etapa(v, rede)
   const onde = rede ? REDES.find((r) => r.k === rede).nome : 'nas 3 redes'
   async function mover(id, alvo) {
@@ -301,8 +312,15 @@ function Quadro({ lista, abrir, recarregar, igOk, rede, verPostados, setVerPosta
   for (const v of lista) col[fase(v)].push(v)
   const proximo = (v) => Math.min(...REDES.map((r) => situacao(v, r.k)).filter((s) => s.s === 'programado').map((s) => new Date(s.quando).getTime()))
   const ultimo = (v) => Math.max(...REDES.map((r) => new Date(situacao(v, r.k).postado || 0).getTime()))
-  col.programado.sort((a, b) => proximo(a) - proximo(b))
-  col.postado.sort((a, b) => ultimo(b) - ultimo(a))
+  // mais recente em cima em todas as colunas; em Programado, o próximo a sair fica em cima
+  col.producao.sort(recente)
+  col.programar.sort(recente)
+  col.subido.sort((a, b) => (b.subido_em || '').localeCompare(a.subido_em || '') || recente(a, b))
+  col.programado.sort((a, b) => proximo(a) - proximo(b) || recente(a, b))
+  col.postado.sort((a, b) => ultimo(b) - ultimo(a) || recente(a, b))
+  const nome = (v) => v.yt_titulo || v.titulo || num(v)
+  const fila = FASES.flatMap(([k]) => col[k]).filter((v) => v.video_url)
+    .map((v) => ({ id: v.id, video_url: v.video_url, capa_url: v.capa_url, titulo: nome(v), sub: `${num(v)} · ${FASES.find(([k]) => k === fase(v))[1]}`, baixar: baixarUrl(v) }))
   return (
     <div className="v-pipe">
       {FASES.filter(([k]) => k !== 'producao' || col.producao.length).map(([k, nome, dica]) => {
@@ -317,13 +335,14 @@ function Quadro({ lista, abrir, recarregar, igOk, rede, verPostados, setVerPosta
             <header><h2>{nome} <span>{col[k].length}</span></h2><p>{dica}</p></header>
             {recolhida && col[k].length > 0 && <button className="p-btn p-btn--mini p-btn--fraco" onClick={() => setVerPostados(true)}>Mostrar os {col[k].length} postados</button>}
             {col[k].length === 0 && <p className="v-vazia">{k === 'programar' ? 'Tudo programado. Hora de fazer mais vídeos.' : 'Nenhum ainda.'}</p>}
-            {itens.map((v) => <Cartao key={v.id} v={v} abrir={abrir} recarregar={recarregar} igOk={igOk} fase={k} arrastar={(id) => { setArr(id); if (!id) setSobre(null) }} mover={mover} arrastando={arr === v.id} />)}
+            {itens.map((v) => <Cartao key={v.id} v={v} abrir={abrir} previa={setPreviaId} recarregar={recarregar} igOk={igOk} fase={k} arrastar={(id) => { setArr(id); if (!id) setSobre(null) }} mover={mover} arrastando={arr === v.id} />)}
             {!recolhida && col[k].length > limite && (
               <button className="p-btn p-btn--mini p-btn--fraco" onClick={() => setVerTodos(verTodos === k ? null : k)}>{verTodos === k ? 'Mostrar menos' : `Ver mais ${col[k].length - limite}`}</button>
             )}
           </section>
         )
       })}
+      {previaId && <Previa lista={fila} id={previaId} setId={setPreviaId} abrirFicha={abrir} />}
     </div>
   )
 }
@@ -419,7 +438,7 @@ function Detalhe({ v, fechar, recarregar, igOk }) {
     avisar(error ? 'Não consegui falar com o servidor' : data?.ok ? (data.publicado ? 'Publicado no Instagram' : data.aviso) : `Erro: ${data?.erro}`)
     recarregar()
   }
-  const baixar = `${v.video_url}?download=${encodeURIComponent(v.arquivo || `${v.id}.mp4`)}`
+  const baixar = baixarUrl(v)
   const rede = (k, nome) => (
     <ul className="v-redes v-redes--detalhe"><Rede v={v} k={k} nome={nome} recarregar={recarregar} igOk={igOk} aberto={aberto === k} abrir={abrir} /></ul>
   )
@@ -441,7 +460,7 @@ function Detalhe({ v, fechar, recarregar, igOk }) {
 
       <div className="v-grade">
         <div className="v-player">
-          {v.video_url ? <video src={v.video_url} poster={v.capa_url || undefined} controls playsInline preload="metadata" /> : <div className="v-semvideo">Vídeo ainda em produção…</div>}
+          {v.video_url ? <video src={v.video_url} poster={v.capa_url || undefined} controls autoPlay playsInline preload="auto" /> : <div className="v-semvideo">Vídeo ainda em produção…</div>}
         </div>
 
         <div className="v-plataformas">
@@ -505,6 +524,8 @@ export default function Videos({ canal = 'concrete-atlas', nome = 'Concrete Atla
   const [yt, setYt] = useState(null)
   const [rede, setRede] = useState(() => { try { return localStorage.getItem(`v-rede-${canal}`) || '' } catch { return '' } })
   const [verPostados, setVerPostados] = useState(false)
+  const [metricas, setMetricas] = useState(false)
+  const infoCanal = CANAIS.find((c) => c.id === canal) || { id: canal, nome, cor: '#888', sigla: nome.slice(0, 2).toUpperCase(), tipo: 'shorts' }
   useEffect(() => { try { localStorage.setItem(`v-rede-${canal}`, rede) } catch { /* sem storage */ } }, [rede, canal])
 
   const carregar = async () => {
@@ -548,9 +569,13 @@ export default function Videos({ canal = 'concrete-atlas', nome = 'Concrete Atla
             Vídeos curtos · {resumo.n.postado} postados · {resumo.n.programado} programados{resumo.ate ? ` (fila até ${fmtDia(resumo.ate)})` : ''} · {resumo.n.programar} para programar{resumo.n.subido ? ` · ${resumo.n.subido} com upload feito` : ''}
             {resumo.views > 0 ? ` · ${fmtViews(resumo.views)} no YouTube e Insta` : ''}
           </p>
-          <p className="p-sub">Arraste o cartão entre as colunas. {rede ? `Filtrando ${REDES.find((r) => r.k === rede).nome}: o arrastar muda só essa rede.` : 'Sem filtro, as 3 redes mudam juntas.'}</p>
+          <p className="p-sub">Arraste o cartão entre as colunas. Clique na capa para ver o vídeo; no título, abre a ficha. {rede ? `Filtrando ${REDES.find((r) => r.k === rede).nome}: o arrastar muda só essa rede.` : 'Sem filtro, as 3 redes mudam juntas.'}</p>
+        </div>
+        <div className="p-acoes">
+          <button className="p-btn p-btn--forte" onClick={() => setMetricas(true)}>Métricas de {nome}</button>
         </div>
       </div>
+      {metricas && <Metricas canal={infoCanal} fechar={() => setMetricas(false)} />}
 
       <Conexoes canal={canal} ig={ig} yt={yt} recarregarCx={carregarCx} recarregar={carregar} />
 

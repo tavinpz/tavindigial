@@ -2,6 +2,9 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { usePainel } from './Painel'
 import { Editor, Slide, ConexaoInstagram, gerarESubir, NOVO, NOVO_ESTATICO } from './Conteudo'
+import { MiniVideo, Previa } from './Previa'
+import Metricas from './Metricas'
+import { CANAIS } from './canais'
 
 // Programação de um canal de marca (Tavin Digital): carrosséis, estáticos e vídeos num quadro só.
 // Rascunho → Pronto → Agendado → Publicado. Agendado sai sozinho no Instagram no horário.
@@ -64,24 +67,27 @@ function Miniatura({ item }) {
   return <span className="e-mini-vazia">sem arte</span>
 }
 
-function Cartao({ item, abrir, arrastar, mover, arrastando }) {
+function Cartao({ item, abrir, previa, arrastar, mover, arrastando }) {
+  const temVideo = item.origem === 'video' && !!item.bruto.video_url
   const [pode, setPode] = useState(true)
   return (
     <article className={`e-item e-item--${item.tipo} ${arrastando ? 'e-item--arrastando' : ''}`} draggable={pode}
       onPointerDown={(e) => setPode(!e.target.closest('input, textarea, select'))}
       onDragStart={(e) => { e.dataTransfer.effectAllowed = 'move'; e.dataTransfer.setData('text/plain', item.chave); arrastar(item.chave) }}
       onDragEnd={() => arrastar(null)}>
-      <button type="button" className="e-item-cab" onClick={() => abrir(item)}>
-        <span className="e-mini"><Miniatura item={item} /></span>
-        <span className="e-item-txt">
+      <div className="e-item-cab">
+        {temVideo
+          ? <MiniVideo className="e-mini" src={item.bruto.video_url} capa={item.bruto.capa_url} rotulo={`Ver a prévia de ${item.titulo}`} onClick={() => previa(item.chave)}><Miniatura item={item} /></MiniVideo>
+          : <button type="button" className="e-mini e-mini-abre" onClick={() => abrir(item)} aria-label={`Abrir ${item.titulo}`} tabIndex={-1}><Miniatura item={item} /></button>}
+        <button type="button" className="e-item-txt" onClick={() => abrir(item)}>
           <small><b className={`e-tipo e-tipo--${item.tipo}`}>{item.ideiaVideo ? 'Ideia de vídeo' : TIPOS[item.tipo]}</b></small>
           <strong>{item.titulo}</strong>
           {item.fase === 'agendado' && item.quando && <em className="e-quando">{fmtQuando(item.quando)}{item.bruto.ig_status === 'processando' || item.bruto.status === 'publicando' ? ' · publicando…' : ''}</em>}
           {item.fase === 'publicado' && item.publicado && <em className="e-quando e-quando--ok">no ar {fmtDia(item.publicado)}</em>}
           {item.fase !== 'agendado' && item.fase !== 'publicado' && item.quando && <em className="e-quando e-quando--plano">planejado {fmtQuando(item.quando)}</em>}
           {item.erro && <em className="e-erro">Erro: {item.erro}</em>}
-        </span>
-      </button>
+        </button>
+      </div>
       <select className="v-mover" value="" aria-label="Mover para outra coluna" onChange={(e) => e.target.value && mover(item.chave, e.target.value)}>
         <option value="">Mover para…</option>
         {FASES.filter(([k]) => k !== item.fase).map(([k, n]) => <option key={k} value={k}>{n}</option>)}
@@ -135,7 +141,7 @@ function EditorVideo({ item, fechar, recarregar, sugerir }) {
         <div className="p-acoes">{baixar && <a className="p-btn p-btn--forte" href={baixar}>Baixar vídeo</a>}</div>
       </div>
       <div className="v-grade">
-        <div className="v-player">{v.video_url ? <video src={v.video_url} poster={v.capa_url || undefined} controls playsInline preload="metadata" /> : <div className="v-semvideo">Sem arquivo</div>}</div>
+        <div className="v-player">{v.video_url ? <video src={v.video_url} poster={v.capa_url || undefined} controls autoPlay playsInline preload="auto" /> : <div className="v-semvideo">Sem arquivo</div>}</div>
         <div className="p-editor-col">
           <label className="p-campo">Nome interno<input value={titulo} onChange={(e) => setTitulo(e.target.value)} /></label>
           <label className="p-campo">Legenda do Reel <span className="v-cont">{legenda.length}/2200</span>
@@ -192,6 +198,8 @@ export default function Estudio({ canal = 'tavin-digital', nome = 'Tavin Digital
   const [aberto, setAberto] = useState(null)
   const [tipo, setTipo] = useState('')
   const [busca, setBusca] = useState('')
+  const [previaChave, setPreviaChave] = useState(null)
+  const [metricas, setMetricas] = useState(false)
   const [verPublicados, setVerPublicados] = useState(false)
   const [visao, setVisao] = useState(() => { try { return localStorage.getItem('e-visao') || 'quadro' } catch { return 'quadro' } })
   const [arr, setArr] = useState(null)
@@ -311,7 +319,16 @@ export default function Estudio({ canal = 'tavin-digital', nome = 'Tavin Digital
 
   const col = Object.fromEntries(FASES.map(([k]) => [k, []]))
   for (const i of filtrados) col[i.fase].push(i)
+  // mais recente em cima; em Agendado, o próximo a sair fica em cima
+  const criado = (i) => i.bruto.created_at || ''
+  const recente = (a, b) => criado(b).localeCompare(criado(a))
+  col.rascunho.sort(recente)
+  col.pronto.sort(recente)
   col.agendado.sort((a, b) => (a.quando || '').localeCompare(b.quando || ''))
+  const filaPrevia = FASES.flatMap(([k]) => col[k]).filter((i) => i.origem === 'video' && i.bruto.video_url).map((i) => ({
+    id: i.chave, video_url: i.bruto.video_url, capa_url: i.bruto.capa_url, titulo: i.titulo, sub: FASES.find(([k]) => k === i.fase)[1],
+    baixar: `${i.bruto.video_url}?download=${encodeURIComponent(i.bruto.arquivo || `${i.bruto.id}.mp4`)}`,
+  }))
   col.publicado.sort((a, b) => (b.publicado || '').localeCompare(a.publicado || ''))
 
   return (
@@ -328,6 +345,7 @@ export default function Estudio({ canal = 'tavin-digital', nome = 'Tavin Digital
           <button className="p-btn" onClick={() => novo('carrossel')}>Novo carrossel</button>
           <button className="p-btn" onClick={() => novo('estatico')}>Novo estático</button>
           <button className="p-btn p-btn--forte" onClick={() => arquivo.current?.click()} disabled={!!ocupado}>{ocupado || 'Subir vídeo'}</button>
+          <button className="p-btn" onClick={() => setMetricas(true)}>Métricas de {nome}</button>
           <input ref={arquivo} type="file" accept="video/mp4,video/quicktime" hidden onChange={(e) => { const f = e.target.files?.[0]; e.target.value = ''; if (f) subir(f) }} />
         </div>
       </div>
@@ -361,13 +379,15 @@ export default function Estudio({ canal = 'tavin-digital', nome = 'Tavin Digital
                 <header><h2>{n} <span>{col[k].length}</span></h2><p>{dica}</p></header>
                 {recolhida
                   ? col[k].length > 0 && <button className="p-btn p-btn--mini p-btn--fraco" onClick={() => setVerPublicados(true)}>Mostrar os {col[k].length} publicados</button>
-                  : col[k].map((i) => <Cartao key={i.chave} item={i} abrir={setAberto} arrastar={(c) => { setArr(c); if (!c) setSobre(null) }} mover={mover} arrastando={arr === i.chave} />)}
+                  : col[k].map((i) => <Cartao key={i.chave} item={i} abrir={setAberto} previa={setPreviaChave} arrastar={(c) => { setArr(c); if (!c) setSobre(null) }} mover={mover} arrastando={arr === i.chave} />)}
                 {!recolhida && col[k].length === 0 && <p className="v-vazia">{k === 'pronto' ? 'Nada pronto. Arraste um rascunho para cá quando revisar.' : k === 'agendado' ? 'Nada agendado. Arraste um post pronto para cá.' : 'Vazio.'}</p>}
               </section>
             )
           })}
         </div>
       )}
+      {previaChave && <Previa lista={filaPrevia} id={previaChave} setId={setPreviaChave} abrirFicha={(ch) => setAberto(itens.find((i) => i.chave === ch))} />}
+      {metricas && <Metricas canal={CANAIS.find((c) => c.id === canal) || { id: canal, nome, cor: '#B600F6', sigla: 'TD', tipo: 'marca' }} fechar={() => setMetricas(false)} />}
     </section>
   )
 }

@@ -14,7 +14,6 @@ import Estudio from './Estudio'
 import { CANAIS } from './canais'
 import Coleta from './Coleta'
 import LeadDrawer from './LeadDrawer'
-import Metricas from './Metricas'
 import '../styles/painel.css'
 
 const Ctx = createContext(null)
@@ -80,7 +79,6 @@ export default function Painel() {
   const [mensagens, setMensagens] = useState([])
   const [prontas, setProntas] = useState(false)
   const [leadAberto, setLeadAberto] = useState(null)
-  const [metricas, setMetricas] = useState(false)
   const [aviso, setAviso] = useState('')
   const [versao, setVersao] = useState(0)
   const [menuAberto, setMenuAberto] = useState(false)
@@ -194,7 +192,6 @@ export default function Painel() {
         <header className="p-topbar">
           <button className="p-hamb" onClick={() => setMenuAberto(true)} aria-label="Abrir menu"><Ico d="M4 7h16M4 12h16M4 17h16" /></button>
           <strong className="p-logo"><Logo /></strong>
-          <button className="p-hamb" style={{ marginLeft: 'auto' }} onClick={() => setMetricas(true)} aria-label="Métricas"><Ico d="M4 20V10M10 20V4M16 20v-7M22 20H2" /></button>
         </header>
         <div className="p-veu" onClick={() => setMenuAberto(false)} aria-hidden="true" />
         <aside className="p-lateral">
@@ -206,9 +203,6 @@ export default function Painel() {
               </button>
             ))}
             <p className="p-menu-grupo">Canais</p>
-            <button onClick={() => { setMetricas(true); setMenuAberto(false) }}>
-              <Ico d="M3 3v18h18M7 15l4-4 3 3 6-7" />Métricas
-            </button>
             {ABAS_CANAIS.map(([id, nome, , , c]) => (
               <button key={id} className={id === aba ? 'ativa' : ''} onClick={() => irPara(id)} aria-current={id === aba ? 'page' : undefined}>
                 <span className="p-canal-sigla" style={{ '--c': c.cor }} aria-hidden="true">{c.sigla}</span>{nome}
@@ -228,7 +222,6 @@ export default function Painel() {
           {prontas ? <Atual key={aba} /> : <p className="p-vazio">Carregando…</p>}
         </main>
         {leadAberto && <LeadDrawer key={leadAberto.id} id={leadAberto.id} iniciarPagamento={!!leadAberto.pagar} fechar={() => setLeadAberto(null)} />}
-        {metricas && <Metricas fechar={() => setMetricas(false)} />}
         {aviso && <div className="p-toast" role="status">{aviso}</div>}
         {novaVersao && (
           <button className="p-nova-versao" onClick={() => window.location.reload()}>Painel atualizado. Toque para carregar a versão nova</button>
