@@ -30,6 +30,10 @@ import { P3, DUR_P3 } from './P3Enquanto';
 import { P4, DUR_P4 } from './P4Ferramentas';
 import { P5, DUR_P5 } from './P5Recibo';
 import { P6, DUR_P6 } from './P6Perfil';
+import { Q1, DUR_Q1 } from './Q1Chuva';
+import { Q2, DUR_Q2 } from './Q2Pergunta';
+import { Q3, DUR_Q3 } from './Q3Retorno';
+import { Q4, DUR_Q4 } from './Q4Luvas';
 const V = { fps: 30, width: 1080, height: 1920 };
 export const Root: React.FC = () => (
   <>
@@ -62,5 +66,9 @@ export const Root: React.FC = () => (
     <Composition id="P4" component={P4} durationInFrames={DUR_P4} {...V} />
     <Composition id="P5" component={P5} durationInFrames={DUR_P5} {...V} />
     <Composition id="P6" component={P6} durationInFrames={DUR_P6} {...V} />
+    <Composition id="Q1" component={Q1} durationInFrames={DUR_Q1} {...V} />
+    <Composition id="Q2" component={Q2} durationInFrames={DUR_Q2} {...V} />
+    <Composition id="Q3" component={Q3} durationInFrames={DUR_Q3} {...V} />
+    <Composition id="Q4" component={Q4} durationInFrames={DUR_Q4} {...V} />
   </>
 );

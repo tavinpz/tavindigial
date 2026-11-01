@@ -632,5 +632,106 @@
    146,
    330
   ]
+ },
+ "Q1": {
+  "arq": "thata_30_dia_de_chuva.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 2,
+  "secoes": [
+   [
+    "tenso",
+    0,
+    262
+   ],
+   [
+    "cheio",
+    262,
+    600
+   ]
+  ],
+  "quebras": [
+   262,
+   404
+  ]
+ },
+ "Q2": {
+  "arq": "thata_31_a_mesma_pergunta.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 1,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    44
+   ],
+   [
+    "tenso",
+    44,
+    250
+   ],
+   [
+    "cheio",
+    250,
+    600
+   ]
+  ],
+  "quebras": [
+   250,
+   396
+  ]
+ },
+ "Q3": {
+  "arq": "thata_32_seis_meses_depois.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 0,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    72
+   ],
+   [
+    "tenso",
+    72,
+    250
+   ],
+   [
+    "cheio",
+    250,
+    600
+   ]
+  ],
+  "quebras": [
+   234,
+   322,
+   408
+  ]
+ },
+ "Q4": {
+  "arq": "thata_33_com_as_luvas.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 1,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    64
+   ],
+   [
+    "tenso",
+    64,
+    226
+   ],
+   [
+    "cheio",
+    226,
+    600
+   ]
+  ],
+  "quebras": [
+   192,
+   248,
+   420
+  ]
  }
 }
