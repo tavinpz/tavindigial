@@ -1,0 +1,17 @@
+import { iniciar } from './lib.mjs'
+import fs from 'fs'
+const a = await iniciar()
+await a.preparar(new Function(fs.readFileSync('dados_camp.js', 'utf8')))
+await a.abrir('/campanhas', 'base', 1440, 1000)
+await a.clicar('Nova Campanha'); await a.clicar('WhatsApp')
+await a.digitar('Ex: Prospecção Clínica Ortopedia Q1', 'Reativação de pacientes')
+await a.opcao('Selecione uma instância')
+await a.clicar('Continuar para Contatos'); await a.espera(600)
+const inp = await a.p.$('input[type=file]'); await inp.uploadFile('/tmp/shot/lista_pacientes.csv'); await a.espera(2000)
+await a.foto('e3'); await a.botoes()
+await a.clicar('Importar 313 contatos'); await a.espera(800); await a.foto('e4'); await a.botoes()
+await a.clicar('Continuar para Mensagem'); await a.espera(800)
+const ta = await a.p.$('textarea'); await ta.type('Oi, {{nome}}! Aqui é da Clínica Aurora. Faz um tempo que você não vem, quer agendar sua revisão? Temos horários esta semana.', { delay: 2 }); await a.espera(400)
+await a.foto('e5'); await a.botoes()
+await a.clicar('Continuar para Agendamento'); await a.espera(900); await a.foto('e6'); await a.botoes()
+await a.fim('exp')

@@ -1,0 +1,21 @@
+import { iniciar } from './lib.mjs'
+import fs from 'fs'
+const a = await iniciar()
+await a.preparar(new Function(fs.readFileSync('dados_eq.js', 'utf8')))
+await a.abrir('/configuracoes', 'base', 1100, 1000)
+await a.clicar('Equipe'); await a.espera(1200)
+await a.foto('u1_lista', { add: 'Adicionar usuário' })
+await a.clicar('Adicionar usuário'); await a.espera(1000)
+await a.foto('u2_vazio', {})
+await a.digitar('Tauane Souza', 'Bianca Prado'); await a.digitar('Recepção', 'Recepção'); await a.digitar('recepcao@suaclinica.com.br', 'bianca@clinicaaurora.com.br')
+await a.foto('u3_dados', { nome: await a.p.evaluateHandle(() => document.querySelector('input[placeholder="Tauane Souza"]')) })
+for (const t of ['Mensagens', 'Agenda do dia', 'Calendário']) { await a.p.evaluate((t) => { const el = [...document.querySelectorAll('label, div, span')].filter((e) => (e.innerText || '').trim() === t && e.getBoundingClientRect().width > 0).pop(); const row = el && el.closest('label, div'); const sw = row && (row.querySelector('[role=switch]') || row.parentElement.querySelector('[role=switch]')); if (sw) sw.click(); else (window.__faltou ||= new Set()).add('sw:' + t) }, t); await a.espera(300) }
+await a.p.evaluate(() => { const el = [...document.querySelectorAll('div, span')].filter((e) => (e.innerText || '').trim() === 'Mensagens' && e.getBoundingClientRect().x > 300).pop(); el.scrollIntoView({ block: 'center' }) }); await a.espera(600)
+await a.foto('u4_paginas', { msg: await a.p.evaluateHandle(() => [...document.querySelectorAll('div, span')].filter((e) => (e.innerText || '').trim() === 'Mensagens' && e.getBoundingClientRect().x > 300).pop()) })
+await a.p.evaluate(() => [...document.querySelectorAll('button')].find((b) => b.innerText.trim() === 'Criar acesso').scrollIntoView({ block: 'center' })); await a.espera(600)
+await a.foto('u4b_criar', { criar: 'Criar acesso' })
+await a.clicar('Criar acesso'); await a.espera(1500)
+await a.p.evaluate(() => window.scrollTo(0, 0)); await a.espera(400)
+await a.p.evaluate(() => { const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT); let n; while ((n = w.nextNode())) if (n.nodeValue.includes('http://localhost:5199')) n.nodeValue = n.nodeValue.replace('http://localhost:5199', 'https://thata.online') }); await a.espera(200)
+await a.foto('u5_criado', { caixa: 'Acesso de Bianca Prado criado', copiar: 'Copiar acesso' }); await a.botoes()
+await a.fim('eq')

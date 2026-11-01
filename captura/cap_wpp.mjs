@@ -1,0 +1,38 @@
+import { iniciar } from './lib.mjs'
+import fs from 'fs'
+const QR = fs.readFileSync('/tmp/shot/qr.b64', 'utf8')
+const a = await iniciar()
+await a.abrir('/whatsapp', 'base')
+await a.js((qr) => {
+  window.__FETCH['wpp-criar-instancia'] = { success: true, instance_name: 'recepcao_aurora' }
+  window.__FETCH['wpp-buscar-qr'] = { base64: qr, pairingCode: 'K7Q2M9XA', recommended: 'codigo' }
+}, QR)
+await a.foto('w1_vazio', { botao: 'Conectar WhatsApp' })
+await a.clicar('Conectar WhatsApp')
+await a.foto('w2_escolha', { naoOficial: 'API Não Oficial', oficial: 'API Oficial' })
+await a.clicar('API Não Oficial')
+await a.foto('w3_form', { nome: 'Ex: vendas sp, suporte, marketing 2024...', numero: '11 98765-4321' })
+await a.digitar('Ex: vendas sp, suporte, marketing 2024...', 'Recepção Aurora')
+await a.digitar('11 98765-4321', '11 98765-4321')
+await a.clicar('Sim', 'button')
+await a.p.evaluate(() => { const s = [...document.querySelectorAll('select')].find((x) => [...x.options].some((o) => o.textContent.includes('Selecione um assistente'))); if (s) { const set = Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype, 'value').set; set.call(s, 'a1'); s.dispatchEvent(new Event('change', { bubbles: true })) } })
+await a.espera(400)
+await a.foto('w4_preenchido', { assist: 'Thata', sim: 'Sim' })
+await a.p.evaluate(() => { const b = [...document.querySelectorAll('button')].find((x) => x.textContent.trim() === 'Criar Instância'); b && b.scrollIntoView({ block: 'end' }) }); await a.espera(500)
+await a.foto('w4b_criar', { criar: 'Criar Instância' })
+await a.clicar('Criar Instância')
+await a.espera(1200)
+await a.foto('w5_codigo', { codigo: 'K7Q2', abas: 'Código' })
+await a.clicar('QR Code')
+await a.foto('w6_qr', {})
+// o celular leu o codigo: a conexao fica ativa
+await a.js(() => { window.__DB.whatsapp_instances = [{ id: 'i1', tenant_id: 't1', instance_name: 'recepcao_aurora', nome: 'Recepção Aurora', display_name: 'Recepção Aurora', status: 'open', api_type: 'evolution', phone_number: '5511987654321', numero: '5511987654321', assistente_id: 'a1', ai_will_respond: true, configurado: true, deletado: false, padrao: true, created_at: new Date().toISOString() }] })
+await a.espera(5600)
+await a.foto('w7_conectado', {})
+await a.clicar('Fechar', 'button'); await a.espera(800)
+await a.foto('w8_lista', {})
+// API oficial (so a tela)
+await a.clicar('Conectar outro número'); await a.espera(400)
+await a.clicar('API Oficial'); await a.espera(500)
+await a.foto('w9_oficial', {})
+await a.fim('wpp')

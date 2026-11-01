@@ -43,6 +43,21 @@ import { S3, DUR_S3 } from './S3Planilha';
 import { S4, DUR_S4 } from './S4Quadro';
 import { S5, DUR_S5 } from './S5Origem';
 import { S6, DUR_S6 } from './S6Painel';
+import { F1, DUR_F1 } from './F1WhatsApp';
+import { F2, DUR_F2 } from './F2Integracoes';
+import { F3, DUR_F3 } from './F3Campanha';
+import { F4, DUR_F4 } from './F4Cadencia';
+import { F5, DUR_F5 } from './F5Lembretes';
+import { F6, DUR_F6 } from './F6Retornos';
+import { F7, DUR_F7 } from './F7Pipeline';
+import { F8, DUR_F8 } from './F8Mensagens';
+import { F9, DUR_F9 } from './F9Ligacoes';
+import { F10, DUR_F10 } from './F10Assistente';
+import { F11, DUR_F11 } from './F11Agenda';
+import { F12, DUR_F12 } from './F12Importar';
+import { F13, DUR_F13 } from './F13Equipe';
+import { F14, DUR_F14 } from './F14Dashboard';
+import { F15, DUR_F15 } from './F15Anuncios';
 const V = { fps: 30, width: 1080, height: 1920 };
 export const Root: React.FC = () => (
   <>
@@ -88,5 +103,20 @@ export const Root: React.FC = () => (
     <Composition id="S4" component={S4} durationInFrames={DUR_S4} {...V} />
     <Composition id="S5" component={S5} durationInFrames={DUR_S5} {...V} />
     <Composition id="S6" component={S6} durationInFrames={DUR_S6} {...V} />
+    <Composition id="F1" component={F1} durationInFrames={DUR_F1} {...V} />
+    <Composition id="F2" component={F2} durationInFrames={DUR_F2} {...V} />
+    <Composition id="F3" component={F3} durationInFrames={DUR_F3} {...V} />
+    <Composition id="F4" component={F4} durationInFrames={DUR_F4} {...V} />
+    <Composition id="F5" component={F5} durationInFrames={DUR_F5} {...V} />
+    <Composition id="F6" component={F6} durationInFrames={DUR_F6} {...V} />
+    <Composition id="F7" component={F7} durationInFrames={DUR_F7} {...V} />
+    <Composition id="F8" component={F8} durationInFrames={DUR_F8} {...V} />
+    <Composition id="F9" component={F9} durationInFrames={DUR_F9} {...V} />
+    <Composition id="F10" component={F10} durationInFrames={DUR_F10} {...V} />
+    <Composition id="F11" component={F11} durationInFrames={DUR_F11} {...V} />
+    <Composition id="F12" component={F12} durationInFrames={DUR_F12} {...V} />
+    <Composition id="F13" component={F13} durationInFrames={DUR_F13} {...V} />
+    <Composition id="F14" component={F14} durationInFrames={DUR_F14} {...V} />
+    <Composition id="F15" component={F15} durationInFrames={DUR_F15} {...V} />
   </>
 );

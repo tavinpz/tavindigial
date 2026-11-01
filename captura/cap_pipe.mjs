@@ -1,0 +1,18 @@
+import { iniciar } from './lib.mjs'
+import fs from 'fs'
+const a = await iniciar()
+const base = fs.readFileSync('dados_pipe.js', 'utf8')
+await a.preparar(new Function(base))
+await a.abrir('/pipeline', 'base', 2200, 1000)
+await a.foto('p1_quadro', { ana: 'Ana P.' })
+await a.clicar('Ana P.'); await a.espera(1000)
+await a.foto('p2_lead', {})
+a.meta.p2_lead.agend = await a.p.evaluate(() => { const b = [...document.querySelectorAll('button')].filter((x) => x.innerText.trim() === 'Agendamento').pop(); const r = b.getBoundingClientRect(); return [r.x * 2, r.y * 2, r.width * 2, r.height * 2].map(Math.round) })
+const b2 = await iniciar()
+await b2.preparar(new Function('window.__anaAgendada = true;\n' + base.replace("if (window.__anaAgendada)", "if (true)")))
+await b2.abrir('/pipeline', 'base', 2200, 1000)
+await b2.foto('p3_movido', {})
+await b2.p.evaluate(() => document.querySelectorAll('.pip-auto-btn')[1].click()); await b2.espera(900)
+await b2.foto('p4_auto', {}); await b2.botoes()
+await b2.fim('pipe2')
+await a.fim('pipe')

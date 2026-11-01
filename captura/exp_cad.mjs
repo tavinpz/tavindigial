@@ -1,0 +1,15 @@
+import { iniciar } from './lib.mjs'
+import fs from 'fs'
+const a = await iniciar()
+await a.preparar(new Function(fs.readFileSync('dados_cad.js', 'utf8')))
+await a.abrir('/cadencias', 'base', 1440, 1000)
+await a.clicar('Nova Cadência')
+await a.clicar('Clique para configurar o 1º follow-up'); await a.clicar('Mensagem WhatsApp')
+const ta = await a.p.$('textarea'); await ta.type('Oi, {{nome}}! Conseguiu ver os horários? Posso reservar um pra você?', { delay: 1 })
+await a.clicar('Se não respondeu', 'button')
+await a.foto('e1'); await a.clicar('Salvar Primeiro Contato'); await a.espera(500)
+await a.foto('e2'); await a.botoes()
+await a.clicar('DIA 1'); await a.espera(400); await a.botoes()
+await a.clicar('Ligação'); await a.espera(500)
+await a.foto('e3'); await a.botoes()
+await a.fim('exp')

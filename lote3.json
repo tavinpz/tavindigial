@@ -967,5 +967,395 @@
    210,
    404
   ]
+ },
+ "F1": {
+  "arq": "thata_43_func_conectar_whatsapp.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 1,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    140
+   ],
+   [
+    "cheio",
+    140,
+    410
+   ],
+   [
+    "calmo",
+    410,
+    600
+   ]
+  ],
+  "quebras": [
+   140,
+   410
+  ]
+ },
+ "F2": {
+  "arq": "thata_44_func_integracoes_agenda.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 0,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    150
+   ],
+   [
+    "cheio",
+    150,
+    432
+   ],
+   [
+    "calmo",
+    432,
+    600
+   ]
+  ],
+  "quebras": [
+   150,
+   432
+  ]
+ },
+ "F3": {
+  "arq": "thata_45_func_campanha_lista.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 2,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    140
+   ],
+   [
+    "cheio",
+    140,
+    432
+   ],
+   [
+    "calmo",
+    432,
+    600
+   ]
+  ],
+  "quebras": [
+   140,
+   432
+  ]
+ },
+ "F4": {
+  "arq": "thata_46_func_cadencia_followup.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 1,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    150
+   ],
+   [
+    "cheio",
+    150,
+    432
+   ],
+   [
+    "calmo",
+    432,
+    600
+   ]
+  ],
+  "quebras": [
+   150,
+   432
+  ]
+ },
+ "F5": {
+  "arq": "thata_47_func_confirmacao_lembretes.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 2,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    150
+   ],
+   [
+    "cheio",
+    150,
+    446
+   ],
+   [
+    "calmo",
+    446,
+    600
+   ]
+  ],
+  "quebras": [
+   150,
+   446
+  ]
+ },
+ "F6": {
+  "arq": "thata_48_func_retornos.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 0,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    160
+   ],
+   [
+    "cheio",
+    160,
+    440
+   ],
+   [
+    "calmo",
+    440,
+    600
+   ]
+  ],
+  "quebras": [
+   160,
+   440
+  ]
+ },
+ "F7": {
+  "arq": "thata_49_func_pipeline.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 1,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    160
+   ],
+   [
+    "cheio",
+    160,
+    432
+   ],
+   [
+    "calmo",
+    432,
+    600
+   ]
+  ],
+  "quebras": [
+   160,
+   432
+  ]
+ },
+ "F8": {
+  "arq": "thata_50_func_mensagens_assumir.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 1,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    170
+   ],
+   [
+    "cheio",
+    170,
+    432
+   ],
+   [
+    "calmo",
+    432,
+    600
+   ]
+  ],
+  "quebras": [
+   170,
+   432
+  ]
+ },
+ "F9": {
+  "arq": "thata_51_func_ligacoes.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 1,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    160
+   ],
+   [
+    "cheio",
+    160,
+    432
+   ],
+   [
+    "calmo",
+    432,
+    600
+   ]
+  ],
+  "quebras": [
+   160,
+   432
+  ]
+ },
+ "F10": {
+  "arq": "thata_52_func_configurar_assistente.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 1,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    150
+   ],
+   [
+    "cheio",
+    150,
+    432
+   ],
+   [
+    "calmo",
+    432,
+    600
+   ]
+  ],
+  "quebras": [
+   150,
+   432
+  ]
+ },
+ "F11": {
+  "arq": "thata_53_func_agenda.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 1,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    160
+   ],
+   [
+    "cheio",
+    160,
+    432
+   ],
+   [
+    "calmo",
+    432,
+    600
+   ]
+  ],
+  "quebras": [
+   160,
+   432
+  ]
+ },
+ "F12": {
+  "arq": "thata_54_func_importar_base.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 1,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    150
+   ],
+   [
+    "cheio",
+    150,
+    432
+   ],
+   [
+    "calmo",
+    432,
+    600
+   ]
+  ],
+  "quebras": [
+   150,
+   432
+  ]
+ },
+ "F13": {
+  "arq": "thata_55_func_equipe.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 1,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    150
+   ],
+   [
+    "cheio",
+    150,
+    432
+   ],
+   [
+    "calmo",
+    432,
+    600
+   ]
+  ],
+  "quebras": [
+   150,
+   432
+  ]
+ },
+ "F14": {
+  "arq": "thata_56_func_dashboard.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 1,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    150
+   ],
+   [
+    "cheio",
+    150,
+    432
+   ],
+   [
+    "calmo",
+    432,
+    600
+   ]
+  ],
+  "quebras": [
+   150,
+   432
+  ]
+ },
+ "F15": {
+  "arq": "thata_57_func_origem_anuncio.mp4",
+  "audio": "audio_thata.py",
+  "estilo": 1,
+  "secoes": [
+   [
+    "calmo",
+    0,
+    150
+   ],
+   [
+    "cheio",
+    150,
+    432
+   ],
+   [
+    "calmo",
+    432,
+    600
+   ]
+  ],
+  "quebras": [
+   150,
+   432
+  ]
  }
 }
