@@ -1,13 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { usePainel } from './Painel'
-import { Editor, Slide, ConexaoInstagram, gerarESubir, NOVO, NOVO_ESTATICO } from './Conteudo'
-import { MiniVideo, Previa } from './Previa'
-import Metricas from './Metricas'
+import { Editor, Slide, gerarESubir, NOVO, NOVO_ESTATICO } from './Conteudo'
+import Pipeline, { useConexoes } from './Pipeline'
 import { CANAIS } from './canais'
 
-// Programação de um canal de marca (Tavin Digital): carrosséis, estáticos e vídeos num quadro só.
-// Rascunho → Pronto → Agendado → Publicado. Agendado sai sozinho no Instagram no horário.
+// Programação de um canal de marca (Tavin Digital): carrosséis, estáticos e vídeos no pipeline padrão
+// (Prontos → Programados → Postados). Programado sai sozinho no Instagram no horário.
+// Por dentro continua rascunho/pronto/agendado/publicado (é o que o banco guarda); rascunho aparece em Prontos.
 const FUSO = 'America/Sao_Paulo'
 const HORA_PADRAO = 12 // horário do post quando você arrasta sem escolher data
 const TIPOS = { carrossel: 'Carrossel', estatico: 'Estático', video: 'Vídeo' }
@@ -54,47 +54,6 @@ function proximoHorario(itens, ignorar) {
   return new Date(Date.now() + 86400000).toISOString()
 }
 
-function Miniatura({ item }) {
-  const c = item.bruto
-  if (item.origem === 'video') {
-    return c.capa_url ? <img src={c.capa_url} alt="" loading="lazy" />
-      : c.video_url ? <video src={`${c.video_url}#t=0.5`} muted playsInline preload="metadata" />
-        : <span className="e-mini-vazia">vídeo</span>
-  }
-  if (item.ideiaVideo) return <span className="e-mini-vazia">ideia de vídeo</span>
-  if (c.imagens?.[0]) return <img src={c.imagens[0]} alt="" loading="lazy" />
-  if (c.slides?.[0]) return <Slide slide={c.slides[0]} i={0} total={c.slides.length} />
-  return <span className="e-mini-vazia">sem arte</span>
-}
-
-function Cartao({ item, abrir, previa, arrastar, mover, arrastando }) {
-  const temVideo = item.origem === 'video' && !!item.bruto.video_url
-  const [pode, setPode] = useState(true)
-  return (
-    <article className={`e-item e-item--${item.tipo} ${arrastando ? 'e-item--arrastando' : ''}`} draggable={pode}
-      onPointerDown={(e) => setPode(!e.target.closest('input, textarea, select'))}
-      onDragStart={(e) => { e.dataTransfer.effectAllowed = 'move'; e.dataTransfer.setData('text/plain', item.chave); arrastar(item.chave) }}
-      onDragEnd={() => arrastar(null)}>
-      <div className="e-item-cab">
-        {temVideo
-          ? <MiniVideo className="e-mini" src={item.bruto.video_url} capa={item.bruto.capa_url} rotulo={`Ver a prévia de ${item.titulo}`} onClick={() => previa(item.chave)}><Miniatura item={item} /></MiniVideo>
-          : <button type="button" className="e-mini e-mini-abre" onClick={() => abrir(item)} aria-label={`Abrir ${item.titulo}`} tabIndex={-1}><Miniatura item={item} /></button>}
-        <button type="button" className="e-item-txt" onClick={() => abrir(item)}>
-          <small><b className={`e-tipo e-tipo--${item.tipo}`}>{item.ideiaVideo ? 'Ideia de vídeo' : TIPOS[item.tipo]}</b></small>
-          <strong>{item.titulo}</strong>
-          {item.fase === 'agendado' && item.quando && <em className="e-quando">{fmtQuando(item.quando)}{item.bruto.ig_status === 'processando' || item.bruto.status === 'publicando' ? ' · publicando…' : ''}</em>}
-          {item.fase === 'publicado' && item.publicado && <em className="e-quando e-quando--ok">no ar {fmtDia(item.publicado)}</em>}
-          {item.fase !== 'agendado' && item.fase !== 'publicado' && item.quando && <em className="e-quando e-quando--plano">planejado {fmtQuando(item.quando)}</em>}
-          {item.erro && <em className="e-erro">Erro: {item.erro}</em>}
-        </button>
-      </div>
-      <select className="v-mover" value="" aria-label="Mover para outra coluna" onChange={(e) => e.target.value && mover(item.chave, e.target.value)}>
-        <option value="">Mover para…</option>
-        {FASES.filter(([k]) => k !== item.fase).map(([k, n]) => <option key={k} value={k}>{n}</option>)}
-      </select>
-    </article>
-  )
-}
 
 // Vídeo: player, legenda, data e publicação
 function EditorVideo({ item, fechar, recarregar, sugerir }) {
@@ -125,7 +84,7 @@ function EditorVideo({ item, fechar, recarregar, sugerir }) {
   async function apagar() {
     if (!confirm('Apagar este vídeo do painel?')) return
     await supabase.from('videos').delete().eq('id', v.id)
-    if (v.video_url) await supabase.storage.from('videos').remove([`tavin-digital/${v.id}.mp4`]).catch(() => {})
+    if (v.video_url) await supabase.storage.from('videos').remove([`${v.canal || 'tavin-digital'}/${v.id}.mp4`, `${v.canal || 'tavin-digital'}/${v.id}.jpg`]).catch(() => {})
     recarregar(); fechar()
   }
   const baixar = v.video_url ? `${v.video_url}?download=${encodeURIComponent(v.arquivo || `${v.id}.mp4`)}` : null
@@ -191,22 +150,61 @@ function EditorIdeia({ item, fechar, recarregar, subir }) {
   )
 }
 
+
+// Cartão do pipeline (Prontos / Programados / Postados) a partir do item interno
+const FASE_PIPE = { rascunho: 'pronto', pronto: 'pronto', agendado: 'programado', publicado: 'postado' }
+function paraItem(i) {
+  const c = i.bruto
+  const video = i.origem === 'video'
+  const minimo = c.formato === 'estatico' ? 1 : 2
+  const faltaSlide = !video && !i.ideiaVideo && (c.slides?.length || 0) < minimo
+  const agendado = i.fase === 'agendado'
+  return {
+    chave: i.chave, bruto: i, fase: FASE_PIPE[i.fase], titulo: i.titulo,
+    tipo: i.tipo, tipoNome: i.ideiaVideo ? 'Ideia' : TIPOS[i.tipo],
+    video_url: video ? c.video_url : null, capa_url: video ? c.capa_url : null,
+    baixar: video && c.video_url ? `${c.video_url}?download=${encodeURIComponent(c.arquivo || `${c.id}.mp4`)}` : null,
+    mini: i.ideiaVideo ? <span className="pl-mini-vazia">ideia</span> : c.imagens?.[0] ? <img src={c.imagens[0]} alt="" loading="lazy" /> : c.slides?.[0] ? <Slide slide={c.slides[0]} i={0} total={c.slides.length} /> : null,
+    quando: agendado ? i.quando : null,
+    planejado: !agendado && i.fase !== 'publicado' && i.quando ? i.quando : null,
+    postado: i.publicado, erro: i.erro,
+    publicando: c.ig_status === 'processando' || c.status === 'publicando',
+    aviso: i.ideiaVideo ? 'Falta o vídeo' : faltaSlide ? 'Faltam slides' : '',
+    programavel: (i.fase === 'pronto' || i.fase === 'rascunho') && !i.ideiaVideo && !faltaSlide && (!video || !!c.video_url),
+    movel: !i.ideiaVideo,
+    ordem: c.created_at || '',
+  }
+}
+
+// "Novo post": carrossel ou estático (só na Tavin Digital)
+function NovoPost({ novo }) {
+  const ref = useRef(null)
+  const escolher = (f) => { ref.current?.removeAttribute('open'); novo(f) }
+  // fecha ao clicar fora
+  useEffect(() => {
+    const fora = (e) => { if (ref.current?.open && !ref.current.contains(e.target)) ref.current.removeAttribute('open') }
+    document.addEventListener('click', fora)
+    return () => document.removeEventListener('click', fora)
+  }, [])
+  return (
+    <details className="pl-menu" ref={ref}>
+      <summary className="p-btn">Novo post</summary>
+      <div className="pl-menu-lista">
+        <button type="button" onClick={() => escolher('carrossel')}>Carrossel</button>
+        <button type="button" onClick={() => escolher('estatico')}>Estático</button>
+      </div>
+    </details>
+  )
+}
+
 export default function Estudio({ canal = 'tavin-digital', nome = 'Tavin Digital' }) {
   const { avisar, versao } = usePainel()
   const [conteudo, setConteudo] = useState(null)
   const [videos, setVideos] = useState(null)
   const [aberto, setAberto] = useState(null)
-  const [tipo, setTipo] = useState('')
-  const [busca, setBusca] = useState('')
-  const [previaChave, setPreviaChave] = useState(null)
-  const [metricas, setMetricas] = useState(false)
-  const [verPublicados, setVerPublicados] = useState(false)
-  const [visao, setVisao] = useState(() => { try { return localStorage.getItem('e-visao') || 'quadro' } catch { return 'quadro' } })
-  const [arr, setArr] = useState(null)
-  const [sobre, setSobre] = useState(null)
   const [ocupado, setOcupado] = useState('')
-  const arquivo = useRef(null)
-  useEffect(() => { try { localStorage.setItem('e-visao', visao) } catch { /* sem storage */ } }, [visao])
+  const info = CANAIS.find((c) => c.id === canal) || { id: canal, nome, cor: '#B600F6', sigla: 'TD', tipo: 'marca' }
+  const cx = useConexoes(canal, true)
 
   async function carregar() {
     const [a, b] = await Promise.all([
@@ -218,6 +216,7 @@ export default function Estudio({ canal = 'tavin-digital', nome = 'Tavin Digital
   useEffect(() => { carregar() }, [versao])
 
   const itens = useMemo(() => [...(conteudo || []).map(doConteudo), ...(videos || []).map(doVideo)], [conteudo, videos])
+  const cartoes = useMemo(() => itens.map(paraItem), [itens])
   const sugerir = (ignorar) => proximoHorario(itens, ignorar)
 
   // reabre o item com os dados novos depois de salvar
@@ -233,74 +232,87 @@ export default function Estudio({ canal = 'tavin-digital', nome = 'Tavin Digital
     await carregar(); setAberto(doConteudo(data))
   }
 
-  async function subir(file, { titulo, legenda = '', ideia } = {}) {
-    if (file.size > 50 * 1024 * 1024) { avisar('O vídeo passa de 50 MB: exporte em 1080p H.264'); return }
-    setOcupado('Subindo o vídeo…')
+  // Sobe o vídeo (e a capa, se veio) para o bucket "videos" em canal/id.mp4 e registra em Prontos.
+  // Vindo de uma ideia (EditorIdeia), apaga a ideia e abre o vídeo.
+  async function subir(file, { titulo, legenda = '', ideia, capa = null, duracao = null } = {}) {
+    if (file.size > 50 * 1024 * 1024) { avisar('O vídeo passa de 50 MB: exporte em 1080p H.264'); return false }
+    if (ideia) setOcupado('Subindo o vídeo…')
     const id = `td-${Date.now().toString(36)}`
+    const pasta = supabase.storage.from('videos')
     const caminho = `${canal}/${id}.mp4`
-    const up = await supabase.storage.from('videos').upload(caminho, file, { contentType: 'video/mp4', upsert: true, cacheControl: '31536000' })
-    if (up.error) { setOcupado(''); avisar(`Não subiu: ${up.error.message}`); return }
-    const url = supabase.storage.from('videos').getPublicUrl(caminho).data.publicUrl
+    const up = await pasta.upload(caminho, file, { contentType: 'video/mp4', upsert: true, cacheControl: '31536000' })
+    if (up.error) { setOcupado(''); avisar(`Não subiu: ${up.error.message}`); return false }
+    let capaUrl = null
+    if (capa) {
+      const c = await pasta.upload(`${canal}/${id}.jpg`, capa, { contentType: 'image/jpeg', upsert: true, cacheControl: '31536000' })
+      if (!c.error) capaUrl = pasta.getPublicUrl(`${canal}/${id}.jpg`).data.publicUrl
+    }
+    const url = pasta.getPublicUrl(caminho).data.publicUrl
     const nomeArq = titulo || file.name.replace(/\.[^.]+$/, '')
-    const { data, error } = await supabase.from('videos').insert({ id, canal, titulo: nomeArq, arquivo: `${nomeArq}.mp4`, video_url: url, ig_legenda: legenda }).select().single()
+    const { data, error } = await supabase.from('videos').insert({ id, canal, titulo: nomeArq, arquivo: `${nomeArq}.mp4`, video_url: url, capa_url: capaUrl, duracao, ig_legenda: legenda }).select().single()
     if (!error && ideia) await supabase.from('conteudo').delete().eq('id', ideia)
     setOcupado('')
-    if (error) { avisar('Subiu, mas não registrou'); return }
-    avisar('Vídeo no painel'); await carregar(); setAberto(doVideo(data))
+    if (error) { avisar('Subiu, mas não registrou'); return false }
+    avisar('Vídeo em Prontos'); await carregar()
+    if (ideia) setAberto(doVideo(data))
+    return true
   }
 
-  async function mover(chave, alvo) {
-    const it = itens.find((i) => i.chave === chave)
-    if (!it || it.fase === alvo) return
+  // Agenda um item num horário: vídeo vai para a fila do Instagram; carrossel/estático gera as imagens antes
+  async function agendar(it, quando) {
+    if (it.origem === 'video') {
+      const { error } = await supabase.from('videos').update({ ig_status: 'agendado', ig_agendado_para: quando, ig_erro: null }).eq('id', it.bruto.id)
+      if (error) throw error
+      return
+    }
+    const c = it.bruto
+    const imagens = await gerarESubir(c.id, c.slides)
+    const { error } = await supabase.from('conteudo').update({ imagens, status: 'agendado', agendado_para: quando, erro: null }).eq('id', c.id)
+    if (error) throw error
+  }
+
+  async function mover(cartao, alvo) {
+    const it = cartao.bruto
     const agora = new Date().toISOString()
     try {
-      if (it.origem === 'video') {
-        if (alvo === 'rascunho') { avisar('Vídeo com arquivo fica em Pronto'); return }
+      if (alvo === 'programado') {
+        if (it.ideiaVideo) { avisar('Suba o vídeo primeiro: abra a ideia e clique em Subir o vídeo'); return }
+        if (it.origem !== 'video') {
+          const minimo = it.bruto.formato === 'estatico' ? 1 : 2
+          if ((it.bruto.slides?.length || 0) < minimo) { avisar('Faltam slides: abra e complete antes de programar'); return }
+          setOcupado('Gerando as imagens…')
+        }
         const quando = it.quando && it.quando > agora ? it.quando : sugerir(it.chave)
-        const d = alvo === 'pronto' ? { ig_status: 'pendente', ig_agendado_para: null, ig_erro: null }
-          : alvo === 'agendado' ? { ig_status: 'agendado', ig_agendado_para: quando, ig_erro: null }
-            : { ig_status: 'publicado', ig_postado_em: agora }
+        await agendar(it, quando)
+        setOcupado('')
+        avisar(`Programado: sai sozinho ${fmtQuando(quando)}`)
+      } else if (it.origem === 'video') {
+        const d = alvo === 'pronto' ? { ig_status: 'pendente', ig_agendado_para: null, ig_erro: null } : { ig_status: 'publicado', ig_postado_em: agora }
         const { error } = await supabase.from('videos').update(d).eq('id', it.bruto.id)
         if (error) throw error
-        avisar(alvo === 'agendado' ? `Agendado: sai sozinho ${fmtQuando(quando)}` : alvo === 'publicado' ? 'Marcado como publicado' : 'Voltou para Pronto')
+        avisar(alvo === 'postado' ? 'Marcado como postado' : 'Voltou para Prontos')
       } else {
-        const c = it.bruto
-        if (it.ideiaVideo && (alvo === 'agendado' || alvo === 'publicado')) { avisar('Suba o vídeo primeiro: abra a ideia e clique em Subir o vídeo'); return }
-        if (alvo === 'agendado') {
-          const minimo = c.formato === 'estatico' ? 1 : 2
-          if ((c.slides?.length || 0) < minimo) { avisar('Faltam slides: abra e complete antes de agendar'); return }
-          const quando = it.quando && it.quando > agora ? it.quando : sugerir(it.chave)
-          setOcupado('Gerando as imagens…')
-          const imagens = await gerarESubir(c.id, c.slides)
-          const { error } = await supabase.from('conteudo').update({ imagens, status: 'agendado', agendado_para: quando, erro: null }).eq('id', c.id)
-          setOcupado('')
-          if (error) throw error
-          avisar(`Agendado: sai sozinho ${fmtQuando(quando)}`)
-        } else {
-          const d = alvo === 'publicado' ? { status: 'publicado', publicado_em: agora } : { status: alvo === 'pronto' ? 'pronto' : 'ideia', erro: null }
-          const { error } = await supabase.from('conteudo').update(d).eq('id', c.id)
-          if (error) throw error
-          avisar(alvo === 'publicado' ? 'Marcado como publicado' : `Movido para ${FASES.find(([k]) => k === alvo)[1]}`)
-        }
+        if (it.ideiaVideo && alvo === 'postado') { avisar('Suba o vídeo primeiro'); return }
+        // voltar para Prontos mantém o rascunho como rascunho
+        const d = alvo === 'postado' ? { status: 'publicado', publicado_em: agora } : { status: it.fase === 'rascunho' ? 'ideia' : 'pronto', erro: null }
+        const { error } = await supabase.from('conteudo').update(d).eq('id', it.bruto.id)
+        if (error) throw error
+        avisar(alvo === 'postado' ? 'Marcado como postado' : 'Voltou para Prontos')
       }
     } catch (e) { setOcupado(''); avisar(`Não moveu: ${e.message || 'erro'}`) }
-    carregar()
+    await carregar()
   }
 
-  // rascunhos de carrossel/estático que já têm data: gera as imagens e agenda todos de uma vez
-  const comData = (conteudo || []).filter((c) => ['carrossel', 'estatico'].includes(c.formato) && ['ideia', 'pronto', 'erro'].includes(c.status)
-    && c.agendado_para && new Date(c.agendado_para) > new Date() && c.slides?.length >= (c.formato === 'estatico' ? 1 : 2))
-  async function agendarComData() {
-    for (let k = 0; k < comData.length; k++) {
-      const c = comData[k]
-      setOcupado(`Gerando ${k + 1} de ${comData.length}…`)
-      try {
-        const imagens = await gerarESubir(c.id, c.slides)
-        const { error } = await supabase.from('conteudo').update({ imagens, status: 'agendado', erro: null }).eq('id', c.id)
-        if (error) throw error
-      } catch (e) { avisar(`Falhou em "${c.titulo}": ${e.message || 'erro'}`); break }
+  // Programar tudo: um horário para cada post escolhido, na ordem
+  async function programar(lote, progresso) {
+    let ok = 0
+    for (let k = 0; k < lote.length; k++) {
+      const { item, quando } = lote[k]
+      progresso?.(k + 1, lote.length)
+      try { await agendar(item.bruto, quando); ok++ } catch (e) { avisar(`Falhou em "${item.titulo}": ${e.message || 'erro'}`); break }
     }
-    setOcupado(''); avisar('Agendados'); carregar()
+    if (ok) avisar(ok === lote.length ? `${ok} programados` : `${ok} de ${lote.length} programados`)
+    await carregar()
   }
 
   if (conteudo === null || videos === null) return <p className="p-vazio">Carregando…</p>
@@ -311,136 +323,8 @@ export default function Estudio({ canal = 'tavin-digital', nome = 'Tavin Digital
     return <Editor key={aberto.chave} item={aberto.bruto} fechar={fechar} recarregar={carregar} voltar={nome} />
   }
 
-  const q = busca.trim().toLowerCase()
-  const filtrados = itens.filter((i) => (!tipo || i.tipo === tipo) && (!q || `${i.titulo} ${i.legenda}`.toLowerCase().includes(q)))
-  const conta = (t) => itens.filter((i) => i.fase !== 'publicado' && (!t || i.tipo === t)).length
-  const agendados = itens.filter((i) => i.fase === 'agendado' && i.quando).sort((a, b) => a.quando.localeCompare(b.quando))
-  const fila = agendados.at(-1)?.quando
-
-  const col = Object.fromEntries(FASES.map(([k]) => [k, []]))
-  for (const i of filtrados) col[i.fase].push(i)
-  // mais recente em cima; em Agendado, o próximo a sair fica em cima
-  const criado = (i) => i.bruto.created_at || ''
-  const recente = (a, b) => criado(b).localeCompare(criado(a))
-  col.rascunho.sort(recente)
-  col.pronto.sort(recente)
-  col.agendado.sort((a, b) => (a.quando || '').localeCompare(b.quando || ''))
-  const filaPrevia = FASES.flatMap(([k]) => col[k]).filter((i) => i.origem === 'video' && i.bruto.video_url).map((i) => ({
-    id: i.chave, video_url: i.bruto.video_url, capa_url: i.bruto.capa_url, titulo: i.titulo, sub: FASES.find(([k]) => k === i.fase)[1],
-    baixar: `${i.bruto.video_url}?download=${encodeURIComponent(i.bruto.arquivo || `${i.bruto.id}.mp4`)}`,
-  }))
-  col.publicado.sort((a, b) => (b.publicado || '').localeCompare(a.publicado || ''))
-
   return (
-    <section>
-      <div className="p-cab">
-        <div>
-          <h1>{nome}</h1>
-          <p className="p-sub">
-            {col.agendado.length} agendados{fila ? ` (fila até ${fmtDia(fila)})` : ''} · {itens.filter((i) => i.fase === 'pronto').length} prontos · {itens.filter((i) => i.fase === 'rascunho').length} rascunhos
-          </p>
-        </div>
-        <div className="p-acoes">
-          {comData.length > 0 && <button className="p-btn p-btn--forte" onClick={agendarComData} disabled={!!ocupado}>{ocupado || `Agendar os ${comData.length} com data marcada`}</button>}
-          <button className="p-btn" onClick={() => novo('carrossel')}>Novo carrossel</button>
-          <button className="p-btn" onClick={() => novo('estatico')}>Novo estático</button>
-          <button className="p-btn p-btn--forte" onClick={() => arquivo.current?.click()} disabled={!!ocupado}>{ocupado || 'Subir vídeo'}</button>
-          <button className="p-btn" onClick={() => setMetricas(true)}>Métricas de {nome}</button>
-          <input ref={arquivo} type="file" accept="video/mp4,video/quicktime" hidden onChange={(e) => { const f = e.target.files?.[0]; e.target.value = ''; if (f) subir(f) }} />
-        </div>
-      </div>
-
-      <ConexaoInstagram />
-
-      <div className="v-filtros e-filtros" role="toolbar" aria-label="Filtros">
-        {[['', 'Tudo'], ['carrossel', 'Carrosséis'], ['estatico', 'Estáticos'], ['video', 'Vídeos']].map(([k, n]) => (
-          <button key={k || 'tudo'} type="button" className={tipo === k ? 'on' : ''} aria-pressed={tipo === k} onClick={() => setTipo(k)}>{n} <small>{conta(k)}</small></button>
-        ))}
-        <input className="e-busca" type="search" value={busca} onChange={(e) => setBusca(e.target.value)} placeholder="Buscar post" aria-label="Buscar post" />
-        <span className="e-visao" role="group" aria-label="Visualização">
-          <button type="button" className={visao === 'quadro' ? 'on' : ''} onClick={() => setVisao('quadro')}>Quadro</button>
-          <button type="button" className={visao === 'agenda' ? 'on' : ''} onClick={() => setVisao('agenda')}>Agenda</button>
-        </span>
-        <label className="v-filtro-check"><input type="checkbox" checked={verPublicados} onChange={(e) => setVerPublicados(e.target.checked)} /> Mostrar publicados</label>
-      </div>
-      {ocupado && <p className="v-dica">{ocupado}</p>}
-
-      {visao === 'agenda' ? (
-        <Agenda itens={filtrados} abrir={setAberto} verPublicados={verPublicados} />
-      ) : (
-        <div className="v-pipe e-pipe">
-          {FASES.map(([k, n, dica]) => {
-            const recolhida = k === 'publicado' && !verPublicados
-            return (
-              <section key={k} className={`v-coluna e-coluna--${k} ${arr && sobre === k ? 'v-coluna--sobre' : ''}`} aria-label={n}
-                onDragOver={(e) => { if (arr) { e.preventDefault(); e.dataTransfer.dropEffect = 'move'; if (sobre !== k) setSobre(k) } }}
-                onDragLeave={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) setSobre((x) => (x === k ? null : x)) }}
-                onDrop={(e) => { e.preventDefault(); const ch = arr || e.dataTransfer.getData('text/plain'); setArr(null); setSobre(null); if (ch) mover(ch, k) }}>
-                <header><h2>{n} <span>{col[k].length}</span></h2><p>{dica}</p></header>
-                {recolhida
-                  ? col[k].length > 0 && <button className="p-btn p-btn--mini p-btn--fraco" onClick={() => setVerPublicados(true)}>Mostrar os {col[k].length} publicados</button>
-                  : col[k].map((i) => <Cartao key={i.chave} item={i} abrir={setAberto} previa={setPreviaChave} arrastar={(c) => { setArr(c); if (!c) setSobre(null) }} mover={mover} arrastando={arr === i.chave} />)}
-                {!recolhida && col[k].length === 0 && <p className="v-vazia">{k === 'pronto' ? 'Nada pronto. Arraste um rascunho para cá quando revisar.' : k === 'agendado' ? 'Nada agendado. Arraste um post pronto para cá.' : 'Vazio.'}</p>}
-              </section>
-            )
-          })}
-        </div>
-      )}
-      {previaChave && <Previa lista={filaPrevia} id={previaChave} setId={setPreviaChave} abrirFicha={(ch) => setAberto(itens.find((i) => i.chave === ch))} />}
-      {metricas && <Metricas canal={CANAIS.find((c) => c.id === canal) || { id: canal, nome, cor: '#B600F6', sigla: 'TD', tipo: 'marca' }} fechar={() => setMetricas(false)} />}
-    </section>
-  )
-}
-
-// Agenda: os próximos 21 dias, um por linha, com os dias livres à mostra
-function Agenda({ itens, abrir, verPublicados }) {
-  const hoje = diaSP(new Date().toISOString())
-  const dias = []
-  const d = new Date(`${hoje}T12:00:00Z`)
-  if (verPublicados) d.setUTCDate(d.getUTCDate() - 14)
-  const total = verPublicados ? 35 : 21
-  for (let k = 0; k < total; k++) { dias.push(d.toISOString().slice(0, 10)); d.setUTCDate(d.getUTCDate() + 1) }
-  const porDia = {}
-  for (const i of itens) {
-    const ref = i.fase === 'publicado' ? i.publicado : i.quando
-    if (!ref || (i.fase === 'publicado' && !verPublicados)) continue
-    ;(porDia[diaSP(ref)] ||= []).push(i)
-  }
-  const semData = itens.filter((i) => !i.quando && i.fase !== 'publicado')
-  return (
-    <div className="e-agenda">
-      <ol>
-        {dias.map((dia) => {
-          const lista = (porDia[dia] || []).sort((a, b) => (a.quando || a.publicado || '').localeCompare(b.quando || b.publicado || ''))
-          const dt = new Date(`${dia}T15:00:00Z`)
-          return (
-            <li key={dia} className={`${dia === hoje ? 'hoje' : ''} ${lista.length ? '' : 'livre'}`}>
-              <span className="e-dia">{dt.toLocaleDateString('pt-BR', { timeZone: 'UTC', weekday: 'short', day: '2-digit', month: '2-digit' })}</span>
-              <div className="e-dia-itens">
-                {lista.length === 0 ? <span className="e-livre">livre</span> : lista.map((i) => (
-                  <button key={i.chave} type="button" className={`e-ag e-ag--${i.fase}`} onClick={() => abrir(i)}>
-                    <b className={`e-tipo e-tipo--${i.tipo}`}>{TIPOS[i.tipo]}</b>
-                    <span>{fmtHora(i.fase === 'publicado' ? i.publicado : i.quando)} · {i.titulo}</span>
-                    <small>{i.fase === 'agendado' ? 'agendado' : i.fase === 'publicado' ? 'no ar' : `${FASES.find(([k]) => k === i.fase)[1].toLowerCase()} (ainda não agendado)`}</small>
-                  </button>
-                ))}
-              </div>
-            </li>
-          )
-        })}
-      </ol>
-      {semData.length > 0 && (
-        <div className="e-semdata">
-          <h3>Sem data ({semData.length})</h3>
-          <div className="e-dia-itens">
-            {semData.map((i) => (
-              <button key={i.chave} type="button" className={`e-ag e-ag--${i.fase}`} onClick={() => abrir(i)}>
-                <b className={`e-tipo e-tipo--${i.tipo}`}>{i.ideiaVideo ? 'Ideia' : TIPOS[i.tipo]}</b><span>{i.titulo}</span><small>{FASES.find(([k]) => k === i.fase)[1].toLowerCase()}</small>
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
+    <Pipeline canal={info} itens={cartoes} mover={mover} programar={programar} subir={subir} abrir={(c) => c && setAberto(c.bruto)}
+      cx={cx} recarregar={carregar} marca extra={<NovoPost novo={novo} />} ocupado={ocupado} />
   )
 }

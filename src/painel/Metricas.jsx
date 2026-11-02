@@ -64,8 +64,8 @@ function Num({ v, rotulo, sub }) {
 
 function Instagram({ ig, dias, cor }) {
   if (!ig) return <p className="mc-vazio">Carregando o Instagram…</p>
-  if (!ig.conectado) return <p className="mc-vazio">Instagram não conectado. Ligue a conta em "Ligar Instagram" no topo deste painel para ver seguidores, alcance e o desempenho de cada post.</p>
-  if (ig.erro) return <p className="mc-vazio mc-vazio--erro">O Instagram respondeu com erro: {ig.erro}. Se o token venceu, troque em "Trocar token".</p>
+  if (!ig.conectado) return <p className="mc-vazio">Instagram não conectado. Ligue a conta em Integrações, no topo do canal, para ver seguidores, alcance e o desempenho de cada post.</p>
+  if (ig.erro) return <p className="mc-vazio mc-vazio--erro">O Instagram respondeu com erro: {ig.erro}. Se o token venceu, troque em Integrações.</p>
   const p = ig.periodo || {}
   const liquido = p.seguiu != null ? (p.seguiu || 0) - (p.deixou || 0) : null
   const posts = ig.posts || []
@@ -124,7 +124,7 @@ function Instagram({ ig, dias, cor }) {
 
 function YouTube({ yt }) {
   if (!yt) return <p className="mc-vazio">Carregando o YouTube…</p>
-  if (!yt.conectado) return <p className="mc-vazio">YouTube não ligado. Em "Ligar YouTube", cole o link do canal: o painel passa a trazer views e inscritos.</p>
+  if (!yt.conectado) return <p className="mc-vazio">YouTube não ligado. Em Integrações, cole o link do canal: o painel passa a trazer views e inscritos.</p>
   if (yt.erro) return <p className="mc-vazio mc-vazio--erro">O YouTube respondeu com erro: {yt.erro}</p>
   const top = [...(yt.videos || [])].sort((a, b) => (b.views || 0) - (a.views || 0)).slice(0, 5)
   return (
