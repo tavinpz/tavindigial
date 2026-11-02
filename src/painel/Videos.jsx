@@ -3,6 +3,7 @@ import { supabase } from '../lib/supabase'
 import { usePainel } from './Painel'
 import Pipeline, { useConexoes } from './Pipeline'
 import { CANAIS } from './canais'
+import BotoesThata from './ThataConteudo'
 
 // Vídeos curtos de um canal (Thata, Concrete Atlas, Zerando…): em produção → para programar → upload feito → programado → postado.
 // Cada rede (YouTube, TikTok, Instagram) tem a própria situação. O que foi programado vira "postado" sozinho no horário,
@@ -405,6 +406,6 @@ export default function Videos({ canal = 'concrete-atlas', nome = 'Concrete Atla
 
   return (
     <Pipeline canal={info} fases={FASES} itens={itens} mover={mover} programar={programar} subir={subir} abrir={(i) => i && setAbertoId(i.chave)}
-      cx={cx} recarregar={carregar} />
+      cx={cx} recarregar={carregar} extra={canal === 'thata' ? <BotoesThata /> : null} />
   )
 }

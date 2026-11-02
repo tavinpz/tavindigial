@@ -68,7 +68,7 @@ export function useConexoes(canal, marca = false) {
 }
 
 // Janela (modal) simples: Esc ou clicar fora fecha
-function Janela({ titulo, sub, fechar, children, rodape, larga }) {
+export function Janela({ titulo, sub, fechar, children, rodape, larga }) {
   useEffect(() => {
     const esc = (e) => e.key === 'Escape' && fechar()
     window.addEventListener('keydown', esc)

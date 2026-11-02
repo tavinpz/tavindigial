@@ -1007,3 +1007,34 @@ body:has(.p-fantasma) { cursor: grabbing; }
 }
 @media (prefers-reduced-motion: reduce) { .pl-fundo { animation: none; } }
 .pl-linha:empty { display: none; }
+
+/* ── Thata: Notícias e Legendas (vindos do thata.conteudo) ── */
+.tc-filtros { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.tc-pill { font: inherit; font-size: 13px; font-weight: 700; padding: 6px 12px; border-radius: 99px; border: 1px solid var(--linha, #E4DDEA); background: #fff; cursor: pointer; }
+.tc-pill.on { background: #15A763; border-color: #15A763; color: #fff; }
+.tc-lista { display: flex; flex-direction: column; gap: 12px; }
+.tc-noticia { border: 1px solid var(--linha, #E4DDEA); border-radius: 14px; padding: 12px 14px; background: #fff; }
+.tc-noticia header { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--cinza, #6B6375); }
+.tc-fonte { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tc-nota { font-weight: 800; color: #0E7A47; background: #E3F7EC; border-radius: 8px; padding: 2px 8px; }
+.tc-st { font-weight: 700; border-radius: 99px; padding: 2px 9px; background: #F1EEF4; text-transform: capitalize; }
+.tc-st--aprovada { background: #E3F7EC; color: #0E7A47; } .tc-st--postada { background: #E7EEFF; color: #2848B8; } .tc-st--rejeitada { background: #FDE8E8; color: #B42318; }
+.tc-noticia h3 { margin: 8px 0 2px; font-size: 16px; line-height: 1.25; }
+.tc-headline { margin: 0 0 6px; font-weight: 600; color: #3A3242; }
+.tc-texto { margin: 6px 0; font-size: 14px; line-height: 1.45; white-space: pre-line; user-select: text; }
+.tc-orig, .tc-meta { margin: 4px 0; font-size: 12.5px; color: var(--cinza, #6B6375); }
+.tc-acoes { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.tc-drop { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 44px 16px; border: 2px dashed #CFC6D8; border-radius: 16px; text-align: center; cursor: pointer; background: #FAF8FC; }
+.tc-drop.on, .tc-drop:hover { border-color: #15A763; background: #F0FBF5; }
+.tc-drop span { font-size: 12.5px; color: var(--cinza, #6B6375); }
+.tc-leg { display: grid; grid-template-columns: 200px 1fr; gap: 16px; align-items: start; }
+.tc-previa { display: flex; flex-direction: column; gap: 6px; position: sticky; top: 0; }
+.tc-previa img { width: 100%; border-radius: 12px; background: #111; }
+.tc-previa span { font-size: 12px; color: var(--cinza, #6B6375); word-break: break-all; }
+.tc-leg-lado { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.tc-versao { border: 1px solid var(--linha, #E4DDEA); border-radius: 14px; padding: 12px 14px; background: #fff; }
+.tc-versao header { font-size: 13px; color: var(--cinza, #6B6375); } .tc-versao header b { color: #15A763; }
+.tc-porque { margin: 4px 0 0; font-size: 12.5px; color: var(--cinza, #6B6375); font-style: italic; }
+.tc-ajuste { display: flex; gap: 6px; margin-top: 8px; }
+.tc-ajuste input { flex: 1; min-width: 0; font: inherit; font-size: 13px; padding: 7px 10px; border: 1px solid var(--linha, #E4DDEA); border-radius: 10px; }
+@media (max-width: 640px) { .tc-leg { grid-template-columns: 1fr; } .tc-previa { position: static; max-width: 220px; } }
