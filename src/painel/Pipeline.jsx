@@ -9,14 +9,16 @@ import Metricas from './Metricas'
 // Cada canal (Estudio para a Tavin Digital, Videos para os de vídeo curto) entrega os cartões já no formato abaixo
 // e as ações (mover, programar em lote, subir vídeo). O visual, o cabeçalho e as janelas são os mesmos para todos.
 //
-// item: { chave, fase: 'pronto'|'programado'|'postado', titulo, num?, tipo?, video_url?, capa_url?, mini?, quando?, postado?,
+// As colunas vêm de cada canal (fases): { k, nome, cor, papel: 'fila' | 'programado' | 'postado', opcional?, soltar? }
+//   papel 'programado' ordena pelo próximo a sair; 'postado' é recolhível; 'fila' fica com o mais recente em cima.
+// item: { chave, fase: k de uma das colunas, titulo, num?, tipo?, video_url?, capa_url?, mini?, quando?, postado?,
 //         views?, erro?, redes?: [{ sigla, s }], aviso?, planejado?, programavel, ordem, sub? }
 
 const FUSO = 'America/Sao_Paulo'
-export const FASES = [
-  ['pronto', 'Prontos'],
-  ['programado', 'Programados'],
-  ['postado', 'Postados'],
+const FASES_PADRAO = [
+  { k: 'pronto', nome: 'Pronto', cor: '#B600F6', papel: 'fila' },
+  { k: 'programado', nome: 'Programado', cor: '#6E56CF', papel: 'programado' },
+  { k: 'postado', nome: 'Postado', cor: '#1E9E5A', papel: 'postado' },
 ]
 export const fmtDia = (iso) => (iso ? new Date(iso).toLocaleDateString('pt-BR', { timeZone: FUSO, weekday: 'short', day: '2-digit', month: '2-digit' }) : '')
 export const fmtHora = (iso) => (iso ? new Date(iso).toLocaleTimeString('pt-BR', { timeZone: FUSO, hour: '2-digit', minute: '2-digit' }) : '')
@@ -93,16 +95,16 @@ function Miniatura({ item }) {
   return item.mini || <span className="pl-mini-vazia">{item.aviso || 'sem arte'}</span>
 }
 
-function Status({ item, fase }) {
+function Status({ item, papel }) {
   if (item.erro) return <em className="pl-st pl-st--erro">Erro: {item.erro}</em>
   if (item.aviso) return <em className="pl-st">{item.aviso}</em>
-  if (fase === 'programado' && item.quando) return <em className="pl-st pl-st--prog">◷ {fmtCurto(item.quando)}{item.publicando ? ' · publicando…' : ''}</em>
-  if (fase === 'postado') return <em className="pl-st pl-st--ok">✓ {item.postado ? fmtCurto(item.postado).replace(/ \S+$/, '') : 'no ar'}{item.views > 0 ? ` · ${fmtNum(item.views)} views` : ''}</em>
+  if (papel === 'programado' && item.quando) return <em className="pl-st pl-st--prog">◷ {fmtCurto(item.quando)}{item.publicando ? ' · publicando…' : ''}</em>
+  if (papel === 'postado') return <em className="pl-st pl-st--ok">✓ {item.postado ? fmtCurto(item.postado).replace(/ \S+$/, '') : 'no ar'}{item.views > 0 ? ` · ${fmtNum(item.views)} views` : ''}</em>
   if (item.planejado) return <em className="pl-st">planejado {fmtCurto(item.planejado)}</em>
   return null
 }
 
-function Cartao({ item, fase, abrir, previa, arrastar, arrastando, mover }) {
+function Cartao({ item, fase, papel, fases, abrir, previa, arrastar, arrastando, mover }) {
   const [pode, setPode] = useState(true)
   const arrastavel = pode && item.movel !== false
   return (
@@ -116,7 +118,7 @@ function Cartao({ item, fase, abrir, previa, arrastar, arrastando, mover }) {
       <button type="button" className="pl-txt" onClick={() => abrir(item)}>
         <strong>{item.num && <b className="pl-num">{item.num}</b>}{item.titulo}</strong>
         <span className="pl-linha">
-          <Status item={item} fase={fase} />
+          <Status item={item} papel={papel} />
           {item.redes && (
             <span className="pl-redes" aria-label={item.redes.map((r) => `${r.nome}: ${r.s}`).join(', ')}>
               {item.redes.map((r) => <i key={r.sigla} className={`pl-rede pl-rede--${r.s}`} title={`${r.nome}: ${r.s}`}>{r.sigla}</i>)}
@@ -128,7 +130,7 @@ function Cartao({ item, fase, abrir, previa, arrastar, arrastando, mover }) {
       {item.movel !== false && (
         <select className="pl-mover" value="" aria-label="Mover para outra coluna" onChange={(e) => e.target.value && mover(item.chave, e.target.value)}>
           <option value="">Mover…</option>
-          {FASES.filter(([k]) => k !== fase).map(([k, n]) => <option key={k} value={k}>{n}</option>)}
+          {fases.filter((f) => f.k !== fase && f.soltar !== false).map((f) => <option key={f.k} value={f.k}>{f.nome}</option>)}
         </select>
       )}
     </article>
@@ -300,7 +302,7 @@ function ProgramarTudo({ itens, fila, programar, fechar }) {
       </div>
       {comPlano && <label className="pl-check"><input type="checkbox" checked={manter} onChange={(e) => setManter(e.target.checked)} /> Manter as datas já planejadas</label>}
       <div className="pl-prog-barra">
-        <label className="pl-check"><input type="checkbox" checked={todos} onChange={() => setSel(todos ? new Set() : new Set(lista.map((i) => i.chave)))} /> Todos os prontos ({lista.length})</label>
+        <label className="pl-check"><input type="checkbox" checked={todos} onChange={() => setSel(todos ? new Set() : new Set(lista.map((i) => i.chave)))} /> Todos ({lista.length})</label>
         <select value={ordem} onChange={(e) => setOrdem(e.target.value)} aria-label="Ordem">
           <option value="antigo">Mais antigos primeiro</option>
           <option value="novo">Mais novos primeiro</option>
@@ -374,7 +376,7 @@ function SubirVideo({ canal, subir, fechar }) {
   }
   const mb = arq ? (arq.size / 1048576).toFixed(1).replace('.', ',') : ''
   return (
-    <Janela titulo="Subir vídeo" sub={`Entra em Prontos de ${canal.nome}`} fechar={ocupado ? () => {} : fechar}
+    <Janela titulo="Subir vídeo" sub={`Entra no quadro de ${canal.nome}, pronto para programar`} fechar={ocupado ? () => {} : fechar}
       rodape={<>
         <span className="pl-pe-txt">{ocupado || (arq ? `${arq.name} · ${mb} MB` : 'MP4 até 50 MB')}</span>
         <button className="p-btn p-btn--fraco" type="button" onClick={fechar} disabled={!!ocupado}>Cancelar</button>
@@ -396,9 +398,9 @@ function SubirVideo({ canal, subir, fechar }) {
 }
 
 // ── Quadro + cabeçalho ──
-export default function Pipeline({ canal, itens, mover, programar, subir, abrir, cx, recarregar, marca = false, extra = null, ocupado = '' }) {
+export default function Pipeline({ canal, fases = FASES_PADRAO, itens, mover, programar, subir, abrir, cx, recarregar, marca = false, extra = null, ocupado = '' }) {
   const [verPostados, setVerPostados] = useState(() => lerLS('pl-postados', '0') === '1')
-  const [aba, setAba] = useState('pronto')
+  const [aba, setAba] = useState(null)
   const [janela, setJanela] = useState(null)
   const [previa, setPrevia] = useState(null)
   const [arr, setArr] = useState(null)
@@ -409,23 +411,28 @@ export default function Pipeline({ canal, itens, mover, programar, subir, abrir,
   useEffect(() => gravarLS('pl-postados', verPostados ? '1' : '0'), [verPostados])
 
   const fase = (i) => local[i.chave] || i.fase
+  const deFase = (k) => fases.find((f) => f.k === k)
   async function moverAqui(chave, alvo) {
     const it = itens.find((i) => i.chave === chave)
-    if (!it || it.movel === false || fase(it) === alvo) return
+    if (!it || it.movel === false || fase(it) === alvo || deFase(alvo)?.soltar === false) return
     setLocal((l) => ({ ...l, [chave]: alvo }))
     await mover(it, alvo)
     setLocal((l) => { const x = { ...l }; delete x[chave]; return x })
   }
 
-  const col = { pronto: [], programado: [], postado: [] }
+  const col = Object.fromEntries(fases.map((f) => [f.k, []]))
   for (const i of itens) col[fase(i)]?.push(i)
-  col.pronto.sort((a, b) => (!!a.aviso - !!b.aviso) || b.ordem.localeCompare(a.ordem))
-  col.programado.sort((a, b) => (a.quando || '').localeCompare(b.quando || ''))
-  col.postado.sort((a, b) => (b.postado || '').localeCompare(a.postado || '') || b.ordem.localeCompare(a.ordem))
-  const fila = col.programado.map((i) => i.quando).filter(Boolean).at(-1)
-  const programaveis = col.pronto.filter((i) => i.programavel)
-  const listaPrevia = FASES.flatMap(([k]) => col[k]).filter((i) => i.video_url)
-    .map((i) => ({ id: i.chave, video_url: i.video_url, capa_url: i.capa_url, titulo: `${i.num ? `${i.num} ` : ''}${i.titulo}`, sub: FASES.find(([k]) => k === fase(i))[1], baixar: i.baixar }))
+  for (const f of fases) {
+    if (f.papel === 'programado') col[f.k].sort((a, b) => (a.quando || '').localeCompare(b.quando || '') || b.ordem.localeCompare(a.ordem))
+    else if (f.papel === 'postado') col[f.k].sort((a, b) => (b.postado || '').localeCompare(a.postado || '') || b.ordem.localeCompare(a.ordem))
+    else col[f.k].sort((a, b) => (!!a.aviso - !!b.aviso) || b.ordem.localeCompare(a.ordem)) // mais recente em cima
+  }
+  const visiveis = fases.filter((f) => !f.opcional || col[f.k].length)
+  const abaAtual = visiveis.some((f) => f.k === aba) ? aba : (visiveis.find((f) => f.papel === 'fila' && !f.opcional) || visiveis[0]).k
+  const fila = fases.filter((f) => f.papel === 'programado').flatMap((f) => col[f.k]).map((i) => i.quando).filter(Boolean).sort().at(-1)
+  const programaveis = itens.filter((i) => i.programavel && deFase(fase(i))?.papel === 'fila')
+  const listaPrevia = visiveis.flatMap((f) => col[f.k]).filter((i) => i.video_url)
+    .map((i) => ({ id: i.chave, video_url: i.video_url, capa_url: i.capa_url, titulo: `${i.num ? `${i.num} ` : ''}${i.titulo}`, sub: deFase(fase(i))?.nome, baixar: i.baixar }))
 
   return (
     <section className="pl" style={{ '--c': canal.cor }}>
@@ -450,37 +457,36 @@ export default function Pipeline({ canal, itens, mover, programar, subir, abrir,
       {ocupado && <p className="pl-ocupado" role="status">{ocupado}</p>}
 
       <div className="pl-abas" role="tablist" aria-label="Colunas">
-        {FASES.map(([k, n]) => (
-          <button key={k} type="button" role="tab" aria-selected={aba === k} className={aba === k ? 'on' : ''} onClick={() => setAba(k)}>{n} <small>{col[k].length}</small></button>
+        {visiveis.map((f) => (
+          <button key={f.k} type="button" role="tab" aria-selected={abaAtual === f.k} className={abaAtual === f.k ? 'on' : ''} onClick={() => setAba(f.k)}>{f.nome} <small>{col[f.k].length}</small></button>
         ))}
       </div>
 
-      <div className={`pl-quadro ${verPostados ? '' : 'pl-quadro--fechado'}`}>
-        {FASES.map(([k, n]) => {
-          const recolhida = k === 'postado' && !verPostados && !celular
-          const limite = k === 'postado' ? 12 : 40
-          const lista = verTodos[k] ? col[k] : col[k].slice(0, limite)
+      <div className="pl-quadro">
+        {visiveis.map((f) => {
+          const { k, nome: n } = f
+          const recolhida = f.papel === 'postado' && !verPostados && !celular
+          const limite = f.papel === 'postado' ? 6 : f.papel === 'fila' ? 8 : 99
+          const lista = recolhida ? [] : verTodos[k] ? col[k] : col[k].slice(0, limite)
           return (
-            <section key={k} className={`pl-col pl-col--${k} ${aba === k ? 'pl-col--ativa' : ''} ${recolhida ? 'pl-col--recolhida' : ''} ${arr && sobre === k ? 'pl-col--sobre' : ''}`} aria-label={n}
-              onDragOver={(e) => { if (arr) { e.preventDefault(); e.dataTransfer.dropEffect = 'move'; if (sobre !== k) setSobre(k) } }}
+            <section key={k} style={{ '--cor': f.cor }} className={`pl-col pl-col--${f.papel} ${abaAtual === k ? 'pl-col--ativa' : ''} ${arr && sobre === k ? 'pl-col--sobre' : ''}`} aria-label={n}
+              onDragOver={(e) => { if (arr && f.soltar !== false) { e.preventDefault(); e.dataTransfer.dropEffect = 'move'; if (sobre !== k) setSobre(k) } }}
               onDragLeave={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) setSobre((x) => (x === k ? null : x)) }}
               onDrop={(e) => { e.preventDefault(); const ch = arr || e.dataTransfer.getData('text/plain'); setArr(null); setSobre(null); if (ch) moverAqui(ch, k) }}>
               <header className="pl-col-cab">
-                <h2>{n} <span>{col[k].length}</span></h2>
-                {k === 'postado' && <button type="button" className="pl-col-btn" onClick={() => setVerPostados(!verPostados)} aria-expanded={verPostados}>{verPostados ? 'Recolher' : 'Mostrar'}</button>}
+                <h2>{n}</h2>
+                <span className="pl-col-n">{col[k].length}</span>
               </header>
-              {!recolhida && (
-                <div className="pl-cards">
-                  {lista.map((i) => (
-                    <Cartao key={i.chave} item={i} fase={k} abrir={abrir} previa={setPrevia} mover={moverAqui} arrastando={arr === i.chave}
-                      arrastar={(c) => { setArr(c); if (!c) setSobre(null) }} />
-                  ))}
-                  {col[k].length === 0 && <p className="pl-vazia">{k === 'pronto' ? 'Nada pronto. Suba um vídeo.' : k === 'programado' ? 'Nada programado.' : 'Nada postado ainda.'}</p>}
-                </div>
-              )}
+              {recolhida && col[k].length > 0 && <button type="button" className="pl-col-btn pl-col-abrir" onClick={() => setVerPostados(true)}>Mostrar os {col[k].length}</button>}
+              {lista.map((i) => (
+                <Cartao key={i.chave} item={i} fase={k} papel={f.papel} fases={visiveis} abrir={abrir} previa={setPrevia} mover={moverAqui} arrastando={arr === i.chave}
+                  arrastar={(c) => { setArr(c); if (!c) setSobre(null) }} />
+              ))}
+              {col[k].length === 0 && <p className="pl-vazia">{f.papel === 'fila' ? 'Vazio.' : f.papel === 'programado' ? 'Nada programado.' : 'Nada postado ainda.'}</p>}
               {!recolhida && col[k].length > limite && (
                 <button type="button" className="pl-col-btn pl-col-mais" onClick={() => setVerTodos((v) => ({ ...v, [k]: !v[k] }))}>{verTodos[k] ? 'Mostrar menos' : `Ver mais ${col[k].length - limite}`}</button>
               )}
+              {f.papel === 'postado' && verPostados && !celular && col[k].length > 0 && <button type="button" className="pl-col-btn pl-col-mais" onClick={() => setVerPostados(false)}>Recolher</button>}
             </section>
           )
         })}

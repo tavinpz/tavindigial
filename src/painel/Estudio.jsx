@@ -5,9 +5,9 @@ import { Editor, Slide, gerarESubir, NOVO, NOVO_ESTATICO } from './Conteudo'
 import Pipeline, { useConexoes } from './Pipeline'
 import { CANAIS } from './canais'
 
-// Programação de um canal de marca (Tavin Digital): carrosséis, estáticos e vídeos no pipeline padrão
-// (Prontos → Programados → Postados). Programado sai sozinho no Instagram no horário.
-// Por dentro continua rascunho/pronto/agendado/publicado (é o que o banco guarda); rascunho aparece em Prontos.
+// Programação de um canal de marca (Tavin Digital): carrosséis, estáticos e vídeos num quadro só.
+// Pronto → Agendado → Publicado. Agendado sai sozinho no Instagram no horário.
+// Rascunho continua existindo no banco, mas aparece na coluna Pronto (não tem mais coluna própria).
 const FUSO = 'America/Sao_Paulo'
 const HORA_PADRAO = 12 // horário do post quando você arrasta sem escolher data
 const TIPOS = { carrossel: 'Carrossel', estatico: 'Estático', video: 'Vídeo' }
@@ -151,8 +151,13 @@ function EditorIdeia({ item, fechar, recarregar, subir }) {
 }
 
 
-// Cartão do pipeline (Prontos / Programados / Postados) a partir do item interno
-const FASE_PIPE = { rascunho: 'pronto', pronto: 'pronto', agendado: 'programado', publicado: 'postado' }
+// Colunas do quadro (as de antes, sem Rascunho)
+const COLUNAS = [
+  { k: 'pronto', nome: 'Pronto', cor: '#B600F6', papel: 'fila' },
+  { k: 'agendado', nome: 'Agendado', cor: '#6E56CF', papel: 'programado' },
+  { k: 'publicado', nome: 'Publicado', cor: '#1E9E5A', papel: 'postado' },
+]
+const FASE_PIPE = { rascunho: 'pronto', pronto: 'pronto', agendado: 'agendado', publicado: 'publicado' }
 function paraItem(i) {
   const c = i.bruto
   const video = i.origem === 'video'
@@ -253,7 +258,7 @@ export default function Estudio({ canal = 'tavin-digital', nome = 'Tavin Digital
     if (!error && ideia) await supabase.from('conteudo').delete().eq('id', ideia)
     setOcupado('')
     if (error) { avisar('Subiu, mas não registrou'); return false }
-    avisar('Vídeo em Prontos'); await carregar()
+    avisar('Vídeo em Pronto'); await carregar()
     if (ideia) setAberto(doVideo(data))
     return true
   }
@@ -275,7 +280,7 @@ export default function Estudio({ canal = 'tavin-digital', nome = 'Tavin Digital
     const it = cartao.bruto
     const agora = new Date().toISOString()
     try {
-      if (alvo === 'programado') {
+      if (alvo === 'agendado') {
         if (it.ideiaVideo) { avisar('Suba o vídeo primeiro: abra a ideia e clique em Subir o vídeo'); return }
         if (it.origem !== 'video') {
           const minimo = it.bruto.formato === 'estatico' ? 1 : 2
@@ -285,19 +290,19 @@ export default function Estudio({ canal = 'tavin-digital', nome = 'Tavin Digital
         const quando = it.quando && it.quando > agora ? it.quando : sugerir(it.chave)
         await agendar(it, quando)
         setOcupado('')
-        avisar(`Programado: sai sozinho ${fmtQuando(quando)}`)
+        avisar(`Agendado: sai sozinho ${fmtQuando(quando)}`)
       } else if (it.origem === 'video') {
         const d = alvo === 'pronto' ? { ig_status: 'pendente', ig_agendado_para: null, ig_erro: null } : { ig_status: 'publicado', ig_postado_em: agora }
         const { error } = await supabase.from('videos').update(d).eq('id', it.bruto.id)
         if (error) throw error
-        avisar(alvo === 'postado' ? 'Marcado como postado' : 'Voltou para Prontos')
+        avisar(alvo === 'publicado' ? 'Marcado como publicado' : 'Voltou para Pronto')
       } else {
-        if (it.ideiaVideo && alvo === 'postado') { avisar('Suba o vídeo primeiro'); return }
-        // voltar para Prontos mantém o rascunho como rascunho
-        const d = alvo === 'postado' ? { status: 'publicado', publicado_em: agora } : { status: it.fase === 'rascunho' ? 'ideia' : 'pronto', erro: null }
+        if (it.ideiaVideo && alvo === 'publicado') { avisar('Suba o vídeo primeiro'); return }
+        // voltar para Pronto mantém o rascunho como rascunho
+        const d = alvo === 'publicado' ? { status: 'publicado', publicado_em: agora } : { status: it.fase === 'rascunho' ? 'ideia' : 'pronto', erro: null }
         const { error } = await supabase.from('conteudo').update(d).eq('id', it.bruto.id)
         if (error) throw error
-        avisar(alvo === 'postado' ? 'Marcado como postado' : 'Voltou para Prontos')
+        avisar(alvo === 'publicado' ? 'Marcado como publicado' : 'Voltou para Pronto')
       }
     } catch (e) { setOcupado(''); avisar(`Não moveu: ${e.message || 'erro'}`) }
     await carregar()
@@ -311,7 +316,7 @@ export default function Estudio({ canal = 'tavin-digital', nome = 'Tavin Digital
       progresso?.(k + 1, lote.length)
       try { await agendar(item.bruto, quando); ok++ } catch (e) { avisar(`Falhou em "${item.titulo}": ${e.message || 'erro'}`); break }
     }
-    if (ok) avisar(ok === lote.length ? `${ok} programados` : `${ok} de ${lote.length} programados`)
+    if (ok) avisar(ok === lote.length ? `${ok} agendados` : `${ok} de ${lote.length} agendados`)
     await carregar()
   }
 
@@ -324,7 +329,7 @@ export default function Estudio({ canal = 'tavin-digital', nome = 'Tavin Digital
   }
 
   return (
-    <Pipeline canal={info} itens={cartoes} mover={mover} programar={programar} subir={subir} abrir={(c) => c && setAberto(c.bruto)}
+    <Pipeline canal={info} fases={COLUNAS} itens={cartoes} mover={mover} programar={programar} subir={subir} abrir={(c) => c && setAberto(c.bruto)}
       cx={cx} recarregar={carregar} marca extra={<NovoPost novo={novo} />} ocupado={ocupado} />
   )
 }

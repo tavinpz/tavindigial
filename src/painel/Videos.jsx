@@ -4,7 +4,7 @@ import { usePainel } from './Painel'
 import Pipeline, { useConexoes } from './Pipeline'
 import { CANAIS } from './canais'
 
-// Vídeos curtos de um canal (Thata, Concrete Atlas, Zerando…) no pipeline padrão: Prontos → Programados → Postados.
+// Vídeos curtos de um canal (Thata, Concrete Atlas, Zerando…): em produção → para programar → upload feito → programado → postado.
 // Cada rede (YouTube, TikTok, Instagram) tem a própria situação. O que foi programado vira "postado" sozinho no horário,
 // e a cada 30 min o servidor confere no YouTube (feed público) e no Instagram o que já saiu, com link e views.
 const FUSO = 'America/Sao_Paulo'
@@ -298,7 +298,16 @@ function Detalhe({ v, fechar, recarregar, igOk, voltar = 'Vídeos' }) {
   )
 }
 
-// Cartão do pipeline a partir de uma linha de `videos`
+// Colunas do quadro (mesmas de antes; "Em produção" só aparece quando tem vídeo nela)
+const FASES = [
+  { k: 'producao', nome: 'Em produção', cor: '#8E8499', papel: 'fila', opcional: true, soltar: false },
+  { k: 'programar', nome: 'Para programar', cor: '#B600F6', papel: 'fila' },
+  { k: 'subido', nome: 'Upload feito', cor: '#E08A00', papel: 'fila' },
+  { k: 'programado', nome: 'Programado', cor: '#6E56CF', papel: 'programado' },
+  { k: 'postado', nome: 'Postado', cor: '#1E9E5A', papel: 'postado' },
+]
+
+// Cartão do quadro a partir de uma linha de `videos`
 const SIGLAS = { yt: 'YT', tt: 'TT', ig: 'IG' }
 const NOMES = { yt: 'YouTube', tt: 'TikTok', ig: 'Instagram' }
 function paraItem(v) {
@@ -309,7 +318,7 @@ function paraItem(v) {
   const post = sts.map((st) => st.postado).filter(Boolean).sort()
   return {
     chave: v.id, bruto: v,
-    fase: e === 'programado' ? 'programado' : e === 'postado' ? 'postado' : 'pronto',
+    fase: e,
     titulo: v.yt_titulo || v.titulo || num(v), num: num(v),
     video_url: v.video_url, capa_url: v.capa_url, baixar: baixarUrl(v),
     quando: prog[0] || null, postado: post.at(-1) || null,
@@ -321,7 +330,8 @@ function paraItem(v) {
     aviso: e === 'producao' ? 'Em produção' : '',
     programavel: e === 'programar' || e === 'subido',
     movel: !!v.video_url,
-    ordem: `${String(v.numero ?? 0).padStart(6, '0')}${v.created_at || ''}`,
+    // mais recente em cima (em Upload feito, o último que subiu)
+    ordem: `${e === 'subido' ? v.subido_em || '' : ''}${v.created_at || ''}${String(v.numero ?? 0).padStart(6, '0')}`,
   }
 }
 
@@ -346,11 +356,12 @@ export default function Videos({ canal = 'concrete-atlas', nome = 'Concrete Atla
 
   async function mover(item, alvo) {
     const v = item.bruto
-    const d = dadosMover(v, alvo === 'pronto' ? 'programar' : alvo, igOk)
+    if (!v.video_url || alvo === 'producao') return
+    const d = dadosMover(v, alvo, igOk)
     if (!Object.keys(d).length) return
     const { error } = await supabase.from('videos').update(d).eq('id', v.id)
     avisar(error ? 'Não salvou' : alvo === 'programado' ? `${num(v)} programado para ${fmtQuando(sugestao(v))}`
-      : alvo === 'postado' ? `${num(v)} marcado como postado` : `${num(v)} voltou para Prontos`)
+      : alvo === 'postado' ? `${num(v)} marcado como postado` : alvo === 'subido' ? `${num(v)}: upload feito` : `${num(v)} voltou para Para programar`)
     await carregar()
   }
 
@@ -386,11 +397,11 @@ export default function Videos({ canal = 'concrete-atlas', nome = 'Concrete Atla
       video_url: pasta.getPublicUrl(`${canal}/${id}.mp4`).data.publicUrl, capa_url: capaUrl, duracao,
     })
     if (error) { avisar('Subiu, mas não registrou'); return false }
-    avisar('Vídeo em Prontos'); await carregar(); return true
+    avisar('Vídeo em Para programar'); await carregar(); return true
   }
 
   return (
-    <Pipeline canal={info} itens={itens} mover={mover} programar={programar} subir={subir} abrir={(i) => i && setAbertoId(i.chave)}
+    <Pipeline canal={info} fases={FASES} itens={itens} mover={mover} programar={programar} subir={subir} abrir={(i) => i && setAbertoId(i.chave)}
       cx={cx} recarregar={carregar} />
   )
 }
