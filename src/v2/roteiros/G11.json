@@ -1,0 +1,384 @@
+{
+ "id": "G11",
+ "arq": "thata_53_func_agenda.mp4",
+ "cenas": [
+  {
+   "tipo": "problema",
+   "dur": 110,
+   "titulo": "Paciente marcado\nno dia em que *a\nclínica não abre?*",
+   "visual": "mensagens",
+   "num": 3,
+   "txt": [
+    "Marquei pra quinta, dia 12, né?",
+    "Cheguei e estava fechado...",
+    "Ninguém me avisou?",
+    "a agenda não sabia da folga"
+   ],
+   "fala": "Paciente marcado no dia em que a clínica nem abre?"
+  },
+  {
+   "tipo": "solucao",
+   "dur": 116,
+   "selo": "Agenda",
+   "icone": "agenda",
+   "titulo": "A agenda da Thata\n*segue as suas regras.*",
+   "telas": [
+    {
+     "img": "telas2/cal/d1_mes.jpg",
+     "ini": 0,
+     "fim": 116,
+     "cam": [
+      [
+       0,
+       585,
+       1200,
+       1
+      ]
+     ]
+    }
+   ],
+   "fala": "Na Thata, a agenda segue as suas regras. E a IA só marca onde pode."
+  },
+  {
+   "tipo": "passo",
+   "n": "1",
+   "dur": 120,
+   "titulo": "As consultas *no calendário*",
+   "telas": [
+    {
+     "img": "telas2/cal/d1_mes.jpg",
+     "ini": 0,
+     "fim": 120,
+     "cam": [
+      [
+       0,
+       585,
+       1400,
+       1.05
+      ],
+      [
+       40,
+       585,
+       1400,
+       1.05
+      ],
+      [
+       64,
+       460,
+       1380,
+       1.5
+      ]
+     ],
+     "realce": {
+      "box": [
+       10,
+       1200,
+       1150,
+       340
+      ],
+      "ini": 10,
+      "fim": 116
+     }
+    }
+   ],
+   "fala": "As consultas aparecem no calendário, por dia, com o nome do paciente."
+  },
+  {
+   "tipo": "passo",
+   "n": "2",
+   "dur": 170,
+   "titulo": "Defina *os horários*",
+   "telas": [
+    {
+     "img": "telas2/cal/d1_mes.jpg",
+     "ini": 0,
+     "fim": 36,
+     "cam": [
+      [
+       0,
+       585,
+       900,
+       1.12
+      ]
+     ],
+     "cursor": [
+      [
+       0,
+       600,
+       1300
+      ],
+      [
+       22,
+       933,
+       312
+      ]
+     ],
+     "cliques": [
+      30
+     ]
+    },
+    {
+     "img": "telas2/cal/d2_editar.jpg",
+     "ini": 36,
+     "fim": 170,
+     "cam": [
+      [
+       36,
+       585,
+       1000,
+       1.12
+      ],
+      [
+       84,
+       585,
+       1000,
+       1.12
+      ],
+      [
+       104,
+       585,
+       2050,
+       1.12
+      ]
+     ],
+     "realce": {
+      "box": [
+       125,
+       760,
+       920,
+       170
+      ],
+      "ini": 44,
+      "fim": 82
+     },
+     "cursor": [
+      [
+       110,
+       800,
+       2600
+      ],
+      [
+       140,
+       495,
+       1814
+      ]
+     ],
+     "cliques": [
+      148
+     ]
+    }
+   ],
+   "falas": [
+    [
+     4,
+     80,
+     "Em Editar, defina a duração do atendimento,"
+    ],
+    [
+     84,
+     166,
+     "e os horários de cada dia da semana."
+    ]
+   ],
+   "fala": ""
+  },
+  {
+   "tipo": "passo",
+   "n": "3",
+   "dur": 180,
+   "titulo": "Trave folgas *e feriados*",
+   "telas": [
+    {
+     "img": "telas2/cal/d1_mes.jpg",
+     "ini": 0,
+     "fim": 34,
+     "cam": [
+      [
+       0,
+       585,
+       900,
+       1.12
+      ]
+     ],
+     "cursor": [
+      [
+       0,
+       600,
+       1300
+      ],
+      [
+       20,
+       891,
+       621
+      ]
+     ],
+     "cliques": [
+      28
+     ]
+    },
+    {
+     "img": "telas2/cal/d3_travar.jpg",
+     "ini": 34,
+     "fim": 110,
+     "cam": [
+      [
+       34,
+       585,
+       2200,
+       1.12
+      ]
+     ],
+     "realce": {
+      "box": [
+       125,
+       1790,
+       920,
+       380
+      ],
+      "ini": 40,
+      "fim": 82
+     },
+     "cursor": [
+      [
+       60,
+       900,
+       2700
+      ],
+      [
+       90,
+       795,
+       2360
+      ]
+     ],
+     "cliques": [
+      100
+     ]
+    },
+    {
+     "img": "telas2/cal/d3b_motivo.jpg",
+     "ini": 110,
+     "fim": 180,
+     "cam": [
+      [
+       110,
+       585,
+       2200,
+       1.12
+      ],
+      [
+       130,
+       585,
+       2500,
+       1.12
+      ]
+     ],
+     "realce": {
+      "box": [
+       634,
+       2284,
+       322,
+       152
+      ],
+      "ini": 110,
+      "fim": 140
+     },
+     "cursor": [
+      [
+       140,
+       795,
+       2600
+      ],
+      [
+       160,
+       819,
+       3074
+      ]
+     ],
+     "cliques": [
+      170
+     ]
+    }
+   ],
+   "falas": [
+    [
+     4,
+     104,
+     "Folga ou congresso? Trave a data: o dia inteiro, ou só um horário,"
+    ],
+    [
+     108,
+     176,
+     "escolha o motivo, e trave."
+    ]
+   ],
+   "fala": ""
+  },
+  {
+   "tipo": "passo",
+   "n": "4",
+   "dur": 110,
+   "titulo": "Pronto: *dia travado*",
+   "telas": [
+    {
+     "img": "telas2/cal/d4_travado.jpg",
+     "ini": 0,
+     "fim": 110,
+     "cam": [
+      [
+       0,
+       585,
+       1400,
+       1.05
+      ],
+      [
+       24,
+       540,
+       1700,
+       1.6
+      ]
+     ],
+     "realce": {
+      "box": [
+       450,
+       1540,
+       170,
+       330
+      ],
+      "ini": 34,
+      "fim": 106
+     }
+    }
+   ],
+   "fala": "Pronto. Nesse dia, nem a IA, nem a recepção marcam consulta."
+  },
+  {
+   "tipo": "beneficios",
+   "dur": 156,
+   "titulo": "A agenda *sob controle*",
+   "itens": [
+    [
+     "agenda",
+     "Consultas no calendário",
+     "dia, horário e paciente"
+    ],
+    [
+     "relogio",
+     "Os seus horários",
+     "duração e horário de cada dia"
+    ],
+    [
+     "cadeado",
+     "Folgas travadas",
+     "nem a IA, nem a recepção marcam"
+    ]
+   ],
+   "fala": "Consultas no calendário, os seus horários, e folgas travadas."
+  },
+  {
+   "tipo": "fecho",
+   "dur": 110,
+   "frase": "Suas regras.\n*A Thata marca.*",
+   "fala": "Suas regras. A Thata marca."
+  }
+ ]
+}

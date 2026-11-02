@@ -1,0 +1,285 @@
+{
+ "id": "G9",
+ "arq": "thata_51_func_ligacoes.mp4",
+ "cenas": [
+  {
+   "tipo": "problema",
+   "dur": 110,
+   "titulo": "Quem ligou? O que\n*ficou combinado?*",
+   "visual": "telefone",
+   "num": 6,
+   "txt": [
+    "Chamada perdida · 08:14",
+    "Ligação de 3 min · sem anotação",
+    "O que ela pediu mesmo?"
+   ],
+   "fala": "Ligou, conversou... e ninguém lembra o que ficou combinado?"
+  },
+  {
+   "tipo": "solucao",
+   "dur": 116,
+   "selo": "Ligações",
+   "icone": "fone",
+   "titulo": "Toda ligação da Thata\n*fica registrada.*",
+   "telas": [
+    {
+     "img": "telas2/lig/k1_lista.jpg",
+     "ini": 0,
+     "fim": 116,
+     "cam": [
+      [
+       0,
+       585,
+       1000,
+       1
+      ]
+     ]
+    }
+   ],
+   "fala": "Na Thata, toda ligação fica gravada, transcrita e resumida."
+  },
+  {
+   "tipo": "passo",
+   "n": "1",
+   "dur": 130,
+   "titulo": "Os números *de todas as ligações*",
+   "telas": [
+    {
+     "img": "telas2/lig/k1_lista.jpg",
+     "ini": 0,
+     "fim": 70,
+     "cam": [
+      [
+       0,
+       585,
+       1000,
+       1.12
+      ]
+     ],
+     "realce": {
+      "box": [
+       40,
+       550,
+       1090,
+       780
+      ],
+      "ini": 6,
+      "fim": 66
+     }
+    },
+    {
+     "img": "telas2/lig/k1_lista.jpg",
+     "ini": 70,
+     "fim": 130,
+     "cam": [
+      [
+       70,
+       585,
+       1000,
+       1.12
+      ],
+      [
+       88,
+       585,
+       2250,
+       1.12
+      ]
+     ],
+     "cursor": [
+      [
+       92,
+       800,
+       2700
+      ],
+      [
+       110,
+       585,
+       2240
+      ]
+     ],
+     "cliques": [
+      120
+     ]
+    }
+   ],
+   "fala": "Total, tempo médio e sucessos. Toque numa ligação para abrir."
+  },
+  {
+   "tipo": "passo",
+   "n": "2",
+   "dur": 130,
+   "titulo": "Veja o resultado e *ouça*",
+   "telas": [
+    {
+     "img": "telas2/lig/k2_detalhe.jpg",
+     "ini": 0,
+     "fim": 130,
+     "cam": [
+      [
+       0,
+       585,
+       2150,
+       1.12
+      ]
+     ],
+     "realce": {
+      "box": [
+       100,
+       1750,
+       960,
+       700
+      ],
+      "ini": 6,
+      "fim": 50
+     },
+     "lupa": {
+      "box": [
+       90,
+       2510,
+       940,
+       370
+      ],
+      "ini": 56,
+      "fim": 124,
+      "lado": "cima",
+      "rotulo": "gravação da chamada"
+     },
+     "cursor": [
+      [
+       70,
+       700,
+       2200
+      ],
+      [
+       96,
+       234,
+       2742
+      ]
+     ],
+     "cliques": [
+      106
+     ]
+    }
+   ],
+   "fala": "Veja o resultado da chamada, e ouça a gravação."
+  },
+  {
+   "tipo": "passo",
+   "n": "3",
+   "dur": 130,
+   "titulo": "Leia *cada fala*",
+   "telas": [
+    {
+     "img": "telas2/lig/k2_detalhe.jpg",
+     "ini": 0,
+     "fim": 130,
+     "cam": [
+      [
+       0,
+       585,
+       2150,
+       1.12
+      ],
+      [
+       20,
+       585,
+       3700,
+       1.12
+      ]
+     ],
+     "lupa": {
+      "box": [
+       100,
+       3180,
+       990,
+       520
+      ],
+      "ini": 28,
+      "fim": 90,
+      "lado": "baixo",
+      "rotulo": "transcrição da ligação"
+     },
+     "cursor": [
+      [
+       96,
+       800,
+       3500
+      ],
+      [
+       114,
+       572,
+       3040
+      ]
+     ],
+     "cliques": [
+      124
+     ]
+    }
+   ],
+   "fala": "A transcrição mostra cada fala, da Thata e do paciente."
+  },
+  {
+   "tipo": "passo",
+   "n": "4",
+   "dur": 110,
+   "titulo": "A IA *resume pra você*",
+   "telas": [
+    {
+     "img": "telas2/lig/k4_analise.jpg",
+     "ini": 0,
+     "fim": 110,
+     "cam": [
+      [
+       0,
+       585,
+       4000,
+       1.12
+      ]
+     ],
+     "lupa": {
+      "box": [
+       70,
+       4280,
+       1030,
+       400
+      ],
+      "ini": 10,
+      "fim": 104,
+      "lado": "cima",
+      "rotulo": "resumo automático"
+     }
+    }
+   ],
+   "fala": "E na análise, a IA resume o que foi combinado."
+  },
+  {
+   "tipo": "beneficios",
+   "dur": 156,
+   "titulo": "Nenhuma ligação *se perde*",
+   "itens": [
+    [
+     "fone",
+     "Toda ligação registrada",
+     "com o resultado de cada uma"
+    ],
+    [
+     "play",
+     "Gravação e transcrição",
+     "ouça ou leia cada fala"
+    ],
+    [
+     "estrela",
+     "Resumo da IA",
+     "o combinado, sem precisar ouvir tudo"
+    ]
+   ],
+   "fala": "Toda ligação registrada, com gravação, transcrição, e o resumo da IA."
+  },
+  {
+   "tipo": "fecho",
+   "dur": 110,
+   "frase": "Cada ligação,\n*gravada e resumida.*",
+   "fala": "Cada ligação, gravada e resumida."
+  }
+ ]
+}

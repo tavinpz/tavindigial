@@ -58,6 +58,7 @@ import { F12, DUR_F12 } from './F12Importar';
 import { F13, DUR_F13 } from './F13Equipe';
 import { F14, DUR_F14 } from './F14Dashboard';
 import { F15, DUR_F15 } from './F15Anuncios';
+import { Func2 } from './v2/Func2';
 const V = { fps: 30, width: 1080, height: 1920 };
 export const Root: React.FC = () => (
   <>
@@ -118,5 +119,20 @@ export const Root: React.FC = () => (
     <Composition id="F13" component={F13} durationInFrames={DUR_F13} {...V} />
     <Composition id="F14" component={F14} durationInFrames={DUR_F14} {...V} />
     <Composition id="F15" component={F15} durationInFrames={DUR_F15} {...V} />
+    <Composition id="G2" component={Func2} durationInFrames={1142} {...V} />
+    <Composition id="G4" component={Func2} durationInFrames={1126} {...V} />
+    <Composition id="G6" component={Func2} durationInFrames={1006} {...V} />
+    <Composition id="G1" component={Func2} durationInFrames={1472} {...V} />
+    <Composition id="G7" component={Func2} durationInFrames={992} {...V} />
+    <Composition id="G8" component={Func2} durationInFrames={986} {...V} />
+    <Composition id="G13" component={Func2} durationInFrames={1012} {...V} />
+    <Composition id="G5" component={Func2} durationInFrames={1052} {...V} />
+    <Composition id="G10" component={Func2} durationInFrames={1192} {...V} />
+    <Composition id="G3" component={Func2} durationInFrames={1262} {...V} />
+    <Composition id="G9" component={Func2} durationInFrames={992} {...V} />
+    <Composition id="G11" component={Func2} durationInFrames={1072} {...V} />
+    <Composition id="G12" component={Func2} durationInFrames={1172} {...V} />
+    <Composition id="G14" component={Func2} durationInFrames={1032} {...V} />
+    <Composition id="G15" component={Func2} durationInFrames={1288} {...V} />
   </>
 );

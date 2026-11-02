@@ -1,0 +1,414 @@
+{
+ "id": "G12",
+ "arq": "thata_54_func_importar_base.mp4",
+ "cenas": [
+  {
+   "tipo": "problema",
+   "dur": 110,
+   "titulo": "Uma planilha cheia\nde contatos *parada\nno computador?*",
+   "visual": "planilha",
+   "fala": "Uma planilha cheia de contatos, parada no computador?"
+  },
+  {
+   "tipo": "solucao",
+   "dur": 116,
+   "selo": "Importar base",
+   "icone": "upload",
+   "titulo": "Suba a planilha\n*e a Thata conversa.*",
+   "telas": [
+    {
+     "img": "telas2/imp/j0_lista.jpg",
+     "ini": 0,
+     "fim": 116,
+     "cam": [
+      [
+       0,
+       585,
+       1000,
+       1
+      ]
+     ]
+    }
+   ],
+   "fala": "Suba a planilha na Thata, e a IA começa a conversar com esses contatos."
+  },
+  {
+   "tipo": "passo",
+   "n": "1",
+   "dur": 130,
+   "titulo": "Envie *a planilha*",
+   "telas": [
+    {
+     "img": "telas2/imp/j0_lista.jpg",
+     "ini": 0,
+     "fim": 40,
+     "cam": [
+      [
+       0,
+       585,
+       900,
+       1.12
+      ]
+     ],
+     "cursor": [
+      [
+       0,
+       700,
+       1300
+      ],
+      [
+       22,
+       330,
+       655
+      ]
+     ],
+     "cliques": [
+      30
+     ],
+     "realce": {
+      "box": [
+       80,
+       580,
+       500,
+       150
+      ],
+      "ini": 8,
+      "fim": 36
+     }
+    },
+    {
+     "img": "telas2/imp/j1_upload.jpg",
+     "ini": 40,
+     "fim": 130,
+     "cam": [
+      [
+       40,
+       585,
+       2400,
+       1.12
+      ]
+     ],
+     "realce": {
+      "box": [
+       215,
+       2180,
+       740,
+       670
+      ],
+      "ini": 50,
+      "fim": 126
+     },
+     "cursor": [
+      [
+       70,
+       900,
+       3000
+      ],
+      [
+       96,
+       585,
+       2600
+      ]
+     ],
+     "cliques": [
+      106
+     ]
+    }
+   ],
+   "fala": "Em Leads, toque em Importar, e envie a planilha: csv ou Excel."
+  },
+  {
+   "tipo": "passo",
+   "n": "2",
+   "dur": 130,
+   "titulo": "As colunas *já reconhecidas*",
+   "telas": [
+    {
+     "img": "telas2/imp/j2_campos.jpg",
+     "ini": 0,
+     "fim": 46,
+     "cam": [
+      [
+       0,
+       585,
+       1500,
+       1.12
+      ]
+     ],
+     "realce": {
+      "box": [
+       205,
+       1080,
+       840,
+       180
+      ],
+      "ini": 6,
+      "fim": 44
+     }
+    },
+    {
+     "img": "telas2/imp/j2_campos.jpg",
+     "ini": 46,
+     "fim": 130,
+     "cam": [
+      [
+       46,
+       585,
+       1500,
+       1.12
+      ],
+      [
+       60,
+       585,
+       1800,
+       1.12
+      ]
+     ],
+     "realce": {
+      "box": [
+       200,
+       1440,
+       840,
+       1090
+      ],
+      "ini": 56,
+      "fim": 126
+     }
+    }
+   ],
+   "fala": "A Thata conta as linhas, e já sugere qual coluna é nome, telefone e e-mail."
+  },
+  {
+   "tipo": "passo",
+   "n": "3",
+   "dur": 170,
+   "titulo": "Diga *quem são essas pessoas*",
+   "telas": [
+    {
+     "img": "telas2/imp/j3_contexto.jpg",
+     "ini": 0,
+     "fim": 86,
+     "cam": [
+      [
+       0,
+       585,
+       1400,
+       1.12
+      ]
+     ],
+     "realce": {
+      "box": [
+       205,
+       690,
+       840,
+       470
+      ],
+      "ini": 6,
+      "fim": 40
+     },
+     "cursor": [
+      [
+       40,
+       900,
+       1100
+      ],
+      [
+       64,
+       525,
+       1675
+      ]
+     ],
+     "cliques": [
+      74
+     ]
+    },
+    {
+     "img": "telas2/imp/j3b_escolhido.jpg",
+     "ini": 86,
+     "fim": 170,
+     "cam": [
+      [
+       86,
+       585,
+       1400,
+       1.12
+      ],
+      [
+       100,
+       585,
+       2600,
+       1.12
+      ]
+     ],
+     "realce": {
+      "box": [
+       210,
+       2530,
+       840,
+       560
+      ],
+      "ini": 110,
+      "fim": 166
+     }
+    }
+   ],
+   "falas": [
+    [
+     4,
+     82,
+     "Escolha o número que fala, e quem são esses contatos."
+    ],
+    [
+     88,
+     166,
+     "Esse contexto vai junto pra IA."
+    ]
+   ],
+   "fala": ""
+  },
+  {
+   "tipo": "passo",
+   "n": "4",
+   "dur": 150,
+   "titulo": "Revise e *importe*",
+   "telas": [
+    {
+     "img": "telas2/imp/j4_revisar.jpg",
+     "ini": 0,
+     "fim": 150,
+     "cam": [
+      [
+       0,
+       585,
+       1200,
+       1.12
+      ],
+      [
+       44,
+       585,
+       1200,
+       1.12
+      ],
+      [
+       60,
+       585,
+       2050,
+       1.12
+      ],
+      [
+       100,
+       585,
+       2050,
+       1.12
+      ],
+      [
+       116,
+       585,
+       4000,
+       1.12
+      ]
+     ],
+     "realce": {
+      "box": [
+       215,
+       750,
+       890,
+       370
+      ],
+      "ini": 6,
+      "fim": 42
+     },
+     "lupa": {
+      "box": [
+       225,
+       1870,
+       420,
+       520
+      ],
+      "ini": 62,
+      "fim": 100,
+      "lado": "baixo",
+      "rotulo": "a IA já pode falar"
+     },
+     "cursor": [
+      [
+       110,
+       900,
+       3800
+      ],
+      [
+       132,
+       720,
+       4416
+      ]
+     ],
+     "cliques": [
+      142
+     ]
+    }
+   ],
+   "fala": "Revise quantos vão entrar, deixe a IA ativa, e importe."
+  },
+  {
+   "tipo": "passo",
+   "n": "5",
+   "dur": 100,
+   "titulo": "Pronto: *base importada*",
+   "telas": [
+    {
+     "img": "telas2/imp/j5_feito.jpg",
+     "ini": 0,
+     "fim": 100,
+     "cam": [
+      [
+       0,
+       585,
+       2400,
+       1.12
+      ]
+     ],
+     "realce": {
+      "box": [
+       205,
+       2230,
+       840,
+       480
+      ],
+      "ini": 10,
+      "fim": 96
+     }
+    }
+   ],
+   "fala": "Pronto. E quem já estava cadastrado não entra duplicado."
+  },
+  {
+   "tipo": "beneficios",
+   "dur": 156,
+   "titulo": "A base parada *volta a render*",
+   "itens": [
+    [
+     "upload",
+     "Planilha em segundos",
+     "csv, xlsx ou xls"
+    ],
+    [
+     "filtro",
+     "Sem contato duplicado",
+     "telefone já cadastrado fica de fora"
+    ],
+    [
+     "chat",
+     "A IA sabe quem é",
+     "o contexto da base vai junto"
+    ]
+   ],
+   "fala": "Planilha em segundos, sem contato duplicado, e a IA sabendo com quem fala."
+  },
+  {
+   "tipo": "fecho",
+   "dur": 110,
+   "frase": "Base importada.\n*A Thata conversa.*",
+   "fala": "Base importada. A Thata conversa."
+  }
+ ]
+}

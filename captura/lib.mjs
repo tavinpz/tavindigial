@@ -24,6 +24,7 @@ export async function iniciar() {
     b, p, erros, meta, espera,
     async preparar(fn) { await p.evaluateOnNewDocument(`window.__extra = ${fn.toString()}`) },
     async abrir(rota, c = 'base', w = 1440, h = 900, dpr = 2) {
+      if (process.env.MOB) { w = 390; h = Number(process.env.MOBH || 1600); dpr = 3 }
       await p.setViewport({ width: w, height: h, deviceScaleFactor: dpr })
       await p.goto(`http://localhost:5199/?r=${encodeURIComponent(rota)}&c=${c}`, { waitUntil: 'networkidle0' })
       await p.evaluate(() => document.fonts.ready); await espera(900)

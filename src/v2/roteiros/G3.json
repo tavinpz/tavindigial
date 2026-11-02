@@ -1,0 +1,414 @@
+{
+ "id": "G3",
+ "arq": "thata_45_func_campanha_lista.mp4",
+ "cenas": [
+  {
+   "tipo": "problema",
+   "dur": 120,
+   "titulo": "Uma lista de pacientes\n*parada na gaveta?*",
+   "visual": "planilha",
+   "fala": "Tem uma lista de pacientes parada, que ninguém chamou?"
+  },
+  {
+   "tipo": "solucao",
+   "dur": 116,
+   "selo": "Campanhas",
+   "icone": "upload",
+   "titulo": "Ela vira campanha,\n*em poucos cliques.*",
+   "telas": [
+    {
+     "img": "telas2/camp/c1_vazio.jpg",
+     "ini": 0,
+     "fim": 116,
+     "cam": [
+      [
+       0,
+       585,
+       1000,
+       1
+      ]
+     ]
+    }
+   ],
+   "fala": "Com as campanhas da Thata, a lista vira conversa em poucos cliques."
+  },
+  {
+   "tipo": "passo",
+   "n": "1",
+   "dur": 110,
+   "titulo": "Nova campanha *de WhatsApp*",
+   "telas": [
+    {
+     "img": "telas2/camp/c1_vazio.jpg",
+     "ini": 0,
+     "fim": 40,
+     "cam": [
+      [
+       0,
+       585,
+       1000,
+       1.15
+      ]
+     ],
+     "cursor": [
+      [
+       4,
+       900,
+       1400
+      ],
+      [
+       24,
+       430,
+       562
+      ]
+     ],
+     "cliques": [
+      32
+     ]
+    },
+    {
+     "img": "telas2/camp/c2_canal.jpg",
+     "ini": 40,
+     "fim": 110,
+     "cam": [
+      [
+       40,
+       585,
+       1300,
+       1.15
+      ]
+     ],
+     "realce": {
+      "box": [
+       70,
+       890,
+       1030,
+       700
+      ],
+      "ini": 46,
+      "fim": 106
+     },
+     "cursor": [
+      [
+       60,
+       900,
+       1900
+      ],
+      [
+       86,
+       580,
+       1500
+      ]
+     ],
+     "cliques": [
+      96
+     ]
+    }
+   ],
+   "fala": "Crie uma nova campanha e escolha o WhatsApp."
+  },
+  {
+   "tipo": "passo",
+   "n": "2",
+   "dur": 110,
+   "titulo": "Nome e o número *que vai enviar*",
+   "telas": [
+    {
+     "img": "telas2/camp/c3_config.jpg",
+     "ini": 0,
+     "fim": 110,
+     "cam": [
+      [
+       0,
+       585,
+       1800,
+       1.15
+      ]
+     ],
+     "cursor": [
+      [
+       70,
+       900,
+       2100
+      ],
+      [
+       92,
+       585,
+       2480
+      ]
+     ],
+     "cliques": [
+      100
+     ],
+     "realce": {
+      "box": [
+       150,
+       1400,
+       870,
+       820
+      ],
+      "ini": 8,
+      "fim": 66
+     }
+    }
+   ],
+   "fala": "Dê um nome e escolha o número que vai enviar."
+  },
+  {
+   "tipo": "passo",
+   "n": "3",
+   "dur": 160,
+   "titulo": "Suba a planilha: *a IA lê as colunas*",
+   "telas": [
+    {
+     "img": "telas2/camp/c4_subir.jpg",
+     "ini": 0,
+     "fim": 50,
+     "cam": [
+      [
+       0,
+       585,
+       1800,
+       1.15
+      ]
+     ],
+     "realce": {
+      "box": [
+       90,
+       1390,
+       970,
+       880
+      ],
+      "ini": 6,
+      "fim": 46
+     },
+     "cursor": [
+      [
+       10,
+       900,
+       2400
+      ],
+      [
+       30,
+       585,
+       1850
+      ]
+     ],
+     "cliques": [
+      40
+     ]
+    },
+    {
+     "img": "telas2/camp/c5_mapear.jpg",
+     "ini": 50,
+     "fim": 105,
+     "cam": [
+      [
+       50,
+       585,
+       1900,
+       1.15
+      ]
+     ],
+     "lupa": {
+      "box": [
+       150,
+       1660,
+       870,
+       560
+      ],
+      "ini": 56,
+      "fim": 100,
+      "lado": "baixo",
+      "rotulo": "colunas reconhecidas"
+     }
+    },
+    {
+     "img": "telas2/camp/c6_lista.jpg",
+     "ini": 105,
+     "fim": 160,
+     "cam": [
+      [
+       105,
+       585,
+       2000,
+       1.15
+      ]
+     ],
+     "realce": {
+      "box": [
+       100,
+       1400,
+       980,
+       1380
+      ],
+      "ini": 110,
+      "fim": 156
+     }
+    }
+   ],
+   "fala": "Suba a planilha, em CSV ou Excel. As colunas são reconhecidas, e você confere a lista."
+  },
+  {
+   "tipo": "passo",
+   "n": "4",
+   "dur": 130,
+   "titulo": "A mensagem *com o nome*",
+   "telas": [
+    {
+     "img": "telas2/camp/c7_msg.jpg",
+     "ini": 0,
+     "fim": 130,
+     "cam": [
+      [
+       0,
+       585,
+       1900,
+       1.15
+      ]
+     ],
+     "lupa": {
+      "box": [
+       140,
+       1240,
+       880,
+       710
+      ],
+      "ini": 8,
+      "fim": 70,
+      "lado": "baixo",
+      "rotulo": "{{nome}} vira o nome do paciente"
+     },
+     "realce": {
+      "box": [
+       140,
+       2200,
+       880,
+       470
+      ],
+      "ini": 78,
+      "fim": 126
+     }
+    }
+   ],
+   "fala": "Escreva a mensagem: o nome de cada paciente entra sozinho, com prévia."
+  },
+  {
+   "tipo": "passo",
+   "n": "5",
+   "dur": 140,
+   "titulo": "Agende e *ligue o follow-up*",
+   "telas": [
+    {
+     "img": "telas2/camp/c8b_criar.jpg",
+     "ini": 0,
+     "fim": 140,
+     "cam": [
+      [
+       0,
+       585,
+       1500,
+       1.15
+      ],
+      [
+       56,
+       585,
+       1500,
+       1.15
+      ],
+      [
+       80,
+       585,
+       3000,
+       1.15
+      ]
+     ],
+     "realce": {
+      "box": [
+       80,
+       920,
+       1010,
+       390
+      ],
+      "ini": 8,
+      "fim": 52
+     },
+     "lupa": {
+      "box": [
+       100,
+       2980,
+       970,
+       330
+      ],
+      "ini": 86,
+      "fim": 136,
+      "lado": "cima",
+      "rotulo": "follow-up automático"
+     }
+    }
+   ],
+   "fala": "Escolha quando começa, e ligue a cadência: quem não responder, recebe o follow-up."
+  },
+  {
+   "tipo": "passo",
+   "n": "6",
+   "dur": 110,
+   "titulo": "Acompanhe *em tempo real*",
+   "telas": [
+    {
+     "img": "telas2/camp/c9_criada.jpg",
+     "ini": 0,
+     "fim": 110,
+     "cam": [
+      [
+       0,
+       585,
+       1300,
+       1.12
+      ]
+     ],
+     "realce": {
+      "box": [
+       80,
+       590,
+       1010,
+       1200
+      ],
+      "ini": 10,
+      "fim": 106
+     }
+    }
+   ],
+   "fala": "E acompanhe: quem recebeu, respondeu e agendou."
+  },
+  {
+   "tipo": "beneficios",
+   "dur": 156,
+   "titulo": "Do arquivo *à agenda*",
+   "itens": [
+    [
+     "upload",
+     "A lista vira campanha",
+     "CSV ou Excel, colunas reconhecidas"
+    ],
+    [
+     "chat",
+     "A IA conversa com quem responde",
+     "o paciente fala com a Thata na hora"
+    ],
+    [
+     "volta",
+     "Follow-up já incluído",
+     "quem não responde recebe o próximo passo"
+    ]
+   ],
+   "fala": "A lista vira campanha, a IA conversa com quem responde, e o follow-up já vem junto."
+  },
+  {
+   "tipo": "fecho",
+   "dur": 110,
+   "frase": "Uma lista.\n*A Thata faz o resto.*",
+   "fala": "Uma lista. A Thata faz o resto."
+  }
+ ]
+}

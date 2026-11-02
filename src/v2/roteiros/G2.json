@@ -1,0 +1,336 @@
+{
+ "id": "G2",
+ "arq": "thata_44_func_integracoes_agenda.mp4",
+ "cenas": [
+  {
+   "tipo": "problema",
+   "dur": 120,
+   "titulo": "Agenda num lugar,\nconversa no outro e\n*a recepção copiando?*",
+   "visual": "caderno",
+   "txt": [
+    "passar pro sistema",
+    "esse horário tá livre?",
+    "remarcar no Clinicorp",
+    "agenda dupla de novo",
+    "confirmar com o Dr."
+   ],
+   "fala": "Agenda no sistema, conversa no WhatsApp, e a recepção copiando tudo à mão?"
+  },
+  {
+   "tipo": "solucao",
+   "dur": 96,
+   "pc": true,
+   "selo": "Integrações",
+   "icone": "engrenagem",
+   "titulo": "A Thata conversa com\n*o sistema da sua clínica.*",
+   "telas": [
+    {
+     "img": "telas/int/i1_pagina.png",
+     "ini": 0,
+     "fim": 96,
+     "cam": [
+      [
+       0,
+       1440,
+       900,
+       1
+      ],
+      [
+       96,
+       1500,
+       1000,
+       1.15
+      ]
+     ]
+    }
+   ],
+   "fala": "Com as integrações, a Thata conversa com o sistema da sua clínica."
+  },
+  {
+   "tipo": "passo",
+   "n": "1",
+   "dur": 120,
+   "pc": true,
+   "titulo": "Em Integrações, *escolha o sistema*",
+   "telas": [
+    {
+     "img": "telas/int/i1_pagina.png",
+     "ini": 0,
+     "fim": 120,
+     "cam": [
+      [
+       0,
+       1500,
+       1000,
+       1.15
+      ],
+      [
+       30,
+       2050,
+       1250,
+       1.75
+      ]
+     ],
+     "realce": {
+      "box": [
+       1250,
+       905,
+       1590,
+       750
+      ],
+      "ini": 34,
+      "fim": 76
+     },
+     "cursor": [
+      [
+       70,
+       2300,
+       1300
+      ],
+      [
+       96,
+       1510,
+       1561
+      ]
+     ],
+     "cliques": [
+      106
+     ]
+    }
+   ],
+   "fala": "Em Integrações, escolha o sistema da clínica. Clinicorp, por exemplo."
+  },
+  {
+   "tipo": "passo",
+   "n": "2",
+   "dur": 160,
+   "titulo": "Clinicorp: *usuário e token*",
+   "telas": [
+    {
+     "img": "telas2/int/i3_clinicorp_preenchido.jpg",
+     "ini": 0,
+     "fim": 160,
+     "cam": [
+      [
+       0,
+       585,
+       1700,
+       1.15
+      ],
+      [
+       44,
+       585,
+       1700,
+       1.15
+      ],
+      [
+       70,
+       585,
+       3450,
+       1.2
+      ]
+     ],
+     "realce": {
+      "box": [
+       140,
+       1140,
+       890,
+       1500
+      ],
+      "ini": 6,
+      "fim": 42
+     },
+     "lupa": {
+      "box": [
+       180,
+       3090,
+       820,
+       600
+      ],
+      "ini": 76,
+      "fim": 124,
+      "lado": "cima",
+      "rotulo": "credenciais do Clinicorp"
+     },
+     "cursor": [
+      [
+       118,
+       900,
+       3600
+      ],
+      [
+       140,
+       725,
+       3937
+      ]
+     ],
+     "cliques": [
+      150
+     ]
+    }
+   ],
+   "fala": "A própria tela ensina onde achar. Cole o usuário e o token, e conecte."
+  },
+  {
+   "tipo": "passo",
+   "n": "3",
+   "dur": 100,
+   "pc": true,
+   "titulo": "Conectado: *a IA marca na agenda*",
+   "telas": [
+    {
+     "img": "telas/int/i4_clinicorp_ok.png",
+     "ini": 0,
+     "fim": 100,
+     "cam": [
+      [
+       0,
+       2050,
+       1250,
+       1.75
+      ],
+      [
+       40,
+       1700,
+       1300,
+       2.3
+      ]
+     ],
+     "realce": {
+      "box": [
+       1255,
+       1410,
+       520,
+       110
+      ],
+      "ini": 30,
+      "fim": 96
+     }
+    }
+   ],
+   "fala": "Conectado. A assistente marca direto na agenda do Clinicorp."
+  },
+  {
+   "tipo": "passo",
+   "n": "4",
+   "dur": 140,
+   "titulo": "ControleODONTO: *o seu login*",
+   "telas": [
+    {
+     "img": "telas2/int/i5_co_preenchido.jpg",
+     "ini": 0,
+     "fim": 140,
+     "cam": [
+      [
+       0,
+       585,
+       2350,
+       1.2
+      ]
+     ],
+     "lupa": {
+      "box": [
+       230,
+       2170,
+       710,
+       420
+      ],
+      "ini": 14,
+      "fim": 80,
+      "lado": "cima",
+      "rotulo": "o mesmo login do sistema"
+     },
+     "cursor": [
+      [
+       90,
+       900,
+       2700
+      ],
+      [
+       116,
+       585,
+       3058
+      ]
+     ],
+     "cliques": [
+      126
+     ]
+    }
+   ],
+   "fala": "No ControleODONTO, é o mesmo usuário e senha do sistema."
+  },
+  {
+   "tipo": "passo",
+   "n": "5",
+   "dur": 140,
+   "titulo": "As unidades *aparecem sozinhas*",
+   "telas": [
+    {
+     "img": "telas2/int/i6_co_ok.jpg",
+     "ini": 0,
+     "fim": 140,
+     "cam": [
+      [
+       0,
+       585,
+       2400,
+       1.2
+      ]
+     ],
+     "realce": {
+      "box": [
+       220,
+       2020,
+       730,
+       310
+      ],
+      "ini": 8,
+      "fim": 60
+     },
+     "lupa": {
+      "box": [
+       220,
+       2360,
+       730,
+       390
+      ],
+      "ini": 66,
+      "fim": 134,
+      "lado": "cima",
+      "rotulo": "o que a Thata faz"
+     }
+    }
+   ],
+   "fala": "As unidades aparecem sozinhas, e a Thata já vê os horários livres de cada profissional."
+  },
+  {
+   "tipo": "beneficios",
+   "dur": 156,
+   "titulo": "Sem agenda *dupla*",
+   "itens": [
+    [
+     "agenda",
+     "Uma agenda só",
+     "a Thata trabalha com a do seu sistema"
+    ],
+    [
+     "relogio",
+     "Horário livre de verdade",
+     "de cada profissional, na hora da conversa"
+    ],
+    [
+     "cadeado",
+     "Acesso guardado com segurança",
+     "senha criptografada, usuário só da Thata"
+    ]
+   ],
+   "fala": "Uma agenda só, com o horário livre de verdade. E o acesso fica guardado com segurança."
+  },
+  {
+   "tipo": "fecho",
+   "dur": 110,
+   "frase": "Sem agenda dupla.\n*A Thata integra.*",
+   "fala": "Sem agenda dupla. A Thata integra."
+  }
+ ]
+}

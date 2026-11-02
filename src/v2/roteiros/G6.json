@@ -1,0 +1,36 @@
+{
+  "id": "G6", "arq": "thata_48_func_retornos.mp4",
+  "cenas": [
+    { "tipo": "problema", "dur": 110, "titulo": "Fez o procedimento\ne *nunca mais voltou?*", "visual": "planilha",
+      "txt": ["Ana Beatriz · implante 2024", "Bruno Lima · limpeza 2023", "Carla Rocha · clareamento", "Daniel Pires · revisão 2023", "Eduarda N. · limpeza 2024"],
+      "fala": "Paciente fez o procedimento, e nunca mais voltou pra revisão?" },
+    { "tipo": "solucao", "dur": 90, "selo": "Retornos", "icone": "volta", "titulo": "Ele volta\n*na hora certa.*",
+      "telas": [ { "img": "telas2/ret/t1_mes.jpg", "ini": 0, "fim": 90, "cam": [[0, 585, 1000, 1]] } ],
+      "fala": "Com os retornos da Thata, o paciente volta na hora certa." },
+    { "tipo": "passo", "n": "1", "dur": 140, "titulo": "O procedimento *e o prazo*",
+      "telas": [ { "img": "telas2/ret/t2_novo.jpg", "ini": 0, "fim": 140, "cam": [[0, 585, 1000, 1.15]],
+        "realce": { "box": [60, 560, 1050, 140], "ini": 6, "fim": 40 },
+        "cursor": [[30, 700, 1300], [52, 911, 885]], "cliques": [62],
+        "lupa": { "box": [60, 840, 1050, 300], "ini": 70, "fim": 134, "lado": "baixo", "rotulo": "a mensagem sai 1 ano depois" } } ],
+      "fala": "Escolha o procedimento, e o prazo: um mês, seis meses, um ano." },
+    { "tipo": "passo", "n": "2", "dur": 130, "titulo": "A mensagem *do retorno*",
+      "telas": [ { "img": "telas2/ret/t2_novo.jpg", "ini": 0, "fim": 130, "cam": [[0, 585, 1000, 1.15], [20, 585, 1700, 1.15]],
+        "lupa": { "box": [60, 1380, 1050, 330], "ini": 24, "fim": 74, "lado": "baixo", "rotulo": "nome e procedimento entram sozinhos" },
+        "realce": { "box": [60, 1950, 1050, 360], "ini": 80, "fim": 126 } } ],
+      "fala": "Escreva a mensagem. O nome e o procedimento entram sozinhos." },
+    { "tipo": "passo", "n": "3", "dur": 130, "titulo": "O calendário *de quem volta*",
+      "telas": [ { "img": "telas2/ret/t1_mes.jpg", "ini": 0, "fim": 130, "cam": [[0, 585, 1000, 1.1], [20, 585, 1700, 1.12]],
+        "realce": { "box": [40, 1080, 1090, 1180], "ini": 24, "fim": 74 },
+        "lupa": { "box": [40, 2290, 1090, 150], "ini": 80, "fim": 126, "lado": "cima", "rotulo": "o status de cada dia" } } ],
+      "fala": "O calendário mostra quem volta em cada dia do mês." },
+    { "tipo": "passo", "n": "4", "dur": 140, "titulo": "Veja *quem agendou*",
+      "telas": [
+        { "img": "telas2/ret/t3_outubro.jpg", "ini": 0, "fim": 72, "cam": [[0, 585, 900, 1.12]], "realce": { "box": [60, 380, 1050, 560], "ini": 6, "fim": 68 } },
+        { "img": "telas2/ret/t3_outubro.jpg", "ini": 72, "fim": 140, "cam": [[72, 585, 900, 1.12], [92, 585, 2050, 1.12]], "realce": { "box": [50, 1560, 1070, 900], "ini": 96, "fim": 136 } } ],
+      "fala": "E você vê quem recebeu, quem respondeu e quem agendou, em cada retorno." },
+    { "tipo": "beneficios", "dur": 156, "titulo": "Retorno *sem esforço*",
+      "itens": [["volta", "Volta na hora certa", "o prazo de cada procedimento"], ["raio", "A mensagem sai sozinha", "no dia, sem ninguém lembrar"], ["grafico", "Tudo medido", "recebeu, respondeu e agendou"]],
+      "fala": "Volta na hora certa, a mensagem sai sozinha, e tudo fica medido." },
+    { "tipo": "fecho", "dur": 110, "frase": "Volta na hora certa,\n*sem ninguém lembrar.*", "fala": "Volta na hora certa, sem ninguém lembrar." }
+  ]
+}

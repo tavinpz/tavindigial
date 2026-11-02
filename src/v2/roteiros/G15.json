@@ -1,0 +1,427 @@
+{
+ "id": "G15",
+ "arq": "thata_57_func_origem_anuncio.mp4",
+ "cenas": [
+  {
+   "tipo": "problema",
+   "dur": 120,
+   "titulo": "Investe em anúncio\ne não sabe *qual\ntrouxe paciente?*",
+   "visual": "anuncio",
+   "fala": "Investe em anúncio, e não sabe qual deles trouxe paciente?"
+  },
+  {
+   "tipo": "solucao",
+   "dur": 116,
+   "selo": "Origem do anúncio",
+   "icone": "alvo",
+   "titulo": "Cada conversa mostra\n*de qual anúncio veio.*",
+   "telas": [
+    {
+     "img": "telas2/ads/v2_lista.jpg",
+     "ini": 0,
+     "fim": 116,
+     "cam": [
+      [
+       0,
+       585,
+       1000,
+       1
+      ]
+     ]
+    }
+   ],
+   "fala": "Na Thata, cada conversa mostra de qual anúncio da Meta ela veio."
+  },
+  {
+   "tipo": "problema",
+   "dur": 160,
+   "titulo": "Do anúncio\n*à consulta*",
+   "visual": "ciclo",
+   "fala": "O paciente clica no anúncio, chama no WhatsApp, a IA atende e agenda. E o resultado volta pra Meta."
+  },
+  {
+   "tipo": "passo",
+   "n": "1",
+   "dur": 166,
+   "titulo": "Conecte *o Meta Ads*",
+   "telas": [
+    {
+     "img": "telas2/ads/v1_meta.jpg",
+     "ini": 0,
+     "fim": 150,
+     "cam": [
+      [
+       0,
+       585,
+       2400,
+       1.12
+      ],
+      [
+       60,
+       585,
+       2400,
+       1.12
+      ],
+      [
+       80,
+       330,
+       2950,
+       1.7
+      ]
+     ],
+     "realce": {
+      "box": [
+       55,
+       1630,
+       520,
+       1000
+      ],
+      "ini": 8,
+      "fim": 58
+     }
+    },
+    {
+     "img": "telas2/ads/v1_meta.jpg",
+     "ini": 80,
+     "fim": 166,
+     "cam": [
+      [
+       80,
+       330,
+       2950,
+       1.7
+      ]
+     ],
+     "realce": {
+      "box": [
+       95,
+       2730,
+       480,
+       590
+      ],
+      "ini": 88,
+      "fim": 162
+     }
+    }
+   ],
+   "falas": [
+    [
+     4,
+     72,
+     "Em Integrações, conecte o Meta Ads."
+    ],
+    [
+     78,
+     162,
+     "E escolha o que volta pra Meta: lead, agendou, fechou."
+    ]
+   ],
+   "fala": ""
+  },
+  {
+   "tipo": "passo",
+   "n": "2",
+   "dur": 130,
+   "titulo": "Veja *quem veio do anúncio*",
+   "telas": [
+    {
+     "img": "telas2/ads/v2_lista.jpg",
+     "ini": 0,
+     "fim": 130,
+     "cam": [
+      [
+       0,
+       585,
+       1500,
+       1.12
+      ],
+      [
+       20,
+       560,
+       1420,
+       1.6
+      ],
+      [
+       76,
+       560,
+       1420,
+       1.6
+      ],
+      [
+       92,
+       585,
+       1300,
+       1.12
+      ]
+     ],
+     "realce": {
+      "box": [
+       470,
+       1415,
+       140,
+       125
+      ],
+      "ini": 28,
+      "fim": 76
+     },
+     "cursor": [
+      [
+       90,
+       800,
+       1700
+      ],
+      [
+       110,
+       1074,
+       1026
+      ]
+     ],
+     "cliques": [
+      120
+     ]
+    }
+   ],
+   "fala": "O ícone da Meta mostra quem veio de anúncio. E dá pra filtrar."
+  },
+  {
+   "tipo": "passo",
+   "n": "3",
+   "dur": 140,
+   "titulo": "Filtre *por campanha*",
+   "telas": [
+    {
+     "img": "telas2/ads/v3_menu.jpg",
+     "ini": 0,
+     "fim": 76,
+     "cam": [
+      [
+       0,
+       585,
+       1400,
+       1.12
+      ]
+     ],
+     "realce": {
+      "box": [
+       30,
+       1115,
+       1110,
+       540
+      ],
+      "ini": 6,
+      "fim": 46
+     },
+     "cursor": [
+      [
+       30,
+       800,
+       1800
+      ],
+      [
+       56,
+       307,
+       1282
+      ]
+     ],
+     "cliques": [
+      66
+     ]
+    },
+    {
+     "img": "telas2/ads/v4_filtrado.jpg",
+     "ini": 76,
+     "fim": 140,
+     "cam": [
+      [
+       76,
+       585,
+       1400,
+       1.12
+      ]
+     ],
+     "realce": {
+      "box": [
+       30,
+       1165,
+       1120,
+       140
+      ],
+      "ini": 82,
+      "fim": 136
+     }
+    }
+   ],
+   "fala": "Escolha a campanha, e veja só as conversas que ela trouxe."
+  },
+  {
+   "tipo": "passo",
+   "n": "4",
+   "dur": 190,
+   "titulo": "A ficha mostra *o anúncio*",
+   "telas": [
+    {
+     "img": "telas2/ads/v4_filtrado.jpg",
+     "ini": 0,
+     "fim": 26,
+     "cam": [
+      [
+       0,
+       585,
+       1400,
+       1.12
+      ]
+     ],
+     "cursor": [
+      [
+       0,
+       700,
+       1900
+      ],
+      [
+       14,
+       446,
+       1472
+      ]
+     ],
+     "cliques": [
+      20
+     ]
+    },
+    {
+     "img": "telas2/ads/v5_ficha.jpg",
+     "ini": 26,
+     "fim": 66,
+     "cam": [
+      [
+       26,
+       585,
+       900,
+       1.12
+      ]
+     ],
+     "cursor": [
+      [
+       26,
+       500,
+       1300
+      ],
+      [
+       48,
+       586,
+       403
+      ]
+     ],
+     "cliques": [
+      56
+     ]
+    },
+    {
+     "img": "telas2/ads/v6_anuncio.jpg",
+     "ini": 66,
+     "fim": 140,
+     "cam": [
+      [
+       66,
+       585,
+       1000,
+       1.12
+      ],
+      [
+       80,
+       380,
+       1000,
+       1.8
+      ],
+      [
+       122,
+       380,
+       1000,
+       1.8
+      ],
+      [
+       140,
+       585,
+       2150,
+       1.12
+      ]
+     ],
+     "realce": {
+      "box": [
+       80,
+       630,
+       470,
+       620
+      ],
+      "ini": 84,
+      "fim": 122
+     }
+    },
+    {
+     "img": "telas2/ads/v6_anuncio.jpg",
+     "ini": 140,
+     "fim": 190,
+     "cam": [
+      [
+       140,
+       585,
+       2150,
+       1.12
+      ]
+     ],
+     "realce": {
+      "box": [
+       30,
+       1790,
+       1110,
+       650
+      ],
+      "ini": 146,
+      "fim": 186
+     }
+    }
+   ],
+   "falas": [
+    [
+     4,
+     64,
+     "Abra a ficha, e toque em Anúncio."
+    ],
+    [
+     70,
+     186,
+     "Lá está o anúncio que ela clicou, a campanha, o conjunto, e o texto."
+    ]
+   ],
+   "fala": ""
+  },
+  {
+   "tipo": "beneficios",
+   "dur": 156,
+   "titulo": "Anúncio *com resultado*",
+   "itens": [
+    [
+     "alvo",
+     "Origem de cada paciente",
+     "campanha, conjunto e anúncio"
+    ],
+    [
+     "filtro",
+     "Filtro por campanha",
+     "veja o que cada uma trouxe"
+    ],
+    [
+     "volta",
+     "O resultado volta pra Meta",
+     "quem agendou e quem fechou"
+    ]
+   ],
+   "fala": "A origem de cada paciente, filtro por campanha, e o resultado de volta pra Meta."
+  },
+  {
+   "tipo": "fecho",
+   "dur": 110,
+   "frase": "Cada real no anúncio,\n*com nome e consulta.*",
+   "fala": "Cada real no anúncio, com nome e consulta."
+  }
+ ]
+}

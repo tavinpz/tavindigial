@@ -1,0 +1,366 @@
+{
+ "id": "G8",
+ "arq": "thata_50_func_mensagens_assumir.mp4",
+ "cenas": [
+  {
+   "tipo": "problema",
+   "dur": 110,
+   "titulo": "Tem conversa que\n*pede uma pessoa?*",
+   "visual": "mensagens",
+   "num": 3,
+   "txt": [
+    "Posso levar minha filha junto?",
+    "Ela tem 8 anos, tudo bem?",
+    "Queria falar com a Dra."
+   ],
+   "fala": "Às vezes, a conversa precisa de uma pessoa da equipe."
+  },
+  {
+   "tipo": "solucao",
+   "dur": 90,
+   "selo": "Mensagens",
+   "icone": "chat",
+   "titulo": "Você assume\n*quando quiser.*",
+   "telas": [
+    {
+     "img": "telas2/msg/g1_conversa.jpg",
+     "ih": 2700,
+     "ini": 0,
+     "fim": 90,
+     "cam": [
+      [
+       0,
+       585,
+       1350,
+       1
+      ]
+     ]
+    }
+   ],
+   "fala": "Em Mensagens, você assume a conversa quando quiser."
+  },
+  {
+   "tipo": "passo",
+   "n": "1",
+   "dur": 130,
+   "titulo": "A Thata conversa *sozinha*",
+   "telas": [
+    {
+     "img": "telas2/msg/g1_conversa.jpg",
+     "ih": 2700,
+     "ini": 0,
+     "fim": 130,
+     "cam": [
+      [
+       0,
+       585,
+       1350,
+       1
+      ],
+      [
+       24,
+       585,
+       1150,
+       1.12
+      ]
+     ],
+     "lupa": {
+      "box": [
+       90,
+       930,
+       1000,
+       380
+      ],
+      "ini": 28,
+      "fim": 80,
+      "lado": "baixo",
+      "rotulo": "resposta da IA, na hora"
+     },
+     "realce": {
+      "box": [
+       888,
+       324,
+       120,
+       120
+      ],
+      "ini": 90,
+      "fim": 126
+     },
+     "cursor": [
+      [
+       84,
+       700,
+       900
+      ],
+      [
+       106,
+       948,
+       384
+      ]
+     ],
+     "cliques": [
+      116
+     ]
+    }
+   ],
+   "fala": "A Thata responde o paciente sozinha. Quer assumir? Toque em pausar."
+  },
+  {
+   "tipo": "passo",
+   "n": "2",
+   "dur": 140,
+   "titulo": "Escolha *quando ela volta*",
+   "telas": [
+    {
+     "img": "telas2/msg/g2_modal.jpg",
+     "ih": 2700,
+     "ini": 0,
+     "fim": 70,
+     "cam": [
+      [
+       0,
+       585,
+       1350,
+       1.1
+      ]
+     ],
+     "realce": {
+      "box": [
+       130,
+       820,
+       900,
+       960
+      ],
+      "ini": 6,
+      "fim": 40
+     },
+     "cursor": [
+      [
+       30,
+       900,
+       1500
+      ],
+      [
+       52,
+       585,
+       1095
+      ]
+     ],
+     "cliques": [
+      62
+     ]
+    },
+    {
+     "img": "telas2/msg/g3_escolhido.jpg",
+     "ih": 2700,
+     "ini": 70,
+     "fim": 140,
+     "cam": [
+      [
+       70,
+       585,
+       1350,
+       1.1
+      ]
+     ],
+     "lupa": {
+      "box": [
+       130,
+       1010,
+       900,
+       170
+      ],
+      "ini": 72,
+      "fim": 108,
+      "lado": "cima",
+      "rotulo": "a IA volta amanhã às 8h"
+     },
+     "cursor": [
+      [
+       100,
+       585,
+       1500
+      ],
+      [
+       120,
+       817,
+       2084
+      ]
+     ],
+     "cliques": [
+      130
+     ]
+    }
+   ],
+   "fala": "Escolha quando a IA volta: amanhã cedo, em um dia, ou numa data."
+  },
+  {
+   "tipo": "passo",
+   "n": "3",
+   "dur": 130,
+   "titulo": "Responda *do mesmo lugar*",
+   "telas": [
+    {
+     "img": "telas2/msg/g4_pausada.jpg",
+     "ih": 2700,
+     "ini": 0,
+     "fim": 50,
+     "cam": [
+      [
+       0,
+       585,
+       1350,
+       1.1
+      ]
+     ],
+     "realce": {
+      "box": [
+       20,
+       470,
+       1130,
+       170
+      ],
+      "ini": 4,
+      "fim": 46
+     }
+    },
+    {
+     "img": "telas2/msg/g5_digitado.jpg",
+     "ih": 2700,
+     "ini": 50,
+     "fim": 130,
+     "cam": [
+      [
+       50,
+       585,
+       1836,
+       1.1
+      ]
+     ],
+     "lupa": {
+      "box": [
+       20,
+       2540,
+       1130,
+       150
+      ],
+      "ini": 54,
+      "fim": 100,
+      "lado": "cima",
+      "rotulo": "você responde"
+     },
+     "cursor": [
+      [
+       96,
+       700,
+       2300
+      ],
+      [
+       112,
+       1041,
+       2613
+      ]
+     ],
+     "cliques": [
+      122
+     ]
+    }
+   ],
+   "fala": "A conversa fica pausada, e você responde do mesmo lugar."
+  },
+  {
+   "tipo": "passo",
+   "n": "4",
+   "dur": 120,
+   "titulo": "Na hora marcada, *a IA volta*",
+   "telas": [
+    {
+     "img": "telas2/msg/g6_enviado.jpg",
+     "ih": 2700,
+     "ini": 0,
+     "fim": 60,
+     "cam": [
+      [
+       0,
+       585,
+       1836,
+       1.1
+      ]
+     ],
+     "realce": {
+      "box": [
+       120,
+       2235,
+       940,
+       270
+      ],
+      "ini": 6,
+      "fim": 56
+     }
+    },
+    {
+     "img": "telas2/msg/g6_enviado.jpg",
+     "ih": 2700,
+     "ini": 60,
+     "fim": 120,
+     "cam": [
+      [
+       60,
+       585,
+       1836,
+       1.1
+      ],
+      [
+       80,
+       585,
+       1000,
+       1.1
+      ]
+     ],
+     "lupa": {
+      "box": [
+       20,
+       470,
+       1130,
+       170
+      ],
+      "ini": 84,
+      "fim": 116,
+      "lado": "baixo",
+      "rotulo": "volta sozinha no horário"
+     }
+    }
+   ],
+   "fala": "Sua mensagem vai pro paciente. E no horário marcado, a Thata volta sozinha."
+  },
+  {
+   "tipo": "beneficios",
+   "dur": 156,
+   "titulo": "Você *no controle*",
+   "itens": [
+    [
+     "pausa",
+     "Pausa em um toque",
+     "naquela conversa, só nela"
+    ],
+    [
+     "relogio",
+     "Você escolhe quando ela volta",
+     "amanhã cedo, em 1 dia, ou numa data"
+    ],
+    [
+     "chat",
+     "Responde do mesmo lugar",
+     "o histórico fica todo junto"
+    ]
+   ],
+   "fala": "Pausa em um toque, você escolhe quando ela volta, e responde do mesmo lugar."
+  },
+  {
+   "tipo": "fecho",
+   "dur": 110,
+   "frase": "A Thata atende.\n*Você assume quando quiser.*",
+   "fala": "A Thata atende. Você assume quando quiser."
+  }
+ ]
+}

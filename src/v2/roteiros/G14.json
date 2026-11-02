@@ -1,0 +1,41 @@
+{
+  "id": "G14", "arq": "thata_56_func_dashboard.mp4",
+  "cenas": [
+    { "tipo": "problema", "dur": 110, "titulo": "Muita conversa...\nmas quanto *virou\nconsulta?*", "visual": "grafico",
+      "fala": "Muita conversa... mas quanto disso virou consulta?" },
+    { "tipo": "solucao", "dur": 116, "selo": "Dashboard", "icone": "grafico", "titulo": "O que importa:\n*consultas marcadas.*",
+      "telas": [ { "img": "telas2/dash/y0_hoje.jpg", "ini": 0, "fim": 116, "cam": [[0, 585, 1000, 1]] } ],
+      "fala": "No dashboard da Thata, você vê o que importa: consultas marcadas." },
+    { "tipo": "passo", "n": "1", "dur": 150, "titulo": "Escolha *o período*",
+      "telas": [
+        { "img": "telas2/dash/y0_hoje.jpg", "ini": 0, "fim": 50, "cam": [[0, 585, 1900, 1.12]],
+          "cursor": [[0, 600, 2600], [28, 783, 2032]], "cliques": [38] },
+        { "img": "telas2/dash/y1_30d.jpg", "ini": 50, "fim": 150, "cam": [[50, 585, 1900, 1.12], [64, 585, 1200, 1.12]],
+          "realce": { "box": [30, 680, 1110, 1030], "ini": 70, "fim": 146 } } ],
+      "falas": [[4, 56, "Escolha o período."], [62, 146, "Atendimentos, consultas, e a receita estimada."]],
+      "fala": "" },
+    { "tipo": "passo", "n": "2", "dur": 130, "titulo": "A conversão *semana a semana*",
+      "telas": [
+        { "img": "telas2/dash/y1_30d.jpg", "ini": 0, "fim": 40, "cam": [[0, 585, 2300, 1.12]],
+          "cursor": [[0, 800, 2700], [22, 462, 2185]], "cliques": [32] },
+        { "img": "telas2/dash/y2_semanas.jpg", "ini": 40, "fim": 130, "cam": [[40, 585, 2300, 1.12], [56, 585, 2850, 1.12]],
+          "realce": { "box": [170, 2540, 900, 850], "ini": 64, "fim": 126 } } ],
+      "fala": "Em Semanas, veja a conversão de cada semana." },
+    { "tipo": "passo", "n": "3", "dur": 140, "titulo": "Quantos *viram consulta*",
+      "telas": [ { "img": "telas2/dash/y3_padroes.jpg", "ini": 0, "fim": 140, "cam": [[0, 585, 2500, 1.12], [70, 585, 2500, 1.12], [86, 585, 3000, 1.12]],
+        "realce": { "box": [30, 1960, 1110, 800], "ini": 6, "fim": 68 } },
+        { "img": "telas2/dash/y3_padroes.jpg", "ini": 86, "fim": 140, "cam": [[86, 585, 3000, 1.12]],
+        "realce": { "box": [30, 2820, 1110, 740], "ini": 90, "fim": 136 } } ],
+      "fala": "Três de cada dez viram consulta. E você vê de onde vieram." },
+    { "tipo": "passo", "n": "4", "dur": 120, "titulo": "Os padrões *que aparecem*",
+      "telas": [ { "img": "telas2/dash/y3_padroes.jpg", "ini": 0, "fim": 60, "cam": [[0, 585, 3000, 1.12], [16, 585, 4000, 1.12]],
+          "realce": { "box": [30, 3620, 1110, 580], "ini": 20, "fim": 58 } },
+        { "img": "telas2/dash/y3_padroes.jpg", "ini": 60, "fim": 120, "cam": [[60, 585, 4000, 1.12]],
+          "realce": { "box": [30, 4220, 1110, 580], "ini": 62, "fim": 116 } } ],
+      "fala": "E os padrões: o melhor horário, e a qualidade das conversas." },
+    { "tipo": "beneficios", "dur": 156, "titulo": "Decida *com números*",
+      "itens": [["agenda", "Consultas, não curtidas", "o número que faz diferença"], ["grafico", "Conversão por semana", "veja se está melhorando"], ["alvo", "De onde vêm", "e o melhor horário pra falar"]],
+      "fala": "Consultas em vez de curtidas, a conversão por semana, e de onde vêm os pacientes." },
+    { "tipo": "fecho", "dur": 110, "frase": "O que importa,\n*na sua tela.*", "fala": "O que importa, na sua tela." }
+  ]
+}

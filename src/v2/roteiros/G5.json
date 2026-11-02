@@ -1,0 +1,321 @@
+{
+ "id": "G5",
+ "arq": "thata_47_func_confirmacao_lembretes.mp4",
+ "cenas": [
+  {
+   "tipo": "problema",
+   "dur": 110,
+   "titulo": "Paciente marcou\ne *não apareceu?*",
+   "visual": "agenda",
+   "fala": "Paciente marcou, e não apareceu?"
+  },
+  {
+   "tipo": "solucao",
+   "dur": 116,
+   "selo": "Lembretes",
+   "icone": "sino",
+   "titulo": "Confirmação e lembrete\n*saem sozinhos.*",
+   "telas": [
+    {
+     "img": "telas2/lem/r1_confirma.jpg",
+     "ini": 0,
+     "fim": 116,
+     "cam": [
+      [
+       0,
+       585,
+       1000,
+       1
+      ]
+     ]
+    }
+   ],
+   "fala": "Com os lembretes da Thata, a confirmação e o aviso saem sozinhos."
+  },
+  {
+   "tipo": "passo",
+   "n": "1",
+   "dur": 130,
+   "titulo": "Confirmação *assim que marca*",
+   "telas": [
+    {
+     "img": "telas2/lem/r1_confirma.jpg",
+     "ini": 0,
+     "fim": 130,
+     "cam": [
+      [
+       0,
+       585,
+       1000,
+       1.1
+      ],
+      [
+       24,
+       585,
+       1600,
+       1.15
+      ]
+     ],
+     "lupa": {
+      "box": [
+       80,
+       1340,
+       1020,
+       340
+      ],
+      "ini": 28,
+      "fim": 84,
+      "lado": "baixo",
+      "rotulo": "sai assim que o horário é marcado"
+     },
+     "realce": {
+      "box": [
+       80,
+       1780,
+       1020,
+       250
+      ],
+      "ini": 88,
+      "fim": 126
+     }
+    }
+   ],
+   "fala": "Marcou, o paciente recebe a confirmação, com o dia e a hora."
+  },
+  {
+   "tipo": "passo",
+   "n": "2",
+   "dur": 140,
+   "titulo": "Lembrete *antes da consulta*",
+   "telas": [
+    {
+     "img": "telas2/lem/r2_lembretes.jpg",
+     "ini": 0,
+     "fim": 140,
+     "cam": [
+      [
+       0,
+       585,
+       1500,
+       1.15
+      ],
+      [
+       60,
+       585,
+       1500,
+       1.15
+      ],
+      [
+       84,
+       585,
+       2600,
+       1.15
+      ]
+     ],
+     "lupa": {
+      "box": [
+       80,
+       1170,
+       1010,
+       260
+      ],
+      "ini": 8,
+      "fim": 56,
+      "lado": "baixo",
+      "rotulo": "24h antes: mensagem"
+     },
+     "realce": {
+      "box": [
+       80,
+       2560,
+       1010,
+       260
+      ],
+      "ini": 90,
+      "fim": 136
+     }
+    }
+   ],
+   "fala": "Antes da consulta, um lembrete. E, se quiser, até uma ligação da assistente."
+  },
+  {
+   "tipo": "passo",
+   "n": "3",
+   "dur": 150,
+   "titulo": "Agenda do dia: *quem respondeu*",
+   "telas": [
+    {
+     "img": "telas2/lem/a1_dia.jpg",
+     "ini": 0,
+     "fim": 72,
+     "cam": [
+      [
+       0,
+       585,
+       1150,
+       1.1
+      ]
+     ],
+     "realce": {
+      "box": [
+       40,
+       700,
+       1090,
+       1040
+      ],
+      "ini": 6,
+      "fim": 68
+     }
+    },
+    {
+     "img": "telas2/lem/a1_dia.jpg",
+     "ini": 72,
+     "fim": 150,
+     "cam": [
+      [
+       72,
+       585,
+       1150,
+       1.1
+      ],
+      [
+       92,
+       585,
+       2400,
+       1.15
+      ]
+     ],
+     "lupa": {
+      "box": [
+       395,
+       2445,
+       540,
+       165
+      ],
+      "ini": 98,
+      "fim": 146,
+      "lado": "cima",
+      "rotulo": "entregue e respondido"
+     }
+    }
+   ],
+   "fala": "Na agenda do dia, você vê quem recebeu, quem respondeu, e quem ficou em silêncio."
+  },
+  {
+   "tipo": "passo",
+   "n": "4",
+   "dur": 140,
+   "titulo": "Cobre com *um toque*",
+   "telas": [
+    {
+     "img": "telas2/lem/a2_silencio.jpg",
+     "ini": 0,
+     "fim": 76,
+     "cam": [
+      [
+       0,
+       585,
+       2500,
+       1.15
+      ]
+     ],
+     "realce": {
+      "box": [
+       380,
+       2820,
+       560,
+       100
+      ],
+      "ini": 6,
+      "fim": 46
+     },
+     "cursor": [
+      [
+       34,
+       900,
+       2700
+      ],
+      [
+       58,
+       230,
+       3010
+      ]
+     ],
+     "cliques": [
+      68
+     ]
+    },
+    {
+     "img": "telas2/lem/a3_modal.jpg",
+     "ini": 76,
+     "fim": 140,
+     "cam": [
+      [
+       76,
+       585,
+       3900,
+       1.15
+      ]
+     ],
+     "lupa": {
+      "box": [
+       40,
+       3700,
+       1090,
+       330
+      ],
+      "ini": 80,
+      "fim": 118,
+      "lado": "cima",
+      "rotulo": "mensagem pronta"
+     },
+     "cursor": [
+      [
+       100,
+       600,
+       4300
+      ],
+      [
+       120,
+       785,
+       4555
+      ]
+     ],
+     "cliques": [
+      130
+     ]
+    }
+   ],
+   "fala": "Ficou em silêncio? Cobre com um toque: a mensagem já vem pronta."
+  },
+  {
+   "tipo": "beneficios",
+   "dur": 156,
+   "titulo": "Menos *faltas*",
+   "itens": [
+    [
+     "sino",
+     "Confirmação na hora",
+     "assim que o horário é marcado"
+    ],
+    [
+     "relogio",
+     "Lembrete antes da consulta",
+     "mensagem ou ligação da assistente"
+    ],
+    [
+     "ok",
+     "Quem vem, você já sabe",
+     "recebeu, respondeu ou ficou em silêncio"
+    ]
+   ],
+   "fala": "Confirmação na hora, lembrete antes da consulta, e você sabe quem vem."
+  },
+  {
+   "tipo": "fecho",
+   "dur": 110,
+   "frase": "Quem vem,\n*você já sabe.*",
+   "fala": "Quem vem, você já sabe."
+  }
+ ]
+}

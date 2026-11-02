@@ -1,0 +1,535 @@
+{
+ "id": "G1",
+ "arq": "thata_43_func_conectar_whatsapp.mp4",
+ "cenas": [
+  {
+   "tipo": "problema",
+   "dur": 120,
+   "titulo": "Paciente chamou\nno WhatsApp e\n*ficou sem resposta?*",
+   "visual": "mensagens",
+   "num": 23,
+   "txt": [
+    "Oi! Quanto custa o clareamento?",
+    "Tem horário amanhã de manhã?",
+    "Alguém aí?"
+   ],
+   "fala": "Paciente mandou mensagem e ficou horas sem resposta?"
+  },
+  {
+   "tipo": "solucao",
+   "dur": 96,
+   "selo": "Conectar o WhatsApp",
+   "icone": "chat",
+   "titulo": "Conecte o WhatsApp da clínica\n*e a IA responde na hora.*",
+   "telas": [
+    {
+     "img": "telas2/wpp/w1_vazio.jpg",
+     "ini": 0,
+     "fim": 96,
+     "cam": [
+      [
+       0,
+       585,
+       1000,
+       1
+      ],
+      [
+       96,
+       585,
+       1000,
+       1
+      ]
+     ]
+    }
+   ],
+   "fala": "Conecte o WhatsApp da clínica na Thata, e a IA responde na hora."
+  },
+  {
+   "tipo": "compara",
+   "dur": 160,
+   "titulo": "Dois jeitos de *conectar*",
+   "a": {
+    "titulo": "Não oficial",
+    "sub": "pelo código no celular",
+    "logo": "whats",
+    "itens": [
+     "Conecta em poucos minutos",
+     "Usa o número que você já tem",
+     "Só precisa do celular em mãos"
+    ]
+   },
+   "b": {
+    "titulo": "API oficial",
+    "sub": "direto com a Meta",
+    "logo": "meta",
+    "itens": [
+     "Conexão oficial da Meta",
+     "Mais estável e confiável",
+     "Modelos de mensagem da Meta"
+    ]
+   },
+   "fala": "Tem dois jeitos: pelo código, no celular, ou pela API oficial da Meta."
+  },
+  {
+   "tipo": "passo",
+   "n": "1",
+   "dur": 110,
+   "titulo": "Toque em *Conectar WhatsApp*",
+   "telas": [
+    {
+     "img": "telas2/wpp/w1_vazio.jpg",
+     "ini": 0,
+     "fim": 110,
+     "cam": [
+      [
+       0,
+       585,
+       1000,
+       1
+      ],
+      [
+       30,
+       585,
+       1700,
+       1.25
+      ]
+     ],
+     "cursor": [
+      [
+       22,
+       900,
+       2500
+      ],
+      [
+       52,
+       600,
+       2020
+      ]
+     ],
+     "cliques": [
+      62
+     ],
+     "realce": {
+      "box": [
+       247,
+       1951,
+       676,
+       138
+      ],
+      "ini": 40,
+      "fim": 106
+     },
+     "lupa": {
+      "box": [
+       247,
+       1951,
+       676,
+       138
+      ],
+      "ini": 64,
+      "fim": 106,
+      "lado": "cima"
+     }
+    }
+   ],
+   "fala": "Na página WhatsApp, toque em Conectar WhatsApp."
+  },
+  {
+   "tipo": "passo",
+   "n": "2",
+   "dur": 120,
+   "titulo": "Escolha o tipo de conexão",
+   "telas": [
+    {
+     "img": "telas2/wpp/w2_escolha.jpg",
+     "ini": 0,
+     "fim": 120,
+     "cam": [
+      [
+       0,
+       585,
+       2300,
+       1.1
+      ],
+      [
+       30,
+       585,
+       2400,
+       1.2
+      ]
+     ],
+     "cursor": [
+      [
+       40,
+       900,
+       1700
+      ],
+      [
+       80,
+       560,
+       2800
+      ]
+     ],
+     "cliques": [
+      92
+     ],
+     "realce": {
+      "box": [
+       160,
+       1911,
+       780,
+       534
+      ],
+      "ini": 16,
+      "fim": 56
+     },
+     "lupa": {
+      "box": [
+       160,
+       2484,
+       780,
+       694
+      ],
+      "ini": 62,
+      "fim": 116,
+      "lado": "cima",
+      "rotulo": "pelo código no celular"
+     }
+    }
+   ],
+   "fala": "Escolha o tipo. Vamos primeiro pela não oficial."
+  },
+  {
+   "tipo": "passo",
+   "n": "3",
+   "dur": 150,
+   "titulo": "Nome, número e *a IA ligada*",
+   "telas": [
+    {
+     "img": "telas2/wpp/w4_preenchido.jpg",
+     "ini": 0,
+     "fim": 150,
+     "cam": [
+      [
+       0,
+       585,
+       1000,
+       1.2
+      ],
+      [
+       40,
+       585,
+       1300,
+       1.2
+      ],
+      [
+       96,
+       585,
+       3000,
+       1.2
+      ]
+     ],
+     "realce": {
+      "box": [
+       218,
+       721,
+       660,
+       400
+      ],
+      "ini": 10,
+      "fim": 44
+     },
+     "lupa": {
+      "box": [
+       255,
+       1531,
+       660,
+       144
+      ],
+      "ini": 46,
+      "fim": 92,
+      "lado": "baixo",
+      "rotulo": "a IA responde"
+     },
+     "cursor": [
+      [
+       100,
+       800,
+       2600
+      ],
+      [
+       126,
+       760,
+       3505
+      ]
+     ],
+     "cliques": [
+      136
+     ]
+    }
+   ],
+   "fala": "Dê um nome, coloque o número, e deixe a IA respondendo."
+  },
+  {
+   "tipo": "passo",
+   "n": "4",
+   "dur": 150,
+   "titulo": "Digite o código *no celular*",
+   "telas": [
+    {
+     "img": "telas2/wpp/w5_codigo.jpg",
+     "ini": 0,
+     "fim": 150,
+     "cam": [
+      [
+       0,
+       585,
+       1300,
+       1.2
+      ],
+      [
+       70,
+       585,
+       1300,
+       1.2
+      ],
+      [
+       96,
+       585,
+       2200,
+       1.2
+      ]
+     ],
+     "lupa": {
+      "box": [
+       345,
+       1167,
+       480,
+       307
+      ],
+      "ini": 14,
+      "fim": 80,
+      "lado": "baixo",
+      "rotulo": "código de conexão"
+     },
+     "realce": {
+      "box": [
+       270,
+       1990,
+       640,
+       680
+      ],
+      "ini": 98,
+      "fim": 146
+     }
+    }
+   ],
+   "fala": "Aparece um código. No celular, em Dispositivos conectados, digite o código."
+  },
+  {
+   "tipo": "passo",
+   "n": "5",
+   "dur": 110,
+   "titulo": "Conectado: *a Thata já atende*",
+   "telas": [
+    {
+     "img": "telas2/wpp/w8_lista.jpg",
+     "ini": 0,
+     "fim": 110,
+     "cam": [
+      [
+       0,
+       585,
+       1300,
+       1.1
+      ]
+     ],
+     "realce": {
+      "box": [
+       94,
+       1112,
+       1029,
+       897
+      ],
+      "ini": 14,
+      "fim": 106
+     }
+    }
+   ],
+   "fala": "Pronto. Número conectado, e a Thata já atende."
+  },
+  {
+   "tipo": "passo",
+   "n": "6",
+   "dur": 190,
+   "titulo": "Pela API oficial: *3 etapas*",
+   "telas": [
+    {
+     "img": "telas2/wpp/w10_of1.jpg",
+     "ini": 0,
+     "fim": 50,
+     "cam": [
+      [
+       0,
+       585,
+       900,
+       1.2
+      ]
+     ],
+     "realce": {
+      "box": [
+       218,
+       720,
+       660,
+       330
+      ],
+      "ini": 6,
+      "fim": 46
+     },
+     "cursor": [
+      [
+       20,
+       700,
+       1500
+      ],
+      [
+       40,
+       760,
+       1232
+      ]
+     ],
+     "cliques": [
+      46
+     ]
+    },
+    {
+     "img": "telas2/wpp/w12_of2b.jpg",
+     "ini": 50,
+     "fim": 116,
+     "cam": [
+      [
+       50,
+       585,
+       1300,
+       1.2
+      ],
+      [
+       96,
+       585,
+       1700,
+       1.2
+      ]
+     ],
+     "lupa": {
+      "box": [
+       218,
+       830,
+       660,
+       540
+      ],
+      "ini": 56,
+      "fim": 104,
+      "lado": "baixo",
+      "rotulo": "credenciais da Meta"
+     },
+     "cursor": [
+      [
+       90,
+       800,
+       1900
+      ],
+      [
+       106,
+       760,
+       2226
+      ]
+     ],
+     "cliques": [
+      112
+     ]
+    },
+    {
+     "img": "telas2/wpp/w13_of3.jpg",
+     "ini": 116,
+     "fim": 150,
+     "cam": [
+      [
+       116,
+       585,
+       1500,
+       1.2
+      ]
+     ],
+     "cursor": [
+      [
+       116,
+       760,
+       2226
+      ],
+      [
+       134,
+       760,
+       2200
+      ]
+     ],
+     "cliques": [
+      142
+     ]
+    },
+    {
+     "img": "telas2/wpp/w14_of_ok.jpg",
+     "ini": 150,
+     "fim": 190,
+     "cam": [
+      [
+       150,
+       585,
+       2300,
+       1.1
+      ]
+     ],
+     "realce": {
+      "box": [
+       80,
+       2060,
+       1050,
+       900
+      ],
+      "ini": 154,
+      "fim": 188
+     }
+    }
+   ],
+   "fala": "Na API oficial são três etapas: cadastro, as credenciais da Meta, e quem atende."
+  },
+  {
+   "tipo": "beneficios",
+   "dur": 156,
+   "titulo": "O que muda *na clínica*",
+   "itens": [
+    [
+     "raio",
+     "Resposta em segundos",
+     "a IA responde o paciente na hora"
+    ],
+    [
+     "relogio",
+     "Atende fora do horário",
+     "noite, fim de semana e feriado"
+    ],
+    [
+     "escudo",
+     "Oficial ou não oficial",
+     "você escolhe o caminho da clínica"
+    ]
+   ],
+   "fala": "Resposta em segundos, inclusive fora do horário. E você escolhe o caminho."
+  },
+  {
+   "tipo": "fecho",
+   "dur": 110,
+   "frase": "Só o celular na mão.\n*A Thata atende.*",
+   "fala": "Só o celular na mão. A Thata atende."
+  }
+ ]
+}
