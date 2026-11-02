@@ -31,6 +31,41 @@ const useSat = (src?: string) => {
   }, [src, h]);
 };
 
+const hex = (h: string) => [1, 3, 5].map((k) => parseInt(h.slice(k, k + 2), 16));
+const mistura = (a: string, b: string, t: number) => {
+  const x = hex(a), y = hex(b);
+  return `rgb(${x.map((v, i) => Math.round(lerp(v, y[i], t))).join(',')})`;
+};
+
+/** Área destacada (ex.: Flevopolder). glow = terra âmbar com relevo; anel = água dentro e diques que se desenham na borda;
+ *  seca = começa coberta de água e a água baixa até virar terra (bombeamento). */
+const AreaPolder: React.FC<{ d: string; modo: string; f: number; fl: number; dur: number; s: number }> = ({ d, modo, f, fl, dur, s }) => {
+  const sobe = modo === 'glow' ? prog(fl, 4, 26, EO) : modo === 'seca' ? prog(f, dur * 0.35, dur * 0.8, EIO) : 0;
+  if (modo === 'mar') return <path d={d} fill="#0b2034" />; // antes do pólder: o furo volta a ser mar
+  const agua = modo === 'anel' ? 1 : modo === 'seca' ? 1 - prog(f, dur * 0.12, dur * 0.72, EIO) : 0;
+  const anel = modo === 'anel' ? prog(f, dur * 0.42, dur * 0.85, EIO) : 1;
+  return (
+    <>
+      {sobe > 0 && Array.from({ length: 7 }).map((_, k) => (
+        <path key={k} d={d} fill={k < 6 ? '#7a4a0c' : '#a8660f'} transform={`translate(0 ${((7 - k) * 1.8 * sobe) / s})`} />
+      ))}
+      {sobe > 0 && <path d={d} fill="url(#gdest)" opacity={sobe} transform={`translate(0 ${(-2 * sobe) / s})`} />}
+      {/* campos do pólder (linhas retas) aparecem quando seca */}
+      {sobe > 0.3 && (
+        <g opacity={(sobe - 0.3) * 0.5}>
+          <clipPath id="clipArea"><path d={d} /></clipPath>
+          <g clipPath="url(#clipArea)">
+            {Array.from({ length: 60 }).map((_, k) => <line key={k} x1={-2000} x2={4000} y1={-1200 + k * 40} y2={-1200 + k * 40 + 1400} stroke="#5b3a08" strokeWidth={2} vectorEffect="non-scaling-stroke" />)}
+          </g>
+        </g>
+      )}
+      {agua > 0 && <path d={d} fill="#1d6fae" opacity={agua * 0.95} />}
+      {agua > 0 && agua < 1 && <path d={d} fill="none" stroke="#bfe6ff" strokeOpacity={0.5 * agua} strokeWidth={3} vectorEffect="non-scaling-stroke" strokeDasharray="10 14" strokeDashoffset={-f * 1.5} />}
+      <path d={d} fill="none" stroke={modo === 'anel' ? C.amber : '#ffe2a6'} strokeWidth={modo === 'anel' ? 6 : 1.8} vectorEffect="non-scaling-stroke" pathLength={1} strokeDasharray={`${anel} 1`} style={{ filter: modo === 'anel' ? `drop-shadow(0 0 6px ${C.amber})` : undefined }} />
+    </>
+  );
+};
+
 export const Mapa: React.FC<CenaProps> = ({ c, f, dur, id, geo, temGlobo, idx }) => {
   const feats = useGeo(id, geo);
   const satSrc = c._sat ? staticFile(`v/${id}/${c._sat.arq}`) : undefined;
@@ -46,22 +81,23 @@ export const Mapa: React.FC<CenaProps> = ({ c, f, dur, id, geo, temGlobo, idx })
 
   const camadas = useMemo(() => {
     if (!feats) return null;
-    const terra: string[] = [], dest: string[] = [], lagos: string[] = [], rios: string[] = [];
+    const terra: string[] = [], dest: string[] = [], lagos: string[] = [], rios: string[] = [], area: string[] = [];
     feats.forEach((ft) => {
       const d = path(ft.g as any);
       if (!d) return;
       if (ft.k === 'pais' || ft.k === 'ilha') (ft.a3 && destaque.includes(ft.a3) ? dest : terra).push(d);
       else if (ft.k === 'lago') lagos.push(d);
       else if (ft.k === 'rio') rios.push(d);
+      else if (ft.k === 'area') area.push(d);
     });
     const step = passoGrade(Math.max(lon1 - lon0, lat1 - lat0) * 2.5);
     const grad = path(geoGraticule().step([step, step]).extent([[Math.max(-180, lon0 - 40), Math.max(-80, lat0 - 30)], [Math.min(180, lon1 + 40), Math.min(80, lat1 + 30)]])() as any) || '';
-    return { terra: terra.join(''), dest: dest.join(''), lagos: lagos.join(''), rios: rios.join(''), grad };
+    return { terra: terra.join(''), dest: dest.join(''), lagos: lagos.join(''), rios: rios.join(''), area: area.join(''), grad };
   }, [feats, path, destaque.join(','), lon0, lon1, lat0, lat1]);
 
   // ---------- câmera ----------
   const g0 = temGlobo ? 40 : 0; // quando há globo antes, o mapa começa a aparecer no quadro ~40
-  const fl = f - g0;
+  const fl = f - g0 + (c.instantaneo ? 24 : 0); // instantâneo: mapa já revelado no quadro 0 (abertura sem globo)
   const zoomOut = temGlobo ? (lon1 - lon0 > 60 ? 1.35 : 2.8) : 1.65;
   const pm = prog(fl, -8, Math.min(dur * 0.55, 60), EIO);
   const empurra = prog(fl, 0, dur - g0, (x) => x);
@@ -107,6 +143,9 @@ export const Mapa: React.FC<CenaProps> = ({ c, f, dur, id, geo, temGlobo, idx })
   const centro = proj.invert!([cx, cy]) || [0, 0];
 
   const varre = prog(fl, 2, 34, EIO);
+  // lago que muda de cor (ex.: água salgada virando doce)
+  const lc = c.lago_cor;
+  const corLago = lc ? mistura(lc.de, lc.para, prog(f, lc.ini * dur, lc.fim * dur, EIO)) : '#0d3150';
   const corPin = COR[c.cor_pin || 'amber'] || C.amber;
 
   return (
@@ -140,7 +179,7 @@ export const Mapa: React.FC<CenaProps> = ({ c, f, dur, id, geo, temGlobo, idx })
             })()}
             <path d={camadas.terra} fill="none" stroke="#7fa3c2" strokeWidth={1.6} vectorEffect="non-scaling-stroke" />
             <path d={camadas.terra} fill="none" stroke="#8fc3ff" strokeOpacity={0.18} strokeWidth={5} vectorEffect="non-scaling-stroke" />
-            <path d={camadas.lagos} fill="#0d3150" stroke="#5f9fd0" strokeWidth={1} vectorEffect="non-scaling-stroke" />
+            <path d={camadas.lagos} fill={corLago} stroke="#5f9fd0" strokeWidth={1} vectorEffect="non-scaling-stroke" />
             <path d={camadas.rios} fill="none" stroke="#2f6f9f" strokeOpacity={0.55} strokeWidth={1.4} vectorEffect="non-scaling-stroke" />
             {camadas.dest && (
               <>
@@ -150,9 +189,15 @@ export const Mapa: React.FC<CenaProps> = ({ c, f, dur, id, geo, temGlobo, idx })
                 <path d={camadas.dest} fill="url(#gdest)" stroke="#ffe2a6" strokeWidth={1.6} vectorEffect="non-scaling-stroke" transform={`translate(0 ${(-2 * prog(fl, 4, 26, EO)) / s})`} />
               </>
             )}
+            {camadas.area && <AreaPolder d={camadas.area} modo={c.area_modo || 'glow'} f={f} fl={fl} dur={dur} s={s} />}
           </g>
         )}
       </svg>
+      {camadas?.area && !['anel', 'mar'].includes(c.area_modo || 'glow') && (
+        <svg width={W} height={H} style={{ position: 'absolute', inset: 0, filter: 'blur(26px)', opacity: 0.6 * (c.area_modo === 'seca' ? prog(f, dur * 0.35, dur * 0.8) : 1) * (0.85 + 0.15 * Math.sin(t * 3)) }}>
+          <g transform={camT}><path d={camadas.area} fill={C.amber} /></g>
+        </svg>
+      )}
       {/* brilho do país em destaque */}
       {camadas?.dest && (
         <svg width={W} height={H} style={{ position: 'absolute', inset: 0, filter: 'blur(22px)', opacity: 0.55 * prog(fl, 6, 30) * (0.85 + 0.15 * Math.sin(t * 3)) }}>
@@ -168,7 +213,7 @@ export const Mapa: React.FC<CenaProps> = ({ c, f, dur, id, geo, temGlobo, idx })
       {/* rotas */}
       <svg width={W} height={H} style={{ position: 'absolute', inset: 0 }}>
         {rotas.map((r, i) => {
-          const ini = base + 8 + i * 18;
+          const ini = base + 8 + (c.rotas_juntas ? 0 : i * 18);
           const fim = Math.min(ini + 70, dur * 0.78);
           const p = prog(f, ini, fim, EIO);
           if (p <= 0) return null;

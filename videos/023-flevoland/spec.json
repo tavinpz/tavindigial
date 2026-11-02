@@ -1,0 +1,159 @@
+{
+ "arquivo": "concrete_atlas_short_023_flevoland.mp4",
+ "titulo": "How Did the Dutch Build Land From the Sea?",
+ "falas": [
+  "How did the Dutch build land from the sea?",
+  "This is Flevopolder: 970 square kilometers. Bigger than Singapore.",
+  "First they cut the sea off with a dam. Then they built a ring of dikes in the shallow water.",
+  "And pumped it dry. The south fell dry in 1968.",
+  "On the old seabed, they built a city from nothing. Almere.",
+  "Its first homes went up in 1976. Today over 200,000 people live there.",
+  "Fifty-eight years ago, fish swam here. That's how the Dutch built land from the sea."
+ ],
+ "cenas": [
+  {
+   "tipo": "mapa",
+   "bbox": [
+    4.95,
+    6.05,
+    52.12,
+    52.78
+   ],
+   "area": {
+    "lago": "IJsselmeer",
+    "furo": 0
+   },
+   "instantaneo": true,
+   "sem_globo": true,
+   "gancho": "HOW DID THEY BUILD\nLAND FROM THE SEA?",
+   "gancho_y": 330,
+   "zoom": 0.1
+  },
+  {
+   "tipo": "barras",
+   "titulo": "Flevopolder",
+   "sub": "by some measures the largest artificial island",
+   "unidade": " km²",
+   "itens": [
+    [
+     "Flevopolder",
+     970,
+     true
+    ],
+    [
+     "Singapore",
+     745,
+     false
+    ]
+   ]
+  },
+  {
+   "tipo": "mapa",
+   "bbox": [
+    4.6,
+    6.1,
+    52.15,
+    53.2
+   ],
+   "titulo": "Step 1: close the sea",
+   "sub": "then a ring of dikes",
+   "area": {
+    "lago": "IJsselmeer",
+    "furo": 0
+   },
+   "area_modo": "anel",
+   "rotas": [
+    [
+     [
+      5.044,
+      52.934
+     ],
+     [
+      5.129,
+      52.96
+     ],
+     [
+      5.288,
+      53.045
+     ],
+     [
+      5.372,
+      53.077
+     ]
+    ]
+   ],
+   "cor_rota": "amber",
+   "largura_rota": 14,
+   "zoom": 0.04
+  },
+  {
+   "tipo": "mapa",
+   "bbox": [
+    5.0,
+    6.0,
+    52.2,
+    52.7
+   ],
+   "titulo": "Pumped dry",
+   "sub": "Southern Flevoland",
+   "area": {
+    "lago": "IJsselmeer",
+    "furo": 0
+   },
+   "area_modo": "seca",
+   "numero": "1968",
+   "zoom": 0.08
+  },
+  {
+   "tipo": "polder",
+   "modo": "cidade",
+   "titulo": "Almere",
+   "sub": "built on the old seabed"
+  },
+  {
+   "tipo": "linha",
+   "titulo": "Almere",
+   "eventos": [
+    [
+     1968,
+     "Seabed falls dry"
+    ],
+    [
+     1976,
+     "First homes"
+    ],
+    [
+     2026,
+     "200,000+ people"
+    ]
+   ]
+  },
+  {
+   "tipo": "mapa",
+   "bbox": [
+    4.95,
+    6.05,
+    52.12,
+    52.78
+   ],
+   "area": {
+    "lago": "IJsselmeer",
+    "furo": 0
+   },
+   "instantaneo": true,
+   "sem_globo": true,
+   "pins": [
+    [
+     5.22,
+     52.37,
+     "Almere",
+     "l"
+    ]
+   ],
+   "zoom": 0.1
+  }
+ ],
+ "voz": "am_michael",
+ "velocidade": 1.08,
+ "cauda": 0.4
+}

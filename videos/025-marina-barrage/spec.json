@@ -1,0 +1,83 @@
+{
+ "arquivo": "concrete_atlas_short_025_marina_barrage.mp4",
+ "titulo": "How Does Singapore Hold Back the Sea?",
+ "falas": [
+  "How does Singapore hold back the sea?",
+  "With pumps that can empty an Olympic pool in under 9 seconds.",
+  "In 2008, it built a 350-meter dam across the mouth of its downtown bay.",
+  "Nine gates keep the sea out.",
+  "Behind them, rain from 100 square kilometers of city turned salt water into a freshwater reservoir.",
+  "And when heavy rain hits at high tide, the gates stay shut and seven giant pumps push it out to sea.",
+  "So the sea downtown became drinking water. That's how Singapore holds back the sea."
+ ],
+ "cenas": [
+  {
+   "tipo": "barragem",
+   "modo": "hero",
+   "gancho": "HOW DOES SINGAPORE\nHOLD BACK THE SEA?",
+   "gancho_y": 330
+  },
+  {
+   "tipo": "barragem",
+   "modo": "piscina",
+   "titulo": "Olympic pool",
+   "sub": "2,500 m³ of water"
+  },
+  {
+   "tipo": "mapa",
+   "bbox": [
+    103.62,
+    104.08,
+    1.2,
+    1.48
+   ],
+   "titulo": "Marina Barrage",
+   "sub": "Singapore, 2008",
+   "pins": [
+    [
+     103.871,
+     1.281,
+     "Marina Barrage",
+     "r"
+    ]
+   ],
+   "numero": "350 M",
+   "zoom": 0.1
+  },
+  {
+   "tipo": "barragem",
+   "modo": "portoes",
+   "titulo": "9 crest gates",
+   "sub": "sea out, fresh water in"
+  },
+  {
+   "tipo": "numero",
+   "valor": 100,
+   "sufixo": " km²",
+   "label": "of city drains here",
+   "nota": "the bay became a freshwater reservoir",
+   "cor": "water",
+   "titulo": "Catchment",
+   "fundo": [
+    103.62,
+    104.08,
+    1.2,
+    1.48
+   ]
+  },
+  {
+   "tipo": "barragem",
+   "modo": "corte",
+   "titulo": "Rain + high tide",
+   "sub": "gates shut, pumps on"
+  },
+  {
+   "tipo": "barragem",
+   "modo": "hero",
+   "final": true
+  }
+ ],
+ "voz": "am_michael",
+ "velocidade": 1.08,
+ "cauda": 0.4
+}

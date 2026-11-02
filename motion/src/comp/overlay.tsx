@@ -6,7 +6,7 @@ import { Logo } from './base';
 import type { Palavra } from '../lib/types';
 
 /** Gancho: linhas batem na tela no quadro 0 com tremida e flash; somem por volta de 2,6 s */
-export const Gancho: React.FC<{ f: number; texto: string; sai?: number }> = ({ f, texto, sai = 74 }) => {
+export const Gancho: React.FC<{ f: number; texto: string; sai?: number; y?: number }> = ({ f, texto, sai = 74, y = 690 }) => {
   const linhas = texto.toUpperCase().split('\n');
   const saida = prog(f, sai, sai + 10, EO);
   if (saida >= 1) return null;
@@ -25,7 +25,7 @@ export const Gancho: React.FC<{ f: number; texto: string; sai?: number }> = ({ f
   return (
     <AbsoluteFill style={{ pointerEvents: 'none' }}>
       <AbsoluteFill style={{ background: '#fff', opacity: flash }} />
-      <div style={{ position: 'absolute', left: 0, width: W, top: 690, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, transform: `translate(${sx}px, ${sy - saida * 120}px) scale(${1 - saida * 0.25})`, opacity: 1 - saida, filter: saida > 0 ? `blur(${saida * 10}px)` : undefined }}>
+      <div style={{ position: 'absolute', left: 0, width: W, top: y, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, transform: `translate(${sx}px, ${sy - saida * 120}px) scale(${1 - saida * 0.25})`, opacity: 1 - saida, filter: saida > 0 ? `blur(${saida * 10}px)` : undefined }}>
         {linhas.map((l, i) => {
           const s = spr(f, batidas[i], { damping: 11, stiffness: 260, mass: 0.7 });
           const esc = 2.3 - 1.3 * s;

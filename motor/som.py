@@ -152,12 +152,31 @@ def soma(buf, som, t, ganho):
     if e > s: buf[s:e] += som[:e - s] * ganho
 
 
+# efeitos das cenas de água (scenes/Agua.tsx): (quadro dentro da cena, som, ganho), casados com as animações
+SFX_CENAS = {
+    'maeslant': lambda c, dur: ([(dur * 0.34, 'riser', 0.3), (dur * 0.88, 'impacto', 0.75)] if c.get('modo') == 'gira' else
+                                [(10, 'whoosh_longo', 0.3), (dur * 0.62, 'impacto', 0.65)] if c.get('modo') == 'afunda' else
+                                [(4, 'whoosh_longo', 0.25)]),
+    'tamisa': lambda c, dur: ([(6 + k * 7, 'pop', 0.3) for k in range(10)] + [(84, 'impacto', 0.6)] if c.get('modo') == 'constroi' else
+                              [(dur * 0.12, 'riser', 0.3), (dur * 0.55, 'impacto', 0.65)] if c.get('modo') == 'sobe' else
+                              [(6, 'whoosh_longo', 0.3)]),
+    'dique': lambda c, dur: ([(10, 'whoosh_longo', 0.3), (30, 'pop', 0.25), (60, 'pop', 0.25)] if c.get('modo') == 'constroi' else
+                             [(8 + k * 4, 'pop', 0.22) for k in range(5)] + [(40, 'whoosh_longo', 0.3)] if c.get('modo') == 'comportas' else
+                             [(6, 'whoosh_longo', 0.25)]),
+    'barragem': lambda c, dur: ([(k, 'tique', 0.22) for k in range(14, 14 + 9 * 8, 8)] + [(14 + 9 * 8, 'impacto', 0.8)] if c.get('modo') == 'piscina' else
+                                [(6 + k * 5, 'pop', 0.25) for k in range(9)] if c.get('modo') == 'portoes' else
+                                [(20, 'riser', 0.25), (60, 'whoosh_longo', 0.35)] if c.get('modo') == 'corte' else
+                                [(4, 'whoosh_longo', 0.25)]),
+    'polder': lambda c, dur: [(10 + k * 6, 'pop', 0.18) for k in range(8)] + [(dur * 0.6, 'impacto', 0.5)],
+}
+
+
 def eventos(d):
     """lista (tempo_s, nome, ganho) a partir dos tempos das cenas — espelha as animações do motor."""
     ev = []
     cenas, tempos = d['cenas'], d['tempos']
     c0 = cenas[0]
-    globo = c0['tipo'] == 'mapa' and c0.get('gancho')
+    globo = c0['tipo'] == 'mapa' and c0.get('gancho') and not c0.get('sem_globo')
     ev.append((0.0, 'impacto', 0.9))
     if c0.get('gancho') and '\n' in c0['gancho']:
         ev.append((5 / FPS, 'impacto', 0.75))
@@ -221,6 +240,8 @@ def eventos(d):
         elif c['tipo'] == 'altura':
             for k in range(len(c['itens'])): ev.append((t0 + (-2 + k * 9) / FPS, 'riser', 0.18))
             ev.append((t0 + (26 + (len(c['itens']) - 1) * 9) / FPS, 'impacto', 0.55))
+        elif c['tipo'] in SFX_CENAS:
+            for q, nome, ganho in SFX_CENAS[c['tipo']](c, dur): ev.append((t0 + q / FPS, nome, ganho))
         elif c['tipo'] == 'cta':
             ev.append((t0 - 1.2, 'riser', 0.35))
             ev.append((t0 + 2 / FPS, 'sino', 0.35)); ev.append((t0 + 44 / FPS, 'pop', 0.5))

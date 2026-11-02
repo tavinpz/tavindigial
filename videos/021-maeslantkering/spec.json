@@ -1,0 +1,128 @@
+{
+ "arquivo": "concrete_atlas_short_021_maeslantkering.mp4",
+ "titulo": "How Do the Dutch Close the Sea?",
+ "falas": [
+  "How do the Dutch close the sea?",
+  "With two steel arms. Each one weighs 6,800 tonnes, almost as much as the iron in the Eiffel Tower.",
+  "They rest in dry docks on both banks of the waterway to Rotterdam.",
+  "When a three-meter storm surge is forecast, the docks flood, and the gates float out.",
+  "They meet in the middle, fill with water and sink to the riverbed.",
+  "Since 1997, it has closed for a storm only twice: 2007 and 2023.",
+  "Two gates, two hours, and that's how the Dutch close the sea."
+ ],
+ "cenas": [
+  {
+   "tipo": "maeslant",
+   "modo": "fechado",
+   "gancho": "HOW DO THE DUTCH\nCLOSE THE SEA?",
+   "gancho_y": 330
+  },
+  {
+   "tipo": "barras",
+   "titulo": "One arm",
+   "sub": "Maeslantkering steel truss",
+   "unidade": " t",
+   "itens": [
+    [
+     "One arm",
+     6800,
+     true
+    ],
+    [
+     "Eiffel Tower iron",
+     7300,
+     false
+    ]
+   ]
+  },
+  {
+   "tipo": "mapa",
+   "bbox": [
+    3.85,
+    4.75,
+    51.8,
+    52.1
+   ],
+   "titulo": "Nieuwe Waterweg",
+   "sub": "Rotterdam's door to the sea",
+   "pins": [
+    [
+     4.165,
+     51.955,
+     "Maeslantkering",
+     "r"
+    ],
+    [
+     4.48,
+     51.92,
+     "Rotterdam",
+     "r"
+    ]
+   ],
+   "rota": [
+    [
+     3.7,
+     52.0
+    ],
+    [
+     3.95,
+     51.985
+    ],
+    [
+     4.12,
+     51.97
+    ],
+    [
+     4.3,
+     51.93
+    ],
+    [
+     4.47,
+     51.915
+    ]
+   ],
+   "cor_rota": "water",
+   "largura_rota": 14,
+   "zoom": 0.12
+  },
+  {
+   "tipo": "maeslant",
+   "modo": "gira",
+   "titulo": "Storm surge forecast",
+   "sub": "the docks flood, the gates float"
+  },
+  {
+   "tipo": "maeslant",
+   "modo": "afunda",
+   "titulo": "Water in, gates down",
+   "sub": "they sink onto the riverbed"
+  },
+  {
+   "tipo": "linha",
+   "titulo": "Storm closures",
+   "sub": "in 28 years",
+   "eventos": [
+    [
+     1997,
+     "Opened"
+    ],
+    [
+     2007,
+     "1st storm closure"
+    ],
+    [
+     2023,
+     "2nd storm closure"
+    ]
+   ]
+  },
+  {
+   "tipo": "maeslant",
+   "modo": "fechado",
+   "final": true
+  }
+ ],
+ "voz": "am_michael",
+ "velocidade": 1.08,
+ "cauda": 0.4
+}

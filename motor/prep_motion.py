@@ -173,12 +173,15 @@ def prepara(pasta):
         d = len(a) / sr
         ini = 0.0 if i == 0 else t
         words_i = palavras(fala, t, a, sr)
-        for w in words_i: w['cena'] = i
+        troca = spec.get('legenda', {})  # grafia da legenda quando a voz usa grafia fonética
+        for w in words_i:
+            w['cena'] = i
+            w['w'] = troca.get(w['w'], w['w'])
         if spec['cenas'][i]['tipo'] != 'cta': words += words_i
         faixas.append((t, a, sr))
         t += d + GAP
         cenas.append({'ini': round(ini, 3), 'fala': round(faixas[-1][0], 3), 'dur_fala': round(d, 3)})
-    total = t - GAP + CAUDA
+    total = t - GAP + spec.get('cauda', CAUDA)  # vídeos em loop usam cauda curta
     for i, c in enumerate(cenas):
         fim = cenas[i + 1]['ini'] if i + 1 < len(cenas) else total
         c['fim'] = round(fim, 3)
@@ -189,7 +192,14 @@ def prepara(pasta):
         bb = c.get('bbox') or c.get('fundo')
         if c['tipo'] in ('mapa', 'numero') and bb:
             nome = f'geo_{i}.json'
-            json.dump(arred(recorta(bb, 5.0 if i == 0 else 3.6)), open(os.path.join(dest, nome), 'w'), separators=(',', ':'))
+            feats = recorta(bb, 5.0 if i == 0 else 3.6)
+            if c.get('area'):  # área destacada = furo de um lago (ex.: Flevopolder dentro do IJsselmeer)
+                ar = c['area']
+                for f in carrega('ne_10m_lakes.geojson'):
+                    if f['properties'].get('name') == ar['lago']:
+                        anel = list(shape(f['geometry']).interiors)[ar.get('furo', 0)]
+                        feats.append({'k': 'area', 'g': mapping(horario(Polygon(anel)))})
+            json.dump(arred(feats), open(os.path.join(dest, nome), 'w'), separators=(',', ':'))
             geos[i] = nome
             sat = satelite(bb, 5.0 if i == 0 else 3.6, os.path.join(dest, f'sat_{i}.jpg'))
             if sat: c['_sat'] = {'arq': f'sat_{i}.jpg', 'b': sat}

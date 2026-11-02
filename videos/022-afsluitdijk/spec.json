@@ -1,0 +1,191 @@
+{
+ "arquivo": "concrete_atlas_short_022_afsluitdijk.mp4",
+ "titulo": "How Did the Dutch Turn a Sea Into a Lake?",
+ "falas": [
+  "How did the Dutch turn a sea into a lake?",
+  "With one wall. 32 kilometers long.",
+  "The Zy-der-zee was a salty bay, open to the North Sea.",
+  "From 1927, up to 10,000 workers piled sand and clay across it.",
+  "On 28 May 1932, they closed the last gap.",
+  "Cut off from the sea and fed by rivers, the water slowly turned fresh. The Eye-sel-meer.",
+  "Twenty-five sluices still drain it to the sea at low tide.",
+  "One wall. That's how the Dutch turned a sea into a lake."
+ ],
+ "cenas": [
+  {
+   "tipo": "dique",
+   "modo": "hero",
+   "gancho": "HOW DID THEY TURN\nA SEA INTO A LAKE?",
+   "gancho_y": 330
+  },
+  {
+   "tipo": "mapa",
+   "bbox": [
+    4.75,
+    5.65,
+    52.78,
+    53.2
+   ],
+   "titulo": "Afsluitdijk",
+   "sub": "the Closure Dike",
+   "rotas": [
+    [
+     [
+      5.044,
+      52.934
+     ],
+     [
+      5.086,
+      52.944
+     ],
+     [
+      5.129,
+      52.96
+     ],
+     [
+      5.209,
+      53.003
+     ]
+    ],
+    [
+     [
+      5.372,
+      53.077
+     ],
+     [
+      5.288,
+      53.045
+     ],
+     [
+      5.209,
+      53.003
+     ]
+    ]
+   ],
+   "rotas_juntas": true,
+   "cor_rota": "amber",
+   "largura_rota": 16,
+   "numero": "32 KM",
+   "zoom": 0.06
+  },
+  {
+   "tipo": "mapa",
+   "bbox": [
+    3.9,
+    6.3,
+    52.2,
+    53.6
+   ],
+   "titulo": "Zuiderzee",
+   "sub": "before 1932: open to the North Sea",
+   "lago_cor": {
+    "de": "#0b2034",
+    "para": "#0b2034",
+    "ini": 0,
+    "fim": 1
+   },
+   "area": {
+    "lago": "IJsselmeer",
+    "furo": 0
+   },
+   "area_modo": "mar",
+   "rota": [
+    [
+     4.1,
+     53.25
+    ],
+    [
+     4.72,
+     52.99
+    ],
+    [
+     5.02,
+     52.95
+    ],
+    [
+     5.25,
+     52.78
+    ],
+    [
+     5.35,
+     52.52
+    ]
+   ],
+   "cor_rota": "water",
+   "largura_rota": 12,
+   "pins": [
+    [
+     5.3,
+     52.62,
+     "Salt water",
+     "r"
+    ]
+   ],
+   "zoom": 0.05
+  },
+  {
+   "tipo": "dique",
+   "modo": "constroi",
+   "titulo": "1927 to 1932",
+   "sub": "sand and boulder clay"
+  },
+  {
+   "tipo": "linha",
+   "titulo": "Closing the sea",
+   "eventos": [
+    [
+     1927,
+     "Work begins"
+    ],
+    [
+     1932,
+     "Last gap closed\n28 May"
+    ]
+   ]
+  },
+  {
+   "tipo": "mapa",
+   "bbox": [
+    4.7,
+    6.0,
+    52.25,
+    53.2
+   ],
+   "titulo": "IJsselmeer",
+   "sub": "salt water turned fresh",
+   "lago_cor": {
+    "de": "#0a1c2d",
+    "para": "#2f8fd8",
+    "ini": 0.15,
+    "fim": 0.85
+   },
+   "pins": [
+    [
+     5.25,
+     52.75,
+     "IJsselmeer",
+     "r"
+    ]
+   ],
+   "zoom": 0.05
+  },
+  {
+   "tipo": "dique",
+   "modo": "comportas",
+   "titulo": "25 sluices",
+   "sub": "drain to the sea at low tide"
+  },
+  {
+   "tipo": "dique",
+   "modo": "hero",
+   "final": true
+  }
+ ],
+ "voz": "am_michael",
+ "velocidade": 1.08,
+ "legenda": {
+  "Zy-der-zee": "Zuiderzee",
+  "Eye-sel-meer.": "IJsselmeer."
+ },
+ "cauda": 0.4
+}

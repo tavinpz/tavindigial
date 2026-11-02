@@ -13,10 +13,12 @@ import { Linha, Lista, Secao, Comportas, Portoes, Cta } from './scenes/Outras';
 import { Salao } from './scenes/Salao';
 import { Globe } from './scenes/Globe';
 import { Palpite, Altura, LembreteSeguir } from './scenes/Interacao';
+import { Maeslant, Tamisa, Dique, Barragem, Polder } from './scenes/Agua';
 
 const TIPOS: Record<string, React.FC<CenaProps>> = {
   mapa: Mapa, numero: Numero, barras: Barras, perfil: Perfil, linha: Linha, lista: Lista,
   secao: Secao, comportas: Comportas, portoes: Portoes, cta: Cta, salao: Salao, palpite: Palpite, altura: Altura,
+  maeslant: Maeslant, tamisa: Tamisa, dique: Dique, barragem: Barragem, polder: Polder,
 };
 
 const T = 8; // quadros de transição
@@ -58,7 +60,7 @@ export const Short: React.FC<{ dados: Dados; semAudio?: boolean; pre3d?: boolean
   const ini = dados.tempos.map((t) => Math.round(t.ini * fps));
   const fim = dados.tempos.map((t) => Math.round(t.fim * fps));
   const c0 = cenas[0];
-  const temGlobo = c0.tipo === 'mapa' && !!c0.gancho;
+  const temGlobo = c0.tipo === 'mapa' && !!c0.gancho && !c0.sem_globo;
   const alvo = c0.globo || (c0.bbox ? [(c0.bbox[2] + c0.bbox[3]) / 2, (c0.bbox[0] + c0.bbox[1]) / 2] : [0, 0]);
   const tipoDe = (i: number) => (i >= cenas.length ? 'zoom' : TRANS[i % TRANS.length]);
   return (
@@ -85,7 +87,7 @@ export const Short: React.FC<{ dados: Dados; semAudio?: boolean; pre3d?: boolean
       })}
       {/* flash curto em cada corte */}
       {ini.slice(1).map((s, k) => (frame >= s - 2 && frame < s + 3 ? <AbsoluteFill key={k} style={{ background: '#fff', opacity: 0.16 * (1 - Math.abs(frame - s) / 3) }} /> : null))}
-      {c0.gancho && <Gancho f={frame} texto={c0.gancho} />}
+      {c0.gancho && <Gancho f={frame} texto={c0.gancho} y={c0.gancho_y} />}
       {cenas.map((c, i) => (c.lembrete ? <LembreteSeguir key={`l${i}`} f={frame - ini[i] - 12} texto={c.lembrete} /> : null))}
       <Legenda f={frame} bl={bl} />
       <Marcas f={frame} total={dados.quadros} />

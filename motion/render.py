@@ -25,7 +25,7 @@ def render(vid):
     d = json.load(open(os.path.join(pasta, 'data.json')))
     t0 = time.time()
     c0 = d['cenas'][0]
-    if c0['tipo'] == 'mapa' and c0.get('gancho') and not os.path.exists(os.path.join(pasta, 'globo.mp4')):
+    if c0['tipo'] == 'mapa' and c0.get('gancho') and not c0.get('sem_globo') and not os.path.exists(os.path.join(pasta, 'globo.mp4')):
         alvo = c0.get('globo') or [(c0['bbox'][2] + c0['bbox'][3]) / 2, (c0['bbox'][0] + c0['bbox'][1]) / 2]
         remotion(['Globo3D', os.path.join(pasta, 'globo.mp4'), f'--props={json.dumps({"lat": alvo[0], "lon": alvo[1]})}', '--crf=12', '--muted'], 'swangle')
         print(f'  {vid} globo ok {time.time() - t0:.0f}s', flush=True)
