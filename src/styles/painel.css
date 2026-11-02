@@ -484,8 +484,13 @@ body:has(.p-fantasma) { cursor: grabbing; }
 .v-check input { width: 18px; height: 18px; accent-color: var(--ok); }
 .v-bloco { background: var(--papel); border-radius: 10px; padding: 8px 10px; }
 .v-bloco-cab { display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-weight: 700; color: var(--cinza); margin-bottom: 4px; }
-.v-texto { margin: 0; font-size: 14px; white-space: pre-line; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; }
-.v-bloco:hover .v-texto, .v-bloco:focus-within .v-texto { -webkit-line-clamp: unset !important; }
+.v-texto { margin: 0; font-size: 14px; line-height: 1.45; white-space: pre-line; overflow-y: auto; overscroll-behavior: contain; user-select: text; -webkit-user-select: text; cursor: text; scrollbar-width: thin; }
+/* botão de copiar com largura estável: o "Copiado ✓" ocupa o mesmo espaço do rótulo */
+.v-copiar { display: inline-grid; flex: none; }
+.v-copiar > span { grid-area: 1 / 1; text-align: center; transition: opacity .15s; }
+.v-copiar .v-copiar-ok { opacity: 0; color: #1E9E5A; }
+.v-copiar.ok .v-copiar-rot { opacity: 0; }
+.v-copiar.ok .v-copiar-ok { opacity: 1; }
 .v-dica { margin: 0; font-size: 13px; color: var(--cinza); }
 .v-cont { float: right; font-weight: 400; color: var(--cinza); font-size: 12px; }
 .v-link span { display: flex; gap: 6px; }

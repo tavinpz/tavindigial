@@ -87,20 +87,23 @@ function useSalvar(v, recarregar) {
   }
 }
 
+// Copia sem mexer na página: o próprio botão mostra "Copiado ✓" (mesma largura, nada pula)
 function Copiar({ texto, rotulo = 'Copiar' }) {
   const { avisar } = usePainel()
+  const [ok, setOk] = useState(false)
   async function copiar(e) {
-    e?.stopPropagation()
-    try { await navigator.clipboard.writeText(texto || ''); avisar('Copiado') } catch { avisar('Não consegui copiar') }
+    e?.preventDefault(); e?.stopPropagation()
+    try { await navigator.clipboard.writeText(texto || ''); setOk(true); setTimeout(() => setOk(false), 1500) } catch { avisar('Não consegui copiar') }
   }
-  return <button type="button" className="p-btn p-btn--mini" onClick={copiar}>{rotulo}</button>
+  return <button type="button" className={`p-btn p-btn--mini v-copiar ${ok ? 'ok' : ''}`} onMouseDown={(e) => e.preventDefault()} onClick={copiar}><span className="v-copiar-rot">{rotulo}</span><span className="v-copiar-ok">Copiado ✓</span></button>
 }
 
+// Texto inteiro numa caixa de altura fixa: rola e seleciona à vontade, sem expandir nem empurrar a página
 function Bloco({ titulo, texto, linhas = 3 }) {
   return (
     <div className="v-bloco">
       <div className="v-bloco-cab"><span>{titulo}</span><Copiar texto={texto} /></div>
-      <p className="v-texto" style={{ WebkitLineClamp: linhas }}>{texto}</p>
+      <p className="v-texto" style={{ maxHeight: `${linhas * 1.45 + 0.2}em` }}>{texto}</p>
     </div>
   )
 }
