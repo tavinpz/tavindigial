@@ -45,7 +45,10 @@
 }
 @media (prefers-reduced-motion: reduce) { .p-lateral, .p-veu { transition: none; } }
 
-.p-conteudo { max-width: 1180px; margin: 0 auto; padding: 24px 16px 80px; }
+.p-conteudo { max-width: 2400px; margin: 0 auto; padding: 24px 16px 80px; }
+/* telas grandes: o conteúdo usa a largura toda (antes ficava preso em 1180px e cortava tabelas e quadros) */
+@media (min-width: 901px) { .p-app > .p-conteudo { padding: 28px clamp(20px, 2.4vw, 48px) 80px; } }
+@media (min-width: 1600px) { .p-app { font-size: 17px; } .p-cab h1 { font-size: 32px; } .p-tabela { font-size: 15px; } .p-tabela th, .p-tabela td { padding: 12px 14px; } }
 .p-cab { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
 .p-cab h1 { font-family: var(--f-display); font-weight: 800; font-size: 28px; letter-spacing: -0.02em; margin: 0; }
 .p-sub { margin: 4px 0 0; color: var(--cinza); }
@@ -965,3 +968,8 @@ body:has(.p-fantasma) { cursor: grabbing; }
 .mc-top li a { color: inherit; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .mc-top li span { color: var(--cinza); white-space: nowrap; font-size: 13px; }
 @media (max-width: 640px) { .mc-acoes { width: 100%; } .mc-num b { font-size: 22px; } }
+
+/* logos dos canais no menu */
+.p-canal-logo { width: 24px; height: 24px; flex: none; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 1.5px rgba(255,255,255,.14); background: #120E16; }
+/* tabela de leads: o nome quebra linha em vez de empurrar as colunas para fora */
+.p-tabela td.p-col-nome { white-space: normal; min-width: 220px; max-width: 420px; }

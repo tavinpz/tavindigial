@@ -205,7 +205,7 @@ export default function Painel() {
             <p className="p-menu-grupo">Canais</p>
             {ABAS_CANAIS.map(([id, nome, , , c]) => (
               <button key={id} className={id === aba ? 'ativa' : ''} onClick={() => irPara(id)} aria-current={id === aba ? 'page' : undefined}>
-                <span className="p-canal-sigla" style={{ '--c': c.cor }} aria-hidden="true">{c.sigla}</span>{nome}
+                {c.logo ? <img className="p-canal-logo" src={c.logo} alt="" aria-hidden="true" /> : <span className="p-canal-sigla" style={{ '--c': c.cor }} aria-hidden="true">{c.sigla}</span>}{nome}
               </button>
             ))}
           </nav>

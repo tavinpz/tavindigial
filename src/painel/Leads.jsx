@@ -115,7 +115,7 @@ export default function Leads() {
               {lista.map((l) => (
                 <tr key={l.id} onClick={() => abrirLead(l.id)} tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && abrirLead(l.id)}>
                   <td className="p-check" onClick={(e) => e.stopPropagation()}><input type="checkbox" checked={sel.has(l.id)} onChange={() => marcar(l.id)} aria-label={`Selecionar ${l.nome}`} /></td>
-                  <td><strong>{l.nome}</strong></td>
+                  <td className="p-col-nome"><strong>{l.nome}</strong></td>
                   <td>{STATUS[l.status]}</td>
                   <td>{l.tipo_site === 'site_falso' ? 'Link fraco' : l.tipo_site === 'sem_site' ? 'Sem site' : 'Tem site'}</td>
                   <td>{l.nota != null ? `${String(l.nota).replace('.', ',')} (${l.avaliacoes})` : '—'}</td>

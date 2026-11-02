@@ -187,7 +187,7 @@ export default function Metricas({ canal, fechar }) {
     <div className="mt-fundo" onClick={fechar}>
       <div className="mt-janela mc" role="dialog" aria-modal="true" aria-label={`Métricas de ${canal.nome}`} onClick={(e) => e.stopPropagation()} style={{ '--c': canal.cor }}>
         <header className="mc-cab">
-          <span className="mc-avatar">{ig?.perfil?.foto ? <img src={ig.perfil.foto} alt="" /> : canal.sigla}</span>
+          <span className="mc-avatar">{ig?.perfil?.foto ? <img src={ig.perfil.foto} alt="" /> : canal.logo ? <img src={canal.logo} alt="" /> : canal.sigla}</span>
           <div className="mc-quem">
             <h2>{canal.nome}</h2>
             <p>{ig?.perfil?.username ? <a href={`https://instagram.com/${ig.perfil.username}`} target="_blank" rel="noreferrer">@{ig.perfil.username}</a> : 'Métricas do canal'}
