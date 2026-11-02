@@ -1,8 +1,8 @@
 # 07 · Histórico, agenda e decisões
 
 ## Situação em 02/11/2026
-- 25 Shorts prontos (001–025). 6 já no ar no YouTube (001, 011, 012, 010, 003, 013), 004 e 014 programados no Studio, o resto no painel em "Para programar".
-- Fila: 1 por dia às 13h de Brasília, de 02/11 a 20/11, sem buracos. O próximo lote deve começar em **21/11** (ca-026 em diante).
+- 25 Shorts prontos (001–025). 7 já no ar no YouTube (001, 011, 012, 010, 003, 013, 004), 014 programado no Studio (06/11), o resto no painel em "Para programar".
+- Fila: 1 por dia às 13h de Brasília, de 03/11 a 20/11, sem buracos. O próximo lote deve começar em **21/11** (ca-026 em diante).
 - Canal criado como conta de marca; identidade em `marca/`.
 - 001–010: temas atemporais. 011–020: temas em alta. 021–025: família "água e engenharia contra o mar", feitos a partir das métricas dos 3 primeiros dias.
 
@@ -28,10 +28,10 @@
 | 01/11 | ca-010 | There's a Cathedral Under Tokyo (no ar) |
 | 01/11 | ca-003 | This Ship Cost the World $9.6 Billion a Day (no ar) |
 | 01/11 | ca-013 | A $50 Billion AI Data Center in a Town of 2,000 (no ar) |
-| 02/11 | ca-008 | How Does Venice Stop the Sea? |
-| 03/11 | ca-018 | Why Are They Sinking 89 Blocks Into the Sea? |
-| 04/11 | ca-002 | How Do Ships Climb 26 Meters in Panama? |
-| 05/11 | ca-004 | This Dam Made Earth's Day Longer (programado no Studio) |
+| 02/11 | ca-004 | This Dam Made Earth's Day Longer (no ar, saiu antes da data) |
+| 03/11 | ca-008 | How Does Venice Stop the Sea? |
+| 04/11 | ca-018 | Why Are They Sinking 89 Blocks Into the Sea? |
+| 05/11 | ca-002 | How Do Ships Climb 26 Meters in Panama? |
 | 06/11 | ca-014 | China's Next Dam Is 3 Times the Three Gorges (programado no Studio) |
 | 07/11 | ca-021 | How Do the Dutch Close the Sea? |
 | 08/11 | ca-024 | Why Doesn't London Flood? |
