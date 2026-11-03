@@ -16,6 +16,8 @@ import Coleta from './Coleta'
 import LeadDrawer from './LeadDrawer'
 import MenuLateral from './MenuLateral'
 import Jogos from './Jogos'
+import Calendario from './Calendario'
+import Mensagens from './Mensagens'
 import '../styles/painel.css'
 
 const Ctx = createContext(null)
@@ -25,6 +27,7 @@ export const usePainel = () => useContext(Ctx)
 const ABAS = [
   ['inicio', 'Início', Inicio, 'M4 20V10M10 20V4M16 20v-7M22 20H2'],
   ['metricas', 'Métricas', MetricasGeral, 'M3 3v18h18M7 15l4-4 3 3 6-7'],
+  ['calendario', 'Calendário', Calendario, 'M3 6h18v15H3zM3 10h18M8 3v4M16 3v4'],
   ['prospectar', 'Leads', LeadsUnico, 'm22 2-7 20-4-9-9-4 20-7Z'],
   ['crm', 'CRM', Crm, 'M4 4h5v16H4zM10 4h5v10h-5zM16 4h4v13h-4z'],
   ['cofre', 'Cofre', Cofre, 'M5 11h14v10H5zM8 11V7a4 4 0 0 1 8 0v4'],
@@ -36,17 +39,18 @@ const ABAS_CANAIS = CANAIS.map((c) => [`canal:${c.id}`, c.nome, c.tipo === 'marc
 const EXTRAS = [
   ['coleta', 'Coleta', Coleta, 'M21 21l-4.3-4.3M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15z'],
   ['briefings', 'Briefings', Briefings, 'M9 3h6l1 2h3v16H5V5h3zM9 12h6M9 16h4'],
+  ['mensagens', 'Mensagens', Mensagens, 'M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z'],
 ]
 const JOGOS_ABAS = [['jogos', 'Todos os jogos', Jogos, 'M6 11h4M8 9v4M15 12h.01M18 10h.01M17.3 5H6.7a4 4 0 0 0-3.9 3.2L2 14.5a2.5 2.5 0 0 0 4.4 2L8 15h8l1.6 1.5a2.5 2.5 0 0 0 4.4-2l-.8-6.3A4 4 0 0 0 17.3 5Z']]
 // Menu: fixos no topo + um grupo (acordeão) por frente de renda. Frente nova = mais um grupo aqui.
-const TOPO = ABAS.filter(([id]) => ['inicio', 'metricas', 'cofre'].includes(id))
+const TOPO = ABAS.filter(([id]) => ['inicio', 'metricas', 'calendario', 'cofre'].includes(id))
 const GRUPOS = [
   { id: 'sites', nome: 'Sites', itens: [...ABAS.filter(([id]) => ['prospectar', 'crm'].includes(id)), ...EXTRAS] },
   { id: 'canais', nome: 'Canais', canais: true, itens: ABAS_CANAIS },
   { id: 'jogos', nome: 'Jogos', itens: JOGOS_ABAS },
 ]
 const TODAS = [...ABAS, ...ABAS_CANAIS, ...EXTRAS, ...JOGOS_ABAS]
-const ANTIGAS = { conteudo: 'canal:tavin-digital', videos: 'canal:concrete-atlas', leads: 'prospectar', mensagens: 'inicio' }
+const ANTIGAS = { conteudo: 'canal:tavin-digital', videos: 'canal:concrete-atlas', leads: 'prospectar' }
 
 const Ico = ({ d }) => (
   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={d} /></svg>

@@ -7,7 +7,7 @@ import { usePainel } from './Painel'
 import { abrirCanal, dicaDm, mensagemPara } from './envio'
 import Roteiro from './Roteiro'
 
-const RESPOSTAS = ['abertura', 'resp_link', 'followup_1', 'followup_2', 'resp_preco', 'resp_pensar', 'resp_ja_tenho', 'followup_proposta', 'pos_venda', 'upsell_30d']
+const RESPOSTAS = ['abertura', 'resp_link', 'followup_1', 'followup_2', 'resp_preco', 'resp_pensar', 'resp_ja_tenho', 'resp_sem_interesse', 'followup_proposta', 'pos_venda', 'upsell_30d']
 
 // A mensagem que faz sentido para a etapa em que o lead está (evita mandar preço para quem nunca foi chamado)
 const ETAPA_PADRAO = { novo: 'abertura', na_fila: 'abertura', enviado: 'followup_1', abriu: 'followup_1', respondeu: 'resp_link', proposta: 'followup_proposta', ganho: 'pos_venda', recorrente: 'upsell_30d' }

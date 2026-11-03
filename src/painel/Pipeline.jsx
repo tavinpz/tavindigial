@@ -4,6 +4,7 @@ import { supabase } from '../lib/supabase'
 import { usePainel } from './Painel'
 import { MiniVideo, Previa } from './Previa'
 import Metricas from './Metricas'
+import { JanelaCalendario } from './Calendario'
 
 // Pipeline padrão de todos os canais: Prontos → Programados → Postados.
 // Cada canal (Estudio para a Tavin Digital, Videos para os de vídeo curto) entrega os cartões já no formato abaixo
@@ -465,6 +466,7 @@ export default function Pipeline({ canal, fases = FASES_PADRAO, itens, mover, pr
         </div>
         <div className="pl-acoes">
           <button className="p-btn" onClick={() => setJanela('metricas')}>Métricas</button>
+          <button className="p-btn" onClick={() => setJanela('calendario')}>Calendário</button>
           <button className="p-btn" onClick={() => setJanela('integ')}>
             <span className={`pl-ponto ${cx.igOk ? 'on' : ''}`} aria-hidden="true" />Integrações
           </button>
@@ -513,6 +515,7 @@ export default function Pipeline({ canal, fases = FASES_PADRAO, itens, mover, pr
 
       {previa && <Previa lista={listaPrevia} id={previa} setId={setPrevia} abrirFicha={(ch) => abrir(itens.find((i) => i.chave === ch))} />}
       {janela === 'metricas' && <Metricas canal={canal} fechar={() => setJanela(null)} />}
+      {janela === 'calendario' && <JanelaCalendario canal={canal} fechar={() => setJanela(null)} />}
       {janela === 'integ' && <Integracoes canal={canal} marca={marca} cx={cx} recarregar={recarregar} fechar={() => setJanela(null)} />}
       {janela === 'programar' && <ProgramarTudo itens={programaveis} fila={fila} programar={programar} fechar={() => setJanela(null)} />}
       {janela === 'subir' && <SubirVideo canal={canal} subir={subir} fechar={() => setJanela(null)} />}

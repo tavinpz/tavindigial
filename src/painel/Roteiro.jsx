@@ -16,6 +16,7 @@ const PASSOS = [
   { n: 'R', etapa: 'resp_preco', titulo: 'Resposta · perguntou o preço', quando: 'Quando ele perguntar quanto custa.', evento: 'pediu_preco' },
   { n: 'R', etapa: 'resp_pensar', titulo: 'Resposta · vai pensar', quando: 'Quando ele disser que vai pensar.', evento: 'respondeu' },
   { n: 'R', etapa: 'resp_ja_tenho', titulo: 'Resposta · já tem site', quando: 'Quando ele disser que já tem site.', evento: 'respondeu' },
+  { n: 'R', etapa: 'resp_sem_interesse', titulo: 'Resposta · sem interesse', quando: 'Quando ele disser que não tem interesse ou disponibilidade. Uma resposta só, sem insistir; depois mova para Perdido.', evento: 'respondeu' },
   { n: 'P', etapa: 'followup_proposta', titulo: 'Follow-up da proposta', quando: '2 dias depois do link ou do preço, se não fechou.' },
   { n: 'V', etapa: 'pos_venda', titulo: 'Pós-venda', quando: 'Quando a página for ao ar: pedir avaliação e indicação.' },
   { n: 'V', etapa: 'upsell_30d', titulo: 'Upsell · 30 dias', quando: '30 dias depois da venda.' },

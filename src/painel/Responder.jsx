@@ -10,6 +10,7 @@ const RESPOSTAS = [
   ['resp_preco', 'Perguntou o preço', 'pediu_preco'],
   ['resp_pensar', 'Vai pensar', 'respondeu'],
   ['resp_ja_tenho', 'Já tem site', 'respondeu'],
+  ['resp_sem_interesse', 'Sem interesse / sem disponibilidade', 'respondeu'],
 ]
 
 // Janela de resposta: escolhe o tipo de resposta, mostra o texto pronto (com o link dele) para copiar ou enviar

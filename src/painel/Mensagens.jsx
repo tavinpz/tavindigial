@@ -14,7 +14,7 @@ const GRUPOS = [
     quando: 'No CRM, coluna "Chamar no Instagram": botão "Copiar e abrir DM". Sem link na primeira mensagem.' },
   { id: 'followups', titulo: 'Follow-ups', canal: 'whatsapp', etapas: ['followup_1', 'followup_2', 'followup_proposta'],
     quando: 'No CRM, coluna "Enviado", grupo "Follow-up hoje": botões Web / App. O 1º sai 3 dias depois da 1ª mensagem; o último, 4 dias depois do 1º.' },
-  { id: 'respostas', titulo: 'Respostas', canal: 'whatsapp', etapas: ['resp_link', 'resp_preco', 'resp_pensar', 'resp_ja_tenho'],
+  { id: 'respostas', titulo: 'Respostas', canal: 'whatsapp', etapas: ['resp_link', 'resp_preco', 'resp_pensar', 'resp_ja_tenho', 'resp_sem_interesse'],
     quando: 'No CRM, botão "Respondeu" em qualquer card (na coluna "Respondeu": "Mandar link / responder"). Você escolhe o que ele respondeu e a versão A, B, C ou D.' },
   { id: 'venda', titulo: 'Depois da venda', canal: 'whatsapp', etapas: ['pos_venda', 'upsell_30d'],
     quando: 'Quando a página vai ao ar e 30 dias depois: pedir avaliação, indicação e oferecer o próximo serviço.' },
