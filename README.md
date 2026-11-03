@@ -25,7 +25,10 @@ ffmpeg precisa estar instalado (já vem no ambiente).
 - `sets.py` cenários: kitchen, park, hallway(k dia→noite), bedroom, evening.
 - `engine3.py` motor narrado: SCRIPT de falas (n = narradora af_heart, d = cachorro am_puck agudo, o = dona af_bella) → linha do tempo por "beats", legenda palavra a palavra, 1 sticker por vez, tradutor DOG → HUMAN, card final, CTA, sting.
 - `tts.py` narração offline (cache em tts_cache/).
-- `episodes3.py` 001–006 · `episodes4.py` 007–011 (formatos novos). `episodes.py`/`engine.py` são a base v2 usada pelos ports.
+- `episodes3.py` 001–006 · `episodes4.py` 007–011 (formatos novos) · `episodes5.py` 012–021 (quiz banheiro, zoomies, rabo, giro, roupas, voz, campainha, madrugada, chute na grama, encostar). Cenários novos em `sets2.py`. Vozes extras da dona: `f` (entediada) e `h` (voz fininha).
+- `sheets.py N beat+off ...` → frames/sheet_N.png (folha de conferência) · `render_batch.sh` renderiza 012–021 em 2 filas.
+- `pdf_translator.py` → out/The-Dog-Translator.pdf (PDF grátis, 30 sinais, desenhado com o mesmo kit).
+- `site/` página do link da bio: cadastro (RPC `pawslated_inscrever` no Supabase Ecoom, tabela `pawslated_inscritos`), download do PDF e oferta de $9 na mesma página. Configurar `CHECKOUT_URL` e `AFFILIATE_URL` no topo do script. `episodes.py`/`engine.py` são a base v2 usada pelos ports.
 - Render: `python3 episodes4.py 9 stills 1.0 opts+3.0` (quadros em frames/) · `python3 episodes4.py 9 render` → out/PAWSLATED_009_lick-quiz_v3.mp4
 - Publicar: `python3 publish_pw.py 7 8 9` (copia mp4 + capa para tavindigial/envio/pawslated, gera out/pw_register.sql e out/pw_videos.sql) → rodar o register SQL no Supabase (Ecoom) → `git push origin envio-videos` no clone do tavindigial (a Action sobe para o Storage) → inserir/atualizar a linha em `videos` (canal 'pawslated').
 

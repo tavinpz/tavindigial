@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Dog Translator · PAWSLATED</title>
+<meta name="description" content="Free guide: 30 dog body-language signs, translated into plain English.">
+<meta property="og:title" content="The Dog Translator: 30 signs, in plain English">
+<meta property="og:description" content="Free guide from PAWSLATED. Your dog, translated.">
+<meta property="og:image" content="cover.jpg">
+<meta name="theme-color" content="#C9F03A">
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F3EBDD; --paper:#FFFDF8; --ink:#1E1B18; --ink2:#5A514A; --muted:#8C8278;
+    --lime:#C9F03A; --lime-dk:#A9D020; --coral:#FF5B4E; --mint:#33B07A; --caramel:#D8995A; --sun:#FFE14D;
+    --r:28px; --gut:20px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--cream);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5;
+    background-image:radial-gradient(#E6DAC4 1.6px,transparent 1.7px);background-size:28px 28px}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 var(--gut)}
+  .mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+
+  /* top */
+  header{padding:22px 0 8px}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+  .brand img{width:40px;height:40px;border-radius:12px}
+  .brand b{font-weight:900;letter-spacing:.06em;font-size:18px}
+
+  /* hero */
+  .hero{display:grid;gap:36px;padding:28px 0 56px;align-items:center}
+  @media(min-width:880px){.hero{grid-template-columns:1.05fr .95fr;gap:56px;padding:48px 0 80px}}
+  .tag{display:inline-flex;align-items:center;gap:8px;background:var(--lime);border:2.5px solid var(--ink);border-radius:999px;
+    padding:6px 14px;font-size:13px;font-weight:700;letter-spacing:.08em}
+  h1{font-weight:900;font-size:clamp(38px,9vw,64px);line-height:1.02;letter-spacing:-.02em;margin:18px 0 16px}
+  h1 em{font-style:normal;background:linear-gradient(transparent 52%,var(--lime) 52%);padding:0 .06em;border-radius:4px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+  .sub{font-size:clamp(17px,4.4vw,20px);color:var(--ink2);max-width:34ch}
+
+  .box{background:var(--paper);border:3px solid var(--ink);border-radius:var(--r);box-shadow:6px 8px 0 var(--ink)}
+  form.box{padding:22px;margin-top:28px;display:grid;gap:12px}
+  label{font-size:13px;font-weight:700;letter-spacing:.06em}
+  .field{display:grid;gap:6px}
+  input[type=email],input[type=text]{width:100%;font:inherit;font-size:17px;padding:14px 16px;border:2.5px solid var(--ink);border-radius:16px;background:#fff;color:var(--ink);outline:none}
+  input:focus{box-shadow:0 0 0 4px rgba(201,240,58,.7)}
+  .btn{appearance:none;cursor:pointer;width:100%;font:inherit;font-weight:900;font-size:18px;letter-spacing:.01em;padding:16px 20px;border:3px solid var(--ink);
+    border-radius:999px;background:var(--coral);color:#fff;box-shadow:4px 5px 0 var(--ink);transition:transform .08s ease,box-shadow .08s ease;text-align:center;text-decoration:none;display:block}
+  .btn:active{transform:translate(3px,4px);box-shadow:1px 1px 0 var(--ink)}
+  .btn.lime{background:var(--lime);color:var(--ink)}
+  .btn[disabled]{opacity:.7;cursor:progress}
+  .fine{font-size:12.5px;color:var(--muted)}
+  .err{color:var(--coral);font-weight:600;font-size:14px;min-height:1em}
+
+  .cover{position:relative;max-width:270px;margin:0 auto;width:100%}
+  @media(min-width:880px){.cover{max-width:380px}}
+  @media(max-width:879px){body.joined .cover{display:none}}
+  .cover img{border:3px solid var(--ink);border-radius:22px;box-shadow:8px 10px 0 var(--ink);transform:rotate(2deg)}
+  .cover .stamp{position:absolute;left:-10px;bottom:28px;background:#fff;border:3px solid var(--ink);border-radius:999px;padding:8px 16px;font-weight:900;
+    transform:rotate(-6deg);box-shadow:3px 4px 0 var(--ink);font-size:15px}
+
+  /* samples */
+  section.samples{padding:8px 0 64px}
+  h2{font-weight:900;font-size:clamp(28px,6.5vw,40px);line-height:1.08;letter-spacing:-.01em;margin-bottom:22px}
+  .grid{display:grid;gap:18px}
+  @media(min-width:760px){.grid{grid-template-columns:repeat(3,1fr)}}
+  .sign{padding:18px;display:grid;gap:12px;grid-template-columns:72px 1fr;align-items:start}
+  .sign img{width:72px;height:72px}
+  .sign h3{font-weight:900;font-size:20px;line-height:1.15}
+  .sign p{font-size:15px;color:var(--ink2);margin-top:4px}
+  .tr{grid-column:1/-1;background:#F6F2E9;border:2.5px solid var(--ink);border-radius:16px;padding:20px 14px 12px;position:relative;font-weight:700}
+  .tr::before{content:"DOG → HUMAN";font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:700;position:absolute;top:-12px;left:12px;
+    background:var(--lime);border:2.5px solid var(--ink);border-radius:999px;padding:2px 10px}
+
+  /* success + offer */
+  .done{display:none}
+  body.joined .done{display:block}
+  body.joined .before{display:none}
+  .ok{padding:24px;margin-top:28px}
+  .ok h2{margin-bottom:8px}
+  .ok p{color:var(--ink2);margin-bottom:18px}
+  .offer{margin:0 0 64px;padding:0;overflow:hidden}
+  .offer .top{background:var(--ink);color:#fff;padding:14px 22px;font-size:13px;letter-spacing:.08em;font-weight:700}
+  .offer .in{padding:24px 22px 26px;display:grid;gap:22px}
+  @media(min-width:880px){.offer .in{grid-template-columns:1.1fr .9fr;padding:34px;gap:40px;align-items:center}}
+  .offer h2{margin-bottom:10px}
+  .offer .lead{color:var(--ink2);font-size:17px}
+  .days{display:grid;gap:10px;margin:18px 0 4px;list-style:none}
+  .days li{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;font-weight:600}
+  .days .d{background:var(--lime);border:2.5px solid var(--ink);border-radius:999px;padding:3px 12px;font-family:"JetBrains Mono",monospace;font-size:13px;font-weight:700}
+  .price{display:flex;align-items:baseline;gap:12px;margin-bottom:14px}
+  .price b{font-weight:900;font-size:56px;line-height:1}
+  .price s{color:var(--muted);font-size:20px}
+  .note{margin-top:12px;text-align:center}
+  .thanks{display:none;margin-top:14px;background:#EFFAD0;border:2.5px solid var(--ink);border-radius:16px;padding:14px;font-weight:600}
+
+  .more{padding:0 0 56px}
+  .aff{padding:20px 22px;display:none}
+  .aff.on{display:grid;gap:12px}
+  footer{padding:28px 0 48px;border-top:2.5px dashed #D8CBB4;font-size:13px;color:var(--muted);display:grid;gap:8px}
+  footer a{color:var(--ink)}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <a class="brand" href="#"><img src="logo.png" alt=""><b>PAWSLATED</b></a>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <div>
+      <span class="tag mono">FREE GUIDE · 13 PAGES</span>
+      <h1>Your dog is talking. Here's the <em>translation.</em></h1>
+      <p class="sub">The Dog Translator: 30 signs in plain English, from the yawn that means "too much" to the lean that means "I love you".</p>
+
+      <form class="box before" id="join" novalidate>
+        <div class="field">
+          <label for="email" class="mono">YOUR EMAIL</label>
+          <input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@email.com" required>
+        </div>
+        <div class="field">
+          <label for="dog" class="mono">YOUR DOG'S NAME <span style="color:var(--muted);font-weight:500">(OPTIONAL)</span></label>
+          <input id="dog" name="dog" type="text" autocomplete="off" maxlength="40" placeholder="Biscuit">
+        </div>
+        <button class="btn" id="go" type="submit">Send me the free guide</button>
+        <p class="err" id="err" role="alert"></p>
+        <p class="fine">You'll get the guide right here, plus short dog-behavior emails from PAWSLATED. Unsubscribe anytime.</p>
+      </form>
+
+      <div class="box ok done" id="ok">
+        <span class="tag mono">IT'S YOURS</span>
+        <h2 style="margin-top:14px">Here's your Dog Translator<span id="dogname"></span>.</h2>
+        <p>Download it now and keep it on your phone. Tip: start with the 10 stress signs.</p>
+        <a class="btn lime" id="dl" href="the-dog-translator.pdf" download="The-Dog-Translator.pdf">Download the PDF</a>
+      </div>
+    </div>
+
+    <div class="cover">
+      <img src="cover.jpg" alt="The Dog Translator guide cover" width="700" height="906">
+      <span class="stamp">30 signs · free</span>
+    </div>
+  </div>
+
+  <!-- the upsell shows on the same page right after signing up -->
+  <section class="box offer done" id="offer">
+    <div class="top mono">ONE MORE THING</div>
+    <div class="in">
+      <div>
+        <h2>Reading the signs is step one. Fixing the problem is step two.</h2>
+        <p class="lead">Fix It in 7 Days is a short, step-by-step plan for the three things dog owners ask us about most: barking, leash pulling and being home alone. Ten minutes a day.</p>
+        <ul class="days">
+          <li><span class="d">DAY 1–2</span>Find the trigger and set up the win</li>
+          <li><span class="d">DAY 3–5</span>Short daily drills, one behavior at a time</li>
+          <li><span class="d">DAY 6–7</span>Make it stick in real life</li>
+        </ul>
+      </div>
+      <div>
+        <div class="price"><b>$9</b><span class="mono" style="font-size:13px;font-weight:700">ONE-TIME</span></div>
+        <a class="btn" id="buy" href="#">Get Fix It in 7 Days</a>
+        <p class="fine note">Instant download. Secure checkout.</p>
+        <p class="thanks" id="soon">You're on the list! Fix It in 7 Days is almost ready. We'll email you the moment it's live, at the $9 price.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="more done">
+    <div class="box aff" id="aff">
+      <span class="tag mono">WANT A FULL PROGRAM?</span>
+      <p id="affText" style="font-weight:600"></p>
+      <a class="btn lime" id="affLink" href="#" target="_blank" rel="sponsored noopener">See the program</a>
+      <p class="fine">Affiliate link: we may earn a commission if you buy, at no extra cost to you.</p>
+    </div>
+  </section>
+
+  <section class="samples">
+    <h2>3 of the 30 signs inside</h2>
+    <div class="grid">
+      <article class="box sign">
+        <img src="head-yawn.png" alt="">
+        <div><h3>The yawn</h3><p>A big yawn when he isn't tired, often during a hug.</p></div>
+        <div class="tr">"This is too much for me."</div>
+      </article>
+      <article class="box sign">
+        <img src="head-tilt.png" alt="">
+        <div><h3>The head tilt</h3><p>Head cocked to one side when you talk to him.</p></div>
+        <div class="tr">"Wait, did you say a word I know?"</div>
+      </article>
+      <article class="box sign">
+        <img src="head-lean.png" alt="">
+        <div><h3>The lean</h3><p>He presses his whole body into your legs and stays.</p></div>
+        <div class="tr">"You're my person. This is a hug."</div>
+      </article>
+    </div>
+  </section>
+
+  <footer>
+    <div><b style="color:var(--ink)">PAWSLATED</b> · your dog, translated. New behavior every day on <span class="mono">@pawslated</span>.</div>
+    <div>General education about dog body language, not veterinary advice. Sources: AKC, Science, Animal Cognition, Psychology Today and others, listed in the guide.</div>
+    <div>We store your email only to send you the guide and PAWSLATED emails. To unsubscribe or delete your data, reply to any email.</div>
+  </footer>
+</main>
+
+<script>
+/* ===== settings: fill these in when the accounts exist ===== */
+const CONFIG = {
+  SUPABASE_URL: "https://vvlzverpxojrecxysmhm.supabase.co",
+  SUPABASE_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ2bHp2ZXJweG9qcmVjeHlzbWhtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMwNzA1NDksImV4cCI6MjEwODY0NjU0OX0.cA1O58YolYHqmqTEu_IYvjiMk7UfAOcJ28QjKtErcPg",
+  CHECKOUT_URL: "",      // link do checkout do "Fix It in 7 Days" ($9). Vazio = botão vira lista de espera.
+  AFFILIATE_URL: "",     // HopLink do ClickBank (Brain Training for Dogs). Vazio = bloco escondido.
+  AFFILIATE_TEXT: "Brain Training for Dogs is a full at-home course built on games that tire your dog's brain, not just his legs."
+};
+/* ========================================================== */
+
+const $ = (id) => document.getElementById(id);
+const store = {
+  get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } },
+  set(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
+};
+function rpc(fn, body){
+  return fetch(CONFIG.SUPABASE_URL + "/rest/v1/rpc/" + fn, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", apikey: CONFIG.SUPABASE_KEY, Authorization: "Bearer " + CONFIG.SUPABASE_KEY },
+    body: JSON.stringify(body)
+  });
+}
+function utm(){
+  const p = new URLSearchParams(location.search), o = {};
+  ["utm_source","utm_medium","utm_campaign","utm_content","ref"].forEach(k => { if (p.get(k)) o[k] = p.get(k).slice(0,100); });
+  return Object.keys(o).length ? o : null;
+}
+function showDone(email, dog){
+  document.body.classList.add("joined");
+  $("dogname").textContent = dog ? ", for " + dog : "";
+  if (CONFIG.AFFILIATE_URL){
+    $("aff").classList.add("on");
+    $("affText").textContent = CONFIG.AFFILIATE_TEXT;
+    $("affLink").href = CONFIG.AFFILIATE_URL;
+  }
+  $("buy").dataset.email = email;
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+$("join").addEventListener("submit", async (ev) => {
+  ev.preventDefault();
+  const email = $("email").value.trim(), dog = $("dog").value.trim();
+  $("err").textContent = "";
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email)) { $("err").textContent = "Please enter a valid email."; $("email").focus(); return; }
+  $("go").disabled = true; $("go").textContent = "Sending…";
+  try {
+    const r = await rpc("pawslated_inscrever", { p_email: email, p_nome_cao: dog || null, p_origem: document.referrer.slice(0,120) || "direct", p_utm: utm() });
+    const ok = r.ok ? await r.json() : false;
+    if (!ok) throw new Error("bad");
+    store.set("pw_email", email); store.set("pw_dog", dog);
+    showDone(email, dog);
+  } catch (e) {
+    $("err").textContent = "Something went wrong. Please try again.";
+  } finally {
+    $("go").disabled = false; $("go").textContent = "Send me the free guide";
+  }
+});
+
+$("buy").addEventListener("click", (ev) => {
+  const email = $("buy").dataset.email || store.get("pw_email") || "";
+  if (email) rpc("pawslated_clique_oferta", { p_email: email }).catch(() => {});
+  if (!CONFIG.CHECKOUT_URL) { ev.preventDefault(); $("soon").style.display = "block"; return; }
+  ev.preventDefault();
+  const u = new URL(CONFIG.CHECKOUT_URL);
+  if (email) { u.searchParams.set("checkout[email]", email); u.searchParams.set("email", email); }
+  location.href = u.toString();
+});
+
+// returning visitor: go straight to the download + offer
+const seen = store.get("pw_email");
+if (seen) showDone(seen, store.get("pw_dog") || "");
+</script>
+</body>
+</html>

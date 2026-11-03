@@ -39,7 +39,7 @@ class Ep3(Episode):
         t = self.LEAD
         self.B, self.audio, self.caps = {}, [], []
         for key, who, text, pause in self.SCRIPT:
-            y = tts.say(text, {"d": "dog", "o": "owner"}.get(who, "narrator"))
+            y = tts.say(text, {"d": "dog", "o": "owner", "f": "owner_flat", "h": "owner_hi"}.get(who, "narrator"))
             d = len(y) / tts.SR
             self.B[key] = (t, t + d)
             self.audio.append((t, y, who))

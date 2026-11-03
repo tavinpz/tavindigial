@@ -27,12 +27,17 @@ def say(text, who="narrator"):
     key = hashlib.md5(f"{who}|{text}".encode()).hexdigest()[:16]
     path = os.path.join(CACHE, key + ".wav")
     if not os.path.exists(path):
-        voice, speed = {"narrator": ("af_heart", 1.06), "dog": ("am_puck", 1.0), "owner": ("af_bella", 1.0)}[who]
+        voice, speed = {"narrator": ("af_heart", 1.06), "dog": ("am_puck", 1.0), "owner": ("af_bella", 1.0),
+                        "owner_flat": ("af_bella", 0.9), "owner_hi": ("af_bella", 1.08)}[who]
         s, sr = _kokoro().create(text, voice=voice, speed=speed, lang="en-us")
         s = np.asarray(s, dtype=np.float64)
         if who == "dog":      # cartoon dog: pitch + tempo up ~16%
             s = resample_poly(s, 25, 29)
             sr = 24000
+        elif who == "owner_flat":   # bored, lower voice
+            s = resample_poly(s, 28, 25)
+        elif who == "owner_hi":     # squeaky "who's a good boy?!" voice
+            s = resample_poly(s, 25, 30)
         y = resample_poly(s, 2, 1)
         # trim silence
         env = np.abs(y) > 0.01

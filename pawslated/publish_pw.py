@@ -56,6 +56,36 @@ META = {
     11: dict(slug="head-pat", name="Stop the head pats", yt="Stop patting your dog on the head 🐾",
              cap="Most dogs don't love head pats. Watch for the duck, the ears going back and the lip lick. Instead, get low, let him come to you, and scratch his chest or chin. Try it today and watch the difference.",
              pin="Does your dog duck when people pat his head? 👇"),
+    12: dict(slug="bathroom-quiz", name="Why he follows you to the bathroom (quiz)", yt="Why does your dog follow you to the bathroom? (Quiz) 🐾",
+             cap="A: he wants the toilet paper. B: he wants to be near you. C: it smells amazing in there. It's B AND C: you're his family, so he stays close, and to his nose a bathroom is full of interesting smells. Following you is normal. Panicking every time you leave is different.",
+             pin="Be honest: does your dog wait outside the bathroom door? 🚪👇"),
+    13: dict(slug="zoomies", name="Zoomies after a bath", yt="Why your dog goes crazy after a bath 😂🐾",
+             cap="That's the zoomies. The official name: frenetic random activity periods (FRAPs). It's a burst of energy, often after something stressful like a bath, or after a long day inside. The AKC calls it completely normal. Just clear the way so he doesn't crash into anything.",
+             pin="When does YOUR dog get the zoomies? 👇"),
+    14: dict(slug="tail-talk", name="What his tail is saying", yt="What your dog's tail is really saying 🐾",
+             cap="High = alert or excited. Loose, in the middle = relaxed. Low or tucked between the legs = scared or stressed. During storms, stay close, stay calm and help him feel safe. And always read the whole dog, not just the tail. Save this! 📌",
+             pin="Where's your dog's tail right now? High, middle or low? 👇"),
+    15: dict(slug="spin", name="Why he spins before lying down", yt="Why your dog spins before lying down 🐾",
+             cap="Long ago, wild dogs slept in tall grass. Spinning flattened it into a little nest and let them check for danger. In one test, dogs on a bumpy shag carpet were almost 3x more likely to circle than on a smooth floor (55% vs 19%, Stanley Coren). He's making the bed, dog style.",
+             pin="How many spins does your dog do? 🔄👇"),
+    16: dict(slug="clothes", name="Why he sleeps on your clothes", yt="Why your dog sleeps on your dirty clothes 🐾",
+             cap="It's not gross, it's love. Your clothes carry your scent, and your dog wants to smell like you to feel closer to you. Leaving for the day? Give him an old T-shirt you've worn.",
+             pin="Which piece of your clothing does your dog steal? 🧦👇"),
+    17: dict(slug="good-boy", name="Who's a good boy?!", yt="Who's a good boy?! Why your dog loves the silly voice 😂🐾",
+             cap="Boring voice: ...okay. Silly voice: ME! In a 2018 study, adult dogs chose to spend more time with people who used the high-pitched, silly voice together with dog words like \"good boy\". Silly voice + dog words = his favorite combo.",
+             pin="Be honest: do you use the silly voice? 😂👇"),
+    18: dict(slug="doorbell", name="Doorbell barking fix", yt="Your dog goes wild at the doorbell? Try this 🐾",
+             cap="Yelling \"quiet!\" doesn't teach him what to do instead. Ring the bell and give him a treat. Then teach him to go to his mat. Soon the doorbell itself means: go to your spot. Bell, treat, mat. Practice a little every day.",
+             pin="Does your dog bark at the doorbell? Even on TV? 🔔👇"),
+    19: dict(slug="while-you-sleep", name="What he does while you sleep", yt="What your dog does while you sleep 🌙🐾",
+             cap="11 PM: goodnight. 2 AM: was that a noise? 4 AM: snack check. 6:59: is she awake? Most dogs sleep 12 to 14 hours a day, in lots of short naps, not one long night like you. And he's always first up.",
+             pin="What time does your dog wake you up? ⏰👇"),
+    20: dict(slug="kick-quiz", name="Why he kicks the grass (quiz)", yt="Why does your dog kick the grass after? (Quiz) 🐾",
+             cap="A: he's cleaning his paws. B: he's leaving his scent. C: he's covering it up. It's B! Dogs have scent glands in their paw pads and between their toes, so every kick leaves his smell and a mark for other dogs to find.",
+             pin="What did you guess? A, B or C? 👇"),
+    21: dict(slug="lean", name="Why he leans on you", yt="Why your dog leans his whole body on you 🥹🐾",
+             cap="He picks you. He presses in. He doesn't move. One vet calls it affection-seeking behavior, plain and simple. Dogs love close contact, and you're his favorite spot. Leaning is a dog hug. So lean back.",
+             pin="Does your dog lean on you like this? 🥹👇"),
 }
 START_DAY = 4      # 2026-11-04, one per day at 21:00 (-03) = prime time on the US East Coast
 
@@ -65,10 +95,15 @@ def q(s):
 
 
 COVER3 = {1: ("whale", 0.6), 2: ("eyes", 0.8), 3: ("low", 0.6), 4: ("word", 0.6), 5: ("paw", 1.2), 6: ("signal", 0.3),
-          7: ("blah", 1.6), 8: ("mouth", 1.0), 9: ("ans", 0.6), 10: ("t3", 1.0), 11: ("duck", 0.6)}
+          7: ("blah", 1.6), 8: ("mouth", 1.0), 9: ("ans", 0.6), 10: ("t3", 1.0), 11: ("duck", 0.6),
+          12: ("ans", 0.6), 13: ("zoom", 0.6), 14: ("low", 1.2), 15: ("sci", 2.6), 16: ("means", 0.6), 17: ("hi", 1.4),
+          18: ("bark", 1.0), 19: ("t4", 1.6), 20: ("ans", 0.6), 21: ("slow", 1.6)}
 
 
 def scene(n):
+    if n >= 12:
+        import episodes5
+        return episodes5.EPISODES[n]()
     if n >= 7:
         import episodes4
         return episodes4.EPISODES[n]()
@@ -99,7 +134,7 @@ def prepare(nums):
         rows.append("(" + ",".join([q(rid), "'pawslated'", str(n), q(f"№{n:03d} · {m['name']}"), q(slug + ".mp4"),
                                     q(BASE + slug + ".mp4"), q(BASE + slug + ".jpg"), f"{dur:.2f}", q(when), q(m["yt"]),
                                     q(cap), q(cap), q(cap), q(m["pin"]), q(TAGS),
-                                    q("Desenho narrado (v3), voz + legenda, áudio original. CTA 'Comment TRANSLATE' depende do ManyChat + PDF grátis (ainda não configurados).")]) + ")")
+                                    q("Desenho narrado (v3), voz + legenda, áudio original. CTA 'Comment TRANSLATE': PDF + página prontos; falta o ManyChat mandar o link.")]) + ")")
     open(os.path.join(HERE, "out", "pw_register.sql"), "w").write(
         "insert into videos_envio (caminho, sha256) values\n" + ",\n".join(reg) + "\non conflict do nothing returning caminho;")
     open(os.path.join(HERE, "out", "pw_videos.sql"), "w").write(
