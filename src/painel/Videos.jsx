@@ -278,6 +278,17 @@ function Detalhe({ v, fechar, recarregar, igOk, voltar = 'Vídeos' }) {
           <article className={`v-plat v-plat--${igSt.s}`}>
             <header><h2>Instagram Reels</h2></header>
             {rede('ig', 'Insta')}
+            <div className="v-ig-opcoes">
+              <label className="v-check"><input type="checkbox" checked={v.ig_feed !== false} disabled={igSt.s === 'postado' || igSt.processando}
+                onChange={(e) => salvar({ ig_feed: e.target.checked }, e.target.checked ? 'Vai para o feed e a aba Reels' : 'Só na aba Reels, fora do feed')} />
+                Mostrar também no feed <small>(desmarcado: fica só na aba Reels)</small></label>
+              <label className="v-check"><input type="checkbox" checked={!!v.ig_story} disabled={v.ig_story_status === 'publicado' || v.ig_story_status === 'processando'}
+                onChange={(e) => salvar({ ig_story: e.target.checked }, e.target.checked ? 'Também vai para os Stories' : 'Sem Stories')} />
+                Postar também nos Stories <small>(sai junto com o Reel)</small></label>
+              {v.ig_story && v.ig_story_status !== 'pendente' && (
+                <p className={`v-dica ${v.ig_story_status === 'erro' ? 'v-dica--erro' : ''}`}>Stories: {v.ig_story_status === 'publicado' ? 'publicado' : v.ig_story_status === 'processando' ? 'processando…' : `erro: ${v.ig_story_erro || ''}`}</p>
+              )}
+            </div>
             <label className="p-campo">Legenda <span className="v-cont">{legIG.length}/2200</span>
               <textarea rows={6} value={legIG} onChange={(e) => setLegIG(e.target.value)} maxLength={2200} />
             </label>

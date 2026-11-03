@@ -1285,3 +1285,8 @@ body:has(.p-fantasma) { cursor: grabbing; }
 .jg-fases b { text-align: right; font-variant-numeric: tabular-nums; }
 .jg-nota { margin: 8px 0 0; font-size: 12.5px; color: var(--cinza); }
 @media (max-width: 640px) { .jg-tabela { font-size: 12px; } .jg-tabela th, .jg-tabela td { padding: 6px 5px; } }
+.v-ig-opcoes { display: grid; gap: 6px; margin-bottom: 4px; }
+.v-check { display: flex; align-items: center; gap: 8px; font-size: 14px; cursor: pointer; }
+.v-check input { width: 17px; height: 17px; accent-color: #B600F6; flex: none; }
+.v-check small { color: var(--cinza); font-size: 12.5px; }
+.v-dica--erro { color: #B42318; }

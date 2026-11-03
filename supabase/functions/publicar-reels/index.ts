@@ -61,16 +61,43 @@ async function graph(c: Conta, caminho: string, params: Record<string, string>, 
   return d;
 }
 
-type Video = { id: string; canal: string; video_url: string | null; capa_url: string | null; ig_legenda: string | null; ig_container_id: string | null };
+type Video = { id: string; canal: string; video_url: string | null; capa_url: string | null; ig_legenda: string | null; ig_container_id: string | null;
+  ig_feed?: boolean; ig_story?: boolean; ig_story_status?: string; ig_story_container?: string | null };
 
 async function criarContainer(db: SupabaseClient, c: Conta, v: Video) {
   if (!v.video_url) throw new Error("vídeo sem arquivo no painel");
   const d = await graph(c, `${c.userId}/media`, {
-    media_type: "REELS", video_url: v.video_url, caption: v.ig_legenda ?? "", share_to_feed: "true",
+    media_type: "REELS", video_url: v.video_url, caption: v.ig_legenda ?? "", share_to_feed: v.ig_feed === false ? "false" : "true", // false = só na aba Reels, fora do feed
     ...(v.capa_url ? { cover_url: v.capa_url } : {}),
   });
   await db.from("videos").update({ ig_status: "processando", ig_container_id: d.id, ig_erro: null }).eq("id", v.id);
   return d.id as string;
+}
+
+// Stories: o mesmo vídeo vai também para os Stories logo depois do Reel (mesmo fluxo de 2 passos)
+async function criarStory(db: SupabaseClient, c: Conta, v: Video) {
+  try {
+    const d = await graph(c, `${c.userId}/media`, { media_type: "STORIES", video_url: v.video_url ?? "" });
+    await db.from("videos").update({ ig_story_status: "processando", ig_story_container: d.id, ig_story_erro: null }).eq("id", v.id);
+  } catch (e) {
+    await db.from("videos").update({ ig_story_status: "erro", ig_story_erro: (e as Error).message.slice(0, 500) }).eq("id", v.id);
+  }
+}
+async function tentarStory(db: SupabaseClient, c: Conta, v: Video) {
+  const st = await graph(c, v.ig_story_container!, { fields: "status_code,status" }, "GET");
+  if (st.status_code === "ERROR" || st.status_code === "EXPIRED") throw new Error(`o Instagram recusou o Stories (${st.status || st.status_code})`);
+  if (st.status_code !== "FINISHED") return false;
+  const { data: trava } = await db.from("videos").update({ ig_story_status: "publicado", ig_story_postado_em: new Date().toISOString() })
+    .eq("id", v.id).eq("ig_story_status", "processando").select("id").maybeSingle();
+  if (!trava) return true;
+  try {
+    const pub = await graph(c, `${c.userId}/media_publish`, { creation_id: v.ig_story_container! });
+    await db.from("videos").update({ ig_story_media_id: pub.id }).eq("id", v.id);
+  } catch (e) {
+    await db.from("videos").update({ ig_story_status: "processando", ig_story_postado_em: null }).eq("id", v.id);
+    throw e;
+  }
+  return true;
 }
 
 // devolve true se publicou, false se ainda está processando
@@ -85,6 +112,7 @@ async function tentarPublicar(db: SupabaseClient, c: Conta, v: Video, container:
   try {
     const pub = await graph(c, `${c.userId}/media_publish`, { creation_id: container });
     await db.from("videos").update({ ig_media_id: pub.id, ig_erro: null }).eq("id", v.id);
+    if (v.ig_story && (v.ig_story_status ?? "pendente") === "pendente") await criarStory(db, c, v).catch(() => {});
   } catch (e) {
     await db.from("videos").update({ ig_status: "processando", ig_postado_em: null }).eq("id", v.id);
     throw e;
@@ -120,7 +148,7 @@ Deno.serve(async (req) => {
     } catch (e) { return json(200, { ok: false, erro: (e as Error).message }); }
   }
 
-  const campos = "id,canal,video_url,capa_url,ig_legenda,ig_container_id";
+  const campos = "id,canal,video_url,capa_url,ig_legenda,ig_container_id,ig_feed,ig_story,ig_story_status,ig_story_container";
   const resultado: unknown[] = [];
 
   // 1) publicar agora (painel)
@@ -148,6 +176,14 @@ Deno.serve(async (req) => {
     const c = await conta(db, v.canal); if (!c || !v.ig_container_id) continue;
     try { resultado.push({ id: v.id, publicado: await tentarPublicar(db, c, v, v.ig_container_id) }); }
     catch (e) { await db.from("videos").update({ ig_status: "erro", ig_erro: (e as Error).message.slice(0, 500) }).eq("id", v.id); }
+  }
+
+  // 2b) cron: termina os Stories que estavam processando
+  const { data: stp } = await db.from("videos").select(campos).eq("ig_story_status", "processando").not("ig_story_container", "is", null).limit(5);
+  for (const v of stp ?? []) {
+    const c = await conta(db, v.canal); if (!c) continue;
+    try { resultado.push({ id: v.id, story: await tentarStory(db, c, v) }); }
+    catch (e) { await db.from("videos").update({ ig_story_status: "erro", ig_story_erro: (e as Error).message.slice(0, 500) }).eq("id", v.id); }
   }
 
   // 3) cron: inicia o agendado vencido mais antigo (no máximo 1 por rodada; atrasado > 6 h não sai sozinho)
