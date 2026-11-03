@@ -14,6 +14,7 @@ import Estudio from './Estudio'
 import { CANAIS } from './canais'
 import Coleta from './Coleta'
 import LeadDrawer from './LeadDrawer'
+import MenuLateral from './MenuLateral'
 import '../styles/painel.css'
 
 const Ctx = createContext(null)
@@ -32,8 +33,14 @@ const ABAS_CANAIS = CANAIS.map((c) => [`canal:${c.id}`, c.nome, c.tipo === 'marc
   ? () => <Estudio canal={c.id} nome={c.nome} />
   : () => <Videos canal={c.id} nome={c.nome} />, null, c])
 const EXTRAS = [
-  ['coleta', 'Coleta de leads', Coleta],
-  ['briefings', 'Briefings', Briefings],
+  ['coleta', 'Coleta', Coleta, 'M21 21l-4.3-4.3M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15z'],
+  ['briefings', 'Briefings', Briefings, 'M9 3h6l1 2h3v16H5V5h3zM9 12h6M9 16h4'],
+]
+// Menu: fixos no topo + um grupo (acordeão) por frente de renda. Frente nova = mais um grupo aqui.
+const TOPO = ABAS.filter(([id]) => ['inicio', 'metricas', 'cofre'].includes(id))
+const GRUPOS = [
+  { id: 'sites', nome: 'Sites', itens: [...ABAS.filter(([id]) => ['prospectar', 'crm'].includes(id)), ...EXTRAS] },
+  { id: 'canais', nome: 'Canais', canais: true, itens: ABAS_CANAIS },
 ]
 const TODAS = [...ABAS, ...ABAS_CANAIS, ...EXTRAS]
 const ANTIGAS = { conteudo: 'canal:tavin-digital', videos: 'canal:concrete-atlas', leads: 'prospectar', mensagens: 'inicio' }
@@ -82,6 +89,14 @@ export default function Painel() {
   const [aviso, setAviso] = useState('')
   const [versao, setVersao] = useState(0)
   const [menuAberto, setMenuAberto] = useState(false)
+  const [recolhido, setRecolhido] = useState(() => { try { return JSON.parse(localStorage.getItem('menu-recolhido') || 'false') } catch { return false } })
+  const [celular, setCelular] = useState(() => typeof window !== 'undefined' && window.matchMedia('(max-width: 900px)').matches)
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 900px)')
+    const f = () => setCelular(mq.matches)
+    mq.addEventListener('change', f)
+    return () => mq.removeEventListener('change', f)
+  }, [])
 
   useEffect(() => {
     const meta = document.createElement('meta')
@@ -188,36 +203,14 @@ export default function Painel() {
 
   return (
     <Ctx.Provider value={{ mensagens, recarregarMensagens, abrirLead: (id, opcoes = {}) => setLeadAberto({ id, ...opcoes }), avisar, versao, atualizar, irPara }}>
-      <div className={`p-app ${menuAberto ? 'menu-aberto' : ''}`}>
+      <div className={`p-app ${menuAberto ? 'menu-aberto' : ''} ${recolhido && !celular ? 'menu-mini' : ''}`}>
         <header className="p-topbar">
           <button className="p-hamb" onClick={() => setMenuAberto(true)} aria-label="Abrir menu"><Ico d="M4 7h16M4 12h16M4 17h16" /></button>
           <strong className="p-logo"><Logo /></strong>
         </header>
         <div className="p-veu" onClick={() => setMenuAberto(false)} aria-hidden="true" />
-        <aside className="p-lateral">
-          <strong className="p-logo"><Logo /></strong>
-          <nav className="p-menu" aria-label="Seções do painel">
-            {ABAS.map(([id, nome, , ico]) => (
-              <button key={id} className={id === aba ? 'ativa' : ''} onClick={() => { setAba(id); setMenuAberto(false) }} aria-current={id === aba ? 'page' : undefined}>
-                <Ico d={ico} />{nome}
-              </button>
-            ))}
-            <p className="p-menu-grupo">Canais</p>
-            {ABAS_CANAIS.map(([id, nome, , , c]) => (
-              <button key={id} className={id === aba ? 'ativa' : ''} onClick={() => irPara(id)} aria-current={id === aba ? 'page' : undefined}>
-                {c.logo ? <img className="p-canal-logo" src={c.logo} alt="" aria-hidden="true" /> : <span className="p-canal-sigla" style={{ '--c': c.cor }} aria-hidden="true">{c.sigla}</span>}{nome}
-              </button>
-            ))}
-          </nav>
-          <div className="p-lateral-pe">
-            <span className={`p-vivo ${aoVivo ? 'on' : ''}`} title={aoVivo ? 'Atualizando sozinho' : 'Reconectando…'}>{aoVivo ? 'Ao vivo' : 'Reconectando…'}</span>
-            {EXTRAS.map(([id, nome]) => (
-              <button key={id} className={id === aba ? 'ativa' : ''} onClick={() => irPara(id)}>{nome}</button>
-            ))}
-            <a href="/" target="_blank" rel="noreferrer">Ver o site</a>
-            <button onClick={() => supabase.auth.signOut()}>Sair</button>
-          </div>
-        </aside>
+        <MenuLateral topo={TOPO} grupos={GRUPOS} aba={aba} ir={irPara} aoVivo={aoVivo}
+          recolhido={recolhido && !celular} setRecolhido={setRecolhido} sair={() => supabase.auth.signOut()} />
         <main className="p-conteudo">
           {prontas ? <Atual key={aba} /> : <p className="p-vazio">Carregando…</p>}
         </main>
