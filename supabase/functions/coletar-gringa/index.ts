@@ -106,6 +106,8 @@ function nichoDe(t: Record<string, string>, nome: string): [string, string] {
   if (of) return ["serviços", "Escritório"];
   return ["geral", am || "Negócio"];
 }
+// Redes grandes e o que não é cliente (academia de jiu-jitsu, chá de bolhas, igreja, consulado...)
+const FORA = /jiu|jitsu|bjj|capoeira|church|igreja|consulat|consulado|onezo|bubble|boba|fogo de ch|texas de brazil|worker center|brazilian wax|brazilian blowout/i;
 const IGNORAR = /^(place_of_worship|school|kindergarten|college|university|bank|atm|fuel|parking|social_facility|community_centre|townhall|post_office|bus_station|money_transfer|car_wash)$/;
 
 function handleIg(v: string | undefined) {
@@ -123,7 +125,7 @@ const urlOverpass = (q: string) => `https://overpass-api.de/api/interpreter?data
 function paraLead(e: Elemento, c: Cidade) {
   const t = e.tags ?? {};
   const nome = (t.name || t["name:pt"] || t["name:en"] || "").trim();
-  if (!nome || IGNORAR.test(t.amenity || "")) return null;
+  if (!nome || IGNORAR.test(t.amenity || "") || FORA.test(nome) || t.leisure || t.sport) return null;
   if (t.disused || t["disused:shop"] || t.abandoned) return null;
   const site = (t.website || t["contact:website"] || t.url || "").trim();
   const tel = telefone(t.phone || t["contact:phone"] || t["contact:mobile"] || t.mobile || t["contact:whatsapp"] || "", c.pais);
