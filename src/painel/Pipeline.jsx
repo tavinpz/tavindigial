@@ -144,7 +144,10 @@ function Integracoes({ canal, marca, cx, recarregar, fechar }) {
   const [form, setForm] = useState(null)
   const [igForm, setIgForm] = useState({ user_id: '', token: '' })
   const [ytRef, setYtRef] = useState('')
+  const [ytChave, setYtChave] = useState('')
+  const [temChave, setTemChave] = useState(null)
   const [msg, setMsg] = useState('')
+  useEffect(() => { supabase.rpc('youtube_chave_status').then(({ data }) => setTemChave(!!data?.[0]?.tem_chave)) }, [])
   const [ocupado, setOcupado] = useState(false)
   if (!ig || !yt) return null
   const ytOk = !!yt.ref
@@ -178,6 +181,13 @@ function Integracoes({ canal, marca, cx, recarregar, fechar }) {
     if (error) { avisar('Não salvou'); return }
     setForm(null); await cx.recarregar(); conferir()
   }
+  async function salvarChave(e) {
+    e.preventDefault()
+    const { error } = await supabase.rpc('salvar_youtube_chave', { p_chave: ytChave })
+    if (error) { avisar('Não salvou'); return }
+    setForm(null); setYtChave(''); setTemChave(!!ytChave.trim())
+    setMsg(ytChave.trim() ? 'Chave do YouTube salva: as Métricas passam a trazer inscritos, views e comentários de todos os canais.' : 'Chave do YouTube removida.')
+  }
 
   return (
     <Janela titulo="Integrações" sub={canal.nome} fechar={fechar}
@@ -208,9 +218,18 @@ function Integracoes({ canal, marca, cx, recarregar, fechar }) {
             <span className={`pl-ponto ${ytOk ? 'on' : ''}`} aria-hidden="true" />
             <div className="pl-integ-txt"><b>YouTube</b><small>Google · {ytOk ? 'canal ligado, traz o que saiu e as views' : 'não ligado'}</small></div>
             <div className="pl-integ-acoes">
+              <button className="p-btn p-btn--mini p-btn--fraco" onClick={() => setForm(form === 'ytk' ? null : 'ytk')}>{temChave ? 'Trocar chave da API' : 'Chave da API'}</button>
               <button className="p-btn p-btn--mini" onClick={() => { setYtRef(yt.ref || ''); setForm(form === 'yt' ? null : 'yt') }}>{ytOk ? 'Trocar canal' : 'Ligar YouTube'}</button>
             </div>
           </div>
+          {temChave === false && form !== 'ytk' && <p className="pl-integ-dica">Sem a chave da API, as Métricas só veem os 15 vídeos mais recentes, sem inscritos exatos.</p>}
+          {form === 'ytk' && (
+            <form className="pl-integ-form" onSubmit={salvarChave}>
+              <label className="p-campo">Chave da API do YouTube (vale para todos os canais)<input type="password" value={ytChave} onChange={(e) => setYtChave(e.target.value)} placeholder="AIza…" autoComplete="off" /></label>
+              <p className="pl-integ-dica">Google Cloud → APIs e serviços → ative a "YouTube Data API v3" → Credenciais → Criar chave de API. Deixe vazio e salve para remover.</p>
+              <button className="p-btn p-btn--forte">Salvar chave</button>
+            </form>
+          )}
           {form === 'yt' && (
             <form className="pl-integ-form" onSubmit={salvarYT}>
               <label className="p-campo">Link ou @ do canal<input required value={ytRef} onChange={(e) => setYtRef(e.target.value)} placeholder="https://youtube.com/@seucanal" /></label>

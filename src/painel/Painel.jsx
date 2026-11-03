@@ -4,6 +4,7 @@ import { carregarMensagens } from './api'
 import { marcarDono } from '../lib/fn'
 import Logo from '../site/Logo'
 import Inicio from './Inicio'
+import MetricasGeral from './MetricasGeral'
 import Prospectar from './Prospectar'
 import Crm from './Crm'
 import Leads from './Leads'
@@ -22,6 +23,7 @@ export const usePainel = () => useContext(Ctx)
 // Menu principal: o trabalho do dia. Rodapé: o que se mexe de vez em quando.
 const ABAS = [
   ['inicio', 'Início', Inicio, 'M4 20V10M10 20V4M16 20v-7M22 20H2'],
+  ['metricas', 'Métricas', MetricasGeral, 'M3 3v18h18M7 15l4-4 3 3 6-7'],
   ['prospectar', 'Prospectar', Prospectar, 'm22 2-7 20-4-9-9-4 20-7Z'],
   ['crm', 'CRM', Crm, 'M4 4h5v16H4zM10 4h5v10h-5zM16 4h4v13h-4z'],
   ['leads', 'Leads', Leads, 'M16 19v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1M9.5 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM21 19v-1a4 4 0 0 0-3-3.9M16 4.1a3 3 0 0 1 0 5.8'],
