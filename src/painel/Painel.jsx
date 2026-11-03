@@ -5,11 +5,10 @@ import { marcarDono } from '../lib/fn'
 import Logo from '../site/Logo'
 import Inicio from './Inicio'
 import MetricasGeral from './MetricasGeral'
-import Prospectar from './Prospectar'
+import LeadsUnico from './LeadsUnico'
+import Cofre from './Cofre'
 import Crm from './Crm'
-import Leads from './Leads'
 import Briefings from './Briefings'
-import Mensagens from './Mensagens'
 import Videos from './Videos'
 import Estudio from './Estudio'
 import { CANAIS } from './canais'
@@ -24,9 +23,9 @@ export const usePainel = () => useContext(Ctx)
 const ABAS = [
   ['inicio', 'Início', Inicio, 'M4 20V10M10 20V4M16 20v-7M22 20H2'],
   ['metricas', 'Métricas', MetricasGeral, 'M3 3v18h18M7 15l4-4 3 3 6-7'],
-  ['prospectar', 'Prospectar', Prospectar, 'm22 2-7 20-4-9-9-4 20-7Z'],
+  ['prospectar', 'Leads', LeadsUnico, 'm22 2-7 20-4-9-9-4 20-7Z'],
   ['crm', 'CRM', Crm, 'M4 4h5v16H4zM10 4h5v10h-5zM16 4h4v13h-4z'],
-  ['leads', 'Leads', Leads, 'M16 19v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1M9.5 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM21 19v-1a4 4 0 0 0-3-3.9M16 4.1a3 3 0 0 1 0 5.8'],
+  ['cofre', 'Cofre', Cofre, 'M5 11h14v10H5zM8 11V7a4 4 0 0 1 8 0v4'],
 ]
 // Um item de menu por canal (o componente muda conforme o tipo do canal)
 const ABAS_CANAIS = CANAIS.map((c) => [`canal:${c.id}`, c.nome, c.tipo === 'marca'
@@ -35,10 +34,9 @@ const ABAS_CANAIS = CANAIS.map((c) => [`canal:${c.id}`, c.nome, c.tipo === 'marc
 const EXTRAS = [
   ['coleta', 'Coleta de leads', Coleta],
   ['briefings', 'Briefings', Briefings],
-  ['mensagens', 'Textos das mensagens', Mensagens],
 ]
 const TODAS = [...ABAS, ...ABAS_CANAIS, ...EXTRAS]
-const ANTIGAS = { conteudo: 'canal:tavin-digital', videos: 'canal:concrete-atlas' }
+const ANTIGAS = { conteudo: 'canal:tavin-digital', videos: 'canal:concrete-atlas', leads: 'prospectar', mensagens: 'inicio' }
 
 const Ico = ({ d }) => (
   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={d} /></svg>
