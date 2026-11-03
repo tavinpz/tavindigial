@@ -17,6 +17,9 @@ export const ETAPAS = {
   resp_pensar: 'Resposta: vou pensar',
   resp_ja_tenho: 'Resposta: já tenho',
   resp_sem_interesse: 'Resposta: sem interesse',
+  email_1: 'E-mail 1 (dia 0)',
+  email_2: 'E-mail 2 (dia 3)',
+  email_3: 'E-mail 3 (dia 7, último)',
   pos_venda: 'Pós-venda',
   upsell_30d: 'Upsell 30 dias',
 }

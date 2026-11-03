@@ -3,8 +3,9 @@ import { supabase } from '../lib/supabase'
 import { preencher } from '../lib/msg'
 import { ETAPAS } from './api'
 import { usePainel } from './Painel'
+import { extrasGringo } from './envio'
 
-const PUBLICOS = { sem_site: 'Sem site', site_falso: 'Link fraco', todos: 'Todos' }
+const PUBLICOS = { sem_site: 'Sem site', site_falso: 'Link fraco', gringa: 'Gringo', todos: 'Todos' }
 
 // A ordem do funil: quando cada mensagem é usada e onde ela aparece no painel
 const GRUPOS = [
@@ -16,24 +17,27 @@ const GRUPOS = [
     quando: 'No CRM, coluna "Enviado", grupo "Follow-up hoje": botões Web / App. O 1º sai 3 dias depois da 1ª mensagem; o último, 4 dias depois do 1º.' },
   { id: 'respostas', titulo: 'Respostas', canal: 'whatsapp', etapas: ['resp_link', 'resp_preco', 'resp_pensar', 'resp_ja_tenho', 'resp_sem_interesse'],
     quando: 'No CRM, botão "Respondeu" em qualquer card (na coluna "Respondeu": "Mandar link / responder"). Você escolhe o que ele respondeu e a versão A, B, C ou D.' },
+  { id: 'email', titulo: 'E-mail · gringos', canal: 'email', etapas: ['email_1', 'email_2', 'email_3'],
+    quando: 'CRM → Gringos, coluna "E-mail automático": a sequência sai sozinha em horário comercial de lá (dia 0, dia 3 e dia 7) e para quando o lead responde. A 1ª linha "Assunto: ..." vira o assunto do e-mail.' },
   { id: 'venda', titulo: 'Depois da venda', canal: 'whatsapp', etapas: ['pos_venda', 'upsell_30d'],
     quando: 'Quando a página vai ao ar e 30 dias depois: pedir avaliação, indicação e oferecer o próximo serviço.' },
 ]
 
 // Lead de exemplo para a prévia
 const EXEMPLO = { id: 'exemplo', nome: 'Studio Rosé', nicho: 'estetica', avaliacoes: 128, nota: 4.9, site_raw: 'https://linktr.ee/studiorose' }
+const EXEMPLO_GRINGO = { id: 'exemplo', nome: 'Padaria Pão de Queijo', nicho: 'padaria', cidade: 'Framingham', mercado: 'us', pais: 'US' }
 
 const VARIAVEIS = [
   ['{negocio}', 'nome do negócio'], ['{avaliacoes}', 'número de avaliações'], ['{nota}', 'nota no Google'],
-  ['{destino}', 'para onde o link deles leva hoje'], ['{link}', 'página de modelos com o nome deles'], ['{link_avaliacao}', 'link para avaliar a Tavin'],
+  ['{destino}', 'para onde o link deles leva hoje'], ['{link}', 'página de modelos com o nome deles'], ['{cidade}', 'cidade (gringos)'], ['{moeda}', 'US$ ou € (gringos)'], ['{link_avaliacao}', 'link para avaliar a Tavin'],
 ]
 
 function Item({ m, canal }) {
   const { recarregarMensagens, avisar, mensagens } = usePainel()
   const [texto, setTexto] = useState(m.texto)
   const mudou = texto !== m.texto
-  const lead = m.publico === 'sem_site' ? { ...EXEMPLO, site_raw: null } : EXEMPLO
-  const previa = preencher(texto, lead)
+  const lead = m.publico === 'gringa' ? EXEMPLO_GRINGO : m.publico === 'sem_site' ? { ...EXEMPLO, site_raw: null } : EXEMPLO
+  const previa = preencher(texto, lead, extrasGringo(lead))
 
   async function salvar() {
     await supabase.from('mensagens').update({ texto }).eq('id', m.id)
@@ -67,7 +71,7 @@ function Item({ m, canal }) {
           <small>{previa.length} caracteres</small>
         </label>
         <div className="p-msg-previa" aria-label="Como chega para o cliente">
-          <span>Como chega no {canal === 'instagram' ? 'Instagram' : 'WhatsApp'}</span>
+          <span>Como chega {canal === 'email' ? 'por e-mail' : `no ${canal === 'instagram' ? 'Instagram' : 'WhatsApp'}`}</span>
           <div className={`p-bolha p-bolha--${canal}`}>{previa}</div>
         </div>
       </div>
@@ -83,7 +87,7 @@ function Item({ m, canal }) {
 
 // Uma etapa: abas com as versões (A, B, C…) e um editor por vez
 function Etapa({ etapa, itens, canal }) {
-  const ordem = (m) => `${m.publico === 'site_falso' ? 0 : m.publico === 'sem_site' ? 1 : 2}${m.variante}`
+  const ordem = (m) => `${m.publico === 'site_falso' ? 0 : m.publico === 'sem_site' ? 1 : m.publico === 'gringa' ? 3 : 2}${m.variante}`
   const lista = [...itens].sort((a, b) => ordem(a).localeCompare(ordem(b)))
   const [sel, setSel] = useState(lista[0]?.id)
   const atual = lista.find((m) => m.id === sel) || lista[0]
@@ -115,7 +119,7 @@ export default function Mensagens() {
     <section className="p-msgs">
       <div className="p-cab">
         <div>
-          <h1>Textos das mensagens</h1>
+          <h1>Mensagens</h1>
           <p className="p-sub">Escolha a etapa em cima e a versão (A, B, C…) ao lado do nome. A prévia mostra como chega para um negócio de exemplo.</p>
         </div>
       </div>

@@ -8,6 +8,7 @@ import { abrirCanal, canalDe, dicaDm, etapaNoCanal, mensagemPara, separarFilas }
 import DestinoWa from './DestinoWa'
 import Responder from './Responder'
 import { diasDesde, haDias, proximoPasso } from './Acompanhamento'
+import { BANDEIRA, JanelaBusca, JanelaEmail, bomHorario, horaLocal, iniciarEmails } from './Gringa'
 
 // Busca: nome, @ ou número (com ou sem 55, com ou sem traço/parênteses)
 const semAcento = (s) => String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
@@ -34,8 +35,20 @@ function grupoEnviado(a) {
 }
 const etapaFollowup = (a) => (a.status === 'proposta' ? 'followup_proposta' : (a.total_envios || 0) <= 1 ? 'followup_1' : 'followup_2')
 
-// Colunas de quem ainda não foi chamado: arrastar para "Enviado" já abre a conversa com o texto pronto
-const CHAMAR = { chamar_wa: 'whatsapp', chamar_dm: 'instagram' }
+// Colunas de quem ainda não foi chamado: arrastar para "1º contato" já abre a conversa com o texto pronto
+const CHAMAR = { chamar_wa: 'whatsapp', chamar_dm: 'instagram', chamar_gringa: 'whatsapp', chamar_email: 'email' }
+
+// "Enviado" vira 3 colunas pelo número de mensagens: 1º contato → Follow-up 1 → Follow-up 2 (o último)
+const SEQUENCIA = [['contato1', '1º contato'], ['fup1', 'Follow-up 1'], ['fup2', 'Follow-up 2']]
+const QUADRO = [...SEQUENCIA, ...COLUNAS.filter(([k]) => k !== 'enviado')]
+const statusDa = (col) => (SEQUENCIA.some(([k]) => k === col) ? 'enviado' : col)
+function colunaDo(l, a) {
+  if (l.status !== 'enviado') return l.status
+  const n = a?.total_envios || 0
+  return n <= 1 ? 'contato1' : n === 2 ? 'fup1' : 'fup2'
+}
+const CAMPOS_LEAD = 'id,nome,status,bairro,nicho,categoria,cidade,tipo_site,site_raw,whatsapp,instagram,avaliacoes,nota,updated_at,proximo_contato,mercado,pais,fuso,email,email_status'
+const dataDia = (iso) => new Date(iso).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' })
 
 const POR_COLUNA = 60
 
@@ -43,11 +56,16 @@ const POR_COLUNA = 60
 export default function Crm() {
   const { abrirLead, avisar, versao, mensagens } = usePainel()
   const [leads, setLeads] = useState(null)
-  const [fila, setFila] = useState({ wa: [], dm: [] })
+  const [pipe, setPipe] = useState(() => { try { return localStorage.getItem('crm-pipe') === 'gringa' ? 'gringa' : 'br' } catch { return 'br' } })
+  const gringa = pipe === 'gringa'
+  useEffect(() => { try { localStorage.setItem('crm-pipe', pipe) } catch { /* sem storage */ } }, [pipe])
+  const [janela, setJanela] = useState(null)
+  const [emails, setEmails] = useState({})
+  const [fila, setFila] = useState({ wa: [], dm: [], gr: [], em: [] })
   const [feitos, setFeitos] = useState({ whatsapp: 0, instagram: 0 })
   const [acomp, setAcomp] = useState({})
   const [responder, setResponder] = useState(null)
-  const [extra, setExtra] = useState({ wa: 0, dm: 0 })
+  const [extra, setExtra] = useState({ wa: 0, dm: 0, gr: 0, em: 0 })
   const VISIVEIS = 40
   const [busca, setBusca] = useState('')
   const [alvo, setAlvo] = useState(null)
@@ -59,34 +77,61 @@ export default function Crm() {
   const carregar = useCallback(async () => {
     if (drag.current?.ativo) { setTimeout(() => carregar(), 1200); return } // espera soltar o card
     const meu = ++pedido.current
-    const [fw, fd, rs, ac] = await Promise.all([
-      supabase.from('v_fila_hoje').select('*'),
-      supabase.from('v_fila_dm').select('*'),
+    let q = supabase.from('leads').select(`${CAMPOS_LEAD},eventos(tipo,meta,created_at),negocios(valor,valor_mensal,status)`).in('status', COLUNAS.map(([k]) => k))
+    q = gringa ? q.neq('mercado', 'br') : q.eq('mercado', 'br')
+    const [rs, ac, ld, f1, f2, f3] = await Promise.all([
       supabase.from('v_resumo').select('envios_hoje_wa,envios_hoje_dm').single(),
       supabase.from('v_acompanhamento').select('*').limit(3000),
+      q.order('updated_at', { ascending: false }).order('created_at', { referencedTable: 'eventos', ascending: false }).limit(1, { referencedTable: 'eventos' }).limit(800),
+      ...(gringa ? [
+        supabase.from('leads').select(`${CAMPOS_LEAD},telefone,created_at`).neq('mercado', 'br').in('status', ['novo', 'na_fila']).order('created_at', { ascending: false }).limit(2000),
+        supabase.from('email_envios').select('lead_id,passo,status,enviar_em,enviado_em,erro').in('status', ['pendente', 'enviado', 'erro']).limit(5000),
+        supabase.from('supressao').select('whatsapp'),
+      ] : [supabase.from('v_fila_hoje').select('*'), supabase.from('v_fila_dm').select('*'), Promise.resolve({ data: [] })]),
     ])
-    const { data } = await supabase
-      .from('leads')
-      .select('id,nome,status,bairro,nicho,categoria,cidade,tipo_site,site_raw,whatsapp,instagram,avaliacoes,nota,updated_at,proximo_contato,eventos(tipo,meta,created_at),negocios(valor,valor_mensal,status)')
-      .in('status', COLUNAS.map(([k]) => k))
-      .order('updated_at', { ascending: false })
-      .order('created_at', { referencedTable: 'eventos', ascending: false })
-      .limit(1, { referencedTable: 'eventos' })
-      .limit(800)
     if (meu !== pedido.current) return // chegou uma resposta mais nova no meio do caminho
-    if (fw.error || fd.error || !data) return // falha de rede: mantém o que está na tela
-    setFila(separarFilas(fw.data || [], fd.data || [], CONFIG.META_DM))
+    if (ld.error || !ld.data || f1.error || f2.error) return // falha de rede: mantém o que está na tela
+    if (gringa) {
+      const mapa = {}
+      for (const e of f2.data || []) {
+        const m = (mapa[e.lead_id] ||= { enviados: 0, prox: null, erro: null })
+        if (e.status === 'enviado') m.enviados++
+        else if (e.status === 'erro') m.erro = e.erro
+        else if (!m.prox || e.passo < m.prox.passo) m.prox = e
+      }
+      const bloq = new Set((f3.data || []).map((s) => s.whatsapp))
+      const novos = (f1.data || []).filter((l) => !(l.whatsapp && bloq.has(l.whatsapp)))
+      const peso = (l) => (l.tipo_site === 'site_ok' ? 2 : 0) + (bomHorario(l.fuso) ? 0 : 1)
+      setFila({
+        wa: [], dm: [],
+        gr: novos.filter((l) => l.whatsapp).sort((a, b) => peso(a) - peso(b)),
+        em: novos.filter((l) => l.email && l.email_status !== 'invalido').sort((a, b) => Number(!!mapa[a.id]) - Number(!!mapa[b.id])),
+      })
+      setEmails(mapa)
+    } else {
+      setFila({ ...separarFilas(f1.data || [], f2.data || [], CONFIG.META_DM), gr: [], em: [] })
+    }
     setFeitos({ whatsapp: rs.data?.envios_hoje_wa || 0, instagram: rs.data?.envios_hoje_dm || 0 })
     setAcomp(Object.fromEntries((ac.data || []).map((a) => [a.id, a])))
-    setLeads(data)
-  }, [])
+    setLeads(ld.data)
+  }, [gringa])
   useEffect(() => { carregar() }, [carregar, versao])
 
-  const tirarDaFila = (id) => setFila((f) => ({ wa: f.wa.filter((l) => l.id !== id), dm: f.dm.filter((l) => l.id !== id) }))
+  const tirarDaFila = (id) => setFila((f) => Object.fromEntries(Object.entries(f).map(([k, v]) => [k, v.filter((l) => l.id !== id)])))
+
+  async function comecarEmails(lista) {
+    const ids = lista.filter((l) => !emails[l.id]).map((l) => l.id)
+    if (!ids.length) return avisar('Esses já estão na sequência de e-mail.')
+    const r = await iniciarEmails(ids)
+    if (!r.ok) return avisar(r.erro || 'Não consegui agendar os e-mails.')
+    avisar(`${r.leads} ${r.leads === 1 ? 'lead entrou' : 'leads entraram'} na sequência. O 1º e-mail sai no horário comercial de lá.`)
+    carregar()
+  }
 
   // Saindo de "Chamar": tudo que abre janela roda ANTES do primeiro await (o navegador só deixa dentro do gesto)
   async function chamar(lead, de, para, destino) {
     const canal = CHAMAR[de]
+    if (CHAMAR[para] && (gringa || para === 'chamar_email')) return avisar('Para mudar de canal, abra o lead.')
     if (CHAMAR[para]) { // trocar de canal
       const novo = CHAMAR[para]
       if (novo === 'instagram' && !lead.instagram) return avisar('Esse negócio não tem Instagram. Cole o @ na ficha do lead.')
@@ -102,7 +147,8 @@ export default function Crm() {
       try { await registrarEvento(lead.id, 'perdeu', { motivo: 'descartado no CRM' }); avisar(`${lead.nome} descartado`) } catch { avisar('Não consegui descartar. Tente de novo.'); carregar() }
       return
     }
-    if (para !== 'enviado') return avisar('Arraste para “Enviado” para chamar, ou para “Perdido” para descartar.')
+    if (statusDa(para) !== 'enviado') return avisar('Arraste para “1º contato” para chamar, ou para “Perdido” para descartar.')
+    if (canal === 'email') return comecarEmails([lead])
     const etapa = etapaNoCanal('abertura', canal)
     const { modelo, texto } = mensagemPara(mensagens, lead, etapa)
     if (!texto) return avisar('Não há mensagem ativa de abertura. Crie em Mensagens.')
@@ -135,7 +181,7 @@ export default function Crm() {
       carregar()
     } catch { avisar('Abriu a conversa, mas não registrou. Tente de novo.') }
   }
-  const canalDoLead = (lead) => ((acomp[lead.id]?.ultimo_canal === 'instagram' || !lead.whatsapp) ? 'instagram' : 'whatsapp')
+  const canalDoLead = (lead) => (lead.whatsapp && acomp[lead.id]?.ultimo_canal !== 'instagram' ? 'whatsapp' : lead.instagram ? 'instagram' : lead.email ? 'email' : 'whatsapp')
   const abrirConversa = (lead, destino) => abrirCanal(canalDoLead(lead), lead, '', destino)
   // botões dentro do card não podem iniciar o arrastar
   const parar = (e) => e.stopPropagation()
@@ -143,6 +189,7 @@ export default function Crm() {
   async function soltar(lead, para, de) {
     if (CHAMAR[de]) return chamar(lead, de, para)
     if (CHAMAR[para]) return avisar('Quem já foi chamado não volta para a fila.')
+    if (para) para = statusDa(para)
     if (!para || para === lead.status) return
     if (para === 'ganho') { abrirLead(lead.id, { pagar: true }); return }
     const antes = lead.status
@@ -260,16 +307,40 @@ export default function Crm() {
 
   const filtro = busca.trim()
   const visiveis = filtro ? leads.filter((l) => bateBusca(l, filtro)) : leads
-  const achados = filtro ? visiveis.length + fila.wa.filter((l) => bateBusca(l, filtro)).length + fila.dm.filter((l) => bateBusca(l, filtro)).length : 0
+  const achados = filtro ? visiveis.length + Object.values(fila).reduce((s, l) => s + l.filter((x) => bateBusca(x, filtro)).length, 0) : 0
+  const FILAS = gringa
+    ? [['chamar_gringa', 'Chamar gringos no WhatsApp', 'gr', null], ['chamar_email', 'E-mail automático', 'em', null]]
+    : [['chamar_wa', 'Chamar no WhatsApp', 'wa', CONFIG.META_WHATS], ['chamar_dm', 'Chamar no Instagram', 'dm', CONFIG.META_DM]]
+  const semEmail = fila.em.filter((l) => !emails[l.id])
+  const linhaEmail = (l) => {
+    const e = emails[l.id]
+    if (!e) return null
+    if (e.erro && !e.prox) return <span className="crm-email crm-email--erro">E-mail com erro</span>
+    if (e.prox) return <span className="crm-email">✉ {e.prox.passo}º e-mail {new Date(e.prox.enviar_em) <= new Date() ? 'na fila de hoje' : `em ${dataDia(e.prox.enviar_em)}`}</span>
+    return <span className="crm-email">✉ {e.enviados} e-mail{e.enviados > 1 ? 's' : ''} enviados</span>
+  }
+  const local = (l) => (gringa && l.fuso ? <span className={`crm-hora ${bomHorario(l.fuso) ? '' : 'crm-hora--fora'}`}>{BANDEIRA[l.pais] || ''} {horaLocal(l.fuso)} lá</span> : null)
 
   return (
-    <section className="p-crm">
+    <section className={`p-crm ${gringa ? 'p-crm--gringa' : ''}`}>
       <div className="p-cab">
         <div>
-          <h1>CRM</h1>
-          <p className="p-sub">Em cada card: <b>Web</b> abre na sua aba do WhatsApp Web, <b>App</b> abre no WhatsApp do computador. Lead respondeu? Clique em <b>Respondeu</b> e a mensagem certa (com o link) aparece pronta para copiar.</p>
+          <div className="crm-titulo">
+            <h1>CRM</h1>
+            <div className="crm-pipes" role="tablist" aria-label="Funil">
+              <button type="button" role="tab" aria-selected={!gringa} className={`crm-pipe crm-pipe--br ${!gringa ? 'on' : ''}`} onClick={() => setPipe('br')}>Brasil</button>
+              <button type="button" role="tab" aria-selected={gringa} className={`crm-pipe crm-pipe--gringa ${gringa ? 'on' : ''}`} onClick={() => setPipe('gringa')}>Gringos <small>EUA · Portugal</small></button>
+            </div>
+          </div>
+          <p className="p-sub">{gringa
+            ? <>Negócios brasileiros nos EUA e negócios de Portugal. Chame no WhatsApp em horário de lá (a hora local aparece no card) ou deixe o <b>e-mail automático</b> fazer os 3 contatos sozinho.</>
+            : <>Em cada card: <b>Web</b> abre na sua aba do WhatsApp Web, <b>App</b> abre no WhatsApp do computador. Lead respondeu? Clique em <b>Respondeu</b> e a mensagem certa (com o link) aparece pronta para copiar.</>}</p>
         </div>
         <div className="crm-ferr">
+          {gringa && <div className="crm-ferr-gringa">
+            <button type="button" className="p-btn" onClick={() => setJanela('busca')}>Buscar leads</button>
+            <button type="button" className="p-btn" onClick={() => setJanela('email')}>E-mail automático</button>
+          </div>}
           <div className="crm-busca">
             <input className="p-busca" type="search" placeholder="Buscar nome, número ou @" value={busca} onChange={(e) => setBusca(e.target.value)} aria-label="Buscar no CRM por nome, número ou @" />
             {filtro && <small>{achados ? `${achados} encontrado${achados > 1 ? 's' : ''}` : 'Ninguém com esse nome ou número'}</small>}
@@ -279,26 +350,35 @@ export default function Crm() {
       </div>
 
       <div className="p-quadro" ref={quadro}>
-        {[['chamar_wa', 'Chamar no WhatsApp', 'wa', CONFIG.META_WHATS], ['chamar_dm', 'Chamar no Instagram', 'dm', CONFIG.META_DM]].map(([col, nome, k, meta]) => {
+        {FILAS.map(([col, nome, k, meta]) => {
           const canal = CHAMAR[col]
           const lista = fila[k].filter((l) => bateBusca(l, filtro))
           const mostrar = lista.slice(0, VISIVEIS + extra[k])
-          const bateu = feitos[canal] >= meta
+          const bateu = meta && feitos[canal] >= meta
           return (
             <div key={col} className={`p-col p-col--chamar p-col--${col} ${alvo === col && arrastando ? 'alvo' : ''}`} data-coluna={col}>
               <h2><span>{nome}</span><b>{lista.length}</b></h2>
-              <p className={`p-col-meta ${bateu ? 'feita' : ''}`}>Hoje {feitos[canal]}/{meta}{bateu ? ' · meta batida' : ''}</p>
+              {meta ? <p className={`p-col-meta ${bateu ? 'feita' : ''}`}>Hoje {feitos[canal]}/{meta}{bateu ? ' · meta batida' : ''}</p>
+                : col === 'chamar_email' ? (
+                  <p className="p-col-meta">
+                    {semEmail.length ? <button type="button" className="crm-btn crm-btn--forte" onClick={() => comecarEmails(semEmail)}>Começar e-mails para {semEmail.length}</button> : 'Todos com e-mail já estão na sequência'}
+                  </p>
+                ) : <p className="p-col-meta">Primeiro quem está em horário comercial lá</p>}
               <div className="p-col-cards">
                 {mostrar.map((l) => (
                   <div key={l.id} className={`p-card p-card--chamar ${arrastando === l.id ? 'saindo' : ''}`} role="button" tabIndex={0}
                     onPointerDown={(e) => inicio(e, l, col)} onContextMenu={(e) => e.preventDefault()} onKeyDown={(e) => { if (e.key === 'Enter') abrirLead(l.id) }}
                     aria-label={`${l.nome}, ainda não chamado. Enter abre o lead.`}>
                     <strong>{l.nome}</strong>
-                    <small>{[l.nicho || l.categoria, l.bairro].filter(Boolean).join(' · ')}</small>
-                    <span className={`p-card-canal p-card-canal--${canal}`}>{canal === 'instagram' ? l.instagram : formatTel(l.whatsapp)}</span>
-                    <em>{l.tipo_site === 'site_falso' ? 'Link fraco' : 'Sem site'}{l.avaliacoes ? ` · ${l.avaliacoes} avaliações` : ''}</em>
+                    <small>{[l.categoria || l.nicho, gringa ? l.cidade : l.bairro].filter(Boolean).join(' · ')}</small>
+                    {local(l)}
+                    <span className={`p-card-canal p-card-canal--${canal}`}>{canal === 'instagram' ? l.instagram : canal === 'email' ? l.email : gringa ? `+${l.whatsapp}` : formatTel(l.whatsapp)}</span>
+                    <em>{l.tipo_site === 'site_ok' ? 'Tem site' : l.tipo_site === 'site_falso' ? 'Link fraco' : 'Sem site'}{l.avaliacoes ? ` · ${l.avaliacoes} avaliações` : ''}{gringa && canal === 'whatsapp' && l.email ? ' · tem e-mail' : ''}</em>
+                    {linhaEmail(l)}
                     <span className="crm-botoes" onPointerDown={parar}>
-                      {canal === 'whatsapp' ? <>
+                      {canal === 'email' ? (
+                        emails[l.id] ? null : <button type="button" className="crm-btn crm-btn--forte" onClick={(e) => { parar(e); comecarEmails([l]) }}>Começar e-mails</button>
+                      ) : canal === 'whatsapp' ? <>
                         <span className="crm-rot">1ª mensagem:</span>
                         <button type="button" className="crm-btn crm-btn--forte" onClick={(e) => { parar(e); chamar(l, col, 'enviado', 'web') }}>Web</button>
                         <button type="button" className="crm-btn" onClick={(e) => { parar(e); chamar(l, col, 'enviado', 'app') }}>App</button>
@@ -309,7 +389,7 @@ export default function Crm() {
                   </div>
                 ))}
                 {mostrar.length === 0 && (
-                  <p className="p-col-vazia">{canal === 'instagram' ? 'Ninguém com Instagram na fila' : 'Fila vazia'}</p>
+                  <p className="p-col-vazia">{canal === 'instagram' ? 'Ninguém com Instagram na fila' : gringa ? 'Fila vazia: clique em “Buscar leads”' : 'Fila vazia'}</p>
                 )}
                 {lista.length > mostrar.length && (
                   <button className="p-col-mais p-col-mais--btn" onClick={() => setExtra((x) => ({ ...x, [k]: x[k] + 40 }))}>
@@ -320,9 +400,10 @@ export default function Crm() {
             </div>
           )
         })}
-        {COLUNAS.map(([col, nome]) => {
-          let daColuna = visiveis.filter((l) => l.status === col)
-          const comDias = col === 'enviado' || col === 'abriu'
+        {QUADRO.map(([col, nome]) => {
+          let daColuna = visiveis.filter((l) => colunaDo(l, acomp[l.id]) === col)
+          const comDias = statusDa(col) === 'enviado' || col === 'abriu'
+          const paraHoje = comDias ? daColuna.filter((l) => grupoEnviado(acomp[l.id]) === 'fup').length : 0
           if (comDias) {
             const ordem = Object.fromEntries(GRUPO_ENVIADO.map(([g], i) => [g, i]))
             daColuna = [...daColuna].sort((a, b) => (ordem[grupoEnviado(acomp[a.id])] - ordem[grupoEnviado(acomp[b.id])])
@@ -331,9 +412,10 @@ export default function Crm() {
           const soma = col === 'ganho' || col === 'recorrente'
             ? daColuna.reduce((s, l) => s + (l.negocios || []).filter((n) => n.status === 'ganho').reduce((a, n) => a + Number(n.valor || 0), 0), 0) : 0
           return (
-            <div key={col} className={`p-col p-col--${col} ${alvo === col && arrastando ? 'alvo' : ''}`} data-coluna={col}>
+            <div key={col} className={`p-col p-col--${statusDa(col)} p-col--${col} ${alvo === col && arrastando ? 'alvo' : ''}`} data-coluna={col}>
               <h2><span>{nome}</span><b>{daColuna.length}</b></h2>
               {soma > 0 && <p className="p-col-soma">{brl(soma)} fechados</p>}
+              {paraHoje > 0 && <p className="p-col-meta p-col-meta--hoje">{paraHoje} para mandar hoje</p>}
               <div className="p-col-cards">
                 {daColuna.slice(0, POR_COLUNA).map((l, i, arr) => {
                   const ev = l.eventos?.[0]
@@ -349,7 +431,8 @@ export default function Crm() {
                       onPointerDown={(e) => inicio(e, l, l.status)} onContextMenu={(e) => e.preventDefault()} onKeyDown={(e) => { if (e.key === 'Enter') abrirLead(l.id) }}
                       aria-label={`${l.nome}, ${STATUS[l.status]}. Enter abre o lead.`}>
                       <strong>{l.nome}</strong>
-                      {!a && <small>{[l.nicho, l.bairro].filter(Boolean).join(' · ')}</small>}
+                      {!a && <small>{[l.nicho, gringa ? l.cidade : l.bairro].filter(Boolean).join(' · ')}</small>}
+                      {local(l)}
                       {ev && (
                         <span className={`p-card-ev ev-${ev.tipo}`}>
                           {EVENTOS[ev.tipo] || ev.tipo}{ev.meta?.resumo ? `: “${ev.meta.resumo}”` : ''}
@@ -357,15 +440,18 @@ export default function Crm() {
                       )}
                       {a ? (
                         <span className="crm-dias">
-                          {(a.total_envios || 0) <= 1 ? '1ª msg' : `${a.total_envios} msgs`} {haDias(a.ultimo_envio)}{a.ultimo_canal === 'instagram' ? ' · DM' : ''}
-                          {prox && !prox.fim && !['ganho', 'recorrente', 'perdido'].includes(col) && (
+                          {(a.total_envios || 0) <= 1 ? '1ª msg' : `${a.total_envios} msgs`} {haDias(a.ultimo_envio)}{a.ultimo_canal === 'instagram' ? ' · DM' : a.ultimo_canal === 'email' ? ' · e-mail' : ''}
+                          {prox && !prox.fim && a.ultimo_canal !== 'email' && !['ganho', 'recorrente', 'perdido'].includes(col) && (
                             <b className={prox.urgente ? 'crm-prox--hoje' : ''}> → {prox.txt.toLowerCase()} {prox.quando.replace(/ \(.*\)$/, '')}</b>
                           )}
                         </span>
                       ) : <em>há {tempoAtras(l.updated_at)}</em>}
-                      {['enviado', 'abriu', 'respondeu', 'proposta'].includes(col) && (l.whatsapp || l.instagram) && (
+                      {gringa && linhaEmail(l)}
+                      {['enviado', 'abriu', 'respondeu', 'proposta'].includes(statusDa(col)) && (l.whatsapp || l.instagram || l.email) && (
                         <span className="crm-botoes" onPointerDown={parar}>
-                          {canalDoLead(l) === 'whatsapp' ? <>
+                          {canalDoLead(l) === 'email' ? (
+                            <a className="crm-btn" href={`mailto:${l.email}`} onClick={parar}>Abrir e-mail</a>
+                          ) : canalDoLead(l) === 'whatsapp' ? <>
                             <span className="crm-rot">{g === 'fup' ? 'Follow-up:' : 'Conversa:'}</span>
                             <button type="button" className={`crm-btn ${g === 'fup' ? 'crm-btn--forte' : ''}`} onClick={(e) => { parar(e); g === 'fup' ? mandarFollowup(l, 'web') : abrirConversa(l, 'web') }}>Web</button>
                             <button type="button" className="crm-btn" onClick={(e) => { parar(e); g === 'fup' ? mandarFollowup(l, 'app') : abrirConversa(l, 'app') }}>App</button>
@@ -389,6 +475,8 @@ export default function Crm() {
         })}
       </div>
       {responder && <Responder lead={responder.lead} canal={responder.canal} fechar={() => setResponder(null)} depois={carregar} />}
+      {janela === 'busca' && <JanelaBusca fechar={() => setJanela(null)} depois={carregar} />}
+      {janela === 'email' && <JanelaEmail fechar={() => setJanela(null)} />}
     </section>
   )
 }

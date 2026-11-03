@@ -7,13 +7,17 @@ export const canalDe = (lead) => lead.ultimo_canal || (lead.whatsapp ? 'whatsapp
 // A abertura por DM tem texto próprio
 export const etapaNoCanal = (etapa, canal) => (etapa === 'abertura' && canal === 'instagram' ? 'abertura_dm' : etapa)
 
+// Lead de fora do Brasil (EUA, Portugal): textos próprios, com preço em dólar/euro
+export const ehGringo = (lead) => !!lead?.mercado && lead.mercado !== 'br'
+export const extrasGringo = (lead) => (ehGringo(lead) ? { moeda: lead.pais === 'PT' ? '€' : 'US$', cidade: lead.cidade || lead.bairro || '' } : {})
+
 export function mensagemPara(mensagens, lead, etapa, variante) {
-  const publico = lead.tipo_site === 'site_falso' ? 'site_falso' : 'sem_site'
+  const publico = ehGringo(lead) ? 'gringa' : lead.tipo_site === 'site_falso' ? 'site_falso' : 'sem_site'
   const vs = variantesDe(mensagens, etapa, publico)
   const pref = variante || varianteDe(lead.id, vs)
   const v = vs.includes(pref) ? pref : vs[0] || 'A'
   const modelo = escolherMensagem(mensagens, etapa, publico, v)
-  return { modelo, texto: modelo ? preencher(modelo.texto, lead) : '', variante: v, variantes: vs }
+  return { modelo, texto: modelo ? preencher(modelo.texto, lead, extrasGringo(lead)) : '', variante: v, variantes: vs }
 }
 
 // O que fazer depois que a DM abre

@@ -16,7 +16,6 @@ import Coleta from './Coleta'
 import LeadDrawer from './LeadDrawer'
 import MenuLateral from './MenuLateral'
 import Jogos from './Jogos'
-import Calendario from './Calendario'
 import Mensagens from './Mensagens'
 import '../styles/painel.css'
 
@@ -27,7 +26,6 @@ export const usePainel = () => useContext(Ctx)
 const ABAS = [
   ['inicio', 'Início', Inicio, 'M4 20V10M10 20V4M16 20v-7M22 20H2'],
   ['metricas', 'Métricas', MetricasGeral, 'M3 3v18h18M7 15l4-4 3 3 6-7'],
-  ['calendario', 'Calendário', Calendario, 'M3 6h18v15H3zM3 10h18M8 3v4M16 3v4'],
   ['prospectar', 'Leads', LeadsUnico, 'm22 2-7 20-4-9-9-4 20-7Z'],
   ['crm', 'CRM', Crm, 'M4 4h5v16H4zM10 4h5v10h-5zM16 4h4v13h-4z'],
   ['cofre', 'Cofre', Cofre, 'M5 11h14v10H5zM8 11V7a4 4 0 0 1 8 0v4'],
@@ -43,7 +41,7 @@ const EXTRAS = [
 ]
 const JOGOS_ABAS = [['jogos', 'Todos os jogos', Jogos, 'M6 11h4M8 9v4M15 12h.01M18 10h.01M17.3 5H6.7a4 4 0 0 0-3.9 3.2L2 14.5a2.5 2.5 0 0 0 4.4 2L8 15h8l1.6 1.5a2.5 2.5 0 0 0 4.4-2l-.8-6.3A4 4 0 0 0 17.3 5Z']]
 // Menu: fixos no topo + um grupo (acordeão) por frente de renda. Frente nova = mais um grupo aqui.
-const TOPO = ABAS.filter(([id]) => ['inicio', 'metricas', 'calendario', 'cofre'].includes(id))
+const TOPO = ABAS.filter(([id]) => ['inicio', 'metricas', 'cofre'].includes(id))
 const GRUPOS = [
   { id: 'sites', nome: 'Sites', itens: [...ABAS.filter(([id]) => ['prospectar', 'crm'].includes(id)), ...EXTRAS] },
   { id: 'canais', nome: 'Canais', canais: true, itens: ABAS_CANAIS },

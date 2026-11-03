@@ -51,7 +51,9 @@ export default function Inicio() {
       supabase.from('v_funil').select('*'),
       supabase.from('v_ab').select('*'),
       supabase.from('briefings').select('id', { count: 'exact', head: true }).eq('status', 'novo'),
-    ]).then(([r, ev, resp, env, funil, ab, brief]) => {
+      supabase.from('v_prospeccao').select('*'),
+      supabase.from('v_prospeccao_7d').select('*'),
+    ]).then(([r, ev, resp, env, funil, ab, brief, etapas, semana]) => {
       // envios por dia (14 dias, horário local)
       const dias = Array.from({ length: 14 }, (_, i) => { const x = new Date(desde); x.setDate(x.getDate() + i); return x })
       const porDia = dias.map((x) => ({
@@ -61,7 +63,8 @@ export default function Inicio() {
         enviados: a.enviados + f.enviados, abriram: a.abriram + f.abriram, responderam: a.responderam + f.responderam,
         preco: a.preco + f.pediram_preco, pagaram: a.pagaram + f.pagaram,
       }), { enviados: 0, abriram: 0, responderam: 0, preco: 0, pagaram: 0 })
-      setD({ r: r.data || {}, feed: ev.data || [], resp: resp.data || [], porDia, tot, funil: funil.data || [], ab: ab.data || [], briefings: brief.count || 0 })
+      const porGrupo = (lista) => Object.fromEntries((lista || []).map((x) => [x.grupo, x]))
+      setD({ r: r.data || {}, feed: ev.data || [], resp: resp.data || [], porDia, tot, funil: funil.data || [], ab: ab.data || [], briefings: brief.count || 0, etapas: porGrupo(etapas.data), semana: porGrupo(semana.data) })
     })
   }, [versao])
 
@@ -69,9 +72,11 @@ export default function Inicio() {
   const { r, tot } = d
   const maxDia = Math.max(1, ...d.porDia.map((x) => x.n))
   const etapasFunil = [
-    ['Abordados', tot.enviados], ['Abriram a página', tot.abriram], ['Responderam', tot.responderam],
-    ['Pediram preço', tot.preco], ['Fecharam', tot.pagaram],
+    ['Abordados', tot.enviados], ['Responderam', tot.responderam], ['Pediram preço', tot.preco], ['Fecharam', tot.pagaram],
   ]
+  const soma = (k) => (d.semana.br?.[k] || 0) + (d.semana.gringa?.[k] || 0)
+  const fups = (d.etapas.br?.followups_hoje || 0) + (d.etapas.gringa?.followups_hoje || 0)
+  const ETAPAS_CRM = [['na_fila', 'Na fila (não chamados)'], ['contato1', '1º contato'], ['fup1', 'Follow-up 1'], ['fup2', 'Follow-up 2'], ['abriu', 'Abriram o link'], ['respondeu', 'Responderam'], ['proposta', 'Proposta'], ['fechou', 'Fecharam'], ['perdido', 'Perdidos']]
 
   return (
     <section className="p-inicio">
@@ -89,13 +94,14 @@ export default function Inicio() {
         </button>
       )}
 
-      <div className="p-kpis">
+      <div className="p-kpis p-kpis--5">
         <div className="p-kpi p-kpi--meta">
           <Anel valor={r.envios_hoje || 0} meta={CONFIG.META_DIARIA} />
           <div><strong>{r.envios_hoje || 0}<span>/{CONFIG.META_DIARIA}</span></strong><small>mensagens hoje</small><em>WhatsApp {r.envios_hoje_wa || 0}/{CONFIG.META_WHATS} · DM {r.envios_hoje_dm || 0}/{CONFIG.META_DM}</em></div>
         </div>
-        <div className="p-kpi"><strong>{pct(r.abriram_7d, r.abordados_7d)}%</strong><small>abriram a página</small><em>{r.abriram_7d || 0} de {r.abordados_7d || 0} em 7 dias</em></div>
-        <div className="p-kpi"><strong>{pct(r.responderam_7d, r.abordados_7d)}%</strong><small>responderam</small><em>{r.responderam_7d || 0} de {r.abordados_7d || 0} em 7 dias</em></div>
+        <button type="button" className={`p-kpi p-kpi--btn ${fups ? 'p-kpi--alerta' : ''}`} onClick={() => irPara('crm')}><strong>{fups}</strong><small>follow-ups para hoje</small><em>{fups ? 'Abrir o CRM e mandar' : 'Nada atrasado'}</em></button>
+        <div className="p-kpi"><strong>{pct(soma('responderam'), soma('abordados'))}%</strong><small>responderam</small><em>{soma('responderam')} de {soma('abordados')} abordados em 7 dias</em></div>
+        <div className="p-kpi"><strong>{pct(soma('abriram'), soma('receberam_link'))}%</strong><small>abriram o link</small><em>{soma('abriram')} de {soma('receberam_link')} que receberam o link em 7 dias</em></div>
         <div className="p-kpi p-kpi--dinheiro"><strong>{brl(r.vendido_mes || 0)}</strong><small>vendido no mês</small><em>{r.vendas_mes || 0} vendas · {brl(r.mrr || 0)}/mês recorrente</em></div>
       </div>
 
@@ -146,6 +152,17 @@ export default function Inicio() {
         </div>
 
         <div className="p-dash-col">
+          <article className="p-painel">
+            <header><h2>Onde estão os leads</h2><span>agora</span></header>
+            <div className="p-tabela-wrap"><table className="p-tabela p-etapas">
+              <thead><tr><th>Etapa</th><th>Brasil</th><th>Gringos</th></tr></thead>
+              <tbody>{ETAPAS_CRM.map(([k, n]) => (
+                <tr key={k} className={`et-${k}`}><td>{n}</td><td>{d.etapas.br?.[k] || 0}</td><td>{d.etapas.gringa?.[k] || 0}</td></tr>
+              ))}</tbody>
+            </table></div>
+            <p className="p-meta">Últimos 7 dias: {d.semana.br?.wa || 0} no WhatsApp e {d.semana.br?.dm || 0} no Instagram (Brasil) · {d.semana.gringa?.wa || 0} no WhatsApp e {d.semana.gringa?.email || 0} e-mails (gringos). A 1ª mensagem do WhatsApp não leva link, então "abriram o link" só conta quem recebeu um.</p>
+          </article>
+
           <article className="p-painel">
             <header><h2>Funil</h2><span>desde o início</span></header>
             <div className="p-funil">

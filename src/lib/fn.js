@@ -10,9 +10,11 @@ export const marcarDono = () => { try { localStorage.setItem('td-dono', '1') } c
 // "Abriu a página" só conta quando uma PESSOA mexe na página (toca, rola, clica ou digita).
 // O Instagram e o WhatsApp abrem o link sozinhos segundos depois do envio para checar segurança;
 // esses robôs carregam a página, mas não interagem.
-export function quandoHumano(fn) {
+// Também conta quem só lê: página aberta e visível por 6 s (o verificador de link fecha antes disso).
+export function quandoHumano(fn, msLendo = 6000) {
   if (typeof window === 'undefined' || navigator.webdriver) return () => {}
   let feito = false
+  let timer = null
   const eventos = ['pointerdown', 'touchstart', 'scroll', 'wheel', 'keydown']
   const ir = () => {
     if (feito || document.visibilityState !== 'visible') return
@@ -20,8 +22,15 @@ export function quandoHumano(fn) {
     limpar()
     fn()
   }
-  const limpar = () => eventos.forEach((e) => window.removeEventListener(e, ir, true))
+  const armar = () => { clearTimeout(timer); if (document.visibilityState === 'visible') timer = setTimeout(ir, msLendo) }
+  const limpar = () => {
+    clearTimeout(timer)
+    document.removeEventListener('visibilitychange', armar)
+    eventos.forEach((e) => window.removeEventListener(e, ir, true))
+  }
   eventos.forEach((e) => window.addEventListener(e, ir, { capture: true, passive: true }))
+  document.addEventListener('visibilitychange', armar)
+  armar()
   return limpar
 }
 

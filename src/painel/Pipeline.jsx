@@ -4,7 +4,7 @@ import { supabase } from '../lib/supabase'
 import { usePainel } from './Painel'
 import { MiniVideo, Previa } from './Previa'
 import Metricas from './Metricas'
-import { JanelaCalendario } from './Calendario'
+import { CalendarioConteudo } from './Calendario'
 
 // Pipeline padrão de todos os canais: Prontos → Programados → Postados.
 // Cada canal (Estudio para a Tavin Digital, Videos para os de vídeo curto) entrega os cartões já no formato abaixo
@@ -422,6 +422,8 @@ export default function Pipeline({ canal, fases = FASES_PADRAO, itens, mover, pr
   const [verPostados, setVerPostados] = useState(() => lerLS('pl-postados', '0') === '1')
   const [aba, setAba] = useState(null)
   const [janela, setJanela] = useState(null)
+  const [vista, setVista] = useState(() => lerLS(`pl-vista-${canal.id}`, 'quadro'))
+  useEffect(() => gravarLS(`pl-vista-${canal.id}`, vista), [vista, canal.id])
   const [previa, setPrevia] = useState(null)
   const [arr, setArr] = useState(null)
   const [sobre, setSobre] = useState(null)
@@ -466,7 +468,6 @@ export default function Pipeline({ canal, fases = FASES_PADRAO, itens, mover, pr
         </div>
         <div className="pl-acoes">
           <button className="p-btn" onClick={() => setJanela('metricas')}>Métricas</button>
-          <button className="p-btn" onClick={() => setJanela('calendario')}>Calendário</button>
           <button className="p-btn" onClick={() => setJanela('integ')}>
             <span className={`pl-ponto ${cx.igOk ? 'on' : ''}`} aria-hidden="true" />Integrações
           </button>
@@ -477,6 +478,16 @@ export default function Pipeline({ canal, fases = FASES_PADRAO, itens, mover, pr
       </header>
       {ocupado && <p className="pl-ocupado" role="status">{ocupado}</p>}
 
+      <div className="pl-vistas" role="tablist" aria-label="Ver como">
+        <button type="button" role="tab" aria-selected={vista === 'quadro'} className={vista === 'quadro' ? 'on' : ''} onClick={() => setVista('quadro')}>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h5v16H4zM10 4h5v10h-5zM16 4h4v13h-4z" /></svg>Quadro
+        </button>
+        <button type="button" role="tab" aria-selected={vista === 'calendario'} className={vista === 'calendario' ? 'on' : ''} onClick={() => setVista('calendario')}>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v15H3zM3 10h18M8 3v4M16 3v4" /></svg>Calendário
+        </button>
+      </div>
+
+      {vista === 'calendario' ? <CalendarioConteudo canal={canal} itens={itens} programar={programar} /> : <>
       <div className="pl-abas" role="tablist" aria-label="Colunas">
         {visiveis.map((f) => (
           <button key={f.k} type="button" role="tab" aria-selected={abaAtual === f.k} className={abaAtual === f.k ? 'on' : ''} onClick={() => setAba(f.k)}>{f.nome} <small>{col[f.k].length}</small></button>
@@ -512,10 +523,10 @@ export default function Pipeline({ canal, fases = FASES_PADRAO, itens, mover, pr
           )
         })}
       </div>
+      </>}
 
       {previa && <Previa lista={listaPrevia} id={previa} setId={setPrevia} abrirFicha={(ch) => abrir(itens.find((i) => i.chave === ch))} />}
       {janela === 'metricas' && <Metricas canal={canal} fechar={() => setJanela(null)} />}
-      {janela === 'calendario' && <JanelaCalendario canal={canal} fechar={() => setJanela(null)} />}
       {janela === 'integ' && <Integracoes canal={canal} marca={marca} cx={cx} recarregar={recarregar} fechar={() => setJanela(null)} />}
       {janela === 'programar' && <ProgramarTudo itens={programaveis} fila={fila} programar={programar} fechar={() => setJanela(null)} />}
       {janela === 'subir' && <SubirVideo canal={canal} subir={subir} fechar={() => setJanela(null)} />}
