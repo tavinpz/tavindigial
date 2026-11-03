@@ -70,12 +70,11 @@ function campos(k, acao, iso, igAuto) {
 // rede = null: as 3 juntas; 'yt' | 'tt' | 'ig': só aquela rede (filtro do quadro)
 function etapa(v, rede = null) {
   if (!v.video_url) return 'producao'
-  const ss = (rede ? [rede] : REDES.map((r) => r.k)).map((k) => situacao(v, k).s)
-  // programado em alguma rede = fica em Programado até sair; quando sai (o painel publica e vira "publicado"),
-  // não sobra nada programado e o cartão vai sozinho para Postado
-  if (ss.includes('programado')) return 'programado'
-  if (ss.includes('postado')) return 'postado'
+  // a coluna segue o YouTube e o Instagram juntos: só vai para Programado quando os dois estão programados (ou já no ar),
+  // e para Postado quando os dois saíram. O TikTok aparece só no selo do cartão. Cada rede tem seu selo (IG ◷ / IG ✓).
+  const ss = (rede ? [rede] : ['yt', 'ig']).map((k) => situacao(v, k).s)
   if (ss.includes('pendente')) return v.subido_em ? 'subido' : 'programar'
+  if (ss.includes('programado')) return 'programado'
   return 'postado'
 }
 
@@ -318,7 +317,10 @@ const NOMES = { yt: 'YouTube', tt: 'TikTok', ig: 'Instagram' }
 function paraItem(v) {
   const e = etapa(v)
   const sts = REDES.map((r) => ({ k: r.k, ...situacao(v, r.k) }))
-  const redes = sts.map((st) => ({ sigla: SIGLAS[st.k], nome: NOMES[st.k], s: st.s }))
+  const redes = sts.map((st) => ({
+    sigla: SIGLAS[st.k], nome: NOMES[st.k], s: st.s,
+    dica: st.s === 'programado' ? `programado${st.quando ? ` para ${fmtCurto(st.quando)}` : ''}${st.auto ? ' (sai sozinho)' : ''}` : st.s === 'postado' ? 'postado' : 'ainda não programado',
+  }))
   const prog = sts.filter((st) => st.s === 'programado' && st.quando).map((st) => st.quando).sort()
   const post = sts.map((st) => st.postado).filter(Boolean).sort()
   return {

@@ -120,8 +120,8 @@ function Cartao({ item, fase, papel, fases, abrir, previa, arrastar, arrastando,
         <span className="pl-linha">
           <Status item={item} papel={papel} />
           {item.redes && (
-            <span className="pl-redes" aria-label={item.redes.map((r) => `${r.nome}: ${r.s}`).join(', ')}>
-              {item.redes.map((r) => <i key={r.sigla} className={`pl-rede pl-rede--${r.s}`} title={`${r.nome}: ${r.s}`}>{r.sigla}</i>)}
+            <span className="pl-redes" aria-label={item.redes.map((r) => `${r.nome}: ${r.dica || r.s}`).join(', ')}>
+              {item.redes.map((r) => <i key={r.sigla} className={`pl-rede pl-rede--${r.s}`} title={`${r.nome}: ${r.dica || r.s}`}>{r.sigla}{r.s === 'programado' ? ' ◷' : r.s === 'postado' ? ' ✓' : ''}</i>)}
             </span>
           )}
           {item.tipoNome && <span className={`pl-tipo pl-tipo--${item.tipo}`}>{item.tipoNome}</span>}
