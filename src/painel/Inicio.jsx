@@ -76,6 +76,7 @@ export default function Inicio() {
   ]
   const soma = (k) => (d.semana.br?.[k] || 0) + (d.semana.gringa?.[k] || 0)
   const fups = (d.etapas.br?.followups_hoje || 0) + (d.etapas.gringa?.followups_hoje || 0)
+  const maxEtapa = Math.max(1, ...['contato1', 'fup1', 'fup2', 'abriu', 'respondeu', 'proposta', 'fechou', 'perdido'].flatMap((k) => [d.etapas.br?.[k] || 0, d.etapas.gringa?.[k] || 0]))
   const ETAPAS_CRM = [['na_fila', 'Na fila (não chamados)'], ['contato1', '1º contato'], ['fup1', 'Follow-up 1'], ['fup2', 'Follow-up 2'], ['abriu', 'Abriram o link'], ['respondeu', 'Responderam'], ['proposta', 'Proposta'], ['fechou', 'Fecharam'], ['perdido', 'Perdidos']]
 
   return (
@@ -105,8 +106,31 @@ export default function Inicio() {
         <div className="p-kpi p-kpi--dinheiro"><strong>{brl(r.vendido_mes || 0)}</strong><small>vendido no mês</small><em>{r.vendas_mes || 0} vendas · {brl(r.mrr || 0)}/mês recorrente</em></div>
       </div>
 
-      <div className="p-dash">
-        <div className="p-dash-col">
+      {/* lado a lado e alinhados: o mais importante em cima */}
+      <div className="p-dash2">
+          <article className="p-painel p-onde">
+            <header><h2>Onde estão os leads</h2><span>agora</span></header>
+            <div className="p-onde-fila">
+              <div><b>{d.etapas.br?.na_fila || 0}</b><small>na fila · Brasil</small></div>
+              <div className="gr"><b>{d.etapas.gringa?.na_fila || 0}</b><small>na fila · Gringos</small></div>
+            </div>
+            <div className="p-onde-lista" role="table" aria-label="Leads por etapa">
+              <div className="p-onde-linha p-onde-cab" role="row"><span role="columnheader">Etapa</span><span role="columnheader">Brasil</span><span role="columnheader">Gringos</span></div>
+              {ETAPAS_CRM.filter(([k]) => k !== 'na_fila').map(([k, n]) => {
+                const br = d.etapas.br?.[k] || 0
+                const gr = d.etapas.gringa?.[k] || 0
+                return (
+                  <div key={k} className={`p-onde-linha et-${k}`} role="row">
+                    <span role="cell">{n}</span>
+                    <span role="cell" className="p-onde-val"><i style={{ width: `${(br / maxEtapa) * 100}%` }} /><b>{br}</b></span>
+                    <span role="cell" className="p-onde-val gr"><i style={{ width: `${(gr / maxEtapa) * 100}%` }} /><b>{gr}</b></span>
+                  </div>
+                )
+              })}
+            </div>
+            <p className="p-meta">Últimos 7 dias: {d.semana.br?.wa || 0} no WhatsApp e {d.semana.br?.dm || 0} no Instagram (Brasil) · {d.semana.gringa?.wa || 0} no WhatsApp e {d.semana.gringa?.email || 0} e-mails (gringos).</p>
+          </article>
+
           <article className="p-painel">
             <header><h2>Precisa de você</h2><span>{d.resp.length}</span></header>
             {d.resp.length === 0 ? <p className="p-meta">Ninguém esperando resposta. Quando alguém responder, registre no lead e ele aparece aqui.</p> : (
@@ -132,6 +156,32 @@ export default function Inicio() {
           </article>
 
           <article className="p-painel">
+            <header><h2>Mensagens por dia</h2><span>14 dias</span></header>
+            <div className="p-barras" role="img" aria-label="Mensagens enviadas por dia nos últimos 14 dias">
+              {d.porDia.map(({ dia, n }) => (
+                <div key={dia.toISOString()} className="p-barra-dia" title={`${dia.toLocaleDateString('pt-BR')}: ${n}`}>
+                  <span style={{ height: `${(n / maxDia) * 100}%` }}>{n > 0 && <em>{n}</em>}</span>
+                  <small>{dia.toLocaleDateString('pt-BR', { weekday: 'narrow' })}</small>
+                </div>
+              ))}
+            </div>
+            <p className="p-meta">Meta: {CONFIG.META_DIARIA} por dia. Última coleta: {r.ultima_coleta ? dataCurta(r.ultima_coleta) : 'nenhuma'} ({r.leads_24h || 0} novos em 24h).</p>
+          </article>
+
+          <article className="p-painel">
+            <header><h2>Funil</h2><span>desde o início</span></header>
+            <div className="p-funil">
+              {etapasFunil.map(([n, v], i) => (
+                <div key={n} className="p-funil-linha">
+                  <span>{n}</span>
+                  <div className="p-funil-barra"><i style={{ width: `${Math.max(tot.enviados ? (v / tot.enviados) * 100 : 0, v ? 3 : 0)}%`, '--i': i }} /></div>
+                  <b>{v}</b><small>{i ? `${pct(v, tot.enviados)}%` : ''}</small>
+                </div>
+              ))}
+            </div>
+          </article>
+
+          <article className="p-painel p-largo">
             <header><h2>Atividade recente</h2></header>
             {d.feed.length === 0 ? <p className="p-meta">Assim que os leads abrirem a página ou responderem, aparece aqui.</p> : (
               <ol className="p-feed">
@@ -149,47 +199,7 @@ export default function Inicio() {
               </ol>
             )}
           </article>
-        </div>
-
-        <div className="p-dash-col">
-          <article className="p-painel">
-            <header><h2>Onde estão os leads</h2><span>agora</span></header>
-            <div className="p-tabela-wrap"><table className="p-tabela p-etapas">
-              <thead><tr><th>Etapa</th><th>Brasil</th><th>Gringos</th></tr></thead>
-              <tbody>{ETAPAS_CRM.map(([k, n]) => (
-                <tr key={k} className={`et-${k}`}><td>{n}</td><td>{d.etapas.br?.[k] || 0}</td><td>{d.etapas.gringa?.[k] || 0}</td></tr>
-              ))}</tbody>
-            </table></div>
-            <p className="p-meta">Últimos 7 dias: {d.semana.br?.wa || 0} no WhatsApp e {d.semana.br?.dm || 0} no Instagram (Brasil) · {d.semana.gringa?.wa || 0} no WhatsApp e {d.semana.gringa?.email || 0} e-mails (gringos). A 1ª mensagem do WhatsApp não leva link, então "abriram o link" só conta quem recebeu um.</p>
-          </article>
-
-          <article className="p-painel">
-            <header><h2>Funil</h2><span>desde o início</span></header>
-            <div className="p-funil">
-              {etapasFunil.map(([n, v], i) => (
-                <div key={n} className="p-funil-linha">
-                  <span>{n}</span>
-                  <div className="p-funil-barra"><i style={{ width: `${Math.max(tot.enviados ? (v / tot.enviados) * 100 : 0, v ? 3 : 0)}%`, '--i': i }} /></div>
-                  <b>{v}</b><small>{i ? `${pct(v, tot.enviados)}%` : ''}</small>
-                </div>
-              ))}
-            </div>
-          </article>
-
-          <article className="p-painel">
-            <header><h2>Mensagens por dia</h2><span>14 dias</span></header>
-            <div className="p-barras" role="img" aria-label="Mensagens enviadas por dia nos últimos 14 dias">
-              {d.porDia.map(({ dia, n }) => (
-                <div key={dia.toISOString()} className="p-barra-dia" title={`${dia.toLocaleDateString('pt-BR')}: ${n}`}>
-                  <span style={{ height: `${(n / maxDia) * 100}%` }}>{n > 0 && <em>{n}</em>}</span>
-                  <small>{dia.toLocaleDateString('pt-BR', { weekday: 'narrow' })}</small>
-                </div>
-              ))}
-            </div>
-            <p className="p-meta">Meta: {CONFIG.META_DIARIA} por dia. Última coleta: {r.ultima_coleta ? dataCurta(r.ultima_coleta) : 'nenhuma'} ({r.leads_24h || 0} novos em 24h).</p>
-          </article>
-
-          <details className="p-painel p-detalhes">
+          <details className="p-painel p-detalhes p-largo">
             <summary>Detalhes: teste A/B e resultado por nicho</summary>
             {d.ab.length > 0 && (
               <div className="p-tabela-wrap"><table className="p-tabela">
@@ -209,7 +219,6 @@ export default function Inicio() {
             )}
             {d.ab.length === 0 && d.funil.length === 0 && <p className="p-meta">Aparece depois dos primeiros envios.</p>}
           </details>
-        </div>
       </div>
     </section>
   )
