@@ -71,10 +71,11 @@ function campos(k, acao, iso, igAuto) {
 function etapa(v, rede = null) {
   if (!v.video_url) return 'producao'
   const ss = (rede ? [rede] : REDES.map((r) => r.k)).map((k) => situacao(v, k).s)
-  // saiu em qualquer rede (YouTube, Insta ou TikTok) = já está no ar: vai sozinho para Postado
+  // programado em alguma rede = fica em Programado até sair; quando sai (o painel publica e vira "publicado"),
+  // não sobra nada programado e o cartão vai sozinho para Postado
+  if (ss.includes('programado')) return 'programado'
   if (ss.includes('postado')) return 'postado'
   if (ss.includes('pendente')) return v.subido_em ? 'subido' : 'programar'
-  if (ss.includes('programado')) return 'programado'
   return 'postado'
 }
 
