@@ -10,7 +10,10 @@ const fmt = (n) => (n == null ? '—' : Intl.NumberFormat('pt-BR', { maximumFrac
 const pct = (a, b) => (b ? `${Math.round((a / b) * 100)}%` : '—')
 const tempo = (s) => (s == null ? '—' : s < 60 ? `${Math.round(s)}s` : `${Math.floor(s / 60)}min ${Math.round(s % 60)}s`)
 const mesAtual = () => new Date().toISOString().slice(0, 7) + '-01'
-const NOMES_FASE = { 'planet-drop': ['Asteroide', 'Lua', 'Mercúrio', 'Marte', 'Vênus', 'Terra', 'Netuno', 'Urano', 'Saturno', 'Júpiter', 'Sol'] }
+const NOMES_FASE = {
+  'planet-drop': ['Asteroide', 'Lua', 'Mercúrio', 'Marte', 'Vênus', 'Terra', 'Netuno', 'Urano', 'Saturno', 'Júpiter', 'Sol'],
+  'meteor-overdrive': Array.from({ length: 51 }, (_, i) => i ? `${['Lua', 'Marte', 'Ceres', 'Europa', 'Mercúrio'][Math.floor((i - 1) / 10)]} ${(i - 1) % 10 + 1}${i % 10 ? '' : ' · chefe'}` : '—'),
+}
 
 function Barras({ serie }) {
   if (!serie.length) return null
