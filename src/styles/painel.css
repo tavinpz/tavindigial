@@ -1247,3 +1247,41 @@ body:has(.p-fantasma) { cursor: grabbing; }
   .m-recolher { display: none; }
   .m-item { font-size: 14.5px; padding: 9px 10px; }
 }
+
+/* ── Jogos ── */
+.jg { display: flex; flex-direction: column; gap: 14px; max-width: 1100px; }
+.jg-geral { background: var(--branco); border: 1px solid var(--linha); border-radius: 16px; padding: 14px 16px; display: grid; gap: 8px; font-size: 13px; color: var(--cinza); }
+.jg-geral small { font-size: 12px; }
+.jg-barras { display: flex; align-items: flex-end; gap: 3px; height: 70px; }
+.jg-barras span { flex: 1; height: 100%; position: relative; }
+.jg-barras i, .jg-barras b { position: absolute; left: 0; right: 0; bottom: 0; border-radius: 3px 3px 0 0; min-height: 1px; }
+.jg-barras i { background: #E3D9F7; }
+.jg-barras b { background: #6E56CF; }
+.jg-card { background: var(--branco); border: 1px solid var(--linha); border-radius: 18px; padding: 18px; display: grid; gap: 14px; }
+.jg-cab { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; flex-wrap: wrap; }
+.jg-cab h2 { margin: 0 0 4px; font-family: var(--f-display); font-size: 21px; }
+.jg-status { font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; background: var(--papel); color: #2A2230; }
+.jg-status--publicado { background: #E3F4EA; color: #1E7A47; }
+.jg-status--teste { background: #FFF4D6; color: #8A5A00; }
+.jg-links { display: flex; gap: 6px; flex-wrap: wrap; }
+.jg-editar { display: grid; gap: 12px; background: var(--papel); border-radius: 14px; padding: 14px; }
+.jg-editar-links { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; align-items: end; }
+.jg-receita-linha { display: flex; gap: 6px; align-items: center; }
+.jg-receita-linha select, .jg-receita-linha input { font: inherit; font-weight: 400; padding: 9px 10px; border-radius: 10px; border: 1px solid var(--linha); background: var(--branco); }
+.jg-receita-linha input { width: 130px; }
+.jg-nums { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; }
+.jg-nums > div { background: var(--papel); border-radius: 12px; padding: 12px 14px; display: flex; flex-direction: column; gap: 2px; }
+.jg-nums b { font-family: var(--f-display); font-size: 24px; font-variant-numeric: tabular-nums; }
+.jg-nums span { font-size: 12.5px; color: var(--cinza); }
+.jg-tabela { width: 100%; border-collapse: collapse; font-size: 13.5px; font-variant-numeric: tabular-nums; }
+.jg-tabela th, .jg-tabela td { padding: 8px 10px; text-align: right; border-bottom: 1px solid var(--linha); }
+.jg-tabela th:first-child, .jg-tabela td:first-child { text-align: left; }
+.jg-tabela th { font-size: 12px; color: var(--cinza); font-weight: 600; }
+.jg-fases h3 { margin: 0 0 8px; font-size: 14px; }
+.jg-fases ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 5px; }
+.jg-fases li { display: grid; grid-template-columns: 90px 1fr 48px; gap: 10px; align-items: center; font-size: 13px; }
+.jg-trilho { height: 8px; background: var(--papel); border-radius: 4px; overflow: hidden; }
+.jg-trilho i { display: block; height: 100%; background: #6E56CF; border-radius: 4px; }
+.jg-fases b { text-align: right; font-variant-numeric: tabular-nums; }
+.jg-nota { margin: 8px 0 0; font-size: 12.5px; color: var(--cinza); }
+@media (max-width: 640px) { .jg-tabela { font-size: 12px; } .jg-tabela th, .jg-tabela td { padding: 6px 5px; } }

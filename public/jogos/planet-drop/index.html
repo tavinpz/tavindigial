@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Planet Drop</title>
+<meta name="description" content="Drop planets, merge two of the same into a bigger one and grow them all the way to the Sun. Make a Sun to trigger a Supernova!">
+<style>
+  html, body { margin: 0; height: 100%; background: #070814; overflow: hidden; touch-action: none; -webkit-user-select: none; user-select: none; }
+  canvas { display: block; width: 100%; height: 100%; }
+  #fim { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(5, 6, 18, .62); font-family: system-ui, -apple-system, "Segoe UI", sans-serif; color: #fff; }
+  #fim.on { display: flex; }
+  #fim .caixa { background: #12142b; border: 1px solid rgba(255,255,255,.12); border-radius: 22px; padding: 28px 30px 24px; text-align: center; min-width: 250px; box-shadow: 0 30px 80px -20px rgba(0,0,0,.8); }
+  #fim h2 { margin: 0 0 4px; font-size: 26px; letter-spacing: .02em; }
+  #fim .p { font-size: 48px; font-weight: 800; margin: 8px 0 2px; font-variant-numeric: tabular-nums; }
+  #fim .m { color: #A8ACD6; font-size: 14px; margin: 0 0 20px; }
+  #fim button { font: inherit; font-size: 18px; font-weight: 700; border: 0; border-radius: 999px; padding: 13px 34px; background: linear-gradient(180deg, #FFD34E, #FF9F1C); color: #2a1700; cursor: pointer; box-shadow: 0 6px 0 #c76a00; }
+  #fim button:active { transform: translateY(3px); box-shadow: 0 3px 0 #c76a00; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="fim" role="dialog" aria-label="Game over"><div class="caixa">
+  <h2>Game over</h2>
+  <div class="p" id="fimPontos">0</div>
+  <p class="m" id="fimMelhor">Best 0</p>
+  <button id="denovo" type="button">Play again</button>
+</div></div>
+<script>
+(() => {
+  'use strict'
+  const JOGO = 'planet-drop'
+  const EVENTOS_URL = 'https://vvlzverpxojrecxysmhm.supabase.co/functions/v1/jogo-evento'
+
+  // ───────── portal + SDK do CrazyGames (só carrega lá) ─────────
+  const origens = [location.hostname, document.referrer, ...(location.ancestorOrigins ? Array.from(location.ancestorOrigins) : [])].join(' ').toLowerCase()
+  const PORTAL = /crazygames/.test(origens) ? 'crazygames' : /poki/.test(origens) ? 'poki' : /itch\.(io|zone)/.test(origens) ? 'itch'
+    : /playgama/.test(origens) ? 'playgama' : /gamedistribution/.test(origens) ? 'gamedistribution' : /gamemonetize/.test(origens) ? 'gamemonetize'
+    : /y8\.com/.test(origens) ? 'y8' : /telegram|t\.me/.test(origens) ? 'telegram' : /tavindigital/.test(origens) ? 'tavindigital'
+    : /localhost|127\.0\.0\.1/.test(origens) ? 'local' : 'outro'
+  let SDK = null
+  const sdk = {
+    iniciar() {
+      if (PORTAL !== 'crazygames') return
+      const s = document.createElement('script')
+      s.src = 'https://sdk.crazygames.com/crazygames-sdk-v3.js'
+      s.onload = async () => { try { await window.CrazyGames.SDK.init(); SDK = window.CrazyGames.SDK; SDK.game.loadingStop?.(); if (jogando) SDK.game.gameplayStart() } catch (e) { SDK = null } }
+      document.head.appendChild(s)
+    },
+    comecar() { try { SDK?.game.gameplayStart() } catch {} },
+    parar() { try { SDK?.game.gameplayStop() } catch {} },
+    alegria() { try { SDK?.game.happytime() } catch {} },
+    anuncio(depois) {
+      if (!SDK) return depois()
+      let feito = false
+      const fim = () => { if (feito) return; feito = true; som.mudo(false, true); depois() }
+      try { SDK.ad.requestAd('midgame', { adStarted: () => som.mudo(true, true), adFinished: fim, adError: fim }) } catch { fim() }
+      setTimeout(fim, 45000)
+    },
+  }
+
+  // ───────── rastreador anônimo (manda para o painel) ─────────
+  const guardado = (k, v) => { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v) } catch { return null } }
+  const aleatorio = () => Math.random().toString(36).slice(2, 10) + Date.now().toString(36).slice(-4)
+  const JOGADOR = guardado('pd_u') || (() => { const u = aleatorio(); guardado('pd_u', u); return u })()
+  const SESSAO = aleatorio()
+  let fila = []
+  const evento = (t, v = {}) => { fila.push({ t, v }); if (fila.length >= 20) enviar() }
+  function enviar(fechando) {
+    if (!fila.length) return
+    const corpo = JSON.stringify({ j: JOGO, p: PORTAL, u: JOGADOR, s: SESSAO, e: fila.splice(0, 40) })
+    try {
+      if (fechando && navigator.sendBeacon) navigator.sendBeacon(EVENTOS_URL, new Blob([corpo], { type: 'text/plain' }))
+      else fetch(EVENTOS_URL, { method: 'POST', body: corpo, headers: { 'Content-Type': 'text/plain' }, keepalive: true }).catch(() => {})
+    } catch {}
+  }
+  setInterval(() => enviar(), 10000)
+  addEventListener('pagehide', () => enviar(true))
+  document.addEventListener('visibilitychange', () => { if (document.hidden) enviar(true) })
+
+  // ───────── som (WebAudio, gerado na hora) ─────────
+  const som = (() => {
+    let ctx = null, mudo = guardado('pd_mudo') === '1', mudoAnuncio = false
+    const pronto = () => { if (!ctx) { try { ctx = new (window.AudioContext || window.webkitAudioContext)() } catch {} } if (ctx?.state === 'suspended') ctx.resume(); return ctx && !mudo && !mudoAnuncio }
+    const tom = (f, d, tipo = 'sine', vol = .18, desliza = 0) => {
+      if (!pronto()) return
+      const o = ctx.createOscillator(), g = ctx.createGain(), t = ctx.currentTime
+      o.type = tipo; o.frequency.setValueAtTime(f, t); if (desliza) o.frequency.exponentialRampToValueAtTime(Math.max(30, f * desliza), t + d)
+      g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(.001, t + d)
+      o.connect(g).connect(ctx.destination); o.start(t); o.stop(t + d)
+    }
+    return {
+      soltar: () => tom(220, .09, 'triangle', .12, .6),
+      juntar: (n) => { tom(260 * Math.pow(1.12, n), .16, 'sine', .2, 1.6); tom(520 * Math.pow(1.12, n), .12, 'triangle', .07, 1.3) },
+      supernova: () => { tom(90, 1.1, 'sawtooth', .16, 5); setTimeout(() => tom(880, .5, 'sine', .12, .5), 120) },
+      perdeu: () => { tom(330, .25, 'triangle', .16, .7); setTimeout(() => tom(196, .5, 'triangle', .16, .6), 220) },
+      mudo: (v, anuncio) => { if (anuncio) mudoAnuncio = v; else { mudo = v; guardado('pd_mudo', v ? '1' : '0') } },
+      get desligado() { return mudo },
+      destravar: pronto,
+    }
+  })()
+
+  // ───────── mundo ─────────
+  const W = 480, H = 850
+  const ESQ = 32, DIR = 448, CHAO = 790, TOPO_CAIXA = 186, PERIGO = 222, MIRA_Y = 128
+  const GRAV = 1650
+  const PLANETAS = [
+    { n: 'Asteroid', r: 16, c: ['#B9B3A8', '#6E675C'], pts: 1 },
+    { n: 'Moon', r: 21, c: ['#F1F1F6', '#9A9AB0'], pts: 3 },
+    { n: 'Mercury', r: 28, c: ['#D9B48F', '#7C5A3C'], pts: 6 },
+    { n: 'Mars', r: 36, c: ['#FF7A52', '#A3311A'], pts: 10 },
+    { n: 'Venus', r: 45, c: ['#FFE3A3', '#D59A3B'], pts: 15 },
+    { n: 'Earth', r: 55, c: ['#5BC0FF', '#1C5FB8'], pts: 21 },
+    { n: 'Neptune', r: 66, c: ['#6F7DFF', '#2A2F9E'], pts: 28 },
+    { n: 'Uranus', r: 78, c: ['#A6F4F0', '#3CA6B4'], pts: 36 },
+    { n: 'Saturn', r: 92, c: ['#FFE08A', '#C08A2E'], pts: 45 },
+    { n: 'Jupiter', r: 106, c: ['#FFC48C', '#B85F2C'], pts: 55 },
+    { n: 'Sun', r: 121, c: ['#FFF6B0', '#FF9E1B'], pts: 100 },
+  ]
+  const SOL = PLANETAS.length - 1
+
+  let corpos = [], particulas = [], textos = []
+  let pontos = 0, melhor = Number(guardado('pd_melhor')) || 0
+  let atual = 0, proximo = 0, miraX = W / 2, recarga = 0
+  let jogando = false, acabou = false, comecouSessao = false, partida = 0
+  let maiorFase = 0, combo = 0, comboT = 0, perigoT = 0, tremor = 0, flash = 0, idSeq = 1
+  let segAtivo = 0, ultimoPulso = 0, inicioPartida = 0, dicaT = 4
+  const sorteia = () => { const r = Math.random(); return r < .34 ? 0 : r < .62 ? 1 : r < .82 ? 2 : r < .95 ? 3 : 4 }
+
+  function novaPartida() {
+    corpos = []; particulas = []; textos = []
+    pontos = 0; maiorFase = 0; combo = 0; perigoT = 0; recarga = .2; acabou = false
+    atual = sorteia(); proximo = sorteia(); partida++
+    inicioPartida = performance.now(); jogando = true
+    document.getElementById('fim').classList.remove('on')
+    sdk.comecar()
+  }
+
+  function soltar() {
+    if (!jogando || acabou || recarga > 0) return
+    som.destravar()
+    if (!comecouSessao) { comecouSessao = true; evento('comecou') }
+    dicaT = 0
+    const p = PLANETAS[atual]
+    corpos.push({ id: idSeq++, x: clampX(miraX, p.r) + (Math.random() - .5) * 1.5, y: MIRA_Y, vx: 0, vy: 60, t: atual, nasceu: performance.now(), escala: 1 })
+    som.soltar()
+    atual = proximo; proximo = sorteia(); recarga = .45
+  }
+  const clampX = (x, r) => Math.max(ESQ + r + 1, Math.min(DIR - r - 1, x))
+
+  function juntar(a, b) {
+    const t = a.t + 1
+    a.morto = b.morto = true
+    const x = (a.x + b.x) / 2, y = (a.y + b.y) / 2
+    explodir(x, y, PLANETAS[a.t].c[0], 10 + a.t * 2)
+    if (a.t === SOL) { // dois Sóis = Big Bang
+      ganhar(2000, x, y, 'BIG BANG! +2000')
+      flash = 1; tremor = 18; som.supernova(); sdk.alegria()
+      return
+    }
+    corpos.push({ id: idSeq++, x, y, vx: (a.vx + b.vx) / 2, vy: Math.min(a.vy, b.vy) * .3 - 60, t, nasceu: performance.now(), escala: .55 })
+    combo = comboT > 0 ? combo + 1 : 1; comboT = 1.1
+    const mult = Math.min(combo, 5)
+    ganhar(PLANETAS[t].pts * mult, x, y - 10, mult > 1 ? `+${PLANETAS[t].pts * mult}  x${mult}` : `+${PLANETAS[t].pts}`)
+    som.juntar(t)
+    if (t > maiorFase) { maiorFase = t; evento('fase', { fase: t }) }
+    if (t === SOL) supernova(x, y)
+  }
+
+  // a virada do jogo: criar um Sol explode os planetas pequenos e dá espaço
+  function supernova(x, y) {
+    let n = 0
+    for (const c of corpos) if (!c.morto && c.t <= 2) { c.morto = true; n++; explodir(c.x, c.y, '#FFE9A0', 6) }
+    for (const c of corpos) if (!c.morto) { const dx = c.x - x, dy = c.y - y, d = Math.hypot(dx, dy) || 1; c.vx += dx / d * 520; c.vy += dy / d * 520 - 200 }
+    ganhar(500 + n * 20, W / 2, 300, `SUPERNOVA! +${500 + n * 20}`)
+    flash = 1; tremor = 14; som.supernova(); sdk.alegria()
+  }
+
+  function ganhar(v, x, y, txt) {
+    pontos += v
+    textos.push({ x, y, txt, vida: 1.1, grande: v >= 500 })
+  }
+
+  function explodir(x, y, cor, n) {
+    for (let i = 0; i < n; i++) {
+      const a = Math.random() * Math.PI * 2, v = 80 + Math.random() * 260
+      particulas.push({ x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v, vida: .5 + Math.random() * .4, cor, r: 1.5 + Math.random() * 3 })
+    }
+  }
+
+  function perder() {
+    acabou = true; jogando = false
+    sdk.parar(); som.perdeu()
+    const seg = Math.round((performance.now() - inicioPartida) / 1000)
+    evento('fim', { seg: Math.round(segAtivo), fase: maiorFase, pontos, partida })
+    enviar()
+    if (pontos > melhor) { melhor = pontos; guardado('pd_melhor', String(melhor)) }
+    document.getElementById('fimPontos').textContent = pontos.toLocaleString('en-US')
+    document.getElementById('fimMelhor').textContent = `Best ${melhor.toLocaleString('en-US')} · biggest: ${PLANETAS[maiorFase].n} · ${seg}s`
+    setTimeout(() => document.getElementById('fim').classList.add('on'), 650)
+  }
+  document.getElementById('denovo').addEventListener('click', () => { som.destravar(); sdk.anuncio(novaPartida) })
+
+  // ───────── física (passos fixos) ─────────
+  function passo(dt) {
+    for (const c of corpos) {
+      c.vy += GRAV * dt
+      c.vx *= .999
+      c.x += c.vx * dt; c.y += c.vy * dt
+      const r = PLANETAS[c.t].r
+      if (c.x - r < ESQ) { c.x = ESQ + r; c.vx = Math.abs(c.vx) * .25 }
+      if (c.x + r > DIR) { c.x = DIR - r; c.vx = -Math.abs(c.vx) * .25 }
+      if (c.y + r > CHAO) { c.y = CHAO - r; if (c.vy > 0) c.vy *= -.15; c.vx *= .96 }
+    }
+    for (let it = 0; it < 4; it++) {
+      for (let i = 0; i < corpos.length; i++) {
+        const a = corpos[i]; if (a.morto) continue
+        const ra = PLANETAS[a.t].r
+        for (let j = i + 1; j < corpos.length; j++) {
+          const b = corpos[j]; if (b.morto) continue
+          const rb = PLANETAS[b.t].r
+          const dx = b.x - a.x, dy = b.y - a.y, min = ra + rb
+          const d2 = dx * dx + dy * dy
+          if (d2 >= min * min) continue
+          if (a.t === b.t) { juntar(a, b); break }
+          const d = Math.sqrt(d2) || .01, nx = dx / d, ny = dy / d, sobra = min - d
+          const ma = ra * ra, mb = rb * rb, soma = ma + mb
+          a.x -= nx * sobra * (mb / soma); a.y -= ny * sobra * (mb / soma)
+          b.x += nx * sobra * (ma / soma); b.y += ny * sobra * (ma / soma)
+          const rv = (b.vx - a.vx) * nx + (b.vy - a.vy) * ny
+          if (rv < 0) {
+            const imp = -(1 + .12) * rv / (1 / ma + 1 / mb)
+            a.vx -= imp * nx / ma; a.vy -= imp * ny / ma
+            b.vx += imp * nx / mb; b.vy += imp * ny / mb
+            // atrito tangencial leve para empilhar
+            const tx = -ny, ty = nx, rt = (b.vx - a.vx) * tx + (b.vy - a.vy) * ty
+            const f = rt * .04
+            a.vx += f * tx; a.vy += f * ty; b.vx -= f * tx; b.vy -= f * ty
+          }
+        }
+      }
+      if (corpos.some((c) => c.morto)) corpos = corpos.filter((c) => !c.morto)
+    }
+  }
+
+  // ───────── laço ─────────
+  let ultimo = performance.now(), acumulado = 0
+  function quadro(agora) {
+    const dt = Math.min(.05, (agora - ultimo) / 1000); ultimo = agora
+    if (jogando && !acabou && !document.hidden) {
+      acumulado += dt
+      while (acumulado >= 1 / 120) { passo(1 / 120); acumulado -= 1 / 120 }
+      recarga = Math.max(0, recarga - dt)
+      comboT = Math.max(0, comboT - dt); if (!comboT) combo = 0
+      if (comecouSessao) { segAtivo += dt; if (segAtivo - ultimoPulso >= 30) { ultimoPulso = segAtivo; evento('pulso', { seg: Math.round(segAtivo) }) } }
+      // perdeu: algum planeta parado acima da linha por mais de 2 s
+      const agoraMs = performance.now()
+      const acima = corpos.some((c) => agoraMs - c.nasceu > 1200 && c.y - PLANETAS[c.t].r < PERIGO && Math.abs(c.vy) < 120)
+      perigoT = acima ? perigoT + dt : Math.max(0, perigoT - dt * 2)
+      if (perigoT > 2) perder()
+    }
+    for (const p of particulas) { p.x += p.vx * dt; p.y += p.vy * dt; p.vy += 600 * dt; p.vida -= dt }
+    particulas = particulas.filter((p) => p.vida > 0)
+    for (const t of textos) { t.y -= 40 * dt; t.vida -= dt }
+    textos = textos.filter((t) => t.vida > 0)
+    for (const c of corpos) c.escala += (1 - c.escala) * Math.min(1, dt * 14)
+    tremor = Math.max(0, tremor - dt * 40); flash = Math.max(0, flash - dt * 2.2); dicaT = Math.max(0, dicaT - dt * (comecouSessao ? 3 : 0))
+    desenhar(agora / 1000)
+    requestAnimationFrame(quadro)
+  }
+
+  // ───────── desenho ─────────
+  const cv = document.getElementById('c'), g = cv.getContext('2d')
+  let escala = 1, offX = 0, offY = 0
+  const estrelas = Array.from({ length: 140 }, () => ({ x: Math.random(), y: Math.random(), r: Math.random() * 1.4 + .2, b: Math.random() * Math.PI * 2 }))
+  function redimensionar() {
+    const dpr = Math.min(2, window.devicePixelRatio || 1)
+    cv.width = innerWidth * dpr; cv.height = innerHeight * dpr
+    escala = Math.min(innerWidth / W, innerHeight / H)
+    offX = (innerWidth - W * escala) / 2; offY = (innerHeight - H * escala) / 2
+    g.setTransform(dpr, 0, 0, dpr, 0, 0)
+  }
+  addEventListener('resize', redimensionar)
+
+  function planeta(x, y, t, esc = 1, alfa = 1) {
+    const p = PLANETAS[t], r = p.r * esc
+    g.save(); g.globalAlpha = alfa; g.translate(x, y)
+    if (t === SOL) {
+      const halo = g.createRadialGradient(0, 0, r * .6, 0, 0, r * 1.5)
+      halo.addColorStop(0, 'rgba(255,190,60,.55)'); halo.addColorStop(1, 'rgba(255,140,0,0)')
+      g.fillStyle = halo; g.beginPath(); g.arc(0, 0, r * 1.5, 0, Math.PI * 2); g.fill()
+    }
+    if (t === 8) { g.strokeStyle = 'rgba(255,230,170,.75)'; g.lineWidth = r * .12; g.beginPath(); g.ellipse(0, 0, r * 1.45, r * .38, -.35, Math.PI, Math.PI * 2); g.stroke() }
+    const gr = g.createRadialGradient(-r * .35, -r * .4, r * .1, 0, 0, r)
+    gr.addColorStop(0, p.c[0]); gr.addColorStop(1, p.c[1])
+    g.fillStyle = gr; g.beginPath(); g.arc(0, 0, r, 0, Math.PI * 2); g.fill()
+    g.save(); g.beginPath(); g.arc(0, 0, r, 0, Math.PI * 2); g.clip()
+    if (t === 1 || t === 0 || t === 2) { g.fillStyle = 'rgba(0,0,0,.14)'; for (const [cx, cy, cr] of [[-.3, .2, .22], [.35, -.15, .16], [.1, .5, .12], [-.1, -.45, .1]]) { g.beginPath(); g.arc(cx * r, cy * r, cr * r, 0, Math.PI * 2); g.fill() } }
+    if (t === 5) { g.fillStyle = '#3FBF6A'; for (const [cx, cy, rx, ry] of [[-.3, -.15, .35, .22], [.35, .3, .28, .2], [.2, -.5, .2, .12]]) { g.beginPath(); g.ellipse(cx * r, cy * r, rx * r, ry * r, .4, 0, Math.PI * 2); g.fill() } }
+    if (t === 9 || t === 4) { g.fillStyle = t === 9 ? 'rgba(150,70,30,.35)' : 'rgba(200,140,50,.22)'; for (const yy of [-.5, -.15, .2, .55]) { g.fillRect(-r, yy * r, r * 2, r * .14) } if (t === 9) { g.fillStyle = 'rgba(190,70,40,.6)'; g.beginPath(); g.ellipse(r * .3, r * .3, r * .2, r * .11, 0, 0, Math.PI * 2); g.fill() } }
+    if (t === 3) { g.fillStyle = 'rgba(120,30,10,.3)'; g.beginPath(); g.ellipse(-r * .2, r * .1, r * .45, r * .2, .3, 0, Math.PI * 2); g.fill() }
+    g.restore()
+    g.fillStyle = 'rgba(255,255,255,.28)'; g.beginPath(); g.ellipse(-r * .38, -r * .42, r * .26, r * .16, -.6, 0, Math.PI * 2); g.fill()
+    if (t === 8) { g.strokeStyle = 'rgba(255,230,170,.9)'; g.lineWidth = r * .12; g.beginPath(); g.ellipse(0, 0, r * 1.45, r * .38, -.35, 0, Math.PI); g.stroke() }
+    g.restore()
+  }
+
+  function desenhar(seg) {
+    const cw = innerWidth, ch = innerHeight
+    const fundo = g.createLinearGradient(0, 0, 0, ch)
+    fundo.addColorStop(0, '#0B0D24'); fundo.addColorStop(1, '#170B2C')
+    g.fillStyle = fundo; g.fillRect(0, 0, cw, ch)
+    for (const s of estrelas) { g.globalAlpha = .35 + .35 * Math.sin(seg * 1.3 + s.b); g.fillStyle = '#fff'; g.beginPath(); g.arc(s.x * cw, s.y * ch, s.r, 0, Math.PI * 2); g.fill() }
+    g.globalAlpha = 1
+
+    g.save()
+    const tx = tremor ? (Math.random() - .5) * tremor : 0, ty = tremor ? (Math.random() - .5) * tremor : 0
+    g.translate(offX + tx, offY + ty); g.scale(escala, escala)
+
+    // caixa
+    g.fillStyle = 'rgba(255,255,255,.035)'; arred(ESQ - 10, TOPO_CAIXA, DIR - ESQ + 20, CHAO - TOPO_CAIXA + 12, 26); g.fill()
+    g.strokeStyle = 'rgba(160,170,255,.35)'; g.lineWidth = 3; g.beginPath(); g.moveTo(ESQ - 4, TOPO_CAIXA); g.lineTo(ESQ - 4, CHAO + 4); g.lineTo(DIR + 4, CHAO + 4); g.lineTo(DIR + 4, TOPO_CAIXA); g.stroke()
+    // linha de perigo
+    g.setLineDash([10, 10]); g.lineWidth = 2
+    g.strokeStyle = perigoT > 0 ? `rgba(255,80,80,${.5 + .5 * Math.sin(seg * 14)})` : 'rgba(255,255,255,.14)'
+    g.beginPath(); g.moveTo(ESQ, PERIGO); g.lineTo(DIR, PERIGO); g.stroke(); g.setLineDash([])
+
+    // mira
+    if (jogando && !acabou) {
+      const r = PLANETAS[atual].r, x = clampX(miraX, r)
+      g.strokeStyle = 'rgba(255,255,255,.16)'; g.lineWidth = 2; g.setLineDash([4, 8]); g.beginPath(); g.moveTo(x, MIRA_Y + r); g.lineTo(x, CHAO); g.stroke(); g.setLineDash([])
+      planeta(x, MIRA_Y, atual, 1, recarga > 0 ? .45 : 1)
+    }
+    for (const c of corpos) planeta(c.x, c.y, c.t, c.escala)
+    for (const p of particulas) { g.globalAlpha = Math.max(0, p.vida * 1.6); g.fillStyle = p.cor; g.beginPath(); g.arc(p.x, p.y, p.r, 0, Math.PI * 2); g.fill() }
+    g.globalAlpha = 1
+
+    // textos de pontos
+    g.textAlign = 'center'
+    for (const t of textos) {
+      g.globalAlpha = Math.min(1, t.vida * 2)
+      g.font = `800 ${t.grande ? 30 : 20}px system-ui, sans-serif`
+      g.lineWidth = 5; g.strokeStyle = 'rgba(10,10,30,.8)'; g.strokeText(t.txt, t.x, t.y); g.fillStyle = t.grande ? '#FFD34E' : '#fff'; g.fillText(t.txt, t.x, t.y)
+    }
+    g.globalAlpha = 1
+
+    // placar e próximo
+    g.textAlign = 'left'; g.fillStyle = '#fff'; g.font = '800 34px system-ui, sans-serif'
+    g.fillText(pontos.toLocaleString('en-US'), ESQ - 6, 52)
+    g.font = '600 14px system-ui, sans-serif'; g.fillStyle = '#A8ACD6'; g.fillText(`BEST ${melhor.toLocaleString('en-US')}`, ESQ - 4, 74)
+    g.textAlign = 'right'; g.fillText('NEXT', DIR - 52, 46)
+    planeta(DIR - 18, 40, proximo, Math.min(1, 22 / PLANETAS[proximo].r))
+    // botão de som
+    g.textAlign = 'center'; g.font = '20px system-ui, sans-serif'; g.globalAlpha = .7
+    g.fillText(som.desligado ? '🔇' : '🔊', W / 2 + 2, 52); g.globalAlpha = 1
+
+    // escada dos planetas (mostra a meta: chegar ao Sol)
+    const yE = CHAO + 22, passoE = (DIR - ESQ) / (PLANETAS.length - 1)
+    PLANETAS.forEach((p, i) => planeta(ESQ + i * passoE, yE, i, Math.min(1, 9 / p.r) * (i <= maiorFase ? 1.15 : 1), i <= maiorFase ? 1 : .35))
+
+    if (dicaT > 0) {
+      g.globalAlpha = Math.min(1, dicaT); g.fillStyle = '#fff'; g.font = '700 22px system-ui, sans-serif'; g.textAlign = 'center'
+      g.fillText('Tap to drop · match two to merge', W / 2, 470)
+      g.font = '600 16px system-ui, sans-serif'; g.fillStyle = '#FFD34E'; g.fillText('Make a Sun to trigger a SUPERNOVA', W / 2, 500)
+      g.globalAlpha = 1
+    }
+    g.restore()
+    if (flash) { g.fillStyle = `rgba(255,240,200,${flash * .6})`; g.fillRect(0, 0, cw, ch) }
+  }
+  function arred(x, y, w, h, r) { g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath() }
+
+  // ───────── controles ─────────
+  const paraMundo = (cx) => (cx - offX) / escala
+  let apertando = false
+  cv.addEventListener('pointerdown', (e) => {
+    const mx = paraMundo(e.clientX), my = (e.clientY - offY) / escala
+    if (Math.abs(mx - (W / 2 + 2)) < 22 && Math.abs(my - 46) < 22) { som.mudo(!som.desligado); return }
+    apertando = true; miraX = mx; som.destravar()
+  })
+  cv.addEventListener('pointermove', (e) => { miraX = paraMundo(e.clientX) })
+  addEventListener('pointerup', (e) => { if (apertando) { apertando = false; miraX = paraMundo(e.clientX); soltar() } })
+  addEventListener('keydown', (e) => {
+    if (['ArrowLeft', 'KeyA'].includes(e.code)) { miraX -= 24; e.preventDefault() }
+    if (['ArrowRight', 'KeyD'].includes(e.code)) { miraX += 24; e.preventDefault() }
+    if (['Space', 'ArrowDown', 'Enter'].includes(e.code)) { e.preventDefault(); if (acabou) document.getElementById('denovo').click(); else soltar() }
+  })
+  addEventListener('contextmenu', (e) => e.preventDefault())
+
+  // ───────── começa direto no jogo ─────────
+  redimensionar()
+  sdk.iniciar()
+  evento('abriu'); enviar()
+  novaPartida()
+  requestAnimationFrame(quadro)
+  window.__pd = { estado: () => ({ pontos, corpos: corpos.length, maiorFase, acabou, perigoT, topo: Math.round(Math.min(...corpos.map((c) => c.y - PLANETAS[c.t].r))), vys: corpos.filter((c) => c.y - PLANETAS[c.t].r < PERIGO + 20).map((c) => Math.round(c.vy)) }), soltar: (x) => { miraX = x; soltar() } }
+})()
+</script>
+</body>
+</html>
