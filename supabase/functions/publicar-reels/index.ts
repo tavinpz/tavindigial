@@ -62,7 +62,7 @@ async function graph(c: Conta, caminho: string, params: Record<string, string>, 
 }
 
 type Video = { id: string; canal: string; video_url: string | null; capa_url: string | null; ig_legenda: string | null; ig_container_id: string | null;
-  ig_feed?: boolean; ig_story?: boolean; ig_story_status?: string; ig_story_container?: string | null };
+  ig_feed?: boolean; ig_story?: boolean; ig_story_status?: string; ig_story_container?: string | null; ig_story_para?: string | null };
 
 async function criarContainer(db: SupabaseClient, c: Conta, v: Video) {
   if (!v.video_url) throw new Error("vídeo sem arquivo no painel");
@@ -112,7 +112,8 @@ async function tentarPublicar(db: SupabaseClient, c: Conta, v: Video, container:
   try {
     const pub = await graph(c, `${c.userId}/media_publish`, { creation_id: container });
     await db.from("videos").update({ ig_media_id: pub.id, ig_erro: null }).eq("id", v.id);
-    if (v.ig_story && (v.ig_story_status ?? "pendente") === "pendente") await criarStory(db, c, v).catch(() => {});
+    // Stories sem horário próprio sai junto com o Reel; com horário (ig_story_para), sai sozinho na hora dele
+    if (v.ig_story && !v.ig_story_para && (v.ig_story_status ?? "pendente") === "pendente") await criarStory(db, c, v).catch(() => {});
   } catch (e) {
     await db.from("videos").update({ ig_status: "processando", ig_postado_em: null }).eq("id", v.id);
     throw e;
@@ -148,7 +149,7 @@ Deno.serve(async (req) => {
     } catch (e) { return json(200, { ok: false, erro: (e as Error).message }); }
   }
 
-  const campos = "id,canal,video_url,capa_url,ig_legenda,ig_container_id,ig_feed,ig_story,ig_story_status,ig_story_container";
+  const campos = "id,canal,video_url,capa_url,ig_legenda,ig_container_id,ig_feed,ig_story,ig_story_status,ig_story_container,ig_story_para";
   const resultado: unknown[] = [];
 
   // 1) publicar agora (painel)
@@ -184,6 +185,16 @@ Deno.serve(async (req) => {
     const c = await conta(db, v.canal); if (!c) continue;
     try { resultado.push({ id: v.id, story: await tentarStory(db, c, v) }); }
     catch (e) { await db.from("videos").update({ ig_story_status: "erro", ig_story_erro: (e as Error).message.slice(0, 500) }).eq("id", v.id); }
+  }
+
+  // 2c) cron: Stories com horário próprio que já venceu (no máximo 2 por rodada; atrasado > 6 h não sai sozinho)
+  const seisSt = new Date(Date.now() - 6 * 3600 * 1000).toISOString();
+  const { data: sta } = await db.from("videos").select(campos).eq("ig_story", true).eq("ig_story_status", "pendente")
+    .lte("ig_story_para", new Date().toISOString()).gte("ig_story_para", seisSt).order("ig_story_para", { ascending: true }).limit(2);
+  for (const v of sta ?? []) {
+    const c = await conta(db, v.canal); if (!c || !v.video_url) continue;
+    await criarStory(db, c, v);
+    resultado.push({ id: v.id, story_iniciado: true });
   }
 
   // 3) cron: inicia o agendado vencido mais antigo (no máximo 1 por rodada; atrasado > 6 h não sai sozinho)
