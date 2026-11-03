@@ -1,20 +1,23 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { CANAIS } from './canais'
 import { usePainel } from './Painel'
+import { Janela } from './Pipeline'
 
 // Cofre de acessos (cadeado no menu): logins, e-mails e senhas das contas de cada perfil.
 // A senha mestra nunca sai deste navegador: dela sai a chave (PBKDF2) que criptografa cada acesso (AES-GCM).
 // O banco só guarda texto embaralhado. Esqueceu a senha mestra = não tem como recuperar.
 const TRANCA_MIN = 10
 const VERIFICA = 'cofre-tavin-ok'
-const REDES = ['Instagram', 'YouTube', 'TikTok', 'E-mail', 'Facebook', 'Kiwify', 'Outro']
+const REDES = ['Instagram', 'TikTok', 'YouTube', 'E-mail', 'Facebook', 'Kiwify', 'Outro']
+const SLOTS = ['Instagram', 'TikTok', 'YouTube', 'E-mail']
 const VAZIO = { canal: '', rede: 'Instagram', conta: '', login: '', email: '', senha: '', telefone: '', recuperacao: '', notas: '' }
-const SUGESTOES = [
-  ['tavin-digital', 'Instagram', '@tavindigital'], ['thata', 'Instagram', '@thata.ia'],
-  ['concrete-atlas', 'Instagram', '@concreteatlas.labs'], ['concrete-atlas', 'YouTube', '@concreteatlas.studio'],
-  ['zerando', 'Instagram', '@zerando.90'], ['loadbearing', 'Instagram', '@loadbearing.mind'], ['pawslated', 'Instagram', '@pawslated'],
-]
+// @ que o painel já conhece de cada canal (preenche sozinho ao adicionar)
+const CONHECIDAS = {
+  'tavin-digital': { Instagram: '@tavindigital' }, thata: { Instagram: '@thata.ia' },
+  'concrete-atlas': { Instagram: '@concreteatlas.labs', YouTube: '@concreteatlas.studio' },
+  zerando: { Instagram: '@zerando.90' }, loadbearing: { Instagram: '@loadbearing.mind' }, pawslated: { Instagram: '@pawslated' },
+}
 
 // ── criptografia (Web Crypto, nativa do navegador) ──
 const b64 = (buf) => btoa(String.fromCharCode(...new Uint8Array(buf)))
@@ -52,6 +55,30 @@ function Campo({ rotulo, segredo, valor }) {
         {segredo && <button type="button" onClick={() => setVer(!ver)} aria-label={ver ? `Esconder ${rotulo}` : `Mostrar ${rotulo}`}>{ver ? 'Esconder' : 'Ver'}</button>}
         <button type="button" onClick={copiar} aria-label={`Copiar ${rotulo}`}>{copiado ? 'Copiado ✓' : 'Copiar'}</button>
       </span>
+    </div>
+  )
+}
+
+function Acesso({ i, editar, apagar, setApagar, remover }) {
+  if (i.quebrado) return <div className="cf-slot"><p className="p-erro">Este acesso foi salvo com outra senha do cofre e não abre.</p></div>
+  return (
+    <div className="cf-slot">
+      <div className="cf-slot-cab">
+        <span className="cf-slot-rede">{i.rede}</span>
+        <span className="cf-item-acoes">
+          <button type="button" onClick={editar}>Editar</button>
+          {apagar === i.id
+            ? <><button type="button" className="cf-perigo" onClick={() => remover(i.id)}>Apagar mesmo</button><button type="button" onClick={() => setApagar(null)}>Não</button></>
+            : <button type="button" onClick={() => setApagar(i.id)} aria-label={`Apagar ${i.conta}`}>Apagar</button>}
+        </span>
+      </div>
+      <b className="cf-slot-conta">{i.conta}</b>
+      <Campo rotulo="Login" valor={i.login} />
+      <Campo rotulo="E-mail" valor={i.email} />
+      <Campo rotulo="Senha" valor={i.senha} segredo />
+      <Campo rotulo="Telefone" valor={i.telefone} />
+      <Campo rotulo="Recuperação" valor={i.recuperacao} segredo />
+      {i.notas && <p className="cf-notas">{i.notas}</p>}
     </div>
   )
 }
@@ -204,13 +231,11 @@ export default function Cofre() {
     setChave(k); setTrocar(false); avisar('Senha do cofre trocada')
   }
 
-  const grupos = useMemo(() => {
-    const t = busca.trim().toLowerCase()
-    const l = itens.filter((i) => !t || [i.conta, i.login, i.email, i.rede, i.notas, CANAIS.find((c) => c.id === i.canal)?.nome].some((x) => String(x || '').toLowerCase().includes(t)))
-    const ordem = [...CANAIS.map((c) => c.id), '']
-    return ordem.map((id) => ({ canal: CANAIS.find((c) => c.id === id), itens: l.filter((i) => (i.canal || '') === id) })).filter((g) => g.itens.length)
-  }, [itens, busca])
-  const faltam = SUGESTOES.filter(([c, r, conta]) => !itens.some((i) => i.canal === c && i.rede === r && (i.conta || '').toLowerCase() === conta))
+  const casa = (i, t) => !t || [i.conta, i.login, i.email, i.rede, i.notas, CANAIS.find((c) => c.id === i.canal)?.nome].some((x) => String(x || '').toLowerCase().includes(t))
+  const t = busca.trim().toLowerCase()
+  const visiveis = itens.filter((i) => casa(i, t))
+  const preenchidos = CANAIS.reduce((a, c) => a + SLOTS.filter((r) => itens.some((i) => i.canal === c.id && i.rede === r)).length, 0)
+  const soltos = visiveis.filter((i) => !i.canal || !CANAIS.some((c) => c.id === i.canal))
 
   if (cfg === undefined) return <p className="p-vazio">Carregando…</p>
   if (!chave) return <section className="cf"><Entrada cfg={cfg} abrir={abrir} /></section>
@@ -220,7 +245,7 @@ export default function Cofre() {
       <div className="p-cab">
         <div><h1>Cofre</h1><p className="p-sub">{itens.length} {itens.length === 1 ? 'acesso guardado' : 'acessos guardados'}, criptografados com a senha do cofre.</p></div>
         <div className="cf-acoes">
-          <button className="p-btn p-btn--forte" onClick={() => setEditando({})}>Novo acesso</button>
+          <button className="p-btn p-btn--forte" onClick={() => setEditando({ rede: 'Instagram' })}>Novo acesso</button>
           <button className="p-btn p-btn--fraco" onClick={() => setTrocar(!trocar)}>Trocar senha do cofre</button>
           <button className="p-btn" onClick={trancar}>Trancar</button>
         </div>
@@ -234,56 +259,54 @@ export default function Cofre() {
         </form>
       )}
 
-      {editando && <Formulario inicial={editando} salvar={salvar} cancelar={() => setEditando(null)} />}
-
-      {itens.length > 3 && <input className="cf-busca" type="search" value={busca} onChange={(e) => setBusca(e.target.value)} placeholder="Buscar conta, e-mail, rede…" aria-label="Buscar no cofre" />}
-
-      {faltam.length > 0 && !editando && (
-        <div className="cf-sugestoes">
-          <p>Contas que o painel já conhece e ainda não estão aqui. Clique para preencher:</p>
-          <div>{faltam.map(([c, r, conta]) => (
-            <button key={c + r} type="button" className="p-btn p-btn--mini" onClick={() => setEditando({ canal: c, rede: r, conta, login: conta.replace('@', '') })}>
-              {CANAIS.find((x) => x.id === c)?.nome} · {r} {conta}
-            </button>
-          ))}</div>
-        </div>
+      {editando && (
+        <Janela titulo={editando.id ? 'Editar acesso' : 'Novo acesso'} sub={CANAIS.find((c) => c.id === editando.canal)?.nome || ''} fechar={() => setEditando(null)}>
+          <Formulario inicial={editando} salvar={salvar} cancelar={() => setEditando(null)} />
+        </Janela>
       )}
 
-      {itens.length === 0 && !editando && <p className="p-vazio">O cofre está vazio. Comece por "Novo acesso" ou por uma das contas acima.</p>}
+      <div className="cf-barra">
+        <input className="cf-busca" type="search" value={busca} onChange={(e) => setBusca(e.target.value)} placeholder="Buscar conta, e-mail, rede…" aria-label="Buscar no cofre" />
+        <span className="cf-progresso">{preenchidos} de {CANAIS.length * SLOTS.length} espaços preenchidos</span>
+      </div>
 
-      {grupos.map(({ canal, itens: l }) => (
-        <div key={canal?.id || 'outros'} className="cf-grupo">
-          <h2>
-            {canal ? (canal.logo ? <img src={canal.logo} alt="" /> : <span className="p-canal-sigla" style={{ '--c': canal.cor }}>{canal.sigla}</span>) : null}
-            {canal?.nome || 'Outros acessos'}
-          </h2>
-          <ul>
-            {l.map((i) => (
-              <li key={i.id} className="cf-item">
-                {i.quebrado ? <p className="p-erro">Este acesso foi salvo com outra senha do cofre e não abre.</p> : (
-                  <>
-                    <div className="cf-item-cab">
-                      <b>{i.conta}</b><span className="cf-rede">{i.rede}</span>
-                      <span className="cf-item-acoes">
-                        <button type="button" onClick={() => setEditando(i)}>Editar</button>
-                        {apagar === i.id
-                          ? <><button type="button" className="cf-perigo" onClick={() => remover(i.id)}>Apagar mesmo</button><button type="button" onClick={() => setApagar(null)}>Não</button></>
-                          : <button type="button" onClick={() => setApagar(i.id)}>Apagar</button>}
-                      </span>
-                    </div>
-                    <Campo rotulo="Login" valor={i.login} />
-                    <Campo rotulo="E-mail" valor={i.email} />
-                    <Campo rotulo="Senha" valor={i.senha} segredo />
-                    <Campo rotulo="Telefone" valor={i.telefone} />
-                    <Campo rotulo="Recuperação" valor={i.recuperacao} segredo />
-                    {i.notas && <p className="cf-notas">{i.notas}</p>}
-                  </>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
+      {CANAIS.filter((c) => !t || c.nome.toLowerCase().includes(t) || visiveis.some((i) => i.canal === c.id)).map((c) => {
+        const doCanal = (t && !c.nome.toLowerCase().includes(t) ? visiveis : itens).filter((i) => i.canal === c.id)
+        const extras = doCanal.filter((i) => !SLOTS.includes(i.rede))
+        return (
+          <article key={c.id} className="cf-conta" style={{ '--c': c.cor }}>
+            <header className="cf-conta-cab">
+              {c.logo ? <img src={c.logo} alt="" /> : <span className="p-canal-sigla" style={{ '--c': c.cor }}>{c.sigla}</span>}
+              <h2>{c.nome}</h2>
+              <span className="cf-conta-n">{SLOTS.filter((r) => doCanal.some((i) => i.rede === r)).length}/{SLOTS.length}</span>
+              <button type="button" className="cf-mais" onClick={() => setEditando({ canal: c.id, rede: 'Outro' })}>+ outro acesso</button>
+            </header>
+            <div className="cf-redes">
+              {SLOTS.map((r) => {
+                const l = doCanal.filter((i) => i.rede === r)
+                if (!l.length) {
+                  const conta = CONHECIDAS[c.id]?.[r] || ''
+                  return (
+                    <button key={r} type="button" className="cf-slot cf-slot--vazio" onClick={() => setEditando({ canal: c.id, rede: r, conta, login: conta.replace('@', '') })}>
+                      <span className="cf-slot-rede">{r}</span>
+                      <span>{conta ? `${conta} · ` : ''}+ adicionar</span>
+                    </button>
+                  )
+                }
+                return l.map((i) => <Acesso key={i.id} i={i} editar={() => setEditando(i)} apagar={apagar} setApagar={setApagar} remover={remover} />)
+              })}
+              {extras.map((i) => <Acesso key={i.id} i={i} editar={() => setEditando(i)} apagar={apagar} setApagar={setApagar} remover={remover} />)}
+            </div>
+          </article>
+        )
+      })}
+
+      {(soltos.length > 0) && (
+        <article className="cf-conta">
+          <header className="cf-conta-cab"><h2>Outros acessos</h2></header>
+          <div className="cf-redes">{soltos.map((i) => <Acesso key={i.id} i={i} editar={() => setEditando(i)} apagar={apagar} setApagar={setApagar} remover={remover} />)}</div>
+        </article>
+      )}
     </section>
   )
 }
