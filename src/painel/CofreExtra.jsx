@@ -221,29 +221,29 @@ export function CanaisCofre({ estoque, salvarUm }) {
 
   return (
     <section className="cc">
-      <form className="cf-form cc-form" onSubmit={criar} autoComplete="off">
+      <form className="cc-form" onSubmit={criar} autoComplete="off">
         <h2>Canal novo</h2>
-        <div className="cf-grade">
+        <div className="cc-grade">
           <label className="p-campo">Nome no painel<input value={f.nome} onChange={set('nome')} placeholder="Ex.: Papo de Mãe" required />{existe && <small className="p-erro">Já existe um canal com esse nome</small>}</label>
           <label className="p-campo">Tipo
-            <select value={f.tipo} onChange={set('tipo')}><option value="shorts">Vídeos curtos (YouTube, TikTok, Instagram)</option><option value="marca">Marca (posts e carrosséis)</option></select>
+            <select value={f.tipo} onChange={set('tipo')}><option value="shorts">Vídeos curtos</option><option value="marca">Marca (posts e carrosséis)</option></select>
           </label>
-          <label className="p-campo">@ do Instagram<input value={f.instagram} onChange={set('instagram')} placeholder="@perfil" /></label>
-          <label className="p-campo">YouTube (@ ou link)<input value={f.youtube} onChange={set('youtube')} placeholder="@canal" /></label>
-          <label className="p-campo">@ do TikTok<input value={f.tiktok} onChange={set('tiktok')} placeholder="@perfil" /></label>
           <label className="p-campo">E-mail usado (do estoque)
             <select value={f.email} onChange={set('email')}>
               <option value="">—</option>
               {livres.map((e) => <option key={e.id} value={e.email}>{e.email}{e.perfil ? ` (${e.perfil})` : ''}</option>)}
             </select>
           </label>
-          <div className="p-campo cf-largo">Cor
+          <label className="p-campo">@ do Instagram<input value={f.instagram} onChange={set('instagram')} placeholder="@perfil" /></label>
+          <label className="p-campo">YouTube (@ ou link)<input value={f.youtube} onChange={set('youtube')} placeholder="@canal" /></label>
+          <label className="p-campo">@ do TikTok<input value={f.tiktok} onChange={set('tiktok')} placeholder="@perfil" /></label>
+          <div className="p-campo cc-largo">Cor
             <div className="cc-cores" role="radiogroup" aria-label="Cor do canal">
               {CORES.map((c) => <button key={c} type="button" role="radio" aria-checked={f.cor === c} aria-label={c} className={f.cor === c ? 'on' : ''} style={{ '--c': c }} onClick={() => setF({ ...f, cor: c })} />)}
             </div>
           </div>
         </div>
-        <div className="cf-form-pe"><button className="p-btn p-btn--forte" disabled={indo || !id || existe}>{indo ? 'Criando…' : 'Criar canal'}</button></div>
+        <div className="cc-pe"><button className="p-btn p-btn--forte" disabled={indo || !id || existe}>{indo ? 'Criando…' : 'Criar canal'}</button></div>
       </form>
 
       <ul className="cc-lista">

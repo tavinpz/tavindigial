@@ -458,7 +458,7 @@ function TikTok({ hist, dias, cor, handle }) {
   )
 }
 
-export default function Metricas({ canal, fechar, abaInicial }) {
+export default function Metricas({ canal, fechar = () => {}, abaInicial, embutido = false }) {
   const [dias, setDias] = useState(28)
   const [aba, setAba] = useState(abaInicial || 'ig')
   const [conta, setConta] = useState(null)
@@ -477,18 +477,18 @@ export default function Metricas({ canal, fechar, abaInicial }) {
   async function atualizar() { setAtualizando(true); await carregar(dias, true); setAtualizando(false) }
   useEffect(() => { carregar() }, [canal.id])
   useEffect(() => {
+    if (embutido) return undefined
     const esc = (e) => e.key === 'Escape' && fechar()
     window.addEventListener('keydown', esc)
     const o = document.body.style.overflow; document.body.style.overflow = 'hidden'
     return () => { window.removeEventListener('keydown', esc); document.body.style.overflow = o }
-  }, [fechar])
+  }, [fechar, embutido])
 
   const ig = conta?.instagram, yt = conta?.youtube
   const trocar = (d) => { setDias(d); carregar(d) }
 
-  return createPortal(
-    <div className="mt-fundo" onClick={fechar}>
-      <div className="mt-janela mc" role="dialog" aria-modal="true" aria-label={`Métricas de ${canal.nome}`} onClick={(e) => e.stopPropagation()} style={{ '--c': canal.cor }}>
+  const corpo = (
+      <div className={`mt-janela mc${embutido ? ' mc--embutido' : ''}`} role={embutido ? 'region' : 'dialog'} aria-modal={embutido ? undefined : true} aria-label={`Métricas de ${canal.nome}`} onClick={(e) => e.stopPropagation()} style={{ '--c': canal.cor }}>
         <header className="mc-cab">
           <span className="mc-avatar">{ig?.perfil?.foto ? <img src={ig.perfil.foto} alt="" /> : canal.logo ? <img src={canal.logo} alt="" /> : canal.sigla}</span>
           <div className="mc-quem">
@@ -504,7 +504,7 @@ export default function Metricas({ canal, fechar, abaInicial }) {
               {[7, 14, 28].map((d) => <button key={d} type="button" className={dias === d ? 'on' : ''} aria-pressed={dias === d} onClick={() => trocar(d)}>{d} dias</button>)}
             </div>
             <button className="p-btn p-btn--mini" onClick={atualizar} disabled={atualizando || !conta}>{atualizando ? 'Atualizando…' : 'Atualizar'}</button>
-            <button className="p-btn p-btn--mini p-btn--fraco" onClick={fechar}>Fechar</button>
+            {!embutido && <button className="p-btn p-btn--mini p-btn--fraco" onClick={fechar}>Fechar</button>}
           </div>
         </header>
 
@@ -527,5 +527,7 @@ export default function Metricas({ canal, fechar, abaInicial }) {
         </section>
         <p className="mc-rodape mc-rodape--fim">Os números vêm direto do Instagram, do YouTube e do perfil público do TikTok e ficam guardados por 15 minutos. "Atualizar" busca de novo agora.</p>
       </div>
-    </div>, document.body)
+  )
+  if (embutido) return corpo
+  return createPortal(<div className="mt-fundo" onClick={fechar}>{corpo}</div>, document.body)
 }

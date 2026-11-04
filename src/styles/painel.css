@@ -1495,3 +1495,18 @@ a.crm-btn { text-decoration: none; display: inline-flex; align-items: center; }
   .cc-lista li { grid-template-columns: 34px 1fr; }
   .cc-lista li button { grid-column: span 1; }
 }
+
+/* Cofre → Canais: formulário de canal novo em grade de 3 colunas */
+.cc-form { background: var(--branco); border: 1px solid var(--linha); border-radius: 16px; padding: 20px 22px 22px; display: grid; gap: 16px; }
+.cc-form h2 { margin: 0; font-size: 17px; }
+.cc-grade { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 16px; }
+.cc-grade .p-campo { min-width: 0; }
+.cc-grade input, .cc-grade select { width: 100%; min-width: 0; box-sizing: border-box; font: inherit; font-weight: 400; padding: 10px 12px; border: 1px solid var(--linha); border-radius: 10px; background: var(--branco); color: inherit; text-overflow: ellipsis; }
+.cc-largo { grid-column: 1 / -1; }
+.cc-pe { display: flex; justify-content: flex-end; padding-top: 4px; border-top: 1px solid var(--linha); }
+.cc-pe .p-btn { margin-top: 12px; }
+@media (max-width: 900px) { .cc-grade { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .cc-grade { grid-template-columns: 1fr; } .cc-form { padding: 16px; } .cc-pe .p-btn { width: 100%; } }
+
+/* Métricas dentro do canal (aba ao lado de Calendário) */
+.mc--embutido { width: 100%; padding: 0; background: none; box-shadow: none; border-radius: 0; }

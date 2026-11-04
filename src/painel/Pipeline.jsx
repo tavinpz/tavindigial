@@ -487,7 +487,6 @@ export default function Pipeline({ canal, fases = FASES_PADRAO, itens, mover, pr
           </div>
         </div>
         <div className="pl-acoes">
-          <button className="p-btn" onClick={() => setJanela('metricas')}>Métricas</button>
           <button className="p-btn" onClick={() => setJanela('integ')}>
             <span className={`pl-ponto ${cx.igOk ? 'on' : ''}`} aria-hidden="true" />Integrações
           </button>
@@ -505,9 +504,12 @@ export default function Pipeline({ canal, fases = FASES_PADRAO, itens, mover, pr
         <button type="button" role="tab" aria-selected={vista === 'calendario'} className={vista === 'calendario' ? 'on' : ''} onClick={() => setVista('calendario')}>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v15H3zM3 10h18M8 3v4M16 3v4" /></svg>Calendário
         </button>
+        <button type="button" role="tab" aria-selected={vista === 'metricas'} className={vista === 'metricas' ? 'on' : ''} onClick={() => setVista('metricas')}>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18M7 15l4-4 3 3 6-7" /></svg>Métricas
+        </button>
       </div>
 
-      {vista === 'calendario' ? <CalendarioConteudo canal={canal} itens={itens} programar={programar} /> : <>
+      {vista === 'metricas' ? <Metricas canal={canal} embutido /> : vista === 'calendario' ? <CalendarioConteudo canal={canal} itens={itens} programar={programar} /> : <>
       <div className="pl-abas" role="tablist" aria-label="Colunas">
         {visiveis.map((f) => (
           <button key={f.k} type="button" role="tab" aria-selected={abaAtual === f.k} className={abaAtual === f.k ? 'on' : ''} onClick={() => setAba(f.k)}>{f.nome} <small>{col[f.k].length}</small></button>
