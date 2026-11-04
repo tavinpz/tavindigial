@@ -142,32 +142,41 @@ async function mudarStatus(db: SupabaseClient, v: Record<string, any>, cancelar:
 
 async function processar(db: SupabaseClient) {
   const sel = "id,canal,titulo,yt_titulo,yt_descricao,yt_tags,yt_programado_para,yt_status,yt_id,yt_tentativas,video_url";
-  // primeiro o que tem data (programar, mudar horário, cancelar); depois os novos que vão como privados
-  const { data: a } = await db.from("videos").select(sel).in("yt_status", ["agendado", "cancelar"]).order("yt_programado_para", { ascending: true, nullsFirst: false }).limit(3);
-  const { data: b } = (a?.length ?? 0) < 3 ? await db.from("videos").select(sel).eq("yt_status", "subir").order("created_at", { ascending: true }).limit(3 - (a?.length ?? 0)) : { data: [] };
+  // primeiro o que tem data (programar, mudar horário, cancelar), do mais próximo ao mais longe; depois os novos que vão como privados
+  const { data: a } = await db.from("videos").select(sel).in("yt_status", ["agendado", "cancelar"]).order("yt_programado_para", { ascending: true, nullsFirst: false }).limit(40);
+  const { data: b } = await db.from("videos").select(sel).eq("yt_status", "subir").order("created_at", { ascending: true }).limit(40);
   const { yt_limite_dia } = await cfg(db, ["yt_limite_dia"]);
   const limite = Number(yt_limite_dia) || 15;
   const enviados: Record<string, number> = {};
   const r: Record<string, string> = {};
+  let envios = 0, mudancas = 0;
   for (const v of [...(a ?? []), ...(b ?? [])]) {
     try {
-      if (v.yt_status === "cancelar") { r[v.id] = v.yt_id ? await mudarStatus(db, v, true) : (await db.from("videos").update({ yt_status: "pendente", yt_programado_para: null }).eq("id", v.id), "cancelado"); continue; }
-      if (v.yt_id) { r[v.id] = await mudarStatus(db, v, false); continue; }
-      // envio novo: confere o limite de envios do canal nas últimas 24 h
+      if (v.yt_status === "cancelar" || v.yt_id) {
+        // só muda o status de quem já está no YouTube (rápido): até 15 por rodada
+        if (mudancas >= 15) continue;
+        mudancas++;
+        if (v.yt_status === "cancelar") r[v.id] = v.yt_id ? await mudarStatus(db, v, true) : (await db.from("videos").update({ yt_status: "pendente", yt_programado_para: null }).eq("id", v.id), "cancelado");
+        else r[v.id] = await mudarStatus(db, v, false);
+        continue;
+      }
+      // envio novo (arquivo inteiro): até 3 por rodada e respeitando o limite de envios do canal nas últimas 24 h
+      if (envios >= 3) continue;
       if (enviados[v.canal] == null) enviados[v.canal] = await enviados24h(await tokenDe(db, v.canal));
       if (enviados[v.canal] >= limite) {
         await db.from("videos").update({ yt_erro: `o canal já subiu ${enviados[v.canal]} vídeos em 24 h (limite ${limite}); sobe sozinho quando liberar` }).eq("id", v.id);
         r[v.id] = "aguardando limite do dia"; continue;
       }
+      envios++;
       r[v.id] = await subir(db, v, v.yt_status === "subir");
       enviados[v.canal]++;
     } catch (e) {
       const msg = (e as Error).message, motivo = (e as Error & { motivo?: string }).motivo ?? "";
       const cota = /quota|uploadLimitExceeded|rateLimit/i.test(motivo + msg);
       const n = (v.yt_tentativas || 0) + (cota ? 0 : 1);
-      await db.from("videos").update({ yt_erro: cota ? `limite do YouTube atingido hoje, tento de novo depois (${msg})` : msg, yt_tentativas: n, ...(n >= 3 ? { yt_status: "erro" } : {}) }).eq("id", v.id);
+      await db.from("videos").update({ yt_erro: cota ? `limite do YouTube atingido, tento de novo depois (${msg})` : msg, yt_tentativas: n, ...(n >= 3 ? { yt_status: "erro" } : {}) }).eq("id", v.id);
       r[v.id] = `erro: ${msg}`;
-      if (cota) break;
+      if (cota) enviados[v.canal] = limite;
     }
   }
   return r;
