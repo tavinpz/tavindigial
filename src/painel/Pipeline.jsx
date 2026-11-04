@@ -149,6 +149,16 @@ function Integracoes({ canal, marca, cx, recarregar, fechar }) {
   const [temChave, setTemChave] = useState(null)
   const [msg, setMsg] = useState('')
   useEffect(() => { supabase.rpc('youtube_chave_status').then(({ data }) => setTemChave(!!data?.[0]?.tem_chave)) }, [])
+  const [tt, setTt] = useState(null)
+  const [ttForm, setTtForm] = useState('')
+  useEffect(() => { supabase.rpc('ver_conexoes_canal', { p_canal: canal.id }).then(({ data }) => setTt(data?.tiktok || '')) }, [canal.id])
+  async function salvarTT(e) {
+    e.preventDefault()
+    const { error } = await supabase.rpc('salvar_tiktok_canal', { p_canal: canal.id, p_handle: ttForm })
+    if (error) { avisar(error.message.includes('arroba') ? 'Esse @ não parece válido' : 'Não salvou'); return }
+    setTt(ttForm.replace(/^.*@/, '').trim()); setForm(null)
+    setMsg('TikTok ligado: seguidores, curtidas e vídeos entram nas Métricas na próxima hora cheia.')
+  }
   const [ocupado, setOcupado] = useState(false)
   if (!ig || !yt) return null
   const ytOk = !!yt.ref
@@ -240,9 +250,19 @@ function Integracoes({ canal, marca, cx, recarregar, fechar }) {
         </li>
         <li>
           <div className="pl-integ-linha">
-            <span className="pl-ponto pl-ponto--manual" aria-hidden="true" />
-            <div className="pl-integ-txt"><b>TikTok</b><small>Sem conexão: poste no app. Vira postado no horário programado.</small></div>
+            <span className={`pl-ponto ${tt ? 'on' : 'pl-ponto--manual'}`} aria-hidden="true" />
+            <div className="pl-integ-txt"><b>TikTok</b><small>{tt ? `@${tt} · seguidores, curtidas e vídeos de hora em hora. A postagem continua no app.` : 'Poste no app. Ligue o @ para acompanhar os números.'}</small></div>
+            <div className="pl-integ-acoes">
+              <button className="p-btn p-btn--mini" onClick={() => { setTtForm(tt ? `@${tt}` : ''); setForm(form === 'tt' ? null : 'tt') }}>{tt ? 'Trocar @' : 'Ligar TikTok'}</button>
+            </div>
           </div>
+          {form === 'tt' && (
+            <form className="pl-integ-form" onSubmit={salvarTT}>
+              <label className="p-campo">@ ou link do perfil<input value={ttForm} onChange={(e) => setTtForm(e.target.value)} placeholder="@seuperfil" /></label>
+              <p className="pl-integ-dica">Deixe vazio e salve para desligar.</p>
+              <button className="p-btn p-btn--forte">Salvar</button>
+            </form>
+          )}
         </li>
       </ul>
     </Janela>

@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { carregarMensagens } from './api'
 import { marcarDono } from '../lib/fn'
@@ -11,7 +11,7 @@ import Crm from './Crm'
 import Briefings from './Briefings'
 import Videos from './Videos'
 import Estudio from './Estudio'
-import { CANAIS } from './canais'
+import { CANAIS, carregarCanais } from './canais'
 import Coleta from './Coleta'
 import LeadDrawer from './LeadDrawer'
 import MenuLateral from './MenuLateral'
@@ -30,8 +30,8 @@ const ABAS = [
   ['crm', 'CRM', Crm, 'M4 4h5v16H4zM10 4h5v10h-5zM16 4h4v13h-4z'],
   ['cofre', 'Cofre', Cofre, 'M5 11h14v10H5zM8 11V7a4 4 0 0 1 8 0v4'],
 ]
-// Um item de menu por canal (o componente muda conforme o tipo do canal)
-const ABAS_CANAIS = CANAIS.map((c) => [`canal:${c.id}`, c.nome, c.tipo === 'marca'
+// Um item de menu por canal (o componente muda conforme o tipo do canal). A lista vem do banco: monta de novo quando carrega.
+const abasCanais = () => CANAIS.map((c) => [`canal:${c.id}`, c.nome, c.tipo === 'marca'
   ? () => <Estudio canal={c.id} nome={c.nome} />
   : () => <Videos canal={c.id} nome={c.nome} />, null, c])
 const EXTRAS = [
@@ -42,12 +42,18 @@ const EXTRAS = [
 const JOGOS_ABAS = [['jogos', 'Todos os jogos', Jogos, 'M6 11h4M8 9v4M15 12h.01M18 10h.01M17.3 5H6.7a4 4 0 0 0-3.9 3.2L2 14.5a2.5 2.5 0 0 0 4.4 2L8 15h8l1.6 1.5a2.5 2.5 0 0 0 4.4-2l-.8-6.3A4 4 0 0 0 17.3 5Z']]
 // Menu: fixos no topo + um grupo (acordeão) por frente de renda. Frente nova = mais um grupo aqui.
 const TOPO = ABAS.filter(([id]) => ['inicio', 'metricas', 'cofre'].includes(id))
-const GRUPOS = [
-  { id: 'sites', nome: 'Sites', itens: [...ABAS.filter(([id]) => ['prospectar', 'crm'].includes(id)), ...EXTRAS] },
-  { id: 'canais', nome: 'Canais', canais: true, itens: ABAS_CANAIS },
-  { id: 'jogos', nome: 'Jogos', itens: JOGOS_ABAS },
-]
-const TODAS = [...ABAS, ...ABAS_CANAIS, ...EXTRAS, ...JOGOS_ABAS]
+function montarMenu() {
+  const canais = abasCanais()
+  return {
+    grupos: [
+      { id: 'sites', nome: 'Sites', itens: [...ABAS.filter(([id]) => ['prospectar', 'crm'].includes(id)), ...EXTRAS] },
+      { id: 'canais', nome: 'Canais', canais: true, itens: canais },
+      { id: 'jogos', nome: 'Jogos', itens: JOGOS_ABAS },
+    ],
+    todas: [...ABAS, ...canais, ...EXTRAS, ...JOGOS_ABAS],
+  }
+}
+const FIXAS = [...ABAS, ...EXTRAS, ...JOGOS_ABAS]
 const ANTIGAS = { conteudo: 'canal:tavin-digital', videos: 'canal:concrete-atlas', leads: 'prospectar' }
 
 const Ico = ({ d }) => (
@@ -86,8 +92,13 @@ export default function Painel() {
   const [sessao, setSessao] = useState(undefined)
   const [admin, setAdmin] = useState(null)
   const [aba, setAba] = useState(() => {
-    try { const a = ANTIGAS[localStorage.getItem('p-aba')] || localStorage.getItem('p-aba'); return TODAS.some(([id]) => id === a) ? a : 'inicio' } catch { return 'inicio' }
+    try { const a = ANTIGAS[localStorage.getItem('p-aba')] || localStorage.getItem('p-aba'); return a && (a.startsWith('canal:') || FIXAS.some(([id]) => id === a)) ? a : 'inicio' } catch { return 'inicio' }
   })
+  const [canaisV, setCanaisV] = useState(0)
+  const menu = useMemo(() => montarMenu(), [canaisV])
+  const recarregarCanais = useCallback(() => carregarCanais().then(() => setCanaisV((v) => v + 1)), [])
+  // views de hoje por canal: o menu põe quem está com mais views no topo
+  const [views, setViews] = useState({})
   const [mensagens, setMensagens] = useState([])
   const [prontas, setProntas] = useState(false)
   const [leadAberto, setLeadAberto] = useState(null)
@@ -120,6 +131,15 @@ export default function Painel() {
 
   const recarregarMensagens = useCallback(() => carregarMensagens().then(setMensagens).catch(() => {}).finally(() => setProntas(true)), [])
   useEffect(() => { if (admin) recarregarMensagens() }, [admin, recarregarMensagens])
+  useEffect(() => { if (admin) recarregarCanais() }, [admin, recarregarCanais])
+  useEffect(() => {
+    if (!admin) return undefined
+    const ler = () => supabase.from('v_views_hoje').select('canal,views,curtidas,por_rede,atualizado_em')
+      .then(({ data }) => { if (data) setViews(Object.fromEntries(data.map((v) => [v.canal, v]))) })
+    ler()
+    const t = setInterval(ler, 5 * 60000)
+    return () => clearInterval(t)
+  }, [admin, versao])
 
   useEffect(() => { try { localStorage.setItem('p-aba', aba) } catch { /* sem storage */ } }, [aba])
 
@@ -203,18 +223,18 @@ export default function Painel() {
     )
   }
 
-  const Atual = (TODAS.find(([id]) => id === aba) || ABAS[0])[2]
+  const Atual = (menu.todas.find(([id]) => id === aba) || ABAS[0])[2]
   const irPara = (id) => { setAba(id); setMenuAberto(false) }
 
   return (
-    <Ctx.Provider value={{ mensagens, recarregarMensagens, abrirLead: (id, opcoes = {}) => setLeadAberto({ id, ...opcoes }), avisar, versao, atualizar, irPara }}>
+    <Ctx.Provider value={{ mensagens, recarregarMensagens, abrirLead: (id, opcoes = {}) => setLeadAberto({ id, ...opcoes }), avisar, versao, atualizar, irPara, recarregarCanais, views }}>
       <div className={`p-app ${menuAberto ? 'menu-aberto' : ''} ${recolhido && !celular ? 'menu-mini' : ''}`}>
         <header className="p-topbar">
           <button className="p-hamb" onClick={() => setMenuAberto(true)} aria-label="Abrir menu"><Ico d="M4 7h16M4 12h16M4 17h16" /></button>
           <strong className="p-logo"><Logo /></strong>
         </header>
         <div className="p-veu" onClick={() => setMenuAberto(false)} aria-hidden="true" />
-        <MenuLateral topo={TOPO} grupos={GRUPOS} aba={aba} ir={irPara} aoVivo={aoVivo}
+        <MenuLateral topo={TOPO} grupos={menu.grupos} aba={aba} ir={irPara} aoVivo={aoVivo} views={views}
           recolhido={recolhido && !celular} setRecolhido={setRecolhido} sair={() => supabase.auth.signOut()} />
         <main className="p-conteudo">
           {prontas ? <Atual key={aba} /> : <p className="p-vazio">Carregando…</p>}

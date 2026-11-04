@@ -19,16 +19,19 @@ function LogoCanal({ c }) {
   return c.logo ? <img className="m-canal-logo" src={c.logo} alt="" aria-hidden="true" /> : <span className="m-canal-sigla" style={{ '--c': c.cor }} aria-hidden="true">{c.sigla}</span>
 }
 
-function Item({ id, nome, ico, canal, aba, ir, recolhido }) {
+const compacto = (n) => Intl.NumberFormat('pt-BR', { notation: 'compact', maximumFractionDigits: 1 }).format(n)
+function Item({ id, nome, ico, canal, aba, ir, recolhido, v }) {
+  const dica = v ? `${nome}: ${v.views.toLocaleString('pt-BR')} views hoje${v.curtidas ? ` · ${v.curtidas.toLocaleString('pt-BR')} curtidas no TikTok` : ''}` : nome
   return (
-    <button className={`m-item ${canal ? 'm-canal' : ''} ${id === aba ? 'ativa' : ''}`} onClick={() => ir(id)} aria-current={id === aba ? 'page' : undefined} title={recolhido ? nome : undefined}>
+    <button className={`m-item ${canal ? 'm-canal' : ''} ${id === aba ? 'ativa' : ''}`} onClick={() => ir(id)} aria-current={id === aba ? 'page' : undefined} title={recolhido || v ? dica : undefined}>
       {canal ? <LogoCanal c={canal} /> : <Ico d={ico} />}<span className="m-txt">{nome}</span>
+      {canal && v?.views > 0 && !recolhido && <span className="m-views" aria-label={`${v.views} views hoje`}>{compacto(v.views)}</span>}
     </button>
   )
 }
 
 // Lista de canais: arrastar/setas para reordenar e busca
-function Canais({ itens, aba, ir, recolhido, organizar }) {
+function Canais({ itens, aba, ir, recolhido, organizar, views = {} }) {
   const [ordem, setOrdem] = useState(() => ler('menu-ordem', []))
   const [busca, setBusca] = useState('')
   const [arrastando, setArrastando] = useState(null)
@@ -38,8 +41,10 @@ function Canais({ itens, aba, ir, recolhido, organizar }) {
   }, [])
   const ordenados = useMemo(() => {
     const pos = (id) => { const i = ordem.indexOf(id); return i < 0 ? 1e6 + itens.findIndex((c) => c[4].id === id) : i }
-    return [...itens].sort((a, b) => pos(a[4].id) - pos(b[4].id))
-  }, [itens, ordem])
+    // quem tem mais views hoje fica em cima; empate (ex.: de manhã, tudo zerado) segue a ordem que você arrumou
+    const vw = (id) => views[id]?.views || 0
+    return [...itens].sort((a, b) => vw(b[4].id) - vw(a[4].id) || pos(a[4].id) - pos(b[4].id))
+  }, [itens, ordem, views])
   const t = busca.trim().toLowerCase()
   const visiveis = t ? ordenados.filter(([, nome]) => nome.toLowerCase().includes(t)) : ordenados
   const salvar = (ids) => { setOrdem(ids); guardar('menu-ordem', ids) }
@@ -65,7 +70,7 @@ function Canais({ itens, aba, ir, recolhido, organizar }) {
             onDragEnd={() => { setArrastando(null); setSobre(null) }}
             onDragOver={(e) => { if (arrastando) { e.preventDefault(); if (sobre !== c.id) setSobre(c.id) } }}
             onDrop={(e) => { e.preventDefault(); soltar(c.id); setArrastando(null); setSobre(null) }}>
-            <Item id={id} nome={nome} canal={c} aba={aba} ir={ir} recolhido={recolhido} />
+            <Item id={id} nome={nome} canal={c} aba={aba} ir={ir} recolhido={recolhido} v={views[c.id]} />
             {organizar && !recolhido && (
               <span className="m-setas">
                 <button type="button" onClick={() => mover(c.id, -1)} disabled={i === 0} aria-label={`Subir ${nome}`}><Ico d="m6 15 6-6 6 6" t={13} /></button>
@@ -76,12 +81,12 @@ function Canais({ itens, aba, ir, recolhido, organizar }) {
         ))}
         {t && visiveis.length === 0 && <li className="m-nada">Nenhum canal com "{busca}"</li>}
       </ul>
-      {organizar && !recolhido && <p className="m-dica">Arraste ou use as setas.</p>}
+      {organizar && !recolhido && <p className="m-dica">Quem tem mais views hoje sobe sozinho. A sua ordem vale para os empates.</p>}
     </>
   )
 }
 
-export default function MenuLateral({ topo, grupos, aba, ir, aoVivo, recolhido, setRecolhido, sair }) {
+export default function MenuLateral({ topo, grupos, aba, ir, aoVivo, recolhido, setRecolhido, sair, views }) {
   const [abertos, setAbertos] = useState(() => ler('menu-grupos', Object.fromEntries(grupos.map((g) => [g.id, true]))))
   const [organizar, setOrganizar] = useState(false)
 
@@ -127,7 +132,7 @@ export default function MenuLateral({ topo, grupos, aba, ir, aoVivo, recolhido, 
               </div>
               {(ab || recolhido)
                 ? (g.canais
-                  ? <Canais itens={g.itens} aba={aba} ir={ir} recolhido={recolhido} organizar={organizar} />
+                  ? <Canais itens={g.itens} aba={aba} ir={ir} recolhido={recolhido} organizar={organizar} views={views} />
                   : <div className="m-lista">{g.itens.map(([id, nome, , ico]) => <Item key={id} id={id} nome={nome} ico={ico} aba={aba} ir={ir} recolhido={recolhido} />)}</div>)
                 : temAtivo && (() => { const x = g.itens.find(([id]) => id === aba); return <div className="m-lista"><Item id={x[0]} nome={x[1]} ico={x[3]} canal={x[4]} aba={aba} ir={ir} recolhido={recolhido} /></div> })()}
             </section>

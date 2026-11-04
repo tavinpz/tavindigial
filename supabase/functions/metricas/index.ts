@@ -3,6 +3,8 @@
 //                                             posts com números) + YouTube (Data API com a chave; sem chave, feed público)
 //   { acao: "resumo", canais: [...], forcar? } → números principais de todos os canais (visão geral)
 //   { acao: "foto" }                           → grava o dia no histórico (pg_cron 1x por dia)
+//   { acao: "views" }                          → views de hoje de cada canal (pg_cron a cada 30 min; o menu ordena por isso)
+// Os números de cada vídeo (YouTube e Instagram) também ficam guardados por dia em videos_metricas_dia, para análise.
 // Toda resposta fica 15 min em metricas_cache (a Meta e o Google limitam chamadas) e o dia vai para metricas_diarias.
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient, type SupabaseClient } from "jsr:@supabase/supabase-js@2";
@@ -18,7 +20,11 @@ const json = (status: number, body: unknown) =>
 const VERSAO = "v23.0";
 const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36";
 const CACHE_MIN = 15;
-const CANAIS_PADRAO = ["tavin-digital", "thata", "concrete-atlas", "zerando", "loadbearing"];
+// canais ativos do painel (tabela canais)
+async function canaisAtivos(db: SupabaseClient): Promise<string[]> {
+  const { data } = await db.from("canais").select("id").eq("ativo", true);
+  return (data ?? []).map((c: { id: string }) => c.id);
+}
 const ent = (s: string) => s.replace(/&amp;/g, "&").replace(/&#39;|&apos;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, "<").replace(/&gt;/g, ">");
 const hojeSP = () => new Date().toLocaleDateString("en-CA", { timeZone: "America/Sao_Paulo" });
 type Num = number | null;
@@ -166,6 +172,7 @@ async function instagramCompleto(db: SupabaseClient, canal: string, dias: number
     sem_insights: Object.values(atual).every((v) => v === null),
   };
   await gravarDia(db, canal, "instagram", { seguidores: r.perfil.seguidores, seguindo: r.perfil.seguindo, posts: r.perfil.posts, alcance: alcanceDia.at(-1)?.n ?? null });
+  await gravarVideos(db, canal, "instagram", (posts as Record<string, unknown>[]).map((p) => ({ id: p.id, titulo: p.legenda, quando: p.quando, views: p.views, curtidas: p.curtidas, comentarios: p.comentarios })));
   return r;
 }
 
@@ -278,6 +285,7 @@ async function youtube(db: SupabaseClient, canal: string, limite: number) {
     catch (e) { base = { ...(await youtubeFeed(id)), erro_api: (e as Error).message }; via = "feed"; }
   } else { base = await youtubeFeed(id); via = "feed"; }
   if (via === "api") await gravarDia(db, canal, "youtube", { seguidores: base.inscritos as Num, posts: base.total_videos as Num, views_total: base.views_total as Num });
+  await gravarVideos(db, canal, "youtube", (base.videos as Record<string, unknown>[] | undefined) ?? []);
   return { conectado: true, via, sem_chave: !chave, link: `https://youtube.com/channel/${id}`, ...base };
 }
 
@@ -286,6 +294,57 @@ async function gravarDia(db: SupabaseClient, canal: string, rede: string, v: Rec
   const linha: Record<string, unknown> = { canal, rede, dia: hojeSP(), atualizado_em: new Date().toISOString() };
   for (const [k, x] of Object.entries(v)) if (x != null) linha[k] = x;
   await db.from("metricas_diarias").upsert(linha, { onConflict: "canal,rede,dia" }).then(() => {}, () => {});
+}
+
+// números de cada vídeo no dia (um registro por vídeo por dia)
+async function gravarVideos(db: SupabaseClient, canal: string, rede: string, lista: Record<string, unknown>[]) {
+  const dia = hojeSP();
+  const linhas = lista.filter((v) => v.id).map((v) => ({
+    canal, rede, video_id: String(v.id), dia, titulo: String(v.titulo ?? "").slice(0, 300), publicado_em: v.quando ?? null,
+    duracao: v.duracao ?? null, views: v.views ?? null, curtidas: v.curtidas ?? null, comentarios: v.comentarios ?? null,
+  }));
+  if (linhas.length) await db.from("videos_metricas_dia").upsert(linhas, { onConflict: "canal,rede,video_id,dia" }).then(() => {}, () => {});
+}
+
+// views de hoje de um canal: Instagram (insights desde 00h de Brasília) e YouTube (total agora − total no começo do dia)
+async function viewsHoje(db: SupabaseClient, canal: string) {
+  const dia = hojeSP();
+  const r: Record<string, unknown> = {};
+  const c = await contaIG(db, canal).catch(() => null);
+  if (c) {
+    try {
+      const inicio = Math.floor(new Date(`${dia}T00:00:00-03:00`).getTime() / 1000);
+      const d = await c.get(`${c.userId}/insights`, { metric: "views", period: "day", metric_type: "total_value", since: String(inicio), until: String(Math.floor(Date.now() / 1000)) });
+      const v = d.data?.[0]?.total_value?.value;
+      if (v != null) {
+        await db.from("views_dia").upsert({ canal, rede: "instagram", dia, views_hoje: Number(v), atualizado_em: new Date().toISOString() }, { onConflict: "canal,rede,dia" });
+        r.instagram = Number(v);
+      }
+    } catch (e) { r.instagram_erro = (e as Error).message; }
+  }
+  const id = await canalYT(db, canal).catch(() => null);
+  if (id) {
+    let total: number | null = null;
+    const { yt_api_key: chave } = await cfg(db, ["yt_api_key"]);
+    if (chave) {
+      try {
+        const d = await (await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${id}&key=${chave}`)).json();
+        const n = Number(d.items?.[0]?.statistics?.viewCount);
+        if (Number.isFinite(n)) total = n;
+      } catch { /* cai no feed */ }
+    }
+    if (total == null) {
+      const f = await youtubeFeed(id).catch(() => null);
+      if (f) total = f.videos.reduce((a, v) => a + (Number(v.views) || 0), 0);
+    }
+    if (total != null) {
+      const { data: ja } = await db.from("views_dia").select("total_inicio").eq("canal", canal).eq("rede", "youtube").eq("dia", dia).maybeSingle();
+      const inicio = ja?.total_inicio ?? total;
+      await db.from("views_dia").upsert({ canal, rede: "youtube", dia, total_inicio: inicio, total_atual: total, views_hoje: Math.max(0, total - Number(inicio)), atualizado_em: new Date().toISOString() }, { onConflict: "canal,rede,dia" });
+      r.youtube = Math.max(0, total - Number(inicio));
+    }
+  }
+  return r;
 }
 
 async function comCache<T>(db: SupabaseClient, canal: string, chave: string, forcar: boolean, gerar: () => Promise<T>) {
@@ -330,8 +389,15 @@ Deno.serve(async (req) => {
     return json(200, { ok: true, dias, ...r });
   }
 
+  if (body.acao === "views") {
+    const canais = await canaisAtivos(db);
+    const r: Record<string, unknown> = {};
+    await Promise.all(canais.map(async (canal) => { r[canal] = await viewsHoje(db, canal).catch((e) => ({ erro: (e as Error).message })); }));
+    return json(200, { ok: true, canais: r });
+  }
+
   if (body.acao === "resumo" || body.acao === "foto") {
-    const canais: string[] = (Array.isArray(body.canais) && body.canais.length ? body.canais : CANAIS_PADRAO).filter((c: string) => /^[a-z0-9-]+$/.test(c));
+    const canais: string[] = (Array.isArray(body.canais) && body.canais.length ? body.canais : await canaisAtivos(db)).filter((c: string) => /^[a-z0-9-]+$/.test(c));
     const perfis: Record<string, unknown> = {};
     await Promise.all(canais.map(async (canal) => {
       perfis[canal] = await comCache(db, canal, "resumo", forcar || body.acao === "foto", async () => {

@@ -1442,3 +1442,56 @@ a.crm-btn { text-decoration: none; display: inline-flex; align-items: center; }
 .p-onde .p-meta { margin-top: auto; padding-top: 12px; }
 @media (max-width: 1099px) { .p-kpis--5 .p-kpi--dinheiro { grid-column: auto; } }
 .p-dash2 .p-barras { margin-top: 18px; }
+.m-views { margin-left: auto; flex: none; font-size: 11px; font-weight: 700; font-variant-numeric: tabular-nums; color: #E9E1F0; background: rgba(255,255,255,.1); border-radius: 999px; padding: 1px 7px; }
+.m-item.ativa .m-views { background: rgba(255,255,255,.22); color: #fff; }
+/* ficha do vídeo: trocar de coluna em um clique */
+.v-etapas { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.v-etapas button { font: inherit; font-size: 12.5px; font-weight: 600; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--linha); background: var(--branco); color: #4A4252; cursor: pointer; }
+.v-etapas button:hover:not(:disabled) { border-color: var(--c); color: var(--c); }
+.v-etapas button.on { background: var(--c); border-color: var(--c); color: #fff; cursor: default; }
+
+/* ── Cofre: abas, estoque de e-mails e canais ── */
+.cf-abas { display: inline-flex; flex-wrap: wrap; gap: 2px; padding: 3px; margin: 0 0 16px; background: var(--branco); border: 1px solid var(--linha); border-radius: 999px; }
+.cf-abas button { font: inherit; font-size: 13.5px; font-weight: 700; padding: 7px 14px; border: 0; border-radius: 999px; background: transparent; color: #4A4252; cursor: pointer; }
+.cf-abas button.on { background: #2A2230; color: #fff; }
+.cf-abas button:focus-visible { outline: 2px solid #B600F6; outline-offset: 2px; }
+.ce { display: grid; gap: 14px; }
+.ce-topo { display: grid; gap: 12px; }
+.ce-nums { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.ce-nums button { font: inherit; text-align: left; background: var(--branco); border: 1px solid var(--linha); border-radius: 12px; padding: 10px 12px; cursor: pointer; display: flex; flex-direction: column; color: inherit; }
+.ce-nums button.on { border-color: #2A2230; box-shadow: inset 0 0 0 1px #2A2230; }
+.ce-nums b { font-size: 22px; font-variant-numeric: tabular-nums; }
+.ce-nums small { font-size: 12px; color: var(--cinza); }
+.ce-acoes { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.ce-acoes .cf-busca { flex: 1 1 220px; }
+.ce-tabela { background: var(--branco); border: 1px solid var(--linha); border-radius: 14px; overflow: hidden; }
+.ce-linha { display: grid; grid-template-columns: minmax(200px, 1.6fr) minmax(150px, 1fr) repeat(3, minmax(0, .8fr)) 64px; gap: 10px; align-items: center; padding: 9px 14px; border-top: 1px solid var(--linha); font-size: 13px; }
+.ce-linha:first-child { border-top: 0; }
+.ce-cab { background: #F7F4F9; font-size: 11.5px; font-weight: 700; color: var(--cinza); }
+.ce-email { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.ce-email small { color: var(--cinza); font-size: 11.5px; }
+.ce-copia { display: inline-flex; align-items: center; gap: 6px; min-width: 0; flex-wrap: wrap; }
+.ce-copia > span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%; }
+.ce-copia button, .ce-editar { font: inherit; font-size: 11.5px; font-weight: 600; border: 1px solid var(--linha); background: #fff; border-radius: 999px; padding: 2px 8px; cursor: pointer; color: #4A4252; }
+.ce-chip { display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11.5px; font-weight: 600; border-radius: 999px; padding: 2px 9px; background: #EFEAF3; color: #4A4252; }
+.ce-chip--livre { background: #E3F5EA; color: #116B3C; }
+.ce-vazio { color: var(--cinza); }
+.ce-previa { margin: 0; padding-left: 18px; font-size: 13px; color: #4A4252; display: grid; gap: 3px; }
+.cc { display: grid; gap: 16px; }
+.cc-form h2 { margin: 0 0 10px; font-size: 17px; }
+.cc-cores { display: flex; gap: 8px; flex-wrap: wrap; }
+.cc-cores button { width: 28px; height: 28px; border-radius: 50%; border: 2px solid #fff; background: var(--c); box-shadow: 0 0 0 1px var(--linha); cursor: pointer; }
+.cc-cores button.on { box-shadow: 0 0 0 2px #2A2230; }
+.cc-lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.cc-lista li { display: grid; grid-template-columns: 34px 1fr auto auto; gap: 10px; align-items: center; background: var(--branco); border: 1px solid var(--linha); border-radius: 12px; padding: 10px 12px; }
+.cc-lista img, .cc-lista .p-canal-sigla { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; }
+.cc-nome { display: flex; flex-direction: column; min-width: 0; }
+.cc-nome small { color: var(--cinza); font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@media (max-width: 760px) {
+  .ce-nums { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ce-cab { display: none; }
+  .ce-linha { grid-template-columns: 1fr 1fr 1fr; }
+  .ce-email, .ce-linha > span:nth-child(2) { grid-column: 1 / -1; }
+  .cc-lista li { grid-template-columns: 34px 1fr; }
+  .cc-lista li button { grid-column: span 1; }
+}

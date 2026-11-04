@@ -428,7 +428,35 @@ function Carregando() {
 }
 
 // ── janela ──
-const ABAS = [['ig', 'Instagram'], ['yt', 'YouTube'], ['painel', 'No painel']]
+const ABAS = [['ig', 'Instagram'], ['yt', 'YouTube'], ['tt', 'TikTok'], ['painel', 'No painel']]
+
+// TikTok: o perfil público é lido de hora em hora (seguidores, curtidas e quantidade de vídeos).
+// Views por vídeo só com o app oficial do TikTok (Display API), que precisa de aprovação.
+function TikTok({ hist, dias, cor, handle }) {
+  const h = (hist || []).filter((x) => x.rede === 'tiktok')
+  if (!handle) return <p className="mc-vazio">TikTok não ligado. Em Integrações → TikTok, coloque o @ do perfil.</p>
+  if (!h.length) return <p className="mc-vazio">@{handle.replace('@', '')} ligado. Os primeiros números chegam na próxima hora cheia.</p>
+  const desde = Date.now() - dias * 86400000
+  const serie = (k) => h.filter((x) => x[k] != null).map((x) => ({ k: x.dia, n: Number(x[k]) }))
+  const seg = serie('seguidores'), curt = serie('views_total'), vids = serie('posts')
+  const dentro = (l) => l.filter((x) => new Date(`${x.k}T12:00:00`).getTime() >= desde - 86400000)
+  const ganho = (l) => { const d = dentro(l); return d.length >= 2 ? d[d.length - 1].n - d[0].n : null }
+  const ult = h[h.length - 1]
+  const curtDia = curt.slice(1).map((x, i) => ({ k: x.k, n: Math.max(0, x.n - curt[i].n) }))
+  const mais = (n) => (n == null ? null : `${n >= 0 ? '+' : ''}${fmt(n)} em ${dias} dias`)
+  return (
+    <>
+      <div className="mc-nums">
+        <Num v={ult.seguidores} rotulo="seguidores" sub={mais(ganho(seg))} />
+        <Num v={ult.views_total} rotulo="curtidas no perfil (total)" sub={mais(ganho(curt))} />
+        <Num v={ult.posts} rotulo="vídeos publicados" sub={mais(ganho(vids))} />
+      </div>
+      <Linha pontos={dentro(seg)} cor={cor} titulo="Seguidores" unidade="seguidores" />
+      {curtDia.length > 1 && <Barras serie={dentro(curtDia).slice(-dias)} cor={cor} unidade="curtidas" titulo="Curtidas ganhas por dia" />}
+      <p className="mc-rodape">Perfil <a href={`https://www.tiktok.com/@${handle.replace('@', '')}`} target="_blank" rel="noreferrer">@{handle.replace('@', '')}</a>. O TikTok não mostra views por vídeo no perfil público: para ter isso, o caminho é o app oficial do TikTok (Display API), que pede aprovação.</p>
+    </>
+  )
+}
 
 export default function Metricas({ canal, fechar, abaInicial }) {
   const [dias, setDias] = useState(28)
@@ -486,6 +514,7 @@ export default function Metricas({ canal, fechar, abaInicial }) {
               {r}
               {k === 'ig' && ig?.perfil?.seguidores != null && <small>{fmt(ig.perfil.seguidores)}</small>}
               {k === 'yt' && yt?.inscritos != null && <small>{fmt(yt.inscritos)}</small>}
+              {k === 'tt' && (() => { const t = hist.filter((x) => x.rede === 'tiktok').at(-1); return t?.seguidores != null ? <small>{fmt(t.seguidores)}</small> : null })()}
             </button>
           ))}
         </div>
@@ -493,9 +522,10 @@ export default function Metricas({ canal, fechar, abaInicial }) {
         <section className="mc-bloco" role="tabpanel">
           {aba === 'ig' && <Instagram ig={ig} dias={dias} cor={canal.cor} hist={hist} />}
           {aba === 'yt' && <YouTube yt={yt} dias={dias} cor={canal.cor} hist={hist} />}
+          {aba === 'tt' && <TikTok hist={hist} dias={dias} cor={canal.cor} handle={canal.tiktok} />}
           {aba === 'painel' && <NoPainel canal={canal} dias={dias} cor={canal.cor} />}
         </section>
-        <p className="mc-rodape mc-rodape--fim">Os números vêm direto do Instagram e do YouTube e ficam guardados por 15 minutos. "Atualizar" busca de novo agora.</p>
+        <p className="mc-rodape mc-rodape--fim">Os números vêm direto do Instagram, do YouTube e do perfil público do TikTok e ficam guardados por 15 minutos. "Atualizar" busca de novo agora.</p>
       </div>
     </div>, document.body)
 }

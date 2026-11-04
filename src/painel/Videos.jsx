@@ -27,7 +27,22 @@ const fmtCurto = (iso) => {
 const fmtNum = (n) => Intl.NumberFormat('pt-BR', { notation: 'compact', maximumFractionDigits: 1 }).format(n)
 // número do vídeo: a coluna numero; sem ela, o número do id (th-v24-… → #024)
 const num = (v) => `#${String(v.numero ?? (v.id.match(/v(\d+)/)?.[1] || '')).padStart(3, '0')}`
-const baixarUrl = (v) => (v.video_url ? `${v.video_url}?download=${encodeURIComponent(v.arquivo || `${v.id}.mp4`)}` : null)
+// O arquivo baixa com o título do YouTube no nome: o YouTube usa o nome do arquivo como título no upload.
+// Só saem os caracteres que o sistema não aceita em nome de arquivo (/ \ : * ? " < > |).
+export const nomeArquivo = (v) => `${String(v.yt_titulo || v.titulo || v.id).replace(/[\\/:*?"<>|]+/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 95) || v.id}.mp4`
+const baixarUrl = (v) => (v.video_url ? `${v.video_url}?download=${encodeURIComponent(nomeArquivo(v))}` : null)
+// Baixa vários de uma vez (o Chrome pede uma vez para "permitir vários downloads")
+export async function baixarVarios(lista, avisar) {
+  const urls = lista.map(baixarUrl).filter(Boolean)
+  avisar?.(`Baixando ${urls.length} ${urls.length === 1 ? 'vídeo' : 'vídeos'} com o título no nome…`)
+  for (const u of urls) {
+    const f = document.createElement('iframe')
+    f.style.display = 'none'; f.src = u
+    document.body.appendChild(f)
+    setTimeout(() => f.remove(), 120000)
+    await new Promise((r) => setTimeout(r, 900))
+  }
+}
 
 // Horário sugerido: o planejado; se já passou, a próxima hora cheia
 function sugestao(v) {
@@ -208,7 +223,7 @@ function dadosMover(v, alvo, igOk, rede = null, quando = null) {
   return d
 }
 
-function Detalhe({ v, fechar, recarregar, igOk, voltar = 'Vídeos' }) {
+function Detalhe({ v, fechar, recarregar, igOk, voltar = 'Vídeos', mover, vizinhos }) {
   const { avisar } = usePainel()
   const salvar = useSalvar(v, recarregar)
   const [legIG, setLegIG] = useState(v.ig_legenda || '')
@@ -237,9 +252,19 @@ function Detalhe({ v, fechar, recarregar, igOk, voltar = 'Vídeos' }) {
           <button className="p-voltar" onClick={fechar}>{voltar}</button>
           <h1>{num(v)} {v.yt_titulo}</h1>
           <p className="p-sub">Sugestão: {fmtQuando(sugestao(v))} · {Math.round(v.duracao || 0)} s</p>
+          {mover && v.video_url && (
+            <div className="v-etapas" role="group" aria-label="Mudar de coluna">
+              {FASES.filter((f) => f.k !== 'producao').map((f) => {
+                const atual = etapa(v) === f.k
+                return <button key={f.k} type="button" className={atual ? 'on' : ''} aria-pressed={atual} style={{ '--c': f.cor }} disabled={atual} onClick={() => mover(paraItem(v), f.k)}>{f.nome}</button>
+              })}
+            </div>
+          )}
         </div>
         <div className="p-acoes">
-          {v.video_url && <a className="p-btn p-btn--forte" href={baixar}>Baixar vídeo</a>}
+          {vizinhos?.anterior && <button className="p-btn p-btn--fraco" onClick={vizinhos.anterior} aria-label="Vídeo anterior">‹</button>}
+          {vizinhos?.proximo && <button className="p-btn p-btn--fraco" onClick={vizinhos.proximo} aria-label="Próximo vídeo">›</button>}
+          {v.video_url && <a className="p-btn p-btn--forte" href={baixar} title={nomeArquivo(v)}>Baixar com o título</a>}
           {celular && v.video_url && <button className="p-btn" onClick={() => compartilhar(v, '', avisar)}>Compartilhar</button>}
         </div>
       </div>
@@ -370,7 +395,15 @@ export default function Videos({ canal = 'concrete-atlas', nome = 'Concrete Atla
   if (lista === null) return <p className="p-vazio">Carregando…</p>
   const igOk = cx.igOk
   const aberto = lista.find((v) => v.id === abertoId)
-  if (aberto) return <Detalhe v={aberto} fechar={() => setAbertoId(null)} recarregar={carregar} igOk={igOk} voltar={nome} />
+  const ordemLista = itens.map((i) => i.chave)
+  const pos = ordemLista.indexOf(abertoId)
+  const vizinhos = {
+    anterior: pos > 0 ? () => setAbertoId(ordemLista[pos - 1]) : null,
+    proximo: pos >= 0 && pos < ordemLista.length - 1 ? () => setAbertoId(ordemLista[pos + 1]) : null,
+  }
+  const paraSubir = lista.filter((v) => v.video_url && etapa(v) === 'programar')
+
+  if (aberto) return <Detalhe v={aberto} fechar={() => setAbertoId(null)} recarregar={carregar} igOk={igOk} voltar={nome} mover={mover} vizinhos={vizinhos} />
 
   async function mover(item, alvo) {
     const v = item.bruto
@@ -420,6 +453,9 @@ export default function Videos({ canal = 'concrete-atlas', nome = 'Concrete Atla
 
   return (
     <Pipeline canal={info} fases={FASES} itens={itens} mover={mover} programar={programar} subir={subir} abrir={(i) => i && setAbertoId(i.chave)}
-      cx={cx} recarregar={carregar} extra={canal === 'thata' ? <BotoesThata /> : null} />
+      cx={cx} recarregar={carregar} extra={<>
+        {paraSubir.length > 0 && <button className="p-btn" onClick={() => baixarVarios(paraSubir, avisar)} title="Baixa os vídeos de Para programar com o título do YouTube no nome do arquivo">Baixar {paraSubir.length} para subir</button>}
+        {canal === 'thata' ? <BotoesThata /> : null}
+      </>} />
   )
 }

@@ -3,6 +3,7 @@ import { supabase } from '../lib/supabase'
 import { CANAIS } from './canais'
 import { usePainel } from './Painel'
 import { Janela } from './Pipeline'
+import { CanaisCofre, EmailsDisponiveis } from './CofreExtra'
 
 // Cofre de acessos (cadeado no menu): logins, e-mails e senhas das contas de cada perfil.
 // A senha mestra nunca sai deste navegador: dela sai a chave (PBKDF2) que criptografa cada acesso (AES-GCM).
@@ -16,7 +17,8 @@ const VAZIO = { canal: '', rede: 'Instagram', conta: '', login: '', email: '', s
 const CONHECIDAS = {
   'tavin-digital': { Instagram: '@tavindigital' }, thata: { Instagram: '@thata.ia' },
   'concrete-atlas': { Instagram: '@concreteatlas.labs', YouTube: '@concreteatlas.studio' },
-  zerando: { Instagram: '@zerando.90' }, loadbearing: { Instagram: '@loadbearing.mind' }, pawslated: { Instagram: '@pawslated' },
+  zerando: { Instagram: '@zerando.90' }, loadbearing: { Instagram: '@loadbearing.tv' }, pawslated: { Instagram: '@pawslated' },
+  gusttacosta: { Instagram: '@gusttacosta', YouTube: '@eugustavocosta', TikTok: '@gusttacostar' },
 }
 
 // ── criptografia (Web Crypto, nativa do navegador) ──
@@ -159,6 +161,8 @@ export default function Cofre() {
   const [busca, setBusca] = useState('')
   const [apagar, setApagar] = useState(null)
   const [trocar, setTrocar] = useState(false)
+  const [aba, setAba] = useState(() => { try { return localStorage.getItem('cofre-aba') || 'contas' } catch { return 'contas' } })
+  useEffect(() => { try { localStorage.setItem('cofre-aba', aba) } catch { /* sem storage */ } }, [aba])
   const ultimo = useRef(Date.now())
 
   useEffect(() => { supabase.from('cofre_config').select('*').maybeSingle().then(({ data }) => setCfg(data || null)) }, [])
@@ -210,6 +214,25 @@ export default function Cofre() {
     setEditando(null); avisar('Salvo no cofre'); carregar(chave)
   }
 
+  // estoque de e-mails: vários de uma vez (importação) e um por vez (edição)
+  async function salvarVarios(lista) {
+    let n = 0
+    const novos = []
+    for (const f of lista) {
+      const { id, atualizado_em, quebrado, ...dados } = f
+      const cif = await cifrar(chave, { ...dados, tipo: 'estoque' })
+      if (id) { const { error } = await supabase.from('cofre').update({ dados: cif, atualizado_em: new Date().toISOString() }).eq('id', id); if (!error) n++ }
+      else novos.push({ dados: cif })
+    }
+    for (let i = 0; i < novos.length; i += 100) {
+      const { error } = await supabase.from('cofre').insert(novos.slice(i, i + 100))
+      if (!error) n += Math.min(100, novos.length - i)
+    }
+    await carregar(chave)
+    return n
+  }
+  async function salvarUm(f) { const n = await salvarVarios([f]); avisar(n ? 'Salvo no cofre' : 'Não salvou') }
+
   async function remover(id) {
     const { error } = await supabase.from('cofre').delete().eq('id', id)
     if (error) { avisar('Não apagou'); return }
@@ -231,10 +254,12 @@ export default function Cofre() {
     setChave(k); setTrocar(false); avisar('Senha do cofre trocada')
   }
 
+  const estoque = itens.filter((i) => i.tipo === 'estoque')
+  const acessos = itens.filter((i) => i.tipo !== 'estoque')
   const casa = (i, t) => !t || [i.conta, i.login, i.email, i.rede, i.notas, CANAIS.find((c) => c.id === i.canal)?.nome].some((x) => String(x || '').toLowerCase().includes(t))
   const t = busca.trim().toLowerCase()
-  const visiveis = itens.filter((i) => casa(i, t))
-  const preenchidos = CANAIS.reduce((a, c) => a + SLOTS.filter((r) => itens.some((i) => i.canal === c.id && i.rede === r)).length, 0)
+  const visiveis = acessos.filter((i) => casa(i, t))
+  const preenchidos = CANAIS.reduce((a, c) => a + SLOTS.filter((r) => acessos.some((i) => i.canal === c.id && i.rede === r)).length, 0)
   const soltos = visiveis.filter((i) => !i.canal || !CANAIS.some((c) => c.id === i.canal))
 
   if (cfg === undefined) return <p className="p-vazio">Carregando…</p>
@@ -243,9 +268,9 @@ export default function Cofre() {
   return (
     <section className="cf">
       <div className="p-cab">
-        <div><h1>Cofre</h1><p className="p-sub">{itens.length} {itens.length === 1 ? 'acesso guardado' : 'acessos guardados'}, criptografados com a senha do cofre.</p></div>
+        <div><h1>Cofre</h1><p className="p-sub">{acessos.length} {acessos.length === 1 ? 'acesso' : 'acessos'} e {estoque.length} {estoque.length === 1 ? 'e-mail' : 'e-mails'} no estoque, criptografados com a senha do cofre.</p></div>
         <div className="cf-acoes">
-          <button className="p-btn p-btn--forte" onClick={() => setEditando({ rede: 'Instagram' })}>Novo acesso</button>
+          {aba === 'contas' && <button className="p-btn p-btn--forte" onClick={() => setEditando({ rede: 'Instagram' })}>Novo acesso</button>}
           <button className="p-btn p-btn--fraco" onClick={() => setTrocar(!trocar)}>Trocar senha do cofre</button>
           <button className="p-btn" onClick={trancar}>Trancar</button>
         </div>
@@ -259,19 +284,29 @@ export default function Cofre() {
         </form>
       )}
 
+      <div className="cf-abas" role="tablist" aria-label="Partes do cofre">
+        {[['contas', 'Contas dos canais'], ['emails', `E-mails para criar contas (${estoque.length})`], ['canais', 'Canais']].map(([k, n]) => (
+          <button key={k} type="button" role="tab" aria-selected={aba === k} className={aba === k ? 'on' : ''} onClick={() => setAba(k)}>{n}</button>
+        ))}
+      </div>
+
+      {aba === 'emails' && <EmailsDisponiveis estoque={estoque} salvarVarios={salvarVarios} salvarUm={salvarUm} remover={remover} />}
+      {aba === 'canais' && <CanaisCofre estoque={estoque} salvarUm={salvarUm} />}
+
       {editando && (
         <Janela titulo={editando.id ? 'Editar acesso' : 'Novo acesso'} sub={CANAIS.find((c) => c.id === editando.canal)?.nome || ''} fechar={() => setEditando(null)}>
           <Formulario inicial={editando} salvar={salvar} cancelar={() => setEditando(null)} />
         </Janela>
       )}
 
+      {aba === 'contas' && <>
       <div className="cf-barra">
         <input className="cf-busca" type="search" value={busca} onChange={(e) => setBusca(e.target.value)} placeholder="Buscar conta, e-mail, rede…" aria-label="Buscar no cofre" />
         <span className="cf-progresso">{preenchidos} de {CANAIS.length * SLOTS.length} espaços preenchidos</span>
       </div>
 
       {CANAIS.filter((c) => !t || c.nome.toLowerCase().includes(t) || visiveis.some((i) => i.canal === c.id)).map((c) => {
-        const doCanal = (t && !c.nome.toLowerCase().includes(t) ? visiveis : itens).filter((i) => i.canal === c.id)
+        const doCanal = (t && !c.nome.toLowerCase().includes(t) ? visiveis : acessos).filter((i) => i.canal === c.id)
         const extras = doCanal.filter((i) => !SLOTS.includes(i.rede))
         return (
           <article key={c.id} className="cf-conta" style={{ '--c': c.cor }}>
@@ -307,6 +342,7 @@ export default function Cofre() {
           <div className="cf-redes">{soltos.map((i) => <Acesso key={i.id} i={i} editar={() => setEditando(i)} apagar={apagar} setApagar={setApagar} remover={remover} />)}</div>
         </article>
       )}
+      </>}
     </section>
   )
 }
