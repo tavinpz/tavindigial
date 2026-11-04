@@ -321,6 +321,25 @@ async function youtubeAnalytics(token: string, dias: number, videos: Record<stri
   };
 }
 
+// vídeos que você subiu no YouTube Studio (inclusive privados) viram o mesmo vídeo do painel, pelo título:
+// assim, programar pelo painel só muda a data do que já está lá, sem subir de novo (não duplica)
+async function vincularYT(db: SupabaseClient, canal: string, vids: Record<string, unknown>[]) {
+  const { data } = await db.from("videos").select("id,yt_titulo,titulo").eq("canal", canal).is("yt_id", null);
+  if (!data?.length) return;
+  // o nome do arquivo perde ? . : | e espaços duplos; compara só letras, números e emojis
+  const norm = (x: unknown) => String(x ?? "").toLowerCase().normalize("NFC").replace(/[^\p{L}\p{N}\p{Extended_Pictographic}]+/gu, " ").trim();
+  const { data: usados } = await db.from("videos").select("yt_id").eq("canal", canal).not("yt_id", "is", null);
+  const ja = new Set((usados ?? []).map((u: { yt_id: string }) => u.yt_id));
+  const por = new Map<string, string>();
+  for (const v of data) { const k = norm(v.yt_titulo || v.titulo); if (k && !por.has(k)) por.set(k, v.id); }
+  for (const y of vids) {
+    const k = norm(y.titulo), id = por.get(k);
+    if (!id || ja.has(String(y.id))) continue;
+    await db.from("videos").update({ yt_id: y.id, yt_link: `https://youtube.com/shorts/${y.id}` }).eq("id", id);
+    por.delete(k);
+  }
+}
+
 async function youtube(db: SupabaseClient, canal: string, limite: number, dias = 0) {
   const id = await canalYT(db, canal);
   if (!id) return { conectado: false };
@@ -333,6 +352,7 @@ async function youtube(db: SupabaseClient, canal: string, limite: number, dias =
     try { base = await youtubeAPI(id, chave, limite, token); }
     catch (e) { base = { ...(await youtubeFeed(id)), erro_api: (e as Error).message }; via = "feed"; }
   } else { base = await youtubeFeed(id); via = "feed"; }
+  if (token && base.videos) await vincularYT(db, canal, base.videos as Record<string, unknown>[]).catch(() => {});
   if (token && dias) base.analytics = await youtubeAnalytics(token, dias, (base.videos as Record<string, unknown>[]) ?? []).catch((e) => ({ erro: (e as Error).message }));
   base.conta = !!token; if (erroConta) base.erro_conta = erroConta;
   if (via === "api") await gravarDia(db, canal, "youtube", { seguidores: base.inscritos as Num, posts: base.total_videos as Num, views_total: base.views_total as Num });
