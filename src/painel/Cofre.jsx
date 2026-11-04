@@ -187,6 +187,29 @@ export default function Cofre() {
       try { abertos.push({ id: r.id, atualizado_em: r.atualizado_em, ...(await decifrar(k, r.dados)) }) } catch { abertos.push({ id: r.id, quebrado: true }) }
     }
     setItens(abertos)
+    return abertos
+  }
+
+  // e-mails deixados na fila cofre_importar (sem senha): entram criptografados no estoque ao abrir o cofre
+  async function puxarFila(k, abertos) {
+    if (!abertos) return
+    const { data } = await supabase.from('cofre_importar').select('email,perfil,duas_etapas,usos,notas')
+    if (!data?.length) return
+    const porEmail = Object.fromEntries((abertos || []).filter((i) => i.tipo === 'estoque').map((e) => [e.email, e]))
+    let n = 0
+    for (const p of data) {
+      const atual = porEmail[p.email]
+      const usos = { ...(p.usos || {}) }
+      for (const [r, v] of Object.entries(atual?.usos || {})) if (String(v || '').trim()) usos[r] = v
+      const notas = [atual?.notas, p.notas].filter(Boolean).filter((x, i, l) => l.indexOf(x) === i).join(' · ')
+      const dados = { tipo: 'estoque', email: p.email, senha: atual?.senha || '', perfil: atual?.perfil || p.perfil || '', duas_etapas: atual?.duas_etapas ?? p.duas_etapas ?? null, usos, notas }
+      const cif = await cifrar(k, dados)
+      const { error } = atual
+        ? await supabase.from('cofre').update({ dados: cif, atualizado_em: new Date().toISOString() }).eq('id', atual.id)
+        : await supabase.from('cofre').insert({ dados: cif })
+      if (!error) { n++; await supabase.from('cofre_importar').delete().eq('email', p.email) }
+    }
+    if (n) { avisar(`${n} e-mails entraram no estoque do cofre`); await carregar(k) }
   }
 
   async function abrir(senha) {
@@ -201,7 +224,7 @@ export default function Cofre() {
     }
     const k = await chaveDe(senha, cfg.sal, cfg.iteracoes)
     try { if ((await decifrar(k, cfg.verificador)) !== VERIFICA) throw new Error() } catch { throw new Error('Senha errada.') }
-    setChave(k); ultimo.current = Date.now(); await carregar(k)
+    setChave(k); ultimo.current = Date.now(); await puxarFila(k, await carregar(k))
   }
 
   async function salvar(f) {
