@@ -58,6 +58,9 @@ const REDES = [
   { k: 'tt', nome: 'TikTok', sigla: 'TikTok' },
   { k: 'ig', nome: 'Insta', sigla: 'Insta' },
 ]
+// TikTok só conta para canais com @ do TikTok cadastrado (o painel não posta no TikTok: é marcação manual)
+const temTT = (canalId) => !!CANAIS.find((c) => c.id === canalId)?.tiktok
+const redesDe = (v) => REDES.filter((r) => r.k !== 'tt' || temTT(v.canal))
 function situacao(v, k) {
   if (k === 'ig') {
     const s = { pendente: 'pendente', erro: 'pendente', programado: 'programado', agendado: 'programado', processando: 'programado', publicado: 'postado' }[v.ig_status] || 'pendente'
@@ -212,7 +215,7 @@ function dadosMover(v, alvo, igOk, rede = null, quando = null) {
   const sug = quando || sugestao(v)
   if (alvo === 'programar') d.subido_em = null
   if (alvo === 'subido') d.subido_em = v.subido_em || new Date().toISOString()
-  for (const r of REDES.filter((x) => !rede || x.k === rede)) {
+  for (const r of redesDe(v).filter((x) => !rede || x.k === rede)) {
     const st = situacao(v, r.k)
     if (st.processando) continue
     if ((alvo === 'programar' || alvo === 'subido') && st.s !== 'pendente') d = { ...d, ...campos(r.k, 'desfazer') }
@@ -289,7 +292,7 @@ function Detalhe({ v, fechar, recarregar, igOk, voltar = 'Vídeos', mover, vizin
             </div>
           </article>
 
-          <article className={`v-plat v-plat--${situacao(v, 'tt').s}`}>
+          {temTT(v.canal) && <article className={`v-plat v-plat--${situacao(v, 'tt').s}`}>
             <header><h2>TikTok</h2></header>
             {rede('tt', 'TikTok')}
             <Bloco titulo="Legenda" texto={v.tt_legenda} linhas={3} />
@@ -298,7 +301,7 @@ function Detalhe({ v, fechar, recarregar, igOk, voltar = 'Vídeos', mover, vizin
               <a className="p-btn" href="https://www.tiktok.com/tiktokstudio/upload" target="_blank" rel="noreferrer">Abrir TikTok Studio</a>
               {celular && v.video_url && <button className="p-btn" onClick={() => compartilhar(v, v.tt_legenda, avisar)}>Mandar para o app (copia a legenda)</button>}
             </div>
-          </article>
+          </article>}
 
           <article className={`v-plat v-plat--${igSt.s}`}>
             <header><h2>Instagram Reels</h2></header>
@@ -352,7 +355,7 @@ const SIGLAS = { yt: 'YT', tt: 'TT', ig: 'IG' }
 const NOMES = { yt: 'YouTube', tt: 'TikTok', ig: 'Instagram' }
 function paraItem(v) {
   const e = etapa(v)
-  const sts = REDES.map((r) => ({ k: r.k, ...situacao(v, r.k) }))
+  const sts = redesDe(v).map((r) => ({ k: r.k, ...situacao(v, r.k) }))
   const redes = sts.map((st) => ({
     sigla: SIGLAS[st.k], nome: NOMES[st.k], s: st.s,
     dica: st.s === 'programado' ? `programado${st.quando ? ` para ${fmtCurto(st.quando)}` : ''}${st.auto ? ' (sai sozinho)' : ''}` : st.s === 'postado' ? 'postado' : 'ainda não programado',

@@ -20,8 +20,22 @@ function LogoCanal({ c }) {
 }
 
 const compacto = (n) => Intl.NumberFormat('pt-BR', { notation: 'compact', maximumFractionDigits: 1 }).format(n)
+const REDE_N = { instagram: 'Instagram', youtube: 'YouTube' }
+const n = (x) => Number(x || 0).toLocaleString('pt-BR')
+// Dica do número ao lado do canal: views de hoje (desde 00h de Brasília), rede por rede
+function dicaViews(nome, v) {
+  if (!v) return nome
+  const redes = Object.entries(v.por_rede || {}).filter(([r, x]) => REDE_N[r] && x != null).map(([r, x]) => `${REDE_N[r]} ${n(x)}`)
+  const hora = v.atualizado_em ? new Date(v.atualizado_em).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) : ''
+  return [
+    `${nome}: ${n(v.views)} views hoje (desde 00h)`,
+    redes.length ? redes.join(' · ') : '',
+    v.curtidas ? `TikTok: +${n(v.curtidas)} curtidas hoje (o TikTok não mostra views)` : '',
+    `Atualiza a cada 30 min${hora ? `, última às ${hora}` : ''}. Quem tem mais views fica em cima.`,
+  ].filter(Boolean).join('\n')
+}
 function Item({ id, nome, ico, canal, aba, ir, recolhido, v }) {
-  const dica = v ? `${nome}: ${v.views.toLocaleString('pt-BR')} views hoje${v.curtidas ? ` · ${v.curtidas.toLocaleString('pt-BR')} curtidas no TikTok` : ''}` : nome
+  const dica = dicaViews(nome, v)
   return (
     <button className={`m-item ${canal ? 'm-canal' : ''} ${id === aba ? 'ativa' : ''}`} onClick={() => ir(id)} aria-current={id === aba ? 'page' : undefined} title={recolhido || v ? dica : undefined}>
       {canal ? <LogoCanal c={canal} /> : <Ico d={ico} />}<span className="m-txt">{nome}</span>
@@ -130,6 +144,7 @@ export default function MenuLateral({ topo, grupos, aba, ir, aoVivo, recolhido, 
                   <button type="button" className={`m-organizar ${organizar ? 'on' : ''}`} onClick={() => setOrganizar(!organizar)}>{organizar ? 'Pronto' : 'Organizar'}</button>
                 )}
               </div>
+              {g.canais && ab && !recolhido && <p className="m-legenda">Número = views de hoje. Mais views em cima.</p>}
               {(ab || recolhido)
                 ? (g.canais
                   ? <Canais itens={g.itens} aba={aba} ir={ir} recolhido={recolhido} organizar={organizar} views={views} />

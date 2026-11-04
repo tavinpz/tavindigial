@@ -210,9 +210,8 @@ export function CanaisCofre({ estoque, salvarUm }) {
   async function puxarFoto(c) {
     setFoto(c.id)
     const { data, error } = await supabase.functions.invoke('foto-perfil', { body: { canal: c.id } })
-    if (error || !data?.ok) { setFoto(null); avisar(data?.erro === 'Instagram não conectado' ? 'Ligue o Instagram do canal primeiro (Integrações)' : `Não deu: ${data?.erro || 'erro'}`); return }
-    await supabase.from('canais').update({ logo: `${data.url}?v=${Date.now()}` }).eq('id', c.id)
-    await recarregarCanais(); setFoto(null); avisar(`Foto de @${data.username} no painel`)
+    if (error || !data?.ok) { setFoto(null); avisar(`Não deu: ${data?.erro || 'erro'}`); return }
+    await recarregarCanais(); setFoto(null); avisar(`Foto do ${data.de}${data.username ? ` (${data.username})` : ''} no painel`)
   }
   async function esconder(c) {
     await supabase.from('canais').update({ ativo: false }).eq('id', c.id)
@@ -251,7 +250,7 @@ export function CanaisCofre({ estoque, salvarUm }) {
           <li key={c.id} style={{ '--c': c.cor }}>
             {c.logo ? <img src={c.logo} alt="" /> : <span className="p-canal-sigla" style={{ '--c': c.cor }}>{c.sigla}</span>}
             <span className="cc-nome"><b>{c.nome}</b><small>{[c.instagram, c.youtube, c.tiktok && `TT ${c.tiktok}`].filter(Boolean).join(' · ') || 'sem @ cadastrado'}</small></span>
-            <button type="button" className="p-btn p-btn--mini" disabled={foto === c.id} onClick={() => puxarFoto(c)}>{foto === c.id ? 'Puxando…' : 'Foto do Instagram'}</button>
+            <button type="button" className="p-btn p-btn--mini" disabled={foto === c.id} onClick={() => puxarFoto(c)}>{foto === c.id ? 'Puxando…' : 'Puxar foto'}</button>
             <button type="button" className="p-btn p-btn--mini p-btn--fraco" onClick={() => esconder(c)}>Tirar do menu</button>
           </li>
         ))}
