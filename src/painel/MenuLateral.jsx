@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { supabase } from '../lib/supabase'
 import Logo from '../site/Logo'
 
@@ -20,27 +21,58 @@ function LogoCanal({ c }) {
 }
 
 const compacto = (n) => Intl.NumberFormat('pt-BR', { notation: 'compact', maximumFractionDigits: 1 }).format(n)
-const REDE_N = { instagram: 'Instagram', youtube: 'YouTube' }
 const n = (x) => Number(x || 0).toLocaleString('pt-BR')
-// Dica do número ao lado do canal: views de hoje (desde 00h de Brasília), rede por rede
-function dicaViews(nome, v) {
-  if (!v) return nome
-  const redes = Object.entries(v.por_rede || {}).filter(([r, x]) => REDE_N[r] && x != null).map(([r, x]) => `${REDE_N[r]} ${n(x)}`)
+const OLHO = 'M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12zM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z'
+
+// Cartão ao passar o mouse no canal: views de hoje rede por rede
+function CartaoViews({ nome, v, pos }) {
+  const r = v.por_rede || {}
   const hora = v.atualizado_em ? new Date(v.atualizado_em).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) : ''
-  return [
-    `${nome}: ${n(v.views)} views hoje (desde 00h)`,
-    redes.length ? redes.join(' · ') : '',
-    v.curtidas ? `TikTok: +${n(v.curtidas)} curtidas hoje (o TikTok não mostra views)` : '',
-    `Atualiza a cada 30 min${hora ? `, última às ${hora}` : ''}. Quem tem mais views fica em cima.`,
-  ].filter(Boolean).join('\n')
+  const linhas = [
+    ['instagram', 'Instagram', '#D62F8C', r.instagram != null ? n(r.instagram) : null],
+    ['youtube', 'YouTube', '#E02424', r.youtube != null ? n(r.youtube) : null],
+    ['tiktok', 'TikTok', '#25F4EE', v.curtidas ? `+${n(v.curtidas)} curtidas` : null],
+  ].filter((l) => l[3] != null)
+  return createPortal(
+    <div className="m-cartao" role="tooltip" style={{ left: pos.x, top: pos.y }}>
+      <span className="m-cartao-nome">{nome}</span>
+      <span className="m-cartao-total"><b>{n(v.views)}</b> views hoje</span>
+      {linhas.length > 0 && (
+        <ul>{linhas.map(([k, rede, cor, txt]) => <li key={k}><i style={{ background: cor }} />{rede}<b>{txt}</b></li>)}</ul>
+      )}
+      <small>Contadas desde 00h. Atualiza a cada 30 min{hora ? ` (última às ${hora})` : ''}. Quem tem mais views fica em cima no menu.</small>
+    </div>, document.body)
 }
+
 function Item({ id, nome, ico, canal, aba, ir, recolhido, v }) {
-  const dica = dicaViews(nome, v)
+  const [pos, setPos] = useState(null)
+  // quando as views sobem desde a última leitura, o número pisca e mostra quanto entrou
+  const antes = useRef(v?.views ?? null)
+  const [subiu, setSubiu] = useState(0)
+  useEffect(() => {
+    const atual = v?.views ?? null
+    const ant = antes.current
+    antes.current = atual
+    if (ant == null || atual == null || atual <= ant) return undefined
+    setSubiu(atual - ant)
+    const t = setTimeout(() => setSubiu(0), 8000)
+    return () => clearTimeout(t)
+  }, [v?.views])
+  const mostrar = (e) => { if (!canal || !v) return; const r = e.currentTarget.getBoundingClientRect(); setPos({ x: r.right + 10, y: r.top + r.height / 2 }) }
   return (
-    <button className={`m-item ${canal ? 'm-canal' : ''} ${id === aba ? 'ativa' : ''}`} onClick={() => ir(id)} aria-current={id === aba ? 'page' : undefined} title={recolhido || v ? dica : undefined}>
-      {canal ? <LogoCanal c={canal} /> : <Ico d={ico} />}<span className="m-txt">{nome}</span>
-      {canal && v?.views > 0 && !recolhido && <span className="m-views" aria-label={`${v.views} views hoje`}>{compacto(v.views)}</span>}
-    </button>
+    <>
+      <button className={`m-item ${canal ? 'm-canal' : ''} ${id === aba ? 'ativa' : ''}`} onClick={() => ir(id)} aria-current={id === aba ? 'page' : undefined}
+        onMouseEnter={mostrar} onMouseLeave={() => setPos(null)} onFocus={mostrar} onBlur={() => setPos(null)}
+        title={recolhido && !v ? nome : undefined} aria-label={v ? `${nome}, ${n(v.views)} views hoje` : undefined}>
+        {canal ? <LogoCanal c={canal} /> : <Ico d={ico} />}<span className="m-txt">{nome}</span>
+        {canal && v && !recolhido && (
+          <span className={`m-views ${subiu ? 'm-views--subiu' : ''} ${v.views ? '' : 'm-views--zero'}`} aria-hidden="true">
+            <Ico d={OLHO} t={11} />{subiu ? `+${compacto(subiu)}` : compacto(v.views)}
+          </span>
+        )}
+      </button>
+      {pos && <CartaoViews nome={nome} v={v} pos={pos} />}
+    </>
   )
 }
 
@@ -144,7 +176,6 @@ export default function MenuLateral({ topo, grupos, aba, ir, aoVivo, recolhido, 
                   <button type="button" className={`m-organizar ${organizar ? 'on' : ''}`} onClick={() => setOrganizar(!organizar)}>{organizar ? 'Pronto' : 'Organizar'}</button>
                 )}
               </div>
-              {g.canais && ab && !recolhido && <p className="m-legenda">Número = views de hoje. Mais views em cima.</p>}
               {(ab || recolhido)
                 ? (g.canais
                   ? <Canais itens={g.itens} aba={aba} ir={ir} recolhido={recolhido} organizar={organizar} views={views} />

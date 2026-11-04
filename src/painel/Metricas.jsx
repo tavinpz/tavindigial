@@ -429,6 +429,14 @@ function Carregando() {
 
 // ── janela ──
 const ABAS = [['ig', 'Instagram'], ['yt', 'YouTube'], ['tt', 'TikTok'], ['painel', 'No painel']]
+// cada rede com a sua cor e o seu ícone, para não confundir os números de uma com os da outra
+const REDE = {
+  ig: { cor: '#D62F8C', d: 'M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zM12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM17.5 6.5h.01', txt: 'Números do Instagram' },
+  yt: { cor: '#E02424', d: 'M3 8a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3zM10 9l5 3-5 3z', txt: 'Números do YouTube' },
+  tt: { cor: '#0E0E10', d: 'M14 3v11a4 4 0 1 1-4-4M14 3c0 3 2 5 5 5', txt: 'Números do TikTok' },
+  painel: { cor: '#6E56CF', d: 'M3 3v18h18M7 15l4-4 3 3 6-7', txt: 'O que saiu pelo painel (todas as redes)' },
+}
+const IcoRede = ({ k }) => <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={REDE[k].d} /></svg>
 
 // TikTok: o perfil público é lido de hora em hora (seguidores, curtidas e quantidade de vídeos).
 // Views por vídeo só com o app oficial do TikTok (Display API), que precisa de aprovação.
@@ -510,8 +518,8 @@ export default function Metricas({ canal, fechar = () => {}, abaInicial, embutid
 
         <div className="mc-abas" role="tablist" aria-label="Rede">
           {ABAS.map(([k, r]) => (
-            <button key={k} type="button" role="tab" aria-selected={aba === k} className={aba === k ? 'on' : ''} onClick={() => setAba(k)}>
-              {r}
+            <button key={k} type="button" role="tab" aria-selected={aba === k} className={aba === k ? 'on' : ''} style={{ '--r': REDE[k].cor }} onClick={() => setAba(k)}>
+              <IcoRede k={k} />{r}
               {k === 'ig' && ig?.perfil?.seguidores != null && <small>{fmt(ig.perfil.seguidores)}</small>}
               {k === 'yt' && yt?.inscritos != null && <small>{fmt(yt.inscritos)}</small>}
               {k === 'tt' && (() => { const t = hist.filter((x) => x.rede === 'tiktok').at(-1); return t?.seguidores != null ? <small>{fmt(t.seguidores)}</small> : null })()}
@@ -519,7 +527,8 @@ export default function Metricas({ canal, fechar = () => {}, abaInicial, embutid
           ))}
         </div>
 
-        <section className="mc-bloco" role="tabpanel">
+        <section className={`mc-bloco mc-bloco--rede mc-bloco--${aba}`} role="tabpanel" style={{ '--r': REDE[aba].cor }}>
+          <p className="mc-rede"><IcoRede k={aba} />{REDE[aba].txt}</p>
           {aba === 'ig' && <Instagram ig={ig} dias={dias} cor={canal.cor} hist={hist} />}
           {aba === 'yt' && <YouTube yt={yt} dias={dias} cor={canal.cor} hist={hist} />}
           {aba === 'tt' && <TikTok hist={hist} dias={dias} cor={canal.cor} handle={canal.tiktok} />}
