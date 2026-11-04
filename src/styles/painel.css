@@ -1510,3 +1510,6 @@ a.crm-btn { text-decoration: none; display: inline-flex; align-items: center; }
 
 /* Métricas dentro do canal (aba ao lado de Calendário) */
 .mc--embutido { width: 100%; padding: 0; background: none; box-shadow: none; border-radius: 0; }
+.mc--embutido .mc-avatar, .mc--embutido .mc-quem h2 { display: none; }
+.mc--embutido .mc-cab { justify-content: space-between; }
+.mc--embutido .mc-quem p { margin: 0; }
