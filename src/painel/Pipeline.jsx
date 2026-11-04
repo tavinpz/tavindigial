@@ -172,6 +172,7 @@ function Integracoes({ canal, marca, cx, recarregar, fechar }) {
 
   async function salvarApp(e) {
     e.preventDefault()
+    if (!/\.apps\.googleusercontent\.com$/.test(app.id.trim())) { avisar('O ID do cliente termina em .apps.googleusercontent.com'); return }
     const { error } = await supabase.rpc('salvar_youtube_oauth', { p_client_id: app.id, p_client_secret: app.segredo })
     if (error) { avisar('Não salvou'); return }
     setApp({ id: '', segredo: '' }); setForm(null); await cx.recarregar()
@@ -248,7 +249,7 @@ function Integracoes({ canal, marca, cx, recarregar, fechar }) {
           </div>
           {form === 'ig' && (
             <form className="pl-integ-form" onSubmit={salvarIG}>
-              <label className="p-campo">Token da conta<input required type="password" value={igForm.token} onChange={(e) => setIgForm({ ...igForm, token: e.target.value })} placeholder="IGAA…" /></label>
+              <label className="p-campo">Token da conta<input required type="password" name="ig-token" autoComplete="new-password" data-lpignore="true" data-1p-ignore value={igForm.token} onChange={(e) => setIgForm({ ...igForm, token: e.target.value })} placeholder="IGAA…" /></label>
               <label className="p-campo">ID da conta (opcional)<input value={igForm.user_id} onChange={(e) => setIgForm({ ...igForm, user_id: e.target.value })} placeholder="1784…" /></label>
               <button className="p-btn p-btn--forte">Salvar e testar</button>
             </form>
@@ -266,7 +267,7 @@ function Integracoes({ canal, marca, cx, recarregar, fechar }) {
           {temChave === false && form !== 'ytk' && <p className="pl-integ-dica">Sem a chave da API, as Métricas só veem os 15 vídeos mais recentes, sem inscritos exatos.</p>}
           {form === 'ytk' && (
             <form className="pl-integ-form" onSubmit={salvarChave}>
-              <label className="p-campo">Chave da API do YouTube (vale para todos os canais)<input type="password" value={ytChave} onChange={(e) => setYtChave(e.target.value)} placeholder="AIza…" autoComplete="off" /></label>
+              <label className="p-campo">Chave da API do YouTube (vale para todos os canais)<input type="password" name="yt-api-key" value={ytChave} onChange={(e) => setYtChave(e.target.value)} placeholder="AIza…" autoComplete="new-password" data-lpignore="true" data-1p-ignore /></label>
               <p className="pl-integ-dica">Google Cloud → APIs e serviços → ative a "YouTube Data API v3" → Credenciais → Criar chave de API. Deixe vazio e salve para remover.</p>
               <button className="p-btn p-btn--forte">Salvar chave</button>
             </form>
@@ -292,8 +293,8 @@ function Integracoes({ canal, marca, cx, recarregar, fechar }) {
           {form === 'app' && (
             <form className="pl-integ-form" onSubmit={salvarApp} autoComplete="off">
               <p className="pl-integ-dica">Uma vez só, vale para todos os canais. Google Cloud → Credenciais → Criar credenciais → ID do cliente OAuth → Aplicativo da Web. Em "URIs de redirecionamento autorizados", cole:<br /><code>https://vvlzverpxojrecxysmhm.supabase.co/functions/v1/youtube-conta</code></p>
-              <label className="p-campo">ID do cliente<input required value={app.id} onChange={(e) => setApp({ ...app, id: e.target.value })} placeholder="1234…apps.googleusercontent.com" /></label>
-              <label className="p-campo">Chave secreta do cliente<input required={!yt.app_ok} type="password" value={app.segredo} onChange={(e) => setApp({ ...app, segredo: e.target.value })} placeholder="GOCSPX-…" /></label>
+              <label className="p-campo">ID do cliente<input required name="yt-oauth-client-id" autoComplete="off" data-lpignore="true" data-1p-ignore value={app.id} onChange={(e) => setApp({ ...app, id: e.target.value })} placeholder="1234…apps.googleusercontent.com" /></label>
+              <label className="p-campo">Chave secreta do cliente<input required={!yt.app_ok} type="password" name="yt-oauth-client-secret" autoComplete="new-password" data-lpignore="true" data-1p-ignore value={app.segredo} onChange={(e) => setApp({ ...app, segredo: e.target.value })} placeholder="GOCSPX-…" /></label>
               <button className="p-btn p-btn--forte">Salvar app do Google</button>
             </form>
           )}
