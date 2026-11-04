@@ -65,7 +65,7 @@ export function useConexoes(canal, marca = false) {
     setYt(b.data?.[0] || { ref: null })
   }
   useEffect(() => { carregar() }, [canal])
-  return { ig, yt, igOk: !!ig?.conectado, ytOk: !!yt?.ref, recarregar: carregar }
+  return { ig, yt, igOk: !!ig?.conectado, ytOk: !!yt?.ref, ytAuto: !!yt?.oauth, recarregar: carregar }
 }
 
 // Janela (modal) simples: Esc ou clicar fora fecha
@@ -160,8 +160,38 @@ function Integracoes({ canal, marca, cx, recarregar, fechar }) {
     setMsg('TikTok ligado: seguidores, curtidas e vídeos entram nas Métricas na próxima hora cheia.')
   }
   const [ocupado, setOcupado] = useState(false)
+  const [app, setApp] = useState({ id: '', segredo: '' })
+  // quando a aba do Google fecha (ou volta para o painel), recarrega a conexão
+  useEffect(() => {
+    const voltou = (e) => { if (e.type === 'focus' || e.data === 'youtube-conectado') cx.recarregar() }
+    window.addEventListener('message', voltou); window.addEventListener('focus', voltou)
+    return () => { window.removeEventListener('message', voltou); window.removeEventListener('focus', voltou) }
+  }, [])
   if (!ig || !yt) return null
   const ytOk = !!yt.ref
+
+  async function salvarApp(e) {
+    e.preventDefault()
+    const { error } = await supabase.rpc('salvar_youtube_oauth', { p_client_id: app.id, p_client_secret: app.segredo })
+    if (error) { avisar('Não salvou'); return }
+    setApp({ id: '', segredo: '' }); setForm(null); await cx.recarregar()
+    setMsg('App do Google salvo. Agora clique em "Conectar conta do YouTube".')
+  }
+  async function conectarYT() {
+    const { data, error } = await supabase.rpc('youtube_oauth_url', { p_canal: canal.id })
+    if (error || !data) { avisar(error?.message?.includes('configurado') ? 'Configure o app do Google primeiro' : 'Não consegui abrir o Google'); return }
+    window.open(data, '_blank', 'noopener=no')
+    setMsg('Escolha no Google a conta do canal e autorize. Depois volte aqui.')
+  }
+  async function testarYT() {
+    setMsg('Testando a conta do YouTube…')
+    const { data, error } = await supabase.functions.invoke('youtube-conta', { body: { acao: 'testar', canal: canal.id } })
+    setMsg(error ? 'Não consegui falar com o servidor.' : data?.ok ? `YouTube conectado: ${data.nome} · ${Number(data.inscritos || 0).toLocaleString('pt-BR')} inscritos · ${data.videos} vídeos` : `YouTube: ${data?.erro}`)
+  }
+  async function desconectarYT() {
+    await supabase.rpc('youtube_desconectar', { p_canal: canal.id }); await cx.recarregar()
+    setMsg('Conta do YouTube desligada deste canal.')
+  }
 
   async function testarIG() {
     setMsg('Testando o Instagram…')
@@ -245,6 +275,26 @@ function Integracoes({ canal, marca, cx, recarregar, fechar }) {
             <form className="pl-integ-form" onSubmit={salvarYT}>
               <label className="p-campo">Link ou @ do canal<input required value={ytRef} onChange={(e) => setYtRef(e.target.value)} placeholder="https://youtube.com/@seucanal" /></label>
               <button className="p-btn p-btn--forte">Salvar e conferir</button>
+            </form>
+          )}
+          <div className="pl-integ-linha pl-integ-sub">
+            <span className={`pl-ponto ${yt.oauth ? 'on' : ''}`} aria-hidden="true" />
+            <div className="pl-integ-txt"><b>Conta do YouTube</b><small>{yt.oauth ? `${yt.conta || 'conectada'} · o painel sobe, programa e traz as métricas completas` : 'Conecte para o painel subir e programar os vídeos e ver as métricas detalhadas'}</small></div>
+            <div className="pl-integ-acoes">
+              {yt.oauth && <button className="p-btn p-btn--mini p-btn--fraco" onClick={testarYT}>Testar</button>}
+              {yt.oauth && <button className="p-btn p-btn--mini p-btn--fraco" onClick={desconectarYT}>Desligar</button>}
+              {yt.app_ok
+                ? <button className="p-btn p-btn--mini p-btn--forte" onClick={conectarYT}>{yt.oauth ? 'Conectar de novo' : 'Conectar conta do YouTube'}</button>
+                : <button className="p-btn p-btn--mini" onClick={() => setForm(form === 'app' ? null : 'app')}>Configurar app do Google</button>}
+            </div>
+          </div>
+          {yt.app_ok && form !== 'app' && <button type="button" className="pl-integ-link" onClick={() => setForm('app')}>Trocar app do Google (vale para todos os canais)</button>}
+          {form === 'app' && (
+            <form className="pl-integ-form" onSubmit={salvarApp} autoComplete="off">
+              <p className="pl-integ-dica">Uma vez só, vale para todos os canais. Google Cloud → Credenciais → Criar credenciais → ID do cliente OAuth → Aplicativo da Web. Em "URIs de redirecionamento autorizados", cole:<br /><code>https://vvlzverpxojrecxysmhm.supabase.co/functions/v1/youtube-conta</code></p>
+              <label className="p-campo">ID do cliente<input required value={app.id} onChange={(e) => setApp({ ...app, id: e.target.value })} placeholder="1234…apps.googleusercontent.com" /></label>
+              <label className="p-campo">Chave secreta do cliente<input required={!yt.app_ok} type="password" value={app.segredo} onChange={(e) => setApp({ ...app, segredo: e.target.value })} placeholder="GOCSPX-…" /></label>
+              <button className="p-btn p-btn--forte">Salvar app do Google</button>
             </form>
           )}
         </li>

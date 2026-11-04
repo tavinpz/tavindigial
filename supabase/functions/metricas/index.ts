@@ -214,9 +214,9 @@ const segundos = (iso: string) => {
   return m ? (+(m[1] || 0)) * 86400 + (+(m[2] || 0)) * 3600 + (+(m[3] || 0)) * 60 + (+(m[4] || 0)) : null;
 };
 
-async function youtubeAPI(id: string, chave: string, limite: number) {
+async function youtubeAPI(id: string, chave: string, limite: number, token: string | null = null) {
   const g = async (rec: string, p: Record<string, string>) => {
-    const r = await fetch(`https://www.googleapis.com/youtube/v3/${rec}?${new URLSearchParams({ ...p, key: chave })}`);
+    const r = await fetch(`https://www.googleapis.com/youtube/v3/${rec}?${new URLSearchParams(chave ? { ...p, key: chave } : p)}`, token && !chave ? { headers: { Authorization: `Bearer ${token}` } } : {});
     const d = await r.json().catch(() => ({}));
     if (!r.ok || d.error) throw new Error(d.error?.message || `HTTP ${r.status}`);
     return d;
@@ -274,19 +274,67 @@ async function youtubeFeed(id: string) {
   return { nome: ent(xml.match(/<author>\s*<name>([^<]*)/)?.[1] ?? ""), foto: null, handle: null, inscritos: null, inscritos_txt: inscritosTxt, views_total: null, total_videos: null, videos };
 }
 
-async function youtube(db: SupabaseClient, canal: string, limite: number) {
+// acesso da conta do YouTube do canal (quando conectada pelo painel, em Integrações)
+async function tokenYT(db: SupabaseClient, canal: string) {
+  const m = await cfg(db, ["yt_oauth_client_id", "yt_oauth_client_secret", `yt_${canal}_refresh`]);
+  if (!m[`yt_${canal}_refresh`] || !m.yt_oauth_client_id) return null;
+  const r = await fetch("https://oauth2.googleapis.com/token", {
+    method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({ client_id: m.yt_oauth_client_id, client_secret: m.yt_oauth_client_secret, refresh_token: m[`yt_${canal}_refresh`], grant_type: "refresh_token" }),
+  });
+  const d = await r.json().catch(() => ({}));
+  if (!d.access_token) throw new Error(d.error === "invalid_grant" ? "acesso da conta expirou: conecte de novo em Integrações" : d.error_description || d.error || `HTTP ${r.status}`);
+  return d.access_token as string;
+}
+
+// YouTube Analytics (só com a conta conectada): tempo assistido, retenção, origem das views, público
+async function youtubeAnalytics(token: string, dias: number, videos: Record<string, unknown>[]) {
+  const d = (n: number) => new Date(Date.now() - n * 86400000).toLocaleDateString("en-CA", { timeZone: "America/Sao_Paulo" });
+  const ini = d(dias - 1), fim = d(0), antIni = d(dias * 2 - 1), antFim = d(dias);
+  const rep = async (p: Record<string, string>) => {
+    const r = await fetch(`https://youtubeanalytics.googleapis.com/v2/reports?${new URLSearchParams({ ids: "channel==MINE", startDate: ini, endDate: fim, ...p })}`, { headers: { Authorization: `Bearer ${token}` } });
+    const x = await r.json().catch(() => ({}));
+    if (!r.ok || x.error) throw new Error(x.error?.message || `HTTP ${r.status}`);
+    const cols = (x.columnHeaders ?? []).map((h: { name: string }) => h.name);
+    return ((x.rows ?? []) as unknown[][]).map((row) => Object.fromEntries(cols.map((c: string, i: number) => [c, row[i]])));
+  };
+  const M = "views,estimatedMinutesWatched,averageViewDuration,averageViewPercentage,subscribersGained,subscribersLost,likes,comments,shares";
+  const nada = (e: unknown) => ({ erro: (e as Error).message });
+  const [tot, ant, dia, fontes, top, paises, idade] = await Promise.all([
+    rep({ metrics: M }), rep({ metrics: M, startDate: antIni, endDate: antFim }),
+    rep({ metrics: "views,estimatedMinutesWatched,subscribersGained,subscribersLost", dimensions: "day", sort: "day" }),
+    rep({ metrics: "views,estimatedMinutesWatched", dimensions: "insightTrafficSourceType", sort: "-views" }),
+    rep({ metrics: "views,estimatedMinutesWatched,averageViewDuration,averageViewPercentage,subscribersGained,likes,shares", dimensions: "video", sort: "-views", maxResults: "15" }),
+    rep({ metrics: "views", dimensions: "country", sort: "-views", maxResults: "8" }),
+    rep({ metrics: "viewerPercentage", dimensions: "ageGroup,gender" }),
+  ].map((p) => p.catch(nada)));
+  const lista = (x: unknown) => (Array.isArray(x) ? x : []) as Record<string, any>[];
+  if (!Array.isArray(tot)) return { erro: (tot as { erro: string }).erro };
+  const titulo = Object.fromEntries(videos.map((v) => [v.id, v]));
+  return {
+    de: ini, ate: fim, totais: lista(tot)[0] ?? {}, anterior: lista(ant)[0] ?? {}, dia: lista(dia), fontes: lista(fontes),
+    top: lista(top).map((t) => ({ ...t, titulo: (titulo[t.video] as any)?.titulo ?? t.video, capa: (titulo[t.video] as any)?.capa ?? `https://i.ytimg.com/vi/${t.video}/mqdefault.jpg`, link: (titulo[t.video] as any)?.link ?? `https://youtu.be/${t.video}` })),
+    paises: lista(paises), idade: lista(idade),
+  };
+}
+
+async function youtube(db: SupabaseClient, canal: string, limite: number, dias = 0) {
   const id = await canalYT(db, canal);
   if (!id) return { conectado: false };
   const { yt_api_key: chave } = await cfg(db, ["yt_api_key"]);
+  let token: string | null = null, erroConta = "";
+  try { token = await tokenYT(db, canal); } catch (e) { erroConta = (e as Error).message; }
   let base: Record<string, unknown>;
   let via = "api";
-  if (chave) {
-    try { base = await youtubeAPI(id, chave, limite); }
+  if (chave || token) {
+    try { base = await youtubeAPI(id, chave, limite, token); }
     catch (e) { base = { ...(await youtubeFeed(id)), erro_api: (e as Error).message }; via = "feed"; }
   } else { base = await youtubeFeed(id); via = "feed"; }
+  if (token && dias) base.analytics = await youtubeAnalytics(token, dias, (base.videos as Record<string, unknown>[]) ?? []).catch((e) => ({ erro: (e as Error).message }));
+  base.conta = !!token; if (erroConta) base.erro_conta = erroConta;
   if (via === "api") await gravarDia(db, canal, "youtube", { seguidores: base.inscritos as Num, posts: base.total_videos as Num, views_total: base.views_total as Num });
   await gravarVideos(db, canal, "youtube", (base.videos as Record<string, unknown>[] | undefined) ?? []);
-  return { conectado: true, via, sem_chave: !chave, link: `https://youtube.com/channel/${id}`, ...base };
+  return { conectado: true, via, sem_chave: !chave && !token, link: `https://youtube.com/channel/${id}`, ...base };
 }
 
 // ───────────────────────── histórico e cache ─────────────────────────
@@ -383,7 +431,7 @@ Deno.serve(async (req) => {
     if (!/^[a-z0-9-]+$/.test(canal)) return json(400, { ok: false, erro: "canal inválido" });
     const dias = [7, 14, 28, 30].includes(Number(body.dias)) ? Number(body.dias) : 28;
     const r = await comCache(db, canal, `canal:${dias}`, forcar, async () => {
-      const [instagram, yt] = await Promise.all([instagramCompleto(db, canal, dias).catch(erro), youtube(db, canal, 100).catch(erro)]);
+      const [instagram, yt] = await Promise.all([instagramCompleto(db, canal, dias).catch(erro), youtube(db, canal, 100, dias).catch(erro)]);
       return { instagram, youtube: yt };
     });
     return json(200, { ok: true, dias, ...r });

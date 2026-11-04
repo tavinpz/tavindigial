@@ -61,6 +61,8 @@ const REDES = [
 // TikTok só conta para canais com @ do TikTok cadastrado (o painel não posta no TikTok: é marcação manual)
 const temTT = (canalId) => !!CANAIS.find((c) => c.id === canalId)?.tiktok
 const redesDe = (v) => REDES.filter((r) => r.k !== 'tt' || temTT(v.canal))
+// canais com a conta do YouTube conectada: o painel sobe o vídeo e o YouTube publica no horário
+const YT_AUTO = new Set()
 function situacao(v, k) {
   if (k === 'ig') {
     const s = { pendente: 'pendente', erro: 'pendente', programado: 'programado', agendado: 'programado', processando: 'programado', publicado: 'postado' }[v.ig_status] || 'pendente'
@@ -69,11 +71,23 @@ function situacao(v, k) {
       auto: v.ig_status === 'agendado' || v.ig_status === 'processando', processando: v.ig_status === 'processando', erro: v.ig_status === 'erro' ? (v.ig_erro || 'erro') : '',
     }
   }
+  if (k === 'yt') {
+    const bruto = v.yt_status || 'pendente'
+    const s = bruto === 'agendado' ? 'programado' : bruto === 'erro' || bruto === 'cancelar' ? 'pendente' : bruto
+    return {
+      s, quando: v.yt_programado_para, postado: v.yt_postado_em, link: v.yt_link, views: v.yt_views, confirmado: !!v.yt_confirmado,
+      auto: bruto === 'agendado' || (bruto === 'programado' && !!v.yt_id), enviando: bruto === 'agendado' && !v.yt_id,
+      erro: bruto === 'erro' ? (v.yt_erro || 'erro') : bruto === 'agendado' && v.yt_erro ? v.yt_erro : '',
+    }
+  }
   return { s: v[`${k}_status`] || 'pendente', quando: v[`${k}_programado_para`], postado: v[`${k}_postado_em`], link: v[`${k}_link`], views: v[`${k}_views`], confirmado: !!v[`${k}_confirmado`] }
 }
 
-function campos(k, acao, iso, igAuto) {
+function campos(k, acao, iso, igAuto, v = null) {
   const agora = new Date().toISOString()
+  if (k === 'yt' && igAuto && acao === 'programar') return { yt_status: 'agendado', yt_programado_para: iso && iso > agora ? iso : agora, yt_postado_em: null, yt_erro: null, yt_tentativas: 0 }
+  // já subiu pelo painel: cancelar tira do ar no YouTube (fica privado)
+  if (k === 'yt' && acao === 'desfazer' && v?.yt_id && v.yt_status !== 'postado') return { yt_status: 'cancelar', yt_erro: null }
   if (acao === 'programar' && iso && iso <= agora) acao = 'postei'
   if (k === 'ig') {
     if (acao === 'programar') return igAuto ? { ig_status: 'agendado', ig_agendado_para: iso, ig_erro: null } : { ig_status: 'programado', ig_agendado_para: iso, ig_erro: null }
@@ -143,8 +157,8 @@ async function compartilhar(v, legenda, avisar) {
 
 function textoRede(st, curto) {
   if (st.s === 'postado') return { classe: 'ok', icone: '✓', txt: curto ? (st.views != null ? `▶ ${fmtNum(st.views)}` : fmtCurto(st.postado).replace(/ .*/, '')) : <>Postado {fmtQuando(st.postado)}{st.views != null && <b> · {fmtViews(st.views)}</b>}</> }
-  if (st.s === 'programado') return { classe: 'prog', icone: '◷', txt: st.processando ? 'processando…' : curto ? fmtCurto(st.quando) : <>{st.auto ? 'Painel posta' : 'Programado'} {fmtQuando(st.quando)}</> }
   if (st.erro) return { classe: 'erro', icone: '!', txt: curto ? 'erro' : `Erro: ${st.erro}` }
+  if (st.s === 'programado') return { classe: 'prog', icone: '◷', txt: st.processando ? 'processando…' : curto ? fmtCurto(st.quando) : <>{st.enviando ? 'Subindo no YouTube, sai' : st.auto ? 'Painel posta' : 'Programado'} {fmtQuando(st.quando)}</> }
   return { classe: 'falta', icone: '', txt: curto ? 'falta' : 'Falta programar' }
 }
 
@@ -155,7 +169,7 @@ function Editor({ v, k, nome, recarregar, igOk, fechar }) {
   const [quando, setQuando] = useState(paraLocal(st.quando || sugestao(v)))
   const fazer = async (acao, extra = {}) => {
     const iso = deLocal(quando)
-    const c = campos(k, acao, acao === 'postei' ? null : iso, extra.auto)
+    const c = campos(k, acao, acao === 'postei' ? null : iso, extra.auto, v)
     const ok = c[`${k}_status`] === 'postado' || c.ig_status === 'publicado' ? `${nome}: postado` : acao === 'desfazer' ? `${nome}: voltou para pendente` : `${nome}: programado para ${fmtQuando(iso)}`
     if (await salvar(c, ok)) fechar()
   }
@@ -175,13 +189,13 @@ function Editor({ v, k, nome, recarregar, igOk, fechar }) {
             <input type="datetime-local" value={quando} onChange={(e) => setQuando(e.target.value)} />
           </label>
           <div className="v-rede-botoes">
-            {k === 'ig' && igOk && (
+            {((k === 'ig' && igOk) || (k === 'yt' && YT_AUTO.has(v.canal))) && (
               <button className="p-btn p-btn--mini p-btn--forte" disabled={!quando || !v.video_url} onClick={() => fazer('programar', { auto: true })}>
-                {st.auto ? 'Mudar horário' : 'Painel posta sozinho'}
+                {st.auto ? 'Mudar horário' : k === 'yt' ? 'Painel sobe e programa' : 'Painel posta sozinho'}
               </button>
             )}
-            <button className={`p-btn p-btn--mini ${k === 'ig' && igOk ? '' : 'p-btn--forte'}`} disabled={!quando} onClick={() => fazer('programar', { auto: false })}>
-              {st.s === 'programado' && !st.auto ? 'Mudar horário' : k === 'ig' && igOk ? 'Programei no app' : 'Programei'}
+            <button className={`p-btn p-btn--mini ${(k === 'ig' && igOk) || (k === 'yt' && YT_AUTO.has(v.canal)) ? '' : 'p-btn--forte'}`} disabled={!quando} onClick={() => fazer('programar', { auto: false })}>
+              {st.s === 'programado' && !st.auto ? 'Mudar horário' : k === 'ig' && igOk ? 'Programei no app' : k === 'yt' && YT_AUTO.has(v.canal) ? 'Programei no Studio' : 'Programei'}
             </button>
             <button className="p-btn p-btn--mini" onClick={() => fazer('postei')}>Já postei</button>
             {st.s === 'programado' && <button className="p-btn p-btn--mini p-btn--fraco" onClick={() => fazer('desfazer')}>Cancelar</button>}
@@ -218,9 +232,9 @@ function dadosMover(v, alvo, igOk, rede = null, quando = null) {
   for (const r of redesDe(v).filter((x) => !rede || x.k === rede)) {
     const st = situacao(v, r.k)
     if (st.processando) continue
-    if ((alvo === 'programar' || alvo === 'subido') && st.s !== 'pendente') d = { ...d, ...campos(r.k, 'desfazer') }
+    if ((alvo === 'programar' || alvo === 'subido') && st.s !== 'pendente') d = { ...d, ...campos(r.k, 'desfazer', null, false, v) }
     // o que já está no ar não volta a ser programado
-    if (alvo === 'programado' && st.s === 'pendente') d = { ...d, ...campos(r.k, 'programar', sug, igOk) }
+    if (alvo === 'programado' && st.s === 'pendente') d = { ...d, ...campos(r.k, 'programar', sug, r.k === 'yt' ? YT_AUTO.has(v.canal) : igOk, v) }
     if (alvo === 'postado' && st.s !== 'postado') d = { ...d, ...campos(r.k, 'postei', null) }
   }
   return d
@@ -387,6 +401,7 @@ export default function Videos({ canal = 'concrete-atlas', nome = 'Concrete Atla
   const [abertoId, setAbertoId] = useState(null)
   const info = CANAIS.find((c) => c.id === canal) || { id: canal, nome, cor: '#888', sigla: nome.slice(0, 2).toUpperCase(), tipo: 'shorts' }
   const cx = useConexoes(canal)
+  if (cx.ytAuto) YT_AUTO.add(canal); else YT_AUTO.delete(canal)
 
   const carregar = async () => {
     const { data } = await supabase.from('videos').select('*').eq('canal', canal).order('publicar_em', { ascending: true, nullsFirst: false })

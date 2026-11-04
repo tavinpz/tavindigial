@@ -297,6 +297,74 @@ function Instagram({ ig, dias, cor, hist }) {
 // ── YouTube ──
 const ORDENS_YT = [['quando', 'Mais recentes'], ['views', 'Mais views'], ['engaj', 'Mais engajamento'], ['curtidas', 'Mais curtidas'], ['comentarios', 'Mais comentados']]
 
+// ── YouTube Analytics (conta do canal conectada): tempo assistido, retenção, origem das views, público ──
+const FONTES_YT = {
+  SHORTS: 'Feed de Shorts', YT_SEARCH: 'Busca do YouTube', SUBSCRIBER: 'Inscritos', RELATED_VIDEO: 'Vídeos sugeridos', EXT_URL: 'Sites e apps de fora',
+  BROWSE: 'Página inicial', NOTIFICATION: 'Notificações', PLAYLIST: 'Playlists', YT_CHANNEL: 'Página do canal', NO_LINK_OTHER: 'Direto ou desconhecido',
+  YT_OTHER_PAGE: 'Outras páginas do YouTube', HASHTAGS: 'Hashtags', END_SCREEN: 'Telas finais', SOUND_PAGE: 'Página do som', ANNOTATION: 'Cards', CAMPAIGN_CARD: 'Cards',
+  PRODUCT_PAGE: 'Página de produto', ADVERTISING: 'Anúncios', LIVE_REDIRECT: 'Redirecionamento de live', SHORTS_CONTENT_LINKS: 'Links em Shorts', VIDEO_REMIXES: 'Remixes',
+}
+const paisNome = (c) => { try { return new Intl.DisplayNames(['pt-BR'], { type: 'region' }).of(c) } catch { return c } }
+const IDADE = { 'age13-17': '13–17', 'age18-24': '18–24', 'age25-34': '25–34', 'age35-44': '35–44', 'age45-54': '45–54', 'age55-64': '55–64', 'age65-': '65+' }
+
+function AnalyticsYT({ a, cor, dias }) {
+  if (!a) return null
+  if (a.erro) return <p className="mc-aviso mc-vazio--erro">O YouTube Analytics respondeu com erro: {a.erro}</p>
+  const t = a.totais || {}, an = a.anterior || {}
+  const horas = (m) => (m == null ? null : m / 60)
+  const liquidos = (t.subscribersGained ?? 0) - (t.subscribersLost ?? 0)
+  const porIdade = Object.entries((a.idade || []).reduce((o, x) => ({ ...o, [x.ageGroup]: (o[x.ageGroup] || 0) + x.viewerPercentage }), {})).map(([k, n]) => ({ k, r: IDADE[k] || k, n: Math.round(n * 10) / 10 }))
+  const porGenero = Object.entries((a.idade || []).reduce((o, x) => ({ ...o, [x.gender]: (o[x.gender] || 0) + x.viewerPercentage }), {})).map(([k, n]) => ({ k, r: k === 'female' ? 'Mulheres' : k === 'male' ? 'Homens' : 'Outros', n: Math.round(n * 10) / 10 }))
+  return (
+    <section className="mc-ana">
+      <h4 className="mc-ana-tit">Analytics do canal <span>{dm(a.de)} a {dm(a.ate)} · o YouTube entrega com 1 a 2 dias de atraso</span></h4>
+      <div className="mc-nums">
+        <Num v={t.views} rotulo={`views em ${dias} dias`}><Delta atual={t.views} antes={an.views} /></Num>
+        <Num txt={horas(t.estimatedMinutesWatched) == null ? '—' : fmt(Math.round(horas(t.estimatedMinutesWatched)))} rotulo="horas assistidas"><Delta atual={t.estimatedMinutesWatched} antes={an.estimatedMinutesWatched} /></Num>
+        <Num txt={t.averageViewDuration == null ? '—' : dur(Math.round(t.averageViewDuration))} rotulo="tempo médio por view" />
+        <Num txt={pct(t.averageViewPercentage)} rotulo="do vídeo assistido, em média (retenção)" />
+        <Num txt={`${liquidos >= 0 ? '+' : ''}${fmt(liquidos)}`} rotulo="inscritos no período" sub={`${fmt(t.subscribersGained)} entraram · ${fmt(t.subscribersLost)} saíram`} />
+        <Num v={t.likes} rotulo="curtidas" sub={`${fmt(t.shares)} compartilhamentos · ${fmt(t.comments)} comentários`} />
+      </div>
+      {a.dia?.length > 1 && <Barras serie={a.dia.map((x) => ({ k: x.day, n: x.views }))} cor={cor} unidade="views" titulo="Views por dia (Analytics)" />}
+      {a.dia?.length > 1 && <Barras serie={a.dia.map((x) => ({ k: x.day, n: x.subscribersGained - x.subscribersLost }))} cor={cor} unidade="inscritos" titulo="Inscritos ganhos por dia" />}
+      <div className="mc-duas">
+        <Partes titulo="De onde vêm as views" itens={(a.fontes || []).map((f) => ({ k: f.insightTrafficSourceType, r: FONTES_YT[f.insightTrafficSourceType] || f.insightTrafficSourceType, n: f.views }))} cor={cor} />
+        <Partes titulo="Países" itens={(a.paises || []).map((p) => ({ k: p.country, r: paisNome(p.country), n: p.views }))} cor={cor} />
+      </div>
+      {(porIdade.length > 0 || porGenero.length > 0) && (
+        <div className="mc-duas">
+          <Partes titulo="Idade de quem assiste (%)" itens={porIdade} cor={cor} />
+          <Partes titulo="Gênero (%)" itens={porGenero} cor={cor} />
+        </div>
+      )}
+      {a.top?.length > 0 && (
+        <>
+          <div className="mc-sub"><h4>Vídeos que mais renderam no período <span>views, retenção e inscritos de cada um</span></h4></div>
+          <ul className="mc-posts mc-posts--yt">
+            {a.top.map((v) => (
+              <li key={v.video}>
+                <a href={v.link} target="_blank" rel="noreferrer" title={v.titulo}>
+                  <span className="mc-capa mc-capa--yt"><img src={v.capa} alt="" loading="lazy" /></span>
+                  <span className="mc-post-txt">
+                    <strong>{v.titulo}</strong>
+                    <span className="mc-post-nums">
+                      <span><b>{fmt(v.views)}</b> views</span>
+                      <span><b>{pct(v.averageViewPercentage)}</b> assistido</span>
+                      <span><b>{dur(Math.round(v.averageViewDuration || 0))}</b> por view</span>
+                      <span><b>{fmt(v.subscribersGained)}</b> inscritos</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+    </section>
+  )
+}
+
 function YouTube({ yt, dias, cor, hist }) {
   const [ordem, setOrdem] = useState('quando')
   const [mais, setMais] = useState(false)
@@ -324,6 +392,8 @@ function YouTube({ yt, dias, cor, hist }) {
         <p className="mc-aviso">Sem a chave da API do YouTube o painel só enxerga os 15 vídeos mais recentes, sem inscritos exatos nem comentários. Cole a chave em <b>Integrações → YouTube</b> (vale para todos os canais).</p>
       )}
       {yt.erro_api && <p className="mc-aviso mc-vazio--erro">A chave do YouTube deu erro ({yt.erro_api}). Mostrando o feed público por enquanto.</p>}
+      {yt.erro_conta && <p className="mc-aviso mc-vazio--erro">Conta do YouTube: {yt.erro_conta}</p>}
+      {!yt.conta && !yt.erro_conta && <p className="mc-aviso">Para ver tempo assistido, retenção, de onde vêm as views e o público, conecte a conta do canal em <b>Integrações → YouTube → Conectar conta do YouTube</b>.</p>}
       <div className="mc-nums">
         <Num v={yt.inscritos} txt={yt.inscritos == null ? (yt.inscritos_txt || '—') : undefined} rotulo="inscritos"
           sub={ganhoIns != null ? `${ganhoIns >= 0 ? '+' : ''}${fmt(ganhoIns)} em ${dias} dias` : yt.inscritos_ocultos ? 'o canal esconde o número' : null} />
@@ -333,6 +403,7 @@ function YouTube({ yt, dias, cor, hist }) {
         <Num v={Math.round(media(ultimos, 'views') ?? NaN)} rotulo={`views por vídeo (últimos ${ultimos.length})`} />
         <Num txt={pct(media(ultimos.filter((v) => v.views), 'engaj'))} rotulo="engajamento (curtidas + coment. ÷ views)" />
       </div>
+      <AnalyticsYT a={yt.analytics} cor={cor} dias={dias} />
       {viewsDia.length >= 2 && <Barras serie={viewsDia} cor={cor} unidade="views" titulo="Views do canal por dia" />}
       {hIns.length >= 2
         ? <Linha pontos={hIns} cor={cor} titulo="Inscritos ao longo do tempo" unidade="inscritos" />

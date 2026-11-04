@@ -1541,3 +1541,10 @@ a.crm-btn { text-decoration: none; display: inline-flex; align-items: center; }
 .mc-abas button[style*="#0E0E10"].on { color: #0E0E10; }
 .mc-bloco--rede { border-top: 3px solid var(--r); }
 .mc-rede { margin: 0; display: inline-flex; align-items: center; gap: 7px; align-self: flex-start; font-size: 12.5px; font-weight: 700; color: var(--r); background: color-mix(in srgb, var(--r) 9%, transparent); padding: 4px 10px 4px 8px; border-radius: 999px; }
+.pl-integ-sub { margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--linha); }
+.pl-integ-link { font: inherit; font-size: 12px; background: none; border: 0; padding: 4px 0 0 18px; color: var(--cinza); text-decoration: underline; cursor: pointer; }
+.pl-integ-dica code { display: inline-block; margin-top: 4px; padding: 3px 6px; border-radius: 6px; background: var(--papel); font-size: 11.5px; word-break: break-all; user-select: all; }
+.mc-ana { display: flex; flex-direction: column; gap: 14px; padding: 14px; margin: 2px -4px; border-radius: 14px; background: color-mix(in srgb, var(--r, #E02424) 4%, transparent); border: 1px solid color-mix(in srgb, var(--r, #E02424) 18%, transparent); }
+.mc-ana-tit { margin: 0; font-size: 15px; display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; }
+.mc-ana-tit span { font-weight: 400; font-size: 12.5px; color: var(--cinza); }
+.mc-duas { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
