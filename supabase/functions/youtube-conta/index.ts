@@ -77,6 +77,7 @@ async function retorno(db: SupabaseClient, url: URL) {
   // conta com mais de um canal: se escolheu um canal diferente do que este canal do painel já usa, não liga
   if (m[`yt_${canal}_channel_id`] && m[`yt_${canal}_channel_id`] !== ch.id) return pagina(false, "Canal errado", `Você escolheu "${ch.snippet?.title ?? ch.id}", que não é o canal deste painel. Clique em Conectar de novo e, no Google, escolha o canal certo.`, canal);
   await guardar(db, `yt_${canal}_refresh`, t.refresh_token);
+  await guardar(db, `yt_${canal}_escopos`, String(t.scope ?? ""));
   await guardar(db, `yt_${canal}_channel_id`, ch.id);
   await guardar(db, `yt_${canal}_conta`, ch.snippet?.title ?? ch.id);
   if (!m[`yt_${canal}_ref`]) await guardar(db, `yt_${canal}_ref`, ch.snippet?.customUrl || ch.id);
@@ -150,9 +151,11 @@ async function processar(db: SupabaseClient) {
   const enviados: Record<string, number> = {};
   const r: Record<string, string> = {};
   let envios = 0, mudancas = 0;
+  const semPermissao = new Set<string>();
   for (const v of [...(a ?? []), ...(b ?? [])]) {
     try {
       if (v.yt_status === "cancelar" || v.yt_id) {
+        if (semPermissao.has(v.canal)) continue;
         // só muda o status de quem já está no YouTube (rápido): até 15 por rodada
         if (mudancas >= 15) continue;
         mudancas++;
@@ -172,11 +175,14 @@ async function processar(db: SupabaseClient) {
       enviados[v.canal]++;
     } catch (e) {
       const msg = (e as Error).message, motivo = (e as Error & { motivo?: string }).motivo ?? "";
-      const cota = /quota|uploadLimitExceeded|rateLimit/i.test(motivo + msg);
-      const n = (v.yt_tentativas || 0) + (cota ? 0 : 1);
-      await db.from("videos").update({ yt_erro: cota ? `limite do YouTube atingido, tento de novo depois (${msg})` : msg, yt_tentativas: n, ...(n >= 3 ? { yt_status: "erro" } : {}) }).eq("id", v.id);
+      const cota = /quota|uploadLimitExceeded|rateLimit|exceeded the number of videos/i.test(motivo + msg);
+      const permissao = /insufficientPermissions|insufficient authentication scopes|conecte de novo/i.test(motivo + msg);
+      const n = (v.yt_tentativas || 0) + (cota || permissao ? 0 : 1);
+      const aviso = cota ? `o canal chegou no limite de envios do YouTube; sobe sozinho quando liberar` : permissao ? "falta reconectar a conta do YouTube (permissão nova)" : msg;
+      await db.from("videos").update({ yt_erro: aviso, yt_tentativas: n, ...(n >= 3 ? { yt_status: "erro" } : {}) }).eq("id", v.id);
       r[v.id] = `erro: ${msg}`;
       if (cota) enviados[v.canal] = limite;
+      if (permissao) semPermissao.add(v.canal);
     }
   }
   return r;

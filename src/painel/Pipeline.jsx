@@ -279,8 +279,8 @@ function Integracoes({ canal, marca, cx, recarregar, fechar }) {
             </form>
           )}
           <div className="pl-integ-linha pl-integ-sub">
-            <span className={`pl-ponto ${yt.oauth ? 'on' : ''}`} aria-hidden="true" />
-            <div className="pl-integ-txt"><b>Conta do YouTube</b><small>{yt.oauth ? `${yt.conta || 'conectada'} · o painel sobe, programa e traz as métricas completas` : 'Conecte para o painel subir e programar os vídeos e ver as métricas detalhadas'}</small></div>
+            <span className={`pl-ponto ${yt.oauth && yt.permissao_ok ? 'on' : yt.oauth ? 'pl-ponto--aviso' : ''}`} aria-hidden="true" />
+            <div className="pl-integ-txt"><b>Conta do YouTube</b><small>{yt.oauth && !yt.permissao_ok ? `${yt.conta || 'conectada'} · clique em "Conectar de novo" para liberar mudar data e tirar do ar` : yt.oauth ? `${yt.conta || 'conectada'} · o painel sobe, programa e traz as métricas completas` : 'Conecte para o painel subir e programar os vídeos e ver as métricas detalhadas'}</small></div>
             <div className="pl-integ-acoes">
               {yt.oauth && <button className="p-btn p-btn--mini p-btn--fraco" onClick={testarYT}>Testar</button>}
               {yt.oauth && <button className="p-btn p-btn--mini p-btn--fraco" onClick={desconectarYT}>Desligar</button>}
