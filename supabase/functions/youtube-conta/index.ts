@@ -16,16 +16,11 @@ const cors = {
 const json = (status: number, body: unknown) => new Response(JSON.stringify(body), { status, headers: { ...cors, "Content-Type": "application/json" } });
 const REDIRECT = "https://vvlzverpxojrecxysmhm.supabase.co/functions/v1/youtube-conta";
 const PAINEL = "https://tavindigital.online/painel";
-const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]!));
 
-function pagina(ok: boolean, titulo: string, texto: string) {
-  const html = `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(titulo)}</title>
-<style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#F3EFF6;font:16px/1.5 system-ui,sans-serif;color:#1D1622;padding:16px}
-main{max-width:420px;background:#fff;border-radius:18px;padding:28px 24px;box-shadow:0 20px 50px -30px rgba(30,10,40,.4)}
-h1{font-size:21px;margin:0 0 8px}p{margin:0 0 18px;color:#5B5163}a{display:inline-block;background:${ok ? "#B600F6" : "#1D1622"};color:#fff;text-decoration:none;padding:10px 18px;border-radius:999px;font-weight:600}</style></head>
-<body><main><h1>${esc(titulo)}</h1><p>${esc(texto)}</p><a href="${PAINEL}">Voltar ao painel</a></main>
-${ok ? "<script>try{window.opener&&window.opener.postMessage('youtube-conectado','*')}catch(e){}</script>" : ""}</body></html>`;
-  return new Response(html, { status: 200, headers: { "Content-Type": "text/html; charset=utf-8" } });
+// o domínio das funções não mostra página HTML (vira texto): volta para o painel com o resultado na URL
+function pagina(ok: boolean, titulo: string, texto: string, canal = "") {
+  const q = new URLSearchParams({ yt: ok ? "ok" : "erro", msg: `${titulo}: ${texto}`, ...(canal ? { canal } : {}) });
+  return new Response(null, { status: 302, headers: { Location: `${PAINEL}?${q}` } });
 }
 
 async function cfg(db: SupabaseClient, keys: string[]) {
@@ -74,11 +69,11 @@ async function retorno(db: SupabaseClient, url: URL) {
     body: new URLSearchParams({ code, client_id: m.yt_oauth_client_id, client_secret: m.yt_oauth_client_secret, redirect_uri: REDIRECT, grant_type: "authorization_code" }),
   });
   const t = await r.json().catch(() => ({}));
-  if (!r.ok || !t.access_token) return pagina(false, "Não deu para conectar", `O Google respondeu: ${t.error_description || t.error || r.status}`);
-  if (!t.refresh_token) return pagina(false, "Falta permissão", "O Google não mandou o acesso permanente. Em myaccount.google.com/permissions, remova o app e conecte de novo.");
+  if (!r.ok || !t.access_token) return pagina(false, "Não deu para conectar", `O Google respondeu: ${t.error_description || t.error || r.status}`, canal);
+  if (!t.refresh_token) return pagina(false, "Falta permissão", "O Google não mandou o acesso permanente. Em myaccount.google.com/permissions, remova o app e conecte de novo.", canal);
   let ch: Record<string, any> | undefined;
   try { ch = (await google(t.access_token, "https://www.googleapis.com/youtube/v3/channels?part=snippet&mine=true")).items?.[0]; } catch { /* sem canal */ }
-  if (!ch) return pagina(false, "Essa conta não tem canal", "A conta Google escolhida não tem canal no YouTube. Conecte com a conta (ou a conta de marca) do canal.");
+  if (!ch) return pagina(false, "Essa conta não tem canal", "A conta Google escolhida não tem canal no YouTube. Conecte com a conta (ou a conta de marca) do canal.", canal);
   await guardar(db, `yt_${canal}_refresh`, t.refresh_token);
   await guardar(db, `yt_${canal}_channel_id`, ch.id);
   await guardar(db, `yt_${canal}_conta`, ch.snippet?.title ?? ch.id);
@@ -86,7 +81,7 @@ async function retorno(db: SupabaseClient, url: URL) {
   const { data: c } = await db.from("canais").select("youtube").eq("id", canal).maybeSingle();
   if (c && !c.youtube && ch.snippet?.customUrl) await db.from("canais").update({ youtube: ch.snippet.customUrl }).eq("id", canal);
   await db.from("metricas_cache").delete().eq("canal", canal);
-  return pagina(true, "YouTube conectado", `${ch.snippet?.title ?? "Canal"} está ligado ao painel. Agora o painel sobe e programa os vídeos e traz as métricas completas. Pode fechar esta aba.`);
+  return pagina(true, "YouTube conectado", `${ch.snippet?.title ?? "Canal"} ligado: o painel sobe e programa os vídeos e traz as métricas completas.`, canal);
 }
 
 // sobe um vídeo com a data de publicação

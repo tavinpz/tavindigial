@@ -25,22 +25,13 @@ const n = (x) => Number(x || 0).toLocaleString('pt-BR')
 const OLHO = 'M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12zM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z'
 
 // Cartão ao passar o mouse no canal: views de hoje rede por rede
-function CartaoViews({ nome, v, pos }) {
+function CartaoViews({ v, pos }) {
   const r = v.por_rede || {}
-  const hora = v.atualizado_em ? new Date(v.atualizado_em).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) : ''
-  const linhas = [
-    ['instagram', 'Instagram', '#D62F8C', r.instagram != null ? n(r.instagram) : null],
-    ['youtube', 'YouTube', '#E02424', r.youtube != null ? n(r.youtube) : null],
-    ['tiktok', 'TikTok', '#25F4EE', v.curtidas ? `+${n(v.curtidas)} curtidas` : null],
-  ].filter((l) => l[3] != null)
+  const redes = [['IG', '#D62F8C', r.instagram], ['YT', '#E02424', r.youtube]].filter((x) => x[2] != null)
   return createPortal(
     <div className="m-cartao" role="tooltip" style={{ left: pos.x, top: pos.y }}>
-      <span className="m-cartao-nome">{nome}</span>
-      <span className="m-cartao-total"><b>{n(v.views)}</b> views hoje</span>
-      {linhas.length > 0 && (
-        <ul>{linhas.map(([k, rede, cor, txt]) => <li key={k}><i style={{ background: cor }} />{rede}<b>{txt}</b></li>)}</ul>
-      )}
-      <small>Contadas desde 00h. Atualiza a cada 30 min{hora ? ` (última às ${hora})` : ''}. Quem tem mais views fica em cima no menu.</small>
+      <span><b>{n(v.views)}</b> views hoje</span>
+      {redes.length > 0 && <span className="m-cartao-redes">{redes.map(([k, cor, x]) => <span key={k}><i style={{ background: cor }} />{k} {n(x)}</span>)}{v.curtidas ? <span><i style={{ background: '#25F4EE' }} />TT +{n(v.curtidas)} curt.</span> : null}</span>}
     </div>, document.body)
 }
 
@@ -71,7 +62,7 @@ function Item({ id, nome, ico, canal, aba, ir, recolhido, v }) {
           </span>
         )}
       </button>
-      {pos && <CartaoViews nome={nome} v={v} pos={pos} />}
+      {pos && <CartaoViews v={v} pos={pos} />}
     </>
   )
 }

@@ -92,6 +92,7 @@ export default function Painel() {
   const [sessao, setSessao] = useState(undefined)
   const [admin, setAdmin] = useState(null)
   const [aba, setAba] = useState(() => {
+    try { const q = new URLSearchParams(window.location.search); if (q.get('yt') && /^[a-z0-9-]+$/.test(q.get('canal') || '')) return `canal:${q.get('canal')}` } catch { /* segue */ }
     try { const a = ANTIGAS[localStorage.getItem('p-aba')] || localStorage.getItem('p-aba'); return a && (a.startsWith('canal:') || FIXAS.some(([id]) => id === a)) ? a : 'inicio' } catch { return 'inicio' }
   })
   const [canaisV, setCanaisV] = useState(0)
@@ -143,7 +144,14 @@ export default function Painel() {
 
   useEffect(() => { try { localStorage.setItem('p-aba', aba) } catch { /* sem storage */ } }, [aba])
 
-  const avisar = useCallback((t) => { setAviso(t); setTimeout(() => setAviso(''), 2600) }, [])
+  const avisar = useCallback((t, ms = 2600) => { setAviso(t); setTimeout(() => setAviso(''), ms) }, [])
+  // volta do Google (conectar YouTube): mostra o resultado e limpa a URL
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search)
+    if (!q.get('yt')) return
+    avisar(q.get('msg') || (q.get('yt') === 'ok' ? 'YouTube conectado' : 'YouTube não conectado'), 8000)
+    window.history.replaceState(null, '', window.location.pathname)
+  }, [avisar])
   // resposta da extensão do WhatsApp (ex.: número sem WhatsApp)
   useEffect(() => {
     const ouvir = (e) => {

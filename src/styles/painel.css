@@ -1522,15 +1522,11 @@ a.crm-btn { text-decoration: none; display: inline-flex; align-items: center; }
 .m-views--subiu { background: #22C55E; color: #06210F; animation: m-pisca 1s ease-in-out 4; }
 .m-views--subiu svg { opacity: 1; }
 @keyframes m-pisca { 0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,.55); } 50% { box-shadow: 0 0 0 5px rgba(34,197,94,0); } }
-.m-cartao { position: fixed; z-index: 120; transform: translateY(-50%); width: 240px; padding: 12px 14px; border-radius: 12px; background: #1D1622; color: #F3EEF6; box-shadow: 0 18px 40px -12px rgba(10,5,15,.55), 0 0 0 1px rgba(255,255,255,.08); display: grid; gap: 6px; pointer-events: none; font-size: 13px; }
-.m-cartao-nome { font-weight: 700; }
-.m-cartao-total { color: rgba(255,255,255,.7); }
-.m-cartao-total b { font-size: 20px; color: #fff; font-variant-numeric: tabular-nums; margin-right: 2px; }
-.m-cartao ul { list-style: none; margin: 2px 0 0; padding: 8px 0 0; border-top: 1px solid rgba(255,255,255,.1); display: grid; gap: 5px; }
-.m-cartao li { display: flex; align-items: center; gap: 8px; }
-.m-cartao li i { width: 8px; height: 8px; border-radius: 50%; flex: none; }
-.m-cartao li b { margin-left: auto; font-variant-numeric: tabular-nums; }
-.m-cartao small { color: rgba(255,255,255,.5); font-size: 11.5px; line-height: 1.35; }
+.m-cartao { position: fixed; z-index: 120; transform: translateY(-50%); padding: 7px 10px; border-radius: 9px; background: #1D1622; color: rgba(255,255,255,.75); box-shadow: 0 10px 24px -10px rgba(10,5,15,.6); font-size: 12px; line-height: 1.4; white-space: nowrap; pointer-events: none; display: grid; gap: 2px; }
+.m-cartao b { color: #fff; font-size: 13.5px; font-variant-numeric: tabular-nums; }
+.m-cartao-redes { display: flex; gap: 9px; }
+.m-cartao-redes span { display: inline-flex; align-items: center; gap: 4px; font-variant-numeric: tabular-nums; }
+.m-cartao-redes i { width: 6px; height: 6px; border-radius: 50%; }
 @media (prefers-reduced-motion: reduce) { .m-views--subiu { animation: none; } }
 @media (hover: none) { .m-cartao { display: none; } }
 
