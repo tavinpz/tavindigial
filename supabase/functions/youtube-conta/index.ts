@@ -63,7 +63,7 @@ async function retorno(db: SupabaseClient, url: URL) {
   if (!code || !est || Date.now() - new Date(est.criado_em).getTime() > 30 * 60000) return pagina(false, "Link vencido", "Abra de novo pelo painel: Integrações → YouTube → Conectar conta.");
   await db.from("yt_oauth_estado").delete().eq("state", state);
   const canal = est.canal as string;
-  const m = await cfg(db, ["yt_oauth_client_id", "yt_oauth_client_secret", `yt_${canal}_ref`]);
+  const m = await cfg(db, ["yt_oauth_client_id", "yt_oauth_client_secret", `yt_${canal}_ref`, `yt_${canal}_channel_id`]);
   const r = await fetch("https://oauth2.googleapis.com/token", {
     method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams({ code, client_id: m.yt_oauth_client_id, client_secret: m.yt_oauth_client_secret, redirect_uri: REDIRECT, grant_type: "authorization_code" }),
@@ -74,6 +74,8 @@ async function retorno(db: SupabaseClient, url: URL) {
   let ch: Record<string, any> | undefined;
   try { ch = (await google(t.access_token, "https://www.googleapis.com/youtube/v3/channels?part=snippet&mine=true")).items?.[0]; } catch { /* sem canal */ }
   if (!ch) return pagina(false, "Essa conta não tem canal", "A conta Google escolhida não tem canal no YouTube. Conecte com a conta (ou a conta de marca) do canal.", canal);
+  // conta com mais de um canal: se escolheu um canal diferente do que este canal do painel já usa, não liga
+  if (m[`yt_${canal}_channel_id`] && m[`yt_${canal}_channel_id`] !== ch.id) return pagina(false, "Canal errado", `Você escolheu "${ch.snippet?.title ?? ch.id}", que não é o canal deste painel. Clique em Conectar de novo e, no Google, escolha o canal certo.`, canal);
   await guardar(db, `yt_${canal}_refresh`, t.refresh_token);
   await guardar(db, `yt_${canal}_channel_id`, ch.id);
   await guardar(db, `yt_${canal}_conta`, ch.snippet?.title ?? ch.id);

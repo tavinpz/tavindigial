@@ -216,7 +216,7 @@ const segundos = (iso: string) => {
 
 async function youtubeAPI(id: string, chave: string, limite: number, token: string | null = null) {
   const g = async (rec: string, p: Record<string, string>) => {
-    const r = await fetch(`https://www.googleapis.com/youtube/v3/${rec}?${new URLSearchParams(chave ? { ...p, key: chave } : p)}`, token && !chave ? { headers: { Authorization: `Bearer ${token}` } } : {});
+    const r = await fetch(`https://www.googleapis.com/youtube/v3/${rec}?${new URLSearchParams(token ? p : { ...p, key: chave })}`, token ? { headers: { Authorization: `Bearer ${token}` } } : {});
     const d = await r.json().catch(() => ({}));
     if (!r.ok || d.error) throw new Error(d.error?.message || `HTTP ${r.status}`);
     return d;
@@ -233,7 +233,7 @@ async function youtubeAPI(id: string, chave: string, limite: number, token: stri
   }
   const videos: Record<string, unknown>[] = [];
   for (let i = 0; i < ids.length; i += 50) {
-    const v = await g("videos", { part: "snippet,statistics,contentDetails", id: ids.slice(i, i + 50).join(",") });
+    const v = await g("videos", { part: "snippet,statistics,contentDetails,status", id: ids.slice(i, i + 50).join(",") });
     for (const x of v.items ?? []) {
       const views = Number(x.statistics?.viewCount ?? 0), curt = x.statistics?.likeCount != null ? Number(x.statistics.likeCount) : null, com = x.statistics?.commentCount != null ? Number(x.statistics.commentCount) : null;
       const dur = segundos(x.contentDetails?.duration);
@@ -242,6 +242,7 @@ async function youtubeAPI(id: string, chave: string, limite: number, token: stri
         capa: x.snippet?.thumbnails?.medium?.url ?? `https://i.ytimg.com/vi/${x.id}/mqdefault.jpg`,
         link: dur != null && dur <= 180 ? `https://youtube.com/shorts/${x.id}` : `https://youtu.be/${x.id}`,
         short: dur != null && dur <= 180, duracao: dur, views, curtidas: curt, comentarios: com,
+        privacidade: x.status?.privacyStatus ?? null, publicar_em: x.status?.publishAt ?? null,
         engaj: views ? Math.round((((curt || 0) + (com || 0)) / views) * 1000) / 10 : null,
       });
     }
@@ -251,6 +252,8 @@ async function youtubeAPI(id: string, chave: string, limite: number, token: stri
     nome: ch.snippet?.title ?? "", foto: ch.snippet?.thumbnails?.default?.url ?? null, handle: ch.snippet?.customUrl ?? null,
     inscritos: s.hiddenSubscriberCount ? null : Number(s.subscriberCount ?? 0), inscritos_ocultos: !!s.hiddenSubscriberCount,
     views_total: Number(s.viewCount ?? 0), total_videos: Number(s.videoCount ?? 0), criado: ch.snippet?.publishedAt ?? null, videos,
+    privados: videos.filter((v) => v.privacidade && v.privacidade !== "public" && !v.publicar_em).length,
+    programados: videos.filter((v) => v.publicar_em && new Date(v.publicar_em as string).getTime() > Date.now()).length,
   };
 }
 

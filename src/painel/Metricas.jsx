@@ -398,7 +398,7 @@ function YouTube({ yt, dias, cor, hist }) {
         <Num v={yt.inscritos} txt={yt.inscritos == null ? (yt.inscritos_txt || '—') : undefined} rotulo="inscritos"
           sub={ganhoIns != null ? `${ganhoIns >= 0 ? '+' : ''}${fmt(ganhoIns)} em ${dias} dias` : yt.inscritos_ocultos ? 'o canal esconde o número' : null} />
         {yt.views_total != null && <Num v={yt.views_total} rotulo="views no canal (total)" sub={viewsPeriodo != null ? `+${fmt(viewsPeriodo)} em ${dias} dias` : null} />}
-        {yt.total_videos != null && <Num v={yt.total_videos} rotulo="vídeos no canal" />}
+        {yt.total_videos != null && <Num v={yt.total_videos} rotulo="vídeos públicos no canal" sub={yt.programados || yt.privados ? [yt.programados && `${yt.programados} programados`, yt.privados && `${yt.privados} privados`].filter(Boolean).join(' · ') : null} />}
         <Num v={novos.length} rotulo={`vídeos postados em ${dias} dias`} sub={novos.length ? `${fmt(soma(novos, 'views'))} views neles` : null} />
         <Num v={Math.round(media(ultimos, 'views') ?? NaN)} rotulo={`views por vídeo (últimos ${ultimos.length})`} />
         <Num txt={pct(media(ultimos.filter((v) => v.views), 'engaj'))} rotulo="engajamento (curtidas + coment. ÷ views)" />
@@ -429,7 +429,7 @@ function YouTube({ yt, dias, cor, hist }) {
                 <a href={v.link} target="_blank" rel="noreferrer" title={v.titulo}>
                   <span className="mc-capa mc-capa--yt">{v.capa ? <img src={v.capa} alt="" loading="lazy" /> : null}{v.duracao != null && <em className="mc-dur">{dur(v.duracao)}</em>}</span>
                   <span className="mc-post-txt">
-                    <small>{v.short ? 'short' : v.short === false ? 'vídeo' : 'vídeo'} · {data(v.quando)}</small>
+                    <small>{v.short ? 'short' : 'vídeo'} · {v.publicar_em && new Date(v.publicar_em) > new Date() ? <b className="mc-priv">programado {data(v.publicar_em)}</b> : v.privacidade === 'private' ? <b className="mc-priv">privado</b> : v.privacidade === 'unlisted' ? <b className="mc-priv">não listado</b> : data(v.quando)}</small>
                     <strong>{v.titulo}</strong>
                     <span className="mc-post-nums">
                       <span><b>{fmt(v.views)}</b> views</span>
