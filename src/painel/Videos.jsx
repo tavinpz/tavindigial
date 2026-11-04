@@ -73,10 +73,11 @@ function situacao(v, k) {
   }
   if (k === 'yt') {
     const bruto = v.yt_status || 'pendente'
-    const s = bruto === 'agendado' ? 'programado' : bruto === 'erro' || bruto === 'cancelar' ? 'pendente' : bruto
+    const s = bruto === 'agendado' ? 'programado' : bruto === 'erro' || bruto === 'cancelar' || bruto === 'subir' ? 'pendente' : bruto
     return {
       s, quando: v.yt_programado_para, postado: v.yt_postado_em, link: v.yt_link, views: v.yt_views, confirmado: !!v.yt_confirmado,
       auto: bruto === 'agendado' || (bruto === 'programado' && !!v.yt_id), enviando: bruto === 'agendado' && !v.yt_id,
+      subindo: bruto === 'subir', noYT: !!v.yt_id && bruto !== 'postado',
       erro: bruto === 'erro' ? (v.yt_erro || 'erro') : bruto === 'agendado' && v.yt_erro ? v.yt_erro : '',
     }
   }
@@ -159,6 +160,8 @@ function textoRede(st, curto) {
   if (st.s === 'postado') return { classe: 'ok', icone: '✓', txt: curto ? (st.views != null ? `▶ ${fmtNum(st.views)}` : fmtCurto(st.postado).replace(/ .*/, '')) : <>Postado {fmtQuando(st.postado)}{st.views != null && <b> · {fmtViews(st.views)}</b>}</> }
   if (st.erro) return { classe: 'erro', icone: '!', txt: curto ? 'erro' : `Erro: ${st.erro}` }
   if (st.s === 'programado') return { classe: 'prog', icone: '◷', txt: st.processando ? 'processando…' : curto ? fmtCurto(st.quando) : <>{st.enviando ? 'Subindo no YouTube, sai' : st.auto ? 'Painel posta' : 'Programado'} {fmtQuando(st.quando)}</> }
+  if (st.subindo) return { classe: 'falta', icone: '↑', txt: curto ? 'subindo' : 'Indo para o YouTube como privado' }
+  if (st.noYT) return { classe: 'falta', icone: '', txt: curto ? 'privado' : 'Privado no YouTube, falta programar' }
   return { classe: 'falta', icone: '', txt: curto ? 'falta' : 'Falta programar' }
 }
 

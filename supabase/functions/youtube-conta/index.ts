@@ -86,17 +86,27 @@ async function retorno(db: SupabaseClient, url: URL) {
   return pagina(true, "YouTube conectado", `${ch.snippet?.title ?? "Canal"} ligado: o painel sobe e programa os vídeos e traz as métricas completas.`, canal);
 }
 
-// sobe um vídeo com a data de publicação
-async function subir(db: SupabaseClient, v: Record<string, any>) {
+// quantos vídeos o canal subiu nas últimas 24 h (o YouTube limita envios por dia em cada canal)
+async function enviados24h(token: string) {
+  const ch = (await google(token, "https://www.googleapis.com/youtube/v3/channels?part=contentDetails&mine=true")).items?.[0];
+  const up = ch?.contentDetails?.relatedPlaylists?.uploads;
+  if (!up) return 0;
+  const pl = await google(token, `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${up}`);
+  const desde = Date.now() - 24 * 3600000;
+  return ((pl.items ?? []) as { snippet?: { publishedAt?: string } }[]).filter((i) => i.snippet?.publishedAt && new Date(i.snippet.publishedAt).getTime() > desde).length;
+}
+
+// sobe um vídeo: com data (o YouTube publica no horário) ou, em "rascunho", privado e sem data para programar depois
+async function subir(db: SupabaseClient, v: Record<string, any>, rascunho = false) {
   const token = await tokenDe(db, v.canal);
   const { data: c } = await db.from("canais").select("yt_sintetico").eq("id", v.canal).maybeSingle();
   const quando = v.yt_programado_para ? new Date(v.yt_programado_para) : null;
-  const futuro = quando && quando.getTime() > Date.now() + 5 * 60000;
+  const futuro = !rascunho && quando && quando.getTime() > Date.now() + 5 * 60000;
   let tags: string[] = [], soma = 0;
   for (const t of String(v.yt_tags || "").split(",").map((x) => x.trim()).filter(Boolean)) { if (soma + t.length + 2 > 480) break; tags.push(t); soma += t.length + 2; }
   const meta = {
     snippet: { title: String(v.yt_titulo || v.titulo || "Vídeo").slice(0, 100), description: String(v.yt_descricao || "").slice(0, 4900), tags, categoryId: "22" },
-    status: { privacyStatus: futuro ? "private" : "public", ...(futuro ? { publishAt: quando!.toISOString() } : {}), selfDeclaredMadeForKids: false, containsSyntheticMedia: c?.yt_sintetico ?? true },
+    status: { privacyStatus: futuro || rascunho ? "private" : "public", ...(futuro ? { publishAt: quando!.toISOString() } : {}), selfDeclaredMadeForKids: false, containsSyntheticMedia: c?.yt_sintetico ?? true },
   };
   const arq = await fetch(v.video_url);
   if (!arq.ok) throw new Error(`não consegui baixar o vídeo (${arq.status})`);
@@ -113,10 +123,10 @@ async function subir(db: SupabaseClient, v: Record<string, any>) {
   const d = await fim.json().catch(() => ({}));
   if (!fim.ok || !d.id) throw new Error(d.error?.message || `envio falhou (${fim.status})`);
   await db.from("videos").update({
-    yt_id: d.id, yt_link: `https://youtube.com/shorts/${d.id}`, yt_erro: null, yt_tentativas: 0,
-    ...(futuro ? { yt_status: "programado" } : { yt_status: "postado", yt_postado_em: new Date().toISOString() }),
+    yt_id: d.id, yt_link: `https://youtube.com/shorts/${d.id}`, yt_erro: null, yt_tentativas: 0, yt_subido_em: new Date().toISOString(),
+    ...(rascunho ? { yt_status: "pendente" } : futuro ? { yt_status: "programado" } : { yt_status: "postado", yt_postado_em: new Date().toISOString() }),
   }).eq("id", v.id);
-  return futuro ? `programado ${quando!.toISOString()}` : "publicado agora";
+  return rascunho ? "privado no YouTube (falta programar)" : futuro ? `programado ${quando!.toISOString()}` : "publicado agora";
 }
 
 // muda o horário (ou tira do ar) de um vídeo que já subiu
@@ -131,18 +141,31 @@ async function mudarStatus(db: SupabaseClient, v: Record<string, any>, cancelar:
 }
 
 async function processar(db: SupabaseClient) {
-  const { data } = await db.from("videos").select("id,canal,titulo,yt_titulo,yt_descricao,yt_tags,yt_programado_para,yt_status,yt_id,yt_tentativas,video_url")
-    .in("yt_status", ["agendado", "cancelar"]).order("yt_programado_para", { ascending: true, nullsFirst: false }).limit(3);
+  const sel = "id,canal,titulo,yt_titulo,yt_descricao,yt_tags,yt_programado_para,yt_status,yt_id,yt_tentativas,video_url";
+  // primeiro o que tem data (programar, mudar horário, cancelar); depois os novos que vão como privados
+  const { data: a } = await db.from("videos").select(sel).in("yt_status", ["agendado", "cancelar"]).order("yt_programado_para", { ascending: true, nullsFirst: false }).limit(3);
+  const { data: b } = (a?.length ?? 0) < 3 ? await db.from("videos").select(sel).eq("yt_status", "subir").order("created_at", { ascending: true }).limit(3 - (a?.length ?? 0)) : { data: [] };
+  const { yt_limite_dia } = await cfg(db, ["yt_limite_dia"]);
+  const limite = Number(yt_limite_dia) || 15;
+  const enviados: Record<string, number> = {};
   const r: Record<string, string> = {};
-  for (const v of data ?? []) {
+  for (const v of [...(a ?? []), ...(b ?? [])]) {
     try {
-      if (v.yt_status === "cancelar") r[v.id] = v.yt_id ? await mudarStatus(db, v, true) : (await db.from("videos").update({ yt_status: "pendente", yt_programado_para: null }).eq("id", v.id), "cancelado");
-      else r[v.id] = v.yt_id ? await mudarStatus(db, v, false) : await subir(db, v);
+      if (v.yt_status === "cancelar") { r[v.id] = v.yt_id ? await mudarStatus(db, v, true) : (await db.from("videos").update({ yt_status: "pendente", yt_programado_para: null }).eq("id", v.id), "cancelado"); continue; }
+      if (v.yt_id) { r[v.id] = await mudarStatus(db, v, false); continue; }
+      // envio novo: confere o limite de envios do canal nas últimas 24 h
+      if (enviados[v.canal] == null) enviados[v.canal] = await enviados24h(await tokenDe(db, v.canal));
+      if (enviados[v.canal] >= limite) {
+        await db.from("videos").update({ yt_erro: `o canal já subiu ${enviados[v.canal]} vídeos em 24 h (limite ${limite}); sobe sozinho quando liberar` }).eq("id", v.id);
+        r[v.id] = "aguardando limite do dia"; continue;
+      }
+      r[v.id] = await subir(db, v, v.yt_status === "subir");
+      enviados[v.canal]++;
     } catch (e) {
       const msg = (e as Error).message, motivo = (e as Error & { motivo?: string }).motivo ?? "";
       const cota = /quota|uploadLimitExceeded|rateLimit/i.test(motivo + msg);
       const n = (v.yt_tentativas || 0) + (cota ? 0 : 1);
-      await db.from("videos").update({ yt_erro: cota ? `cota do YouTube cheia hoje, tento de novo depois (${msg})` : msg, yt_tentativas: n, ...(n >= 3 ? { yt_status: "erro" } : {}) }).eq("id", v.id);
+      await db.from("videos").update({ yt_erro: cota ? `limite do YouTube atingido hoje, tento de novo depois (${msg})` : msg, yt_tentativas: n, ...(n >= 3 ? { yt_status: "erro" } : {}) }).eq("id", v.id);
       r[v.id] = `erro: ${msg}`;
       if (cota) break;
     }
