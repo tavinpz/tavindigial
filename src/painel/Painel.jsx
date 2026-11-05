@@ -137,7 +137,7 @@ export default function Painel() {
   useEffect(() => { if (admin) recarregarCanais() }, [admin, recarregarCanais])
   useEffect(() => {
     if (!admin) return undefined
-    const ler = () => supabase.from('v_views_hoje').select('canal,views,curtidas,por_rede,atualizado_em')
+    const ler = () => supabase.from('v_views_hoje').select('canal,views,curtidas,por_rede,atualizado_em,desde')
       .then(({ data }) => { if (data) setViews(Object.fromEntries(data.map((v) => [v.canal, v]))) })
     ler()
     const t = setInterval(ler, 5 * 60000)

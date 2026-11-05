@@ -24,13 +24,20 @@ const compacto = (n) => Intl.NumberFormat('pt-BR', { notation: 'compact', maximu
 const n = (x) => Number(x || 0).toLocaleString('pt-BR')
 const OLHO = 'M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12zM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z'
 
+// Janela medida de verdade: 24 h quando já há histórico; antes disso, desde a primeira medição (sem estimar)
+const janela = (desde) => {
+  if (!desde) return 'views em 24 h'
+  const h = (Date.now() - new Date(desde).getTime()) / 3600000
+  if (h >= 23.5) return 'views em 24 h'
+  return `views desde ${new Date(desde).toLocaleTimeString('pt-BR', { timeZone: 'America/Sao_Paulo', hour: '2-digit', minute: '2-digit' })} (24 h completas amanhã)`
+}
 // Cartão ao passar o mouse no canal: views das últimas 24 h rede por rede
 function CartaoViews({ v, pos }) {
   const r = v.por_rede || {}
   const redes = [['IG', '#D62F8C', r.instagram], ['YT', '#E02424', r.youtube]].filter((x) => x[2] != null)
   return createPortal(
     <div className="m-cartao" role="tooltip" style={{ left: pos.x, top: pos.y }}>
-      <span><b>{n(v.views)}</b> views em 24 h</span>
+      <span><b>{n(v.views)}</b> {janela(v.desde)}</span>
       {redes.length > 0 && <span className="m-cartao-redes">{redes.map(([k, cor, x]) => <span key={k}><i style={{ background: cor }} />{k} {n(x)}</span>)}{v.curtidas ? <span><i style={{ background: '#25F4EE' }} />TT +{n(v.curtidas)} curt.</span> : null}</span>}
     </div>, document.body)
 }

@@ -377,15 +377,16 @@ async function gravarVideos(db: SupabaseClient, canal: string, rede: string, lis
   if (linhas.length) await db.from("videos_metricas_dia").upsert(linhas, { onConflict: "canal,rede,video_id,dia" }).then(() => {}, () => {});
 }
 
-// Guarda o total de agora e devolve quanto cresceu nas últimas 24 h (sem foto de 24 h atrás: desde a mais antiga)
+// Guarda o total de agora e devolve quanto cresceu desde a foto de 24 h atrás. Sem foto tão antiga, mede desde a mais
+// antiga que existe e devolve esse início (desde), para o painel dizer a janela de verdade, sem estimar nada.
 async function cresceu24h(db: SupabaseClient, canal: string, rede: string, total: number) {
   const agora = Date.now();
   await db.from("views_snap").insert({ canal, rede, em: new Date(agora).toISOString(), total });
   const lim = new Date(agora - 86400000).toISOString();
-  let { data: ref } = await db.from("views_snap").select("total").eq("canal", canal).eq("rede", rede).lte("em", lim).order("em", { ascending: false }).limit(1).maybeSingle();
-  if (!ref) ({ data: ref } = await db.from("views_snap").select("total").eq("canal", canal).eq("rede", rede).order("em", { ascending: true }).limit(1).maybeSingle());
+  let { data: ref } = await db.from("views_snap").select("total,em").eq("canal", canal).eq("rede", rede).lte("em", lim).order("em", { ascending: false }).limit(1).maybeSingle();
+  if (!ref) ({ data: ref } = await db.from("views_snap").select("total,em").eq("canal", canal).eq("rede", rede).order("em", { ascending: true }).limit(1).maybeSingle());
   await db.from("views_snap").delete().eq("canal", canal).eq("rede", rede).lt("em", new Date(agora - 3 * 86400000).toISOString());
-  return Math.max(0, total - Number(ref?.total ?? total));
+  return { v: Math.max(0, total - Number(ref?.total ?? total)), desde: ref?.em ?? new Date(agora).toISOString() };
 }
 
 // Views das últimas 24 h de um canal (o menu mostra isso; fica em views_dia.views_hoje do dia de hoje):
@@ -397,8 +398,7 @@ async function viewsHoje(db: SupabaseClient, canal: string) {
   const c = await contaIG(db, canal).catch(() => null);
   if (c) {
     try {
-      // soma das views (vida toda) dos 50 posts mais recentes agora − a mesma soma 24 h atrás: é o que entrou nas últimas 24 h.
-      // Enquanto não há foto de 24 h atrás, vale o dia de ontem inteiro dos insights da conta.
+      // soma das views (vida toda) dos 50 posts mais recentes agora − a mesma soma 24 h atrás: é o que entrou nas últimas 24 h
       const lista = await c.get(`${c.userId}/media`, { fields: "id", limit: "50" });
       const ids = ((lista.data ?? []) as { id: string }[]).map((m) => m.id);
       let total = 0, lidos = 0;
@@ -408,16 +408,8 @@ async function viewsHoje(db: SupabaseClient, canal: string) {
         for (const v of vs) if (v != null) { total += v; lidos++; }
       }
       if (lidos) {
-        const lim = new Date(Date.now() - 86400000).toISOString();
-        const { data: velho } = await db.from("views_snap").select("em").eq("canal", canal).eq("rede", "instagram").lte("em", lim).limit(1).maybeSingle();
-        let v = await cresceu24h(db, canal, "instagram", total);
-        if (!velho) {
-          const meiaNoite = Math.floor(new Date(`${dia}T00:00:00-03:00`).getTime() / 1000);
-          const d = await c.get(`${c.userId}/insights`, { metric: "views", period: "day", metric_type: "total_value", since: String(meiaNoite - 86400), until: String(meiaNoite) }).catch(() => null);
-          const ontem = d?.data?.[0]?.total_value?.value;
-          if (ontem != null) v = Math.max(v, Number(ontem));
-        }
-        await db.from("views_dia").upsert({ canal, rede: "instagram", dia, total_atual: total, views_hoje: v, atualizado_em: new Date().toISOString() }, { onConflict: "canal,rede,dia" });
+        const { v, desde } = await cresceu24h(db, canal, "instagram", total);
+        await db.from("views_dia").upsert({ canal, rede: "instagram", dia, total_atual: total, views_hoje: v, desde, atualizado_em: new Date().toISOString() }, { onConflict: "canal,rede,dia" });
         r.instagram = v;
       }
     } catch (e) { r.instagram_erro = (e as Error).message; }
@@ -437,9 +429,9 @@ async function viewsHoje(db: SupabaseClient, canal: string) {
       if (f) total = f.videos.reduce((a, v) => a + (Number(v.views) || 0), 0);
     }
     if (total != null) {
-      const v24 = await cresceu24h(db, canal, "youtube", total);
-      await db.from("views_dia").upsert({ canal, rede: "youtube", dia, total_atual: total, views_hoje: v24, atualizado_em: new Date().toISOString() }, { onConflict: "canal,rede,dia" });
-      r.youtube = v24;
+      const { v, desde } = await cresceu24h(db, canal, "youtube", total);
+      await db.from("views_dia").upsert({ canal, rede: "youtube", dia, total_atual: total, views_hoje: v, desde, atualizado_em: new Date().toISOString() }, { onConflict: "canal,rede,dia" });
+      r.youtube = v;
     }
   }
   return r;
