@@ -108,7 +108,7 @@ const Carta: React.FC<{ cor?: string; nome?: string; verso?: boolean; valor?: st
       <div style={{ position: 'absolute', inset: 14, border: '3px dashed rgba(255,210,63,0.6)', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: FA.cond, fontSize: 170, color: AM }}>?</div>
     ) : (<>
       <div style={{ height: 120, background: cor, display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', fontFamily: FA.cond, fontSize: 34, color: '#fff', padding: '0 14px', letterSpacing: 1, lineHeight: 1.05 }}>{nome}</div>
-      {valor && <div style={{ fontFamily: FA.cond, fontSize: 150, textAlign: 'center', color: TINTA, marginTop: 50 }}>{valor}</div>}
+      {valor && <div style={{ fontFamily: FA.cond, fontSize: valor.length > 5 ? 96 : valor.length > 3 ? 120 : 150, textAlign: 'center', color: TINTA, marginTop: 50, whiteSpace: 'nowrap' }}>{valor}</div>}
       {rot && <div style={{ fontFamily: FA.maq, fontSize: 26, textAlign: 'center', color: '#4a4236' }}>{rot}</div>}
     </>)}
   </div>

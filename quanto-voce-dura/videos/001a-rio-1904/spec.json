@@ -1,0 +1,1249 @@
+{
+ "id": "qvd001a",
+ "canal": "quanto-voce-dura",
+ "titulo": "Você acorda no Rio de 1904, no meio da Revolta da Vacina. Quanto tempo você dura?",
+ "motor": "piper",
+ "voz": "cadu",
+ "velocidade": 0.95,
+ "lang": "pt-br",
+ "legenda": true,
+ "acento": "#e9c46a",
+ "marca": "QUANTO VOCÊ DURA?",
+ "trilha": 0.13,
+ "cauda": 4.0,
+ "numeros": {
+  "treze de novembro de mil novecentos e quatro": "13 de novembro de 1904",
+  "mil oitocentos e noventa": "1890",
+  "mil novecentos e seis": "1906",
+  "quinhentos e vinte e dois mil": "522 mil",
+  "oitocentos e onze mil": "811 mil",
+  "mil novecentos e quatro": "1904",
+  "três mil e quinhentas": "3.500",
+  "mil novecentos e dois": "1902",
+  "cento e cinquenta": "150",
+  "trinta e um de outubro": "31 de outubro",
+  "cinco de novembro": "5 de novembro",
+  "nove de novembro": "9 de novembro",
+  "dez de novembro": "10 de novembro",
+  "treze de novembro": "13 de novembro",
+  "dezesseis de novembro": "16 de novembro",
+  "vinte e dois": "22",
+  "cem": "100",
+  "setecentos": "700",
+  "catorze": "14",
+  "quinze": "15",
+  "trinta": "30",
+  "cento e dez": "110",
+  "novecentas e quarenta e cinco": "945",
+  "quatrocentos e sessenta e um": "461",
+  "mil novecentos e oito": "1908",
+  "seis mil e quatrocentas": "6.400",
+  "mil novecentos e sete": "1907",
+  "mil oitocentos e noventa e nove": "1899",
+  "quatrocentos e oitenta e um": "481",
+  "mil novecentos e três": "1903",
+  "mil novecentos e nove": "1909",
+  "mil novecentos e dezessete": "1917",
+  "quarenta e quatro": "44",
+  "vinte vezes": "20 vezes",
+  "mil novecentos e setenta e um": "1971",
+  "mil novecentos e oitenta": "1980"
+ },
+ "blocos": [
+  {
+   "cena": {
+    "tipo": "arte",
+    "v": [
+     {
+      "tipo": "data",
+      "txt": "RIO DE JANEIRO",
+      "sub": "13 de novembro de 1904"
+     },
+     {
+      "tipo": "foto",
+      "arq": "bonde_virado_revolta_da_vacina_jpg.jpg",
+      "leg": "Bonde virado na Revolta da Vacina, novembro de 1904",
+      "rot": 1.8,
+      "entra": "dir",
+      "zoom": null,
+      "w": 1060,
+      "ar": 0.56
+     },
+     {
+      "tipo": "foto",
+      "arq": "bonde_em_frente_a_igreja_do_sant_ssimo_s.jpg",
+      "leg": "Bonde no centro do Rio, começo do século XX · Acervo IMS",
+      "rot": -1.2,
+      "entra": "esq",
+      "zoom": null
+     },
+     {
+      "tipo": "bolso"
+     },
+     {
+      "tipo": "titulo",
+      "txt": "QUANTO TEMPO\nVOCÊ DURA?"
+     },
+     {
+      "tipo": "foto",
+      "arq": "cais_do_porto_2_acervo_do_instituto_more.jpg",
+      "leg": "Cais do porto do Rio, começo do século XX · Acervo IMS",
+      "rot": 2.4,
+      "entra": "cai",
+      "zoom": null
+     },
+     {
+      "tipo": "foto",
+      "arq": "antigo_largo_do_pa_o_mercado_da_praia_do.jpg",
+      "leg": "Largo do Paço e mercado do peixe, c. 1900–1910 · Acervo IMS",
+      "rot": -2.0,
+      "entra": "cai",
+      "zoom": [
+       0.6,
+       0.5
+      ]
+     },
+     {
+      "tipo": "documento",
+      "titulo": "FONTES DESTE VÍDEO",
+      "txt": "Registros oficiais da revolta, jornais e fotografias de 1904."
+     },
+     {
+      "tipo": "barras",
+      "s": 80,
+      "d": 40,
+      "g": 70,
+      "txt": null
+     },
+     {
+      "tipo": "barras",
+      "s": 80,
+      "d": 40,
+      "g": 70,
+      "txt": "SE ZERAR, ACABOU",
+      "_de": {
+       "s": 80,
+       "d": 40,
+       "g": 70
+      }
+     }
+    ]
+   },
+   "falas": [
+    "Rio de Janeiro, treze de novembro de mil novecentos e quatro.",
+    "Os bondes estão pegando fogo.",
+    "E você acabou de acordar aqui.",
+    "Sem dinheiro, e sem conhecer ninguém.",
+    "Quanto tempo você dura?",
+    "Funciona assim. Você é um trabalhador do porto.",
+    "E mora num cortiço no centro da cidade.",
+    "Tudo o que vai acontecer com você aconteceu de verdade, com números de verdade.",
+    "E você acompanha três coisas. Sua saúde. Seu dinheiro. E sua segurança.",
+    "Se qualquer uma delas zerar, acabou."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "v": [
+     {
+      "tipo": "capitulo",
+      "n": "PARTE UM",
+      "txt": "A CIDADE QUE MATA"
+     },
+     {
+      "tipo": "foto",
+      "arq": "avenida_central_2_acervo_do_instituto_mo.jpg",
+      "leg": "Avenida Central, depois de pronta · Acervo IMS",
+      "rot": -2.5,
+      "entra": "dir",
+      "zoom": [
+       0.3,
+       0.6
+      ]
+     },
+     {
+      "tipo": "numero",
+      "txt": "522 mil",
+      "rotulo": "moradores do Rio em 1890"
+     },
+     {
+      "tipo": "numero",
+      "txt": "811 mil",
+      "rotulo": "moradores do Rio em 1906"
+     },
+     {
+      "tipo": "foto",
+      "arq": "cais_do_porto_2_acervo_do_instituto_more.jpg",
+      "leg": "Cais do porto do Rio, começo do século XX · Acervo IMS",
+      "rot": 1.8,
+      "entra": "esq",
+      "zoom": [
+       0.7,
+       0.4
+      ]
+     },
+     {
+      "tipo": "foto",
+      "arq": "antigo_largo_do_pa_o_mercado_da_praia_do.jpg",
+      "leg": "Largo do Paço e mercado do peixe, c. 1900–1910 · Acervo IMS",
+      "rot": -1.2,
+      "entra": "cai",
+      "zoom": [
+       0.3,
+       0.6
+      ]
+     },
+     {
+      "tipo": "barras",
+      "s": 65,
+      "d": 40,
+      "g": 70,
+      "txt": null,
+      "_de": {
+       "s": 80,
+       "d": 40,
+       "g": 70
+      }
+     },
+     {
+      "tipo": "carimbo_doc",
+      "titulo": "AMEAÇA Nº 1",
+      "txt": "VARÍOLA"
+     },
+     {
+      "tipo": "foto",
+      "arq": "hospital_st_sebastiao_isolating_yellow_f.jpg",
+      "leg": "Hospital de isolamento da febre amarela, 1909 · Wellcome Collection",
+      "rot": 2.4,
+      "entra": "cai",
+      "zoom": null
+     },
+     {
+      "tipo": "numero",
+      "txt": "3.500",
+      "rotulo": "mortos de varíola no Rio em 1904"
+     },
+     {
+      "tipo": "carimbo_doc",
+      "titulo": "AMEAÇA Nº 2",
+      "txt": "FEBRE AMARELA"
+     },
+     {
+      "tipo": "numero",
+      "txt": "1.000",
+      "rotulo": "mortos por ano · febre amarela, 1902"
+     },
+     {
+      "tipo": "carimbo_doc",
+      "titulo": "AMEAÇA Nº 3",
+      "txt": "PESTE BUBÔNICA"
+     },
+     {
+      "tipo": "barras",
+      "s": 45,
+      "d": 40,
+      "g": 70,
+      "txt": "SAÚDE EM QUEDA",
+      "_de": {
+       "s": 65,
+       "d": 40,
+       "g": 70
+      }
+     },
+     {
+      "tipo": "ficha",
+      "linhas": [
+       [
+        "NOME",
+        "Oswaldo Cruz"
+       ],
+       [
+        "IDADE",
+        "30 e poucos"
+       ],
+       [
+        "CARGO",
+        "Saúde Pública"
+       ]
+      ],
+      "rodape": "Diretor-geral de Saúde Pública desde 1903",
+      "titulo": "FICHA · OSWALDO CRUZ"
+     },
+     {
+      "tipo": "documento",
+      "titulo": "DIRETORIA GERAL DE SAÚDE PÚBLICA",
+      "txt": "Diretor-geral: Oswaldo Cruz. Desde 1903."
+     },
+     {
+      "tipo": "ficha",
+      "linhas": [
+       [
+        "FORMAÇÃO",
+        "Instituto Pasteur"
+       ],
+       [
+        "CIDADE",
+        "Paris"
+       ],
+       [
+        "VOLTA",
+        "1899"
+       ]
+      ],
+      "rodape": "Primeiro brasileiro no Instituto Pasteur",
+      "titulo": "FICHA · OSWALDO CRUZ"
+     },
+     {
+      "tipo": "foto",
+      "arq": "antigo_largo_do_pa_o_mercado_da_praia_do.jpg",
+      "leg": "Largo do Paço e mercado do peixe, c. 1900–1910 · Acervo IMS",
+      "rot": -2.0,
+      "entra": "dir",
+      "zoom": [
+       0.5,
+       0.4
+      ]
+     },
+     {
+      "tipo": "numero",
+      "txt": "150",
+      "rotulo": "ratos por mês: a cota de cada funcionário"
+     },
+     {
+      "tipo": "carimbo_doc",
+      "titulo": "ORDEM DE SERVIÇO",
+      "txt": "150 RATOS / MÊS"
+     },
+     {
+      "tipo": "bolso",
+      "modo": "rato"
+     },
+     {
+      "tipo": "barras",
+      "s": 45,
+      "d": 45,
+      "g": 50,
+      "txt": "RATO VIRA DINHEIRO",
+      "_de": {
+       "s": 45,
+       "d": 40,
+       "g": 70
+      }
+     },
+     {
+      "tipo": "foto",
+      "arq": "horses_and_carriages_yellow_fever_prophy.jpg",
+      "leg": "Equipe contra a febre amarela, 1909 · Wellcome Collection",
+      "rot": -2.5,
+      "entra": "esq",
+      "zoom": null
+     },
+     {
+      "tipo": "foto",
+      "arq": "spraying_roofs_to_prevent_yellow_fever_w.jpg",
+      "leg": "Brigada pulverizando telhados contra o mosquito · Wellcome Collection",
+      "rot": 1.8,
+      "entra": "cai",
+      "zoom": null
+     },
+     {
+      "tipo": "foto",
+      "arq": "man_with_clayton_disinfector_wellcome_l0.jpg",
+      "leg": "Homem com desinfetador · Wellcome Collection",
+      "rot": -1.2,
+      "entra": "cai",
+      "zoom": null
+     },
+     {
+      "tipo": "documento",
+      "titulo": "INTIMAÇÃO",
+      "txt": "Reformar ou demolir o imóvel considerado insalubre.",
+      "carimbo": "INTIMADO"
+     },
+     {
+      "tipo": "barras",
+      "s": 45,
+      "d": 40,
+      "g": 50,
+      "txt": "SEGURANÇA EM QUEDA",
+      "_de": {
+       "s": 45,
+       "d": 45,
+       "g": 50
+      }
+     },
+     {
+      "tipo": "foto",
+      "arq": "demoli_o_do_mercado_da_gl_ria_ao_fundo_o.jpg",
+      "leg": "Demolição do mercado da Glória, começo do século XX",
+      "rot": 2.4,
+      "entra": "dir",
+      "zoom": null
+     },
+     {
+      "tipo": "foto",
+      "arq": "canteiro_de_obras_pr_ximo_ao_largo_da_mi.jpg",
+      "leg": "Obras no centro do Rio, começo do século XX · Acervo IMS",
+      "rot": -2.0,
+      "entra": "esq",
+      "zoom": null
+     },
+     {
+      "tipo": "foto",
+      "arq": "demoli_o_do_mercado_da_gl_ria_ao_fundo_o.jpg",
+      "leg": "Demolição do mercado da Glória, começo do século XX",
+      "rot": -2.5,
+      "entra": "cai",
+      "zoom": [
+       0.6,
+       0.6
+      ]
+     },
+     {
+      "tipo": "foto",
+      "arq": "avenida_central_2_acervo_do_instituto_mo.jpg",
+      "leg": "Avenida Central, depois de pronta · Acervo IMS",
+      "rot": 1.8,
+      "entra": "cai",
+      "zoom": null
+     },
+     {
+      "tipo": "barras",
+      "s": 45,
+      "d": 30,
+      "g": 40,
+      "txt": "SEU CORTIÇO PODE CAIR",
+      "_de": {
+       "s": 45,
+       "d": 40,
+       "g": 50
+      }
+     }
+    ],
+    "n": 1,
+    "titulo": "A cidade que mata"
+   },
+   "falas": [
+    "Parte um. A cidade que mata.",
+    "O Rio é a capital do Brasil, e não para de crescer.",
+    "Em mil oitocentos e noventa, eram quinhentos e vinte e dois mil moradores.",
+    "Em mil novecentos e seis, já seriam oitocentos e onze mil.",
+    "E muita gente se espreme no centro, perto do porto, onde está o trabalho.",
+    "Em cortiços. Casarões velhos divididos em quartos minúsculos.",
+    "Uma família inteira em cada quarto. E as doenças moram junto.",
+    "A primeira ameaça é a varíola.",
+    "Febre alta. O corpo coberto de bolhas. Quem sobrevive fica marcado.",
+    "Só em mil novecentos e quatro, a varíola matou cerca de três mil e quinhentas pessoas no Rio.",
+    "A segunda ameaça é a febre amarela, transmitida por um mosquito.",
+    "Em mil novecentos e dois, ela matava cerca de mil pessoas por ano na cidade.",
+    "E a terceira, a peste bubônica, espalhada pelas pulgas dos ratos.",
+    "Três epidemias ao mesmo tempo, na mesma cidade.",
+    "Para enfrentar isso, o governo chamou um médico de pouco mais de trinta anos.",
+    "Oswaldo Cruz, diretor-geral de Saúde Pública.",
+    "Ele tinha estudado no Instituto Pasteur, em Paris. O primeiro brasileiro a fazer isso.",
+    "Voltou ao Brasil em mil oitocentos e noventa e nove. E agora tem uma cidade inteira para limpar.",
+    "E ele declara guerra aos ratos.",
+    "Cada funcionário tinha que entregar pelo menos cento e cinquenta ratos por mês.",
+    "E o governo passou a comprar rato de quem matasse um.",
+    "Pela primeira vez, rato vira dinheiro. E isso diz muito sobre a cidade em que você acordou.",
+    "Contra o mosquito, entram as brigadas sanitárias.",
+    "Elas percorrem a cidade com inseticida, atrás de larvas.",
+    "E entram nas casas.",
+    "O dono de uma casa considerada insalubre pode ser obrigado a reformar. Ou a demolir.",
+    "Para você, isso quer dizer uma coisa. A qualquer hora, o governo pode entrar no seu quarto.",
+    "E não é só a saúde.",
+    "Ao mesmo tempo, o prefeito Pereira Passos está rasgando o centro da cidade.",
+    "Ruas alargadas. Cortiços derrubados. Os pobres empurrados para longe do centro.",
+    "É ali que vai nascer a Avenida Central.",
+    "O cortiço do lado foi demolido. O seu pode ser o próximo."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "v": [
+     {
+      "tipo": "capitulo",
+      "n": "PARTE DOIS",
+      "txt": "A LEI"
+     },
+     {
+      "tipo": "linha",
+      "datas": [
+       [
+        "31/10",
+        "Lei"
+       ]
+      ],
+      "ativo": 0
+     },
+     {
+      "tipo": "documento",
+      "titulo": "LEI DE 31 DE OUTUBRO DE 1904",
+      "txt": "Vacinação obrigatória contra a varíola em todo o país.",
+      "carimbo": "OBRIGATÓRIA"
+     },
+     {
+      "tipo": "linha",
+      "datas": [
+       [
+        "31/10",
+        "Lei"
+       ],
+       [
+        "5/11",
+        "Liga contra"
+       ]
+      ],
+      "ativo": 1
+     },
+     {
+      "tipo": "foto",
+      "arq": "guerra_vaccino_obrigateza_jpg.jpg",
+      "leg": "Charge “Guerra Vaccino-Obrigateza!”, outubro de 1904",
+      "rot": -1.2,
+      "entra": "dir",
+      "zoom": null
+     },
+     {
+      "tipo": "linha",
+      "datas": [
+       [
+        "31/10",
+        "Lei"
+       ],
+       [
+        "5/11",
+        "Liga contra"
+       ],
+       [
+        "9/11",
+        "Regulamento"
+       ]
+      ],
+      "ativo": 2
+     },
+     {
+      "tipo": "documento",
+      "titulo": "A NOTÍCIA · 9 DE NOVEMBRO DE 1904",
+      "txt": "Publicado o plano do regulamento da vacinação obrigatória."
+     },
+     {
+      "tipo": "lista",
+      "titulo": "COMPROVANTE DE VACINA PARA:",
+      "itens": []
+     },
+     {
+      "tipo": "lista",
+      "titulo": "COMPROVANTE DE VACINA PARA:",
+      "itens": [
+       "matricular na escola"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "titulo": "COMPROVANTE DE VACINA PARA:",
+      "itens": [
+       "matricular na escola",
+       "emprego público ou fábrica"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "titulo": "COMPROVANTE DE VACINA PARA:",
+      "itens": [
+       "matricular na escola",
+       "emprego público ou fábrica",
+       "hotel, pensão e viagem"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "titulo": "COMPROVANTE DE VACINA PARA:",
+      "itens": [
+       "matricular na escola",
+       "emprego público ou fábrica",
+       "hotel, pensão e viagem",
+       "casar e votar"
+      ]
+     },
+     {
+      "tipo": "carimbo_doc",
+      "titulo": "QUEM RECUSAR",
+      "txt": "MULTA"
+     },
+     {
+      "tipo": "foto",
+      "arq": "mictorio_pracaxv_augustomalta_1904_jpg.jpg",
+      "leg": "Praça XV, 1904 · Foto: Augusto Malta",
+      "rot": 2.4,
+      "entra": "esq",
+      "zoom": null
+     },
+     {
+      "tipo": "barras",
+      "s": 45,
+      "d": 30,
+      "g": 35,
+      "txt": null,
+      "_de": {
+       "s": 45,
+       "d": 30,
+       "g": 40
+      }
+     },
+     {
+      "tipo": "foto",
+      "arq": "guerra_vaccino_obrigateza_jpg.jpg",
+      "leg": "Charge “Guerra Vaccino-Obrigateza!”, outubro de 1904",
+      "rot": -2.0,
+      "entra": "cai",
+      "zoom": [
+       0.55,
+       0.45
+      ]
+     },
+     {
+      "tipo": "documento",
+      "titulo": "O ARGUMENTO DA OPOSIÇÃO",
+      "txt": "A vacina seria uma ofensa à honra das famílias."
+     },
+     {
+      "tipo": "foto",
+      "arq": "na_noite_de_14_sucessos_lament_veis_jpg.jpg",
+      "leg": "“Na noite de 14”: ilustração publicada em 26/11/1904",
+      "rot": -2.5,
+      "entra": "cai",
+      "zoom": [
+       0.4,
+       0.5
+      ]
+     },
+     {
+      "tipo": "escolha",
+      "a": "VACINA",
+      "b": "BARRICADA"
+     }
+    ],
+    "n": 2,
+    "titulo": "A lei"
+   },
+   "falas": [
+    "Parte dois. A lei.",
+    "Trinta e um de outubro de mil novecentos e quatro.",
+    "O Congresso aprova a lei que torna obrigatória a vacina contra a varíola.",
+    "Cinco de novembro. É fundada a Liga Contra a Vacina Obrigatória.",
+    "Os jornais de oposição atacam a lei sem parar.",
+    "Nove de novembro. Hoje.",
+    "O jornal A Notícia publica o plano do regulamento da vacina.",
+    "E a cidade lê o que vem por aí.",
+    "Comprovante de vacina para matricular os filhos na escola.",
+    "Para trabalhar no governo, ou numa fábrica.",
+    "Para se hospedar, para viajar.",
+    "Para casar. E até para votar.",
+    "E multa para quem recusar.",
+    "Na sua rua, ninguém confia no governo.",
+    "As mesmas pessoas que derrubam casas agora querem furar o seu braço.",
+    "E a oposição espalha um argumento que pega fogo.",
+    "Que a vacina obrigaria esposas e filhas a se despir na frente de estranhos.",
+    "Numa cidade com medo, um argumento assim vale mais que um decreto.",
+    "E agora você tem que escolher. Vacina, ou barricada?"
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "v": [
+     {
+      "tipo": "capitulo",
+      "n": "PARTE TRÊS",
+      "txt": "SETE DIAS DE GUERRA"
+     },
+     {
+      "tipo": "linha",
+      "datas": [
+       [
+        "10/11",
+        "Começa"
+       ]
+      ],
+      "ativo": 0
+     },
+     {
+      "tipo": "foto",
+      "arq": "na_noite_de_14_sucessos_lament_veis_jpg.jpg",
+      "leg": "“Na noite de 14”: ilustração publicada em 26/11/1904",
+      "rot": 1.8,
+      "entra": "dir",
+      "zoom": null
+     },
+     {
+      "tipo": "foto",
+      "arq": "bonde_em_frente_a_igreja_do_sant_ssimo_s.jpg",
+      "leg": "Bonde no centro do Rio, começo do século XX · Acervo IMS",
+      "rot": -1.2,
+      "entra": "esq",
+      "zoom": [
+       0.5,
+       0.4
+      ]
+     },
+     {
+      "tipo": "foto",
+      "arq": "cais_do_porto_2_acervo_do_instituto_more.jpg",
+      "leg": "Cais do porto do Rio, começo do século XX · Acervo IMS",
+      "rot": 2.4,
+      "entra": "cai",
+      "zoom": [
+       0.4,
+       0.6
+      ]
+     },
+     {
+      "tipo": "mapa_rio"
+     },
+     {
+      "tipo": "linha",
+      "datas": [
+       [
+        "10/11",
+        "Começa"
+       ],
+       [
+        "13/11",
+        "A cidade para"
+       ]
+      ],
+      "ativo": 1
+     },
+     {
+      "tipo": "barras",
+      "s": 45,
+      "d": 10,
+      "g": 30,
+      "txt": "SEM SALÁRIO",
+      "_de": {
+       "s": 45,
+       "d": 30,
+       "g": 35
+      }
+     },
+     {
+      "tipo": "foto",
+      "arq": "bonde_revolta_da_vacina_jpg.jpg",
+      "leg": "Bonde depredado, novembro de 1904",
+      "rot": -2.0,
+      "entra": "cai",
+      "zoom": null,
+      "w": 760,
+      "ar": 1.1,
+      "lado": -300,
+      "selo": "22",
+      "selo_sub": "BONDES DESTRUÍDOS ATÉ 13/11",
+      "selo_em": 0.35
+     },
+     {
+      "tipo": "numero",
+      "txt": "+100",
+      "icone": "lampiao",
+      "rotulo": "lampiões de gás danificados"
+     },
+     {
+      "tipo": "numero",
+      "txt": "+700",
+      "icone": "lampiao",
+      "rotulo": "lampiões fora de serviço"
+     },
+     {
+      "tipo": "foto",
+      "arq": "avenida_central_2_acervo_do_instituto_mo.jpg",
+      "leg": "Avenida Central, depois de pronta · Acervo IMS",
+      "rot": -2.5,
+      "entra": "dir",
+      "zoom": [
+       0.6,
+       0.3
+      ]
+     },
+     {
+      "tipo": "escuro"
+     },
+     {
+      "tipo": "ficha",
+      "linhas": [
+       [
+        "DELEGACIAS",
+        "atacadas"
+       ],
+       [
+        "FÁBRICA DE GÁS",
+        "atacada"
+       ],
+       [
+        "LOJAS DE ARMAS",
+        "atacadas"
+       ]
+      ],
+      "rodape": "13 de novembro de 1904",
+      "titulo": "ALVOS DA REVOLTA"
+     },
+     {
+      "tipo": "documento",
+      "titulo": "14–15 DE NOVEMBRO",
+      "txt": "Militares tentam tomar o poder durante a revolta.",
+      "carimbo": "FRACASSA"
+     },
+     {
+      "tipo": "foto",
+      "arq": "arsenal_da_marinha_antigo_arsenal_de_gue.jpg",
+      "leg": "Arsenal de Marinha, centro do Rio · Acervo IMS",
+      "rot": 1.8,
+      "entra": "esq",
+      "zoom": null
+     },
+     {
+      "tipo": "ficha",
+      "linhas": [
+       [
+        "MOINHO INGLÊS",
+        "atacado"
+       ],
+       [
+        "FÁBRICA DE VELAS",
+        "atacada"
+       ],
+       [
+        "BARCA DE PETRÓPOLIS",
+        "atacada"
+       ]
+      ],
+      "rodape": "Revolta da Vacina, novembro de 1904",
+      "titulo": "ALVOS DA REVOLTA"
+     },
+     {
+      "tipo": "foto",
+      "arq": "cais_do_porto_2_acervo_do_instituto_more.jpg",
+      "leg": "Cais do porto do Rio, começo do século XX · Acervo IMS",
+      "rot": -1.2,
+      "entra": "cai",
+      "zoom": [
+       0.2,
+       0.5
+      ]
+     },
+     {
+      "tipo": "foto",
+      "arq": "canteiro_de_obras_pr_ximo_ao_largo_da_mi.jpg",
+      "leg": "Obras no centro do Rio, começo do século XX · Acervo IMS",
+      "rot": 2.4,
+      "entra": "cai",
+      "zoom": [
+       0.5,
+       0.5
+      ]
+     },
+     {
+      "tipo": "foto",
+      "arq": "demoli_o_do_mercado_da_gl_ria_ao_fundo_o.jpg",
+      "leg": "Demolição do mercado da Glória, começo do século XX",
+      "rot": -2.0,
+      "entra": "dir",
+      "zoom": [
+       0.3,
+       0.4
+      ]
+     },
+     {
+      "tipo": "linha",
+      "datas": [
+       [
+        "10/11",
+        "Começa"
+       ],
+       [
+        "13/11",
+        "A cidade para"
+       ],
+       [
+        "16/11",
+        "Estado de sítio"
+       ]
+      ],
+      "ativo": 2
+     },
+     {
+      "tipo": "carimbo_doc",
+      "titulo": "16 DE NOVEMBRO DE 1904",
+      "txt": "ESTADO DE SÍTIO"
+     },
+     {
+      "tipo": "documento",
+      "titulo": "16 DE NOVEMBRO DE 1904",
+      "txt": "A vacinação obrigatória é suspensa.",
+      "carimbo": "SUSPENSA"
+     },
+     {
+      "tipo": "ficha",
+      "linhas": [
+       [
+        "MORTOS",
+        "30"
+       ],
+       [
+        "FERIDOS",
+        "110"
+       ],
+       [
+        "PRESOS",
+        "945"
+       ]
+      ],
+      "rodape": "10 a 16 de novembro de 1904"
+     },
+     {
+      "tipo": "ficha",
+      "linhas": [
+       [
+        "MORTOS",
+        "30"
+       ],
+       [
+        "FERIDOS",
+        "110"
+       ],
+       [
+        "PRESOS",
+        "945"
+       ]
+      ],
+      "rodape": "10 a 16 de novembro de 1904"
+     },
+     {
+      "tipo": "numero",
+      "txt": "945",
+      "rotulo": "presos na Revolta da Vacina"
+     },
+     {
+      "tipo": "foto",
+      "arq": "ba_a_de_guanabara_vista_da_ilha_das_cobr.jpg",
+      "leg": "Baía de Guanabara vista da Ilha das Cobras, c. 1902",
+      "rot": -2.5,
+      "entra": "esq",
+      "zoom": null
+     },
+     {
+      "tipo": "foto",
+      "arq": "ba_a_de_guanabara_vista_da_ilha_das_cobr.jpg",
+      "leg": "Baía de Guanabara vista da Ilha das Cobras, c. 1902",
+      "rot": 1.8,
+      "entra": "cai",
+      "zoom": [
+       0.3,
+       0.6
+      ]
+     },
+     {
+      "tipo": "numero",
+      "txt": "461",
+      "rotulo": "com antecedentes criminais"
+     },
+     {
+      "tipo": "mapa",
+      "txt": "461",
+      "sub": "DEPORTADOS PARA O ACRE"
+     },
+     {
+      "tipo": "numero",
+      "txt": "7",
+      "rotulo": "estrangeiros deportados"
+     },
+     {
+      "tipo": "numero",
+      "txt": "481",
+      "rotulo": "presos libertados"
+     },
+     {
+      "tipo": "mapa",
+      "txt": "461",
+      "sub": "DEPORTADOS PARA O ACRE"
+     },
+     {
+      "tipo": "barras",
+      "s": 40,
+      "d": 10,
+      "g": 5,
+      "txt": "BARRICADA: PRESO",
+      "_de": {
+       "s": 45,
+       "d": 10,
+       "g": 30
+      }
+     },
+     {
+      "tipo": "carimbo_doc",
+      "titulo": "DESTINO",
+      "txt": "ACRE"
+     }
+    ],
+    "n": 3,
+    "titulo": "Sete dias de guerra"
+   },
+   "falas": [
+    "Parte três. Sete dias de guerra.",
+    "Dez de novembro. Começa.",
+    "Grupos se juntam no centro. A polícia ataca. A multidão revida.",
+    "Em poucas horas, a briga se espalha por bairros inteiros.",
+    "No bairro da Saúde, perto do porto, levantam barricadas no meio da rua.",
+    "Na avenida Passos e nas ruas em volta, também.",
+    "Treze de novembro. A cidade parou.",
+    "Ninguém trabalha. E você não recebe.",
+    "Até o fim do dia, a companhia de bondes vai contar vinte e dois carros destruídos.",
+    "Mais de cem lampiões de gás são quebrados.",
+    "E mais de setecentos ficam fora de serviço.",
+    "Cortam os fios da iluminação elétrica da Avenida Central.",
+    "Ruas inteiras ficam no escuro.",
+    "Atacam delegacias, a fábrica de gás, lojas de armas.",
+    "E na madrugada do dia catorze para o quinze, ainda há uma tentativa de golpe militar.",
+    "Ela fracassa.",
+    "E a revolta não para. Atacam o Moinho Inglês, uma fábrica de farinha.",
+    "Uma fábrica de velas. E até a barca de Petrópolis.",
+    "Na rua Senador Dantas, arrancam as árvores que tinham acabado de ser plantadas.",
+    "E viram as carroças das obras públicas no meio da rua.",
+    "Dezesseis de novembro.",
+    "O governo decreta estado de sítio.",
+    "E, no mesmo dia, suspende a vacinação obrigatória.",
+    "O saldo oficial.",
+    "Trinta mortos. Cento e dez feridos.",
+    "Novecentas e quarenta e cinco pessoas presas.",
+    "Levadas para a Ilha das Cobras, no meio da baía.",
+    "Os presos que foram para lá sofreram maus-tratos.",
+    "Quatrocentos e sessenta e um deles, os que tinham antecedentes criminais,",
+    "foram embarcados em navios e mandados para o Acre.",
+    "Sete estrangeiros também foram expulsos do país.",
+    "E os outros quatrocentos e oitenta e um foram soltos.",
+    "A milhares de quilômetros de casa.",
+    "Então, se você foi para a barricada, as chances de ser preso eram reais.",
+    "E ser preso podia significar o Acre. Uma viagem só de ida."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "v": [
+     {
+      "tipo": "capitulo",
+      "n": "PARTE QUATRO",
+      "txt": "O VEREDITO"
+     },
+     {
+      "tipo": "escolha",
+      "a": "REVOLTA",
+      "b": "VARÍOLA"
+     },
+     {
+      "tipo": "comparacao",
+      "a": "A REVOLTA",
+      "va": 30,
+      "b": "A VARÍOLA, 1904",
+      "vb": 3500,
+      "ate": "a"
+     },
+     {
+      "tipo": "comparacao",
+      "a": "A REVOLTA",
+      "va": 30,
+      "b": "A VARÍOLA, 1904",
+      "vb": 3500,
+      "ate": "b"
+     },
+     {
+      "tipo": "numero",
+      "txt": "×100",
+      "rotulo": "a varíola matou mais de cem vezes mais"
+     },
+     {
+      "tipo": "foto",
+      "arq": "hospital_st_sebastiao_isolating_yellow_f.jpg",
+      "leg": "Hospital de isolamento da febre amarela, 1909 · Wellcome Collection",
+      "rot": -1.2,
+      "entra": "cai",
+      "zoom": [
+       0.6,
+       0.5
+      ]
+     },
+     {
+      "tipo": "numero",
+      "txt": "6.400",
+      "rotulo": "mortos de varíola no Rio em 1908"
+     },
+     {
+      "tipo": "comparacao",
+      "a": "VARÍOLA, 1904",
+      "va": 3500,
+      "b": "VARÍOLA, 1908",
+      "vb": 6400,
+      "ate": "b"
+     },
+     {
+      "tipo": "carimbo_doc",
+      "titulo": "PESTE BUBÔNICA",
+      "txt": "VENCIDA"
+     },
+     {
+      "tipo": "numero",
+      "txt": "÷20",
+      "rotulo": "mortes por peste, 1903 a 1909"
+     },
+     {
+      "tipo": "carimbo_doc",
+      "titulo": "FEBRE AMARELA · 1907",
+      "txt": "FIM DA EPIDEMIA"
+     },
+     {
+      "tipo": "documento",
+      "titulo": "BERLIM · 1907",
+      "txt": "14º Congresso Internacional de Higiene e Demografia: prêmio principal para Oswaldo Cruz."
+     },
+     {
+      "tipo": "ficha",
+      "linhas": [
+       [
+        "NOME",
+        "Oswaldo Cruz"
+       ],
+       [
+        "MORTE",
+        "1917"
+       ],
+       [
+        "IDADE",
+        "44 anos"
+       ]
+      ],
+      "rodape": "Diretor-geral de Saúde Pública",
+      "titulo": "FICHA · OSWALDO CRUZ"
+     },
+     {
+      "tipo": "titulo",
+      "txt": "QUANTO TEMPO\nVOCÊ DURA?"
+     },
+     {
+      "tipo": "barras",
+      "s": 70,
+      "d": 15,
+      "g": 60,
+      "txt": "VACINA: VIVO",
+      "_de": {
+       "s": 40,
+       "d": 10,
+       "g": 5
+      }
+     },
+     {
+      "tipo": "bolso"
+     },
+     {
+      "tipo": "foto",
+      "arq": "ba_a_de_guanabara_vista_da_ilha_das_cobr.jpg",
+      "leg": "Baía de Guanabara vista da Ilha das Cobras, c. 1902",
+      "rot": 2.4,
+      "entra": "dir",
+      "zoom": null
+     },
+     {
+      "tipo": "mapa",
+      "txt": "461",
+      "sub": "DEPORTADOS PARA O ACRE"
+     },
+     {
+      "tipo": "escolha",
+      "a": "VACINA",
+      "b": "SEM VACINA"
+     },
+     {
+      "tipo": "barras",
+      "s": 10,
+      "d": 15,
+      "g": 60,
+      "txt": "SEM VACINA: O MAIOR RISCO",
+      "_de": {
+       "s": 70,
+       "d": 15,
+       "g": 60
+      }
+     },
+     {
+      "tipo": "foto",
+      "arq": "avenida_central_2_acervo_do_instituto_mo.jpg",
+      "leg": "Avenida Central, depois de pronta · Acervo IMS",
+      "rot": -2.0,
+      "entra": "esq",
+      "zoom": null
+     },
+     {
+      "tipo": "carimbo_doc",
+      "titulo": "VARÍOLA · BRASIL",
+      "txt": "ÚLTIMO CASO: 1971"
+     },
+     {
+      "tipo": "carimbo_doc",
+      "titulo": "VARÍOLA · MUNDO",
+      "txt": "ERRADICADA: 1980"
+     },
+     {
+      "tipo": "mesa",
+      "fotos": [
+       "bonde_virado_revolta_da_vacina_jpg.jpg",
+       "guerra_vaccino_obrigateza_jpg.jpg",
+       "bonde_em_frente_a_igreja_do_sant_ssimo_s.jpg",
+       "na_noite_de_14_sucessos_lament_veis_jpg.jpg",
+       "avenida_central_2_acervo_do_instituto_mo.jpg"
+      ],
+      "txt": "FOTOS E DOCUMENTOS REAIS"
+     },
+     {
+      "tipo": "escolha",
+      "a": "VACINA",
+      "b": "BARRICADA",
+      "txt": "COMENTE A SUA"
+     },
+     {
+      "tipo": "fim"
+     }
+    ],
+    "n": 4,
+    "titulo": "O veredito"
+   },
+   "falas": [
+    "Parte quatro. O veredito.",
+    "Agora, o número que muda tudo.",
+    "A revolta matou trinta pessoas.",
+    "A varíola, a doença que a vacina queria parar, matou cerca de três mil e quinhentas no mesmo ano.",
+    "Mais de cem vezes mais.",
+    "E sem a vacina obrigatória, a doença voltou.",
+    "Em mil novecentos e oito, uma nova epidemia de varíola matou quase seis mil e quatrocentas pessoas no Rio.",
+    "Quase o dobro de mil novecentos e quatro.",
+    "E Oswaldo Cruz? A guerra contra a peste deu certo.",
+    "Entre mil novecentos e três e mil novecentos e nove, as mortes por peste caíram mais de vinte vezes.",
+    "Em mil novecentos e sete, a febre amarela deixou de ser epidemia no Rio.",
+    "E ele ganhou o prêmio principal de um congresso de higiene em Berlim.",
+    "O médico que a cidade odiou em mil novecentos e quatro morreu em mil novecentos e dezessete, com quarenta e quatro anos.",
+    "Então, quanto tempo você dura?",
+    "Se você ficou longe das barricadas e tomou a vacina, provavelmente atravessou novembro inteiro.",
+    "Com fome. Sem salário. Com medo. Mas vivo.",
+    "Se foi para a barricada, você tinha boas chances de parar na Ilha das Cobras.",
+    "E talvez num navio para o Acre.",
+    "E se escapou da revolta, mas não se vacinou?",
+    "O perigo de verdade continuava andando pelas ruas. E ele matava muito mais.",
+    "A Avenida Central ficou pronta e virou o cartão-postal da cidade.",
+    "E a varíola? O último caso no Brasil foi em mil novecentos e setenta e um.",
+    "Em mil novecentos e oitenta, ela foi declarada erradicada do planeta.",
+    "Com fotos e documentos reais da época, essa foi a sua chance.",
+    "E você, o que teria feito? Vacina ou barricada? Me conta nos comentários.",
+    "E se inscreve, porque no próximo, você acorda em outra época do Brasil."
+   ]
+  }
+ ]
+}

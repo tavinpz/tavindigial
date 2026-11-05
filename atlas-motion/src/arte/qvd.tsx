@@ -4,18 +4,18 @@ import { Img, staticFile } from 'remotion';
 import { geoMercator, geoPath } from 'd3-geo';
 import { feature } from 'topojson-client';
 import mundo from 'world-atlas/countries-110m.json';
-import { W, H, FA, Objeto, Fita, Emoji, rasgado, sp, conta, prog, clamp, EO } from './comum';
+import { W, H, FA, Objeto, Fita, Emoji, rasgado, sp, conta, prog, clamp, EO, Continua } from './comum';
 import type { VProps } from './comum';
 
 const OURO = '#e9c46a', TINTA = '#2a1d12', PAPEL = '#efe2c4', VERM = '#a8321f';
 
 /** foto impressa com borda, fita e legenda datilografada; zoom lento dentro da moldura */
-const Foto: React.FC<{ f: number; dur: number; arq: string; leg?: string; w?: number; ar?: number }> = ({ f, dur, arq, leg, w = 980, ar = 0.66 }) => {
-  const z = 1.04 + 0.08 * clamp(f / Math.max(dur + 14, 1));
+const Foto: React.FC<{ f: number; dur: number; arq: string; leg?: string; w?: number; ar?: number; zoom?: [number, number] | null }> = ({ f, dur, arq, leg, w = 980, ar = 0.66, zoom }) => {
+  const z = (zoom ? 1.45 : 1.04) + 0.08 * clamp(f / Math.max(dur + 14, 1));
   return (
     <div style={{ background: '#f6efdf', padding: '26px 26px 0', width: w, boxShadow: 'inset 0 0 40px rgba(120,90,40,0.25)' }}>
       <div style={{ width: w - 52, height: (w - 52) * ar, overflow: 'hidden', background: '#2a2219' }}>
-        <Img src={staticFile(`arte/qvd/${arq}`)} style={{ width: '100%', height: '100%', objectFit: 'cover', transform: `scale(${z})`, filter: 'sepia(0.55) contrast(1.08) brightness(0.96)' }} />
+        <Img src={staticFile(`arte/qvd/${arq}`)} style={{ width: '100%', height: '100%', objectFit: 'cover', transform: `scale(${z})`, transformOrigin: zoom ? `${zoom[0] * 100}% ${zoom[1] * 100}%` : '50% 50%', filter: 'sepia(0.55) contrast(1.08) brightness(0.96)' }} />
       </div>
       <div style={{ fontFamily: FA.maq, fontSize: 28, color: '#3b2c1d', padding: '16px 6px 20px', lineHeight: 1.25 }}>{leg}</div>
     </div>
@@ -80,6 +80,173 @@ const MapaAntigo: React.FC<{ f: number; dur: number; txt: string }> = ({ f, dur,
   );
 };
 
+
+const Medidor: React.FC<{ f: number; nome: string; v: number; cor: string; de?: number }> = ({ f, nome, v, cor, de }) => {
+  const p = prog(f, 6, 30, EO);
+  const atual = (de ?? v) + (v - (de ?? v)) * p;
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 26, margin: '18px 0' }}>
+      <div style={{ width: 300, fontFamily: FA.maq, fontSize: 46 }}>{nome}</div>
+      <div style={{ flex: 1, height: 56, border: `5px solid ${TINTA}`, borderRadius: 6, position: 'relative', background: 'rgba(255,255,255,0.25)' }}>
+        <div style={{ position: 'absolute', left: 4, top: 4, bottom: 4, width: `calc(${Math.max(0, atual)}% - 8px)`, background: cor, filter: 'url(#carimbo)' }} />
+      </div>
+      <div style={{ width: 110, fontFamily: FA.serif, fontWeight: 900, fontSize: 56, color: atual < 20 ? VERM : TINTA, textAlign: 'right' }}>{Math.round(atual)}</div>
+    </div>
+  );
+};
+
+const Ingresso: React.FC<{ txt: string; cor: string }> = ({ txt, cor }) => (
+  <div style={{ width: 620, padding: '50px 30px', background: PAPEL, border: `8px double ${cor}`, textAlign: 'center', clipPath: 'polygon(0 0,100% 0,100% 40%,97% 50%,100% 60%,100% 100%,0 100%,0 60%,3% 50%,0 40%)' }}>
+    <div style={{ fontFamily: FA.maq, fontSize: 32, color: '#5b4630', letterSpacing: 4 }}>NOVEMBRO DE 1904</div>
+    <div style={{ fontFamily: FA.serif, fontWeight: 900, fontSize: txt.length > 7 ? 84 : 110, color: cor, lineHeight: 1.05, whiteSpace: 'nowrap' }}>{txt}</div>
+  </div>
+);
+
+let _ant: any = null;
+const Extra: React.FC<{ f: number; dur: number; v: any }> = ({ f, dur, v }) => {
+  const cont = React.useContext(Continua);
+  const t = v.tipo;
+  if (t === 'capitulo') return (
+    <Objeto f={f} dur={dur} x={W / 2} y={430} rot={-1.5} entra="cai" seed={40}>
+      <Folha w={1350}>
+        <div style={{ fontFamily: FA.maq, fontSize: 38, letterSpacing: 8, color: VERM }}>{v.n}</div>
+        <div style={{ height: 3, background: TINTA, opacity: 0.6, margin: '14px 0 22px' }} />
+        <div style={{ fontFamily: FA.serif, fontWeight: 900, fontSize: 140, lineHeight: 1 }}>{v.txt}</div>
+        <div style={{ height: 8, background: OURO, marginTop: 26, width: `${60 * prog(f, 8, 26, EO)}%` }} />
+      </Folha>
+    </Objeto>
+  );
+  if (t === 'barras') {
+    const ant = v._de || {};
+    return (<>
+      <Objeto f={f} dur={dur} x={W / 2} y={430} rot={-1} entra="cai" seed={41}>
+        <Folha w={1250}>
+          <div style={{ fontFamily: FA.maq, fontSize: 36, letterSpacing: 5, marginBottom: 10 }}>FICHA DE SOBREVIVÊNCIA · VOCÊ</div>
+          <Medidor f={f} nome="SAÚDE" v={v.s} de={ant.s} cor="#7a2c1e" />
+          <Medidor f={f} nome="DINHEIRO" v={v.d} de={ant.d} cor="#6b5a1e" />
+          <Medidor f={f} nome="SEGURANÇA" v={v.g} de={ant.g} cor="#2f4a5c" />
+        </Folha>
+      </Objeto>
+      {v.txt && <Objeto f={f} dur={dur} x={W / 2 + 470} y={760} rot={-8} entra="carimbo" atraso={14} seed={42}><Carimbo txt={v.txt} tam={70} /></Objeto>}
+    </>);
+  }
+  if (t === 'linha') {
+    const ds: [string, string][] = v.datas;
+    return (
+      <Objeto f={f} dur={dur} x={W / 2} y={430} rot={-1} entra="cai" seed={43}>
+        <Folha w={1500}>
+          <div style={{ fontFamily: FA.maq, fontSize: 34, letterSpacing: 5 }}>LINHA DO TEMPO · 1904</div>
+          <div style={{ position: 'relative', height: 260, marginTop: 20 }}>
+            <div style={{ position: 'absolute', left: 0, right: 0, top: 120, height: 6, background: TINTA }} />
+            {ds.map(([d, txt], i) => {
+              const x = ds.length === 1 ? 50 : 8 + (84 * i) / (ds.length - 1);
+              const ativo = i === v.ativo;
+              const a = ativo ? prog(f, 6, 20, EO) : 1;
+              return (
+                <div key={d} style={{ position: 'absolute', left: `${x}%`, top: 0, transform: 'translateX(-50%)', textAlign: 'center', opacity: a, width: 380 }}>
+                  <div style={{ fontFamily: FA.serif, fontWeight: 900, fontSize: ativo ? 96 : 70, color: ativo ? VERM : TINTA }}>{d}</div>
+                  <div style={{ width: ativo ? 44 : 30, height: ativo ? 44 : 30, borderRadius: 50, background: ativo ? VERM : TINTA, margin: '6px auto' }} />
+                  <div style={{ fontFamily: FA.maq, fontSize: ativo ? 46 : 36 }}>{txt}</div>
+                </div>
+              );
+            })}
+          </div>
+        </Folha>
+      </Objeto>
+    );
+  }
+  if (t === 'escolha') return (<>
+    <Objeto f={f} dur={dur} x={W / 2 - 400} y={430} rot={-5} entra="esq" seed={44}><Ingresso txt={v.a} cor="#2f4a5c" /></Objeto>
+    <Objeto f={f} dur={dur} x={W / 2 + 400} y={430} rot={5} entra="dir" atraso={6} seed={45}><Ingresso txt={v.b} cor={VERM} /></Objeto>
+    <Objeto f={f} dur={dur} x={W / 2} y={440} rot={-3} entra="carimbo" atraso={14} seed={46}><Carimbo txt="OU" tam={120} cor={TINTA} /></Objeto>
+    {v.txt && <Objeto f={f} dur={dur} x={W / 2} y={790} rot={2} entra="carimbo" atraso={22} seed={47}><Carimbo txt={v.txt} tam={80} /></Objeto>}
+  </>);
+  if (t === 'comparacao') {
+    const mx = Math.max(v.va, v.vb);
+    const col = (nome: string, val: number, on: boolean, cor: string, k: number) => {
+      const pr = on ? prog(f, 6 + k * 6, 36 + k * 6, EO) : 0;
+      return (
+        <div style={{ width: 520, textAlign: 'center' }}>
+          <div style={{ height: 520, display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }}>
+            <div style={{ width: 220, height: `${Math.max(1.5, (val / mx) * 100 * pr)}%`, background: cor, filter: 'url(#carimbo)', border: `4px solid ${TINTA}` }} />
+          </div>
+          <div style={{ fontFamily: FA.serif, fontWeight: 900, fontSize: 110, color: cor }}>{on ? Math.round(val * pr).toLocaleString('pt-BR') : '?'}</div>
+          <div style={{ fontFamily: FA.maq, fontSize: 40 }}>{nome}</div>
+        </div>
+      );
+    };
+    return (
+      <Objeto f={f} dur={dur} x={W / 2} y={450} rot={-1} entra="cai" seed={48}>
+        <Folha w={1300}>
+          <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+            {col(v.a, v.va, true, '#2f4a5c', 0)}
+            {col(v.b, v.vb, v.ate === 'b', VERM, 1)}
+          </div>
+        </Folha>
+      </Objeto>
+    );
+  }
+  if (t === 'carimbo_doc') return (<>
+    <Objeto f={f} dur={dur} x={W / 2} y={440} rot={1.5} entra="cai" seed={49}>
+      <Folha w={1150}>
+        <div style={{ fontFamily: FA.maq, fontSize: 40, letterSpacing: 4 }}>{v.titulo}</div>
+        <div style={{ height: 2, background: TINTA, margin: '18px 0 0', opacity: 0.5 }} />
+        <div style={{ height: 300 }} />
+      </Folha>
+    </Objeto>
+    <Objeto f={f} dur={dur} x={W / 2} y={480} rot={-8} entra="carimbo" atraso={8} seed={50}><Carimbo txt={v.txt} tam={v.txt.length > 12 ? 100 : 140} /></Objeto>
+  </>);
+  if (t === 'lista') {
+    const it: string[] = v.itens || [];
+    return (
+      <Objeto f={f} dur={dur} x={W / 2} y={440} rot={-1} entra="cai" seed={51}>
+        <Folha w={1250} pauta>
+          <div style={{ fontFamily: FA.serif, fontWeight: 900, fontSize: 60 }}>{v.titulo}</div>
+          <div style={{ height: 2, background: TINTA, margin: '16px 0 20px', opacity: 0.5 }} />
+          {it.length === 0 && <div style={{ fontFamily: FA.maq, fontSize: 44, opacity: 0.5 }}>...</div>}
+          {it.map((x, i) => {
+            const novo = i === it.length - 1;
+            return <Datilo key={i} f={novo ? f : 999} txt={`— ${x}`} ini={6} cps={2} style={{ fontSize: 52, lineHeight: 1.5 }} />;
+          })}
+        </Folha>
+      </Objeto>
+    );
+  }
+  if (t === 'escuro') {
+    const a = prog(f, 4, 30);
+    return (<>
+      <Objeto f={f} dur={dur} x={W / 2} y={450} rot={-2} entra="cai" seed={52}><Foto f={f} dur={dur} arq="mictorio_pracaxv_augustomalta_1904_jpg.jpg" leg="Praça XV, 1904 · Foto: Augusto Malta" w={1000} ar={0.66} /></Objeto>
+      <div style={{ position: 'absolute', inset: -200, background: `radial-gradient(circle at 50% 45%, rgba(0,0,0,${0.2 * a}) 0%, rgba(10,6,2,${0.86 * a}) 55%)`, zIndex: 30 }} />
+      <Objeto f={f} dur={dur} x={W / 2 + 380} y={300} rot={6} entra="cola" atraso={6} seed={53}><div style={{ background: '#f6efdf', padding: 24, clipPath: rasgado(53, 3, 14) }}><Emoji n="lampiao" tam={180} style={{ filter: `grayscale(${a}) brightness(${1 - 0.6 * a})` }} /></div></Objeto>
+    </>);
+  }
+  if (t === 'mapa_rio') return (<>
+    <Objeto f={f} dur={dur} x={W / 2} y={440} rot={-2} entra="cai" seed={54}>
+      <Folha w={1300}>
+        <div style={{ fontFamily: FA.maq, fontSize: 34, letterSpacing: 4 }}>CENTRO DO RIO · BARRICADAS, NOVEMBRO DE 1904</div>
+        <svg width={1190} height={420} style={{ marginTop: 14 }}>
+          <path d="M0 330 C 200 300, 360 360, 560 320 S 900 250, 1190 290 L1190 420 L0 420 Z" fill="rgba(70,110,140,0.25)" stroke="#5b4630" strokeWidth={2} />
+          <text x={980} y={390} fontFamily={FA.serif} fontStyle="italic" fontSize={34} fill="#3b2c1d">baía</text>
+          {[[160, 220, 'SAÚDE'], [520, 150, 'AV. PASSOS'], [860, 210, 'CENTRO']].map(([x, y, n], i) => {
+            const a = prog(f, 8 + i * 10, 20 + i * 10, EO);
+            return <g key={n as string} opacity={a}><circle cx={x as number} cy={y as number} r={20 + 10 * a} fill={VERM} opacity={0.85} /><text x={(x as number) + 34} y={(y as number) + 12} fontFamily={FA.serif} fontWeight={900} fontSize={44} fill={TINTA}>{n}</text></g>;
+          })}
+          <text x={20} y={410} fontFamily={FA.maq} fontSize={22} fill="#5b4630">esquema ilustrativo, sem escala</text>
+        </svg>
+      </Folha>
+    </Objeto>
+  </>);
+  if (t === 'fim') return (<>
+    {[0, 1].map((k) => (
+      <Objeto key={k} f={f} dur={dur} x={W / 2 + (k ? 380 : -380)} y={420} rot={k ? 2 : -2} entra={k ? 'dir' : 'esq'} atraso={k * 5} seed={55 + k} sai={false}>
+        <div style={{ width: 640, height: 360, border: '6px dashed rgba(42,29,18,0.5)', borderRadius: 14, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: FA.serif, fontWeight: 900, fontSize: 56, color: 'rgba(42,29,18,0.6)', background: 'rgba(246,239,223,0.35)' }}>PRÓXIMA ÉPOCA</div>
+      </Objeto>
+    ))}
+    <Objeto f={f} dur={dur} x={W / 2} y={790} rot={-2} entra="carimbo" atraso={14} seed={57} sai={false}><Carimbo txt="INSCREVA-SE" sub="você acorda em outra época do Brasil" tam={90} /></Objeto>
+  </>);
+  return null;
+};
+
 const Cena: React.FC<VProps> = ({ f, dur, v }) => {
   const t = v.tipo;
   if (t === 'data') return (<>
@@ -95,10 +262,14 @@ const Cena: React.FC<VProps> = ({ f, dur, v }) => {
   </>);
   if (t === 'foto') return (<>
     <Objeto f={f} dur={dur} x={W / 2 + (v.lado || 0)} y={450} rot={v.rot ?? -2.5} entra={v.entra || 'cai'} seed={v.seed || 3}>
-      <Foto f={f} dur={dur} arq={v.arq} leg={v.leg} w={v.w || 1000} ar={v.ar || 0.62} />
+      <Foto f={f} dur={dur} arq={v.arq} leg={v.leg} w={v.w || 1000} ar={v.ar || 0.62} zoom={v.zoom} />
     </Objeto>
     <Fita x={W / 2 + (v.lado || 0) - (v.w || 1000) / 2 + 30} y={130} rot={-38} w={170} /><Fita x={W / 2 + (v.lado || 0) + (v.w || 1000) / 2 - 30} y={130} rot={36} w={170} />
     {v.selo && <Objeto f={f} dur={dur} x={W / 2 + 470} y={700} rot={-9} entra="carimbo" atraso={Math.round(dur * (v.selo_em ?? 0.4))} seed={4}><Carimbo txt={v.selo} sub={v.selo_sub} tam={130} /></Objeto>}
+  </>);
+  if (t === 'bolso' && v.modo === 'rato') return (<>
+    <Objeto f={f} dur={dur} x={W / 2 - 220} y={430} rot={-6} entra="cai" seed={58}><div style={{ background: '#f6efdf', padding: 40, clipPath: rasgado(58, 2.5, 16) }}><Emoji n="moedas" tam={260} style={{ filter: 'sepia(0.7)' }} /></div></Objeto>
+    <Objeto f={f} dur={dur} x={W / 2 + 330} y={420} rot={7} entra="carimbo" atraso={10} seed={59}><Carimbo txt="COMPRA-SE RATO" tam={84} /></Objeto>
   </>);
   if (t === 'bolso') return (<>
     <Objeto f={f} dur={dur} x={W / 2 - 200} y={440} rot={-6} entra="cai" seed={5}>
@@ -127,10 +298,10 @@ const Cena: React.FC<VProps> = ({ f, dur, v }) => {
   </>);
   if (t === 'numero') return (<>
     <Objeto f={f} dur={dur} x={W / 2 + 60} y={430} rot={-2} entra="cai" seed={11}>
-      <Folha w={820}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 34 }}>
+      <Folha w={1000}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 34, justifyContent: 'center' }}>
           {v.icone && <Emoji n={v.icone} tam={200} style={{ filter: 'sepia(0.6)' }} />}
-          <div style={{ fontFamily: FA.serif, fontWeight: 900, fontSize: 250, lineHeight: 1, color: VERM }}>{conta(v.txt, prog(f, 6, 30))}</div>
+          <div style={{ fontFamily: FA.serif, fontWeight: 900, fontSize: v.txt.length > 5 ? 190 : 230, lineHeight: 1, color: VERM, whiteSpace: 'nowrap' }}>{/\d/.test(v.txt) ? conta(v.txt.replace('.', ''), prog(f, 6, 30)).replace(/^(\d)(\d{3})/, '$1.$2') : v.txt}</div>
         </div>
         <div style={{ fontFamily: FA.maq, fontSize: 40, marginTop: 10 }}>{v.rotulo}</div>
       </Folha>
@@ -139,7 +310,7 @@ const Cena: React.FC<VProps> = ({ f, dur, v }) => {
   if (t === 'ficha') return (<>
     <Objeto f={f} dur={dur} x={W / 2} y={440} rot={-1.5} entra="cai" seed={12}>
       <Folha w={1000}>
-        <div style={{ fontFamily: FA.maq, fontSize: 40, letterSpacing: 5 }}>REGISTRO DA REVOLTA</div>
+        <div style={{ fontFamily: FA.maq, fontSize: 40, letterSpacing: 5 }}>{v.titulo || 'REGISTRO DA REVOLTA'}</div>
         <div style={{ fontFamily: FA.maq, fontSize: 28, opacity: 0.7, marginBottom: 20 }}>{v.rodape}</div>
         {v.linhas.map(([k, n]: [string, string], i: number) => {
           const at = Math.round(dur * (0.12 + i * 0.26));
@@ -167,7 +338,7 @@ const Cena: React.FC<VProps> = ({ f, dur, v }) => {
     ))}
     <Objeto f={f} dur={dur} x={W / 2} y={170} rot={-2} entra="cola" atraso={34} seed={30} sai={false}><Carimbo txt={v.txt} tam={88} cor={TINTA} /></Objeto>
   </>);
-  return null;
+  return <Extra f={f} dur={dur} v={v} />;
 };
 
-export const QVD = { Cena, superficie: 'velho' as const, legenda: 'serif' as const };
+export const QVD = { Cena, superficie: 'velho' as const, legenda: 'serif' as const, continua: ['barras', 'linha', 'lista', 'ficha', 'mapa'] };
