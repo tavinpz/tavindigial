@@ -123,7 +123,7 @@ function Detalhe({ v, c, fechar, recarregar, mover, vizinhos }) {
           {v.video_url ? <video src={v.video_url} poster={capas[0]?.url} controls playsInline preload="metadata" /> : <div className="v-semvideo">Vídeo ainda em produção…</div>}
           {capas.length > 0 && (
             <div className="yl-capas">
-              <strong>Thumbnails {capas.length > 1 ? '(suba as duas no "Testar e comparar")' : ''}</strong>
+              <strong>Thumbnails {capas.length > 1 ? '(suba todas no "Testar e comparar": até 3)' : ''}</strong>
               <div className="yl-capas-lista">
                 {capas.map((cp, k) => (
                   <figure key={cp.url}>
