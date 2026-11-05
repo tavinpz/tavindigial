@@ -389,7 +389,7 @@ async function cresceu24h(db: SupabaseClient, canal: string, rede: string, total
 }
 
 // Views das últimas 24 h de um canal (o menu mostra isso; fica em views_dia.views_hoje do dia de hoje):
-//   Instagram: insights da conta de hoje (desde 00h de Brasília) + a fração de ontem que ainda está nas últimas 24 h
+//   Instagram: soma das views dos 50 posts mais recentes agora − a mesma soma 24 h atrás
 //   YouTube: soma das views de todos os vídeos agora − a mesma soma 24 h atrás (o total do canal no YouTube atrasa horas)
 async function viewsHoje(db: SupabaseClient, canal: string) {
   const dia = hojeSP();
@@ -397,16 +397,28 @@ async function viewsHoje(db: SupabaseClient, canal: string) {
   const c = await contaIG(db, canal).catch(() => null);
   if (c) {
     try {
-      // a Meta soma por dia inteiro: últimas 24 h = hoje até agora + a parte de ontem que ainda cai na janela
-      const agora = Math.floor(Date.now() / 1000), meiaNoite = Math.floor(new Date(`${dia}T00:00:00-03:00`).getTime() / 1000);
-      const pedir = (desde: number, ate: number) => c.get(`${c.userId}/insights`, { metric: "views", period: "day", metric_type: "total_value", since: String(desde), until: String(ate) })
-        .then((d) => d.data?.[0]?.total_value?.value as number | undefined);
-      const [hoje, ontem] = await Promise.all([pedir(meiaNoite, agora), pedir(meiaNoite - 86400, meiaNoite).catch(() => undefined)]);
-      const resto = Math.max(0, 1 - (agora - meiaNoite) / 86400);
-      const v = hoje == null ? null : Math.round(Number(hoje) + Number(ontem ?? 0) * resto);
-      if (v != null) {
-        await db.from("views_dia").upsert({ canal, rede: "instagram", dia, views_hoje: Number(v), atualizado_em: new Date().toISOString() }, { onConflict: "canal,rede,dia" });
-        r.instagram = Number(v);
+      // soma das views (vida toda) dos 50 posts mais recentes agora − a mesma soma 24 h atrás: é o que entrou nas últimas 24 h.
+      // Enquanto não há foto de 24 h atrás, vale o dia de ontem inteiro dos insights da conta.
+      const lista = await c.get(`${c.userId}/media`, { fields: "id", limit: "50" });
+      const ids = ((lista.data ?? []) as { id: string }[]).map((m) => m.id);
+      let total = 0, lidos = 0;
+      for (let i = 0; i < ids.length; i += 10) {
+        const vs = await Promise.all(ids.slice(i, i + 10).map((m) => c.get(`${m}/insights`, { metric: "views" })
+          .then((d) => Number(d.data?.[0]?.values?.[0]?.value ?? d.data?.[0]?.total_value?.value ?? 0)).catch(() => null)));
+        for (const v of vs) if (v != null) { total += v; lidos++; }
+      }
+      if (lidos) {
+        const lim = new Date(Date.now() - 86400000).toISOString();
+        const { data: velho } = await db.from("views_snap").select("em").eq("canal", canal).eq("rede", "instagram").lte("em", lim).limit(1).maybeSingle();
+        let v = await cresceu24h(db, canal, "instagram", total);
+        if (!velho) {
+          const meiaNoite = Math.floor(new Date(`${dia}T00:00:00-03:00`).getTime() / 1000);
+          const d = await c.get(`${c.userId}/insights`, { metric: "views", period: "day", metric_type: "total_value", since: String(meiaNoite - 86400), until: String(meiaNoite) }).catch(() => null);
+          const ontem = d?.data?.[0]?.total_value?.value;
+          if (ontem != null) v = Math.max(v, Number(ontem));
+        }
+        await db.from("views_dia").upsert({ canal, rede: "instagram", dia, total_atual: total, views_hoje: v, atualizado_em: new Date().toISOString() }, { onConflict: "canal,rede,dia" });
+        r.instagram = v;
       }
     } catch (e) { r.instagram_erro = (e as Error).message; }
   }
