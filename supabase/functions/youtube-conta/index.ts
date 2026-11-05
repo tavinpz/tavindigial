@@ -150,13 +150,16 @@ async function mudarStatus(db: SupabaseClient, v: Record<string, any>, cancelar:
 async function processar(db: SupabaseClient) {
   const sel = "id,canal,titulo,yt_titulo,yt_descricao,yt_tags,yt_programado_para,yt_status,yt_id,yt_tentativas,video_url";
   // primeiro o que tem data (programar, mudar horário, cancelar), do mais próximo ao mais longe; depois os novos que vão como privados
-  const { data: a } = await db.from("videos").select(sel).in("yt_status", ["agendado", "cancelar"]).order("yt_programado_para", { ascending: true, nullsFirst: false }).limit(40);
+  // quem já está no YouTube (só muda data) vem separado, para não ficar atrás da fila de envios
+  const { data: a1 } = await db.from("videos").select(sel).in("yt_status", ["agendado", "cancelar"]).not("yt_id", "is", null).order("yt_programado_para", { ascending: true, nullsFirst: false }).limit(40);
+  const { data: a2 } = await db.from("videos").select(sel).in("yt_status", ["agendado", "cancelar"]).is("yt_id", null).order("yt_programado_para", { ascending: true, nullsFirst: false }).limit(40);
+  const a = [...(a1 ?? []), ...(a2 ?? [])];
   const { data: b } = await db.from("videos").select(sel).eq("yt_status", "subir").order("created_at", { ascending: true }).limit(40);
   const { yt_limite_dia } = await cfg(db, ["yt_limite_dia"]);
   const limite = Number(yt_limite_dia) || 15;
   const enviados: Record<string, number> = {};
   const r: Record<string, string> = {};
-  let envios = 0, mudancas = 0;
+  let envios = 0, mudancas = 0, cotaProjeto = false;
   const semPermissao = new Set<string>();
   for (const v of [...(a ?? []), ...(b ?? [])]) {
     try {
@@ -170,10 +173,10 @@ async function processar(db: SupabaseClient) {
         continue;
       }
       // envio novo (arquivo inteiro): até 3 por rodada e respeitando o limite de envios do canal nas últimas 24 h
-      if (envios >= 3) continue;
+      if (envios >= 3 || cotaProjeto) continue;
       if (enviados[v.canal] == null) enviados[v.canal] = await enviados24h(await tokenDe(db, v.canal));
       if (enviados[v.canal] >= limite) {
-        await db.from("videos").update({ yt_erro: `o canal já subiu ${enviados[v.canal]} vídeos em 24 h (limite ${limite}); sobe sozinho quando liberar` }).eq("id", v.id);
+        await db.from("videos").update({ yt_erro: "o canal chegou no limite de envios do dia no YouTube; sobe sozinho quando liberar" }).eq("id", v.id);
         r[v.id] = "aguardando limite do dia"; continue;
       }
       envios++;
@@ -188,6 +191,8 @@ async function processar(db: SupabaseClient) {
       await db.from("videos").update({ yt_erro: aviso, yt_tentativas: n, ...(n >= 3 ? { yt_status: "erro" } : {}) }).eq("id", v.id);
       r[v.id] = `erro: ${msg}`;
       if (cota) enviados[v.canal] = limite;
+      // limite do projeto do Google (vale para todos os canais): para de enviar nesta rodada
+      if (/for consumer 'project/i.test(msg)) cotaProjeto = true;
       if (permissao) semPermissao.add(v.canal);
     }
   }
