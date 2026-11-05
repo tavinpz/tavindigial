@@ -5,10 +5,9 @@ import Pipeline, { Janela, fmtQuando, fmtCurto, useConexoes } from './Pipeline'
 import { CANAIS } from './canais'
 
 // Canais de vídeo longo do YouTube (Ten Thousand Runs, Last State Standing, Quanto Você Dura?…).
-// Quadro: Criado → Rascunho → Revisão → Upload feito → Programado → Publicado (coluna `yt_etapa` em `videos`).
+// Quadro: Rascunho → Revisão → Upload feito → Programado → Publicado (coluna `yt_etapa` em `videos`).
 // "Perfil do canal" mostra nome, @, assunto, descrição, palavras-chave, logo e banner para baixar.
 const FASES = [
-  { k: 'criado', nome: 'Criado', cor: '#B600F6', papel: 'fila' },
   { k: 'rascunho', nome: 'Rascunho', cor: '#3A7BD5', papel: 'fila' },
   { k: 'revisao', nome: 'Revisão', cor: '#E08A00', papel: 'fila' },
   { k: 'upload', nome: 'Upload feito', cor: '#D64545', papel: 'fila' },
@@ -28,8 +27,8 @@ const deLocal = (v) => (v ? new Date(`${v}:00-03:00`).toISOString() : null)
 // Etapa do vídeo: a marcada no painel; o que o YouTube já confirmou (programado/publicado) passa na frente
 function etapa(v) {
   if (v.yt_postado_em || v.yt_status === 'postado') return 'publicado'
-  const e = v.yt_etapa && v.yt_etapa !== 'criacao' ? v.yt_etapa : 'criado'
-  if ((v.yt_status === 'programado' || v.yt_status === 'agendado') && FASES.findIndex((f) => f.k === e) < 4) return 'programado'
+  const e = v.yt_etapa && !['criacao', 'criado'].includes(v.yt_etapa) ? v.yt_etapa : 'rascunho'
+  if ((v.yt_status === 'programado' || v.yt_status === 'agendado') && FASES.findIndex((f) => f.k === e) < 3) return 'programado'
   return e
 }
 
@@ -181,7 +180,7 @@ function paraItem(v) {
     views: v.yt_views || 0, erro: v.yt_erro || '',
     aviso: v.video_url ? '' : 'Em produção',
     tipoNome: v.duracao ? minutos(v.duracao) : '',
-    programavel: ['criado', 'rascunho', 'revisao', 'upload'].includes(e),
+    programavel: ['rascunho', 'revisao', 'upload'].includes(e),
     movel: true,
     ordem: `${String(v.numero ?? 0).padStart(6, '0')}${v.created_at || ''}`,
   }
@@ -226,7 +225,7 @@ export default function YouTubeLongo({ canal, nome }) {
     await carregar()
   }
 
-  // Subir vídeo pelo painel: arquivo e capa no bucket "videos" e o cartão novo em Criado
+  // Subir vídeo pelo painel: arquivo e capa no bucket "videos" e o cartão novo em Rascunho
   async function subir(file, { titulo, capa, duracao }) {
     const numero = Math.max(0, ...lista.map((v) => v.numero || 0)) + 1
     const id = `${(info.sigla || canal.slice(0, 3)).toLowerCase()}${String(numero).padStart(3, '0')}-${Date.now().toString(36)}`
@@ -239,11 +238,11 @@ export default function YouTubeLongo({ canal, nome }) {
       if (!c.error) capaUrl = pasta.getPublicUrl(`${canal}/${id}.jpg`).data.publicUrl
     }
     const { error } = await supabase.from('videos').insert({
-      id, canal, numero, titulo, yt_titulo: titulo, arquivo: `${titulo}.mp4`, yt_etapa: 'criado',
+      id, canal, numero, titulo, yt_titulo: titulo, arquivo: `${titulo}.mp4`, yt_etapa: 'rascunho',
       video_url: pasta.getPublicUrl(`${canal}/${id}.mp4`).data.publicUrl, capa_url: capaUrl, duracao,
     })
     if (error) { avisar('Subiu, mas não registrou'); return false }
-    avisar('Vídeo em Criado'); await carregar(); return true
+    avisar('Vídeo em Rascunho'); await carregar(); return true
   }
 
   if (lista === null) return <p className="p-vazio">Carregando…</p>
