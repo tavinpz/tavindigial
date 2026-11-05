@@ -9,7 +9,8 @@ import '@fontsource/playfair-display/700.css';
 import '@fontsource/playfair-display/900.css';
 import '@fontsource/inter/600.css';
 import React from 'react';
-import { AbsoluteFill, Img, staticFile, spring } from 'remotion';
+import { AbsoluteFill, Img, staticFile, spring, getInputProps } from 'remotion';
+const TESTE = ((getInputProps() as any).teste || '') as string;
 import { clamp, rnd, EO, prog } from '../lib/anim';
 
 export const W = 1920, H = 1080, FPS = 30;
@@ -38,7 +39,7 @@ export const rasgado = (seed: number, dente = 1.6, n = 26) => {
 };
 
 /** filtros SVG reutilizáveis (definidos uma vez por quadro) */
-export const Filtros: React.FC = () => (
+export const Filtros: React.FC = () => TESTE.includes('filtro') ? null : (
   <svg width={0} height={0} style={{ position: 'absolute' }}>
     <defs>
       <filter id="grao-papel" x="0" y="0" width="100%" height="100%">
@@ -122,11 +123,15 @@ export const camera = (g: number, socos: number[]) => {
   return { esc, px, py, rot };
 };
 
+export const Continua = React.createContext<{ ant: boolean; prox: boolean }>({ ant: false, prox: false });
+
 /** objeto físico: entra caindo/deslizando, assenta com mola e sai sendo puxado para fora */
 export const Objeto: React.FC<{ f: number; dur: number; x: number; y: number; w?: number; rot?: number; entra?: 'cai' | 'esq' | 'dir' | 'baixo' | 'carimbo' | 'cola';
-  atraso?: number; sai?: boolean; z?: number; sombra?: number; children: React.ReactNode; seed?: number }> = ({ f, dur, x, y, w, rot = 0, entra = 'cai', atraso = 0, sai = true, z = 1, sombra = 1, children, seed = 1 }) => {
-  const fe = f - atraso;
+  atraso?: number; sai?: boolean; z?: number; sombra?: number; children: React.ReactNode; seed?: number; forma?: 'ret' | 'livre' }> = ({ f, dur, x, y, w, rot = 0, entra = 'cai', atraso = 0, sai = true, z = 1, sombra = 1, children, seed = 1, forma = 'ret' }) => {
+  const cont = React.useContext(Continua);
+  const fe = cont.ant && atraso === 0 ? f + 60 : f - atraso;
   if (fe < 0) return null;
+  if (cont.prox) sai = false;
   const s = sp(fe, entra === 'carimbo' ? { damping: 11, stiffness: 260, mass: 0.6 } : entra === 'cola' ? { damping: 16, stiffness: 200 } : {});
   const saida = sai ? prog(f, dur, dur + 14, EO) : 0;
   let dx = 0, dy = 0, dr = 0, esc = 1, alt = 0;
@@ -144,7 +149,10 @@ export const Objeto: React.FC<{ f: number; dur: number; x: number; y: number; w?
   return (
     <div style={{ position: 'absolute', left: x, top: y, width: w ?? 'max-content', zIndex: z, opacity: op,
       transform: `translate(-50%, -50%) translate(${dx}px, ${dy}px) rotate(${rot + dr}deg) scale(${esc})`,
-      filter: `drop-shadow(${6 * sh}px ${14 * sh}px ${10 * sh}px rgba(0,0,0,${0.45 / (1 + alt)}))` }}>
+      // sombra barata: box-shadow no retângulo do objeto (papel, placa, carta); drop-shadow só em forma livre; carimbo é tinta, sem sombra
+      ...(entra === 'carimbo' || sombra === 0 ? {} : forma === 'livre'
+        ? { filter: `drop-shadow(${5 * sh}px ${10 * sh}px ${6 * sh}px rgba(0,0,0,${0.42 / (1 + alt)}))` }
+        : { boxShadow: `${6 * sh}px ${14 * sh}px ${18 * sh}px rgba(0,0,0,${0.42 / (1 + alt)})` }) }}>
       {children}
     </div>
   );

@@ -1,0 +1,3546 @@
+{
+ "id": "ttr001a",
+ "canal": "ten-thousand-runs",
+ "titulo": "We Simulated 10,000 Games of Monopoly. One Color Wins Twice as Often",
+ "voz": "am_michael",
+ "velocidade": 1.0,
+ "lang": "en-us",
+ "legenda": true,
+ "acento": "#ffd23f",
+ "marca": "TEN THOUSAND RUNS",
+ "trilha": 0.14,
+ "cauda": 4.0,
+ "numeros": {
+  "ten thousand": "10,000",
+  "two and a half percent": "2.5%",
+  "twenty five percent": "25%",
+  "thirty two": "32",
+  "four hundred and fifty dollars": "$450",
+  "twelve hundred": "$1,200",
+  "fifty dollars": "$50"
+ },
+ "blocos": [
+  {
+   "cena": {
+    "tipo": "arte",
+    "v": [
+     {
+      "tipo": "ficha",
+      "titulo": "CASE FILE · THE LANDLORD'S GAME",
+      "linhas": [
+       [
+        "Inventor",
+        "Elizabeth \"Lizzie\" Magie"
+       ],
+       [
+        "Patent",
+        "U.S. 748,626 · 1904"
+       ],
+       [
+        "Purpose",
+        "Show how land grabbing works"
+       ]
+      ]
+     },
+     {
+      "tipo": "icones"
+     },
+     {
+      "tipo": "ano",
+      "ano": "1935",
+      "de": 1904,
+      "txt": "IT BECOMES MONOPOLY"
+     },
+     {
+      "tipo": "ficha",
+      "titulo": "CASE FILE · 1935",
+      "linhas": [
+       [
+        "Buyer",
+        "Parker Brothers"
+       ],
+       [
+        "Bought",
+        "Magie's game patent"
+       ],
+       [
+        "Price",
+        "$500"
+       ]
+      ]
+     },
+     {
+      "tipo": "numero",
+      "txt": "$500",
+      "rotulo": "FOR HER PATENT"
+     },
+     {
+      "tipo": "falencia"
+     },
+     {
+      "tipo": "ficha",
+      "titulo": "SIMULATION LAB · RUN ORDER",
+      "linhas": [
+       [
+        "Board",
+        "U.S. board, 40 squares"
+       ],
+       [
+        "Cards",
+        "Chance + Community Chest"
+       ],
+       [
+        "Rules",
+        "doubles, jail, houses, mortgages"
+       ]
+      ]
+     },
+     {
+      "tipo": "contador"
+     },
+     {
+      "tipo": "dados",
+      "faces": [
+       3,
+       4
+      ],
+      "txt": "EVERY ROLL"
+     },
+     {
+      "tipo": "dinheiro",
+      "txt": "EVERY RENT"
+     },
+     {
+      "tipo": "falencia"
+     },
+     {
+      "tipo": "leque",
+      "txt": "PLAYED TO THE END"
+     },
+     {
+      "tipo": "cartas",
+      "modo": "misterio",
+      "selo": "NOT WHAT YOU THINK"
+     },
+     {
+      "tipo": "cartas",
+      "modo": "misterio",
+      "selo": "WINS 50%",
+      "sub": "ONE COLOR SET"
+     },
+     {
+      "tipo": "cartas",
+      "cor": "darkblue",
+      "nome": "PARK PLACE · BOARDWALK",
+      "valor": "?",
+      "rot": "the famous one",
+      "selo": "THE TRAP?"
+     },
+     {
+      "tipo": "tabuleiro",
+      "modo": "jail",
+      "calor": [
+       2.807,
+       1.891,
+       1.698,
+       2.015,
+       2.205,
+       2.839,
+       2.214,
+       0.855,
+       2.281,
+       2.225,
+       10.46,
+       2.608,
+       2.602,
+       2.186,
+       2.403,
+       2.68,
+       2.651,
+       2.304,
+       2.788,
+       2.799,
+       2.773,
+       2.583,
+       1.005,
+       2.524,
+       2.946,
+       2.833,
+       2.492,
+       2.466,
+       2.585,
+       2.356,
+       2.402,
+       2.432,
+       2.381,
+       2.14,
+       2.282,
+       2.198,
+       0.768,
+       1.981,
+       1.963,
+       2.381
+      ]
+     }
+    ]
+   },
+   "falas": [
+    "In 1904, a woman named Lizzie Magie patented a board game.",
+    "It was built to prove one thing. Landlords get rich, and everyone else goes broke.",
+    "About thirty years later, a version of her idea became Monopoly.",
+    "That same year, Parker Brothers bought her patent.",
+    "For five hundred dollars.",
+    "And people have been arguing about how to win it ever since.",
+    "So we stopped arguing. We built the game in code, with every rule.",
+    "And we let a computer play it. Ten thousand times.",
+    "Every roll.",
+    "Every rent.",
+    "Every bankruptcy.",
+    "Four players. Every game played to the end, until one player owned everything.",
+    "And the results don't match what most people believe about this game.",
+    "By the end of this video, you'll know the one color set that wins half its games,",
+    "the famous set that quietly loses,",
+    "and what you should really do in jail."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "v": [
+     {
+      "tipo": "capitulo",
+      "n": "PART ONE",
+      "txt": "THE BOARD IS NOT FAIR"
+     },
+     {
+      "tipo": "tabuleiro",
+      "calor": [
+       2.807,
+       1.891,
+       1.698,
+       2.015,
+       2.205,
+       2.839,
+       2.214,
+       0.855,
+       2.281,
+       2.225,
+       10.46,
+       2.608,
+       2.602,
+       2.186,
+       2.403,
+       2.68,
+       2.651,
+       2.304,
+       2.788,
+       2.799,
+       2.773,
+       2.583,
+       1.005,
+       2.524,
+       2.946,
+       2.833,
+       2.492,
+       2.466,
+       2.585,
+       2.356,
+       2.402,
+       2.432,
+       2.381,
+       2.14,
+       2.282,
+       2.198,
+       0.768,
+       1.981,
+       1.963,
+       2.381
+      ]
+     },
+     {
+      "tipo": "tabuleiro",
+      "modo": "igual",
+      "calor": [
+       2.807,
+       1.891,
+       1.698,
+       2.015,
+       2.205,
+       2.839,
+       2.214,
+       0.855,
+       2.281,
+       2.225,
+       10.46,
+       2.608,
+       2.602,
+       2.186,
+       2.403,
+       2.68,
+       2.651,
+       2.304,
+       2.788,
+       2.799,
+       2.773,
+       2.583,
+       1.005,
+       2.524,
+       2.946,
+       2.833,
+       2.492,
+       2.466,
+       2.585,
+       2.356,
+       2.402,
+       2.432,
+       2.381,
+       2.14,
+       2.282,
+       2.198,
+       0.768,
+       1.981,
+       1.963,
+       2.381
+      ]
+     },
+     {
+      "tipo": "numero",
+      "txt": "2.5%",
+      "rotulo": "PER SQUARE, IF THE BOARD WERE FAIR"
+     },
+     {
+      "tipo": "tabuleiro",
+      "modo": "igual",
+      "calor": [
+       2.807,
+       1.891,
+       1.698,
+       2.015,
+       2.205,
+       2.839,
+       2.214,
+       0.855,
+       2.281,
+       2.225,
+       10.46,
+       2.608,
+       2.602,
+       2.186,
+       2.403,
+       2.68,
+       2.651,
+       2.304,
+       2.788,
+       2.799,
+       2.773,
+       2.583,
+       1.005,
+       2.524,
+       2.946,
+       2.833,
+       2.492,
+       2.466,
+       2.585,
+       2.356,
+       2.402,
+       2.432,
+       2.381,
+       2.14,
+       2.282,
+       2.198,
+       0.768,
+       1.981,
+       1.963,
+       2.381
+      ]
+     },
+     {
+      "tipo": "ficha",
+      "titulo": "EXPERIMENT 1 · TRAFFIC",
+      "linhas": [
+       [
+        "Games",
+        "10,000"
+       ],
+       [
+        "Buying",
+        "off"
+       ],
+       [
+        "Measure",
+        "where every move ends"
+       ]
+      ]
+     },
+     {
+      "tipo": "dados",
+      "faces": [
+       5,
+       2
+      ],
+      "txt": "WHERE DO THEY LAND?"
+     },
+     {
+      "tipo": "tabuleiro",
+      "modo": "calor",
+      "calor": [
+       2.807,
+       1.891,
+       1.698,
+       2.015,
+       2.205,
+       2.839,
+       2.214,
+       0.855,
+       2.281,
+       2.225,
+       10.46,
+       2.608,
+       2.602,
+       2.186,
+       2.403,
+       2.68,
+       2.651,
+       2.304,
+       2.788,
+       2.799,
+       2.773,
+       2.583,
+       1.005,
+       2.524,
+       2.946,
+       2.833,
+       2.492,
+       2.466,
+       2.585,
+       2.356,
+       2.402,
+       2.432,
+       2.381,
+       2.14,
+       2.282,
+       2.198,
+       0.768,
+       1.981,
+       1.963,
+       2.381
+      ]
+     },
+     {
+      "tipo": "tabuleiro",
+      "modo": "calor",
+      "foco": [
+       10
+      ],
+      "calor": [
+       2.807,
+       1.891,
+       1.698,
+       2.015,
+       2.205,
+       2.839,
+       2.214,
+       0.855,
+       2.281,
+       2.225,
+       10.46,
+       2.608,
+       2.602,
+       2.186,
+       2.403,
+       2.68,
+       2.651,
+       2.304,
+       2.788,
+       2.799,
+       2.773,
+       2.583,
+       1.005,
+       2.524,
+       2.946,
+       2.833,
+       2.492,
+       2.466,
+       2.585,
+       2.356,
+       2.402,
+       2.432,
+       2.381,
+       2.14,
+       2.282,
+       2.198,
+       0.768,
+       1.981,
+       1.963,
+       2.381
+      ]
+     },
+     {
+      "tipo": "tabuleiro",
+      "modo": "jail",
+      "selo": "10.5%",
+      "sub": "OF ALL MOVES END HERE",
+      "calor": [
+       2.807,
+       1.891,
+       1.698,
+       2.015,
+       2.205,
+       2.839,
+       2.214,
+       0.855,
+       2.281,
+       2.225,
+       10.46,
+       2.608,
+       2.602,
+       2.186,
+       2.403,
+       2.68,
+       2.651,
+       2.304,
+       2.788,
+       2.799,
+       2.773,
+       2.583,
+       1.005,
+       2.524,
+       2.946,
+       2.833,
+       2.492,
+       2.466,
+       2.585,
+       2.356,
+       2.402,
+       2.432,
+       2.381,
+       2.14,
+       2.282,
+       2.198,
+       0.768,
+       1.981,
+       1.963,
+       2.381
+      ]
+     },
+     {
+      "tipo": "numero",
+      "txt": "10.5%",
+      "rotulo": "MOVES THAT END IN JAIL"
+     },
+     {
+      "tipo": "tabuleiro",
+      "modo": "calor",
+      "foco": [
+       30,
+       10
+      ],
+      "calor": [
+       2.807,
+       1.891,
+       1.698,
+       2.015,
+       2.205,
+       2.839,
+       2.214,
+       0.855,
+       2.281,
+       2.225,
+       10.46,
+       2.608,
+       2.602,
+       2.186,
+       2.403,
+       2.68,
+       2.651,
+       2.304,
+       2.788,
+       2.799,
+       2.773,
+       2.583,
+       1.005,
+       2.524,
+       2.946,
+       2.833,
+       2.492,
+       2.466,
+       2.585,
+       2.356,
+       2.402,
+       2.432,
+       2.381,
+       2.14,
+       2.282,
+       2.198,
+       0.768,
+       1.981,
+       1.963,
+       2.381
+      ]
+     },
+     {
+      "tipo": "numero",
+      "txt": "4 WAYS",
+      "rotulo": "INTO JAIL"
+     },
+     {
+      "tipo": "tabuleiro",
+      "modo": "calor",
+      "foco": [
+       30
+      ],
+      "calor": [
+       2.807,
+       1.891,
+       1.698,
+       2.015,
+       2.205,
+       2.839,
+       2.214,
+       0.855,
+       2.281,
+       2.225,
+       10.46,
+       2.608,
+       2.602,
+       2.186,
+       2.403,
+       2.68,
+       2.651,
+       2.304,
+       2.788,
+       2.799,
+       2.773,
+       2.583,
+       1.005,
+       2.524,
+       2.946,
+       2.833,
+       2.492,
+       2.466,
+       2.585,
+       2.356,
+       2.402,
+       2.432,
+       2.381,
+       2.14,
+       2.282,
+       2.198,
+       0.768,
+       1.981,
+       1.963,
+       2.381
+      ]
+     },
+     {
+      "tipo": "cartas2",
+      "a": "CHANCE",
+      "b": "COMMUNITY CHEST",
+      "txt": "GO TO JAIL"
+     },
+     {
+      "tipo": "dados",
+      "faces": [
+       6,
+       6
+      ],
+      "txt": "3 DOUBLES = JAIL"
+     },
+     {
+      "tipo": "tabuleiro",
+      "modo": "calor",
+      "foco": [
+       0
+      ],
+      "selo": "GO 2.81%",
+      "calor": [
+       2.807,
+       1.891,
+       1.698,
+       2.015,
+       2.205,
+       2.839,
+       2.214,
+       0.855,
+       2.281,
+       2.225,
+       10.46,
+       2.608,
+       2.602,
+       2.186,
+       2.403,
+       2.68,
+       2.651,
+       2.304,
+       2.788,
+       2.799,
+       2.773,
+       2.583,
+       1.005,
+       2.524,
+       2.946,
+       2.833,
+       2.492,
+       2.466,
+       2.585,
+       2.356,
+       2.402,
+       2.432,
+       2.381,
+       2.14,
+       2.282,
+       2.198,
+       0.768,
+       1.981,
+       1.963,
+       2.381
+      ]
+     },
+     {
+      "tipo": "tabuleiro",
+      "modo": "calor",
+      "foco": [
+       20
+      ],
+      "calor": [
+       2.807,
+       1.891,
+       1.698,
+       2.015,
+       2.205,
+       2.839,
+       2.214,
+       0.855,
+       2.281,
+       2.225,
+       10.46,
+       2.608,
+       2.602,
+       2.186,
+       2.403,
+       2.68,
+       2.651,
+       2.304,
+       2.788,
+       2.799,
+       2.773,
+       2.583,
+       1.005,
+       2.524,
+       2.946,
+       2.833,
+       2.492,
+       2.466,
+       2.585,
+       2.356,
+       2.402,
+       2.432,
+       2.381,
+       2.14,
+       2.282,
+       2.198,
+       0.768,
+       1.981,
+       1.963,
+       2.381
+      ]
+     },
+     {
+      "tipo": "tabuleiro",
+      "modo": "calor",
+      "foco": [
+       7,
+       22,
+       36
+      ],
+      "calor": [
+       2.807,
+       1.891,
+       1.698,
+       2.015,
+       2.205,
+       2.839,
+       2.214,
+       0.855,
+       2.281,
+       2.225,
+       10.46,
+       2.608,
+       2.602,
+       2.186,
+       2.403,
+       2.68,
+       2.651,
+       2.304,
+       2.788,
+       2.799,
+       2.773,
+       2.583,
+       1.005,
+       2.524,
+       2.946,
+       2.833,
+       2.492,
+       2.466,
+       2.585,
+       2.356,
+       2.402,
+       2.432,
+       2.381,
+       2.14,
+       2.282,
+       2.198,
+       0.768,
+       1.981,
+       1.963,
+       2.381
+      ]
+     },
+     {
+      "tipo": "numero",
+      "txt": "0.77%",
+      "rotulo": "THE QUIETEST CHANCE SQUARE"
+     },
+     {
+      "tipo": "cartas2",
+      "a": "CHANCE",
+      "b": "ADVANCE TO...",
+      "txt": "MOVED AWAY"
+     },
+     {
+      "tipo": "tabuleiro",
+      "modo": "jail",
+      "calor": [
+       2.807,
+       1.891,
+       1.698,
+       2.015,
+       2.205,
+       2.839,
+       2.214,
+       0.855,
+       2.281,
+       2.225,
+       10.46,
+       2.608,
+       2.602,
+       2.186,
+       2.403,
+       2.68,
+       2.651,
+       2.304,
+       2.788,
+       2.799,
+       2.773,
+       2.583,
+       1.005,
+       2.524,
+       2.946,
+       2.833,
+       2.492,
+       2.466,
+       2.585,
+       2.356,
+       2.402,
+       2.432,
+       2.381,
+       2.14,
+       2.282,
+       2.198,
+       0.768,
+       1.981,
+       1.963,
+       2.381
+      ]
+     },
+     {
+      "tipo": "tabuleiro",
+      "modo": "jail",
+      "calor": [
+       2.807,
+       1.891,
+       1.698,
+       2.015,
+       2.205,
+       2.839,
+       2.214,
+       0.855,
+       2.281,
+       2.225,
+       10.46,
+       2.608,
+       2.602,
+       2.186,
+       2.403,
+       2.68,
+       2.651,
+       2.304,
+       2.788,
+       2.799,
+       2.773,
+       2.583,
+       1.005,
+       2.524,
+       2.946,
+       2.833,
+       2.492,
+       2.466,
+       2.585,
+       2.356,
+       2.402,
+       2.432,
+       2.381,
+       2.14,
+       2.282,
+       2.198,
+       0.768,
+       1.981,
+       1.963,
+       2.381
+      ]
+     },
+     {
+      "tipo": "tabuleiro",
+      "modo": "jail",
+      "calor": [
+       2.807,
+       1.891,
+       1.698,
+       2.015,
+       2.205,
+       2.839,
+       2.214,
+       0.855,
+       2.281,
+       2.225,
+       10.46,
+       2.608,
+       2.602,
+       2.186,
+       2.403,
+       2.68,
+       2.651,
+       2.304,
+       2.788,
+       2.799,
+       2.773,
+       2.583,
+       1.005,
+       2.524,
+       2.946,
+       2.833,
+       2.492,
+       2.466,
+       2.585,
+       2.356,
+       2.402,
+       2.432,
+       2.381,
+       2.14,
+       2.282,
+       2.198,
+       0.768,
+       1.981,
+       1.963,
+       2.381
+      ]
+     },
+     {
+      "tipo": "dados",
+      "faces": [
+       3,
+       4
+      ],
+      "txt": "MOST COMMON: 7"
+     },
+     {
+      "tipo": "numero",
+      "txt": "6 / 36",
+      "rotulo": "WAYS TO ROLL A 7"
+     },
+     {
+      "tipo": "dados",
+      "faces": [
+       2,
+       4
+      ],
+      "txt": "THEN 6 AND 8"
+     },
+     {
+      "tipo": "dados",
+      "faces": [
+       4,
+       5
+      ],
+      "txt": "THEN 5 AND 9"
+     },
+     {
+      "tipo": "tabuleiro",
+      "modo": "saida",
+      "calor": [
+       2.807,
+       1.891,
+       1.698,
+       2.015,
+       2.205,
+       2.839,
+       2.214,
+       0.855,
+       2.281,
+       2.225,
+       10.46,
+       2.608,
+       2.602,
+       2.186,
+       2.403,
+       2.68,
+       2.651,
+       2.304,
+       2.788,
+       2.799,
+       2.773,
+       2.583,
+       1.005,
+       2.524,
+       2.946,
+       2.833,
+       2.492,
+       2.466,
+       2.585,
+       2.356,
+       2.402,
+       2.432,
+       2.381,
+       2.14,
+       2.282,
+       2.198,
+       0.768,
+       1.981,
+       1.963,
+       2.381
+      ]
+     },
+     {
+      "tipo": "tabuleiro",
+      "modo": "saida",
+      "foco": [
+       16,
+       18,
+       19
+      ],
+      "calor": [
+       2.807,
+       1.891,
+       1.698,
+       2.015,
+       2.205,
+       2.839,
+       2.214,
+       0.855,
+       2.281,
+       2.225,
+       10.46,
+       2.608,
+       2.602,
+       2.186,
+       2.403,
+       2.68,
+       2.651,
+       2.304,
+       2.788,
+       2.799,
+       2.773,
+       2.583,
+       1.005,
+       2.524,
+       2.946,
+       2.833,
+       2.492,
+       2.466,
+       2.585,
+       2.356,
+       2.402,
+       2.432,
+       2.381,
+       2.14,
+       2.282,
+       2.198,
+       0.768,
+       1.981,
+       1.963,
+       2.381
+      ]
+     },
+     {
+      "tipo": "tabuleiro",
+      "modo": "saida",
+      "foco": [
+       16,
+       18,
+       19
+      ],
+      "selo": "ORANGE",
+      "sub": "THE EXIT FROM JAIL",
+      "calor": [
+       2.807,
+       1.891,
+       1.698,
+       2.015,
+       2.205,
+       2.839,
+       2.214,
+       0.855,
+       2.281,
+       2.225,
+       10.46,
+       2.608,
+       2.602,
+       2.186,
+       2.403,
+       2.68,
+       2.651,
+       2.304,
+       2.788,
+       2.799,
+       2.773,
+       2.583,
+       1.005,
+       2.524,
+       2.946,
+       2.833,
+       2.492,
+       2.466,
+       2.585,
+       2.356,
+       2.402,
+       2.432,
+       2.381,
+       2.14,
+       2.282,
+       2.198,
+       0.768,
+       1.981,
+       1.963,
+       2.381
+      ]
+     },
+     {
+      "tipo": "numero",
+      "txt": "8.24%",
+      "rotulo": "OF ALL MOVES LAND ON ORANGE"
+     },
+     {
+      "tipo": "fichas",
+      "modo": "trafego",
+      "ate": 8,
+      "linha": 0,
+      "rotulo": "SHARE OF ALL MOVES, PER SET",
+      "itens": [
+       {
+        "cor": "orange",
+        "nome": "ORANGE",
+        "v": 8.24
+       },
+       {
+        "cor": "red",
+        "nome": "RED",
+        "v": 8.05
+       },
+       {
+        "cor": "yellow",
+        "nome": "YELLOW",
+        "v": 7.31
+       },
+       {
+        "cor": "pink",
+        "nome": "PINK",
+        "v": 7.2
+       },
+       {
+        "cor": "green",
+        "nome": "GREEN",
+        "v": 7.1
+       },
+       {
+        "cor": "lightblue",
+        "nome": "LIGHT BLUE",
+        "v": 6.72
+       },
+       {
+        "cor": "darkblue",
+        "nome": "DARK BLUE",
+        "v": 4.36
+       },
+       {
+        "cor": "brown",
+        "nome": "BROWN",
+        "v": 3.91
+       }
+      ]
+     },
+     {
+      "tipo": "carta",
+      "cor": "darkblue",
+      "nome": "PARK PLACE · BOARDWALK",
+      "valor": "4.36%",
+      "rot": "of all moves"
+     },
+     {
+      "tipo": "carta",
+      "cor": "red",
+      "nome": "ILLINOIS AVE",
+      "valor": "2.95%",
+      "rot": "of all moves"
+     },
+     {
+      "tipo": "cartas2",
+      "a": "CHANCE",
+      "b": "ADVANCE TO ILLINOIS",
+      "txt": "STRAIGHT THERE"
+     },
+     {
+      "tipo": "carta",
+      "cor": "#3a352d",
+      "nome": "READING · B&O",
+      "valor": "2.84%",
+      "rot": "Reading Railroad"
+     },
+     {
+      "tipo": "carta",
+      "cor": "brown",
+      "nome": "MEDITERRANEAN",
+      "valor": "1.89%",
+      "rot": "of all moves"
+     },
+     {
+      "tipo": "carta",
+      "cor": "darkblue",
+      "nome": "PARK PLACE",
+      "valor": "1.98%",
+      "rot": "of all moves"
+     },
+     {
+      "tipo": "tabuleiro",
+      "modo": "calor",
+      "calor": [
+       2.807,
+       1.891,
+       1.698,
+       2.015,
+       2.205,
+       2.839,
+       2.214,
+       0.855,
+       2.281,
+       2.225,
+       10.46,
+       2.608,
+       2.602,
+       2.186,
+       2.403,
+       2.68,
+       2.651,
+       2.304,
+       2.788,
+       2.799,
+       2.773,
+       2.583,
+       1.005,
+       2.524,
+       2.946,
+       2.833,
+       2.492,
+       2.466,
+       2.585,
+       2.356,
+       2.402,
+       2.432,
+       2.381,
+       2.14,
+       2.282,
+       2.198,
+       0.768,
+       1.981,
+       1.963,
+       2.381
+      ]
+     },
+     {
+      "tipo": "tabuleiro",
+      "modo": "jail",
+      "selo": "10.5%",
+      "sub": "REMEMBER THIS",
+      "calor": [
+       2.807,
+       1.891,
+       1.698,
+       2.015,
+       2.205,
+       2.839,
+       2.214,
+       0.855,
+       2.281,
+       2.225,
+       10.46,
+       2.608,
+       2.602,
+       2.186,
+       2.403,
+       2.68,
+       2.651,
+       2.304,
+       2.788,
+       2.799,
+       2.773,
+       2.583,
+       1.005,
+       2.524,
+       2.946,
+       2.833,
+       2.492,
+       2.466,
+       2.585,
+       2.356,
+       2.402,
+       2.432,
+       2.381,
+       2.14,
+       2.282,
+       2.198,
+       0.768,
+       1.981,
+       1.963,
+       2.381
+      ]
+     }
+    ],
+    "n": 1,
+    "titulo": "The board is not fair"
+   },
+   "falas": [
+    "Part one. The board is not fair.",
+    "Here's the board. Forty squares.",
+    "If dice were the only thing moving you, every square would get the same traffic.",
+    "Two and a half percent each.",
+    "But that's not what happens.",
+    "We ran ten thousand games where nobody buys anything.",
+    "Just to see where the pieces end up.",
+    "And the board lights up like this.",
+    "One square gets about four times the traffic of the average square.",
+    "Jail.",
+    "In our games, a piece ended its move in jail 10.5 percent of the time.",
+    "Because the board keeps sending you there.",
+    "It isn't one rule. It's four different ways in.",
+    "The Go To Jail square.",
+    "A card in the Chance deck. A card in Community Chest.",
+    "And three doubles in a row.",
+    "Go, the square everyone thinks is the busiest, gets 2.81 percent.",
+    "Free Parking, 2.77.",
+    "And the quietest squares on the whole board? The Chance squares.",
+    "Below one percent. One of them gets just 0.77.",
+    "Because most Chance cards pick you up and move you somewhere else.",
+    "But here's what matters.",
+    "Every one of those players has to leave jail eventually.",
+    "And they all leave from the same spot.",
+    "The most common roll with two dice is a seven.",
+    "Six ways out of thirty six. About one roll in six.",
+    "Then six and eight.",
+    "Then five and nine.",
+    "A seven from jail lands on Community Chest. But six, eight and nine?",
+    "Orange. St. James Place, Tennessee Avenue, New York Avenue.",
+    "Right in the path of everyone walking out of jail.",
+    "Put together, the three orange squares catch 8.24 percent of every move in the game.",
+    "More than any other color set.",
+    "Dark blue, with only two squares, catches 4.36.",
+    "The single most visited property is Illinois Avenue.",
+    "Because a Chance card sends you straight there.",
+    "The railroads are right behind it. Three Chance cards point at them.",
+    "And near the bottom? Mediterranean Avenue.",
+    "And Park Place, sitting right after a Chance square that sends people away.",
+    "So the board is not fair. But traffic is not the same as money.",
+    "Remember that jail number. 10.5 percent. It decides more than you'd think."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "v": [
+     {
+      "tipo": "capitulo",
+      "n": "PART TWO",
+      "txt": "TRAFFIC IS NOT MONEY"
+     },
+     {
+      "tipo": "dinheiro",
+      "txt": "RENT = MONEY"
+     },
+     {
+      "tipo": "ficha",
+      "titulo": "EXPERIMENT 2 · RETURN",
+      "linhas": [
+       [
+        "Input",
+        "traffic from 10,000 games"
+       ],
+       [
+        "Measure",
+        "rent per $1,000 invested"
+       ],
+       [
+        "Per",
+        "every opponent turn"
+       ]
+      ]
+     },
+     {
+      "tipo": "numero",
+      "txt": "$1,000",
+      "rotulo": "INVESTED IN ONE SET"
+     },
+     {
+      "tipo": "degraus",
+      "cor": "orange",
+      "ate": 0,
+      "vals": [
+       "4.3",
+       "7.0",
+       "14.7",
+       "32.0",
+       "35.9",
+       "38.7"
+      ]
+     },
+     {
+      "tipo": "degraus",
+      "cor": "orange",
+      "ate": 0,
+      "vals": [
+       "4.3",
+       "7.0",
+       "14.7",
+       "32.0",
+       "35.9",
+       "38.7"
+      ],
+      "selo": "$4.3",
+      "de": 0
+     },
+     {
+      "tipo": "degraus",
+      "cor": "orange",
+      "ate": 1,
+      "vals": [
+       "4.3",
+       "7.0",
+       "14.7",
+       "32.0",
+       "35.9",
+       "38.7"
+      ],
+      "de": 0
+     },
+     {
+      "tipo": "degraus",
+      "cor": "orange",
+      "ate": 2,
+      "vals": [
+       "4.3",
+       "7.0",
+       "14.7",
+       "32.0",
+       "35.9",
+       "38.7"
+      ],
+      "de": 1
+     },
+     {
+      "tipo": "degraus",
+      "cor": "orange",
+      "ate": 3,
+      "vals": [
+       "4.3",
+       "7.0",
+       "14.7",
+       "32.0",
+       "35.9",
+       "38.7"
+      ],
+      "de": 2
+     },
+     {
+      "tipo": "degraus",
+      "cor": "orange",
+      "ate": 3,
+      "vals": [
+       "4.3",
+       "7.0",
+       "14.7",
+       "32.0",
+       "35.9",
+       "38.7"
+      ],
+      "selo": "×2",
+      "de": 3
+     },
+     {
+      "tipo": "numero",
+      "txt": "$32",
+      "rotulo": "FROM $15 · ORANGE AT 3 HOUSES"
+     },
+     {
+      "tipo": "degraus",
+      "cor": "orange",
+      "ate": 5,
+      "vals": [
+       "4.3",
+       "7.0",
+       "14.7",
+       "32.0",
+       "35.9",
+       "38.7"
+      ]
+     },
+     {
+      "tipo": "degraus",
+      "cor": "orange",
+      "ate": 5,
+      "vals": [
+       "4.3",
+       "7.0",
+       "14.7",
+       "32.0",
+       "35.9",
+       "38.7"
+      ],
+      "selo": "+ SMALL",
+      "de": 5
+     },
+     {
+      "tipo": "fichas",
+      "modo": "roi",
+      "ate": 8,
+      "linha": 0,
+      "rotulo": "RENT PER $1,000 · 3 HOUSES",
+      "pre": "$",
+      "itens": [
+       {
+        "cor": "orange",
+        "nome": "ORANGE",
+        "v": 32.0
+       },
+       {
+        "cor": "red",
+        "nome": "RED",
+        "v": 28.5
+       },
+       {
+        "cor": "darkblue",
+        "nome": "DARK BLUE",
+        "v": 28.3
+       },
+       {
+        "cor": "yellow",
+        "nome": "YELLOW",
+        "v": 27.8
+       },
+       {
+        "cor": "pink",
+        "nome": "PINK",
+        "v": 25.1
+       },
+       {
+        "cor": "lightblue",
+        "nome": "LIGHT BLUE",
+        "v": 24.4
+       },
+       {
+        "cor": "green",
+        "nome": "GREEN",
+        "v": 24.3
+       },
+       {
+        "cor": "brown",
+        "nome": "BROWN",
+        "v": 12.7
+       }
+      ]
+     },
+     {
+      "tipo": "fichas",
+      "modo": "roi",
+      "ate": 1,
+      "linha": 0,
+      "rotulo": "RENT PER $1,000 · 3 HOUSES",
+      "pre": "$",
+      "itens": [
+       {
+        "cor": "orange",
+        "nome": "ORANGE",
+        "v": 32.0
+       },
+       {
+        "cor": "red",
+        "nome": "RED",
+        "v": 28.5
+       },
+       {
+        "cor": "darkblue",
+        "nome": "DARK BLUE",
+        "v": 28.3
+       },
+       {
+        "cor": "yellow",
+        "nome": "YELLOW",
+        "v": 27.8
+       },
+       {
+        "cor": "pink",
+        "nome": "PINK",
+        "v": 25.1
+       },
+       {
+        "cor": "lightblue",
+        "nome": "LIGHT BLUE",
+        "v": 24.4
+       },
+       {
+        "cor": "green",
+        "nome": "GREEN",
+        "v": 24.3
+       },
+       {
+        "cor": "brown",
+        "nome": "BROWN",
+        "v": 12.7
+       }
+      ],
+      "de": 8
+     },
+     {
+      "tipo": "fichas",
+      "modo": "roi",
+      "ate": 4,
+      "linha": 0,
+      "rotulo": "RENT PER $1,000 · 3 HOUSES",
+      "pre": "$",
+      "itens": [
+       {
+        "cor": "orange",
+        "nome": "ORANGE",
+        "v": 32.0
+       },
+       {
+        "cor": "red",
+        "nome": "RED",
+        "v": 28.5
+       },
+       {
+        "cor": "darkblue",
+        "nome": "DARK BLUE",
+        "v": 28.3
+       },
+       {
+        "cor": "yellow",
+        "nome": "YELLOW",
+        "v": 27.8
+       },
+       {
+        "cor": "pink",
+        "nome": "PINK",
+        "v": 25.1
+       },
+       {
+        "cor": "lightblue",
+        "nome": "LIGHT BLUE",
+        "v": 24.4
+       },
+       {
+        "cor": "green",
+        "nome": "GREEN",
+        "v": 24.3
+       },
+       {
+        "cor": "brown",
+        "nome": "BROWN",
+        "v": 12.7
+       }
+      ],
+      "de": 1
+     },
+     {
+      "tipo": "fichas",
+      "modo": "roi",
+      "ate": 8,
+      "linha": 0,
+      "selo": "BROWN $12.7",
+      "rotulo": "RENT PER $1,000 · 3 HOUSES",
+      "pre": "$",
+      "itens": [
+       {
+        "cor": "orange",
+        "nome": "ORANGE",
+        "v": 32.0
+       },
+       {
+        "cor": "red",
+        "nome": "RED",
+        "v": 28.5
+       },
+       {
+        "cor": "darkblue",
+        "nome": "DARK BLUE",
+        "v": 28.3
+       },
+       {
+        "cor": "yellow",
+        "nome": "YELLOW",
+        "v": 27.8
+       },
+       {
+        "cor": "pink",
+        "nome": "PINK",
+        "v": 25.1
+       },
+       {
+        "cor": "lightblue",
+        "nome": "LIGHT BLUE",
+        "v": 24.4
+       },
+       {
+        "cor": "green",
+        "nome": "GREEN",
+        "v": 24.3
+       },
+       {
+        "cor": "brown",
+        "nome": "BROWN",
+        "v": 12.7
+       }
+      ],
+      "de": 4
+     },
+     {
+      "tipo": "ampulheta",
+      "txt": "PAYBACK TIME"
+     },
+     {
+      "tipo": "numero",
+      "txt": "10 ROUNDS",
+      "rotulo": "ORANGE · 3 HOUSES · 3 OPPONENTS"
+     },
+     {
+      "tipo": "numero",
+      "txt": "26 ROUNDS",
+      "rotulo": "BROWN · 3 HOUSES · 3 OPPONENTS"
+     },
+     {
+      "tipo": "numero",
+      "txt": "27 ROUNDS",
+      "rotulo": "A TYPICAL GAME"
+     },
+     {
+      "tipo": "ficha",
+      "titulo": "RULE 1",
+      "linhas": [
+       [
+        "Do",
+        "get every property to 3 houses"
+       ],
+       [
+        "When",
+        "as fast as you can"
+       ]
+      ],
+      "selo": "PROVEN"
+     },
+     {
+      "tipo": "degraus",
+      "cor": "orange",
+      "ate": 3,
+      "vals": [
+       "4.3",
+       "7.0",
+       "14.7",
+       "32.0",
+       "35.9",
+       "38.7"
+      ],
+      "selo": "3 HOUSES"
+     },
+     {
+      "tipo": "degraus",
+      "cor": "green",
+      "ate": 3,
+      "vals": [
+       "",
+       "",
+       "",
+       "",
+       "",
+       ""
+      ]
+     },
+     {
+      "tipo": "conta",
+      "linha": "1 house · pink or orange",
+      "txt": "$100",
+      "rotulo": "PER HOUSE"
+     },
+     {
+      "tipo": "conta",
+      "linha": "1 house · green or dark blue",
+      "txt": "$200",
+      "rotulo": "PER HOUSE"
+     },
+     {
+      "tipo": "conta",
+      "linha": "3 squares + 9 houses",
+      "txt": "$1,460",
+      "rotulo": "ORANGE · 3 HOUSES EACH"
+     },
+     {
+      "tipo": "conta",
+      "linha": "3 squares + 9 houses",
+      "txt": "$2,720",
+      "rotulo": "GREEN · 3 HOUSES EACH"
+     },
+     {
+      "tipo": "fichas",
+      "modo": "roi",
+      "ate": 8,
+      "linha": 0,
+      "rotulo": "RENT PER $1,000 · 3 HOUSES",
+      "pre": "$",
+      "itens": [
+       {
+        "cor": "orange",
+        "nome": "ORANGE",
+        "v": 32.0
+       },
+       {
+        "cor": "red",
+        "nome": "RED",
+        "v": 28.5
+       },
+       {
+        "cor": "darkblue",
+        "nome": "DARK BLUE",
+        "v": 28.3
+       },
+       {
+        "cor": "yellow",
+        "nome": "YELLOW",
+        "v": 27.8
+       },
+       {
+        "cor": "pink",
+        "nome": "PINK",
+        "v": 25.1
+       },
+       {
+        "cor": "lightblue",
+        "nome": "LIGHT BLUE",
+        "v": 24.4
+       },
+       {
+        "cor": "green",
+        "nome": "GREEN",
+        "v": 24.3
+       },
+       {
+        "cor": "brown",
+        "nome": "BROWN",
+        "v": 12.7
+       }
+      ]
+     },
+     {
+      "tipo": "carta",
+      "cor": "orange",
+      "nome": "ST. JAMES · TENNESSEE · NEW YORK",
+      "valor": "$32",
+      "rot": "per $1,000, per turn"
+     },
+     {
+      "tipo": "falencia"
+     },
+     {
+      "tipo": "dados",
+      "faces": [
+       2,
+       3
+      ],
+      "txt": "DOES IT SURVIVE?"
+     },
+     {
+      "tipo": "falencia"
+     }
+    ],
+    "n": 2,
+    "titulo": "Traffic is not money"
+   },
+   "falas": [
+    "Part two. Traffic is not money.",
+    "A square only pays when it has rent on it.",
+    "So for every color set, we did the math.",
+    "How much rent you collect for every thousand dollars you put in.",
+    "With no houses, every set is almost worthless.",
+    "Orange pays about 4 dollars per turn, per thousand.",
+    "One house, a little better.",
+    "Two houses, better.",
+    "And then, at three houses, something strange happens.",
+    "The return doesn't just grow. It doubles.",
+    "For orange, it jumps from about 15 dollars to 32.",
+    "After three, the extra houses add much less.",
+    "Four houses, a little more. A hotel, a little more again.",
+    "And it's not just orange. Every set has the same jump at three houses.",
+    "At three houses, orange pays 32 dollars, the best on the board.",
+    "Red, 28.5. Dark blue, 28.3. Yellow, 27.8.",
+    "Brown pays just 12.7. Less than half of orange.",
+    "Here's another way to see it. How long until the houses pay for themselves?",
+    "Orange at three houses earns back everything you spent in about 10 rounds.",
+    "Brown at three houses needs about 26.",
+    "And a typical game in our simulation lasted only 27 rounds.",
+    "That's the first rule the simulation gave us.",
+    "Get every property in your set to three houses, as fast as you can.",
+    "And that's where the price of houses starts to matter.",
+    "Pink and orange houses cost a hundred dollars each.",
+    "Green and dark blue houses cost two hundred.",
+    "Getting all of orange to three houses costs 1,460 dollars, properties included.",
+    "Green costs 2,720. Almost twice as much.",
+    "And it pays less per dollar.",
+    "So on paper, orange looks unbeatable.",
+    "But paper doesn't go bankrupt. Real players do.",
+    "So does any of this survive an actual game?",
+    "But math on paper is one thing. Real games are messy."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "v": [
+     {
+      "tipo": "capitulo",
+      "n": "PART THREE",
+      "txt": "THE REAL TEST"
+     },
+     {
+      "tipo": "dados",
+      "faces": [
+       6,
+       5
+      ],
+      "txt": "LUCK"
+     },
+     {
+      "tipo": "contador"
+     },
+     {
+      "tipo": "leque",
+      "txt": "1 FULL SET EACH"
+     },
+     {
+      "tipo": "leque",
+      "txt": "4 PLAYERS · 4 SETS"
+     },
+     {
+      "tipo": "dinheiro",
+      "txt": "BUY WHEN YOU LAND"
+     },
+     {
+      "tipo": "ficha",
+      "titulo": "LAB RULES · HOW THE PLAYERS PLAY",
+      "linhas": [
+       [
+        "Buy",
+        "any free square they land on"
+       ],
+       [
+        "Build",
+        "evenly, across the whole set"
+       ],
+       [
+        "Broke",
+        "sell houses, then mortgage"
+       ]
+      ]
+     },
+     {
+      "tipo": "dinheiro",
+      "txt": "BUY IF YOU CAN"
+     },
+     {
+      "tipo": "degraus",
+      "cor": "pink",
+      "ate": 3,
+      "vals": [
+       "",
+       "",
+       "",
+       "",
+       "",
+       ""
+      ]
+     },
+     {
+      "tipo": "conta",
+      "linha": "sell 1 house",
+      "txt": "50%",
+      "rotulo": "OF WHAT YOU PAID"
+     },
+     {
+      "tipo": "falencia"
+     },
+     {
+      "tipo": "teste",
+      "a": "AUCTIONS",
+      "b": "TRADES",
+      "pa": "OFF",
+      "pb": "OFF"
+     },
+     {
+      "tipo": "numero",
+      "txt": "NO TRADES",
+      "rotulo": "SO THE SETS DO THE TALKING"
+     },
+     {
+      "tipo": "leque",
+      "txt": "ONLY THE SET CHANGES"
+     },
+     {
+      "tipo": "fichas",
+      "ate": 0,
+      "linha": 25,
+      "rotulo": "WIN RATE · 10,000 GAMES",
+      "itens": [
+       {
+        "cor": "orange",
+        "nome": "ORANGE",
+        "v": 50.0
+       },
+       {
+        "cor": "pink",
+        "nome": "PINK",
+        "v": 36.2
+       },
+       {
+        "cor": "red",
+        "nome": "RED",
+        "v": 30.5
+       },
+       {
+        "cor": "yellow",
+        "nome": "YELLOW",
+        "v": 27.1
+       },
+       {
+        "cor": "lightblue",
+        "nome": "LIGHT BLUE",
+        "v": 23.8
+       },
+       {
+        "cor": "darkblue",
+        "nome": "DARK BLUE",
+        "v": 16.6
+       },
+       {
+        "cor": "green",
+        "nome": "GREEN",
+        "v": 14.2
+       },
+       {
+        "cor": "brown",
+        "nome": "BROWN",
+        "v": 1.3
+       }
+      ]
+     },
+     {
+      "tipo": "fichas",
+      "ate": 0,
+      "linha": 25,
+      "selo": "25% = FAIR",
+      "rotulo": "WIN RATE · 10,000 GAMES",
+      "itens": [
+       {
+        "cor": "orange",
+        "nome": "ORANGE",
+        "v": 50.0
+       },
+       {
+        "cor": "pink",
+        "nome": "PINK",
+        "v": 36.2
+       },
+       {
+        "cor": "red",
+        "nome": "RED",
+        "v": 30.5
+       },
+       {
+        "cor": "yellow",
+        "nome": "YELLOW",
+        "v": 27.1
+       },
+       {
+        "cor": "lightblue",
+        "nome": "LIGHT BLUE",
+        "v": 23.8
+       },
+       {
+        "cor": "darkblue",
+        "nome": "DARK BLUE",
+        "v": 16.6
+       },
+       {
+        "cor": "green",
+        "nome": "GREEN",
+        "v": 14.2
+       },
+       {
+        "cor": "brown",
+        "nome": "BROWN",
+        "v": 1.3
+       }
+      ],
+      "de": 0
+     },
+     {
+      "tipo": "leque",
+      "txt": "MAKE A GUESS"
+     },
+     {
+      "tipo": "cartas",
+      "modo": "misterio",
+      "selo": "?"
+     },
+     {
+      "tipo": "fichas",
+      "ate": 1,
+      "linha": 25,
+      "selo": "ORANGE 50.0%",
+      "rotulo": "WIN RATE · 10,000 GAMES",
+      "itens": [
+       {
+        "cor": "orange",
+        "nome": "ORANGE",
+        "v": 50.0
+       },
+       {
+        "cor": "pink",
+        "nome": "PINK",
+        "v": 36.2
+       },
+       {
+        "cor": "red",
+        "nome": "RED",
+        "v": 30.5
+       },
+       {
+        "cor": "yellow",
+        "nome": "YELLOW",
+        "v": 27.1
+       },
+       {
+        "cor": "lightblue",
+        "nome": "LIGHT BLUE",
+        "v": 23.8
+       },
+       {
+        "cor": "darkblue",
+        "nome": "DARK BLUE",
+        "v": 16.6
+       },
+       {
+        "cor": "green",
+        "nome": "GREEN",
+        "v": 14.2
+       },
+       {
+        "cor": "brown",
+        "nome": "BROWN",
+        "v": 1.3
+       }
+      ]
+     },
+     {
+      "tipo": "numero",
+      "txt": "×2",
+      "rotulo": "ORANGE VS A FAIR SHARE"
+     },
+     {
+      "tipo": "fichas",
+      "ate": 2,
+      "linha": 25,
+      "rotulo": "WIN RATE · 10,000 GAMES",
+      "itens": [
+       {
+        "cor": "orange",
+        "nome": "ORANGE",
+        "v": 50.0
+       },
+       {
+        "cor": "pink",
+        "nome": "PINK",
+        "v": 36.2
+       },
+       {
+        "cor": "red",
+        "nome": "RED",
+        "v": 30.5
+       },
+       {
+        "cor": "yellow",
+        "nome": "YELLOW",
+        "v": 27.1
+       },
+       {
+        "cor": "lightblue",
+        "nome": "LIGHT BLUE",
+        "v": 23.8
+       },
+       {
+        "cor": "darkblue",
+        "nome": "DARK BLUE",
+        "v": 16.6
+       },
+       {
+        "cor": "green",
+        "nome": "GREEN",
+        "v": 14.2
+       },
+       {
+        "cor": "brown",
+        "nome": "BROWN",
+        "v": 1.3
+       }
+      ]
+     },
+     {
+      "tipo": "tabuleiro",
+      "modo": "saida",
+      "foco": [
+       11,
+       13,
+       14
+      ],
+      "calor": [
+       2.807,
+       1.891,
+       1.698,
+       2.015,
+       2.205,
+       2.839,
+       2.214,
+       0.855,
+       2.281,
+       2.225,
+       10.46,
+       2.608,
+       2.602,
+       2.186,
+       2.403,
+       2.68,
+       2.651,
+       2.304,
+       2.788,
+       2.799,
+       2.773,
+       2.583,
+       1.005,
+       2.524,
+       2.946,
+       2.833,
+       2.492,
+       2.466,
+       2.585,
+       2.356,
+       2.402,
+       2.432,
+       2.381,
+       2.14,
+       2.282,
+       2.198,
+       0.768,
+       1.981,
+       1.963,
+       2.381
+      ]
+     },
+     {
+      "tipo": "fichas",
+      "ate": 4,
+      "linha": 25,
+      "rotulo": "WIN RATE · 10,000 GAMES",
+      "itens": [
+       {
+        "cor": "orange",
+        "nome": "ORANGE",
+        "v": 50.0
+       },
+       {
+        "cor": "pink",
+        "nome": "PINK",
+        "v": 36.2
+       },
+       {
+        "cor": "red",
+        "nome": "RED",
+        "v": 30.5
+       },
+       {
+        "cor": "yellow",
+        "nome": "YELLOW",
+        "v": 27.1
+       },
+       {
+        "cor": "lightblue",
+        "nome": "LIGHT BLUE",
+        "v": 23.8
+       },
+       {
+        "cor": "darkblue",
+        "nome": "DARK BLUE",
+        "v": 16.6
+       },
+       {
+        "cor": "green",
+        "nome": "GREEN",
+        "v": 14.2
+       },
+       {
+        "cor": "brown",
+        "nome": "BROWN",
+        "v": 1.3
+       }
+      ]
+     },
+     {
+      "tipo": "fichas",
+      "ate": 5,
+      "linha": 25,
+      "rotulo": "WIN RATE · 10,000 GAMES",
+      "itens": [
+       {
+        "cor": "orange",
+        "nome": "ORANGE",
+        "v": 50.0
+       },
+       {
+        "cor": "pink",
+        "nome": "PINK",
+        "v": 36.2
+       },
+       {
+        "cor": "red",
+        "nome": "RED",
+        "v": 30.5
+       },
+       {
+        "cor": "yellow",
+        "nome": "YELLOW",
+        "v": 27.1
+       },
+       {
+        "cor": "lightblue",
+        "nome": "LIGHT BLUE",
+        "v": 23.8
+       },
+       {
+        "cor": "darkblue",
+        "nome": "DARK BLUE",
+        "v": 16.6
+       },
+       {
+        "cor": "green",
+        "nome": "GREEN",
+        "v": 14.2
+       },
+       {
+        "cor": "brown",
+        "nome": "BROWN",
+        "v": 1.3
+       }
+      ],
+      "de": 4
+     },
+     {
+      "tipo": "cartas",
+      "cor": "darkblue",
+      "nome": "PARK PLACE · BOARDWALK",
+      "valor": "?",
+      "rot": "the most expensive set"
+     },
+     {
+      "tipo": "cartas",
+      "cor": "darkblue",
+      "nome": "PARK PLACE · BOARDWALK",
+      "valor": "$750",
+      "rot": "to buy both"
+     },
+     {
+      "tipo": "fichas",
+      "ate": 6,
+      "linha": 25,
+      "selo": "DARK BLUE 17%",
+      "rotulo": "WIN RATE · 10,000 GAMES",
+      "itens": [
+       {
+        "cor": "orange",
+        "nome": "ORANGE",
+        "v": 50.0
+       },
+       {
+        "cor": "pink",
+        "nome": "PINK",
+        "v": 36.2
+       },
+       {
+        "cor": "red",
+        "nome": "RED",
+        "v": 30.5
+       },
+       {
+        "cor": "yellow",
+        "nome": "YELLOW",
+        "v": 27.1
+       },
+       {
+        "cor": "lightblue",
+        "nome": "LIGHT BLUE",
+        "v": 23.8
+       },
+       {
+        "cor": "darkblue",
+        "nome": "DARK BLUE",
+        "v": 16.6
+       },
+       {
+        "cor": "green",
+        "nome": "GREEN",
+        "v": 14.2
+       },
+       {
+        "cor": "brown",
+        "nome": "BROWN",
+        "v": 1.3
+       }
+      ]
+     },
+     {
+      "tipo": "fichas",
+      "ate": 7,
+      "linha": 25,
+      "rotulo": "WIN RATE · 10,000 GAMES",
+      "itens": [
+       {
+        "cor": "orange",
+        "nome": "ORANGE",
+        "v": 50.0
+       },
+       {
+        "cor": "pink",
+        "nome": "PINK",
+        "v": 36.2
+       },
+       {
+        "cor": "red",
+        "nome": "RED",
+        "v": 30.5
+       },
+       {
+        "cor": "yellow",
+        "nome": "YELLOW",
+        "v": 27.1
+       },
+       {
+        "cor": "lightblue",
+        "nome": "LIGHT BLUE",
+        "v": 23.8
+       },
+       {
+        "cor": "darkblue",
+        "nome": "DARK BLUE",
+        "v": 16.6
+       },
+       {
+        "cor": "green",
+        "nome": "GREEN",
+        "v": 14.2
+       },
+       {
+        "cor": "brown",
+        "nome": "BROWN",
+        "v": 1.3
+       }
+      ],
+      "de": 6
+     },
+     {
+      "tipo": "carta",
+      "cor": "brown",
+      "nome": "MEDITERRANEAN · BALTIC",
+      "valor": "?",
+      "rot": "the cheapest set"
+     },
+     {
+      "tipo": "fichas",
+      "ate": 8,
+      "linha": 25,
+      "selo": "BROWN 1%",
+      "rotulo": "WIN RATE · 10,000 GAMES",
+      "itens": [
+       {
+        "cor": "orange",
+        "nome": "ORANGE",
+        "v": 50.0
+       },
+       {
+        "cor": "pink",
+        "nome": "PINK",
+        "v": 36.2
+       },
+       {
+        "cor": "red",
+        "nome": "RED",
+        "v": 30.5
+       },
+       {
+        "cor": "yellow",
+        "nome": "YELLOW",
+        "v": 27.1
+       },
+       {
+        "cor": "lightblue",
+        "nome": "LIGHT BLUE",
+        "v": 23.8
+       },
+       {
+        "cor": "darkblue",
+        "nome": "DARK BLUE",
+        "v": 16.6
+       },
+       {
+        "cor": "green",
+        "nome": "GREEN",
+        "v": 14.2
+       },
+       {
+        "cor": "brown",
+        "nome": "BROWN",
+        "v": 1.3
+       }
+      ]
+     },
+     {
+      "tipo": "fichas",
+      "ate": 8,
+      "linha": 25,
+      "rotulo": "WIN RATE · 10,000 GAMES",
+      "itens": [
+       {
+        "cor": "orange",
+        "nome": "ORANGE",
+        "v": 50.0
+       },
+       {
+        "cor": "pink",
+        "nome": "PINK",
+        "v": 36.2
+       },
+       {
+        "cor": "red",
+        "nome": "RED",
+        "v": 30.5
+       },
+       {
+        "cor": "yellow",
+        "nome": "YELLOW",
+        "v": 27.1
+       },
+       {
+        "cor": "lightblue",
+        "nome": "LIGHT BLUE",
+        "v": 23.8
+       },
+       {
+        "cor": "darkblue",
+        "nome": "DARK BLUE",
+        "v": 16.6
+       },
+       {
+        "cor": "green",
+        "nome": "GREEN",
+        "v": 14.2
+       },
+       {
+        "cor": "brown",
+        "nome": "BROWN",
+        "v": 1.3
+       }
+      ],
+      "de": 8
+     },
+     {
+      "tipo": "tabuleiro",
+      "modo": "saida",
+      "foco": [
+       11,
+       13,
+       14,
+       16,
+       18,
+       19
+      ],
+      "calor": [
+       2.807,
+       1.891,
+       1.698,
+       2.015,
+       2.205,
+       2.839,
+       2.214,
+       0.855,
+       2.281,
+       2.225,
+       10.46,
+       2.608,
+       2.602,
+       2.186,
+       2.403,
+       2.68,
+       2.651,
+       2.304,
+       2.788,
+       2.799,
+       2.773,
+       2.583,
+       1.005,
+       2.524,
+       2.946,
+       2.833,
+       2.492,
+       2.466,
+       2.585,
+       2.356,
+       2.402,
+       2.432,
+       2.381,
+       2.14,
+       2.282,
+       2.198,
+       0.768,
+       1.981,
+       1.963,
+       2.381
+      ]
+     },
+     {
+      "tipo": "tabuleiro",
+      "modo": "calor",
+      "foco": [
+       31,
+       32,
+       34,
+       37,
+       39
+      ],
+      "calor": [
+       2.807,
+       1.891,
+       1.698,
+       2.015,
+       2.205,
+       2.839,
+       2.214,
+       0.855,
+       2.281,
+       2.225,
+       10.46,
+       2.608,
+       2.602,
+       2.186,
+       2.403,
+       2.68,
+       2.651,
+       2.304,
+       2.788,
+       2.799,
+       2.773,
+       2.583,
+       1.005,
+       2.524,
+       2.946,
+       2.833,
+       2.492,
+       2.466,
+       2.585,
+       2.356,
+       2.402,
+       2.432,
+       2.381,
+       2.14,
+       2.282,
+       2.198,
+       0.768,
+       1.981,
+       1.963,
+       2.381
+      ]
+     },
+     {
+      "tipo": "degraus",
+      "cor": "orange",
+      "ate": 3,
+      "vals": [
+       "4.3",
+       "7.0",
+       "14.7",
+       "32.0",
+       "35.9",
+       "38.7"
+      ]
+     },
+     {
+      "tipo": "leque",
+      "txt": "WHAT'S HIDING?"
+     },
+     {
+      "tipo": "ficha",
+      "titulo": "EXPERIMENT 4 · DUELS",
+      "linhas": [
+       [
+        "Players",
+        "2"
+       ],
+       [
+        "Start",
+        "one full set each"
+       ],
+       [
+        "Games",
+        "1,000 per matchup"
+       ]
+      ]
+     },
+     {
+      "tipo": "contador"
+     },
+     {
+      "tipo": "duelo",
+      "a": "orange",
+      "b": "darkblue",
+      "pa": "73%",
+      "pb": "27%"
+     },
+     {
+      "tipo": "duelo",
+      "a": "orange",
+      "b": "green",
+      "pa": "76%",
+      "pb": "24%"
+     },
+     {
+      "tipo": "duelo",
+      "a": "lightblue",
+      "b": "darkblue",
+      "pa": "?",
+      "pb": "?"
+     },
+     {
+      "tipo": "carta",
+      "cor": "lightblue",
+      "nome": "ORIENTAL · VERMONT · CONNECTICUT",
+      "valor": "$320",
+      "rot": "to buy all three"
+     },
+     {
+      "tipo": "duelo",
+      "a": "lightblue",
+      "b": "darkblue",
+      "pa": "56%",
+      "pb": "44%",
+      "selo": "CHEAP WINS"
+     },
+     {
+      "tipo": "numero",
+      "txt": "$320 > $750",
+      "rotulo": "LIGHT BLUE BEATS DARK BLUE"
+     },
+     {
+      "tipo": "duelo",
+      "a": "lightblue",
+      "b": "green",
+      "pa": "61%",
+      "pb": "39%"
+     },
+     {
+      "tipo": "duelo",
+      "a": "pink",
+      "b": "orange",
+      "pa": "45%",
+      "pb": "55%"
+     },
+     {
+      "tipo": "duelo",
+      "a": "brown",
+      "b": "darkblue",
+      "pa": "21%",
+      "pb": "79%"
+     },
+     {
+      "tipo": "numero",
+      "txt": "CHEAP > FAMOUS",
+      "rotulo": "AGAIN"
+     },
+     {
+      "tipo": "dados",
+      "faces": [
+       1,
+       2
+      ],
+      "txt": "SPEED > SIZE"
+     },
+     {
+      "tipo": "conta",
+      "linha": "9 houses × $50",
+      "txt": "$450",
+      "rotulo": "LIGHT BLUE · 3 HOUSES EACH"
+     },
+     {
+      "tipo": "conta",
+      "linha": "6 houses × $200",
+      "txt": "$1,200",
+      "rotulo": "DARK BLUE · 3 HOUSES EACH"
+     },
+     {
+      "tipo": "dinheiro",
+      "txt": "TOO LATE"
+     },
+     {
+      "tipo": "carta",
+      "cor": "#3a352d",
+      "nome": "ALL 4 RAILROADS",
+      "valor": "?",
+      "rot": "a famous favorite"
+     },
+     {
+      "tipo": "dinheiro",
+      "txt": "STEADY RENT"
+     },
+     {
+      "tipo": "carta",
+      "cor": "#3a352d",
+      "nome": "ALL 4 RAILROADS",
+      "valor": "9%",
+      "rot": "games won vs 3 color sets"
+     }
+    ],
+    "n": 3,
+    "titulo": "The real test"
+   },
+   "falas": [
+    "Part three. The real test.",
+    "People go bankrupt. They mortgage everything. They get lucky.",
+    "So we ran the real thing. Ten thousand full games, four players each.",
+    "Every player started already owning one complete color set.",
+    "A different one for each player.",
+    "Everything else, they bought when they landed on it.",
+    "Here's exactly how our players behave. No secrets.",
+    "They buy any square they land on, if they have the cash.",
+    "They build houses evenly across the whole set, the way the rules say.",
+    "When they run out of money, they sell houses at half price, then mortgage.",
+    "And when there's nothing left, they're out.",
+    "Two things they don't do. No auctions, and no trades.",
+    "Because trading depends on people, and people are impossible to simulate fairly.",
+    "That way, the only thing that changes between players is the set they started with.",
+    "If every set were equally good, each would win one game in four.",
+    "Twenty five percent. That's the line to beat.",
+    "Before the answer, make a guess. Which set wins the most?",
+    "And which one loses the most?",
+    "Orange won 50.0 percent of its games.",
+    "Basically half. Twice its fair share.",
+    "Second place, pink, at 36 percent.",
+    "The other set right after jail, with cheap houses.",
+    "Then red, 31. Yellow, 27.",
+    "Light blue, 24.",
+    "And now, the famous one.",
+    "Park Place and Boardwalk. The most expensive set on the board.",
+    "It won 17 percent of its games.",
+    "Green, the most expensive set to build on, did even worse. 14.",
+    "And brown? Mediterranean and Baltic?",
+    "One percent. About one game in a hundred.",
+    "Now look at the pattern.",
+    "The top two, orange and pink, both sit right after jail. Both have hundred dollar houses.",
+    "Just above brown, at the bottom, sit green and dark blue. The two sets with two hundred dollar houses.",
+    "Traffic matters. But the price of getting to three houses matters too.",
+    "But a four player game can hide things.",
+    "So we ran one more experiment. Just two players. One set each.",
+    "A thousand games for every possible matchup.",
+    "Orange beat dark blue 73 percent of the time.",
+    "It beat green 76 percent of the time.",
+    "But look at this one.",
+    "Light blue. One of the cheapest sets in the game.",
+    "Against Park Place and Boardwalk, it wins 56 percent.",
+    "The cheap set beats the famous one.",
+    "Light blue also beats green, 61 percent of the time.",
+    "Even against orange, pink keeps it close. It wins 45 percent.",
+    "And brown's best matchup? Dark blue. Brown wins 21 percent of those.",
+    "The cheapest set does best against the most expensive one.",
+    "Because in a real game, speed beats size.",
+    "Three houses on all of light blue cost four hundred and fifty dollars.",
+    "Three houses on Park Place and Boardwalk cost twelve hundred.",
+    "By the time you can afford them, someone else is already collecting.",
+    "One more surprise. The railroads.",
+    "Four of them. Steady rent, no houses needed. A lot of players love them.",
+    "A player who started with all four, against three players with color sets, won only 9 percent."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "v": [
+     {
+      "tipo": "capitulo",
+      "n": "PART FOUR",
+      "txt": "THREE TRICKS, TESTED"
+     },
+     {
+      "tipo": "leque",
+      "txt": "NOT THE ONLY THING"
+     },
+     {
+      "tipo": "leque",
+      "txt": "YOU DON'T ALWAYS CHOOSE"
+     },
+     {
+      "tipo": "ficha",
+      "titulo": "EXPERIMENT 5 · PLAYSTYLE",
+      "linhas": [
+       [
+        "Test 1",
+        "jail: pay or stay"
+       ],
+       [
+        "Test 2",
+        "hotels or hoard houses"
+       ],
+       [
+        "Test 3",
+        "who goes first"
+       ]
+      ]
+     },
+     {
+      "tipo": "tabuleiro",
+      "modo": "jail",
+      "calor": [
+       2.807,
+       1.891,
+       1.698,
+       2.015,
+       2.205,
+       2.839,
+       2.214,
+       0.855,
+       2.281,
+       2.225,
+       10.46,
+       2.608,
+       2.602,
+       2.186,
+       2.403,
+       2.68,
+       2.651,
+       2.304,
+       2.788,
+       2.799,
+       2.773,
+       2.583,
+       1.005,
+       2.524,
+       2.946,
+       2.833,
+       2.492,
+       2.466,
+       2.585,
+       2.356,
+       2.402,
+       2.432,
+       2.381,
+       2.14,
+       2.282,
+       2.198,
+       0.768,
+       1.981,
+       1.963,
+       2.381
+      ]
+     },
+     {
+      "tipo": "teste",
+      "a": "PAY $50, GET OUT",
+      "b": "STAY AND ROLL"
+     },
+     {
+      "tipo": "teste",
+      "a": "PAY $50, GET OUT",
+      "b": "STAY AND ROLL",
+      "pa": "?",
+      "pb": ""
+     },
+     {
+      "tipo": "teste",
+      "a": "PAY $50, GET OUT",
+      "b": "STAY AND ROLL",
+      "pa": "?",
+      "pb": "?"
+     },
+     {
+      "tipo": "teste",
+      "a": "PAY $50, GET OUT",
+      "b": "STAY AND ROLL",
+      "pa": "0.2%",
+      "pb": "0.3%",
+      "vence": "b"
+     },
+     {
+      "tipo": "numero",
+      "txt": "STAY",
+      "rotulo": "JAIL IS A SAFE PLACE TO WAIT"
+     },
+     {
+      "tipo": "tabuleiro",
+      "modo": "jail",
+      "selo": "NO RENT",
+      "sub": "WHILE YOU WAIT",
+      "calor": [
+       2.807,
+       1.891,
+       1.698,
+       2.015,
+       2.205,
+       2.839,
+       2.214,
+       0.855,
+       2.281,
+       2.225,
+       10.46,
+       2.608,
+       2.602,
+       2.186,
+       2.403,
+       2.68,
+       2.651,
+       2.304,
+       2.788,
+       2.799,
+       2.773,
+       2.583,
+       1.005,
+       2.524,
+       2.946,
+       2.833,
+       2.492,
+       2.466,
+       2.585,
+       2.356,
+       2.402,
+       2.432,
+       2.381,
+       2.14,
+       2.282,
+       2.198,
+       0.768,
+       1.981,
+       1.963,
+       2.381
+      ]
+     },
+     {
+      "tipo": "tabuleiro",
+      "modo": "igual",
+      "calor": [
+       2.807,
+       1.891,
+       1.698,
+       2.015,
+       2.205,
+       2.839,
+       2.214,
+       0.855,
+       2.281,
+       2.225,
+       10.46,
+       2.608,
+       2.602,
+       2.186,
+       2.403,
+       2.68,
+       2.651,
+       2.304,
+       2.788,
+       2.799,
+       2.773,
+       2.583,
+       1.005,
+       2.524,
+       2.946,
+       2.833,
+       2.492,
+       2.466,
+       2.585,
+       2.356,
+       2.402,
+       2.432,
+       2.381,
+       2.14,
+       2.282,
+       2.198,
+       0.768,
+       1.981,
+       1.963,
+       2.381
+      ]
+     },
+     {
+      "tipo": "teste",
+      "a": "PAY EARLY",
+      "b": "STAY ONCE HOUSES APPEAR",
+      "pa": "?",
+      "pb": "?"
+     },
+     {
+      "tipo": "teste",
+      "a": "PAY EARLY",
+      "b": "STAY ONCE HOUSES APPEAR",
+      "pa": "?",
+      "pb": "?"
+     },
+     {
+      "tipo": "numero",
+      "txt": "0.3%",
+      "rotulo": "PAY EARLY, STAY LATE"
+     },
+     {
+      "tipo": "numero",
+      "txt": "32",
+      "rotulo": "HOUSES IN THE BOX"
+     },
+     {
+      "tipo": "degraus",
+      "cor": "red",
+      "ate": 4,
+      "vals": [
+       "",
+       "",
+       "",
+       "",
+       "",
+       ""
+      ]
+     },
+     {
+      "tipo": "teste",
+      "a": "BUILD HOTELS",
+      "b": "HOARD HOUSES",
+      "pa": "?",
+      "pb": "?"
+     },
+     {
+      "tipo": "teste",
+      "a": "BUILD HOTELS",
+      "b": "HOARD HOUSES",
+      "pa": "0.3%",
+      "pb": "0.2%",
+      "vence": "a"
+     },
+     {
+      "tipo": "numero",
+      "txt": "0.3%",
+      "rotulo": "BUILD THE HOTEL"
+     },
+     {
+      "tipo": "dados",
+      "faces": [
+       6,
+       4
+      ],
+      "txt": "WHO GOES FIRST?"
+     },
+     {
+      "tipo": "fichas",
+      "modo": "lugar",
+      "ate": 1,
+      "linha": 25,
+      "rotulo": "WIN RATE BY TURN ORDER",
+      "itens": [
+       {
+        "cor": "#c9b98f",
+        "nome": "PLAYER 1",
+        "v": 27.1
+       },
+       {
+        "cor": "#c9b98f",
+        "nome": "PLAYER 2",
+        "v": 25.9
+       },
+       {
+        "cor": "#c9b98f",
+        "nome": "PLAYER 3",
+        "v": 24.3
+       },
+       {
+        "cor": "#c9b98f",
+        "nome": "PLAYER 4",
+        "v": 22.6
+       }
+      ]
+     },
+     {
+      "tipo": "fichas",
+      "modo": "lugar",
+      "ate": 4,
+      "linha": 25,
+      "rotulo": "WIN RATE BY TURN ORDER",
+      "itens": [
+       {
+        "cor": "#c9b98f",
+        "nome": "PLAYER 1",
+        "v": 27.1
+       },
+       {
+        "cor": "#c9b98f",
+        "nome": "PLAYER 2",
+        "v": 25.9
+       },
+       {
+        "cor": "#c9b98f",
+        "nome": "PLAYER 3",
+        "v": 24.3
+       },
+       {
+        "cor": "#c9b98f",
+        "nome": "PLAYER 4",
+        "v": 22.6
+       }
+      ],
+      "de": 1
+     },
+     {
+      "tipo": "numero",
+      "txt": "+1 IN 20",
+      "rotulo": "GOING FIRST"
+     },
+     {
+      "tipo": "dados",
+      "faces": [
+       6,
+       6
+      ],
+      "txt": "GO FIRST"
+     }
+    ],
+    "n": 4,
+    "titulo": "Three tricks, tested"
+   },
+   "falas": [
+    "Part four. Three famous tricks. Tested.",
+    "So picking the right set is huge. But it's not the only thing that matters.",
+    "So we know which sets win. But you don't always get to choose your set.",
+    "What you do choose is how you play. So we tested the three most famous moves.",
+    "Every Monopoly player has an opinion about jail.",
+    "Pay the fifty dollars and get out? Or sit there and roll for doubles?",
+    "So we tested it. Ten thousand games where one player always pays right away.",
+    "And ten thousand where the same player always stays and rolls.",
+    "Paying won 0.2 percent. Staying won 0.3.",
+    "Staying in jail wins more.",
+    "Because while you sit there, you're not paying anyone's rent.",
+    "Early in the game, though, there's nothing dangerous out there yet.",
+    "So we tried a smarter rule. Pay to get out while nobody has houses.",
+    "And stay in jail once anyone else starts building.",
+    "That rule won 0.3 percent. The best of all three.",
+    "Trick number two. There are only thirty two houses in the box.",
+    "Some players stop at four houses and never build hotels.",
+    "So nobody else can get any houses. It's the most famous advanced trick.",
+    "In our games, it lost.",
+    "The player who hoarded houses won 0.2 percent. Building hotels won 0.3.",
+    "And the one thing you can't control. Who goes first.",
+    "The player who rolled first won 27.1 percent.",
+    "The player who rolled last, 22.6.",
+    "Going first is worth about one extra win every twenty games.",
+    "So if you get to choose, choose first."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "arte",
+    "v": [
+     {
+      "tipo": "contador"
+     },
+     {
+      "tipo": "lista",
+      "itens": [],
+      "titulo": "THE 10,000-GAME STRATEGY"
+     },
+     {
+      "tipo": "lista",
+      "titulo": "THE 10,000-GAME STRATEGY",
+      "itens": [
+       "Fight for orange"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "titulo": "THE 10,000-GAME STRATEGY",
+      "itens": [
+       "Fight for orange",
+       "Then pink, red or light blue"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "titulo": "THE 10,000-GAME STRATEGY",
+      "itens": [
+       "Fight for orange",
+       "Then pink, red or light blue",
+       "3 houses, fast"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "titulo": "THE 10,000-GAME STRATEGY",
+      "itens": [
+       "Fight for orange",
+       "Then pink, red or light blue",
+       "3 houses, fast",
+       "Jail: pay early, stay late"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "titulo": "THE 10,000-GAME STRATEGY",
+      "itens": [
+       "Fight for orange",
+       "Then pink, red or light blue",
+       "3 houses, fast",
+       "Jail: pay early, stay late",
+       "Build the hotel"
+      ]
+     },
+     {
+      "tipo": "cartas",
+      "cor": "darkblue",
+      "nome": "PARK PLACE · BOARDWALK",
+      "valor": "17%",
+      "rot": "of games won",
+      "selo": "THE TRAP"
+     },
+     {
+      "tipo": "tabuleiro",
+      "modo": "calor",
+      "calor": [
+       2.807,
+       1.891,
+       1.698,
+       2.015,
+       2.205,
+       2.839,
+       2.214,
+       0.855,
+       2.281,
+       2.225,
+       10.46,
+       2.608,
+       2.602,
+       2.186,
+       2.403,
+       2.68,
+       2.651,
+       2.304,
+       2.788,
+       2.799,
+       2.773,
+       2.583,
+       1.005,
+       2.524,
+       2.946,
+       2.833,
+       2.492,
+       2.466,
+       2.585,
+       2.356,
+       2.402,
+       2.432,
+       2.381,
+       2.14,
+       2.282,
+       2.198,
+       0.768,
+       1.981,
+       1.963,
+       2.381
+      ]
+     },
+     {
+      "tipo": "tabuleiro",
+      "modo": "jail",
+      "selo": "10.5%",
+      "sub": "OF ALL MOVES",
+      "calor": [
+       2.807,
+       1.891,
+       1.698,
+       2.015,
+       2.205,
+       2.839,
+       2.214,
+       0.855,
+       2.281,
+       2.225,
+       10.46,
+       2.608,
+       2.602,
+       2.186,
+       2.403,
+       2.68,
+       2.651,
+       2.304,
+       2.788,
+       2.799,
+       2.773,
+       2.583,
+       1.005,
+       2.524,
+       2.946,
+       2.833,
+       2.492,
+       2.466,
+       2.585,
+       2.356,
+       2.402,
+       2.432,
+       2.381,
+       2.14,
+       2.282,
+       2.198,
+       0.768,
+       1.981,
+       1.963,
+       2.381
+      ]
+     },
+     {
+      "tipo": "tabuleiro",
+      "modo": "saida",
+      "foco": [
+       16,
+       18,
+       19
+      ],
+      "selo": "THE WAY OUT",
+      "calor": [
+       2.807,
+       1.891,
+       1.698,
+       2.015,
+       2.205,
+       2.839,
+       2.214,
+       0.855,
+       2.281,
+       2.225,
+       10.46,
+       2.608,
+       2.602,
+       2.186,
+       2.403,
+       2.68,
+       2.651,
+       2.304,
+       2.788,
+       2.799,
+       2.773,
+       2.583,
+       1.005,
+       2.524,
+       2.946,
+       2.833,
+       2.492,
+       2.466,
+       2.585,
+       2.356,
+       2.402,
+       2.432,
+       2.381,
+       2.14,
+       2.282,
+       2.198,
+       0.768,
+       1.981,
+       1.963,
+       2.381
+      ]
+     },
+     {
+      "tipo": "ficha",
+      "titulo": "CASE FILE · THE LANDLORD'S GAME",
+      "linhas": [
+       [
+        "Inventor",
+        "Elizabeth \"Lizzie\" Magie"
+       ],
+       [
+        "Patent",
+        "U.S. 748,626 · 1904"
+       ],
+       [
+        "Purpose",
+        "Show how land grabbing works"
+       ]
+      ],
+      "selo": "CONFIRMED"
+     },
+     {
+      "tipo": "numero",
+      "txt": "$500",
+      "rotulo": "1935"
+     },
+     {
+      "tipo": "contador"
+     },
+     {
+      "tipo": "falencia"
+     },
+     {
+      "tipo": "leque",
+      "txt": "WHICH SET IS YOURS?"
+     },
+     {
+      "tipo": "fim"
+     }
+    ]
+   },
+   "falas": [
+    "Let's put it all together.",
+    "So here's the strategy ten thousand games gave us.",
+    "One. Fight for orange.",
+    "If you can't get it, go for pink, red or light blue.",
+    "Two. Build to three houses as fast as you can.",
+    "Three. In jail, pay early, but stay once the houses go up.",
+    "Four. Build the hotel.",
+    "And don't fall in love with Park Place and Boardwalk.",
+    "The reason for all of it is the square nobody wants.",
+    "Jail. The busiest place on the board.",
+    "And whoever owns the way out, owns the game.",
+    "In 1904, Lizzie Magie wanted to show that one player owning everything ruins the rest.",
+    "She sold her patent for five hundred dollars.",
+    "Ten thousand games later, the board still makes her point.",
+    "The player who owns the right squares first doesn't just win. Everyone else goes broke.",
+    "Which set do you always go for? Tell us in the comments.",
+    "And subscribe, to see what we run ten thousand times next."
+   ]
+  }
+ ]
+}

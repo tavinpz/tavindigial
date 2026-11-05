@@ -1,8 +1,9 @@
 // Composição "Arte": lê o mesmo data.json do pipeline longo (blocos, marcos por fala, palavras)
 // e monta uma cena física por fala, com câmera contínua sobre a superfície do canal.
 import React, { useEffect, useState } from 'react';
-import { AbsoluteFill, Audio, continueRender, delayRender, staticFile, useCurrentFrame } from 'remotion';
-import { Filtros, Superficie, camera, Legenda, Poeira, FA, W } from './comum';
+import { AbsoluteFill, Audio, continueRender, delayRender, staticFile, useCurrentFrame, getInputProps } from 'remotion';
+const TESTE = ((getInputProps() as any).teste || '') as string;
+import { Filtros, Superficie, camera, Legenda, Poeira, FA, W, Continua } from './comum';
 import type { Tema, Vis, Pal } from './comum';
 import { LSS } from './lss';
 import { TTR } from './ttr';
@@ -48,21 +49,24 @@ export const Arte: React.FC<{ dados: any; semAudio?: boolean }> = ({ dados, semA
   const tema = TEMAS[dados.canalId] || TEMAS['ten-thousand-runs'];
   const C = CANAIS[tema.canal];
   const itens: Item[] = (dados as any)._it || ((dados as any)._it = linhaDoTempo(dados.blocos, dados.quadros));
-  const cam = camera(g, itens.map((i) => i.ini + LEAD));
+  const cam0 = camera(g, itens.map((i) => i.ini + LEAD));
+  const cam = TESTE.includes('cam') ? { esc: 1, px: 0, py: 0, rot: 0 } : cam0;
   return (
     <AbsoluteFill style={{ background: tema.fundo, overflow: 'hidden' }}>
       <Filtros />
       <AbsoluteFill style={{ transform: `scale(${cam.esc}) rotate(${cam.rot}deg)` }}>
-        <Superficie tema={tema} px={cam.px} py={cam.py} tipo={C.superficie} />
+        {!TESTE.includes('tex') && <Superficie tema={tema} px={cam.px} py={cam.py} tipo={C.superficie} />}
         <AbsoluteFill style={{ transform: `translate(${cam.px}px, ${cam.py}px)` }}>
           {itens.map((it, i) => {
             const f = g - it.ini;
             const dur = it.fim - it.ini;
-            if (f < 0 || f > dur + 18) return null;
-            return <AbsoluteFill key={i} style={{ zIndex: i + 1 }}><C.Cena f={f} dur={dur} v={it.v} tema={tema} /></AbsoluteFill>;
+            const ant = i > 0 && itens[i - 1].v.tipo === it.v.tipo && !!C.continua?.includes(it.v.tipo);
+            const prox = i + 1 < itens.length && itens[i + 1].v.tipo === it.v.tipo && !!C.continua?.includes(it.v.tipo);
+            if (f < 0 || f > dur + (prox ? 0 : 18)) return null;
+            return <AbsoluteFill key={i} style={{ zIndex: i + 1 }}><Continua.Provider value={{ ant, prox }}><C.Cena f={f} dur={dur} v={it.v} tema={tema} /></Continua.Provider></AbsoluteFill>;
           })}
         </AbsoluteFill>
-        <Poeira g={g} px={cam.px} py={cam.py} cor={tema.canal === 'quanto-voce-dura' ? 'rgba(255,250,235,0.55)' : 'rgba(255,240,210,0.45)'} n={tema.canal === 'ten-thousand-runs' ? 14 : 24} />
+        {!TESTE.includes('poeira') && <Poeira g={g} px={cam.px} py={cam.py} cor={tema.canal === 'quanto-voce-dura' ? 'rgba(255,250,235,0.55)' : 'rgba(255,240,210,0.45)'} n={tema.canal === 'ten-thousand-runs' ? 14 : 24} />}
       </AbsoluteFill>
       {/* sombra suave nas bordas e embaixo, para a legenda ler sempre */}
       <AbsoluteFill style={{ pointerEvents: 'none', background: 'linear-gradient(to top, rgba(0,0,0,0.42), rgba(0,0,0,0) 30%)', zIndex: 40 }} />
