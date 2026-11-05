@@ -24,13 +24,13 @@ const compacto = (n) => Intl.NumberFormat('pt-BR', { notation: 'compact', maximu
 const n = (x) => Number(x || 0).toLocaleString('pt-BR')
 const OLHO = 'M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12zM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z'
 
-// Cartão ao passar o mouse no canal: views de hoje rede por rede
+// Cartão ao passar o mouse no canal: views das últimas 24 h rede por rede
 function CartaoViews({ v, pos }) {
   const r = v.por_rede || {}
   const redes = [['IG', '#D62F8C', r.instagram], ['YT', '#E02424', r.youtube]].filter((x) => x[2] != null)
   return createPortal(
     <div className="m-cartao" role="tooltip" style={{ left: pos.x, top: pos.y }}>
-      <span><b>{n(v.views)}</b> views hoje</span>
+      <span><b>{n(v.views)}</b> views em 24 h</span>
       {redes.length > 0 && <span className="m-cartao-redes">{redes.map(([k, cor, x]) => <span key={k}><i style={{ background: cor }} />{k} {n(x)}</span>)}{v.curtidas ? <span><i style={{ background: '#25F4EE' }} />TT +{n(v.curtidas)} curt.</span> : null}</span>}
     </div>, document.body)
 }
@@ -54,7 +54,7 @@ function Item({ id, nome, ico, canal, aba, ir, recolhido, v }) {
     <>
       <button className={`m-item ${canal ? 'm-canal' : ''} ${id === aba ? 'ativa' : ''}`} onClick={() => ir(id)} aria-current={id === aba ? 'page' : undefined}
         onMouseEnter={mostrar} onMouseLeave={() => setPos(null)} onFocus={mostrar} onBlur={() => setPos(null)}
-        title={recolhido && !v ? nome : undefined} aria-label={v ? `${nome}, ${n(v.views)} views hoje` : undefined}>
+        title={recolhido && !v ? nome : undefined} aria-label={v ? `${nome}, ${n(v.views)} views nas últimas 24 h` : undefined}>
         {canal ? <LogoCanal c={canal} /> : <Ico d={ico} />}<span className="m-txt">{nome}</span>
         {canal && v && !recolhido && (
           <span className={`m-views ${subiu ? 'm-views--subiu' : ''} ${v.views ? '' : 'm-views--zero'}`} aria-hidden="true">
@@ -118,7 +118,7 @@ function Canais({ itens, aba, ir, recolhido, organizar, views = {} }) {
         ))}
         {t && visiveis.length === 0 && <li className="m-nada">Nenhum canal com "{busca}"</li>}
       </ul>
-      {organizar && !recolhido && <p className="m-dica">Quem tem mais views hoje sobe sozinho. A sua ordem vale para os empates.</p>}
+      {organizar && !recolhido && <p className="m-dica">Quem tem mais views nas últimas 24 h sobe sozinho. A sua ordem vale para os empates.</p>}
     </>
   )
 }

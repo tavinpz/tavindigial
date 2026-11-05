@@ -3,7 +3,7 @@
 //                                             posts com números) + YouTube (Data API com a chave; sem chave, feed público)
 //   { acao: "resumo", canais: [...], forcar? } → números principais de todos os canais (visão geral)
 //   { acao: "foto" }                           → grava o dia no histórico (pg_cron 1x por dia)
-//   { acao: "views" }                          → views de hoje de cada canal (pg_cron a cada 30 min; o menu ordena por isso)
+//   { acao: "views" }                          → views das últimas 24 h de cada canal (pg_cron a cada 30 min; o menu ordena por isso)
 // Os números de cada vídeo (YouTube e Instagram) também ficam guardados por dia em videos_metricas_dia, para análise.
 // Toda resposta fica 15 min em metricas_cache (a Meta e o Google limitam chamadas) e o dia vai para metricas_diarias.
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
@@ -377,16 +377,33 @@ async function gravarVideos(db: SupabaseClient, canal: string, rede: string, lis
   if (linhas.length) await db.from("videos_metricas_dia").upsert(linhas, { onConflict: "canal,rede,video_id,dia" }).then(() => {}, () => {});
 }
 
-// views de hoje de um canal: Instagram (insights desde 00h de Brasília) e YouTube (total agora − total no começo do dia)
+// Guarda o total de agora e devolve quanto cresceu nas últimas 24 h (sem foto de 24 h atrás: desde a mais antiga)
+async function cresceu24h(db: SupabaseClient, canal: string, rede: string, total: number) {
+  const agora = Date.now();
+  await db.from("views_snap").insert({ canal, rede, em: new Date(agora).toISOString(), total });
+  const lim = new Date(agora - 86400000).toISOString();
+  let { data: ref } = await db.from("views_snap").select("total").eq("canal", canal).eq("rede", rede).lte("em", lim).order("em", { ascending: false }).limit(1).maybeSingle();
+  if (!ref) ({ data: ref } = await db.from("views_snap").select("total").eq("canal", canal).eq("rede", rede).order("em", { ascending: true }).limit(1).maybeSingle());
+  await db.from("views_snap").delete().eq("canal", canal).eq("rede", rede).lt("em", new Date(agora - 3 * 86400000).toISOString());
+  return Math.max(0, total - Number(ref?.total ?? total));
+}
+
+// Views das últimas 24 h de um canal (o menu mostra isso; fica em views_dia.views_hoje do dia de hoje):
+//   Instagram: insights da conta de hoje (desde 00h de Brasília) + a fração de ontem que ainda está nas últimas 24 h
+//   YouTube: soma das views de todos os vídeos agora − a mesma soma 24 h atrás (o total do canal no YouTube atrasa horas)
 async function viewsHoje(db: SupabaseClient, canal: string) {
   const dia = hojeSP();
   const r: Record<string, unknown> = {};
   const c = await contaIG(db, canal).catch(() => null);
   if (c) {
     try {
-      const inicio = Math.floor(new Date(`${dia}T00:00:00-03:00`).getTime() / 1000);
-      const d = await c.get(`${c.userId}/insights`, { metric: "views", period: "day", metric_type: "total_value", since: String(inicio), until: String(Math.floor(Date.now() / 1000)) });
-      const v = d.data?.[0]?.total_value?.value;
+      // a Meta soma por dia inteiro: últimas 24 h = hoje até agora + a parte de ontem que ainda cai na janela
+      const agora = Math.floor(Date.now() / 1000), meiaNoite = Math.floor(new Date(`${dia}T00:00:00-03:00`).getTime() / 1000);
+      const pedir = (desde: number, ate: number) => c.get(`${c.userId}/insights`, { metric: "views", period: "day", metric_type: "total_value", since: String(desde), until: String(ate) })
+        .then((d) => d.data?.[0]?.total_value?.value as number | undefined);
+      const [hoje, ontem] = await Promise.all([pedir(meiaNoite, agora), pedir(meiaNoite - 86400, meiaNoite).catch(() => undefined)]);
+      const resto = Math.max(0, 1 - (agora - meiaNoite) / 86400);
+      const v = hoje == null ? null : Math.round(Number(hoje) + Number(ontem ?? 0) * resto);
       if (v != null) {
         await db.from("views_dia").upsert({ canal, rede: "instagram", dia, views_hoje: Number(v), atualizado_em: new Date().toISOString() }, { onConflict: "canal,rede,dia" });
         r.instagram = Number(v);
@@ -399,9 +416,8 @@ async function viewsHoje(db: SupabaseClient, canal: string) {
     const { yt_api_key: chave } = await cfg(db, ["yt_api_key"]);
     if (chave) {
       try {
-        const d = await (await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${id}&key=${chave}`)).json();
-        const n = Number(d.items?.[0]?.statistics?.viewCount);
-        if (Number.isFinite(n)) total = n;
+        const b = await youtubeAPI(id, chave, 500);
+        total = (b.videos as { views: number }[]).reduce((a, v) => a + (Number(v.views) || 0), 0);
       } catch { /* cai no feed */ }
     }
     if (total == null) {
@@ -409,10 +425,9 @@ async function viewsHoje(db: SupabaseClient, canal: string) {
       if (f) total = f.videos.reduce((a, v) => a + (Number(v.views) || 0), 0);
     }
     if (total != null) {
-      const { data: ja } = await db.from("views_dia").select("total_inicio").eq("canal", canal).eq("rede", "youtube").eq("dia", dia).maybeSingle();
-      const inicio = ja?.total_inicio ?? total;
-      await db.from("views_dia").upsert({ canal, rede: "youtube", dia, total_inicio: inicio, total_atual: total, views_hoje: Math.max(0, total - Number(inicio)), atualizado_em: new Date().toISOString() }, { onConflict: "canal,rede,dia" });
-      r.youtube = Math.max(0, total - Number(inicio));
+      const v24 = await cresceu24h(db, canal, "youtube", total);
+      await db.from("views_dia").upsert({ canal, rede: "youtube", dia, total_atual: total, views_hoje: v24, atualizado_em: new Date().toISOString() }, { onConflict: "canal,rede,dia" });
+      r.youtube = v24;
     }
   }
   return r;
