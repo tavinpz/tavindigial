@@ -61,10 +61,17 @@ export const Filtros: React.FC = () => (
 );
 
 /** fundo físico do canal, em camadas com parallax (recebe deslocamento da câmera) */
-export const Superficie: React.FC<{ tema: Tema; px: number; py: number; tipo: 'escuro' | 'feltro' | 'velho' }> = ({ tema, px, py, tipo }) => {
+export const SuperficiePronta: React.FC<{ px: number; py: number; tipo: string }> = ({ px, py, tipo }) => (
+  <AbsoluteFill style={{ transform: `translate(${px * 0.35}px, ${py * 0.35}px) scale(1.12)` }}>
+    <Img src={staticFile(`arte/tex/${tipo}.jpg`)} style={{ width: W, height: H }} />
+  </AbsoluteFill>
+);
+
+export const Superficie: React.FC<{ tema: Tema; px: number; py: number; tipo: 'escuro' | 'feltro' | 'velho'; bruta?: boolean }> = ({ tema, px, py, tipo, bruta }) => {
+  if (!bruta) return <SuperficiePronta px={px} py={py} tipo={tipo} />;
   const base = tipo === 'feltro' ? '#1f5a3c' : tipo === 'velho' ? '#cdb78f' : '#26221e';
   return (
-    <AbsoluteFill style={{ background: base, transform: `translate(${px * 0.35}px, ${py * 0.35}px) scale(1.12)` }}>
+    <AbsoluteFill style={{ background: base }}>
       <svg width={W} height={H} style={{ position: 'absolute', inset: 0 }}>
         <defs>
           <filter id={`sup-${tipo}`} x="0" y="0" width="100%" height="100%">

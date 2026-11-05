@@ -10,6 +10,8 @@ import { Longo } from './longo/Longo';
 import { Capa, MarcaTTR } from './longo/Capa';
 import type { LDados } from './longo/tema';
 import { Arte } from './arte/Arte';
+import { Superficie } from './arte/comum';
+const Tex: React.FC<{ tipo: any }> = ({ tipo }) => <Superficie tema={null as any} px={0} py={0} tipo={tipo} bruta />;
 
 type P = { id: string; semAudio?: boolean; pre3d?: boolean; dados?: Dados };
 const LongoComp: React.FC<{ dados: LDados; semAudio?: boolean }> = ({ dados, semAudio }) => <Longo dados={dados} semAudio={semAudio} />;
@@ -59,6 +61,7 @@ export const Root: React.FC = () => (
         return { durationInFrames: props.n || dados.quadros, props: { ...props, dados } };
       }}
     />
+    <Composition id="TexArte" component={Tex as any} durationInFrames={1} fps={30} width={1920} height={1080} defaultProps={{ tipo: 'escuro' }} />
     <Composition id="Capa" component={Capa as any} durationInFrames={1} fps={30} width={1280} height={720} defaultProps={{ v: 'a' }} />
     <Composition id="LogoTTR" component={MarcaTTR as any} durationInFrames={1} fps={30} width={800} height={800} defaultProps={{ v: 'logo' }} />
     <Composition id="BannerTTR" component={MarcaTTR as any} durationInFrames={1} fps={30} width={2560} height={1440} defaultProps={{ v: 'banner' }} />
