@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { CANAIS, slugCanal } from './canais'
 import { usePainel } from './Painel'
@@ -177,6 +177,9 @@ export function CanaisCofre({ estoque, salvarUm }) {
   const [f, setF] = useState({ nome: '', tipo: 'shorts', cor: CORES[4], instagram: '', youtube: '', tiktok: '', email: '' })
   const [indo, setIndo] = useState(false)
   const [foto, setFoto] = useState(null)
+  const [arquivados, setArquivados] = useState([])
+  const lerArquivados = () => supabase.from('canais').select('id,nome,cor,sigla,logo').eq('ativo', false).order('nome').then(({ data }) => setArquivados(data || []))
+  useEffect(() => { lerArquivados() }, [])
   const set = (k) => (e) => setF({ ...f, [k]: e.target.value })
   const id = slugCanal(f.nome)
   const existe = CANAIS.some((c) => c.id === id)
@@ -215,7 +218,11 @@ export function CanaisCofre({ estoque, salvarUm }) {
   }
   async function esconder(c) {
     await supabase.from('canais').update({ ativo: false }).eq('id', c.id)
-    await recarregarCanais(); avisar(`${c.nome} saiu do menu (os vídeos continuam guardados)`)
+    await recarregarCanais(); lerArquivados(); avisar(`${c.nome} arquivado (os vídeos continuam guardados)`)
+  }
+  async function desarquivar(c) {
+    await supabase.from('canais').update({ ativo: true }).eq('id', c.id)
+    await recarregarCanais(); lerArquivados(); avisar(`${c.nome} voltou para o menu`)
   }
 
   return (
@@ -225,7 +232,7 @@ export function CanaisCofre({ estoque, salvarUm }) {
         <div className="cc-grade">
           <label className="p-campo">Nome no painel<input value={f.nome} onChange={set('nome')} placeholder="Ex.: Papo de Mãe" required />{existe && <small className="p-erro">Já existe um canal com esse nome</small>}</label>
           <label className="p-campo">Tipo
-            <select value={f.tipo} onChange={set('tipo')}><option value="shorts">Vídeos curtos</option><option value="marca">Marca (posts e carrosséis)</option></select>
+            <select value={f.tipo} onChange={set('tipo')}><option value="shorts">Vídeos curtos</option><option value="marca">Marca (posts e carrosséis)</option><option value="longo">Vídeo longo (YouTube)</option></select>
           </label>
           <label className="p-campo">E-mail usado (do estoque)
             <select value={f.email} onChange={set('email')}>
@@ -251,10 +258,24 @@ export function CanaisCofre({ estoque, salvarUm }) {
             {c.logo ? <img src={c.logo} alt="" /> : <span className="p-canal-sigla" style={{ '--c': c.cor }}>{c.sigla}</span>}
             <span className="cc-nome"><b>{c.nome}</b><small>{[c.instagram, c.youtube, c.tiktok && `TT ${c.tiktok}`].filter(Boolean).join(' · ') || 'sem @ cadastrado'}</small></span>
             <button type="button" className="p-btn p-btn--mini" disabled={foto === c.id} onClick={() => puxarFoto(c)}>{foto === c.id ? 'Puxando…' : 'Puxar foto'}</button>
-            <button type="button" className="p-btn p-btn--mini p-btn--fraco" onClick={() => esconder(c)}>Tirar do menu</button>
+            <button type="button" className="p-btn p-btn--mini p-btn--fraco" onClick={() => esconder(c)}>Arquivar</button>
           </li>
         ))}
       </ul>
+      {arquivados.length > 0 && (
+        <>
+          <h2 className="cc-arq-tit">Arquivados</h2>
+          <ul className="cc-lista cc-lista--arq">
+            {arquivados.map((c) => (
+              <li key={c.id} style={{ '--c': c.cor }}>
+                {c.logo ? <img src={c.logo} alt="" /> : <span className="p-canal-sigla" style={{ '--c': c.cor }}>{c.sigla}</span>}
+                <span className="cc-nome"><b>{c.nome}</b><small>fora do menu e das views</small></span>
+                <button type="button" className="p-btn p-btn--mini" onClick={() => desarquivar(c)}>Desarquivar</button>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
     </section>
   )
 }

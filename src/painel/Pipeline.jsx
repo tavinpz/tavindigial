@@ -496,6 +496,14 @@ export default function Pipeline({ canal, fases = FASES_PADRAO, itens, mover, pr
   const [vista, setVista] = useState(() => lerLS(`pl-vista-${canal.id}`, 'quadro'))
   useEffect(() => gravarLS(`pl-vista-${canal.id}`, vista), [vista, canal.id])
   const [previa, setPrevia] = useState(null)
+  const painel = usePainel()
+  // Arquivar: sai do menu e das contas de views; os vídeos ficam guardados (volta em Cofre → Canais → Arquivados)
+  async function arquivar() {
+    if (!window.confirm(`Arquivar ${canal.nome}? Ele sai do menu e das views; os vídeos ficam guardados e dá para desarquivar em Cofre → Canais.`)) return
+    const { error } = await supabase.from('canais').update({ ativo: false }).eq('id', canal.id)
+    if (error) { painel?.avisar('Não arquivou'); return }
+    await painel?.recarregarCanais?.(); painel?.avisar(`${canal.nome} arquivado`); painel?.irPara?.('inicio')
+  }
   const [arr, setArr] = useState(null)
   const [sobre, setSobre] = useState(null)
   const [local, setLocal] = useState({})
@@ -542,6 +550,7 @@ export default function Pipeline({ canal, fases = FASES_PADRAO, itens, mover, pr
             <span className={`pl-ponto ${cx.igOk ? 'on' : ''}`} aria-hidden="true" />Integrações
           </button>
           {extra}
+          <button className="p-btn p-btn--fraco" onClick={arquivar}>Arquivar canal</button>
           <button className="p-btn" onClick={() => setJanela('subir')}>Subir vídeo</button>
           <button className="p-btn p-btn--forte" onClick={() => setJanela('programar')} disabled={!programaveis.length}>Programar tudo</button>
         </div>

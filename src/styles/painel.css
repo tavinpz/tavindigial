@@ -1566,3 +1566,5 @@ a.crm-btn { text-decoration: none; display: inline-flex; align-items: center; }
   .v-grade--longo { grid-template-columns: 1fr; }
   .v-grade--longo .v-player { max-width: none; }
 }
+.cc-arq-tit { font-size: 15px; margin: 22px 0 8px; color: var(--cinza, #6B6375); }
+.cc-lista--arq li { opacity: .75; }
