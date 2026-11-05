@@ -1,0 +1,7 @@
+total 2784
+drwxr-xr-x 2 runner runner    4096 Nov  5 05:15 .
+drwxr-xr-x 5 runner runner    4096 Nov  5 05:15 ..
+-rw-r--r-- 1 runner runner       0 Nov  5 05:15 _lista.txt
+-rw-r--r-- 1 runner runner    8764 Nov  5 05:15 acs_2024.json
+-rw-r--r-- 1 runner runner 2715056 Nov  5 05:15 seds_use.csv
+-rw-r--r-- 1 runner runner  114554 Nov  5 05:15 us_states_topo.json
