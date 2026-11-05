@@ -224,5 +224,20 @@ Deno.serve(async (req) => {
       return json(200, { ok: true, nome: ch?.snippet?.title, inscritos: ch?.statistics?.subscriberCount, videos: ch?.statistics?.videoCount });
     } catch (e) { return json(200, { ok: false, erro: (e as Error).message }); }
   }
+  // diagnóstico: o que está na lista de envios do canal e a situação de cada vídeo (processando, recusado, etc.)
+  if (body.acao === "uploads") {
+    const canal = String(body.canal || "");
+    if (!/^[a-z0-9-]+$/.test(canal)) return json(400, { ok: false, erro: "canal inválido" });
+    try {
+      const token = await tokenDe(db, canal);
+      const ch = (await google(token, "https://www.googleapis.com/youtube/v3/channels?part=contentDetails&mine=true")).items?.[0];
+      const up = ch?.contentDetails?.relatedPlaylists?.uploads;
+      const pl = await google(token, `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,status&maxResults=50&playlistId=${up}`);
+      const itens = ((pl.items ?? []) as any[]).map((i) => ({ id: i.snippet?.resourceId?.videoId, titulo: i.snippet?.title, quando: i.snippet?.publishedAt, priv: i.status?.privacyStatus }));
+      const det = itens.length ? (await google(token, `https://www.googleapis.com/youtube/v3/videos?part=status,processingDetails&id=${itens.map((i) => i.id).join(",")}`)).items ?? [] : [];
+      const por = Object.fromEntries((det as any[]).map((d) => [d.id, d]));
+      return json(200, { ok: true, videos: itens.map((i) => ({ ...i, envio: por[i.id]?.status?.uploadStatus ?? "não aparece em videos.list", recusa: por[i.id]?.status?.rejectionReason ?? null, falha: por[i.id]?.status?.failureReason ?? null, processamento: por[i.id]?.processingDetails?.processingStatus ?? null, publicar_em: por[i.id]?.status?.publishAt ?? null })) });
+    } catch (e) { return json(200, { ok: false, erro: (e as Error).message }); }
+  }
   return json(400, { ok: false, erro: "acao desconhecida" });
 });
