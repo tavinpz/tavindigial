@@ -1,0 +1,160 @@
+{
+ "id": "ttr001t",
+ "canal": "ten-thousand-runs",
+ "titulo": "Teste de estilo TTR #001",
+ "voz": "am_michael",
+ "velocidade": 1.0,
+ "lang": "en-us",
+ "legenda": true,
+ "acento": "#ffd23f",
+ "marca": "TEN THOUSAND RUNS",
+ "trilha": 0.15,
+ "cauda": 1.2,
+ "numeros": {
+  "ten thousand games": "10,000 games",
+  "seventeen percent": "17%"
+ },
+ "blocos": [
+  {
+   "cena": {
+    "tipo": "arte",
+    "v": [
+     {
+      "tipo": "ficha",
+      "titulo": "CASE FILE · THE LANDLORD'S GAME",
+      "linhas": [
+       [
+        "Inventor",
+        "Elizabeth \"Lizzie\" Magie"
+       ],
+       [
+        "Patent",
+        "U.S. 748,626 · 1904"
+       ],
+       [
+        "Purpose",
+        "Show how land grabbing works"
+       ]
+      ]
+     },
+     {
+      "tipo": "icones"
+     },
+     {
+      "tipo": "ano",
+      "ano": "1935",
+      "txt": "IT BECOMES MONOPOLY",
+      "de": 1904
+     }
+    ]
+   },
+   "falas": [
+    "In 1904, a woman named Lizzie Magie patented a board game.",
+    "It was built to prove one thing. Landlords get rich, and everyone else goes broke.",
+    "About thirty years later, it became Monopoly."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "arte",
+    "v": [
+     {
+      "tipo": "ficha",
+      "titulo": "SIMULATION LAB · RUN ORDER",
+      "linhas": [
+       [
+        "Game",
+        "Monopoly, every rule"
+       ],
+       [
+        "Players",
+        "4, playing in code"
+       ],
+       [
+        "Runs",
+        "10,000"
+       ]
+      ],
+      "selo": "APPROVED"
+     },
+     {
+      "tipo": "contador"
+     },
+     {
+      "tipo": "dados",
+      "faces": [
+       3,
+       4
+      ],
+      "txt": "EVERY ROLL"
+     },
+     {
+      "tipo": "dinheiro",
+      "txt": "EVERY RENT"
+     },
+     {
+      "tipo": "falencia"
+     }
+    ]
+   },
+   "falas": [
+    "So we built it in code, and let a computer play.",
+    "Ten thousand games.",
+    "Every roll.",
+    "Every rent.",
+    "Every bankruptcy."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "arte",
+    "v": [
+     {
+      "tipo": "tabuleiro",
+      "modo": "go"
+     },
+     {
+      "tipo": "tabuleiro",
+      "modo": "jail",
+      "selo": "10.5%",
+      "sub": "OF ALL MOVES END HERE"
+     },
+     {
+      "tipo": "cartas",
+      "modo": "misterio",
+      "selo": "WON 50% OF ITS GAMES",
+      "sub": "ONE COLOR SET"
+     },
+     {
+      "tipo": "cartas",
+      "cor": "darkblue",
+      "nome": "PARK PLACE · BOARDWALK",
+      "valor": "17%",
+      "rot": "of games won",
+      "selo": "THE TRAP?"
+     }
+    ]
+   },
+   "falas": [
+    "And the busiest square on the board? It isn't Go.",
+    "It's jail.",
+    "One color set won half of all the games it played.",
+    "The most expensive set on the board won only seventeen percent."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "arte",
+    "v": [
+     {
+      "tipo": "leque",
+      "txt": "WHICH ONE DO YOU FIGHT FOR?"
+     }
+    ]
+   },
+   "falas": [
+    "By the end of this video, you'll know exactly which set to fight for."
+   ]
+  }
+ ]
+}

@@ -9,6 +9,7 @@ import type { Dados } from './lib/types';
 import { Longo } from './longo/Longo';
 import { Capa, MarcaTTR } from './longo/Capa';
 import type { LDados } from './longo/tema';
+import { Arte } from './arte/Arte';
 
 type P = { id: string; semAudio?: boolean; pre3d?: boolean; dados?: Dados };
 const LongoComp: React.FC<{ dados: LDados; semAudio?: boolean }> = ({ dados, semAudio }) => <Longo dados={dados} semAudio={semAudio} />;
@@ -42,6 +43,19 @@ export const Root: React.FC = () => (
       defaultProps={{ id: 'ttr001', semAudio: true }}
       calculateMetadata={async ({ props }: any) => {
         const dados: LDados = await fetch(staticFile(`l/${props.id}/data.json`)).then((r) => r.json());
+        return { durationInFrames: props.n || dados.quadros, props: { ...props, dados } };
+      }}
+    />
+    <Composition
+      id="Arte"
+      component={Arte as any}
+      durationInFrames={300}
+      fps={30}
+      width={1920}
+      height={1080}
+      defaultProps={{ id: 'lss001t', semAudio: true }}
+      calculateMetadata={async ({ props }: any) => {
+        const dados = await fetch(staticFile(`l/${props.id}/data.json`)).then((r) => r.json());
         return { durationInFrames: props.n || dados.quadros, props: { ...props, dados } };
       }}
     />

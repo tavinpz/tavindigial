@@ -1,0 +1,155 @@
+{
+ "id": "lss001t",
+ "canal": "last-state-standing",
+ "titulo": "Teste de estilo LSS #001",
+ "voz": "am_michael",
+ "velocidade": 1.0,
+ "lang": "en-us",
+ "legenda": true,
+ "acento": "#ff6b3d",
+ "marca": "LAST STATE STANDING",
+ "trilha": 0.15,
+ "cauda": 1.2,
+ "numeros": {
+  "june thirteenth 2022": "JUNE 13, 2022",
+  "five dollars": "$5",
+  "six twenty-seven": "$6.27",
+  "ten dollars": "$10",
+  "forty-seventh": "47TH",
+  "three hundred thirty-four": "334",
+  "six hundred thirty-four": "634",
+  "six thousand dollars": "$6,000",
+  "ten percent": "10%",
+  "number fifty": "#50",
+  "number one": "#1"
+ },
+ "blocos": [
+  {
+   "cena": {
+    "tipo": "arte",
+    "v": [
+     {
+      "tipo": "data",
+      "txt": "JUNE 13, 2022",
+      "sub": "U.S. regular gasoline, weekly average"
+     },
+     {
+      "tipo": "bomba",
+      "preco": "5.006",
+      "de": "4.876",
+      "rotulo": "U.S. AVERAGE · REGULAR",
+      "selo": "FIRST TIME OVER $5",
+      "fonte": "Source: U.S. EIA"
+     },
+     {
+      "tipo": "mapa",
+      "destaque": [
+       "CA"
+      ],
+      "sticker": {
+       "uf": "CA",
+       "txt": "CA $6.27"
+      }
+     }
+    ]
+   },
+   "falas": [
+    "June thirteenth, 2022.",
+    "For the first time on record, regular gas in America averaged more than five dollars a gallon.",
+    "In California, six twenty-seven."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "arte",
+    "v": [
+     {
+      "tipo": "numero",
+      "txt": "$10",
+      "rotulo": "A GALLON. FOR GOOD."
+     },
+     {
+      "tipo": "mapa",
+      "todos": true,
+      "pergunta": "WHICH STATES BREAK FIRST?"
+     },
+     {
+      "tipo": "placa",
+      "titulo": "ALL 50 RANKED",
+      "txt": "Gas burned per person ÷ income per person",
+      "fonte": "EIA State Energy Data 2024 · BEA 2025"
+     }
+    ]
+   },
+   "falas": [
+    "Now picture ten dollars.",
+    "Which states break first?",
+    "We ranked all fifty, with official data from the Energy Information Administration and the Bureau of Economic Analysis."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "arte",
+    "v": [
+     {
+      "tipo": "rank",
+      "pos": "#47",
+      "nome": "CALIFORNIA",
+      "uf": "CA",
+      "sub": "most expensive gas, near the bottom"
+     },
+     {
+      "tipo": "galoes",
+      "n": 334,
+      "barris": 7.95,
+      "rotulo": "GALLONS PER PERSON · CALIFORNIA",
+      "nota": "≈ 8 barrels (42 gal each)"
+     },
+     {
+      "tipo": "mapa",
+      "misterio": true,
+      "sticker": {
+       "txt": "#1 · 634 GAL"
+      }
+     },
+     {
+      "tipo": "conta",
+      "linha": "634 gal × $10.00",
+      "txt": "$6,344",
+      "rotulo": "state at #1 · per person"
+     },
+     {
+      "tipo": "nota-rasgada",
+      "pct": 10.6,
+      "txt": "10.6%",
+      "rotulo": "OF INCOME. GONE."
+     }
+    ]
+   },
+   "falas": [
+    "And the state with the most expensive gas lands forty-seventh.",
+    "Californians burn about three hundred thirty-four gallons a person, each year.",
+    "At number one, it's six hundred thirty-four.",
+    "At ten dollars, that's over six thousand dollars a year, per person.",
+    "More than ten percent of everything they earn."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "arte",
+    "v": [
+     {
+      "tipo": "rank",
+      "pos": "#50",
+      "nome": "NEW YORK",
+      "uf": "NY",
+      "sub": "262 gal per person · 2.9% of income"
+     }
+    ]
+   },
+   "falas": [
+    "So which state is it? Let's start at number fifty."
+   ]
+  }
+ ]
+}

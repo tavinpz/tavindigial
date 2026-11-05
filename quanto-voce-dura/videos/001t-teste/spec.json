@@ -1,0 +1,180 @@
+{
+ "id": "qvd001t",
+ "canal": "quanto-voce-dura",
+ "titulo": "Teste de estilo QVD #001",
+ "motor": "piper",
+ "voz": "m",
+ "velocidade": 0.9,
+ "lang": "pt-br",
+ "legenda": true,
+ "acento": "#e9c46a",
+ "marca": "QUANTO VOCÊ DURA?",
+ "trilha": 0.13,
+ "cauda": 1.2,
+ "numeros": {
+  "treze de novembro de mil novecentos e quatro": "13 de novembro de 1904",
+  "vinte e dois": "22",
+  "cem": "100",
+  "trinta": "30",
+  "novecentos e quarenta e cinco": "945",
+  "quatrocentos e sessenta e um": "461"
+ },
+ "blocos": [
+  {
+   "cena": {
+    "tipo": "arte",
+    "v": [
+     {
+      "tipo": "data",
+      "txt": "RIO DE JANEIRO",
+      "sub": "13 de novembro de 1904"
+     },
+     {
+      "tipo": "foto",
+      "arq": "bonde_virado_revolta_da_vacina_jpg.jpg",
+      "leg": "Bonde virado na Revolta da Vacina, novembro de 1904",
+      "w": 1060,
+      "ar": 0.56
+     },
+     {
+      "tipo": "foto",
+      "arq": "canteiro_de_obras_pr_ximo_ao_largo_da_mi.jpg",
+      "leg": "Centro do Rio no começo do século XX · Acervo IMS",
+      "rot": 2,
+      "entra": "dir",
+      "lado": -120
+     },
+     {
+      "tipo": "bolso"
+     },
+     {
+      "tipo": "titulo",
+      "txt": "QUANTO TEMPO\nVOCÊ DURA?"
+     }
+    ]
+   },
+   "falas": [
+    "Rio de Janeiro, treze de novembro de mil novecentos e quatro.",
+    "Os bondes estão pegando fogo.",
+    "E você acabou de acordar aqui.",
+    "Sem dinheiro, e sem conhecer ninguém.",
+    "Quanto tempo você dura?"
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "arte",
+    "v": [
+     {
+      "tipo": "foto",
+      "arq": "guerra_vaccino_obrigateza_jpg.jpg",
+      "leg": "Charge “Guerra Vaccino-Obrigateza!”, outubro de 1904",
+      "w": 1000,
+      "ar": 0.7
+     },
+     {
+      "tipo": "documento",
+      "titulo": "LEI DE 31 DE OUTUBRO DE 1904",
+      "txt": "Torna obrigatória, em todo o país, a vacinação contra a varíola.",
+      "carimbo": "OBRIGATÓRIA"
+     },
+     {
+      "tipo": "foto",
+      "arq": "na_noite_de_14_sucessos_lament_veis_jpg.jpg",
+      "leg": "“Na noite de 14”: ilustração publicada em 26/11/1904",
+      "rot": -1.5,
+      "w": 1000,
+      "ar": 0.7
+     }
+    ]
+   },
+   "falas": [
+    "A cidade está em guerra contra uma vacina.",
+    "Há duas semanas, saiu a lei que obriga todo mundo a se vacinar contra a varíola.",
+    "E o povo foi para a rua."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "arte",
+    "v": [
+     {
+      "tipo": "foto",
+      "arq": "bonde_revolta_da_vacina_jpg.jpg",
+      "leg": "Bonde depredado, novembro de 1904",
+      "w": 760,
+      "ar": 1.1,
+      "lado": -300,
+      "selo": "22",
+      "selo_sub": "BONDES DESTRUÍDOS ATÉ 13/11",
+      "selo_em": 0.3
+     },
+     {
+      "tipo": "numero",
+      "txt": "+100",
+      "icone": "lampiao",
+      "rotulo": "lampiões de gás danificados"
+     },
+     {
+      "tipo": "ficha",
+      "linhas": [
+       [
+        "MORTOS",
+        "30"
+       ],
+       [
+        "FERIDOS",
+        "110"
+       ],
+       [
+        "PRESOS",
+        "945"
+       ]
+      ],
+      "rodape": "10 a 16 de novembro de 1904"
+     },
+     {
+      "tipo": "mapa",
+      "txt": "461",
+      "sub": "DEPORTADOS PARA O ACRE"
+     }
+    ]
+   },
+   "falas": [
+    "Até o fim do dia, vinte e dois bondes vão estar destruídos.",
+    "Mais de cem lampiões de gás, quebrados.",
+    "Em uma semana, serão trinta mortos e novecentos e quarenta e cinco presos.",
+    "Quatrocentos e sessenta e um deles vão ser mandados de navio para o Acre."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "arte",
+    "v": [
+     {
+      "tipo": "foto",
+      "arq": "mictorio_pracaxv_augustomalta_1904_jpg.jpg",
+      "leg": "Praça XV, 1904 · Foto: Augusto Malta",
+      "w": 1000,
+      "ar": 0.68
+     },
+     {
+      "tipo": "mesa",
+      "fotos": [
+       "bonde_virado_revolta_da_vacina_jpg.jpg",
+       "guerra_vaccino_obrigateza_jpg.jpg",
+       "bonde_em_frente_a_igreja_do_sant_ssimo_s.jpg",
+       "na_noite_de_14_sucessos_lament_veis_jpg.jpg",
+       "avenida_central_2_acervo_do_instituto_mo.jpg"
+      ],
+      "txt": "FOTOS E DOCUMENTOS REAIS"
+     }
+    ]
+   },
+   "falas": [
+    "Mas a revolta é o menor dos seus problemas.",
+    "Com fotos e documentos reais da época, vamos ver o que te mata primeiro."
+   ]
+  }
+ ]
+}
