@@ -4,7 +4,7 @@ import { AbsoluteFill } from 'remotion';
 import { geoPath } from 'd3-geo';
 import { feature } from 'topojson-client';
 import topo from '../longo/estados-simples.json';
-import { W, H, FA, Objeto, Fita, Emoji, rasgado, sp, conta, prog, clamp, EO } from './comum';
+import { W, H, FA, Objeto, Fita, Emoji, rasgado, sp, conta, prog, clamp, EO, Continua } from './comum';
 import type { VProps, Vis, Tema } from './comum';
 
 const AB: Record<string, string> = { Alabama: 'AL', Alaska: 'AK', Arizona: 'AZ', Arkansas: 'AR', California: 'CA', Colorado: 'CO', Connecticut: 'CT', Delaware: 'DE', Florida: 'FL', Georgia: 'GA', Hawaii: 'HI', Idaho: 'ID', Illinois: 'IL', Indiana: 'IN', Iowa: 'IA', Kansas: 'KS', Kentucky: 'KY', Louisiana: 'LA', Maine: 'ME', Maryland: 'MD', Massachusetts: 'MA', Michigan: 'MI', Minnesota: 'MN', Mississippi: 'MS', Missouri: 'MO', Montana: 'MT', Nebraska: 'NE', Nevada: 'NV', 'New Hampshire': 'NH', 'New Jersey': 'NJ', 'New Mexico': 'NM', 'New York': 'NY', 'North Carolina': 'NC', 'North Dakota': 'ND', Ohio: 'OH', Oklahoma: 'OK', Oregon: 'OR', Pennsylvania: 'PA', 'Rhode Island': 'RI', 'South Carolina': 'SC', 'South Dakota': 'SD', Tennessee: 'TN', Texas: 'TX', Utah: 'UT', Vermont: 'VT', Virginia: 'VA', Washington: 'WA', 'West Virginia': 'WV', Wisconsin: 'WI', Wyoming: 'WY' };
@@ -74,6 +74,7 @@ const MapaEUA: React.FC<{ f: number; dur: number; v: Vis }> = ({ f, dur, v }) =>
           let fill = CREME, op = 1;
           if (v.todos) { const k = (i * 7) % 50; const a = clamp((f - 4 - k * 1.2) / 6); fill = a > 0 && a < 1 ? '#ffd2bf' : CREME; op = 1; if (f > 4 + k * 1.2) fill = (i + Math.floor(f / 7)) % 9 === 0 ? '#ffb39a' : CREME; }
           if (v.grade) { const k = (i * 13) % 50; const a = clamp((f - 2 - k * 0.9) / 5); fill = a > 0 ? `rgba(255,107,61,${0.12 + 0.5 * ((i * 37) % 50) / 50})` : CREME; }
+          if (v.calor && v.calor[e.ab] != null) { const vals = Object.values(v.calor) as number[]; const mn = Math.min(...vals), mxv = Math.max(...vals); const u = (v.calor[e.ab] - mn) / (mxv - mn); const a = clamp((f - 4 - ((i * 7) % 50) * 0.6) / 8); const c1 = [239, 227, 200], c2 = [214, 52, 28]; fill = `rgb(${c1.map((c, k) => Math.round(c + (c2[k] - c) * u * a)).join(',')})`; }
           if (on) fill = LAR;
           return <path key={e.ab} d={e.d} fill={fill} stroke={TINTA} strokeWidth={on ? 2.4 / s : 1.1 / s} strokeLinejoin="round" opacity={op} />;
         })}
@@ -165,6 +166,127 @@ const Recibo: React.FC<{ f: number; linha: string; txt: string; rotulo: string }
   );
 };
 
+
+const Papel: React.FC<{ w: number; children: React.ReactNode; seed?: number }> = ({ w, children, seed = 61 }) => (
+  <div style={{ width: w, background: '#f1e7d3', padding: '30px 40px 34px', clipPath: rasgado(seed, 0.9, 30), filter: 'url(#grao-papel)',
+    backgroundImage: 'linear-gradient(rgba(80,120,150,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(80,120,150,0.18) 1px, transparent 1px)', backgroundSize: '40px 40px' }}>{children}</div>
+);
+
+const Extra: React.FC<VProps> = ({ f, dur, v }) => {
+  const t = v.tipo;
+  if (t === 'capitulo') return (
+    <Objeto f={f} dur={dur} x={W / 2} y={430} rot={-2} entra="cai" seed={60}>
+      <div style={{ position: 'relative' }}>
+        <div style={{ position: 'absolute', left: 40, top: -70 }}><Adesivo txt={v.n} tam={60} seed={62} /></div>
+        <div style={{ background: '#151210', padding: '50px 70px 46px', clipPath: rasgado(63, 1.2, 26), maxWidth: 1500 }}>
+          <div style={{ fontFamily: FA.cond, fontSize: 150, lineHeight: 1, color: '#fbf6ea' }}>{v.txt}</div>
+          <div style={{ height: 10, background: LAR, marginTop: 24, width: `${50 * prog(f, 8, 26, EO)}%` }} />
+        </div>
+      </div>
+    </Objeto>
+  );
+  if (t === 'calendario') return (<>
+    <Objeto f={f} dur={dur} x={W / 2 - 220} y={430} rot={-6} entra="cai" seed={64}><div style={{ width: 320, background: '#f5ecd6', clipPath: rasgado(64, 1.5, 14), textAlign: 'center', paddingBottom: 20 }}><div style={{ background: '#c8371f', color: '#fbf6ea', fontFamily: FA.cond, fontSize: 64, padding: '10px 0' }}>THIS WEEK</div><div style={{ fontFamily: FA.cond, fontSize: 170, color: '#151210', lineHeight: 1.1 }}>FRI</div></div></Objeto>
+    <Objeto f={f} dur={dur} x={W / 2 + 330} y={450} rot={5} entra="carimbo" atraso={10} seed={65}><Adesivo txt={v.txt} tam={130} seed={66} /></Objeto>
+  </>);
+  if (t === 'icones2') return (<>
+    <Objeto f={f} dur={dur} x={W / 2 - 330} y={420} rot={-7} entra="esq" seed={67}><div style={{ background: '#f5ecd6', padding: 30, clipPath: rasgado(67, 3, 14) }}><Emoji n={v.a} tam={280} /></div></Objeto>
+    <Objeto f={f} dur={dur} x={W / 2 + 330} y={420} rot={6} entra="dir" atraso={5} seed={68}><div style={{ background: '#f5ecd6', padding: 30, clipPath: rasgado(68, 3, 14) }}><Emoji n={v.b} tam={280} /></div></Objeto>
+    <Objeto f={f} dur={dur} x={W / 2} y={760} rot={-2} entra="cola" atraso={14} seed={69}><FitaNome txt={v.txt} tam={90} /></Objeto>
+  </>);
+  if (t === 'serie') {
+    const S: [string, number][] = v.serie;
+    const ate = S.findIndex((x) => x[0] >= v.ate);
+    const n = ate < 0 ? S.length : ate + 1;
+    const cont = React.useContext(Continua);
+    const p = cont.ant ? 1 : prog(f, 4, 40, (x) => x);
+    const mostra = Math.max(2, Math.round(n * p));
+    const Wg = 1500, Hg = 560, ymax = v.alvo ? 11 : 6.5;
+    const X = (i: number) => (i / (S.length - 1)) * Wg, Y = (val: number) => Hg - (val / ymax) * Hg;
+    const d = S.slice(0, mostra).map((x, i) => `${i ? 'L' : 'M'}${X(i).toFixed(1)},${Y(x[1]).toFixed(1)}`).join('');
+    const mk = v.marca ? S.findIndex((x) => x[0] >= v.marca[0]) : -1;
+    return (<>
+      <Objeto f={f} dur={dur} x={W / 2} y={450} rot={-1} entra="cai" seed={70}>
+        <Papel w={1640}>
+          <div style={{ fontFamily: FA.osw, fontWeight: 700, fontSize: 32, letterSpacing: 3, color: '#2b2219' }}>U.S. REGULAR GASOLINE · $ PER GALLON · EIA</div>
+          <svg width={Wg + 60} height={Hg + 60} style={{ overflow: 'visible', marginTop: 10 }}>
+            {[0, 2, 4, 6, ...(v.alvo ? [8, 10] : [])].map((g) => <g key={g}><line x1={40} x2={Wg + 40} y1={Y(g)} y2={Y(g)} stroke="rgba(43,34,25,0.25)" /><text x={0} y={Y(g) + 8} fontFamily={FA.osw} fontWeight={700} fontSize={24} fill="#2b2219">${g}</text></g>)}
+            {[1990, 2000, 2010, 2020].map((a) => { const i = S.findIndex((x) => x[0] >= `${a}-01`); return i < 0 ? null : <text key={a} x={40 + X(i)} y={Hg + 40} fontFamily={FA.osw} fontWeight={700} fontSize={26} fill="#2b2219" textAnchor="middle">{a}</text>; })}
+            <path d={d} transform="translate(40 0)" fill="none" stroke={LAR} strokeWidth={7} strokeLinejoin="round" strokeLinecap="round" style={{ filter: 'url(#tinta-borrada)' }} />
+            {v.alvo && <g opacity={prog(f, 8, 20)}><line x1={40} x2={Wg + 40} y1={Y(v.alvo)} y2={Y(v.alvo)} stroke="#151210" strokeWidth={5} strokeDasharray="18 12" /><text x={Wg - 120} y={Y(v.alvo) - 16} fontFamily={FA.cond} fontSize={54} fill="#151210">$10</text></g>}
+            {mk >= 0 && mk < mostra && <g transform={`translate(${40 + X(mk)} ${Y(S[mk][1])})`} opacity={prog(f, 14, 22)}><circle r={16} fill="#151210" /><circle r={8} fill={LAR} /></g>}
+          </svg>
+        </Papel>
+      </Objeto>
+      {mk >= 0 && <Objeto f={f} dur={dur} x={Math.min(W - 280, 260 + (mk / (S.length - 1)) * 1500)} y={Math.max(170, 200 + (1 - v.marca[1] / ymax) * 560 - 120)} rot={-5} entra="cola" atraso={16} seed={71}><Adesivo txt={v.marca[2]} tam={90} seed={72} sub={v.marca[0].replace('-', ' · ')} /></Objeto>}
+      {v.selo && <Objeto f={f} dur={dur} x={W - 330} y={260} rot={6} entra="carimbo" atraso={12} seed={73}><Adesivo txt={v.selo} tam={130} seed={74} /></Objeto>}
+    </>);
+  }
+  if (t === 'dispersao') {
+    const P: [string, number, number, number][] = v.pts;
+    const Wg = 1400, Hg = 640;
+    const gx = (g: number) => ((g - 240) / (660 - 240)) * Wg, ry = (r: number) => Hg - ((r - 50000) / (106000 - 50000)) * Hg;
+    const foco: string[] = v.foco || [];
+    return (
+      <Objeto f={f} dur={dur} x={W / 2} y={460} rot={-0.8} entra="cai" seed={75}>
+        <Papel w={1640}>
+          <div style={{ fontFamily: FA.osw, fontWeight: 700, fontSize: 30, letterSpacing: 3, color: '#2b2219' }}>GAS BURNED PER PERSON (→) · INCOME PER PERSON (↑)</div>
+          <svg width={Wg + 100} height={Hg + 40} style={{ overflow: 'visible', marginTop: 8 }}>
+            <g transform="translate(70 0)">
+              {v.zona && <rect x={gx(480)} y={ry(66000)} width={gx(660) - gx(480)} height={Hg - ry(66000)} fill="rgba(255,107,61,0.22)" stroke={LAR} strokeWidth={4} strokeDasharray="14 10" opacity={prog(f, 6, 18)} />}
+              {v.zona && <text x={gx(500)} y={Hg - 20} fontFamily={FA.cond} fontSize={44} fill={LAR} opacity={prog(f, 10, 20)}>DANGER ZONE</text>}
+              <line x1={0} x2={Wg} y1={Hg} y2={Hg} stroke="#2b2219" strokeWidth={3} /><line x1={0} x2={0} y1={0} y2={Hg} stroke="#2b2219" strokeWidth={3} />
+              {[300, 400, 500, 600].map((g) => <text key={g} x={gx(g)} y={Hg + 32} textAnchor="middle" fontFamily={FA.osw} fontWeight={700} fontSize={24} fill="#2b2219">{g} gal</text>)}
+              {[60000, 80000, 100000].map((r) => <text key={r} x={-14} y={ry(r) + 8} textAnchor="end" fontFamily={FA.osw} fontWeight={700} fontSize={24} fill="#2b2219">${r / 1000}K</text>)}
+              {P.map(([ab, g, r, rk], i) => {
+                const a = clamp((f - 2 - i * 0.5) / 5);
+                const fo = foco.includes(ab);
+                const cor = rk <= 10 ? LAR : '#2b2219';
+                return <g key={ab} opacity={(foco.length && !fo ? 0.35 : 1) * a} transform={`translate(${gx(g)} ${ry(r)}) scale(${fo ? 1.6 : 1})`}>
+                  <circle r={9} fill={cor} /><text x={13} y={7} fontFamily={FA.osw} fontWeight={700} fontSize={20} fill={cor}>{ab}</text>
+                </g>;
+              })}
+            </g>
+          </svg>
+        </Papel>
+      </Objeto>
+    );
+  }
+  if (t === 'lista') {
+    const it: [number, string, number][] = v.itens;
+    return (
+      <Objeto f={f} dur={dur} x={W / 2} y={450} rot={-1.5} entra="cai" seed={76}>
+        <div style={{ background: '#151210', padding: '30px 46px', clipPath: rasgado(76, 1, 26), width: 1200 }}>
+          {it.map(([rk, nome, p], i) => {
+            const a = prog(f, 3 + i * 5, 13 + i * 5, EO);
+            return (
+              <div key={nome} style={{ display: 'flex', alignItems: 'center', gap: 26, margin: '10px 0', opacity: a, transform: `translateX(${(1 - a) * -60}px)` }}>
+                <div style={{ width: 150 }}><Adesivo txt={`#${rk}`} tam={60} seed={80 + i} pad="6px 20px 2px" /></div>
+                <div style={{ flex: 1, fontFamily: FA.cond, fontSize: 70, color: '#fbf6ea' }}>{nome.toUpperCase()}</div>
+                <div style={{ fontFamily: FA.cond, fontSize: 70, color: LAR }}>{p.toFixed(1)}%</div>
+              </div>
+            );
+          })}
+        </div>
+      </Objeto>
+    );
+  }
+  if (t === 'duelo') return (<>
+    <Objeto f={f} dur={dur} x={W / 2 - 420} y={440} rot={-5} entra="esq" seed={90}><Adesivo txt={`${v.a} 10.6%`} tam={150} seed={91} sub="ALABAMA" /></Objeto>
+    <Objeto f={f} dur={dur} x={W / 2 + 420} y={440} rot={5} entra="dir" atraso={5} seed={92}><Adesivo txt={`${v.b} 2.9%`} tam={150} seed={93} cor="#e6d7b8" sub="NEW YORK" /></Objeto>
+    <Objeto f={f} dur={dur} x={W / 2} y={760} rot={-3} entra="carimbo" atraso={16} seed={94}><FitaNome txt="MORE THAN 3×" tam={100} /></Objeto>
+  </>);
+  if (t === 'fim') return (<>
+    {[0, 1].map((k) => (
+      <Objeto key={k} f={f} dur={dur} x={W / 2 + (k ? 380 : -380)} y={420} rot={k ? 2 : -2} entra={k ? 'dir' : 'esq'} atraso={k * 5} seed={95 + k} sai={false}>
+        <div style={{ width: 640, height: 360, border: '6px dashed rgba(241,231,211,0.5)', borderRadius: 14, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: FA.cond, fontSize: 64, color: 'rgba(241,231,211,0.7)' }}>NEXT RANKING</div>
+      </Objeto>
+    ))}
+    <Objeto f={f} dur={dur} x={W / 2} y={790} rot={-2} entra="carimbo" atraso={14} seed={97} sai={false}><Adesivo txt="SUBSCRIBE · ALL 50, EVERY TIME" tam={80} seed={98} /></Objeto>
+  </>);
+  return null;
+};
+
 const Cena: React.FC<VProps> = ({ f, dur, v }) => {
   const t = v.tipo;
   if (t === 'data') return (<>
@@ -203,13 +325,14 @@ const Cena: React.FC<VProps> = ({ f, dur, v }) => {
   </>);
   if (t === 'galoes') {
     const n = v.barris as number; // barris de 42 galões
+    const tam = Math.min(170, Math.floor(1560 / Math.ceil(n)) - 14);
     return (<>
       <Objeto f={f} dur={dur} x={W / 2} y={250} rot={-2} entra="cola" seed={30}><Adesivo txt={conta(`${v.n}`, prog(f, 2, 30))} tam={200} seed={31} sub={v.rotulo} /></Objeto>
-      <div style={{ position: 'absolute', left: W / 2 - (Math.ceil(n) * 184) / 2, top: 520, display: 'flex', gap: 14 }}>
+      <div style={{ position: 'absolute', left: W / 2 - (Math.ceil(n) * (tam + 14)) / 2, top: 520, display: 'flex', gap: 14 }}>
         {Array.from({ length: Math.ceil(n) }, (_, i) => {
           const s = sp(f - 10 - i * 4, { damping: 10, stiffness: 220 });
           const parte = i + 1 > n ? n - i : 1;
-          return <div key={i} style={{ width: 170, height: 170, overflow: 'hidden', transform: `translateY(${(1 - s) * -200}px) rotate(${(1 - s) * 30}deg)`, opacity: clamp(s * 2), clipPath: `inset(${(1 - parte) * 100}% 0 0 0)` }}><Emoji n="tambor" tam={170} /></div>;
+          return <div key={i} style={{ width: tam, height: tam, overflow: 'hidden', transform: `translateY(${(1 - s) * -200}px) rotate(${(1 - s) * 30}deg)`, opacity: clamp(s * 2), clipPath: `inset(${(1 - parte) * 100}% 0 0 0)` }}><Emoji n="tambor" tam={tam} /></div>;
         })}
       </div>
       <Objeto f={f} dur={dur} x={W / 2 + 330} y={800} rot={2} atraso={30} seed={32}><Nota txt={v.nota} /></Objeto>
@@ -235,7 +358,7 @@ const Cena: React.FC<VProps> = ({ f, dur, v }) => {
       <Objeto f={f} dur={dur} x={W / 2 + 470} y={760} rot={7} entra="carimbo" atraso={30} seed={37}><Adesivo txt={v.txt} tam={120} seed={38} sub={v.rotulo} /></Objeto>
     </>);
   }
-  return null;
+  return <Extra f={f} dur={dur} v={v} tema={null as any} />;
 };
 
-export const LSS = { Cena, superficie: 'escuro' as const, legenda: 'cond' as const };
+export const LSS = { Cena, superficie: 'escuro' as const, legenda: 'cond' as const, continua: ['mapa', 'serie', 'dispersao', 'rank'] };
