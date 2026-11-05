@@ -135,8 +135,14 @@ async function mudarStatus(db: SupabaseClient, v: Record<string, any>, cancelar:
   const token = await tokenDe(db, v.canal);
   const quando = v.yt_programado_para ? new Date(v.yt_programado_para) : null;
   const futuro = !cancelar && quando && quando.getTime() > Date.now() + 5 * 60000;
-  const status = cancelar ? { privacyStatus: "private", selfDeclaredMadeForKids: false } : futuro ? { privacyStatus: "private", publishAt: quando!.toISOString(), selfDeclaredMadeForKids: false } : { privacyStatus: "public", selfDeclaredMadeForKids: false };
-  await google(token, "https://www.googleapis.com/youtube/v3/videos?part=status", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: v.yt_id, status }) });
+  // o YouTube troca o bloco "status" inteiro: lê o atual e só muda privacidade e data (mantém o resto, ex.: conteúdo sintético)
+  const atual = (await google(token, `https://www.googleapis.com/youtube/v3/videos?part=status&id=${v.yt_id}`)).items?.[0]?.status;
+  if (!atual) throw new Error("vídeo não encontrado no YouTube (apagado?)");
+  const manter = { embeddable: atual.embeddable, license: atual.license, publicStatsViewable: atual.publicStatsViewable, selfDeclaredMadeForKids: atual.selfDeclaredMadeForKids ?? false, ...(atual.containsSyntheticMedia != null ? { containsSyntheticMedia: atual.containsSyntheticMedia } : {}) };
+  const status = cancelar ? { ...manter, privacyStatus: "private" } : futuro ? { ...manter, privacyStatus: "private", publishAt: quando!.toISOString() } : { ...manter, privacyStatus: "public" };
+  const res = await google(token, "https://www.googleapis.com/youtube/v3/videos?part=status", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: v.yt_id, status }) });
+  // confere na resposta do YouTube se a data entrou mesmo
+  if (futuro && !res.status?.publishAt) throw new Error(`o YouTube não aceitou a data (está como ${res.status?.privacyStatus ?? "?"}); confira no Studio se o vídeo terminou de processar`);
   await db.from("videos").update(cancelar ? { yt_status: "pendente", yt_programado_para: null, yt_erro: null } : futuro ? { yt_status: "programado", yt_erro: null } : { yt_status: "postado", yt_postado_em: new Date().toISOString(), yt_erro: null }).eq("id", v.id);
   return cancelar ? "tirado do ar (privado)" : "horário mudado";
 }
