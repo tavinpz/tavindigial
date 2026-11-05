@@ -170,7 +170,7 @@ export default function MenuLateral({ topo, grupos, aba, ir, aoVivo, recolhido, 
               {(ab || recolhido)
                 ? (g.canais
                   ? <Canais itens={g.itens} aba={aba} ir={ir} recolhido={recolhido} organizar={organizar} views={views} />
-                  : <div className="m-lista">{g.itens.map(([id, nome, , ico]) => <Item key={id} id={id} nome={nome} ico={ico} aba={aba} ir={ir} recolhido={recolhido} />)}</div>)
+                  : <div className="m-lista">{g.itens.map(([id, nome, , ico, canal]) => <Item key={id} id={id} nome={nome} ico={ico} canal={canal} aba={aba} ir={ir} recolhido={recolhido} />)}</div>)
                 : temAtivo && (() => { const x = g.itens.find(([id]) => id === aba); return <div className="m-lista"><Item id={x[0]} nome={x[1]} ico={x[3]} canal={x[4]} aba={aba} ir={ir} recolhido={recolhido} /></div> })()}
             </section>
           )

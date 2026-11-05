@@ -1546,3 +1546,23 @@ a.crm-btn { text-decoration: none; display: inline-flex; align-items: center; }
 .mc-duas { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
 .mc-priv { color: #B45309; font-weight: 700; }
 .pl-ponto--aviso { background: #F59E0B !important; }
+
+/* YouTube (vídeo longo): cartões e player 16:9, perfil do canal */
+.pl-card--longo .pl-mini { aspect-ratio: 16 / 9; width: 84px; }
+.v-grade--longo { grid-template-columns: minmax(320px, 1.25fr) minmax(300px, 1fr); }
+.v-player--longo video, .v-player--longo .v-semvideo { aspect-ratio: 16 / 9; }
+.yl-capas { margin-top: 14px; }
+.yl-capas strong { display: block; font-size: 13px; margin-bottom: 8px; }
+.yl-capas-lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.yl-capas-lista figure { margin: 0; }
+.yl-capas-lista img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 8px; display: block; background: var(--noite); }
+.yl-capas-lista figcaption { display: flex; justify-content: space-between; align-items: center; gap: 6px; font-size: 12px; margin-top: 6px; }
+.yl-perfil { display: grid; gap: 14px; }
+.yl-banner { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 12px; display: block; }
+.yl-perfil-topo { display: flex; gap: 16px; align-items: center; }
+.yl-perfil-topo h3 { margin: 0 0 2px; font-size: 20px; }
+.yl-logo { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; flex: none; }
+@media (max-width: 900px) {
+  .v-grade--longo { grid-template-columns: 1fr; }
+  .v-grade--longo .v-player { max-width: none; }
+}
