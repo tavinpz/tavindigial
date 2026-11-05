@@ -1,0 +1,402 @@
+[
+ {
+  "ab": "AL",
+  "nome": "Alabama",
+  "gal": 634.4,
+  "renda": 59754.0,
+  "custo10": 6344,
+  "pct10": 10.62
+ },
+ {
+  "ab": "MS",
+  "nome": "Mississippi",
+  "gal": 564.1,
+  "renda": 54433.0,
+  "custo10": 5641,
+  "pct10": 10.36
+ },
+ {
+  "ab": "SC",
+  "nome": "South Carolina",
+  "gal": 512.1,
+  "renda": 63435.0,
+  "custo10": 5121,
+  "pct10": 8.07
+ },
+ {
+  "ab": "AR",
+  "nome": "Arkansas",
+  "gal": 493.8,
+  "renda": 61697.0,
+  "custo10": 4938,
+  "pct10": 8.0
+ },
+ {
+  "ab": "KY",
+  "nome": "Kentucky",
+  "gal": 478.9,
+  "renda": 60835.0,
+  "custo10": 4789,
+  "pct10": 7.87
+ },
+ {
+  "ab": "MO",
+  "nome": "Missouri",
+  "gal": 516.5,
+  "renda": 69836.0,
+  "custo10": 5165,
+  "pct10": 7.4
+ },
+ {
+  "ab": "LA",
+  "nome": "Louisiana",
+  "gal": 470.7,
+  "renda": 64103.0,
+  "custo10": 4707,
+  "pct10": 7.34
+ },
+ {
+  "ab": "WV",
+  "nome": "West Virginia",
+  "gal": 419.4,
+  "renda": 58217.0,
+  "custo10": 4194,
+  "pct10": 7.2
+ },
+ {
+  "ab": "NM",
+  "nome": "New Mexico",
+  "gal": 444.6,
+  "renda": 62089.0,
+  "custo10": 4446,
+  "pct10": 7.16
+ },
+ {
+  "ab": "OK",
+  "nome": "Oklahoma",
+  "gal": 472.2,
+  "renda": 66055.0,
+  "custo10": 4722,
+  "pct10": 7.15
+ },
+ {
+  "ab": "IA",
+  "nome": "Iowa",
+  "gal": 477.4,
+  "renda": 67321.0,
+  "custo10": 4774,
+  "pct10": 7.09
+ },
+ {
+  "ab": "ND",
+  "nome": "North Dakota",
+  "gal": 536.1,
+  "renda": 77438.0,
+  "custo10": 5361,
+  "pct10": 6.92
+ },
+ {
+  "ab": "TN",
+  "nome": "Tennessee",
+  "gal": 477.3,
+  "renda": 69274.0,
+  "custo10": 4773,
+  "pct10": 6.89
+ },
+ {
+  "ab": "NC",
+  "nome": "North Carolina",
+  "gal": 468.0,
+  "renda": 68274.0,
+  "custo10": 4680,
+  "pct10": 6.85
+ },
+ {
+  "ab": "DE",
+  "nome": "Delaware",
+  "gal": 469.9,
+  "renda": 68630.0,
+  "custo10": 4699,
+  "pct10": 6.85
+ },
+ {
+  "ab": "MT",
+  "nome": "Montana",
+  "gal": 490.3,
+  "renda": 72066.0,
+  "custo10": 4903,
+  "pct10": 6.8
+ },
+ {
+  "ab": "GA",
+  "nome": "Georgia",
+  "gal": 438.9,
+  "renda": 65111.0,
+  "custo10": 4389,
+  "pct10": 6.74
+ },
+ {
+  "ab": "KS",
+  "nome": "Kansas",
+  "gal": 461.7,
+  "renda": 69149.0,
+  "custo10": 4617,
+  "pct10": 6.68
+ },
+ {
+  "ab": "WY",
+  "nome": "Wyoming",
+  "gal": 602.2,
+  "renda": 91109.0,
+  "custo10": 6022,
+  "pct10": 6.61
+ },
+ {
+  "ab": "SD",
+  "nome": "South Dakota",
+  "gal": 521.4,
+  "renda": 78999.0,
+  "custo10": 5214,
+  "pct10": 6.6
+ },
+ {
+  "ab": "ME",
+  "nome": "Maine",
+  "gal": 467.5,
+  "renda": 71742.0,
+  "custo10": 4675,
+  "pct10": 6.52
+ },
+ {
+  "ab": "IN",
+  "nome": "Indiana",
+  "gal": 430.9,
+  "renda": 66455.0,
+  "custo10": 4309,
+  "pct10": 6.48
+ },
+ {
+  "ab": "MI",
+  "nome": "Michigan",
+  "gal": 434.4,
+  "renda": 67245.0,
+  "custo10": 4344,
+  "pct10": 6.46
+ },
+ {
+  "ab": "TX",
+  "nome": "Texas",
+  "gal": 470.9,
+  "renda": 73156.0,
+  "custo10": 4709,
+  "pct10": 6.44
+ },
+ {
+  "ab": "NE",
+  "nome": "Nebraska",
+  "gal": 455.1,
+  "renda": 76055.0,
+  "custo10": 4551,
+  "pct10": 5.98
+ },
+ {
+  "ab": "OH",
+  "nome": "Ohio",
+  "gal": 401.0,
+  "renda": 67584.0,
+  "custo10": 4010,
+  "pct10": 5.93
+ },
+ {
+  "ab": "WI",
+  "nome": "Wisconsin",
+  "gal": 419.3,
+  "renda": 71219.0,
+  "custo10": 4193,
+  "pct10": 5.89
+ },
+ {
+  "ab": "ID",
+  "nome": "Idaho",
+  "gal": 377.5,
+  "renda": 64200.0,
+  "custo10": 3775,
+  "pct10": 5.88
+ },
+ {
+  "ab": "VT",
+  "nome": "Vermont",
+  "gal": 438.9,
+  "renda": 75723.0,
+  "custo10": 4389,
+  "pct10": 5.8
+ },
+ {
+  "ab": "AZ",
+  "nome": "Arizona",
+  "gal": 394.9,
+  "renda": 68373.0,
+  "custo10": 3949,
+  "pct10": 5.78
+ },
+ {
+  "ab": "NH",
+  "nome": "New Hampshire",
+  "gal": 501.2,
+  "renda": 88145.0,
+  "custo10": 5012,
+  "pct10": 5.69
+ },
+ {
+  "ab": "VA",
+  "nome": "Virginia",
+  "gal": 457.8,
+  "renda": 80903.0,
+  "custo10": 4578,
+  "pct10": 5.66
+ },
+ {
+  "ab": "MN",
+  "nome": "Minnesota",
+  "gal": 420.8,
+  "renda": 78197.0,
+  "custo10": 4208,
+  "pct10": 5.38
+ },
+ {
+  "ab": "UT",
+  "nome": "Utah",
+  "gal": 375.4,
+  "renda": 70323.0,
+  "custo10": 3754,
+  "pct10": 5.34
+ },
+ {
+  "ab": "FL",
+  "nome": "Florida",
+  "gal": 406.8,
+  "renda": 78345.0,
+  "custo10": 4068,
+  "pct10": 5.19
+ },
+ {
+  "ab": "NV",
+  "nome": "Nevada",
+  "gal": 362.8,
+  "renda": 73767.0,
+  "custo10": 3628,
+  "pct10": 4.92
+ },
+ {
+  "ab": "OR",
+  "nome": "Oregon",
+  "gal": 339.9,
+  "renda": 73283.0,
+  "custo10": 3399,
+  "pct10": 4.64
+ },
+ {
+  "ab": "MD",
+  "nome": "Maryland",
+  "gal": 378.9,
+  "renda": 82387.0,
+  "custo10": 3789,
+  "pct10": 4.6
+ },
+ {
+  "ab": "PA",
+  "nome": "Pennsylvania",
+  "gal": 339.4,
+  "renda": 75370.0,
+  "custo10": 3394,
+  "pct10": 4.5
+ },
+ {
+  "ab": "CO",
+  "nome": "Colorado",
+  "gal": 387.0,
+  "renda": 86342.0,
+  "custo10": 3870,
+  "pct10": 4.48
+ },
+ {
+  "ab": "RI",
+  "nome": "Rhode Island",
+  "gal": 331.4,
+  "renda": 75233.0,
+  "custo10": 3314,
+  "pct10": 4.4
+ },
+ {
+  "ab": "AK",
+  "nome": "Alaska",
+  "gal": 351.6,
+  "renda": 80510.0,
+  "custo10": 3516,
+  "pct10": 4.37
+ },
+ {
+  "ab": "IL",
+  "nome": "Illinois",
+  "gal": 329.6,
+  "renda": 78987.0,
+  "custo10": 3296,
+  "pct10": 4.17
+ },
+ {
+  "ab": "NJ",
+  "nome": "New Jersey",
+  "gal": 374.3,
+  "renda": 89720.0,
+  "custo10": 3743,
+  "pct10": 4.17
+ },
+ {
+  "ab": "CT",
+  "nome": "Connecticut",
+  "gal": 407.9,
+  "renda": 102307.0,
+  "custo10": 4079,
+  "pct10": 3.99
+ },
+ {
+  "ab": "HI",
+  "nome": "Hawaii",
+  "gal": 290.9,
+  "renda": 76966.0,
+  "custo10": 2909,
+  "pct10": 3.78
+ },
+ {
+  "ab": "CA",
+  "nome": "California",
+  "gal": 333.8,
+  "renda": 90957.0,
+  "custo10": 3338,
+  "pct10": 3.67
+ },
+ {
+  "ab": "WA",
+  "nome": "Washington",
+  "gal": 326.8,
+  "renda": 88944.0,
+  "custo10": 3268,
+  "pct10": 3.67
+ },
+ {
+  "ab": "MA",
+  "nome": "Massachusetts",
+  "gal": 353.4,
+  "renda": 98700.0,
+  "custo10": 3534,
+  "pct10": 3.58
+ },
+ {
+  "ab": "NY",
+  "nome": "New York",
+  "gal": 262.4,
+  "renda": 91504.0,
+  "custo10": 2624,
+  "pct10": 2.87
+ }
+]

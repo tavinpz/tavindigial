@@ -1,0 +1,5169 @@
+{
+ "id": "lss002",
+ "canal": "last-state-standing",
+ "marca": "LAST STATE STANDING",
+ "acento": "#ff6b3d",
+ "icone": "barras",
+ "legenda": true,
+ "titulo": "Could You Afford a House in Your State? (All 50 Ranked)",
+ "voz": "am_michael",
+ "velocidade": 1.0,
+ "blocos": [
+  {
+   "cena": {
+    "tipo": "gancho_lss",
+    "estados": [
+     {
+      "nome": "New York",
+      "v": 55.433009959569915,
+      "rank": 1
+     },
+     {
+      "nome": "Montana",
+      "v": 53.376374641317526,
+      "rank": 2
+     },
+     {
+      "nome": "California",
+      "v": 53.26425160440438,
+      "rank": 3
+     },
+     {
+      "nome": "Hawaii",
+      "v": 52.074498288883134,
+      "rank": 4
+     },
+     {
+      "nome": "Idaho",
+      "v": 48.948101050056806,
+      "rank": 5
+     },
+     {
+      "nome": "Massachusetts",
+      "v": 45.61137642303702,
+      "rank": 6
+     },
+     {
+      "nome": "Oregon",
+      "v": 44.00360877015462,
+      "rank": 7
+     },
+     {
+      "nome": "New Mexico",
+      "v": 43.26628199135861,
+      "rank": 8
+     },
+     {
+      "nome": "Rhode Island",
+      "v": 43.24650155429113,
+      "rank": 9
+     },
+     {
+      "nome": "Wyoming",
+      "v": 42.51390266061143,
+      "rank": 10
+     },
+     {
+      "nome": "Tennessee",
+      "v": 41.95432953266484,
+      "rank": 11
+     },
+     {
+      "nome": "Washington",
+      "v": 41.49645130723996,
+      "rank": 12
+     },
+     {
+      "nome": "Utah",
+      "v": 41.343927004435486,
+      "rank": 13
+     },
+     {
+      "nome": "Colorado",
+      "v": 40.634440199260645,
+      "rank": 14
+     },
+     {
+      "nome": "Nevada",
+      "v": 40.265123662097125,
+      "rank": 15
+     },
+     {
+      "nome": "Arizona",
+      "v": 39.989432224763775,
+      "rank": 16
+     },
+     {
+      "nome": "Florida",
+      "v": 39.89873357761658,
+      "rank": 17
+     },
+     {
+      "nome": "New Hampshire",
+      "v": 38.733439128653494,
+      "rank": 18
+     },
+     {
+      "nome": "Vermont",
+      "v": 38.47877306794041,
+      "rank": 19
+     },
+     {
+      "nome": "Mississippi",
+      "v": 37.6579858932194,
+      "rank": 20
+     },
+     {
+      "nome": "Connecticut",
+      "v": 37.62595580281267,
+      "rank": 21
+     },
+     {
+      "nome": "North Carolina",
+      "v": 37.400352882166665,
+      "rank": 22
+     },
+     {
+      "nome": "New Jersey",
+      "v": 36.447948898970836,
+      "rank": 23
+     },
+     {
+      "nome": "Delaware",
+      "v": 36.224302885279265,
+      "rank": 24
+     },
+     {
+      "nome": "Alabama",
+      "v": 35.74205997303258,
+      "rank": 25
+     },
+     {
+      "nome": "Georgia",
+      "v": 35.113437038491206,
+      "rank": 26
+     },
+     {
+      "nome": "Maine",
+      "v": 34.430983433070104,
+      "rank": 27
+     },
+     {
+      "nome": "Arkansas",
+      "v": 33.73950189641207,
+      "rank": 28
+     },
+     {
+      "nome": "South Dakota",
+      "v": 33.48144733538623,
+      "rank": 29
+     },
+     {
+      "nome": "Louisiana",
+      "v": 33.18180063563169,
+      "rank": 30
+     },
+     {
+      "nome": "Virginia",
+      "v": 33.144748514059614,
+      "rank": 31
+     },
+     {
+      "nome": "Wisconsin",
+      "v": 32.46244609212696,
+      "rank": 32
+     },
+     {
+      "nome": "South Carolina",
+      "v": 32.28663494529232,
+      "rank": 33
+     },
+     {
+      "nome": "Alaska",
+      "v": 31.436943982166603,
+      "rank": 34
+     },
+     {
+      "nome": "North Dakota",
+      "v": 31.25469761186222,
+      "rank": 35
+     },
+     {
+      "nome": "Texas",
+      "v": 30.919504843586836,
+      "rank": 36
+     },
+     {
+      "nome": "Kentucky",
+      "v": 30.469481449143604,
+      "rank": 37
+     },
+     {
+      "nome": "West Virginia",
+      "v": 30.17810784876834,
+      "rank": 38
+     },
+     {
+      "nome": "Minnesota",
+      "v": 29.73289794302608,
+      "rank": 39
+     },
+     {
+      "nome": "Oklahoma",
+      "v": 28.896402435009023,
+      "rank": 40
+     },
+     {
+      "nome": "Indiana",
+      "v": 28.500109910519285,
+      "rank": 41
+     },
+     {
+      "nome": "Michigan",
+      "v": 27.783161706642556,
+      "rank": 42
+     },
+     {
+      "nome": "Maryland",
+      "v": 26.816648795063525,
+      "rank": 43
+     },
+     {
+      "nome": "Pennsylvania",
+      "v": 26.672574605928144,
+      "rank": 44
+     },
+     {
+      "nome": "Missouri",
+      "v": 26.20959771067426,
+      "rank": 45
+     },
+     {
+      "nome": "Kansas",
+      "v": 25.20685941550802,
+      "rank": 46
+     },
+     {
+      "nome": "Iowa",
+      "v": 25.044617180486306,
+      "rank": 47
+     },
+     {
+      "nome": "Nebraska",
+      "v": 24.984189184928958,
+      "rank": 48
+     },
+     {
+      "nome": "Illinois",
+      "v": 24.3852944920609,
+      "rank": 49
+     },
+     {
+      "nome": "Ohio",
+      "v": 24.253010087639442,
+      "rank": 50
+     }
+    ],
+    "min": 24.253010087639442,
+    "max": 55.433009959569915,
+    "leg_min": "24% of income",
+    "leg_max": "55%",
+    "batidas": [
+     {
+      "t": "contador",
+      "de": 0,
+      "ate": 48,
+      "acima": "2019",
+      "rotulo": "states where a typical home fit the 28% rule",
+      "cor": "bom"
+     },
+     {
+      "t": "contador",
+      "de": 48,
+      "ate": 9,
+      "acima": "TODAY",
+      "rotulo": "states where it still does",
+      "cor": "ruim",
+      "rapido": true,
+      "forte": true
+     },
+     {
+      "t": "foco",
+      "estados": [
+       "New York"
+      ],
+      "num": "55%",
+      "rotulo": "OF INCOME, EVERY MONTH.\nNEW YORK.",
+      "cor": "quente",
+      "forte": true
+     },
+     {
+      "t": "foco",
+      "estados": [
+       "Ohio"
+      ],
+      "num": "24%",
+      "rotulo": "OHIO.",
+      "cor": "bom"
+     },
+     {
+      "t": "zoom",
+      "estado": "Montana",
+      "titulo": "Not California.",
+      "sub": "MORE CATTLE THAN PEOPLE",
+      "carimbo": "#2"
+     },
+     {
+      "t": "todos",
+      "titulo": "All 50 states. ",
+      "destaque": "Ranked.",
+      "fonte": "OFFICIAL DATA \u00b7 CENSUS \u00b7 REALTOR.COM \u00b7 FREDDIE MAC"
+     }
+    ]
+   },
+   "falas": [
+    "In 2019, a typical home was affordable in 48 of the 50 states.",
+    "Today? 9.",
+    "In New York, the mortgage on a typical home would eat 55 percent of a family's income. Every month.",
+    "In Ohio? 24.",
+    "And number two isn't California. It's a state with more cattle than people.",
+    "We ranked all fifty states with official data. Stay to the end and you'll see exactly where yours lands."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "regras",
+    "titulo_regras": "The 28% rule",
+    "quando": [
+     [
+      0,
+      30
+     ],
+     [
+      0,
+      90
+     ],
+     [
+      0,
+      150
+     ]
+    ],
+    "itens": [
+     "Housing payment",
+     "no more than 28%",
+     "of gross monthly income"
+    ]
+   },
+   "falas": [
+    "Lenders have an old rule of thumb. Your housing payment shouldn't be more than twenty eight percent of what you earn before taxes.",
+    "Go above it, and a home stops being a home and starts being a stretch."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "regras",
+    "titulo_regras": "The test",
+    "quando": [
+     [
+      1,
+      0
+     ],
+     [
+      1,
+      100
+     ],
+     [
+      2,
+      0
+     ],
+     [
+      3,
+      0
+     ]
+    ],
+    "itens": [
+     "Typical listed home (Realtor.com)",
+     "Typical household income (Census, 2025)",
+     "10% down \u00b7 30 years \u00b7 7.24%",
+     "= share of income, every month"
+    ]
+   },
+   "falas": [
+    "So we tested every state against it.",
+    "The typical home listed for sale over the last twelve months. The typical household income, from the Census Bureau.",
+    "Ten percent down, a thirty year fixed mortgage at today's rate, 7.24 percent, from Freddie Mac.",
+    "And we didn't even count property taxes or insurance. The real number is higher than everything you're about to see."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "serie",
+    "titulo": "Mortgage on a typical U.S. home, as a share of income",
+    "serie": [
+     [
+      "2016-07",
+      16.1
+     ],
+     [
+      "2016-08",
+      15.9
+     ],
+     [
+      "2016-09",
+      15.9
+     ],
+     [
+      "2016-10",
+      16.0
+     ],
+     [
+      "2016-11",
+      16.4
+     ],
+     [
+      "2016-12",
+      17.1
+     ],
+     [
+      "2017-01",
+      16.7
+     ],
+     [
+      "2017-02",
+      17.1
+     ],
+     [
+      "2017-03",
+      17.8
+     ],
+     [
+      "2017-04",
+      17.8
+     ],
+     [
+      "2017-05",
+      18.2
+     ],
+     [
+      "2017-06",
+      18.1
+     ],
+     [
+      "2017-07",
+      18.2
+     ],
+     [
+      "2017-08",
+      17.8
+     ],
+     [
+      "2017-09",
+      17.6
+     ],
+     [
+      "2017-10",
+      17.8
+     ],
+     [
+      "2017-11",
+      17.8
+     ],
+     [
+      "2017-12",
+      17.6
+     ],
+     [
+      "2018-01",
+      17.5
+     ],
+     [
+      "2018-02",
+      18.6
+     ],
+     [
+      "2018-03",
+      19.5
+     ],
+     [
+      "2018-04",
+      20.2
+     ],
+     [
+      "2018-05",
+      20.8
+     ],
+     [
+      "2018-06",
+      20.8
+     ],
+     [
+      "2018-07",
+      20.6
+     ],
+     [
+      "2018-08",
+      20.6
+     ],
+     [
+      "2018-09",
+      20.8
+     ],
+     [
+      "2018-10",
+      21.1
+     ],
+     [
+      "2018-11",
+      21.2
+     ],
+     [
+      "2018-12",
+      20.2
+     ],
+     [
+      "2019-01",
+      18.5
+     ],
+     [
+      "2019-02",
+      18.7
+     ],
+     [
+      "2019-03",
+      19.1
+     ],
+     [
+      "2019-04",
+      19.4
+     ],
+     [
+      "2019-05",
+      19.5
+     ],
+     [
+      "2019-06",
+      18.9
+     ],
+     [
+      "2019-07",
+      18.8
+     ],
+     [
+      "2019-08",
+      18.2
+     ],
+     [
+      "2019-09",
+      18.0
+     ],
+     [
+      "2019-10",
+      18.0
+     ],
+     [
+      "2019-11",
+      17.8
+     ],
+     [
+      "2019-12",
+      17.5
+     ],
+     [
+      "2020-01",
+      17.6
+     ],
+     [
+      "2020-02",
+      17.6
+     ],
+     [
+      "2020-03",
+      18.4
+     ],
+     [
+      "2020-04",
+      18.1
+     ],
+     [
+      "2020-05",
+      18.5
+     ],
+     [
+      "2020-06",
+      18.9
+     ],
+     [
+      "2020-07",
+      18.8
+     ],
+     [
+      "2020-08",
+      18.9
+     ],
+     [
+      "2020-09",
+      18.7
+     ],
+     [
+      "2020-10",
+      18.6
+     ],
+     [
+      "2020-11",
+      18.1
+     ],
+     [
+      "2020-12",
+      17.6
+     ],
+     [
+      "2021-01",
+      17.7
+     ],
+     [
+      "2021-02",
+      18.3
+     ],
+     [
+      "2021-03",
+      19.5
+     ],
+     [
+      "2021-04",
+      20.4
+     ],
+     [
+      "2021-05",
+      20.5
+     ],
+     [
+      "2021-06",
+      20.7
+     ],
+     [
+      "2021-07",
+      20.4
+     ],
+     [
+      "2021-08",
+      20.1
+     ],
+     [
+      "2021-09",
+      20.2
+     ],
+     [
+      "2021-10",
+      20.7
+     ],
+     [
+      "2021-11",
+      20.6
+     ],
+     [
+      "2021-12",
+      20.4
+     ],
+     [
+      "2022-01",
+      21.9
+     ],
+     [
+      "2022-02",
+      23.6
+     ],
+     [
+      "2022-03",
+      25.8
+     ],
+     [
+      "2022-04",
+      29.8
+     ],
+     [
+      "2022-05",
+      32.0
+     ],
+     [
+      "2022-06",
+      33.9
+     ],
+     [
+      "2022-07",
+      33.1
+     ],
+     [
+      "2022-08",
+      31.6
+     ],
+     [
+      "2022-09",
+      34.4
+     ],
+     [
+      "2022-10",
+      37.1
+     ],
+     [
+      "2022-11",
+      36.0
+     ],
+     [
+      "2022-12",
+      33.5
+     ],
+     [
+      "2023-01",
+      31.8
+     ],
+     [
+      "2023-02",
+      32.5
+     ],
+     [
+      "2023-03",
+      34.3
+     ],
+     [
+      "2023-04",
+      34.1
+     ],
+     [
+      "2023-05",
+      35.3
+     ],
+     [
+      "2023-06",
+      36.7
+     ],
+     [
+      "2023-07",
+      36.7
+     ],
+     [
+      "2023-08",
+      37.2
+     ],
+     [
+      "2023-09",
+      37.2
+     ],
+     [
+      "2023-10",
+      38.3
+     ],
+     [
+      "2023-11",
+      37.2
+     ],
+     [
+      "2023-12",
+      34.1
+     ],
+     [
+      "2024-01",
+      33.3
+     ],
+     [
+      "2024-02",
+      34.2
+     ],
+     [
+      "2024-03",
+      35.2
+     ],
+     [
+      "2024-04",
+      36.2
+     ],
+     [
+      "2024-05",
+      37.3
+     ],
+     [
+      "2024-06",
+      36.8
+     ],
+     [
+      "2024-07",
+      36.3
+     ],
+     [
+      "2024-08",
+      34.4
+     ],
+     [
+      "2024-09",
+      32.9
+     ],
+     [
+      "2024-10",
+      33.6
+     ],
+     [
+      "2024-11",
+      34.5
+     ],
+     [
+      "2024-12",
+      33.0
+     ],
+     [
+      "2025-01",
+      32.8
+     ],
+     [
+      "2025-02",
+      33.3
+     ],
+     [
+      "2025-03",
+      33.7
+     ],
+     [
+      "2025-04",
+      34.5
+     ],
+     [
+      "2025-05",
+      35.5
+     ],
+     [
+      "2025-06",
+      35.6
+     ],
+     [
+      "2025-07",
+      35.1
+     ],
+     [
+      "2025-08",
+      33.9
+     ],
+     [
+      "2025-09",
+      32.7
+     ],
+     [
+      "2025-10",
+      32.3
+     ],
+     [
+      "2025-11",
+      31.5
+     ],
+     [
+      "2025-12",
+      30.2
+     ],
+     [
+      "2026-01",
+      29.9
+     ],
+     [
+      "2026-02",
+      30.1
+     ],
+     [
+      "2026-03",
+      31.4
+     ],
+     [
+      "2026-04",
+      32.6
+     ],
+     [
+      "2026-05",
+      33.3
+     ],
+     [
+      "2026-06",
+      33.5
+     ],
+     [
+      "2026-07",
+      33.6
+     ],
+     [
+      "2026-08",
+      33.7
+     ],
+     [
+      "2026-09",
+      34.0
+     ]
+    ],
+    "ymax": 45,
+    "yt": [
+     0,
+     10,
+     20,
+     30,
+     40
+    ],
+    "ypre": "",
+    "ysuf": "%",
+    "xt": [
+     2017,
+     2019,
+     2021,
+     2023,
+     2025
+    ],
+    "alvo": 28,
+    "alvo_rotulo": "28% RULE",
+    "alvo_fala": 1,
+    "fonte": "Sources: Realtor.com median listing price, Census median household income, Freddie Mac 30-year rate, via FRED",
+    "marcas": [
+     {
+      "data": "2021-01",
+      "v": 17.7,
+      "rotulo": "18%",
+      "sub": "JAN 2021 \u00b7 RATE 2.7%",
+      "fala": 2,
+      "lado": "d"
+     },
+     {
+      "data": "2023-10",
+      "v": 38.3,
+      "rotulo": "38%",
+      "sub": "OCT 2023 \u00b7 RATE 7.6%",
+      "fala": 3,
+      "lado": "e"
+     },
+     {
+      "data": "2026-09",
+      "v": 34.0,
+      "rotulo": "34%",
+      "sub": "NOW",
+      "fala": 4,
+      "lado": "e"
+     }
+    ]
+   },
+   "falas": [
+    "First, the whole country.",
+    "This is the mortgage on a typical American home as a share of a typical income, every month since 2016. The red line is the twenty eight percent rule.",
+    "In January 2021, rates were under three percent, and a typical home took about eighteen percent of income. Easy.",
+    "Then rates tripled. By October 2023, the same math hit thirty eight percent.",
+    "Today it's around 34. The country as a whole is above the line. But the country is an average. Your state isn't."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "n": 1,
+    "titulo": "Where a house still makes sense"
+   },
+   "falas": [
+    "Part one. Where a house still makes sense."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "eua",
+    "estados": [
+     {
+      "nome": "New York",
+      "v": 55.433009959569915,
+      "rank": 1
+     },
+     {
+      "nome": "Montana",
+      "v": 53.376374641317526,
+      "rank": 2
+     },
+     {
+      "nome": "California",
+      "v": 53.26425160440438,
+      "rank": 3
+     },
+     {
+      "nome": "Hawaii",
+      "v": 52.074498288883134,
+      "rank": 4
+     },
+     {
+      "nome": "Idaho",
+      "v": 48.948101050056806,
+      "rank": 5
+     },
+     {
+      "nome": "Massachusetts",
+      "v": 45.61137642303702,
+      "rank": 6
+     },
+     {
+      "nome": "Oregon",
+      "v": 44.00360877015462,
+      "rank": 7
+     },
+     {
+      "nome": "New Mexico",
+      "v": 43.26628199135861,
+      "rank": 8
+     },
+     {
+      "nome": "Rhode Island",
+      "v": 43.24650155429113,
+      "rank": 9
+     },
+     {
+      "nome": "Wyoming",
+      "v": 42.51390266061143,
+      "rank": 10
+     },
+     {
+      "nome": "Tennessee",
+      "v": 41.95432953266484,
+      "rank": 11
+     },
+     {
+      "nome": "Washington",
+      "v": 41.49645130723996,
+      "rank": 12
+     },
+     {
+      "nome": "Utah",
+      "v": 41.343927004435486,
+      "rank": 13
+     },
+     {
+      "nome": "Colorado",
+      "v": 40.634440199260645,
+      "rank": 14
+     },
+     {
+      "nome": "Nevada",
+      "v": 40.265123662097125,
+      "rank": 15
+     },
+     {
+      "nome": "Arizona",
+      "v": 39.989432224763775,
+      "rank": 16
+     },
+     {
+      "nome": "Florida",
+      "v": 39.89873357761658,
+      "rank": 17
+     },
+     {
+      "nome": "New Hampshire",
+      "v": 38.733439128653494,
+      "rank": 18
+     },
+     {
+      "nome": "Vermont",
+      "v": 38.47877306794041,
+      "rank": 19
+     },
+     {
+      "nome": "Mississippi",
+      "v": 37.6579858932194,
+      "rank": 20
+     },
+     {
+      "nome": "Connecticut",
+      "v": 37.62595580281267,
+      "rank": 21
+     },
+     {
+      "nome": "North Carolina",
+      "v": 37.400352882166665,
+      "rank": 22
+     },
+     {
+      "nome": "New Jersey",
+      "v": 36.447948898970836,
+      "rank": 23
+     },
+     {
+      "nome": "Delaware",
+      "v": 36.224302885279265,
+      "rank": 24
+     },
+     {
+      "nome": "Alabama",
+      "v": 35.74205997303258,
+      "rank": 25
+     },
+     {
+      "nome": "Georgia",
+      "v": 35.113437038491206,
+      "rank": 26
+     },
+     {
+      "nome": "Maine",
+      "v": 34.430983433070104,
+      "rank": 27
+     },
+     {
+      "nome": "Arkansas",
+      "v": 33.73950189641207,
+      "rank": 28
+     },
+     {
+      "nome": "South Dakota",
+      "v": 33.48144733538623,
+      "rank": 29
+     },
+     {
+      "nome": "Louisiana",
+      "v": 33.18180063563169,
+      "rank": 30
+     },
+     {
+      "nome": "Virginia",
+      "v": 33.144748514059614,
+      "rank": 31
+     },
+     {
+      "nome": "Wisconsin",
+      "v": 32.46244609212696,
+      "rank": 32
+     },
+     {
+      "nome": "South Carolina",
+      "v": 32.28663494529232,
+      "rank": 33
+     },
+     {
+      "nome": "Alaska",
+      "v": 31.436943982166603,
+      "rank": 34
+     },
+     {
+      "nome": "North Dakota",
+      "v": 31.25469761186222,
+      "rank": 35
+     },
+     {
+      "nome": "Texas",
+      "v": 30.919504843586836,
+      "rank": 36
+     },
+     {
+      "nome": "Kentucky",
+      "v": 30.469481449143604,
+      "rank": 37
+     },
+     {
+      "nome": "West Virginia",
+      "v": 30.17810784876834,
+      "rank": 38
+     },
+     {
+      "nome": "Minnesota",
+      "v": 29.73289794302608,
+      "rank": 39
+     },
+     {
+      "nome": "Oklahoma",
+      "v": 28.896402435009023,
+      "rank": 40
+     },
+     {
+      "nome": "Indiana",
+      "v": 28.500109910519285,
+      "rank": 41
+     },
+     {
+      "nome": "Michigan",
+      "v": 27.783161706642556,
+      "rank": 42
+     },
+     {
+      "nome": "Maryland",
+      "v": 26.816648795063525,
+      "rank": 43
+     },
+     {
+      "nome": "Pennsylvania",
+      "v": 26.672574605928144,
+      "rank": 44
+     },
+     {
+      "nome": "Missouri",
+      "v": 26.20959771067426,
+      "rank": 45
+     },
+     {
+      "nome": "Kansas",
+      "v": 25.20685941550802,
+      "rank": 46
+     },
+     {
+      "nome": "Iowa",
+      "v": 25.044617180486306,
+      "rank": 47
+     },
+     {
+      "nome": "Nebraska",
+      "v": 24.984189184928958,
+      "rank": 48
+     },
+     {
+      "nome": "Illinois",
+      "v": 24.3852944920609,
+      "rank": 49
+     },
+     {
+      "nome": "Ohio",
+      "v": 24.253010087639442,
+      "rank": 50
+     }
+    ],
+    "min": 24.253010087639442,
+    "max": 55.433009959569915,
+    "leg_min": "24% of income",
+    "leg_max": "55%",
+    "faixa": [
+     41,
+     50
+    ],
+    "painel": true,
+    "inicio": 20,
+    "passo": 10,
+    "ordem": "desce",
+    "unid": "%",
+    "dec": 0,
+    "fundo_todos": false
+   },
+   "falas": [
+    "Only 9 states still pass the twenty eight percent test. Almost all of them are in the Midwest.",
+    "Indiana, at number forty one, misses by half a point."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "estado",
+    "estados": [
+     {
+      "nome": "New York",
+      "v": 55.433009959569915,
+      "rank": 1
+     },
+     {
+      "nome": "Montana",
+      "v": 53.376374641317526,
+      "rank": 2
+     },
+     {
+      "nome": "California",
+      "v": 53.26425160440438,
+      "rank": 3
+     },
+     {
+      "nome": "Hawaii",
+      "v": 52.074498288883134,
+      "rank": 4
+     },
+     {
+      "nome": "Idaho",
+      "v": 48.948101050056806,
+      "rank": 5
+     },
+     {
+      "nome": "Massachusetts",
+      "v": 45.61137642303702,
+      "rank": 6
+     },
+     {
+      "nome": "Oregon",
+      "v": 44.00360877015462,
+      "rank": 7
+     },
+     {
+      "nome": "New Mexico",
+      "v": 43.26628199135861,
+      "rank": 8
+     },
+     {
+      "nome": "Rhode Island",
+      "v": 43.24650155429113,
+      "rank": 9
+     },
+     {
+      "nome": "Wyoming",
+      "v": 42.51390266061143,
+      "rank": 10
+     },
+     {
+      "nome": "Tennessee",
+      "v": 41.95432953266484,
+      "rank": 11
+     },
+     {
+      "nome": "Washington",
+      "v": 41.49645130723996,
+      "rank": 12
+     },
+     {
+      "nome": "Utah",
+      "v": 41.343927004435486,
+      "rank": 13
+     },
+     {
+      "nome": "Colorado",
+      "v": 40.634440199260645,
+      "rank": 14
+     },
+     {
+      "nome": "Nevada",
+      "v": 40.265123662097125,
+      "rank": 15
+     },
+     {
+      "nome": "Arizona",
+      "v": 39.989432224763775,
+      "rank": 16
+     },
+     {
+      "nome": "Florida",
+      "v": 39.89873357761658,
+      "rank": 17
+     },
+     {
+      "nome": "New Hampshire",
+      "v": 38.733439128653494,
+      "rank": 18
+     },
+     {
+      "nome": "Vermont",
+      "v": 38.47877306794041,
+      "rank": 19
+     },
+     {
+      "nome": "Mississippi",
+      "v": 37.6579858932194,
+      "rank": 20
+     },
+     {
+      "nome": "Connecticut",
+      "v": 37.62595580281267,
+      "rank": 21
+     },
+     {
+      "nome": "North Carolina",
+      "v": 37.400352882166665,
+      "rank": 22
+     },
+     {
+      "nome": "New Jersey",
+      "v": 36.447948898970836,
+      "rank": 23
+     },
+     {
+      "nome": "Delaware",
+      "v": 36.224302885279265,
+      "rank": 24
+     },
+     {
+      "nome": "Alabama",
+      "v": 35.74205997303258,
+      "rank": 25
+     },
+     {
+      "nome": "Georgia",
+      "v": 35.113437038491206,
+      "rank": 26
+     },
+     {
+      "nome": "Maine",
+      "v": 34.430983433070104,
+      "rank": 27
+     },
+     {
+      "nome": "Arkansas",
+      "v": 33.73950189641207,
+      "rank": 28
+     },
+     {
+      "nome": "South Dakota",
+      "v": 33.48144733538623,
+      "rank": 29
+     },
+     {
+      "nome": "Louisiana",
+      "v": 33.18180063563169,
+      "rank": 30
+     },
+     {
+      "nome": "Virginia",
+      "v": 33.144748514059614,
+      "rank": 31
+     },
+     {
+      "nome": "Wisconsin",
+      "v": 32.46244609212696,
+      "rank": 32
+     },
+     {
+      "nome": "South Carolina",
+      "v": 32.28663494529232,
+      "rank": 33
+     },
+     {
+      "nome": "Alaska",
+      "v": 31.436943982166603,
+      "rank": 34
+     },
+     {
+      "nome": "North Dakota",
+      "v": 31.25469761186222,
+      "rank": 35
+     },
+     {
+      "nome": "Texas",
+      "v": 30.919504843586836,
+      "rank": 36
+     },
+     {
+      "nome": "Kentucky",
+      "v": 30.469481449143604,
+      "rank": 37
+     },
+     {
+      "nome": "West Virginia",
+      "v": 30.17810784876834,
+      "rank": 38
+     },
+     {
+      "nome": "Minnesota",
+      "v": 29.73289794302608,
+      "rank": 39
+     },
+     {
+      "nome": "Oklahoma",
+      "v": 28.896402435009023,
+      "rank": 40
+     },
+     {
+      "nome": "Indiana",
+      "v": 28.500109910519285,
+      "rank": 41
+     },
+     {
+      "nome": "Michigan",
+      "v": 27.783161706642556,
+      "rank": 42
+     },
+     {
+      "nome": "Maryland",
+      "v": 26.816648795063525,
+      "rank": 43
+     },
+     {
+      "nome": "Pennsylvania",
+      "v": 26.672574605928144,
+      "rank": 44
+     },
+     {
+      "nome": "Missouri",
+      "v": 26.20959771067426,
+      "rank": 45
+     },
+     {
+      "nome": "Kansas",
+      "v": 25.20685941550802,
+      "rank": 46
+     },
+     {
+      "nome": "Iowa",
+      "v": 25.044617180486306,
+      "rank": 47
+     },
+     {
+      "nome": "Nebraska",
+      "v": 24.984189184928958,
+      "rank": 48
+     },
+     {
+      "nome": "Illinois",
+      "v": 24.3852944920609,
+      "rank": 49
+     },
+     {
+      "nome": "Ohio",
+      "v": 24.253010087639442,
+      "rank": 50
+     }
+    ],
+    "min": 24.253010087639442,
+    "max": 55.433009959569915,
+    "leg_min": "24% of income",
+    "leg_max": "55%",
+    "nome": "Ohio",
+    "linhas": [
+     {
+      "r": "Typical home, listed",
+      "v": "$280,583"
+     },
+     {
+      "r": "Typical household income",
+      "v": "$85,150"
+     },
+     {
+      "r": "Monthly mortgage, 10% down",
+      "v": "$1,721 \u00b7 24%"
+     }
+    ]
+   },
+   "falas": [
+    "Number fifty, the most affordable state for a home in America: Ohio.",
+    "A typical listed home in Ohio costs about 281 thousand dollars. Less than half of California.",
+    "With a typical household income of 85 thousand, the mortgage takes 24 percent. Comfortably under the line."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "estado",
+    "estados": [
+     {
+      "nome": "New York",
+      "v": 55.433009959569915,
+      "rank": 1
+     },
+     {
+      "nome": "Montana",
+      "v": 53.376374641317526,
+      "rank": 2
+     },
+     {
+      "nome": "California",
+      "v": 53.26425160440438,
+      "rank": 3
+     },
+     {
+      "nome": "Hawaii",
+      "v": 52.074498288883134,
+      "rank": 4
+     },
+     {
+      "nome": "Idaho",
+      "v": 48.948101050056806,
+      "rank": 5
+     },
+     {
+      "nome": "Massachusetts",
+      "v": 45.61137642303702,
+      "rank": 6
+     },
+     {
+      "nome": "Oregon",
+      "v": 44.00360877015462,
+      "rank": 7
+     },
+     {
+      "nome": "New Mexico",
+      "v": 43.26628199135861,
+      "rank": 8
+     },
+     {
+      "nome": "Rhode Island",
+      "v": 43.24650155429113,
+      "rank": 9
+     },
+     {
+      "nome": "Wyoming",
+      "v": 42.51390266061143,
+      "rank": 10
+     },
+     {
+      "nome": "Tennessee",
+      "v": 41.95432953266484,
+      "rank": 11
+     },
+     {
+      "nome": "Washington",
+      "v": 41.49645130723996,
+      "rank": 12
+     },
+     {
+      "nome": "Utah",
+      "v": 41.343927004435486,
+      "rank": 13
+     },
+     {
+      "nome": "Colorado",
+      "v": 40.634440199260645,
+      "rank": 14
+     },
+     {
+      "nome": "Nevada",
+      "v": 40.265123662097125,
+      "rank": 15
+     },
+     {
+      "nome": "Arizona",
+      "v": 39.989432224763775,
+      "rank": 16
+     },
+     {
+      "nome": "Florida",
+      "v": 39.89873357761658,
+      "rank": 17
+     },
+     {
+      "nome": "New Hampshire",
+      "v": 38.733439128653494,
+      "rank": 18
+     },
+     {
+      "nome": "Vermont",
+      "v": 38.47877306794041,
+      "rank": 19
+     },
+     {
+      "nome": "Mississippi",
+      "v": 37.6579858932194,
+      "rank": 20
+     },
+     {
+      "nome": "Connecticut",
+      "v": 37.62595580281267,
+      "rank": 21
+     },
+     {
+      "nome": "North Carolina",
+      "v": 37.400352882166665,
+      "rank": 22
+     },
+     {
+      "nome": "New Jersey",
+      "v": 36.447948898970836,
+      "rank": 23
+     },
+     {
+      "nome": "Delaware",
+      "v": 36.224302885279265,
+      "rank": 24
+     },
+     {
+      "nome": "Alabama",
+      "v": 35.74205997303258,
+      "rank": 25
+     },
+     {
+      "nome": "Georgia",
+      "v": 35.113437038491206,
+      "rank": 26
+     },
+     {
+      "nome": "Maine",
+      "v": 34.430983433070104,
+      "rank": 27
+     },
+     {
+      "nome": "Arkansas",
+      "v": 33.73950189641207,
+      "rank": 28
+     },
+     {
+      "nome": "South Dakota",
+      "v": 33.48144733538623,
+      "rank": 29
+     },
+     {
+      "nome": "Louisiana",
+      "v": 33.18180063563169,
+      "rank": 30
+     },
+     {
+      "nome": "Virginia",
+      "v": 33.144748514059614,
+      "rank": 31
+     },
+     {
+      "nome": "Wisconsin",
+      "v": 32.46244609212696,
+      "rank": 32
+     },
+     {
+      "nome": "South Carolina",
+      "v": 32.28663494529232,
+      "rank": 33
+     },
+     {
+      "nome": "Alaska",
+      "v": 31.436943982166603,
+      "rank": 34
+     },
+     {
+      "nome": "North Dakota",
+      "v": 31.25469761186222,
+      "rank": 35
+     },
+     {
+      "nome": "Texas",
+      "v": 30.919504843586836,
+      "rank": 36
+     },
+     {
+      "nome": "Kentucky",
+      "v": 30.469481449143604,
+      "rank": 37
+     },
+     {
+      "nome": "West Virginia",
+      "v": 30.17810784876834,
+      "rank": 38
+     },
+     {
+      "nome": "Minnesota",
+      "v": 29.73289794302608,
+      "rank": 39
+     },
+     {
+      "nome": "Oklahoma",
+      "v": 28.896402435009023,
+      "rank": 40
+     },
+     {
+      "nome": "Indiana",
+      "v": 28.500109910519285,
+      "rank": 41
+     },
+     {
+      "nome": "Michigan",
+      "v": 27.783161706642556,
+      "rank": 42
+     },
+     {
+      "nome": "Maryland",
+      "v": 26.816648795063525,
+      "rank": 43
+     },
+     {
+      "nome": "Pennsylvania",
+      "v": 26.672574605928144,
+      "rank": 44
+     },
+     {
+      "nome": "Missouri",
+      "v": 26.20959771067426,
+      "rank": 45
+     },
+     {
+      "nome": "Kansas",
+      "v": 25.20685941550802,
+      "rank": 46
+     },
+     {
+      "nome": "Iowa",
+      "v": 25.044617180486306,
+      "rank": 47
+     },
+     {
+      "nome": "Nebraska",
+      "v": 24.984189184928958,
+      "rank": 48
+     },
+     {
+      "nome": "Illinois",
+      "v": 24.3852944920609,
+      "rank": 49
+     },
+     {
+      "nome": "Ohio",
+      "v": 24.253010087639442,
+      "rank": 50
+     }
+    ],
+    "min": 24.253010087639442,
+    "max": 55.433009959569915,
+    "leg_min": "24% of income",
+    "leg_max": "55%",
+    "nome": "Illinois",
+    "linhas": [
+     {
+      "r": "Typical home, listed",
+      "v": "$309,016"
+     },
+     {
+      "r": "Typical household income",
+      "v": "$93,270"
+     },
+     {
+      "r": "Monthly mortgage, 10% down",
+      "v": "$1,895 \u00b7 24%"
+     }
+    ]
+   },
+   "falas": [
+    "Number forty nine is the surprise. Illinois.",
+    "Chicago is the third biggest city in America, and Illinois still has some of the most affordable homes in the country.",
+    "24 percent of income."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "eua",
+    "estados": [
+     {
+      "nome": "New York",
+      "v": 55.433009959569915,
+      "rank": 1
+     },
+     {
+      "nome": "Montana",
+      "v": 53.376374641317526,
+      "rank": 2
+     },
+     {
+      "nome": "California",
+      "v": 53.26425160440438,
+      "rank": 3
+     },
+     {
+      "nome": "Hawaii",
+      "v": 52.074498288883134,
+      "rank": 4
+     },
+     {
+      "nome": "Idaho",
+      "v": 48.948101050056806,
+      "rank": 5
+     },
+     {
+      "nome": "Massachusetts",
+      "v": 45.61137642303702,
+      "rank": 6
+     },
+     {
+      "nome": "Oregon",
+      "v": 44.00360877015462,
+      "rank": 7
+     },
+     {
+      "nome": "New Mexico",
+      "v": 43.26628199135861,
+      "rank": 8
+     },
+     {
+      "nome": "Rhode Island",
+      "v": 43.24650155429113,
+      "rank": 9
+     },
+     {
+      "nome": "Wyoming",
+      "v": 42.51390266061143,
+      "rank": 10
+     },
+     {
+      "nome": "Tennessee",
+      "v": 41.95432953266484,
+      "rank": 11
+     },
+     {
+      "nome": "Washington",
+      "v": 41.49645130723996,
+      "rank": 12
+     },
+     {
+      "nome": "Utah",
+      "v": 41.343927004435486,
+      "rank": 13
+     },
+     {
+      "nome": "Colorado",
+      "v": 40.634440199260645,
+      "rank": 14
+     },
+     {
+      "nome": "Nevada",
+      "v": 40.265123662097125,
+      "rank": 15
+     },
+     {
+      "nome": "Arizona",
+      "v": 39.989432224763775,
+      "rank": 16
+     },
+     {
+      "nome": "Florida",
+      "v": 39.89873357761658,
+      "rank": 17
+     },
+     {
+      "nome": "New Hampshire",
+      "v": 38.733439128653494,
+      "rank": 18
+     },
+     {
+      "nome": "Vermont",
+      "v": 38.47877306794041,
+      "rank": 19
+     },
+     {
+      "nome": "Mississippi",
+      "v": 37.6579858932194,
+      "rank": 20
+     },
+     {
+      "nome": "Connecticut",
+      "v": 37.62595580281267,
+      "rank": 21
+     },
+     {
+      "nome": "North Carolina",
+      "v": 37.400352882166665,
+      "rank": 22
+     },
+     {
+      "nome": "New Jersey",
+      "v": 36.447948898970836,
+      "rank": 23
+     },
+     {
+      "nome": "Delaware",
+      "v": 36.224302885279265,
+      "rank": 24
+     },
+     {
+      "nome": "Alabama",
+      "v": 35.74205997303258,
+      "rank": 25
+     },
+     {
+      "nome": "Georgia",
+      "v": 35.113437038491206,
+      "rank": 26
+     },
+     {
+      "nome": "Maine",
+      "v": 34.430983433070104,
+      "rank": 27
+     },
+     {
+      "nome": "Arkansas",
+      "v": 33.73950189641207,
+      "rank": 28
+     },
+     {
+      "nome": "South Dakota",
+      "v": 33.48144733538623,
+      "rank": 29
+     },
+     {
+      "nome": "Louisiana",
+      "v": 33.18180063563169,
+      "rank": 30
+     },
+     {
+      "nome": "Virginia",
+      "v": 33.144748514059614,
+      "rank": 31
+     },
+     {
+      "nome": "Wisconsin",
+      "v": 32.46244609212696,
+      "rank": 32
+     },
+     {
+      "nome": "South Carolina",
+      "v": 32.28663494529232,
+      "rank": 33
+     },
+     {
+      "nome": "Alaska",
+      "v": 31.436943982166603,
+      "rank": 34
+     },
+     {
+      "nome": "North Dakota",
+      "v": 31.25469761186222,
+      "rank": 35
+     },
+     {
+      "nome": "Texas",
+      "v": 30.919504843586836,
+      "rank": 36
+     },
+     {
+      "nome": "Kentucky",
+      "v": 30.469481449143604,
+      "rank": 37
+     },
+     {
+      "nome": "West Virginia",
+      "v": 30.17810784876834,
+      "rank": 38
+     },
+     {
+      "nome": "Minnesota",
+      "v": 29.73289794302608,
+      "rank": 39
+     },
+     {
+      "nome": "Oklahoma",
+      "v": 28.896402435009023,
+      "rank": 40
+     },
+     {
+      "nome": "Indiana",
+      "v": 28.500109910519285,
+      "rank": 41
+     },
+     {
+      "nome": "Michigan",
+      "v": 27.783161706642556,
+      "rank": 42
+     },
+     {
+      "nome": "Maryland",
+      "v": 26.816648795063525,
+      "rank": 43
+     },
+     {
+      "nome": "Pennsylvania",
+      "v": 26.672574605928144,
+      "rank": 44
+     },
+     {
+      "nome": "Missouri",
+      "v": 26.20959771067426,
+      "rank": 45
+     },
+     {
+      "nome": "Kansas",
+      "v": 25.20685941550802,
+      "rank": 46
+     },
+     {
+      "nome": "Iowa",
+      "v": 25.044617180486306,
+      "rank": 47
+     },
+     {
+      "nome": "Nebraska",
+      "v": 24.984189184928958,
+      "rank": 48
+     },
+     {
+      "nome": "Illinois",
+      "v": 24.3852944920609,
+      "rank": 49
+     },
+     {
+      "nome": "Ohio",
+      "v": 24.253010087639442,
+      "rank": 50
+     }
+    ],
+    "min": 24.253010087639442,
+    "max": 55.433009959569915,
+    "leg_min": "24% of income",
+    "leg_max": "55%",
+    "faixa": [
+     41,
+     50
+    ],
+    "foco": [
+     "Nebraska",
+     "Iowa",
+     "Kansas",
+     "Missouri",
+     "Maryland"
+    ],
+    "fundo_todos": false,
+    "mostrar_resto": false,
+    "rotulos": true,
+    "inicio": 0,
+    "passo": 0
+   },
+   "falas": [
+    "Nebraska, Iowa, Kansas and Missouri follow, all around twenty five percent.",
+    "And Maryland is the odd one out at number forty three. Homes there aren't cheap, at 424 thousand dollars. But Maryland has one of the highest household incomes in the country, so it still squeaks under the line."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "n": 2,
+    "titulo": "Over the line"
+   },
+   "falas": [
+    "Part two. Over the line."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "eua",
+    "estados": [
+     {
+      "nome": "New York",
+      "v": 55.433009959569915,
+      "rank": 1
+     },
+     {
+      "nome": "Montana",
+      "v": 53.376374641317526,
+      "rank": 2
+     },
+     {
+      "nome": "California",
+      "v": 53.26425160440438,
+      "rank": 3
+     },
+     {
+      "nome": "Hawaii",
+      "v": 52.074498288883134,
+      "rank": 4
+     },
+     {
+      "nome": "Idaho",
+      "v": 48.948101050056806,
+      "rank": 5
+     },
+     {
+      "nome": "Massachusetts",
+      "v": 45.61137642303702,
+      "rank": 6
+     },
+     {
+      "nome": "Oregon",
+      "v": 44.00360877015462,
+      "rank": 7
+     },
+     {
+      "nome": "New Mexico",
+      "v": 43.26628199135861,
+      "rank": 8
+     },
+     {
+      "nome": "Rhode Island",
+      "v": 43.24650155429113,
+      "rank": 9
+     },
+     {
+      "nome": "Wyoming",
+      "v": 42.51390266061143,
+      "rank": 10
+     },
+     {
+      "nome": "Tennessee",
+      "v": 41.95432953266484,
+      "rank": 11
+     },
+     {
+      "nome": "Washington",
+      "v": 41.49645130723996,
+      "rank": 12
+     },
+     {
+      "nome": "Utah",
+      "v": 41.343927004435486,
+      "rank": 13
+     },
+     {
+      "nome": "Colorado",
+      "v": 40.634440199260645,
+      "rank": 14
+     },
+     {
+      "nome": "Nevada",
+      "v": 40.265123662097125,
+      "rank": 15
+     },
+     {
+      "nome": "Arizona",
+      "v": 39.989432224763775,
+      "rank": 16
+     },
+     {
+      "nome": "Florida",
+      "v": 39.89873357761658,
+      "rank": 17
+     },
+     {
+      "nome": "New Hampshire",
+      "v": 38.733439128653494,
+      "rank": 18
+     },
+     {
+      "nome": "Vermont",
+      "v": 38.47877306794041,
+      "rank": 19
+     },
+     {
+      "nome": "Mississippi",
+      "v": 37.6579858932194,
+      "rank": 20
+     },
+     {
+      "nome": "Connecticut",
+      "v": 37.62595580281267,
+      "rank": 21
+     },
+     {
+      "nome": "North Carolina",
+      "v": 37.400352882166665,
+      "rank": 22
+     },
+     {
+      "nome": "New Jersey",
+      "v": 36.447948898970836,
+      "rank": 23
+     },
+     {
+      "nome": "Delaware",
+      "v": 36.224302885279265,
+      "rank": 24
+     },
+     {
+      "nome": "Alabama",
+      "v": 35.74205997303258,
+      "rank": 25
+     },
+     {
+      "nome": "Georgia",
+      "v": 35.113437038491206,
+      "rank": 26
+     },
+     {
+      "nome": "Maine",
+      "v": 34.430983433070104,
+      "rank": 27
+     },
+     {
+      "nome": "Arkansas",
+      "v": 33.73950189641207,
+      "rank": 28
+     },
+     {
+      "nome": "South Dakota",
+      "v": 33.48144733538623,
+      "rank": 29
+     },
+     {
+      "nome": "Louisiana",
+      "v": 33.18180063563169,
+      "rank": 30
+     },
+     {
+      "nome": "Virginia",
+      "v": 33.144748514059614,
+      "rank": 31
+     },
+     {
+      "nome": "Wisconsin",
+      "v": 32.46244609212696,
+      "rank": 32
+     },
+     {
+      "nome": "South Carolina",
+      "v": 32.28663494529232,
+      "rank": 33
+     },
+     {
+      "nome": "Alaska",
+      "v": 31.436943982166603,
+      "rank": 34
+     },
+     {
+      "nome": "North Dakota",
+      "v": 31.25469761186222,
+      "rank": 35
+     },
+     {
+      "nome": "Texas",
+      "v": 30.919504843586836,
+      "rank": 36
+     },
+     {
+      "nome": "Kentucky",
+      "v": 30.469481449143604,
+      "rank": 37
+     },
+     {
+      "nome": "West Virginia",
+      "v": 30.17810784876834,
+      "rank": 38
+     },
+     {
+      "nome": "Minnesota",
+      "v": 29.73289794302608,
+      "rank": 39
+     },
+     {
+      "nome": "Oklahoma",
+      "v": 28.896402435009023,
+      "rank": 40
+     },
+     {
+      "nome": "Indiana",
+      "v": 28.500109910519285,
+      "rank": 41
+     },
+     {
+      "nome": "Michigan",
+      "v": 27.783161706642556,
+      "rank": 42
+     },
+     {
+      "nome": "Maryland",
+      "v": 26.816648795063525,
+      "rank": 43
+     },
+     {
+      "nome": "Pennsylvania",
+      "v": 26.672574605928144,
+      "rank": 44
+     },
+     {
+      "nome": "Missouri",
+      "v": 26.20959771067426,
+      "rank": 45
+     },
+     {
+      "nome": "Kansas",
+      "v": 25.20685941550802,
+      "rank": 46
+     },
+     {
+      "nome": "Iowa",
+      "v": 25.044617180486306,
+      "rank": 47
+     },
+     {
+      "nome": "Nebraska",
+      "v": 24.984189184928958,
+      "rank": 48
+     },
+     {
+      "nome": "Illinois",
+      "v": 24.3852944920609,
+      "rank": 49
+     },
+     {
+      "nome": "Ohio",
+      "v": 24.253010087639442,
+      "rank": 50
+     }
+    ],
+    "min": 24.253010087639442,
+    "max": 55.433009959569915,
+    "leg_min": "24% of income",
+    "leg_max": "55%",
+    "faixa": [
+     21,
+     40
+    ],
+    "inicio": 10,
+    "passo": 7,
+    "mostrar_resto": true,
+    "rotulos": false
+   },
+   "falas": [
+    "From forty down to twenty one, the share climbs from 29 percent to 38.",
+    "Every one of these states fails the rule now. In 2019, every one of them passed."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "estado",
+    "estados": [
+     {
+      "nome": "New York",
+      "v": 55.433009959569915,
+      "rank": 1
+     },
+     {
+      "nome": "Montana",
+      "v": 53.376374641317526,
+      "rank": 2
+     },
+     {
+      "nome": "California",
+      "v": 53.26425160440438,
+      "rank": 3
+     },
+     {
+      "nome": "Hawaii",
+      "v": 52.074498288883134,
+      "rank": 4
+     },
+     {
+      "nome": "Idaho",
+      "v": 48.948101050056806,
+      "rank": 5
+     },
+     {
+      "nome": "Massachusetts",
+      "v": 45.61137642303702,
+      "rank": 6
+     },
+     {
+      "nome": "Oregon",
+      "v": 44.00360877015462,
+      "rank": 7
+     },
+     {
+      "nome": "New Mexico",
+      "v": 43.26628199135861,
+      "rank": 8
+     },
+     {
+      "nome": "Rhode Island",
+      "v": 43.24650155429113,
+      "rank": 9
+     },
+     {
+      "nome": "Wyoming",
+      "v": 42.51390266061143,
+      "rank": 10
+     },
+     {
+      "nome": "Tennessee",
+      "v": 41.95432953266484,
+      "rank": 11
+     },
+     {
+      "nome": "Washington",
+      "v": 41.49645130723996,
+      "rank": 12
+     },
+     {
+      "nome": "Utah",
+      "v": 41.343927004435486,
+      "rank": 13
+     },
+     {
+      "nome": "Colorado",
+      "v": 40.634440199260645,
+      "rank": 14
+     },
+     {
+      "nome": "Nevada",
+      "v": 40.265123662097125,
+      "rank": 15
+     },
+     {
+      "nome": "Arizona",
+      "v": 39.989432224763775,
+      "rank": 16
+     },
+     {
+      "nome": "Florida",
+      "v": 39.89873357761658,
+      "rank": 17
+     },
+     {
+      "nome": "New Hampshire",
+      "v": 38.733439128653494,
+      "rank": 18
+     },
+     {
+      "nome": "Vermont",
+      "v": 38.47877306794041,
+      "rank": 19
+     },
+     {
+      "nome": "Mississippi",
+      "v": 37.6579858932194,
+      "rank": 20
+     },
+     {
+      "nome": "Connecticut",
+      "v": 37.62595580281267,
+      "rank": 21
+     },
+     {
+      "nome": "North Carolina",
+      "v": 37.400352882166665,
+      "rank": 22
+     },
+     {
+      "nome": "New Jersey",
+      "v": 36.447948898970836,
+      "rank": 23
+     },
+     {
+      "nome": "Delaware",
+      "v": 36.224302885279265,
+      "rank": 24
+     },
+     {
+      "nome": "Alabama",
+      "v": 35.74205997303258,
+      "rank": 25
+     },
+     {
+      "nome": "Georgia",
+      "v": 35.113437038491206,
+      "rank": 26
+     },
+     {
+      "nome": "Maine",
+      "v": 34.430983433070104,
+      "rank": 27
+     },
+     {
+      "nome": "Arkansas",
+      "v": 33.73950189641207,
+      "rank": 28
+     },
+     {
+      "nome": "South Dakota",
+      "v": 33.48144733538623,
+      "rank": 29
+     },
+     {
+      "nome": "Louisiana",
+      "v": 33.18180063563169,
+      "rank": 30
+     },
+     {
+      "nome": "Virginia",
+      "v": 33.144748514059614,
+      "rank": 31
+     },
+     {
+      "nome": "Wisconsin",
+      "v": 32.46244609212696,
+      "rank": 32
+     },
+     {
+      "nome": "South Carolina",
+      "v": 32.28663494529232,
+      "rank": 33
+     },
+     {
+      "nome": "Alaska",
+      "v": 31.436943982166603,
+      "rank": 34
+     },
+     {
+      "nome": "North Dakota",
+      "v": 31.25469761186222,
+      "rank": 35
+     },
+     {
+      "nome": "Texas",
+      "v": 30.919504843586836,
+      "rank": 36
+     },
+     {
+      "nome": "Kentucky",
+      "v": 30.469481449143604,
+      "rank": 37
+     },
+     {
+      "nome": "West Virginia",
+      "v": 30.17810784876834,
+      "rank": 38
+     },
+     {
+      "nome": "Minnesota",
+      "v": 29.73289794302608,
+      "rank": 39
+     },
+     {
+      "nome": "Oklahoma",
+      "v": 28.896402435009023,
+      "rank": 40
+     },
+     {
+      "nome": "Indiana",
+      "v": 28.500109910519285,
+      "rank": 41
+     },
+     {
+      "nome": "Michigan",
+      "v": 27.783161706642556,
+      "rank": 42
+     },
+     {
+      "nome": "Maryland",
+      "v": 26.816648795063525,
+      "rank": 43
+     },
+     {
+      "nome": "Pennsylvania",
+      "v": 26.672574605928144,
+      "rank": 44
+     },
+     {
+      "nome": "Missouri",
+      "v": 26.20959771067426,
+      "rank": 45
+     },
+     {
+      "nome": "Kansas",
+      "v": 25.20685941550802,
+      "rank": 46
+     },
+     {
+      "nome": "Iowa",
+      "v": 25.044617180486306,
+      "rank": 47
+     },
+     {
+      "nome": "Nebraska",
+      "v": 24.984189184928958,
+      "rank": 48
+     },
+     {
+      "nome": "Illinois",
+      "v": 24.3852944920609,
+      "rank": 49
+     },
+     {
+      "nome": "Ohio",
+      "v": 24.253010087639442,
+      "rank": 50
+     }
+    ],
+    "min": 24.253010087639442,
+    "max": 55.433009959569915,
+    "leg_min": "24% of income",
+    "leg_max": "55%",
+    "nome": "Texas",
+    "linhas": [
+     {
+      "r": "Typical home, listed",
+      "v": "$357,330"
+     },
+     {
+      "r": "Typical household income",
+      "v": "$85,060"
+     },
+     {
+      "r": "Monthly mortgage, 10% down",
+      "v": "$2,192 \u00b7 31%"
+     }
+    ]
+   },
+   "falas": [
+    "Texas lands at thirty six.",
+    "Texas homes are cheaper than people think, around 357 thousand dollars, and incomes are above average. 31 percent.",
+    "Over the line, but not by much."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "estado",
+    "estados": [
+     {
+      "nome": "New York",
+      "v": 55.433009959569915,
+      "rank": 1
+     },
+     {
+      "nome": "Montana",
+      "v": 53.376374641317526,
+      "rank": 2
+     },
+     {
+      "nome": "California",
+      "v": 53.26425160440438,
+      "rank": 3
+     },
+     {
+      "nome": "Hawaii",
+      "v": 52.074498288883134,
+      "rank": 4
+     },
+     {
+      "nome": "Idaho",
+      "v": 48.948101050056806,
+      "rank": 5
+     },
+     {
+      "nome": "Massachusetts",
+      "v": 45.61137642303702,
+      "rank": 6
+     },
+     {
+      "nome": "Oregon",
+      "v": 44.00360877015462,
+      "rank": 7
+     },
+     {
+      "nome": "New Mexico",
+      "v": 43.26628199135861,
+      "rank": 8
+     },
+     {
+      "nome": "Rhode Island",
+      "v": 43.24650155429113,
+      "rank": 9
+     },
+     {
+      "nome": "Wyoming",
+      "v": 42.51390266061143,
+      "rank": 10
+     },
+     {
+      "nome": "Tennessee",
+      "v": 41.95432953266484,
+      "rank": 11
+     },
+     {
+      "nome": "Washington",
+      "v": 41.49645130723996,
+      "rank": 12
+     },
+     {
+      "nome": "Utah",
+      "v": 41.343927004435486,
+      "rank": 13
+     },
+     {
+      "nome": "Colorado",
+      "v": 40.634440199260645,
+      "rank": 14
+     },
+     {
+      "nome": "Nevada",
+      "v": 40.265123662097125,
+      "rank": 15
+     },
+     {
+      "nome": "Arizona",
+      "v": 39.989432224763775,
+      "rank": 16
+     },
+     {
+      "nome": "Florida",
+      "v": 39.89873357761658,
+      "rank": 17
+     },
+     {
+      "nome": "New Hampshire",
+      "v": 38.733439128653494,
+      "rank": 18
+     },
+     {
+      "nome": "Vermont",
+      "v": 38.47877306794041,
+      "rank": 19
+     },
+     {
+      "nome": "Mississippi",
+      "v": 37.6579858932194,
+      "rank": 20
+     },
+     {
+      "nome": "Connecticut",
+      "v": 37.62595580281267,
+      "rank": 21
+     },
+     {
+      "nome": "North Carolina",
+      "v": 37.400352882166665,
+      "rank": 22
+     },
+     {
+      "nome": "New Jersey",
+      "v": 36.447948898970836,
+      "rank": 23
+     },
+     {
+      "nome": "Delaware",
+      "v": 36.224302885279265,
+      "rank": 24
+     },
+     {
+      "nome": "Alabama",
+      "v": 35.74205997303258,
+      "rank": 25
+     },
+     {
+      "nome": "Georgia",
+      "v": 35.113437038491206,
+      "rank": 26
+     },
+     {
+      "nome": "Maine",
+      "v": 34.430983433070104,
+      "rank": 27
+     },
+     {
+      "nome": "Arkansas",
+      "v": 33.73950189641207,
+      "rank": 28
+     },
+     {
+      "nome": "South Dakota",
+      "v": 33.48144733538623,
+      "rank": 29
+     },
+     {
+      "nome": "Louisiana",
+      "v": 33.18180063563169,
+      "rank": 30
+     },
+     {
+      "nome": "Virginia",
+      "v": 33.144748514059614,
+      "rank": 31
+     },
+     {
+      "nome": "Wisconsin",
+      "v": 32.46244609212696,
+      "rank": 32
+     },
+     {
+      "nome": "South Carolina",
+      "v": 32.28663494529232,
+      "rank": 33
+     },
+     {
+      "nome": "Alaska",
+      "v": 31.436943982166603,
+      "rank": 34
+     },
+     {
+      "nome": "North Dakota",
+      "v": 31.25469761186222,
+      "rank": 35
+     },
+     {
+      "nome": "Texas",
+      "v": 30.919504843586836,
+      "rank": 36
+     },
+     {
+      "nome": "Kentucky",
+      "v": 30.469481449143604,
+      "rank": 37
+     },
+     {
+      "nome": "West Virginia",
+      "v": 30.17810784876834,
+      "rank": 38
+     },
+     {
+      "nome": "Minnesota",
+      "v": 29.73289794302608,
+      "rank": 39
+     },
+     {
+      "nome": "Oklahoma",
+      "v": 28.896402435009023,
+      "rank": 40
+     },
+     {
+      "nome": "Indiana",
+      "v": 28.500109910519285,
+      "rank": 41
+     },
+     {
+      "nome": "Michigan",
+      "v": 27.783161706642556,
+      "rank": 42
+     },
+     {
+      "nome": "Maryland",
+      "v": 26.816648795063525,
+      "rank": 43
+     },
+     {
+      "nome": "Pennsylvania",
+      "v": 26.672574605928144,
+      "rank": 44
+     },
+     {
+      "nome": "Missouri",
+      "v": 26.20959771067426,
+      "rank": 45
+     },
+     {
+      "nome": "Kansas",
+      "v": 25.20685941550802,
+      "rank": 46
+     },
+     {
+      "nome": "Iowa",
+      "v": 25.044617180486306,
+      "rank": 47
+     },
+     {
+      "nome": "Nebraska",
+      "v": 24.984189184928958,
+      "rank": 48
+     },
+     {
+      "nome": "Illinois",
+      "v": 24.3852944920609,
+      "rank": 49
+     },
+     {
+      "nome": "Ohio",
+      "v": 24.253010087639442,
+      "rank": 50
+     }
+    ],
+    "min": 24.253010087639442,
+    "max": 55.433009959569915,
+    "leg_min": "24% of income",
+    "leg_max": "55%",
+    "nome": "Mississippi",
+    "linhas": [
+     {
+      "r": "Typical home, listed",
+      "v": "$295,935"
+     },
+     {
+      "r": "Typical household income",
+      "v": "$57,840"
+     },
+     {
+      "r": "Monthly mortgage, 10% down",
+      "v": "$1,815 \u00b7 38%"
+     }
+    ]
+   },
+   "falas": [
+    "Now look at Mississippi. Number twenty.",
+    "It has some of the cheapest homes in the country, around 296 thousand dollars.",
+    "But it also has the lowest household income in the country. So even a cheap home takes 38 percent. Cheap is relative."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "n": 3,
+    "titulo": "The breaking point"
+   },
+   "falas": [
+    "Part three. The breaking point."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "eua",
+    "estados": [
+     {
+      "nome": "New York",
+      "v": 55.433009959569915,
+      "rank": 1
+     },
+     {
+      "nome": "Montana",
+      "v": 53.376374641317526,
+      "rank": 2
+     },
+     {
+      "nome": "California",
+      "v": 53.26425160440438,
+      "rank": 3
+     },
+     {
+      "nome": "Hawaii",
+      "v": 52.074498288883134,
+      "rank": 4
+     },
+     {
+      "nome": "Idaho",
+      "v": 48.948101050056806,
+      "rank": 5
+     },
+     {
+      "nome": "Massachusetts",
+      "v": 45.61137642303702,
+      "rank": 6
+     },
+     {
+      "nome": "Oregon",
+      "v": 44.00360877015462,
+      "rank": 7
+     },
+     {
+      "nome": "New Mexico",
+      "v": 43.26628199135861,
+      "rank": 8
+     },
+     {
+      "nome": "Rhode Island",
+      "v": 43.24650155429113,
+      "rank": 9
+     },
+     {
+      "nome": "Wyoming",
+      "v": 42.51390266061143,
+      "rank": 10
+     },
+     {
+      "nome": "Tennessee",
+      "v": 41.95432953266484,
+      "rank": 11
+     },
+     {
+      "nome": "Washington",
+      "v": 41.49645130723996,
+      "rank": 12
+     },
+     {
+      "nome": "Utah",
+      "v": 41.343927004435486,
+      "rank": 13
+     },
+     {
+      "nome": "Colorado",
+      "v": 40.634440199260645,
+      "rank": 14
+     },
+     {
+      "nome": "Nevada",
+      "v": 40.265123662097125,
+      "rank": 15
+     },
+     {
+      "nome": "Arizona",
+      "v": 39.989432224763775,
+      "rank": 16
+     },
+     {
+      "nome": "Florida",
+      "v": 39.89873357761658,
+      "rank": 17
+     },
+     {
+      "nome": "New Hampshire",
+      "v": 38.733439128653494,
+      "rank": 18
+     },
+     {
+      "nome": "Vermont",
+      "v": 38.47877306794041,
+      "rank": 19
+     },
+     {
+      "nome": "Mississippi",
+      "v": 37.6579858932194,
+      "rank": 20
+     },
+     {
+      "nome": "Connecticut",
+      "v": 37.62595580281267,
+      "rank": 21
+     },
+     {
+      "nome": "North Carolina",
+      "v": 37.400352882166665,
+      "rank": 22
+     },
+     {
+      "nome": "New Jersey",
+      "v": 36.447948898970836,
+      "rank": 23
+     },
+     {
+      "nome": "Delaware",
+      "v": 36.224302885279265,
+      "rank": 24
+     },
+     {
+      "nome": "Alabama",
+      "v": 35.74205997303258,
+      "rank": 25
+     },
+     {
+      "nome": "Georgia",
+      "v": 35.113437038491206,
+      "rank": 26
+     },
+     {
+      "nome": "Maine",
+      "v": 34.430983433070104,
+      "rank": 27
+     },
+     {
+      "nome": "Arkansas",
+      "v": 33.73950189641207,
+      "rank": 28
+     },
+     {
+      "nome": "South Dakota",
+      "v": 33.48144733538623,
+      "rank": 29
+     },
+     {
+      "nome": "Louisiana",
+      "v": 33.18180063563169,
+      "rank": 30
+     },
+     {
+      "nome": "Virginia",
+      "v": 33.144748514059614,
+      "rank": 31
+     },
+     {
+      "nome": "Wisconsin",
+      "v": 32.46244609212696,
+      "rank": 32
+     },
+     {
+      "nome": "South Carolina",
+      "v": 32.28663494529232,
+      "rank": 33
+     },
+     {
+      "nome": "Alaska",
+      "v": 31.436943982166603,
+      "rank": 34
+     },
+     {
+      "nome": "North Dakota",
+      "v": 31.25469761186222,
+      "rank": 35
+     },
+     {
+      "nome": "Texas",
+      "v": 30.919504843586836,
+      "rank": 36
+     },
+     {
+      "nome": "Kentucky",
+      "v": 30.469481449143604,
+      "rank": 37
+     },
+     {
+      "nome": "West Virginia",
+      "v": 30.17810784876834,
+      "rank": 38
+     },
+     {
+      "nome": "Minnesota",
+      "v": 29.73289794302608,
+      "rank": 39
+     },
+     {
+      "nome": "Oklahoma",
+      "v": 28.896402435009023,
+      "rank": 40
+     },
+     {
+      "nome": "Indiana",
+      "v": 28.500109910519285,
+      "rank": 41
+     },
+     {
+      "nome": "Michigan",
+      "v": 27.783161706642556,
+      "rank": 42
+     },
+     {
+      "nome": "Maryland",
+      "v": 26.816648795063525,
+      "rank": 43
+     },
+     {
+      "nome": "Pennsylvania",
+      "v": 26.672574605928144,
+      "rank": 44
+     },
+     {
+      "nome": "Missouri",
+      "v": 26.20959771067426,
+      "rank": 45
+     },
+     {
+      "nome": "Kansas",
+      "v": 25.20685941550802,
+      "rank": 46
+     },
+     {
+      "nome": "Iowa",
+      "v": 25.044617180486306,
+      "rank": 47
+     },
+     {
+      "nome": "Nebraska",
+      "v": 24.984189184928958,
+      "rank": 48
+     },
+     {
+      "nome": "Illinois",
+      "v": 24.3852944920609,
+      "rank": 49
+     },
+     {
+      "nome": "Ohio",
+      "v": 24.253010087639442,
+      "rank": 50
+     }
+    ],
+    "min": 24.253010087639442,
+    "max": 55.433009959569915,
+    "leg_min": "24% of income",
+    "leg_max": "55%",
+    "faixa": [
+     11,
+     20
+    ],
+    "painel": true,
+    "inicio": 20,
+    "passo": 16,
+    "ordem": "desce",
+    "unid": "%",
+    "dec": 0
+   },
+   "falas": [
+    "From twenty to eleven, a typical home takes around forty percent of income.",
+    "Florida, Arizona, Nevada, Colorado, Utah, Washington, and Tennessee are all in here."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "estado",
+    "estados": [
+     {
+      "nome": "New York",
+      "v": 55.433009959569915,
+      "rank": 1
+     },
+     {
+      "nome": "Montana",
+      "v": 53.376374641317526,
+      "rank": 2
+     },
+     {
+      "nome": "California",
+      "v": 53.26425160440438,
+      "rank": 3
+     },
+     {
+      "nome": "Hawaii",
+      "v": 52.074498288883134,
+      "rank": 4
+     },
+     {
+      "nome": "Idaho",
+      "v": 48.948101050056806,
+      "rank": 5
+     },
+     {
+      "nome": "Massachusetts",
+      "v": 45.61137642303702,
+      "rank": 6
+     },
+     {
+      "nome": "Oregon",
+      "v": 44.00360877015462,
+      "rank": 7
+     },
+     {
+      "nome": "New Mexico",
+      "v": 43.26628199135861,
+      "rank": 8
+     },
+     {
+      "nome": "Rhode Island",
+      "v": 43.24650155429113,
+      "rank": 9
+     },
+     {
+      "nome": "Wyoming",
+      "v": 42.51390266061143,
+      "rank": 10
+     },
+     {
+      "nome": "Tennessee",
+      "v": 41.95432953266484,
+      "rank": 11
+     },
+     {
+      "nome": "Washington",
+      "v": 41.49645130723996,
+      "rank": 12
+     },
+     {
+      "nome": "Utah",
+      "v": 41.343927004435486,
+      "rank": 13
+     },
+     {
+      "nome": "Colorado",
+      "v": 40.634440199260645,
+      "rank": 14
+     },
+     {
+      "nome": "Nevada",
+      "v": 40.265123662097125,
+      "rank": 15
+     },
+     {
+      "nome": "Arizona",
+      "v": 39.989432224763775,
+      "rank": 16
+     },
+     {
+      "nome": "Florida",
+      "v": 39.89873357761658,
+      "rank": 17
+     },
+     {
+      "nome": "New Hampshire",
+      "v": 38.733439128653494,
+      "rank": 18
+     },
+     {
+      "nome": "Vermont",
+      "v": 38.47877306794041,
+      "rank": 19
+     },
+     {
+      "nome": "Mississippi",
+      "v": 37.6579858932194,
+      "rank": 20
+     },
+     {
+      "nome": "Connecticut",
+      "v": 37.62595580281267,
+      "rank": 21
+     },
+     {
+      "nome": "North Carolina",
+      "v": 37.400352882166665,
+      "rank": 22
+     },
+     {
+      "nome": "New Jersey",
+      "v": 36.447948898970836,
+      "rank": 23
+     },
+     {
+      "nome": "Delaware",
+      "v": 36.224302885279265,
+      "rank": 24
+     },
+     {
+      "nome": "Alabama",
+      "v": 35.74205997303258,
+      "rank": 25
+     },
+     {
+      "nome": "Georgia",
+      "v": 35.113437038491206,
+      "rank": 26
+     },
+     {
+      "nome": "Maine",
+      "v": 34.430983433070104,
+      "rank": 27
+     },
+     {
+      "nome": "Arkansas",
+      "v": 33.73950189641207,
+      "rank": 28
+     },
+     {
+      "nome": "South Dakota",
+      "v": 33.48144733538623,
+      "rank": 29
+     },
+     {
+      "nome": "Louisiana",
+      "v": 33.18180063563169,
+      "rank": 30
+     },
+     {
+      "nome": "Virginia",
+      "v": 33.144748514059614,
+      "rank": 31
+     },
+     {
+      "nome": "Wisconsin",
+      "v": 32.46244609212696,
+      "rank": 32
+     },
+     {
+      "nome": "South Carolina",
+      "v": 32.28663494529232,
+      "rank": 33
+     },
+     {
+      "nome": "Alaska",
+      "v": 31.436943982166603,
+      "rank": 34
+     },
+     {
+      "nome": "North Dakota",
+      "v": 31.25469761186222,
+      "rank": 35
+     },
+     {
+      "nome": "Texas",
+      "v": 30.919504843586836,
+      "rank": 36
+     },
+     {
+      "nome": "Kentucky",
+      "v": 30.469481449143604,
+      "rank": 37
+     },
+     {
+      "nome": "West Virginia",
+      "v": 30.17810784876834,
+      "rank": 38
+     },
+     {
+      "nome": "Minnesota",
+      "v": 29.73289794302608,
+      "rank": 39
+     },
+     {
+      "nome": "Oklahoma",
+      "v": 28.896402435009023,
+      "rank": 40
+     },
+     {
+      "nome": "Indiana",
+      "v": 28.500109910519285,
+      "rank": 41
+     },
+     {
+      "nome": "Michigan",
+      "v": 27.783161706642556,
+      "rank": 42
+     },
+     {
+      "nome": "Maryland",
+      "v": 26.816648795063525,
+      "rank": 43
+     },
+     {
+      "nome": "Pennsylvania",
+      "v": 26.672574605928144,
+      "rank": 44
+     },
+     {
+      "nome": "Missouri",
+      "v": 26.20959771067426,
+      "rank": 45
+     },
+     {
+      "nome": "Kansas",
+      "v": 25.20685941550802,
+      "rank": 46
+     },
+     {
+      "nome": "Iowa",
+      "v": 25.044617180486306,
+      "rank": 47
+     },
+     {
+      "nome": "Nebraska",
+      "v": 24.984189184928958,
+      "rank": 48
+     },
+     {
+      "nome": "Illinois",
+      "v": 24.3852944920609,
+      "rank": 49
+     },
+     {
+      "nome": "Ohio",
+      "v": 24.253010087639442,
+      "rank": 50
+     }
+    ],
+    "min": 24.253010087639442,
+    "max": 55.433009959569915,
+    "leg_min": "24% of income",
+    "leg_max": "55%",
+    "nome": "Florida",
+    "linhas": [
+     {
+      "r": "Typical home, listed",
+      "v": "$422,396"
+     },
+     {
+      "r": "Typical household income",
+      "v": "$77,920"
+     },
+     {
+      "r": "Monthly mortgage, 10% down",
+      "v": "$2,591 \u00b7 40%"
+     }
+    ]
+   },
+   "falas": [
+    "Florida is number seventeen.",
+    "For years, Florida was where people went to make their money go further. No state income tax, and homes cheaper than the Northeast.",
+    "Today a typical listed home there costs about 422 thousand dollars, and the mortgage takes 40 percent of income. Before insurance, which in Florida is a story of its own.",
+    "And now, the top ten."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "eua",
+    "estados": [
+     {
+      "nome": "New York",
+      "v": 55.433009959569915,
+      "rank": 1
+     },
+     {
+      "nome": "Montana",
+      "v": 53.376374641317526,
+      "rank": 2
+     },
+     {
+      "nome": "California",
+      "v": 53.26425160440438,
+      "rank": 3
+     },
+     {
+      "nome": "Hawaii",
+      "v": 52.074498288883134,
+      "rank": 4
+     },
+     {
+      "nome": "Idaho",
+      "v": 48.948101050056806,
+      "rank": 5
+     },
+     {
+      "nome": "Massachusetts",
+      "v": 45.61137642303702,
+      "rank": 6
+     },
+     {
+      "nome": "Oregon",
+      "v": 44.00360877015462,
+      "rank": 7
+     },
+     {
+      "nome": "New Mexico",
+      "v": 43.26628199135861,
+      "rank": 8
+     },
+     {
+      "nome": "Rhode Island",
+      "v": 43.24650155429113,
+      "rank": 9
+     },
+     {
+      "nome": "Wyoming",
+      "v": 42.51390266061143,
+      "rank": 10
+     },
+     {
+      "nome": "Tennessee",
+      "v": 41.95432953266484,
+      "rank": 11
+     },
+     {
+      "nome": "Washington",
+      "v": 41.49645130723996,
+      "rank": 12
+     },
+     {
+      "nome": "Utah",
+      "v": 41.343927004435486,
+      "rank": 13
+     },
+     {
+      "nome": "Colorado",
+      "v": 40.634440199260645,
+      "rank": 14
+     },
+     {
+      "nome": "Nevada",
+      "v": 40.265123662097125,
+      "rank": 15
+     },
+     {
+      "nome": "Arizona",
+      "v": 39.989432224763775,
+      "rank": 16
+     },
+     {
+      "nome": "Florida",
+      "v": 39.89873357761658,
+      "rank": 17
+     },
+     {
+      "nome": "New Hampshire",
+      "v": 38.733439128653494,
+      "rank": 18
+     },
+     {
+      "nome": "Vermont",
+      "v": 38.47877306794041,
+      "rank": 19
+     },
+     {
+      "nome": "Mississippi",
+      "v": 37.6579858932194,
+      "rank": 20
+     },
+     {
+      "nome": "Connecticut",
+      "v": 37.62595580281267,
+      "rank": 21
+     },
+     {
+      "nome": "North Carolina",
+      "v": 37.400352882166665,
+      "rank": 22
+     },
+     {
+      "nome": "New Jersey",
+      "v": 36.447948898970836,
+      "rank": 23
+     },
+     {
+      "nome": "Delaware",
+      "v": 36.224302885279265,
+      "rank": 24
+     },
+     {
+      "nome": "Alabama",
+      "v": 35.74205997303258,
+      "rank": 25
+     },
+     {
+      "nome": "Georgia",
+      "v": 35.113437038491206,
+      "rank": 26
+     },
+     {
+      "nome": "Maine",
+      "v": 34.430983433070104,
+      "rank": 27
+     },
+     {
+      "nome": "Arkansas",
+      "v": 33.73950189641207,
+      "rank": 28
+     },
+     {
+      "nome": "South Dakota",
+      "v": 33.48144733538623,
+      "rank": 29
+     },
+     {
+      "nome": "Louisiana",
+      "v": 33.18180063563169,
+      "rank": 30
+     },
+     {
+      "nome": "Virginia",
+      "v": 33.144748514059614,
+      "rank": 31
+     },
+     {
+      "nome": "Wisconsin",
+      "v": 32.46244609212696,
+      "rank": 32
+     },
+     {
+      "nome": "South Carolina",
+      "v": 32.28663494529232,
+      "rank": 33
+     },
+     {
+      "nome": "Alaska",
+      "v": 31.436943982166603,
+      "rank": 34
+     },
+     {
+      "nome": "North Dakota",
+      "v": 31.25469761186222,
+      "rank": 35
+     },
+     {
+      "nome": "Texas",
+      "v": 30.919504843586836,
+      "rank": 36
+     },
+     {
+      "nome": "Kentucky",
+      "v": 30.469481449143604,
+      "rank": 37
+     },
+     {
+      "nome": "West Virginia",
+      "v": 30.17810784876834,
+      "rank": 38
+     },
+     {
+      "nome": "Minnesota",
+      "v": 29.73289794302608,
+      "rank": 39
+     },
+     {
+      "nome": "Oklahoma",
+      "v": 28.896402435009023,
+      "rank": 40
+     },
+     {
+      "nome": "Indiana",
+      "v": 28.500109910519285,
+      "rank": 41
+     },
+     {
+      "nome": "Michigan",
+      "v": 27.783161706642556,
+      "rank": 42
+     },
+     {
+      "nome": "Maryland",
+      "v": 26.816648795063525,
+      "rank": 43
+     },
+     {
+      "nome": "Pennsylvania",
+      "v": 26.672574605928144,
+      "rank": 44
+     },
+     {
+      "nome": "Missouri",
+      "v": 26.20959771067426,
+      "rank": 45
+     },
+     {
+      "nome": "Kansas",
+      "v": 25.20685941550802,
+      "rank": 46
+     },
+     {
+      "nome": "Iowa",
+      "v": 25.044617180486306,
+      "rank": 47
+     },
+     {
+      "nome": "Nebraska",
+      "v": 24.984189184928958,
+      "rank": 48
+     },
+     {
+      "nome": "Illinois",
+      "v": 24.3852944920609,
+      "rank": 49
+     },
+     {
+      "nome": "Ohio",
+      "v": 24.253010087639442,
+      "rank": 50
+     }
+    ],
+    "min": 24.253010087639442,
+    "max": 55.433009959569915,
+    "leg_min": "24% of income",
+    "leg_max": "55%",
+    "faixa": [
+     1,
+     10
+    ],
+    "painel": true,
+    "ordem": "desce",
+    "unid": "%",
+    "dec": 0,
+    "quando_rank": {
+     "10": [
+      0,
+      20
+     ],
+     "9": [
+      0,
+      140
+     ],
+     "8": [
+      1,
+      10
+     ],
+     "7": [
+      1,
+      120
+     ],
+     "6": [
+      2,
+      10
+     ],
+     "5": [
+      3,
+      10
+     ],
+     "4": [
+      4,
+      10
+     ],
+     "3": [
+      4,
+      110
+     ],
+     "2": [
+      4,
+      10000
+     ],
+     "1": [
+      4,
+      10000
+     ]
+    }
+   },
+   "falas": [
+    "Number ten, Wyoming. 43 percent. Number nine, Rhode Island.",
+    "Number eight, New Mexico: homes around 397 thousand dollars, but one of the lowest incomes in the country. Number seven, Oregon.",
+    "Number six, Massachusetts. Homes cost 734 thousand dollars, but Massachusetts also has the highest household income in America. 46 percent.",
+    "Number five, Idaho. 49 percent. Almost half of every paycheck.",
+    "Number four, Hawaii, at 52. And number three, California, at 53."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "estado",
+    "estados": [
+     {
+      "nome": "New York",
+      "v": 55.433009959569915,
+      "rank": 1
+     },
+     {
+      "nome": "Montana",
+      "v": 53.376374641317526,
+      "rank": 2
+     },
+     {
+      "nome": "California",
+      "v": 53.26425160440438,
+      "rank": 3
+     },
+     {
+      "nome": "Hawaii",
+      "v": 52.074498288883134,
+      "rank": 4
+     },
+     {
+      "nome": "Idaho",
+      "v": 48.948101050056806,
+      "rank": 5
+     },
+     {
+      "nome": "Massachusetts",
+      "v": 45.61137642303702,
+      "rank": 6
+     },
+     {
+      "nome": "Oregon",
+      "v": 44.00360877015462,
+      "rank": 7
+     },
+     {
+      "nome": "New Mexico",
+      "v": 43.26628199135861,
+      "rank": 8
+     },
+     {
+      "nome": "Rhode Island",
+      "v": 43.24650155429113,
+      "rank": 9
+     },
+     {
+      "nome": "Wyoming",
+      "v": 42.51390266061143,
+      "rank": 10
+     },
+     {
+      "nome": "Tennessee",
+      "v": 41.95432953266484,
+      "rank": 11
+     },
+     {
+      "nome": "Washington",
+      "v": 41.49645130723996,
+      "rank": 12
+     },
+     {
+      "nome": "Utah",
+      "v": 41.343927004435486,
+      "rank": 13
+     },
+     {
+      "nome": "Colorado",
+      "v": 40.634440199260645,
+      "rank": 14
+     },
+     {
+      "nome": "Nevada",
+      "v": 40.265123662097125,
+      "rank": 15
+     },
+     {
+      "nome": "Arizona",
+      "v": 39.989432224763775,
+      "rank": 16
+     },
+     {
+      "nome": "Florida",
+      "v": 39.89873357761658,
+      "rank": 17
+     },
+     {
+      "nome": "New Hampshire",
+      "v": 38.733439128653494,
+      "rank": 18
+     },
+     {
+      "nome": "Vermont",
+      "v": 38.47877306794041,
+      "rank": 19
+     },
+     {
+      "nome": "Mississippi",
+      "v": 37.6579858932194,
+      "rank": 20
+     },
+     {
+      "nome": "Connecticut",
+      "v": 37.62595580281267,
+      "rank": 21
+     },
+     {
+      "nome": "North Carolina",
+      "v": 37.400352882166665,
+      "rank": 22
+     },
+     {
+      "nome": "New Jersey",
+      "v": 36.447948898970836,
+      "rank": 23
+     },
+     {
+      "nome": "Delaware",
+      "v": 36.224302885279265,
+      "rank": 24
+     },
+     {
+      "nome": "Alabama",
+      "v": 35.74205997303258,
+      "rank": 25
+     },
+     {
+      "nome": "Georgia",
+      "v": 35.113437038491206,
+      "rank": 26
+     },
+     {
+      "nome": "Maine",
+      "v": 34.430983433070104,
+      "rank": 27
+     },
+     {
+      "nome": "Arkansas",
+      "v": 33.73950189641207,
+      "rank": 28
+     },
+     {
+      "nome": "South Dakota",
+      "v": 33.48144733538623,
+      "rank": 29
+     },
+     {
+      "nome": "Louisiana",
+      "v": 33.18180063563169,
+      "rank": 30
+     },
+     {
+      "nome": "Virginia",
+      "v": 33.144748514059614,
+      "rank": 31
+     },
+     {
+      "nome": "Wisconsin",
+      "v": 32.46244609212696,
+      "rank": 32
+     },
+     {
+      "nome": "South Carolina",
+      "v": 32.28663494529232,
+      "rank": 33
+     },
+     {
+      "nome": "Alaska",
+      "v": 31.436943982166603,
+      "rank": 34
+     },
+     {
+      "nome": "North Dakota",
+      "v": 31.25469761186222,
+      "rank": 35
+     },
+     {
+      "nome": "Texas",
+      "v": 30.919504843586836,
+      "rank": 36
+     },
+     {
+      "nome": "Kentucky",
+      "v": 30.469481449143604,
+      "rank": 37
+     },
+     {
+      "nome": "West Virginia",
+      "v": 30.17810784876834,
+      "rank": 38
+     },
+     {
+      "nome": "Minnesota",
+      "v": 29.73289794302608,
+      "rank": 39
+     },
+     {
+      "nome": "Oklahoma",
+      "v": 28.896402435009023,
+      "rank": 40
+     },
+     {
+      "nome": "Indiana",
+      "v": 28.500109910519285,
+      "rank": 41
+     },
+     {
+      "nome": "Michigan",
+      "v": 27.783161706642556,
+      "rank": 42
+     },
+     {
+      "nome": "Maryland",
+      "v": 26.816648795063525,
+      "rank": 43
+     },
+     {
+      "nome": "Pennsylvania",
+      "v": 26.672574605928144,
+      "rank": 44
+     },
+     {
+      "nome": "Missouri",
+      "v": 26.20959771067426,
+      "rank": 45
+     },
+     {
+      "nome": "Kansas",
+      "v": 25.20685941550802,
+      "rank": 46
+     },
+     {
+      "nome": "Iowa",
+      "v": 25.044617180486306,
+      "rank": 47
+     },
+     {
+      "nome": "Nebraska",
+      "v": 24.984189184928958,
+      "rank": 48
+     },
+     {
+      "nome": "Illinois",
+      "v": 24.3852944920609,
+      "rank": 49
+     },
+     {
+      "nome": "Ohio",
+      "v": 24.253010087639442,
+      "rank": 50
+     }
+    ],
+    "min": 24.253010087639442,
+    "max": 55.433009959569915,
+    "leg_min": "24% of income",
+    "leg_max": "55%",
+    "nome": "Montana",
+    "linhas": [
+     {
+      "r": "Typical home, listed",
+      "v": "$629,260"
+     },
+     {
+      "r": "Typical household income",
+      "v": "$86,770"
+     },
+     {
+      "r": "Monthly mortgage, 10% down",
+      "v": "$3,860 \u00b7 53%"
+     }
+    ]
+   },
+   "falas": [
+    "Number two. Montana.",
+    "Montana has about one point one million people, and almost twice as many cattle.",
+    "But a typical home listed in Montana now costs about 629 thousand dollars. And the typical household earns around 87 thousand.",
+    "The mortgage would take 53 percent of income. A hair above California."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "estado",
+    "estados": [
+     {
+      "nome": "New York",
+      "v": 55.433009959569915,
+      "rank": 1
+     },
+     {
+      "nome": "Montana",
+      "v": 53.376374641317526,
+      "rank": 2
+     },
+     {
+      "nome": "California",
+      "v": 53.26425160440438,
+      "rank": 3
+     },
+     {
+      "nome": "Hawaii",
+      "v": 52.074498288883134,
+      "rank": 4
+     },
+     {
+      "nome": "Idaho",
+      "v": 48.948101050056806,
+      "rank": 5
+     },
+     {
+      "nome": "Massachusetts",
+      "v": 45.61137642303702,
+      "rank": 6
+     },
+     {
+      "nome": "Oregon",
+      "v": 44.00360877015462,
+      "rank": 7
+     },
+     {
+      "nome": "New Mexico",
+      "v": 43.26628199135861,
+      "rank": 8
+     },
+     {
+      "nome": "Rhode Island",
+      "v": 43.24650155429113,
+      "rank": 9
+     },
+     {
+      "nome": "Wyoming",
+      "v": 42.51390266061143,
+      "rank": 10
+     },
+     {
+      "nome": "Tennessee",
+      "v": 41.95432953266484,
+      "rank": 11
+     },
+     {
+      "nome": "Washington",
+      "v": 41.49645130723996,
+      "rank": 12
+     },
+     {
+      "nome": "Utah",
+      "v": 41.343927004435486,
+      "rank": 13
+     },
+     {
+      "nome": "Colorado",
+      "v": 40.634440199260645,
+      "rank": 14
+     },
+     {
+      "nome": "Nevada",
+      "v": 40.265123662097125,
+      "rank": 15
+     },
+     {
+      "nome": "Arizona",
+      "v": 39.989432224763775,
+      "rank": 16
+     },
+     {
+      "nome": "Florida",
+      "v": 39.89873357761658,
+      "rank": 17
+     },
+     {
+      "nome": "New Hampshire",
+      "v": 38.733439128653494,
+      "rank": 18
+     },
+     {
+      "nome": "Vermont",
+      "v": 38.47877306794041,
+      "rank": 19
+     },
+     {
+      "nome": "Mississippi",
+      "v": 37.6579858932194,
+      "rank": 20
+     },
+     {
+      "nome": "Connecticut",
+      "v": 37.62595580281267,
+      "rank": 21
+     },
+     {
+      "nome": "North Carolina",
+      "v": 37.400352882166665,
+      "rank": 22
+     },
+     {
+      "nome": "New Jersey",
+      "v": 36.447948898970836,
+      "rank": 23
+     },
+     {
+      "nome": "Delaware",
+      "v": 36.224302885279265,
+      "rank": 24
+     },
+     {
+      "nome": "Alabama",
+      "v": 35.74205997303258,
+      "rank": 25
+     },
+     {
+      "nome": "Georgia",
+      "v": 35.113437038491206,
+      "rank": 26
+     },
+     {
+      "nome": "Maine",
+      "v": 34.430983433070104,
+      "rank": 27
+     },
+     {
+      "nome": "Arkansas",
+      "v": 33.73950189641207,
+      "rank": 28
+     },
+     {
+      "nome": "South Dakota",
+      "v": 33.48144733538623,
+      "rank": 29
+     },
+     {
+      "nome": "Louisiana",
+      "v": 33.18180063563169,
+      "rank": 30
+     },
+     {
+      "nome": "Virginia",
+      "v": 33.144748514059614,
+      "rank": 31
+     },
+     {
+      "nome": "Wisconsin",
+      "v": 32.46244609212696,
+      "rank": 32
+     },
+     {
+      "nome": "South Carolina",
+      "v": 32.28663494529232,
+      "rank": 33
+     },
+     {
+      "nome": "Alaska",
+      "v": 31.436943982166603,
+      "rank": 34
+     },
+     {
+      "nome": "North Dakota",
+      "v": 31.25469761186222,
+      "rank": 35
+     },
+     {
+      "nome": "Texas",
+      "v": 30.919504843586836,
+      "rank": 36
+     },
+     {
+      "nome": "Kentucky",
+      "v": 30.469481449143604,
+      "rank": 37
+     },
+     {
+      "nome": "West Virginia",
+      "v": 30.17810784876834,
+      "rank": 38
+     },
+     {
+      "nome": "Minnesota",
+      "v": 29.73289794302608,
+      "rank": 39
+     },
+     {
+      "nome": "Oklahoma",
+      "v": 28.896402435009023,
+      "rank": 40
+     },
+     {
+      "nome": "Indiana",
+      "v": 28.500109910519285,
+      "rank": 41
+     },
+     {
+      "nome": "Michigan",
+      "v": 27.783161706642556,
+      "rank": 42
+     },
+     {
+      "nome": "Maryland",
+      "v": 26.816648795063525,
+      "rank": 43
+     },
+     {
+      "nome": "Pennsylvania",
+      "v": 26.672574605928144,
+      "rank": 44
+     },
+     {
+      "nome": "Missouri",
+      "v": 26.20959771067426,
+      "rank": 45
+     },
+     {
+      "nome": "Kansas",
+      "v": 25.20685941550802,
+      "rank": 46
+     },
+     {
+      "nome": "Iowa",
+      "v": 25.044617180486306,
+      "rank": 47
+     },
+     {
+      "nome": "Nebraska",
+      "v": 24.984189184928958,
+      "rank": 48
+     },
+     {
+      "nome": "Illinois",
+      "v": 24.3852944920609,
+      "rank": 49
+     },
+     {
+      "nome": "Ohio",
+      "v": 24.253010087639442,
+      "rank": 50
+     }
+    ],
+    "min": 24.253010087639442,
+    "max": 55.433009959569915,
+    "leg_min": "24% of income",
+    "leg_max": "55%",
+    "nome": "New York",
+    "linhas": [
+     {
+      "r": "Typical home, listed",
+      "v": "$654,485"
+     },
+     {
+      "r": "Typical household income",
+      "v": "$86,900"
+     },
+     {
+      "r": "Monthly mortgage, 10% down",
+      "v": "$4,014 \u00b7 55%"
+     }
+    ]
+   },
+   "falas": [
+    "And number one. The hardest state in America to afford a typical home.",
+    "New York.",
+    "A typical listed home: about 654 thousand dollars. A typical household income: about 87 thousand.",
+    "At today's rate, the mortgage alone is about 4,014 dollars a month. 55 percent of income. Twice what the rule allows."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "numero",
+    "valor": 172000.0,
+    "dec": 0,
+    "prefixo": "$",
+    "sufixo": "",
+    "rotulo": "a year, to pass the 28% rule in New York",
+    "cor": "ruim",
+    "sem_icones": true
+   },
+   "falas": [
+    "So how much would you need to earn to pass the twenty eight percent rule?",
+    "In New York, about 172 thousand dollars a year. Twice what the typical household makes."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "numero",
+    "valor": 74000.0,
+    "dec": 0,
+    "prefixo": "$",
+    "sufixo": "",
+    "rotulo": "a year, to pass the 28% rule in Ohio",
+    "cor": "bom",
+    "sem_icones": true
+   },
+   "falas": [
+    "In Ohio? About 74 thousand. Less than the typical Ohio household already earns."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "n": 4,
+    "titulo": "What changed"
+   },
+   "falas": [
+    "Part four. What changed."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "dispersao",
+    "titulo": "Then vs. now: share of income for a typical home",
+    "pontos": [
+     {
+      "nome": "New York",
+      "ab": "NY",
+      "x": 26.73079549235451,
+      "y": 55.433009959569915,
+      "v": 55.433009959569915
+     },
+     {
+      "nome": "Montana",
+      "ab": "MT",
+      "x": 23.952067731252285,
+      "y": 53.376374641317526,
+      "v": 53.376374641317526
+     },
+     {
+      "nome": "California",
+      "ab": "CA",
+      "x": 30.279100896055063,
+      "y": 53.26425160440438,
+      "v": 53.26425160440438
+     },
+     {
+      "nome": "Hawaii",
+      "ab": "HI",
+      "x": 32.2920626648996,
+      "y": 52.074498288883134,
+      "v": 52.074498288883134
+     },
+     {
+      "nome": "Idaho",
+      "ab": "ID",
+      "x": 21.958354423832866,
+      "y": 48.948101050056806,
+      "v": 48.948101050056806
+     },
+     {
+      "nome": "Massachusetts",
+      "ab": "MA",
+      "x": 24.25954610005559,
+      "y": 45.61137642303702,
+      "v": 45.61137642303702
+     },
+     {
+      "nome": "Oregon",
+      "ab": "OR",
+      "x": 23.443543845304674,
+      "y": 44.00360877015462,
+      "v": 44.00360877015462
+     },
+     {
+      "nome": "New Mexico",
+      "ab": "NM",
+      "x": 19.60846877532103,
+      "y": 43.26628199135861,
+      "v": 43.26628199135861
+     },
+     {
+      "nome": "Rhode Island",
+      "ab": "RI",
+      "x": 21.569905667880114,
+      "y": 43.24650155429113,
+      "v": 43.24650155429113
+     },
+     {
+      "nome": "Wyoming",
+      "ab": "WY",
+      "x": 16.308258681125203,
+      "y": 42.51390266061143,
+      "v": 42.51390266061143
+     },
+     {
+      "nome": "Tennessee",
+      "ab": "TN",
+      "x": 20.868846888531394,
+      "y": 41.95432953266484,
+      "v": 41.95432953266484
+     },
+     {
+      "nome": "Washington",
+      "ab": "WA",
+      "x": 23.190555045788827,
+      "y": 41.49645130723996,
+      "v": 41.49645130723996
+     },
+     {
+      "nome": "Utah",
+      "ab": "UT",
+      "x": 19.7323661218323,
+      "y": 41.343927004435486,
+      "v": 41.343927004435486
+     },
+     {
+      "nome": "Colorado",
+      "ab": "CO",
+      "x": 26.75117374848937,
+      "y": 40.634440199260645,
+      "v": 40.634440199260645
+     },
+     {
+      "nome": "Nevada",
+      "ab": "NV",
+      "x": 19.378184061938576,
+      "y": 40.265123662097125,
+      "v": 40.265123662097125
+     },
+     {
+      "nome": "Arizona",
+      "ab": "AZ",
+      "x": 20.227885357280613,
+      "y": 39.989432224763775,
+      "v": 39.989432224763775
+     },
+     {
+      "nome": "Florida",
+      "ab": "FL",
+      "x": 23.18256747267813,
+      "y": 39.89873357761658,
+      "v": 39.89873357761658
+     },
+     {
+      "nome": "New Hampshire",
+      "ab": "NH",
+      "x": 15.851936166448121,
+      "y": 38.733439128653494,
+      "v": 38.733439128653494
+     },
+     {
+      "nome": "Vermont",
+      "ab": "VT",
+      "x": 15.778284243001533,
+      "y": 38.47877306794041,
+      "v": 38.47877306794041
+     },
+     {
+      "nome": "Mississippi",
+      "ab": "MS",
+      "x": 18.232823799689275,
+      "y": 37.6579858932194,
+      "v": 37.6579858932194
+     },
+     {
+      "nome": "Connecticut",
+      "ab": "CT",
+      "x": 17.715874665681124,
+      "y": 37.62595580281267,
+      "v": 37.62595580281267
+     },
+     {
+      "nome": "North Carolina",
+      "ab": "NC",
+      "x": 20.9672707860454,
+      "y": 37.400352882166665,
+      "v": 37.400352882166665
+     },
+     {
+      "nome": "New Jersey",
+      "ab": "NJ",
+      "x": 17.400326477844686,
+      "y": 36.447948898970836,
+      "v": 36.447948898970836
+     },
+     {
+      "nome": "Delaware",
+      "ab": "DE",
+      "x": 17.618911355675618,
+      "y": 36.224302885279265,
+      "v": 36.224302885279265
+     },
+     {
+      "nome": "Alabama",
+      "ab": "AL",
+      "x": 16.860449412089253,
+      "y": 35.74205997303258,
+      "v": 35.74205997303258
+     },
+     {
+      "nome": "Georgia",
+      "ab": "GA",
+      "x": 20.45652359833713,
+      "y": 35.113437038491206,
+      "v": 35.113437038491206
+     },
+     {
+      "nome": "Maine",
+      "ab": "ME",
+      "x": 15.629675002356658,
+      "y": 34.430983433070104,
+      "v": 34.430983433070104
+     },
+     {
+      "nome": "Arkansas",
+      "ab": "AR",
+      "x": 14.297508054619762,
+      "y": 33.73950189641207,
+      "v": 33.73950189641207
+     },
+     {
+      "nome": "South Dakota",
+      "ab": "SD",
+      "x": 15.202268564331217,
+      "y": 33.48144733538623,
+      "v": 33.48144733538623
+     },
+     {
+      "nome": "Louisiana",
+      "ab": "LA",
+      "x": 18.132508103911128,
+      "y": 33.18180063563169,
+      "v": 33.18180063563169
+     },
+     {
+      "nome": "Virginia",
+      "ab": "VA",
+      "x": 16.173815454948485,
+      "y": 33.144748514059614,
+      "v": 33.144748514059614
+     },
+     {
+      "nome": "Wisconsin",
+      "ab": "WI",
+      "x": 14.97202798999282,
+      "y": 32.46244609212696,
+      "v": 32.46244609212696
+     },
+     {
+      "nome": "South Carolina",
+      "ab": "SC",
+      "x": 18.747785897894822,
+      "y": 32.28663494529232,
+      "v": 32.28663494529232
+     },
+     {
+      "nome": "Alaska",
+      "ab": "AK",
+      "x": 15.314856777215047,
+      "y": 31.436943982166603,
+      "v": 31.436943982166603
+     },
+     {
+      "nome": "North Dakota",
+      "ab": "ND",
+      "x": 13.723074344831565,
+      "y": 31.25469761186222,
+      "v": 31.25469761186222
+     },
+     {
+      "nome": "Texas",
+      "ab": "TX",
+      "x": 17.889208206546385,
+      "y": 30.919504843586836,
+      "v": 30.919504843586836
+     },
+     {
+      "nome": "Kentucky",
+      "ab": "KY",
+      "x": 15.474370135961014,
+      "y": 30.469481449143604,
+      "v": 30.469481449143604
+     },
+     {
+      "nome": "West Virginia",
+      "ab": "WV",
+      "x": 13.004884243064835,
+      "y": 30.17810784876834,
+      "v": 30.17810784876834
+     },
+     {
+      "nome": "Minnesota",
+      "ab": "MN",
+      "x": 14.737866133704625,
+      "y": 29.73289794302608,
+      "v": 29.73289794302608
+     },
+     {
+      "nome": "Oklahoma",
+      "ab": "OK",
+      "x": 14.254385982617787,
+      "y": 28.896402435009023,
+      "v": 28.896402435009023
+     },
+     {
+      "nome": "Indiana",
+      "ab": "IN",
+      "x": 12.548639931701382,
+      "y": 28.500109910519285,
+      "v": 28.500109910519285
+     },
+     {
+      "nome": "Michigan",
+      "ab": "MI",
+      "x": 13.882656343065907,
+      "y": 27.783161706642556,
+      "v": 27.783161706642556
+     },
+     {
+      "nome": "Maryland",
+      "ab": "MD",
+      "x": 14.578315819022658,
+      "y": 26.816648795063525,
+      "v": 26.816648795063525
+     },
+     {
+      "nome": "Pennsylvania",
+      "ab": "PA",
+      "x": 12.780285682408163,
+      "y": 26.672574605928144,
+      "v": 26.672574605928144
+     },
+     {
+      "nome": "Missouri",
+      "ab": "MO",
+      "x": 13.880851617243826,
+      "y": 26.20959771067426,
+      "v": 26.20959771067426
+     },
+     {
+      "nome": "Kansas",
+      "ab": "KS",
+      "x": 10.746323297759742,
+      "y": 25.20685941550802,
+      "v": 25.20685941550802
+     },
+     {
+      "nome": "Iowa",
+      "ab": "IA",
+      "x": 12.819650024873614,
+      "y": 25.044617180486306,
+      "v": 25.044617180486306
+     },
+     {
+      "nome": "Nebraska",
+      "ab": "NE",
+      "x": 13.341290714286771,
+      "y": 24.984189184928958,
+      "v": 24.984189184928958
+     },
+     {
+      "nome": "Illinois",
+      "ab": "IL",
+      "x": 13.951889722345085,
+      "y": 24.3852944920609,
+      "v": 24.3852944920609
+     },
+     {
+      "nome": "Ohio",
+      "ab": "OH",
+      "x": 11.712255342058592,
+      "y": 24.253010087639442,
+      "v": 24.253010087639442
+     }
+    ],
+    "xr": [
+     12,
+     35
+    ],
+    "yr": [
+     20,
+     58
+    ],
+    "xt": [
+     15,
+     20,
+     25,
+     30,
+     35
+    ],
+    "yt": [
+     20,
+     28,
+     35,
+     45,
+     55
+    ],
+    "xl": "SHARE OF INCOME IN 2019 (RATE 3.9%)",
+    "yl": "TODAY",
+    "xsuf": "%",
+    "ysuf": "%",
+    "perigo": [
+     35,
+     58
+    ],
+    "perigo_rotulo": "",
+    "foco": [
+     "NY",
+     "MT",
+     "CA",
+     "HI",
+     "ID",
+     "WY",
+     "NM",
+     "OH",
+     "IL"
+    ],
+    "min": 24.253010087639442,
+    "max": 55.433009959569915
+   },
+   "falas": [
+    "Here's every state, then and now. Across the bottom, 2019. Up the side, today.",
+    "In 2019, only California and Hawaii were over the line. Everyone else was fine.",
+    "Since then, Wyoming went from 16 percent to 43. Montana from 24 to 53. Idaho from 22 to 49.",
+    "The states that got hit hardest weren't the expensive coasts. Many of them were the cheap, quiet states people moved to when they could work from anywhere. Prices went up there, incomes didn't keep up, and then rates doubled."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "barras",
+    "titulo": "States that pass the 28% rule, by mortgage rate",
+    "unid": " states",
+    "dec": 0,
+    "max_v": 52,
+    "itens": [
+     {
+      "r": "7.24% \u00b7 today",
+      "v": 9,
+      "cor": "#e5484d"
+     },
+     {
+      "r": "6%",
+      "v": 17,
+      "cor": "#e9874a"
+     },
+     {
+      "r": "5%",
+      "v": 25,
+      "cor": "#e9c46a"
+     },
+     {
+      "r": "4%",
+      "v": 34,
+      "cor": "#9cc46a"
+     },
+     {
+      "r": "3%",
+      "v": 44,
+      "cor": "#7bc47f"
+     }
+    ]
+   },
+   "falas": [
+    "So what would fix it? We reran every state at lower rates.",
+    "At today's rate, 9 states pass. At six percent, 17. At five, 25.",
+    "At four percent, 34. And at three percent, where rates were in 2021, 44 states would pass again.",
+    "But even at zero percent interest, a typical New York home would still take 23 percent of income. In some places, the rate isn't the problem. The price is."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "texto",
+    "linhas": [
+     "One caveat",
+     "Listing prices, not sale prices",
+     "Taxes and insurance not included"
+    ]
+   },
+   "falas": [
+    "One honest caveat. We used listing prices, not final sale prices, and listings in places like Montana include a lot of high end homes. And we left out taxes and insurance, which would push every number higher. The ranking at the top holds either way."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "eua",
+    "estados": [
+     {
+      "nome": "New York",
+      "v": 55.433009959569915,
+      "rank": 1
+     },
+     {
+      "nome": "Montana",
+      "v": 53.376374641317526,
+      "rank": 2
+     },
+     {
+      "nome": "California",
+      "v": 53.26425160440438,
+      "rank": 3
+     },
+     {
+      "nome": "Hawaii",
+      "v": 52.074498288883134,
+      "rank": 4
+     },
+     {
+      "nome": "Idaho",
+      "v": 48.948101050056806,
+      "rank": 5
+     },
+     {
+      "nome": "Massachusetts",
+      "v": 45.61137642303702,
+      "rank": 6
+     },
+     {
+      "nome": "Oregon",
+      "v": 44.00360877015462,
+      "rank": 7
+     },
+     {
+      "nome": "New Mexico",
+      "v": 43.26628199135861,
+      "rank": 8
+     },
+     {
+      "nome": "Rhode Island",
+      "v": 43.24650155429113,
+      "rank": 9
+     },
+     {
+      "nome": "Wyoming",
+      "v": 42.51390266061143,
+      "rank": 10
+     },
+     {
+      "nome": "Tennessee",
+      "v": 41.95432953266484,
+      "rank": 11
+     },
+     {
+      "nome": "Washington",
+      "v": 41.49645130723996,
+      "rank": 12
+     },
+     {
+      "nome": "Utah",
+      "v": 41.343927004435486,
+      "rank": 13
+     },
+     {
+      "nome": "Colorado",
+      "v": 40.634440199260645,
+      "rank": 14
+     },
+     {
+      "nome": "Nevada",
+      "v": 40.265123662097125,
+      "rank": 15
+     },
+     {
+      "nome": "Arizona",
+      "v": 39.989432224763775,
+      "rank": 16
+     },
+     {
+      "nome": "Florida",
+      "v": 39.89873357761658,
+      "rank": 17
+     },
+     {
+      "nome": "New Hampshire",
+      "v": 38.733439128653494,
+      "rank": 18
+     },
+     {
+      "nome": "Vermont",
+      "v": 38.47877306794041,
+      "rank": 19
+     },
+     {
+      "nome": "Mississippi",
+      "v": 37.6579858932194,
+      "rank": 20
+     },
+     {
+      "nome": "Connecticut",
+      "v": 37.62595580281267,
+      "rank": 21
+     },
+     {
+      "nome": "North Carolina",
+      "v": 37.400352882166665,
+      "rank": 22
+     },
+     {
+      "nome": "New Jersey",
+      "v": 36.447948898970836,
+      "rank": 23
+     },
+     {
+      "nome": "Delaware",
+      "v": 36.224302885279265,
+      "rank": 24
+     },
+     {
+      "nome": "Alabama",
+      "v": 35.74205997303258,
+      "rank": 25
+     },
+     {
+      "nome": "Georgia",
+      "v": 35.113437038491206,
+      "rank": 26
+     },
+     {
+      "nome": "Maine",
+      "v": 34.430983433070104,
+      "rank": 27
+     },
+     {
+      "nome": "Arkansas",
+      "v": 33.73950189641207,
+      "rank": 28
+     },
+     {
+      "nome": "South Dakota",
+      "v": 33.48144733538623,
+      "rank": 29
+     },
+     {
+      "nome": "Louisiana",
+      "v": 33.18180063563169,
+      "rank": 30
+     },
+     {
+      "nome": "Virginia",
+      "v": 33.144748514059614,
+      "rank": 31
+     },
+     {
+      "nome": "Wisconsin",
+      "v": 32.46244609212696,
+      "rank": 32
+     },
+     {
+      "nome": "South Carolina",
+      "v": 32.28663494529232,
+      "rank": 33
+     },
+     {
+      "nome": "Alaska",
+      "v": 31.436943982166603,
+      "rank": 34
+     },
+     {
+      "nome": "North Dakota",
+      "v": 31.25469761186222,
+      "rank": 35
+     },
+     {
+      "nome": "Texas",
+      "v": 30.919504843586836,
+      "rank": 36
+     },
+     {
+      "nome": "Kentucky",
+      "v": 30.469481449143604,
+      "rank": 37
+     },
+     {
+      "nome": "West Virginia",
+      "v": 30.17810784876834,
+      "rank": 38
+     },
+     {
+      "nome": "Minnesota",
+      "v": 29.73289794302608,
+      "rank": 39
+     },
+     {
+      "nome": "Oklahoma",
+      "v": 28.896402435009023,
+      "rank": 40
+     },
+     {
+      "nome": "Indiana",
+      "v": 28.500109910519285,
+      "rank": 41
+     },
+     {
+      "nome": "Michigan",
+      "v": 27.783161706642556,
+      "rank": 42
+     },
+     {
+      "nome": "Maryland",
+      "v": 26.816648795063525,
+      "rank": 43
+     },
+     {
+      "nome": "Pennsylvania",
+      "v": 26.672574605928144,
+      "rank": 44
+     },
+     {
+      "nome": "Missouri",
+      "v": 26.20959771067426,
+      "rank": 45
+     },
+     {
+      "nome": "Kansas",
+      "v": 25.20685941550802,
+      "rank": 46
+     },
+     {
+      "nome": "Iowa",
+      "v": 25.044617180486306,
+      "rank": 47
+     },
+     {
+      "nome": "Nebraska",
+      "v": 24.984189184928958,
+      "rank": 48
+     },
+     {
+      "nome": "Illinois",
+      "v": 24.3852944920609,
+      "rank": 49
+     },
+     {
+      "nome": "Ohio",
+      "v": 24.253010087639442,
+      "rank": 50
+     }
+    ],
+    "min": 24.253010087639442,
+    "max": 55.433009959569915,
+    "leg_min": "24% of income",
+    "leg_max": "55%",
+    "faixa": [
+     1,
+     50
+    ],
+    "inicio": 10,
+    "passo": 0.8,
+    "rotulos": false
+   },
+   "falas": [
+    "So in 2019, 48 states passed the test. Today, 9 do.",
+    "And the last state standing? Ohio. Where a typical home still costs less than a quarter of a paycheck."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "fim",
+    "pergunta": "Could you afford a home in your state?",
+    "cta": "SUBSCRIBE FOR THE NEXT RANKING",
+    "faixa_cores": [
+     "rgb(70,110,150)",
+     "rgb(120,130,140)",
+     "rgb(230,160,60)",
+     "rgb(235,70,50)",
+     "rgb(190,25,40)"
+    ]
+   },
+   "falas": [
+    "Could you afford a typical home in your state? Tell us in the comments. And subscribe for the next ranking."
+   ]
+  }
+ ]
+}

@@ -1,0 +1,2 @@
+file '/home/claude/atlas-motion/saida/001/p0.mp4'
+file '/home/claude/atlas-motion/saida/001/p1.mp4'

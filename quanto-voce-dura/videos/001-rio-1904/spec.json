@@ -1,0 +1,450 @@
+{
+ "id": "qvd001",
+ "canal": "quanto-voce-dura",
+ "marca": "QUANTO VOCÊ DURA?",
+ "acento": "#e9c46a",
+ "icone": "barras",
+ "titulo": "Você acorda no Rio de 1904, no meio da Revolta da Vacina. Quanto tempo você dura?",
+ "motor": "piper",
+ "arquivo": "/home/claude/quanto-voce-dura/arquivo/",
+ "voz": "m",
+ "velocidade": 0.9,
+ "lang": "pt-br",
+ "legenda": true,
+ "numeros": {
+  "mil novecentos e quatro": "1904",
+  "mil novecentos e dois": "1902",
+  "mil novecentos e oito": "1908",
+  "mil novecentos e setenta e um": "1971",
+  "mil novecentos e oitenta": "1980",
+  "mil oitocentos e noventa": "1890",
+  "novecentos e quarenta e cinco": "945",
+  "quatrocentos e sessenta e um": "461",
+  "novecentas e quarenta e cinco": "945",
+  "cento e dez": "110",
+  "vinte e dois": "22",
+  "setecentos": "700",
+  "setecentas": "700",
+  "três mil e quinhentas": "3.500",
+  "seis mil e quatrocentas": "6.400",
+  "oitocentos mil": "800 mil",
+  "quinhentos e vinte mil": "520 mil",
+  "seiscentos e quarenta": "640",
+  "cerca de mil": "cerca de 1.000",
+  "trinta e um": "31",
+  "vinte e três": "23",
+  "vinte e quatro": "24",
+  "dezesseis": "16",
+  "quatorze": "14",
+  "quinze": "15",
+  "treze": "13",
+  "trinta": "30",
+  "cem": "100",
+  "nove de novembro": "9 de novembro",
+  "dez de novembro": "10 de novembro"
+ },
+ "blocos": [
+  {
+   "cena": {
+    "tipo": "gancho_rio"
+   },
+   "falas": [
+    "Rio de Janeiro. Novembro de mil novecentos e quatro.",
+    "Em uma semana: trinta mortos. Novecentos e quarenta e cinco presos. Quatrocentos e sessenta e um mandados para o Acre.",
+    "E você acabou de acordar no meio disso.",
+    "Vacina, ou barricada? Cada escolha muda quanto tempo você dura."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "foto",
+    "arq": "cais_do_porto_2_acervo_do_instituto_more.jpg",
+    "legenda": null,
+    "credito": "Augusto Malta / Acervo IMS",
+    "hud": {
+     "Saúde": 80,
+     "Dinheiro": 35,
+     "Segurança": 60
+    },
+    "zoom": "entra",
+    "relogio": "9 DE NOVEMBRO DE 1904 · 6h"
+   },
+   "falas": [
+    "Você acorda com o barulho do porto. Cheiro de esgoto, de peixe e de carvão. Um jornal amassado no chão diz: nove de novembro de mil novecentos e quatro.",
+    "Você está no Rio de Janeiro, a capital do Brasil. E em vinte e quatro horas, esta cidade vai pegar fogo.",
+    "A pergunta é simples. Quanto tempo você dura?"
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "regras",
+    "titulo_regras": "COMO FUNCIONA",
+    "itens": [
+     "Você é um trabalhador do porto",
+     "Mora num cortiço no bairro da Saúde",
+     "Tudo o que acontece aqui aconteceu de verdade",
+     "Seu painel mostra saúde, dinheiro e segurança"
+    ]
+   },
+   "falas": [
+    "Funciona assim. Você é um trabalhador do porto e mora num cortiço no bairro da Saúde, no centro da cidade.",
+    "Tudo o que vai acontecer com você aconteceu de verdade, com números de verdade.",
+    "No canto da tela, você acompanha três coisas: a sua saúde, o seu dinheiro e a sua segurança. Se uma delas zerar, acabou."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "n": 1,
+    "titulo": "A cidade que mata"
+   },
+   "falas": [
+    "Parte um. A cidade que mata."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "foto",
+    "arq": "antigo_largo_do_pa_o_mercado_da_praia_do.jpg",
+    "legenda": null,
+    "credito": "Acervo Arquivo Nacional / Wikimedia Commons",
+    "hud": {
+     "Saúde": 80,
+     "Dinheiro": 35,
+     "Segurança": 60
+    },
+    "zoom": "entra",
+    "relogio": "DIA 1 · 7h"
+   },
+   "falas": [
+    "O Rio de mil novecentos e quatro tem perto de oitocentos mil habitantes. Em mil oitocentos e noventa, eram quinhentos e vinte mil. A cidade incha sem parar.",
+    "E muita gente se espreme no centro, perto do porto, onde está o trabalho. Em cortiços: casarões velhos divididos em quartos minúsculos, cada um com uma família inteira dentro.",
+    "É aí que você mora. E é aí que as doenças moram também."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "numero",
+    "valor": 3500,
+    "dec": 0,
+    "prefixo": "",
+    "sufixo": "",
+    "rotulo": "mortes por varíola no Rio em 1904",
+    "sem_icones": true
+   },
+   "falas": [
+    "A primeira ameaça é a varíola. Febre alta, o corpo coberto de bolhas. Quem sobrevive fica marcado. Muitos ficam cegos.",
+    "Só em mil novecentos e quatro, a varíola matou cerca de três mil e quinhentas pessoas no Rio."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "foto",
+    "arq": "hospital_st_sebastiao_isolating_yellow_f.jpg",
+    "legenda": "Hospital São Sebastião, isolamento de doentes de febre amarela",
+    "credito": "Wellcome Collection, CC BY 4.0",
+    "hud": {
+     "Saúde": 62,
+     "Dinheiro": 35,
+     "Segurança": 60
+    },
+    "zoom": "entra",
+    "relogio": null
+   },
+   "falas": [
+    "A segunda é a febre amarela, transmitida por mosquito. Em mil novecentos e dois, ela matava cerca de mil pessoas por ano na cidade."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "foto",
+    "arq": "spraying_roofs_to_prevent_yellow_fever_w.jpg",
+    "legenda": "Brigada sanitária borrifando telhados contra o mosquito",
+    "credito": "Wellcome Collection, CC BY 4.0",
+    "hud": {
+     "Saúde": 62,
+     "Dinheiro": 35,
+     "Segurança": 52
+    },
+    "zoom": "sobe",
+    "relogio": null
+   },
+   "falas": [
+    "Para enfrentar isso, o governo chamou um médico de trinta e poucos anos: Oswaldo Cruz, diretor-geral de Saúde Pública.",
+    "As brigadas dele entram nas casas, sem pedir licença. Queimam enxofre para matar mosquitos, caçam ratos, e podem mandar interditar ou derrubar um cortiço inteiro.",
+    "Para você, isso significa uma coisa: a qualquer hora, alguém do governo pode entrar no seu quarto."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "foto",
+    "arq": "canteiro_de_obras_pr_ximo_ao_largo_da_mi.jpg",
+    "legenda": "Obras no centro do Rio, início do século 20",
+    "credito": "Augusto Malta / Acervo IMS",
+    "hud": {
+     "Saúde": 62,
+     "Dinheiro": 22,
+     "Segurança": 45
+    },
+    "zoom": "entra",
+    "relogio": null
+   },
+   "falas": [
+    "E não é só a saúde. Ao mesmo tempo, o prefeito Pereira Passos está rasgando o centro da cidade para abrir uma avenida enorme, a Avenida Central.",
+    "Para isso, cerca de seiscentos e quarenta prédios vêm abaixo, muitos deles moradias de trabalhadores como você.",
+    "Seu aluguel sobe. O cortiço do lado foi demolido. O seu pode ser o próximo."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "n": 2,
+    "titulo": "A lei"
+   },
+   "falas": [
+    "Parte dois. A lei."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "documento",
+    "data": "31 DE OUTUBRO DE 1904",
+    "titulo": "Vacinação obrigatória contra a varíola",
+    "itens": [
+     "Comprovante para conseguir emprego",
+     "Para matricular na escola",
+     "Para viajar e se hospedar",
+     "Para casar",
+     "Multa para quem recusar"
+    ]
+   },
+   "falas": [
+    "No dia trinta e um de outubro, foi aprovada a lei que torna obrigatória a vacina contra a varíola.",
+    "E no dia nove de novembro, hoje, o jornal A Notícia publica o regulamento que estava sendo preparado. A cidade lê o que vem por aí.",
+    "Comprovante de vacina para conseguir emprego. Para matricular os filhos na escola. Para viajar, para se hospedar, até para casar. E multa para quem recusar."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "foto",
+    "arq": "man_with_clayton_disinfector_wellcome_l0.jpg",
+    "legenda": "Equipe com aparelho de desinfecção",
+    "credito": "Wellcome Collection, CC BY 4.0",
+    "hud": {
+     "Saúde": 62,
+     "Dinheiro": 22,
+     "Segurança": 38
+    },
+    "zoom": "sai",
+    "relogio": null
+   },
+   "falas": [
+    "Na sua rua, ninguém confia no governo. As mesmas pessoas que derrubam casas agora querem entrar e furar o seu braço.",
+    "E corre um boato pela cidade: que os agentes querem ver os braços e as costas das moças durante a vacina. Não era verdade. Mas, numa cidade com medo, um boato vale mais que um decreto.",
+    "Quatro dias antes, foi fundada a Liga Contra a Vacina Obrigatória. Os jornais de oposição batem no governo todos os dias.",
+    "Primeira escolha. Pense rápido. Você toma a vacina, ou se junta a quem vai resistir?"
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "n": 3,
+    "titulo": "Sete dias de guerra"
+   },
+   "falas": [
+    "Parte três. Sete dias de guerra."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "foto",
+    "arq": "na_noite_de_14_sucessos_lament_veis_jpg.jpg",
+    "legenda": "\"Na noite de 14\": ilustração da imprensa, 26/11/1904",
+    "credito": "Domínio público",
+    "hud": {
+     "Saúde": 62,
+     "Dinheiro": 22,
+     "Segurança": 25
+    },
+    "zoom": "entra",
+    "relogio": "DIA 2 · 10 DE NOVEMBRO"
+   },
+   "falas": [
+    "Dez de novembro. Começa.",
+    "Grupos se juntam no centro, a polícia ataca, a multidão revida com pedras. Em poucas horas, a briga se espalha por bairros inteiros.",
+    "Na Saúde, o seu bairro, os moradores levantam barricadas no meio da rua."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "foto",
+    "arq": "bonde_virado_revolta_da_vacina_jpg.jpg",
+    "legenda": "Bonde virado durante a Revolta da Vacina, novembro de 1904",
+    "credito": "Domínio público",
+    "hud": {
+     "Saúde": 60,
+     "Dinheiro": 15,
+     "Segurança": 14
+    },
+    "zoom": "entra",
+    "relogio": "DIA 5 · 13 DE NOVEMBRO",
+    "moldura": true
+   },
+   "falas": [
+    "Treze de novembro. A cidade parou. Ninguém trabalha, e você não recebe.",
+    "Só naquela noite, vinte e dois bondes foram destruídos, segundo a própria companhia. Mais de setecentos lampiões de gás foram inutilizados. Ruas inteiras ficam no escuro.",
+    "Na madrugada do dia quatorze para o quinze, ainda há uma tentativa de golpe militar contra o governo. Ela fracassa."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "contagem",
+    "itens": [
+     {
+      "v": 30,
+      "r": "mortos"
+     },
+     {
+      "v": 110,
+      "r": "feridos"
+     },
+     {
+      "v": 945,
+      "r": "presos na Ilha das Cobras"
+     },
+     {
+      "v": 461,
+      "r": "deportados para o Acre"
+     }
+    ]
+   },
+   "falas": [
+    "Dezesseis de novembro. O governo decreta estado de sítio e, no mesmo dia, suspende a vacinação obrigatória.",
+    "O saldo oficial: trinta mortos. Cento e dez feridos.",
+    "Novecentas e quarenta e cinco pessoas presas, levadas para a Ilha das Cobras, na baía.",
+    "E quatrocentas e sessenta e uma delas, as que tinham antecedentes criminais, são embarcadas em navios e mandadas para o Acre, a milhares de quilômetros dali."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "foto",
+    "arq": "ba_a_de_guanabara_vista_da_ilha_das_cobr.jpg",
+    "legenda": "Baía de Guanabara vista da Ilha das Cobras, c. 1902-1912",
+    "credito": "Acervo Arquivo Nacional / Wikimedia Commons",
+    "hud": {
+     "Saúde": 60,
+     "Dinheiro": 10,
+     "Segurança": 8
+    },
+    "zoom": "sai",
+    "relogio": null
+   },
+   "falas": [
+    "Então, se você foi para a barricada, as chances de ser preso eram reais. E as prisões continuaram depois do fim da revolta: no dia vinte e três, já eram mais de setecentos presos na ilha.",
+    "E ser preso podia significar o Acre. Uma viagem só de ida."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "n": 4,
+    "titulo": "O veredito"
+   },
+   "falas": [
+    "Parte quatro. O veredito."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "comparacao",
+    "a": {
+     "cor": "#e9c46a",
+     "nome": "A revolta",
+     "valor": 30
+    },
+    "b": {
+     "cor": "#e5484d",
+     "nome": "A varíola, 1904",
+     "valor": 3500
+    },
+    "rotulo": "mortos no Rio de Janeiro",
+    "sem_cifrao": true
+   },
+   "falas": [
+    "Agora, o número que muda tudo.",
+    "A revolta matou trinta pessoas.",
+    "A varíola, a doença que a vacina queria parar, matou cerca de três mil e quinhentas no mesmo ano. Mais de cem vezes mais."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "numero",
+    "valor": 6400,
+    "dec": 0,
+    "rotulo": "mortes por varíola no Rio em 1908",
+    "sem_icones": true
+   },
+   "falas": [
+    "E sem a vacina obrigatória, a doença voltou. Em mil novecentos e oito, uma nova epidemia de varíola matou quase seis mil e quatrocentas pessoas no Rio.",
+    "Depois dessa epidemia, a procura pela vacina cresceu."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "veredito",
+    "linhas": [
+     {
+      "r": "Ficou longe das barricadas e se vacinou",
+      "v": "Você sobrevive"
+     },
+     {
+      "r": "Foi para a barricada",
+      "v": "Preso, talvez no Acre"
+     },
+     {
+      "r": "Escapou da revolta, mas não se vacinou",
+      "v": "A varíola continua na rua"
+     }
+    ]
+   },
+   "falas": [
+    "Então, quanto você dura?",
+    "Se você ficou longe das barricadas e tomou a vacina, provavelmente atravessou novembro de mil novecentos e quatro inteiro. Com fome, sem salário, com medo. Mas vivo.",
+    "Se foi para a barricada, você tinha boas chances de acabar na Ilha das Cobras. E talvez num navio para o Acre.",
+    "E se escapou da revolta, mas não se vacinou, o perigo de verdade continuava andando pelas ruas. Ele só não fazia barulho."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "foto",
+    "arq": "avenida_central_2_acervo_do_instituto_mo.jpg",
+    "legenda": "Avenida Central, início do século 20",
+    "credito": "Augusto Malta / Acervo IMS",
+    "hud": null,
+    "zoom": "sai",
+    "relogio": null
+   },
+   "falas": [
+    "A Avenida Central ficou pronta e virou o cartão-postal da cidade. E a febre amarela deixou de ser epidemia no Rio poucos anos depois.",
+    "E a varíola? O último caso no Brasil foi em mil novecentos e setenta e um. Em mil novecentos e oitenta, ela foi declarada erradicada do planeta."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "fim",
+    "pergunta": "Quanto tempo você duraria?",
+    "cta": "INSCREVA-SE · PRÓXIMA ÉPOCA EM BREVE",
+    "faixa_cores": [
+     "#e9c46a",
+     "#d4a373",
+     "#bc6c25",
+     "#9c2a2a",
+     "#5e1f1f"
+    ]
+   },
+   "falas": [
+    "E você, o que teria feito? Vacina ou barricada? Me conta nos comentários. E se inscreve, porque na próxima você acorda em outra época do Brasil."
+   ]
+  }
+ ]
+}

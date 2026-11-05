@@ -1,0 +1,7 @@
+{"id": "lss001g", "canal": "last-state-standing", "marca": "LAST STATE STANDING", "acento": "#ff6b3d", "icone": "barras", "titulo": "gancho", "voz": "am_michael", "velocidade": 1.1, "gap": 0.16, "cauda": 0.5,
+ "blocos": [{"cena": {"tipo": "gancho_gas"}, "falas": [
+  "Gas just hit ten dollars a gallon.",
+  "In one part of America, that eats more than ten percent of everything people earn. Just to drive.",
+  "In New York? Less than three.",
+  "And the state everyone expects to break first? It doesn't even make the top fifteen.",
+  "We ranked all fifty states with official government data. Stay to the end, and you'll know exactly where yours lands."]}]}

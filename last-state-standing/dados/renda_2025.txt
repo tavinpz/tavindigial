@@ -1,0 +1,51 @@
+District of Columbia: 116,121
+Connecticut: 98,879
+Massachusetts: 97,456
+California: 91,116
+Wyoming: 89,806
+Washington: 89,396
+New York: 88,847
+New Jersey: 88,223
+New Hampshire: 86,959
+Colorado: 86,181
+Maryland: 81,834
+Virginia: 80,291
+Alaska: 80,175
+South Dakota: 79,297
+Minnesota: 78,538
+Illinois: 77,772
+Hawaii: 76,592
+Florida: 76,440
+Nebraska: 75,858
+North Dakota: 75,157
+Vermont: 74,580
+Pennsylvania: 74,231
+Rhode Island: 73,992
+Oregon: 73,678
+Nevada: 73,156
+Texas: 72,364
+Montana: 72,340
+Maine: 71,662
+Delaware: 71,357
+Wisconsin: 70,570
+Utah: 69,991
+Kansas: 69,510
+Tennessee: 69,131
+North Carolina: 68,511
+Iowa: 68,326
+Arizona: 68,283
+Missouri: 67,587
+Ohio: 67,291
+Oklahoma: 66,660
+Michigan: 66,556
+Indiana: 66,292
+Georgia: 65,382
+Idaho: 64,846
+Louisiana: 63,940
+South Carolina: 63,179
+Arkansas: 61,752
+New Mexico: 61,645
+Kentucky: 60,673
+Alabama: 59,677
+West Virginia: 57,932
+Mississippi: 54,531
