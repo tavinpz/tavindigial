@@ -5,10 +5,9 @@ import Pipeline, { Janela, fmtQuando, fmtCurto, useConexoes } from './Pipeline'
 import { CANAIS } from './canais'
 
 // Canais de vídeo longo do YouTube (Ten Thousand Runs, Last State Standing, Quanto Você Dura?…).
-// Quadro: Criação → Criado → Rascunho → Revisão → Upload feito → Programado → Publicado (coluna `yt_etapa` em `videos`).
+// Quadro: Criado → Rascunho → Revisão → Upload feito → Programado → Publicado (coluna `yt_etapa` em `videos`).
 // "Perfil do canal" mostra nome, @, assunto, descrição, palavras-chave, logo e banner para baixar.
 const FASES = [
-  { k: 'criacao', nome: 'Criação', cor: '#8E8499', papel: 'fila' },
   { k: 'criado', nome: 'Criado', cor: '#B600F6', papel: 'fila' },
   { k: 'rascunho', nome: 'Rascunho', cor: '#3A7BD5', papel: 'fila' },
   { k: 'revisao', nome: 'Revisão', cor: '#E08A00', papel: 'fila' },
@@ -29,8 +28,8 @@ const deLocal = (v) => (v ? new Date(`${v}:00-03:00`).toISOString() : null)
 // Etapa do vídeo: a marcada no painel; o que o YouTube já confirmou (programado/publicado) passa na frente
 function etapa(v) {
   if (v.yt_postado_em || v.yt_status === 'postado') return 'publicado'
-  const e = v.yt_etapa || (v.video_url ? 'criado' : 'criacao')
-  if ((v.yt_status === 'programado' || v.yt_status === 'agendado') && FASES.findIndex((f) => f.k === e) < 5) return 'programado'
+  const e = v.yt_etapa && v.yt_etapa !== 'criacao' ? v.yt_etapa : 'criado'
+  if ((v.yt_status === 'programado' || v.yt_status === 'agendado') && FASES.findIndex((f) => f.k === e) < 4) return 'programado'
   return e
 }
 
@@ -180,7 +179,7 @@ function paraItem(v) {
     baixar: comDownload(v.video_url, nomeArq(v.yt_titulo || v.titulo, '.mp4')),
     quando: e === 'programado' ? v.yt_programado_para : null, postado: v.yt_postado_em,
     views: v.yt_views || 0, erro: v.yt_erro || '',
-    aviso: e === 'criacao' ? 'Em produção' : '',
+    aviso: v.video_url ? '' : 'Em produção',
     tipoNome: v.duracao ? minutos(v.duracao) : '',
     programavel: ['criado', 'rascunho', 'revisao', 'upload'].includes(e),
     movel: true,
