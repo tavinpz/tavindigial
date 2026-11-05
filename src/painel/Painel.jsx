@@ -46,13 +46,10 @@ const JOGOS_ABAS = [['jogos', 'Todos os jogos', Jogos, 'M6 11h4M8 9v4M15 12h.01M
 const TOPO = ABAS.filter(([id]) => ['inicio', 'metricas', 'cofre'].includes(id))
 function montarMenu() {
   const canais = abasCanais()
-  // vídeos longos do YouTube têm grupo próprio; os de vídeo curto e a marca ficam em Canais
-  const longos = canais.filter((x) => x[4]?.tipo === 'longo')
   return {
     grupos: [
       { id: 'sites', nome: 'Sites', itens: [...ABAS.filter(([id]) => ['prospectar', 'crm'].includes(id)), ...EXTRAS] },
-      ...(longos.length ? [{ id: 'youtube', nome: 'YouTube', itens: longos }] : []),
-      { id: 'canais', nome: 'Canais', canais: true, itens: canais.filter((x) => x[4]?.tipo !== 'longo') },
+      { id: 'canais', nome: 'Canais', canais: true, itens: canais },
       { id: 'jogos', nome: 'Jogos', itens: JOGOS_ABAS },
     ],
     todas: [...ABAS, ...canais, ...EXTRAS, ...JOGOS_ABAS],
