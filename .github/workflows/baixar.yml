@@ -1,0 +1,26 @@
+name: baixar
+on:
+  push:
+    branches: [baixar]
+    paths: [urls.txt]
+permissions:
+  contents: write
+jobs:
+  baixar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Baixar
+        run: |
+          mkdir -p baixados
+          while read -r nome url; do
+            [ -z "$nome" ] && continue
+            case "$nome" in \#*) continue;; esac
+            curl -sSL --fail --retry 3 -A "Mozilla/5.0 (research script)" -o "baixados/$nome" "$url" && echo "ok $nome $(stat -c%s baixados/$nome)" || echo "FALHOU $nome"
+          done < urls.txt
+          ls -la baixados > baixados/_lista.txt
+      - name: Commit
+        run: |
+          git config user.name "baixar-bot"; git config user.email "bot@users.noreply.github.com"
+          git add baixados; git commit -qm "baixados" || exit 0
+          git push
