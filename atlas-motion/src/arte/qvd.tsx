@@ -29,6 +29,12 @@ const Carimbo: React.FC<{ txt: string; cor?: string; tam?: number; sub?: string 
   </div>
 );
 
+/** posição x que mantém um carimbo inteiro dentro da tela (largura estimada pelo texto) */
+const cabe = (txt: string | undefined, tam: number, x: number) => {
+  const meia = ((txt ?? "").length * (tam * 0.68 + 4) + 100) / 2;
+  return Math.max(70 + meia, Math.min(x, W - 70 - meia));
+};
+
 /** texto que aparece como se fosse datilografado */
 const Datilo: React.FC<{ f: number; txt: string; ini?: number; cps?: number; style?: React.CSSProperties }> = ({ f, txt, ini = 0, cps = 1.6, style }) => {
   const n = Math.max(0, Math.floor((f - ini) * cps));
@@ -127,7 +133,7 @@ const Extra: React.FC<{ f: number; dur: number; v: any }> = ({ f, dur, v }) => {
           <Medidor f={f} nome="SEGURANÇA" v={v.g} de={ant.g} cor="#2f4a5c" />
         </Folha>
       </Objeto>
-      {v.txt && <Objeto f={f} dur={dur} x={W / 2 + 470} y={760} rot={-8} entra="carimbo" atraso={14} seed={42}><Carimbo txt={v.txt} tam={70} /></Objeto>}
+      {v.txt && <Objeto f={f} dur={dur} x={cabe(v.txt, 70, W / 2 + 470)} y={760} rot={-8} entra="carimbo" atraso={14} seed={42}><Carimbo txt={v.txt} tam={70} /></Objeto>}
     </>);
   }
   if (t === 'linha') {
@@ -265,7 +271,7 @@ const Cena: React.FC<VProps> = ({ f, dur, v }) => {
       <Foto f={f} dur={dur} arq={v.arq} leg={v.leg} w={v.w || 1000} ar={v.ar || 0.62} zoom={v.zoom} />
     </Objeto>
     <Fita x={W / 2 + (v.lado || 0) - (v.w || 1000) / 2 + 30} y={130} rot={-38} w={170} /><Fita x={W / 2 + (v.lado || 0) + (v.w || 1000) / 2 - 30} y={130} rot={36} w={170} />
-    {v.selo && <Objeto f={f} dur={dur} x={W / 2 + 470} y={700} rot={-9} entra="carimbo" atraso={Math.round(dur * (v.selo_em ?? 0.4))} seed={4}><Carimbo txt={v.selo} sub={v.selo_sub} tam={130} /></Objeto>}
+    {v.selo && <Objeto f={f} dur={dur} x={cabe(v.selo, 130, W / 2 + 470)} y={700} rot={-9} entra="carimbo" atraso={Math.round(dur * (v.selo_em ?? 0.4))} seed={4}><Carimbo txt={v.selo} sub={v.selo_sub} tam={130} /></Objeto>}
   </>);
   if (t === 'bolso' && v.modo === 'rato') return (<>
     <Objeto f={f} dur={dur} x={W / 2 - 220} y={430} rot={-6} entra="cai" seed={58}><div style={{ background: '#f6efdf', padding: 40, clipPath: rasgado(58, 2.5, 16) }}><Emoji n="moedas" tam={260} style={{ filter: 'sepia(0.7)' }} /></div></Objeto>
@@ -294,7 +300,7 @@ const Cena: React.FC<VProps> = ({ f, dur, v }) => {
         <Datilo f={f} txt={v.txt} ini={10} cps={2.2} style={{ fontSize: 56, lineHeight: 1.45 }} />
       </Folha>
     </Objeto>
-    {v.carimbo && <Objeto f={f} dur={dur} x={W / 2 + 330} y={680} rot={-14} entra="carimbo" atraso={Math.round(dur * 0.55)} seed={10}><Carimbo txt={v.carimbo} tam={110} /></Objeto>}
+    {v.carimbo && <Objeto f={f} dur={dur} x={cabe(v.carimbo, 110, W / 2 + 330)} y={680} rot={-14} entra="carimbo" atraso={Math.round(dur * 0.55)} seed={10}><Carimbo txt={v.carimbo} tam={110} /></Objeto>}
   </>);
   if (t === 'numero') return (<>
     <Objeto f={f} dur={dur} x={W / 2 + 60} y={430} rot={-2} entra="cai" seed={11}>
@@ -328,7 +334,7 @@ const Cena: React.FC<VProps> = ({ f, dur, v }) => {
     <Objeto f={f} dur={dur} x={W / 2 - 60} y={480} rot={-2} entra="cai" seed={13}>
       <div style={{ background: '#ecdcb6', padding: 20, clipPath: rasgado(13, 1, 28), filter: 'url(#grao-papel)' }}><MapaAntigo f={f} dur={dur} txt={v.txt} /></div>
     </Objeto>
-    <Objeto f={f} dur={dur} x={W / 2 + 610} y={430} rot={8} entra="carimbo" atraso={Math.round(dur * 0.35)} seed={14}><Carimbo txt={v.txt} sub={v.sub} tam={100} /></Objeto>
+    <Objeto f={f} dur={dur} x={cabe(v.txt, 100, W / 2 + 610)} y={430} rot={8} entra="carimbo" atraso={Math.round(dur * 0.35)} seed={14}><Carimbo txt={v.txt} sub={v.sub} tam={100} /></Objeto>
   </>);
   if (t === 'mesa') return (<>
     {v.fotos.map((a: string, i: number) => (
