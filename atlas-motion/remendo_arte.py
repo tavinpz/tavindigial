@@ -31,22 +31,25 @@ for i, fx in sorted(por_parte.items()):
                             '--concurrency=2', '--crf=19', '--log=error', f'--browser-executable={CHROME}'], check=True)
             shutil.move(f'{P}/tmp_r.mp4', seg)
         segs.append((a - S, b - S, seg))
-    # monta: original até o trecho, trecho novo, original depois...
-    ins = ['-i', parte] + sum([['-i', s] for _, _, s in segs], [])
-    fil, cad, pos = [], [], 0
-    for k, (la, lb, _) in enumerate(segs):
+    # monta: original até o trecho, trecho novo, original depois... (cada pedaço do original é uma
+    # entrada própria, para o ffmpeg não guardar a parte inteira na memória)
+    ins, fil, cad, pos = [], [], [], 0
+    def entrada(arq):
+        ins.extend(['-i', arq]); return len(ins) // 2 - 1
+    for k, (la, lb, s) in enumerate(segs):
         if la > pos:
-            fil.append(f'[0:v]trim=start_frame={pos}:end_frame={la},setpts=PTS-STARTPTS[o{k}]'); cad.append(f'[o{k}]')
-        fil.append(f'[{k + 1}:v]setpts=PTS-STARTPTS[n{k}]'); cad.append(f'[n{k}]')
+            j = entrada(parte); fil.append(f'[{j}:v]trim=start_frame={pos}:end_frame={la},setpts=PTS-STARTPTS[o{k}]'); cad.append(f'[o{k}]')
+        j = entrada(s); fil.append(f'[{j}:v]setpts=PTS-STARTPTS[n{k}]'); cad.append(f'[n{k}]')
         pos = lb + 1
-    fil.append(f'[0:v]trim=start_frame={pos},setpts=PTS-STARTPTS[fim]'); cad.append('[fim]')
+    if pos < 2700:
+        j = entrada(parte); fil.append(f'[{j}:v]trim=start_frame={pos},setpts=PTS-STARTPTS[fim]'); cad.append('[fim]')
     fil.append(''.join(cad) + f'concat=n={len(cad)}:v=1:a=0[v]')
     novo = f'{P}/parte_{i:02d}_nova.mp4'
     subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', *ins, '-filter_complex', ';'.join(fil), '-map', '[v]',
                     '-c:v', 'libx264', '-crf', '19', '-preset', 'medium', '-profile:v', 'high', '-pix_fmt', 'yuvj420p',
                     '-r', '30', '-video_track_timescale', '90000', novo], check=True)
     q = lambda f: subprocess.run(['ffprobe', '-v', 'error', '-count_frames', '-select_streams', 'v', '-show_entries',
-                                  'stream=nb_read_frames', '-of', 'csv=p=0', f], capture_output=True, text=True).stdout.strip()
+                                  'stream=nb_read_frames', '-of', 'csv=p=0', f], capture_output=True, text=True).stdout.strip().strip(',')
     qa, qn = q(parte), q(novo)
     if qa != qn:
         sys.exit(f'ERRO parte {i}: {qa} quadros antes, {qn} depois')
