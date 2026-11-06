@@ -3000,8 +3000,8 @@
       "tipo": "teste",
       "a": "PAY $50, GET OUT",
       "b": "STAY AND ROLL",
-      "pa": "0.2%",
-      "pb": "0.3%",
+      "pa": "24.7%",
+      "pb": "27.3%",
       "vence": "b"
      },
      {
@@ -3119,7 +3119,7 @@
      },
      {
       "tipo": "numero",
-      "txt": "0.3%",
+      "txt": "27.7%",
       "rotulo": "PAY EARLY, STAY LATE"
      },
      {
@@ -3151,13 +3151,13 @@
       "tipo": "teste",
       "a": "BUILD HOTELS",
       "b": "HOARD HOUSES",
-      "pa": "0.3%",
-      "pb": "0.2%",
+      "pa": "27.3%",
+      "pb": "23.8%",
       "vence": "a"
      },
      {
       "tipo": "numero",
-      "txt": "0.3%",
+      "txt": "27.3%",
       "rotulo": "BUILD THE HOTEL"
      },
      {
@@ -3253,18 +3253,18 @@
     "Pay the fifty dollars and get out? Or sit there and roll for doubles?",
     "So we tested it. Ten thousand games where one player always pays right away.",
     "And ten thousand where the same player always stays and rolls.",
-    "Paying won 0.2 percent. Staying won 0.3.",
+    "Paying won 24.7 percent. Staying won 27.3.",
     "Staying in jail wins more.",
     "Because while you sit there, you're not paying anyone's rent.",
     "Early in the game, though, there's nothing dangerous out there yet.",
     "So we tried a smarter rule. Pay to get out while nobody has houses.",
     "And stay in jail once anyone else starts building.",
-    "That rule won 0.3 percent. The best of all three.",
+    "That rule won 27.7 percent. The best of all three.",
     "Trick number two. There are only thirty two houses in the box.",
     "Some players stop at four houses and never build hotels.",
     "So nobody else can get any houses. It's the most famous advanced trick.",
     "In our games, it lost.",
-    "The player who hoarded houses won 0.2 percent. Building hotels won 0.3.",
+    "The player who hoarded houses won 23.8 percent. Building hotels won 27.3.",
     "And the one thing you can't control. Who goes first.",
     "The player who rolled first won 27.1 percent.",
     "The player who rolled last, 22.6.",
