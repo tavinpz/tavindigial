@@ -3,6 +3,7 @@
 # (tarefa em segundo plano morre em 2 h: é só relançar). Depois junta as partes e coloca o mix.
 # uso: ./render_arte.sh <id> [<id> ...]      saída: /home/claude/estudio/saida/<id>.mp4
 cd /home/claude/atlas-motion
+INICIO=$(date +%s)
 CHROME=/opt/pw-browsers/chromium-1243/chrome-linux64/chrome
 for ID in "$@"; do
   OUT=/home/claude/estudio/saida/$ID.mp4
@@ -15,6 +16,8 @@ for ID in "$@"; do
     e=$(( s + PASSO - 1 )); [ $e -ge $Q ] && e=$(( Q - 1 ))
     f=$P/parte_$(printf %02d $i).mp4
     if [ ! -s $f ]; then
+      # para numa fronteira de parte antes do limite de 2 h da tarefa (relançar continua daqui)
+      [ $(( $(date +%s) - INICIO )) -gt ${LIMITE:-4200} ] && { echo "PAUSA $ID parte $i $(date +%T)"; exit 0; }
       npx remotion render src/index.ts Arte $P/tmp.mp4 --props="{\"id\":\"$ID\",\"semAudio\":true}" --frames=$s-$e --muted --concurrency=2 --crf=19 --log=info --browser-executable=$CHROME > /home/claude/estudio/prog_$ID.log 2>&1 \
         && mv $P/tmp.mp4 $f
     fi
