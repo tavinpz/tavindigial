@@ -846,6 +846,11 @@ body:has(.p-fantasma) { cursor: grabbing; }
 .pl-sigla { display: grid; place-items: center; font-weight: 800; font-size: 14px; color: #120E16; background: var(--c); }
 .pl-quem h1 { font-family: var(--f-display); font-weight: 800; font-size: 28px; letter-spacing: -0.02em; margin: 0; line-height: 1.1; }
 .pl-quem p { margin: 2px 0 0; font-size: 13.5px; color: var(--cinza); }
+.pl-redes { display: flex; gap: 4px; margin: 6px 0 0 -4px; }
+.pl-redes a { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 9px; color: var(--cinza); transition: color .15s, background .15s; }
+.pl-redes a:hover, .pl-redes a:focus-visible { color: var(--tinta, currentColor); background: color-mix(in srgb, var(--c, #888) 16%, transparent); }
+.pl-redes svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.pl-redes .pl-rede-ponto { fill: currentColor; stroke: none; }
 .pl-acoes { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .pl-acoes > .p-btn, .pl-menu > summary { display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; }
 .pl-ponto { width: 8px; height: 8px; border-radius: 50%; background: #C9C1D1; flex: none; display: inline-block; }

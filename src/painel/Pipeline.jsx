@@ -489,6 +489,31 @@ function SubirVideo({ canal, subir, fechar }) {
 }
 
 // ── Quadro + cabeçalho ──
+// Atalhos para abrir as contas do canal (só aparece a rede que tem @ ou link salvo no Cofre → Canais)
+const linkRede = {
+  instagram: (h) => `https://www.instagram.com/${h.replace(/^@/, '')}/`,
+  youtube: (h) => (/^https?:\/\//.test(h) ? h : `https://www.youtube.com/${h.startsWith('@') ? h : `@${h}`}`),
+  tiktok: (h) => `https://www.tiktok.com/@${h.replace(/^@/, '')}`,
+}
+const ICONE_REDE = {
+  instagram: ['Instagram', <><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4.2" /><circle cx="17.4" cy="6.6" r="1.1" className="pl-rede-ponto" /></>],
+  youtube: ['YouTube', <><rect x="2.5" y="5.5" width="19" height="13" rx="4" /><path d="M10.2 9.2v5.6l4.8-2.8z" className="pl-rede-ponto" /></>],
+  tiktok: ['TikTok', <path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5M14 3c.4 2.6 2.2 4.4 5 4.6" />],
+}
+function RedesCanal({ canal }) {
+  const redes = ['instagram', 'youtube', 'tiktok'].filter((r) => (canal[r] || '').trim())
+  if (!redes.length) return null
+  return (
+    <nav className="pl-redes" aria-label={`Contas do ${canal.nome}`}>
+      {redes.map((r) => (
+        <a key={r} href={linkRede[r](canal[r].trim())} target="_blank" rel="noreferrer" title={`${ICONE_REDE[r][0]} · ${canal[r]}`} aria-label={`Abrir ${ICONE_REDE[r][0]}`}>
+          <svg viewBox="0 0 24 24" aria-hidden="true">{ICONE_REDE[r][1]}</svg>
+        </a>
+      ))}
+    </nav>
+  )
+}
+
 export default function Pipeline({ canal, fases = FASES_PADRAO, itens, mover, programar, subir, abrir, cx, recarregar, marca = false, extra = null, ocupado = '' }) {
   const [verPostados, setVerPostados] = useState(() => lerLS('pl-postados', '0') === '1')
   const [aba, setAba] = useState(null)
@@ -542,6 +567,7 @@ export default function Pipeline({ canal, fases = FASES_PADRAO, itens, mover, pr
           {canal.logo ? <img src={canal.logo} alt="" /> : <span className="pl-sigla">{canal.sigla}</span>}
           <div>
             <h1>{canal.nome}</h1>
+            <RedesCanal canal={canal} />
             {fila && <p>Fila até {fmtCurto(fila).replace(/ \S+$/, '')}</p>}
           </div>
         </div>
