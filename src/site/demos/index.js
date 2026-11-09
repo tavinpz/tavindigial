@@ -4,6 +4,7 @@ import { lazy } from 'react'
 export const DEMOS = {
   pet: lazy(() => import('./Pet')),
   hamburgueria: lazy(() => import('./Hamburgueria')),
+  restaurante: lazy(() => import('./Restaurante')),
   nutricionista: lazy(() => import('./Nutricionista')),
   academia: lazy(() => import('./Academia')),
   nail: lazy(() => import('./Nail')),

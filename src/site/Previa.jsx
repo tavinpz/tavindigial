@@ -13,7 +13,15 @@ function melhorModelo(nicho, categoria = '', nome = '') {
   const slug = nichoSlug(nicho, categoria)
   if (slug === 'estetica') return /unha|nail|manicure|esmalt/.test(t) ? 'nail' : 'estetica'
   if (slug === 'saude') return /nutri/.test(t) ? 'nutricionista' : /psic|terap/.test(t) ? 'psicologa' : /academ|pilates|crossfit|fitness|treino|funcional/.test(t) ? 'academia' : 'odontologia'
-  return { odontologia: 'odontologia', barbearia: 'barbearia', pet: 'pet', tatuagem: 'tatuagem', alimentacao: 'hamburgueria' }[slug] || 'estetica'
+  // hambúrguer só para hamburgueria de verdade; o resto da comida vai para o modelo de reservas
+  if (slug === 'alimentacao') return /burger|hamburg|smash|lanche/.test(t) ? 'hamburgueria' : 'restaurante'
+  return { odontologia: 'odontologia', barbearia: 'barbearia', pet: 'pet', tatuagem: 'tatuagem' }[slug] || 'estetica'
+}
+
+// tipo de casa de comida, para o texto do modelo de reservas
+function tipoComida(categoria = '', nome = '') {
+  const t = `${categoria} ${nome}`.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+  return /padaria|panific|bakery/.test(t) ? 'padaria' : /cafe|pastelaria|coffee/.test(t) ? 'cafe' : /pizz/.test(t) ? 'pizzaria' : 'restaurante'
 }
 
 // Página do link curto que vai na mensagem: /p/<nome>-<código>
@@ -69,6 +77,9 @@ export default function Previa() {
   if (lead.nota != null) q.set('g', String(lead.nota))
   if (lead.avaliacoes) q.set('a', String(lead.avaliacoes))
   if (lead.bairro) q.set('b', lead.bairro)
+  if (modelo === 'restaurante') q.set('t', tipoComida(lead.categoria, lead.nome))
+  const pt = lead.pais === 'PT'
+  const comida = modelo === 'restaurante' || modelo === 'hamburgueria'
   const demoSrc = `/demo/${modelo}?${q}`
   const feito = [
     ['Nome', nome],
@@ -76,7 +87,7 @@ export default function Previa() {
     lead.avaliacoes && ['Avaliações', `${lead.avaliacoes} clientes`],
     lead.bairro && ['Bairro', lead.bairro],
     ig && ['Instagram', `@${ig}`],
-    ['Sugestão de endereço', `${slugDominio(nome)}.com.br`],
+    ['Sugestão de endereço', `${slugDominio(nome)}.${pt ? 'pt' : 'com.br'}`],
   ].filter(Boolean)
   const slug = nichoSlug(lead.nicho, lead.categoria)
   const n = encodeURIComponent(nome)
@@ -87,7 +98,7 @@ export default function Previa() {
         <a href="/" className="pv2-logo" aria-label="Tavin Digital"><Logo /></a>
         <p className="pv2-para">Prévia feita para</p>
         <h1>{nome}</h1>
-        <p className="pv2-sub">Montei esta página para vocês com os dados reais do Google. Toque, escolha um serviço e um horário: é assim que o cliente vai agendar.</p>
+        <p className="pv2-sub">Montei esta página com o nome{lead.nota != null ? ', a nota' : ''} e o bairro de vocês no Google. O resto é exemplo: entra com as fotos, {comida ? 'os pratos' : 'os serviços'} e os preços de vocês. Toque nos botões para ver como o cliente {comida ? (pt ? 'reserva' : 'faz o pedido') : 'agenda'}.</p>
         <div className="pv2-feito">
           <p>O que já está na página</p>
           <ul>{feito.map(([k, v]) => <li key={k}><span>{k}</span><b>{v}</b></li>)}</ul>

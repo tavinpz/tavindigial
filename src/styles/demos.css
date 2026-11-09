@@ -299,3 +299,39 @@
 .tt-links { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-top: 16px; background: #2A2826; border: 1px solid #2A2826; }
 .tt-links button { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 16px; background: #0E0E0E !important; font-weight: 700; font-size: 14px; }
 .tt-cuidados { margin-top: 18px !important; font-size: 12.5px; color: #8F877B; text-align: center; }
+
+/* Nome do lead nunca corta: encolhe conforme o tamanho (vale para todas as demos) */
+.dx main h1 { overflow-wrap: break-word; hyphens: auto; }
+.dx--longo main h1 { font-size: clamp(34px, 11vw, 60px) !important; line-height: 1 !important; }
+.dx--muito main h1 { font-size: clamp(28px, 8.4vw, 46px) !important; line-height: 1.04 !important; }
+
+/* ═════════════ RESTAURANTE · reservas ═════════════ */
+.dx--restaurante { --dx-bg: #F3EFE6; --dx-fg: #1F2A24; --dx-sub: #5E655F; --dx-linha: rgba(31,42,36,.16); --rs-acc: #2F5D46; --rs-quente: #C8692F;
+  font-family: 'Figtree', system-ui, sans-serif; padding-bottom: 96px; }
+.rs h1, .rs h2 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; letter-spacing: -.01em; }
+.rs-topo { padding: 22px 0 8px; animation: dx-sobe .5s var(--ease); }
+.rs-tag { font-size: 14px; font-weight: 600; color: var(--rs-quente); }
+.rs h1 { font-size: clamp(40px, 13vw, 64px); line-height: 1; margin: 10px 0 16px; }
+.rs-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.rs-chips span { display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px; border-radius: 999px; background: #fff; border: 1px solid var(--dx-linha); font-size: 14px; }
+.rs-chips .dx-ico { color: var(--rs-quente); }
+.rs-acoes { display: grid; gap: 10px; margin: 22px 0 8px; }
+.rs-btn { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; border-radius: 16px; font-weight: 700; font-size: 16px; }
+.dx .rs-btn--forte { background: var(--rs-acc); color: #fff; }
+.dx .rs-btn--linha { border: 1.5px solid var(--dx-fg); }
+.rs-duas { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.rs-sec { margin-top: 34px; }
+.rs h2 { font-size: 26px; line-height: 1.15; margin-bottom: 6px; }
+.rs-sec > p { color: var(--dx-sub); font-size: 15px; line-height: 1.5; }
+.rs-menu { display: grid; gap: 10px; margin-top: 16px; }
+.rs-menu button { display: flex; align-items: center; gap: 14px; width: 100%; text-align: left; padding: 16px; border-radius: 18px; background: #fff; border: 1px solid var(--dx-linha); }
+.rs-menu i { flex: none; width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; background: #E8E1D2; font-style: normal; font-size: 24px; }
+.rs-menu b { display: block; font-size: 17px; }
+.rs-menu small { color: var(--dx-sub); font-size: 14px; }
+.rs-menu .dx-ico { margin-left: auto; color: var(--dx-sub); }
+.rs-cartao { margin-top: 14px; padding: 18px; border-radius: 18px; background: var(--rs-acc); color: #fff; }
+.rs-cartao p { font-size: 15px; line-height: 1.5; color: #DCE8E0; }
+.rs-cartao b { display: block; font-size: 18px; color: #fff; margin-bottom: 4px; }
+.rs-fixa { position: fixed; z-index: 40; left: 0; right: 0; bottom: 0; padding: 12px 18px calc(12px + env(safe-area-inset-bottom)); background: rgba(243,239,230,.96); border-top: 1px solid var(--dx-linha); }
+.rs-fixa .rs-duas { max-width: 444px; margin: 0 auto; }
+.rs-fixa .rs-btn { min-height: 50px; }

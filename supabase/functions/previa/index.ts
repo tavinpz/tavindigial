@@ -20,7 +20,7 @@ Deno.serve(async (req) => {
   const db = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
   // o código é o começo do id do lead: procura no intervalo de ids que começam com ele
   const { data } = await db.from("leads")
-    .select("id,nome,nicho,categoria,bairro,cidade,endereco,instagram,whatsapp,nota,avaliacoes,status")
+    .select("id,nome,nicho,categoria,bairro,cidade,endereco,instagram,whatsapp,nota,avaliacoes,status,pais")
     .gte("id", `${c}-0000-0000-0000-000000000000`).lte("id", `${c}-ffff-ffff-ffff-ffffffffffff`)
     .limit(2);
   if (!data || data.length !== 1 || ["nao_contatar", "arquivado"].includes(data[0].status)) return json(404, { ok: false });
@@ -34,6 +34,6 @@ Deno.serve(async (req) => {
   const wa = (env?.origem === "app" && num.wa_numero_app) ? num.wa_numero_app : (num.wa_numero_web || null);
   return json(200, {
     ok: true, r: l.id, nome: l.nome, nicho: l.nicho, categoria: l.categoria, bairro: l.bairro, cidade: l.cidade,
-    endereco: l.endereco, instagram: l.instagram, telefone: l.whatsapp, nota: l.nota, avaliacoes: l.avaliacoes, wa,
+    endereco: l.endereco, instagram: l.instagram, telefone: l.whatsapp, nota: l.nota, avaliacoes: l.avaliacoes, pais: l.pais, wa,
   });
 });

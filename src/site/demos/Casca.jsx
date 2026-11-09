@@ -60,7 +60,7 @@ export default function Casca({ id, base, fontes, className = '', children }) {
   }
 
   return (
-    <div className={`dx dx--${id} ${className}`}>
+    <div className={`dx dx--${id} ${nome.length > 20 ? 'dx--muito' : nome.length > 11 ? 'dx--longo' : ''} ${className}`}>
       <p className="dx-selo">{nomeLead ? `Demonstração feita para ${nomeLead}` : 'Demonstração Tavin Digital'}</p>
       {children({ nome, demo, quero, nomeLead, local, nota, aval })}
       {embutida ? (
