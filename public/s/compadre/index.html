@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Compadre · Cozinha alentejana e africana em Campanhã, Porto</title>
+<meta name="description" content="Restaurante Compadre (Campo Alegre), Rua do Freixo, Porto. Arroz de bacalhau à alentejana, bacalhau à lagareiro, caril de camarão à angolana, moamba de galinha. Reserve pelo WhatsApp.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1d4fa0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cal:#f7f4ec; --cal2:#efe9db; --azul:#1d4fa0; --azul-esc:#12336b; --ocre:#e1a326; --tinta:#1c1a17; --suave:#5b574f; --linha:#ddd4c0;
+    --serif:'Young Serif', Georgia, serif; --sans:'Instrument Sans', system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--cal);color:var(--tinta);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  img,svg{display:block;max-width:100%}
+  a{color:inherit}
+  .wrap{width:min(1120px,100% - 40px);margin-inline:auto}
+  :focus-visible{outline:3px solid var(--ocre);outline-offset:3px;border-radius:6px}
+
+  /* barra azul alentejana (a barra pintada que contorna as casas caiadas) */
+  .barra{height:14px;background:var(--azul)}
+  .barra.ocre{background:var(--ocre);height:8px}
+
+  header.topo{position:sticky;top:0;z-index:20;background:rgba(247,244,236,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--linha)}
+  .topo .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .marca{font-family:var(--serif);font-size:24px;text-decoration:none;color:var(--azul-esc)}
+  .marca small{display:block;font-family:var(--sans);font-size:11px;letter-spacing:.08em;color:var(--suave);margin-top:-4px}
+  .topo nav{display:flex;gap:26px;font-size:15px;font-weight:500}
+  .topo nav a{text-decoration:none}
+  .topo nav a:hover{color:var(--azul)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;font-weight:600;font-size:16px;text-decoration:none;border:2px solid transparent;transition:transform .15s,background .15s}
+  .btn:active{transform:scale(.98)}
+  .btn-azul{background:var(--azul);color:#fff}
+  .btn-azul:hover{background:var(--azul-esc)}
+  .btn-linha{border-color:var(--azul);color:var(--azul)}
+  .btn-linha:hover{background:var(--azul);color:#fff}
+  .topo .btn{min-height:42px;padding:0 18px;font-size:15px}
+
+  /* abertura */
+  .abre{padding:72px 0 64px;position:relative;overflow:hidden}
+  .abre .grade{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+  .sobre-titulo{font-size:14px;font-weight:600;color:var(--azul);margin-bottom:14px}
+  h1{font-family:var(--serif);font-weight:400;font-size:clamp(42px,6.4vw,78px);line-height:1.02;color:var(--azul-esc);letter-spacing:-.01em}
+  .abre p.lead{font-size:20px;color:var(--suave);max-width:30ch;margin:22px 0 32px}
+  .acoes{display:flex;flex-wrap:wrap;gap:12px}
+  .provas{display:flex;flex-wrap:wrap;gap:22px;margin-top:34px;font-size:15px;color:var(--suave)}
+  .provas b{color:var(--tinta)}
+  .estrelas{color:var(--ocre);letter-spacing:2px}
+
+  /* azulejo desenhado em SVG */
+  .azulejos{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:var(--cal2);padding:6px;border-radius:18px;box-shadow:0 30px 60px -30px rgba(18,51,107,.45);transform:rotate(2deg)}
+  .azulejos svg{width:100%;height:auto;border-radius:4px;background:#fbf9f3}
+
+  /* pratos */
+  section{padding:84px 0}
+  .cab{max-width:640px;margin-bottom:44px}
+  h2{font-family:var(--serif);font-weight:400;font-size:clamp(32px,4.4vw,48px);line-height:1.08;color:var(--azul-esc)}
+  .cab p{color:var(--suave);margin-top:12px;font-size:18px}
+  .pratos{display:grid;grid-template-columns:repeat(2,1fr);gap:0 56px}
+  .prato{display:grid;grid-template-columns:auto 1fr;gap:18px;padding:22px 0;border-top:1px solid var(--linha)}
+  .prato .ic{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-size:18px;color:#fff;background:var(--azul)}
+  .prato.africa .ic{background:var(--ocre);color:var(--tinta)}
+  .prato h3{font-family:var(--serif);font-weight:400;font-size:22px;line-height:1.2}
+  .prato p{color:var(--suave);font-size:16px;margin-top:4px}
+  .origem{display:inline-block;font-size:12px;font-weight:600;padding:2px 10px;border-radius:999px;background:var(--cal2);color:var(--azul-esc);margin-top:8px}
+  .prato.africa .origem{background:#f6e3b8;color:#6b4a06}
+  .nota-menu{margin-top:30px;color:var(--suave);font-size:15px}
+
+  /* casa */
+  .casa{background:var(--azul);color:#fff}
+  .casa h2{color:#fff}
+  .casa .grade{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+  .casa p{color:#dbe5f7;font-size:18px}
+  .casa p+p{margin-top:16px}
+  .citacoes{display:grid;gap:14px}
+  blockquote{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:20px 22px;font-family:var(--serif);font-size:20px;line-height:1.35}
+  blockquote cite{display:block;font-family:var(--sans);font-style:normal;font-size:13px;color:#b8c8ea;margin-top:8px}
+
+  /* visita */
+  .visita .grade{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  .cartao{background:#fff;border:1px solid var(--linha);border-radius:20px;padding:28px}
+  .cartao h3{font-family:var(--serif);font-weight:400;font-size:24px;color:var(--azul-esc);margin-bottom:14px}
+  table{width:100%;border-collapse:collapse;font-size:16px}
+  td{padding:10px 0;border-bottom:1px dashed var(--linha)}
+  td:last-child{text-align:right;font-weight:600;white-space:nowrap;padding-left:12px}
+  tr.fechado td:last-child{color:#a33}
+  .morada{font-size:18px;margin-bottom:18px}
+  .cartao .acoes{margin-top:18px}
+  .aviso{margin-top:16px;font-size:15px;color:var(--suave);background:var(--cal2);border-radius:12px;padding:12px 14px}
+
+  footer{padding:40px 0 120px;font-size:14px;color:var(--suave);border-top:1px solid var(--linha)}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+
+  /* barra fixa no telemóvel */
+  .fixa{display:none}
+
+  @media (max-width:860px){
+    body{font-size:16px}
+    .topo nav{display:none}
+    .abre{padding:40px 0 48px}
+    .abre .grade,.casa .grade,.visita .grade{grid-template-columns:1fr;gap:36px}
+    .abre p.lead{font-size:18px}
+    .azulejos{transform:none;max-width:420px}
+    section{padding:60px 0}
+    .pratos{grid-template-columns:1fr}
+    .acoes .btn{flex:1 1 100%}
+    .fixa{display:flex;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:30;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(247,244,236,.97);border-top:1px solid var(--linha)}
+    .fixa .btn{flex:1;min-height:50px}
+    .topo .btn{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+<div class="barra"></div>
+<header class="topo">
+  <div class="wrap">
+    <a class="marca" href="#">Compadre<small>CAMPO ALEGRE · PORTO</small></a>
+    <nav aria-label="Secções"><a href="#pratos">Pratos</a><a href="#casa">A casa</a><a href="#visita">Horário e morada</a></nav>
+    <a class="btn btn-azul" href="https://wa.me/351914704568?text=Ol%C3%A1!%20Queria%20reservar%20uma%20mesa%20no%20Compadre." target="_blank" rel="noopener">Reservar mesa</a>
+  </div>
+</header>
+
+<main>
+  <section class="abre" aria-labelledby="t">
+    <div class="wrap grade">
+      <div>
+        <p class="sobre-titulo">Cozinha alentejana e africana · Campanhã, Porto</p>
+        <h1 id="t">Bacalhau, coentros e conversa à mesa, como em casa.</h1>
+        <p class="lead">Arroz de bacalhau à alentejana, caril de camarão à angolana e uma sala pequena onde toda a gente é compadre.</p>
+        <div class="acoes">
+          <a class="btn btn-azul" href="https://wa.me/351914704568?text=Ol%C3%A1!%20Queria%20reservar%20uma%20mesa%20no%20Compadre." target="_blank" rel="noopener">Reservar pelo WhatsApp</a>
+          <a class="btn btn-linha" href="tel:+351914704568">Ligar 914 704 568</a>
+        </div>
+        <div class="provas">
+          <span><span class="estrelas" aria-hidden="true">★★★★★</span> <b>4,5</b> em 95 avaliações</span>
+          <span>Seg a sáb · almoço e jantar</span>
+        </div>
+      </div>
+      <div class="azulejos" aria-hidden="true">
+        <!-- 9 azulejos desenhados: o mesmo motivo rodado, como num painel -->
+        <svg viewBox="0 0 100 100"><use href="#az"/></svg><svg viewBox="0 0 100 100" style="transform:rotate(90deg)"><use href="#az"/></svg><svg viewBox="0 0 100 100"><use href="#az"/></svg>
+        <svg viewBox="0 0 100 100" style="transform:rotate(270deg)"><use href="#az2"/></svg><svg viewBox="0 0 100 100"><use href="#az2"/></svg><svg viewBox="0 0 100 100" style="transform:rotate(90deg)"><use href="#az2"/></svg>
+        <svg viewBox="0 0 100 100"><use href="#az"/></svg><svg viewBox="0 0 100 100" style="transform:rotate(180deg)"><use href="#az"/></svg><svg viewBox="0 0 100 100"><use href="#az"/></svg>
+      </div>
+    </div>
+  </section>
+  <div class="barra ocre"></div>
+
+  <section id="pratos" aria-labelledby="tp">
+    <div class="wrap">
+      <div class="cab">
+        <h2 id="tp">Os pratos da casa</h2>
+        <p>Do Alentejo e de Angola, feitos sem pressa. São os que os clientes mais pedem.</p>
+      </div>
+      <div class="pratos">
+        <article class="prato"><span class="ic" aria-hidden="true">1</span><div><h3>Arroz de bacalhau à alentejana</h3><p>Com coentros e ovo escalfado por cima. O prato que mais aparece nas avaliações.</p><span class="origem">Alentejo</span></div></article>
+        <article class="prato"><span class="ic" aria-hidden="true">2</span><div><h3>Bacalhau à lagareiro</h3><p>Lombo assado no forno, batata a murro e azeite a sério.</p><span class="origem">Portugal</span></div></article>
+        <article class="prato africa"><span class="ic" aria-hidden="true">3</span><div><h3>Caril de camarão à angolana</h3><p>Camarão em molho de caril, para quem gosta de comida com alma.</p><span class="origem">Angola</span></div></article>
+        <article class="prato africa"><span class="ic" aria-hidden="true">4</span><div><h3>Moamba de galinha</h3><p>O clássico angolano, galinha cozinhada devagar no molho de dendém.</p><span class="origem">Angola</span></div></article>
+        <article class="prato"><span class="ic" aria-hidden="true">5</span><div><h3>Cação de coentrada</h3><p>Peixe em caldo de coentros, alho e pão, à moda alentejana.</p><span class="origem">Alentejo</span></div></article>
+        <article class="prato"><span class="ic" aria-hidden="true">6</span><div><h3>Entrecosto de porco preto</h3><p>Porco preto alentejano grelhado, e o arroz de pato à moda antiga ao lado.</p><span class="origem">Alentejo</span></div></article>
+      </div>
+      <p class="nota-menu">O menu muda conforme o dia. Pergunte pelo prato do dia quando reservar.</p>
+    </div>
+  </section>
+
+  <section id="casa" class="casa" aria-labelledby="tc">
+    <div class="wrap grade">
+      <div>
+        <h2 id="tc">Uma casa pequena, à moda de família</h2>
+        <p>O Compadre é um espaço familiar em Campanhã, com poucas mesas e serviço próximo. Juntamos a cozinha tradicional do norte e do Alentejo aos sabores de Angola.</p>
+        <p>Como a sala enche depressa, sobretudo ao jantar, vale a pena reservar.</p>
+      </div>
+      <div class="citacoes">
+        <blockquote>4,5 de 5 em 95 avaliações online<cite>O bacalhau e a simpatia da equipa são o que mais se elogia</cite></blockquote>
+        <blockquote>Alentejo + Angola<cite>Duas cozinhas de tacho, na mesma mesa</cite></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section id="visita" class="visita" aria-labelledby="tv">
+    <div class="wrap">
+      <div class="cab"><h2 id="tv">Venha jantar</h2></div>
+      <div class="grade">
+        <div class="cartao">
+          <h3>Horário</h3>
+          <table>
+            <tr><td>Segunda a sábado, almoço</td><td>12h30 – 15h00</td></tr>
+            <tr><td>Segunda a sábado, jantar</td><td>19h00 – 23h00</td></tr>
+            <tr class="fechado"><td>Domingo</td><td>Fechado</td></tr>
+          </table>
+        </div>
+        <div class="cartao">
+          <h3>Morada</h3>
+          <p class="morada">Rua do Freixo, 1732<br>4300 Porto (Campanhã)</p>
+          <div class="acoes">
+            <a class="btn btn-linha" href="https://www.google.com/maps/search/?api=1&query=Restaurante%20Compadre%20Rua%20do%20Freixo%201732%20Porto" target="_blank" rel="noopener">Abrir no mapa</a>
+          </div>
+          <p class="aviso">Grupos e jantares de família: diga quantas pessoas no WhatsApp que guardamos a mesa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><span>Compadre · Campo Alegre · Rua do Freixo, Porto</span><span>Prévia criada por Tavin Digital</span></div>
+</footer>
+
+<div class="fixa">
+  <a class="btn btn-azul" href="https://wa.me/351914704568?text=Ol%C3%A1!%20Queria%20reservar%20uma%20mesa%20no%20Compadre." target="_blank" rel="noopener">Reservar</a>
+  <a class="btn btn-linha" href="tel:+351914704568">Ligar</a>
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="az" fill="none" stroke="#1d4fa0" stroke-width="3">
+      <rect x="1.5" y="1.5" width="97" height="97" stroke="#d9cfb8"/>
+      <circle cx="50" cy="50" r="14" fill="#1d4fa0"/>
+      <circle cx="50" cy="50" r="6" fill="#fbf9f3" stroke="none"/>
+      <path d="M50 8 C60 24 60 30 50 36 C40 30 40 24 50 8Z M92 50 C76 60 70 60 64 50 C70 40 76 40 92 50Z M50 92 C40 76 40 70 50 64 C60 70 60 76 50 92Z M8 50 C24 40 30 40 36 50 C30 60 24 60 8 50Z" fill="#1d4fa0" stroke="none"/>
+      <path d="M0 0 L22 0 C18 10 10 18 0 22Z M100 0 L78 0 C82 10 90 18 100 22Z M100 100 L78 100 C82 90 90 82 100 78Z M0 100 L22 100 C18 90 10 82 0 78Z" fill="#e1a326" stroke="none"/>
+    </g>
+    <g id="az2" fill="none" stroke="#1d4fa0" stroke-width="3">
+      <rect x="1.5" y="1.5" width="97" height="97" stroke="#d9cfb8"/>
+      <path d="M0 50 Q25 20 50 50 T100 50" />
+      <path d="M0 68 Q25 38 50 68 T100 68" />
+      <path d="M0 32 Q25 2 50 32 T100 32" />
+      <circle cx="50" cy="50" r="7" fill="#e1a326" stroke="none"/>
+    </g>
+  </defs>
+</svg>
+</body>
+</html>
