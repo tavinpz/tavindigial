@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sabores da Fininha · Cozinha portuguesa no Cais de Gaia</title>
+<meta name="description" content="Sabores da Fininha, Avenida de Diogo Leite 282, Cais de Gaia. Bacalhau, polvo, francesinha e sobremesas caseiras com Vinho do Porto, na esplanada de frente para o Douro.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#16323a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --douro:#16323a; --douro2:#21474f; --vinho:#7a1f33; --pedra:#efe9df; --pedra2:#e3dacb; --dourado:#d9a441; --tinta:#1d2022; --suave:#5d5f5c; --linha:#d8cebd;
+    --serif:'Gloock', Georgia, serif; --sans:'Figtree', system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--pedra);color:var(--tinta);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  img,svg{display:block;max-width:100%}
+  a{color:inherit}
+  .wrap{width:min(1120px,100% - 40px);margin-inline:auto}
+  :focus-visible{outline:3px solid var(--dourado);outline-offset:3px;border-radius:6px}
+
+  header.topo{position:absolute;top:0;left:0;right:0;z-index:10;color:#fff}
+  .topo .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .marca{font-family:var(--serif);font-size:23px;text-decoration:none;line-height:1.1}
+  .topo nav{display:flex;gap:26px;font-size:15px;font-weight:500}
+  .topo nav a{text-decoration:none;opacity:.85}
+  .topo nav a:hover{opacity:1}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;font-weight:600;font-size:16px;text-decoration:none;border:2px solid transparent;transition:transform .15s,background .15s,color .15s}
+  .btn:active{transform:scale(.98)}
+  .btn-vinho{background:var(--vinho);color:#fff}
+  .btn-vinho:hover{background:#621728}
+  .btn-claro{border-color:rgba(255,255,255,.6);color:#fff}
+  .btn-claro:hover{background:#fff;color:var(--douro)}
+  .btn-linha{border-color:var(--douro);color:var(--douro)}
+  .btn-linha:hover{background:var(--douro);color:#fff}
+
+  /* abertura: o rio e a Ribeira do outro lado */
+  .abre{background:var(--douro);color:#fff;padding:128px 0 0;overflow:hidden}
+  .abre .txt > *{max-width:680px}
+  .onde{font-size:15px;font-weight:600;color:var(--dourado);margin-bottom:16px}
+  h1{font-family:var(--serif);font-weight:400;font-size:clamp(44px,7vw,84px);line-height:1;letter-spacing:-.01em}
+  .abre p.lead{font-size:20px;color:#c9d8db;max-width:34ch;margin:22px 0 32px}
+  .acoes{display:flex;flex-wrap:wrap;gap:12px}
+  .nota{margin-top:26px;font-size:15px;color:#c9d8db}
+  .nota b{color:#fff}
+  .estrelas{color:var(--dourado);letter-spacing:2px}
+  .vista{margin-top:56px;width:100%;height:clamp(170px,21vw,300px)}
+
+  /* faixa de comodidades */
+  .faixa{background:var(--douro2);color:#e8eff0}
+  .faixa ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 34px;padding:20px 0;font-size:15px;font-weight:500}
+  .faixa li{display:flex;align-items:center;gap:8px}
+  .faixa li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--dourado)}
+
+  section{padding:88px 0}
+  .cab{max-width:620px;margin-bottom:42px}
+  h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.6vw,52px);line-height:1.06;color:var(--douro)}
+  .cab p{color:var(--suave);margin-top:12px;font-size:18px}
+
+  /* pratos */
+  .pratos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .prato{background:#fff;border:1px solid var(--linha);border-radius:22px;padding:24px 24px 22px;display:flex;flex-direction:column}
+  .prato svg{width:52px;height:52px;margin-bottom:16px}
+  .prato h3{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.15;color:var(--tinta)}
+  .prato p{color:var(--suave);font-size:16px;margin-top:6px}
+  .prato.destaque{grid-column:span 2;background:var(--vinho);border-color:var(--vinho);color:#fff}
+  .prato.destaque h3{color:#fff;font-size:30px}
+  .prato.destaque p{color:#f0d7dc;font-size:17px;max-width:44ch}
+  .nota-menu{margin-top:26px;color:var(--suave);font-size:15px}
+
+  /* esplanada */
+  .esplanada{background:var(--pedra2)}
+  .esplanada .grade{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .esplanada p{color:var(--suave);font-size:18px;margin-top:16px}
+  .lista-check{list-style:none;margin-top:24px;display:grid;gap:12px}
+  .lista-check li{display:flex;gap:12px;align-items:flex-start;font-size:17px}
+  .lista-check svg{flex:none;width:22px;height:22px;margin-top:3px}
+  .copo{background:var(--douro);border-radius:28px;padding:36px;color:#fff}
+  .copo h3{font-family:var(--serif);font-weight:400;font-size:30px;line-height:1.1}
+  .copo p{color:#c9d8db;margin-top:12px;font-size:17px}
+  .copo .acoes{margin-top:24px}
+
+  /* visita */
+  .visita .grade{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .cartao{background:#fff;border:1px solid var(--linha);border-radius:22px;padding:28px}
+  .cartao h3{font-family:var(--serif);font-weight:400;font-size:26px;color:var(--douro);margin-bottom:14px}
+  .horas{font-size:22px;font-weight:600}
+  .cartao p{color:var(--suave)}
+  .morada{font-size:18px;color:var(--tinta)!important;margin-bottom:18px}
+  .pagar{margin-top:16px;font-size:15px}
+  .cartao .acoes{margin-top:4px}
+
+  footer{background:var(--douro);color:#9fb5ba;padding:36px 0 120px;font-size:14px}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+  footer b{color:#fff;font-weight:600}
+
+  .fixa{display:none}
+
+  @media (max-width:900px){
+    body{font-size:16px}
+    .topo nav{display:none}
+    .abre{padding-top:104px}
+    .abre p.lead{font-size:18px}
+    .acoes .btn{flex:1 1 100%}
+    .vista{margin-top:44px}
+    section{padding:64px 0}
+    .pratos{grid-template-columns:1fr}
+    .prato.destaque{grid-column:auto}
+    .esplanada .grade,.visita .grade{grid-template-columns:1fr;gap:28px}
+    .copo{padding:28px}
+    .faixa ul{justify-content:flex-start;gap:10px 22px}
+    .fixa{display:flex;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:30;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(239,233,223,.97);border-top:1px solid var(--linha)}
+    .fixa .btn{flex:1;min-height:50px}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+<header class="topo">
+  <div class="wrap">
+    <a class="marca" href="#">Sabores da Fininha</a>
+    <nav aria-label="Secções"><a href="#mesa">À mesa</a><a href="#esplanada">Esplanada</a><a href="#visita">Horário e morada</a></nav>
+  </div>
+</header>
+
+<main>
+  <section class="abre" aria-labelledby="t" style="padding-bottom:0">
+    <div class="wrap txt">
+      <p class="onde">Cais de Gaia · de frente para o Porto</p>
+      <h1 id="t">Bacalhau, Douro e Vinho do Porto na mesma mesa.</h1>
+      <p class="lead">Cozinha portuguesa caseira na Avenida de Diogo Leite, com esplanada à beira-rio e o Porto do outro lado.</p>
+      <div class="acoes">
+        <a class="btn btn-vinho" href="https://wa.me/351911137453?text=Ol%C3%A1!%20Queria%20reservar%20uma%20mesa%20no%20Sabores%20da%20Fininha." target="_blank" rel="noopener">Reservar pelo WhatsApp</a>
+        <a class="btn btn-claro" href="tel:+351911137453">Ligar 911 137 453</a>
+      </div>
+      <p class="nota"><span class="estrelas" aria-hidden="true">★★★★</span> <b>4,2</b> no Tripadvisor, com cerca de 300 avaliações</p>
+    </div>
+
+    <!-- a Ribeira vista do Cais de Gaia: casas coloridas, o rio e um barco rabelo -->
+    <svg class="vista" viewBox="0 0 1440 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <g>
+        <rect x="0" y="120" width="1440" height="80" fill="#21474f"/>
+        <rect x="40" y="60" width="70" height="140" fill="#c9733d"/><rect x="110" y="40" width="60" height="160" fill="#e3c27a"/><rect x="170" y="80" width="80" height="120" fill="#efe9df"/>
+        <rect x="250" y="50" width="56" height="150" fill="#8f3a3a"/><rect x="306" y="70" width="74" height="130" fill="#d9a441"/><rect x="380" y="30" width="64" height="170" fill="#b7c6c2"/>
+        <rect x="444" y="64" width="84" height="136" fill="#e6d8c0"/><rect x="528" y="44" width="58" height="156" fill="#c9733d"/><rect x="586" y="84" width="70" height="116" fill="#7a1f33"/>
+        <rect x="656" y="36" width="66" height="164" fill="#efe9df"/><rect x="722" y="70" width="78" height="130" fill="#e3c27a"/><rect x="800" y="54" width="60" height="146" fill="#9fb5ba"/>
+        <rect x="860" y="78" width="82" height="122" fill="#c9733d"/><rect x="942" y="40" width="62" height="160" fill="#e6d8c0"/><rect x="1004" y="66" width="74" height="134" fill="#8f3a3a"/>
+        <rect x="1078" y="30" width="58" height="170" fill="#d9a441"/><rect x="1136" y="74" width="80" height="126" fill="#efe9df"/><rect x="1216" y="50" width="66" height="150" fill="#b7c6c2"/>
+        <rect x="1282" y="84" width="76" height="116" fill="#c9733d"/><rect x="1358" y="46" width="82" height="154" fill="#e3c27a"/>
+        <g fill="#16323a" opacity=".55">
+          <rect x="56" y="84" width="12" height="18"/><rect x="82" y="84" width="12" height="18"/><rect x="124" y="64" width="12" height="18"/><rect x="146" y="64" width="12" height="18"/>
+          <rect x="190" y="104" width="12" height="18"/><rect x="220" y="104" width="12" height="18"/><rect x="266" y="74" width="12" height="18"/><rect x="322" y="94" width="12" height="18"/><rect x="352" y="94" width="12" height="18"/>
+          <rect x="398" y="54" width="12" height="18"/><rect x="420" y="54" width="12" height="18"/><rect x="462" y="88" width="12" height="18"/><rect x="496" y="88" width="12" height="18"/><rect x="544" y="68" width="12" height="18"/>
+          <rect x="604" y="108" width="12" height="18"/><rect x="630" y="108" width="12" height="18"/><rect x="674" y="60" width="12" height="18"/><rect x="700" y="60" width="12" height="18"/><rect x="740" y="94" width="12" height="18"/><rect x="772" y="94" width="12" height="18"/>
+          <rect x="818" y="78" width="12" height="18"/><rect x="878" y="102" width="12" height="18"/><rect x="910" y="102" width="12" height="18"/><rect x="958" y="64" width="12" height="18"/><rect x="982" y="64" width="12" height="18"/>
+          <rect x="1022" y="90" width="12" height="18"/><rect x="1050" y="90" width="12" height="18"/><rect x="1094" y="54" width="12" height="18"/><rect x="1154" y="98" width="12" height="18"/><rect x="1186" y="98" width="12" height="18"/>
+          <rect x="1234" y="74" width="12" height="18"/><rect x="1258" y="74" width="12" height="18"/><rect x="1300" y="108" width="12" height="18"/><rect x="1330" y="108" width="12" height="18"/><rect x="1376" y="70" width="12" height="18"/><rect x="1410" y="70" width="12" height="18"/>
+        </g>
+      </g>
+      <rect x="0" y="196" width="1440" height="104" fill="#1b3d45"/>
+      <g fill="none" stroke="#3d6670" stroke-width="3" stroke-linecap="round">
+        <path d="M60 228 q20 -8 40 0 t40 0"/><path d="M300 252 q20 -8 40 0 t40 0"/><path d="M620 236 q20 -8 40 0 t40 0"/>
+        <path d="M980 262 q20 -8 40 0 t40 0"/><path d="M1240 232 q20 -8 40 0 t40 0"/><path d="M820 284 q20 -8 40 0 t40 0"/>
+      </g>
+      <!-- barco rabelo -->
+      <g transform="translate(400 176)">
+        <path d="M0 40 C40 62 200 62 250 34 L236 52 C190 74 50 74 10 54 Z" fill="#3a2418"/>
+        <rect x="90" y="-56" width="5" height="96" fill="#3a2418"/>
+        <path d="M95 -52 L170 -40 L168 24 L95 30 Z" fill="#efe9df"/>
+        <rect x="102" y="-20" width="58" height="10" fill="#7a1f33"/>
+        <path d="M232 40 L262 6" stroke="#3a2418" stroke-width="5"/>
+        <rect x="150" y="28" width="56" height="16" rx="3" fill="#d9a441"/>
+      </g>
+    </svg>
+  </section>
+
+  <div class="faixa">
+    <ul class="wrap">
+      <li>Esplanada aquecida</li><li>Rooftop</li><li>Takeaway</li><li>Aceita animais</li><li>Paga com MB Way</li>
+    </ul>
+  </div>
+
+  <section id="mesa" aria-labelledby="tm">
+    <div class="wrap">
+      <div class="cab">
+        <h2 id="tm">À mesa</h2>
+        <p>Comida caseira portuguesa. Estes são os pratos que os clientes mais elogiam.</p>
+      </div>
+      <div class="pratos">
+        <article class="prato destaque">
+          <svg viewBox="0 0 52 52" aria-hidden="true"><path d="M6 30c8-10 24-14 40-6-6 2-6 8 0 10-16 8-32 4-40-4Z" fill="#d9a441"/><circle cx="40" cy="27" r="1.8" fill="#7a1f33"/></svg>
+          <h3>Bacalhau, de várias maneiras</h3>
+          <p>Com natas, com crosta de broa e batata assada, ou com pesto e crosta de espinafres e alho. É o prato que mais aparece nas avaliações.</p>
+        </article>
+        <article class="prato">
+          <svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="20" r="11" fill="#7a1f33"/><path d="M16 26c-4 8-10 10-12 16M22 30c-2 8-4 12-4 16M30 30c2 8 4 12 4 16M36 26c4 8 10 10 12 16" stroke="#7a1f33" stroke-width="4" fill="none" stroke-linecap="round"/></svg>
+          <h3>Polvo</h3>
+          <p>Um dos pratos de mar mais pedidos da casa.</p>
+        </article>
+        <article class="prato">
+          <svg viewBox="0 0 52 52" aria-hidden="true"><rect x="8" y="14" width="36" height="8" rx="3" fill="#d9a441"/><rect x="8" y="24" width="36" height="6" fill="#7a1f33"/><rect x="8" y="32" width="36" height="8" rx="3" fill="#d9a441"/><path d="M4 42c8 4 36 4 44 0" stroke="#c9733d" stroke-width="4" fill="none" stroke-linecap="round"/></svg>
+          <h3>Francesinha</h3>
+          <p>A do Porto, com molho, para quem atravessa a ponte com fome.</p>
+        </article>
+        <article class="prato">
+          <svg viewBox="0 0 52 52" aria-hidden="true"><ellipse cx="26" cy="32" rx="20" ry="9" fill="#e3dacb"/><path d="M14 30c2-8 10-12 18-10 6 2 8 6 6 10" fill="#8f3a3a"/><circle cx="38" cy="22" r="3" fill="#c42f4a"/><circle cx="33" cy="18" r="3" fill="#c42f4a"/></svg>
+          <h3>Pato com laranja e framboesa</h3>
+          <p>Molho de laranja com framboesas, para quem quer sair do clássico.</p>
+        </article>
+        <article class="prato">
+          <svg viewBox="0 0 52 52" aria-hidden="true"><path d="M8 34 L26 14 L44 34 Z" fill="#e3c27a"/><rect x="8" y="34" width="36" height="6" fill="#d9a441"/><circle cx="20" cy="30" r="2" fill="#fff"/><circle cx="30" cy="26" r="2" fill="#fff"/></svg>
+          <h3>Tábua de queijos portugueses</h3>
+          <p>Para petiscar na esplanada, a acompanhar um copo.</p>
+        </article>
+        <article class="prato">
+          <svg viewBox="0 0 52 52" aria-hidden="true"><path d="M20 8h12l-2 16a4 4 0 0 1-8 0Z" fill="#7a1f33"/><rect x="25" y="28" width="2" height="12" fill="#5d5f5c"/><rect x="18" y="40" width="16" height="3" rx="1.5" fill="#5d5f5c"/></svg>
+          <h3>Sobremesas caseiras</h3>
+          <p>Tarte de limão com chocolate e tarte de banana. Ficam perfeitas com um cálice de Vinho do Porto.</p>
+        </article>
+      </div>
+      <p class="nota-menu">O menu muda com a época. Pergunte pelas sugestões do dia.</p>
+    </div>
+  </section>
+
+  <section id="esplanada" class="esplanada" aria-labelledby="te">
+    <div class="wrap grade">
+      <div>
+        <h2 id="te">Uma esplanada de frente para o rio</h2>
+        <p>Fica no Cais de Gaia, entre as caves de Vinho do Porto e a Ponte Luís I, com vista para a Ribeira. Nas noites frias a esplanada é aquecida.</p>
+        <ul class="lista-check">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#16323a"/><path d="M7 12l3.5 3.5L17 9" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Esplanada aquecida e rooftop</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#16323a"/><path d="M7 12l3.5 3.5L17 9" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Pode trazer o seu cão</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#16323a"/><path d="M7 12l3.5 3.5L17 9" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Takeaway para levar para casa ou para o hotel</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#16323a"/><path d="M7 12l3.5 3.5L17 9" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Adaptamos pratos a restrições alimentares</li>
+        </ul>
+      </div>
+      <div class="copo">
+        <h3>Vem em grupo ou para uma ocasião especial?</h3>
+        <p>Diga quantas pessoas e a hora pelo WhatsApp e guardamos a melhor mesa da esplanada.</p>
+        <div class="acoes">
+          <a class="btn btn-vinho" href="https://wa.me/351911137453?text=Ol%C3%A1!%20Queria%20reservar%20uma%20mesa%20na%20esplanada%20para%20___%20pessoas." target="_blank" rel="noopener">Reservar mesa</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="visita" class="visita" aria-labelledby="tv">
+    <div class="wrap">
+      <div class="cab"><h2 id="tv">Venha almoçar ou jantar</h2></div>
+      <div class="grade">
+        <div class="cartao">
+          <h3>Horário</h3>
+          <p class="horas">12h00 – 22h30</p>
+          <p>Almoço e jantar.</p>
+          <p class="pagar">Aceitamos MB Way, cartão, Apple Pay e dinheiro.</p>
+        </div>
+        <div class="cartao">
+          <h3>Morada</h3>
+          <p class="morada">Avenida de Diogo Leite, 282<br>4400-111 Vila Nova de Gaia</p>
+          <div class="acoes">
+            <a class="btn btn-linha" href="https://www.google.com/maps/search/?api=1&query=Sabores%20da%20Fininha%2041.1379257%2C-8.6117462" target="_blank" rel="noopener">Abrir no mapa</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><span><b>Sabores da Fininha</b> · Cais de Gaia</span><span>Prévia criada por Tavin Digital</span></div>
+</footer>
+
+<div class="fixa">
+  <a class="btn btn-vinho" href="https://wa.me/351911137453?text=Ol%C3%A1!%20Queria%20reservar%20uma%20mesa%20no%20Sabores%20da%20Fininha." target="_blank" rel="noopener">Reservar</a>
+  <a class="btn btn-linha" href="tel:+351911137453">Ligar</a>
+</div>
+</body>
+</html>
