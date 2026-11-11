@@ -1,11 +1,12 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { Suspense, lazy, useEffect, useMemo, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { supabase } from '../lib/supabase'
 import { usePainel } from './Painel'
 import { MiniVideo, Previa } from './Previa'
 import Metricas from './Metricas'
 import { CalendarioConteudo } from './Calendario'
-import Contas from './Contas'
+import { CANAIS } from './canais'
+const PerfilCanal = lazy(() => import('./YouTubeLongo').then((m) => ({ default: m.PerfilCanal })))
 
 // Pipeline padrão de todos os canais: Prontos → Programados → Postados.
 // Cada canal (Estudio para a Tavin Digital, Videos para os de vídeo curto) entrega os cartões já no formato abaixo
@@ -565,7 +566,9 @@ export default function Pipeline({ canal, fases = FASES_PADRAO, itens, mover, pr
     <section className="pl" style={{ '--c': canal.cor }}>
       <header className="pl-cab">
         <div className="pl-quem">
-          {canal.logo ? <img src={canal.logo} alt="" /> : <span className="pl-sigla">{canal.sigla}</span>}
+          <button type="button" className="pl-avatar" onClick={() => setJanela('perfil')} title="Perfil do canal: nome, descrição, logo e banner" aria-label="Abrir o perfil do canal">
+            {canal.logo ? <img src={canal.logo} alt="" /> : <span className="pl-sigla">{canal.sigla}</span>}
+          </button>
           <div>
             <h1>{canal.nome}</h1>
             <RedesCanal canal={canal} />
@@ -576,7 +579,7 @@ export default function Pipeline({ canal, fases = FASES_PADRAO, itens, mover, pr
           <button className="p-btn" onClick={() => setJanela('integ')}>
             <span className={`pl-ponto ${cx.igOk ? 'on' : ''}`} aria-hidden="true" />Integrações
           </button>
-          <button className="p-btn" onClick={() => setJanela('contas')}>Contas</button>
+          <button className="p-btn" onClick={() => setJanela('perfil')}>Perfil do canal</button>
           {extra}
           <button className="p-btn p-btn--fraco" onClick={arquivar}>Arquivar canal</button>
           <button className="p-btn" onClick={() => setJanela('subir')}>Subir vídeo</button>
@@ -639,7 +642,7 @@ export default function Pipeline({ canal, fases = FASES_PADRAO, itens, mover, pr
       {janela === 'metricas' && <Metricas canal={canal} fechar={() => setJanela(null)} />}
       {janela === 'integ' && <Integracoes canal={canal} marca={marca} cx={cx} recarregar={recarregar} fechar={() => setJanela(null)} />}
       {janela === 'programar' && <ProgramarTudo itens={programaveis} fila={fila} programar={programar} fechar={() => setJanela(null)} />}
-      {janela === 'contas' && <Contas canal={canal} fechar={() => setJanela(null)} />}
+      {janela === 'perfil' && <Suspense fallback={null}><PerfilCanal c={CANAIS.find((x) => x.id === canal.id) || canal} fechar={() => setJanela(null)} /></Suspense>}
       {janela === 'subir' && <SubirVideo canal={canal} subir={subir} fechar={() => setJanela(null)} />}
     </section>
   )

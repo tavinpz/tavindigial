@@ -1598,3 +1598,5 @@ a.crm-btn { text-decoration: none; display: inline-flex; align-items: center; }
 .ct-acoes .crm-btn + .crm-btn { margin-left: 6px; }
 .ct-off { opacity: .5; }
 @media (max-width: 640px) { .ct-tabela th:nth-child(3), .ct-tabela td:nth-child(3) { display: none; } }
+.pl-avatar { padding: 0; border: 0; background: none; cursor: pointer; border-radius: 50%; display: inline-flex; }
+.pl-avatar:hover { box-shadow: 0 0 0 3px color-mix(in srgb, var(--c, #B600F6) 35%, transparent); }

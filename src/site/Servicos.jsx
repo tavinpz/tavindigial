@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { CONFIG, brl } from '../config'
 import { waVendas } from './Layout'
 import Logo from './Logo'
 import '../styles/home.css'
@@ -11,45 +10,55 @@ const DEGRAUS = [
   {
     id: 'encontrado',
     titulo: 'Ser encontrado',
-    resumo: 'O cliente procura no Google, no Instagram ou numa IA e encontra uma página que passa confiança e leva para o WhatsApp.',
+    resumo: 'O cliente procura no Google, no Instagram ou numa IA e cai numa página que passa confiança e leva direto para o seu WhatsApp.',
     itens: [
-      { nome: 'Bio animada', desc: 'Substitui o Linktree: serviços, preços, avaliações e botão de agendar.', preco: `${brl(CONFIG.PRECO_BIO)}`, nota: `pronta em ${CONFIG.PRAZO_BIO_HORAS}h · + ${brl(CONFIG.HOSPEDAGEM_BIO)}/mês` },
-      { nome: 'Site completo', desc: 'Várias seções, fotos, equipe, mapa e horários, feito para aparecer no Google.', preco: `${brl(CONFIG.PRECO_SITE)}`, nota: `pronto em ${CONFIG.PRAZO_HORAS}h · + ${brl(CONFIG.HOSPEDAGEM_SITE)}/mês` },
-      { nome: 'Perfil no Google', desc: 'Criar ou arrumar o perfil da empresa: fotos, categorias, serviços e horários certos.' },
-      { nome: 'SEO para IAs', desc: 'Organizar o seu site para o ChatGPT e o Google entenderem e recomendarem o seu negócio.' },
+      { nome: 'Bio animada', desc: 'Substitui o Linktree com a sua marca: serviços, avaliações, mapa e botão de agendar. Pronta em 24 horas.' },
+      { nome: 'Site completo', desc: 'Várias seções, galeria, equipe, horários e mapa, rápido no celular e feito para aparecer no Google.' },
+      { nome: 'Landing page de venda', desc: 'Uma página focada numa oferta, num lançamento ou num anúncio, com o botão certo no lugar certo.' },
+      { nome: 'Cardápio e catálogo digital', desc: 'Pratos, produtos ou serviços com foto e preço, com pedido pelo WhatsApp.' },
+      { nome: 'Perfil do Google', desc: 'Criar ou arrumar o perfil da empresa: fotos, categorias, serviços, horários e respostas às avaliações.' },
+      { nome: 'SEO para Google e IAs', desc: 'Organizar o site para o Google e o ChatGPT entenderem, confiarem e recomendarem o seu negócio.' },
     ],
   },
   {
     id: 'atencao',
     titulo: 'Chamar atenção',
-    resumo: 'Conteúdo que faz parar o dedo: vídeo bem editado, motion e arte com a cara da sua marca.',
+    resumo: 'Conteúdo que faz parar o dedo: vídeo com ritmo, motion que explica e arte com a cara da sua marca.',
     itens: [
-      { nome: 'Edição de vídeos e Reels', desc: 'Cortes, legendas, ritmo e capa. Pacotes por quantidade no mês.' },
+      { nome: 'Edição de vídeos e Reels', desc: 'Cortes, legendas animadas, ritmo, trilha e capa. Pacotes mensais para postar todo dia.' },
       { nome: 'Vídeos em motion', desc: 'Animações para explicar um serviço, lançar uma oferta ou abrir um anúncio.' },
-      { nome: 'Design para redes', desc: 'Carrosséis, posts e artes no padrão da sua identidade visual.' },
+      { nome: 'Criativos para anúncios', desc: 'Roteiros, vídeos e artes pensados para Meta Ads, com variações para testar.' },
+      { nome: 'Design para redes', desc: 'Carrosséis, posts e stories no padrão da sua identidade visual.' },
+      { nome: 'Identidade visual', desc: 'Logo, cores, tipografia e um guia para tudo sair com a mesma cara.' },
+      { nome: 'Cortes e canais de vídeo', desc: 'Contas de cortes, canais no YouTube e vídeos longos produzidos e programados para você.' },
     ],
   },
   {
     id: 'sistema',
     titulo: 'Vender no automático',
-    resumo: 'Um sistema completo de vendas no GoHighLevel: nenhum contato se perde e o follow-up acontece sozinho.',
+    resumo: 'Um sistema completo de vendas no GoHighLevel: nenhum contato se perde, o follow-up acontece sozinho e você vê tudo num painel.',
     itens: [
-      { nome: 'CRM com funil de vendas', desc: 'Cada contato numa etapa, do primeiro oi ao cliente fechado.' },
-      { nome: 'Agenda online com lembretes', desc: 'O cliente marca sozinho e recebe lembrete no WhatsApp e no e-mail.' },
-      { nome: 'Caixa de entrada única', desc: 'WhatsApp, Instagram, Facebook, e-mail e SMS no mesmo lugar.' },
-      { nome: 'Follow-up e reativação', desc: 'Mensagens automáticas para quem não respondeu e para clientes antigos.' },
-      { nome: 'Pedido de avaliação', desc: 'Depois do atendimento, o cliente recebe o link para avaliar no Google.' },
-      { nome: 'Páginas de captura', desc: 'Formulários e landing pages ligados direto no funil.' },
+      { nome: 'CRM com funil de vendas', desc: 'Cada contato numa etapa, do primeiro oi ao cliente fechado, com valor e próximo passo.' },
+      { nome: 'Caixa de entrada única', desc: 'WhatsApp, Instagram, Facebook, e-mail e SMS no mesmo lugar, para a equipe toda.' },
+      { nome: 'Agenda online com lembretes', desc: 'O cliente marca sozinho e recebe confirmação e lembrete, e as faltas caem.' },
+      { nome: 'Follow-up e reativação', desc: 'Sequências automáticas para quem não respondeu e campanhas para trazer clientes antigos de volta.' },
+      { nome: 'Avaliações no Google no automático', desc: 'Depois do atendimento o cliente recebe o link para avaliar, e a sua nota sobe.' },
+      { nome: 'Funis, formulários e pagamentos', desc: 'Páginas de captura, quizzes, propostas e cobrança ligados direto no funil.' },
+      { nome: 'E-mail e WhatsApp em massa', desc: 'Campanhas segmentadas para a sua base, com resultado medido.' },
+      { nome: 'Relatórios de vendas', desc: 'Quantos leads entraram, de onde vieram, quantos fecharam e quanto entrou.' },
     ],
   },
   {
     id: 'medida',
     titulo: 'Feito sob medida',
-    resumo: 'Quando o pronto não serve: automações, integrações e sistemas desenhados para a sua operação.',
+    resumo: 'Quando o pronto não serve: automações, inteligência artificial e sistemas desenhados para a sua operação.',
     itens: [
-      { nome: 'Automações e integrações', desc: 'Planilha, CRM, WhatsApp, e-mail e pagamentos conversando entre si.' },
-      { nome: 'Assistentes com IA', desc: 'Atendimento e triagem no WhatsApp com inteligência artificial.' },
-      { nome: 'Sistemas e painéis', desc: 'Painéis de gestão e ferramentas internas com a sua regra de negócio.' },
+      { nome: 'Atendente com IA no WhatsApp', desc: 'Responde na hora, tira dúvidas, qualifica e agenda, 24 horas por dia.' },
+      { nome: 'Atendente com IA por voz', desc: 'Liga e atende ligações com voz natural para confirmar, remarcar e vender.' },
+      { nome: 'Automações e integrações', desc: 'Planilha, CRM, WhatsApp, e-mail, agenda e pagamentos conversando entre si.' },
+      { nome: 'Postagem automática', desc: 'Conteúdo programado e publicado sozinho no Instagram, TikTok e YouTube.' },
+      { nome: 'Painéis e sistemas internos', desc: 'Painéis de gestão, métricas e ferramentas com a regra do seu negócio.' },
+      { nome: 'Prospecção automatizada', desc: 'Lista de clientes ideais, mensagens e e-mails saindo sozinhos, com respostas no seu CRM.' },
     ],
   },
 ]
@@ -57,7 +66,7 @@ const DEGRAUS = [
 const PASSOS = [
   ['Conversa rápida', 'Você conta o que precisa pelo WhatsApp. Sem reunião longa.'],
   ['Prévia grátis', 'Você vê a página ou a proposta pronta antes de pagar.'],
-  ['Aprova e começa', 'Metade para começar, metade na entrega.'],
+  ['Aprova e começa', 'Você só segue se gostar do que viu.'],
   ['No ar', 'Entregamos, ajustamos e você acompanha o resultado.'],
 ]
 
@@ -104,9 +113,6 @@ export default function Servicos() {
                     <li key={it.nome}>
                       <h3>{it.nome}</h3>
                       <p>{it.desc}</p>
-                      {it.preco
-                        ? <p className="sv-preco"><b>{it.preco}</b><small>{it.nota}</small></p>
-                        : <p className="sv-preco sv-preco--orc">Orçamento pelo WhatsApp</p>}
                       <a className="sv-quero" href={waVendas(`Oi! Tenho interesse em: ${it.nome}.`)} target="_blank" rel="noreferrer">Quero este</a>
                     </li>
                   ))}

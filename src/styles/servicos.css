@@ -36,7 +36,7 @@
 .sv-preco b { font-family: var(--d); font-size: 26px; font-weight: 800; color: var(--ink); letter-spacing: -0.03em; }
 .sv-preco small { font-size: 13px; color: var(--fg3); }
 .sv-itens .sv-preco--orc { font-size: 14px; font-weight: 600; color: var(--prof); }
-.sv-quero { margin-top: 14px; align-self: flex-start; font-weight: 700; font-size: 15px; color: var(--el); text-decoration: none; border-bottom: 2px solid rgba(182, 0, 246, 0.25); }
+.sv-quero { margin-top: auto; padding-top: 16px; align-self: flex-start; font-weight: 700; font-size: 15px; color: var(--el); text-decoration: none; border-bottom: 2px solid rgba(182, 0, 246, 0.25); }
 .sv-quero:hover { border-color: var(--el); }
 
 /* como funciona */

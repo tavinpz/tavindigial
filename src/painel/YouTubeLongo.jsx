@@ -258,7 +258,7 @@ export default function YouTubeLongo({ canal, nome }) {
   return (
     <>
       <Pipeline canal={info} fases={FASES} itens={itens} mover={mover} programar={programar} abrir={(i) => i && setAbertoId(i.chave)}
-        cx={cx} subir={subir} recarregar={carregar} extra={<button className="p-btn" onClick={() => setPerfil(true)}>Perfil do canal</button>} />
+        cx={cx} subir={subir} recarregar={carregar} />
       {perfil && <PerfilCanal c={info} fechar={() => setPerfil(false)} />}
     </>
   )
