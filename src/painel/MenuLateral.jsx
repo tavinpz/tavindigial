@@ -125,9 +125,9 @@ function Canais({ itens, aba, ir, recolhido, organizar, views = {} }) {
             {!t && !recolhido && filhosDe(c.id).length > 0 && (() => {
               const aberto = abertosF[c.id] || filhosDe(c.id).some(([fid]) => fid === aba)
               return (
-                <button type="button" className={`m-cortes-btn ${aberto ? 'on' : ''}`} onClick={() => abrirF(c.id)} aria-expanded={aberto}
-                  aria-label={`${aberto ? 'Fechar' : 'Abrir'} as ${filhosDe(c.id).length} contas de cortes de ${nome}`} title="Contas de cortes">
-                  <small>{filhosDe(c.id).length}</small><Ico d={aberto ? 'm6 15 6-6 6 6' : 'm6 9 6 6 6-6'} t={12} />
+                <button type="button" className={`m-cortes-btn ${aberto ? 'on' : ''}`} onClick={() => abrirF(c.id)} aria-expanded={aberto}>
+                  <Ico d={aberto ? 'm6 15 6-6 6 6' : 'm9 6 6 6-6 6'} t={11} />
+                  {filhosDe(c.id).length} {filhosDe(c.id).length === 1 ? 'conta de cortes' : 'contas de cortes'}
                 </button>
               )
             })()}
