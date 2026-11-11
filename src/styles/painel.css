@@ -1604,10 +1604,10 @@ a.crm-btn { text-decoration: none; display: inline-flex; align-items: center; }
 /* Cortes: subcanais do perfil central */
 .m-lista li:has(> .m-filhos), .m-lista li:has(> .m-cortes-btn) { flex-wrap: wrap; }
 .m-lista li > .m-item { flex: 1 1 0; min-width: 0; }
-.m-filhos { list-style: none; flex: 0 0 100%; margin: 0 0 6px 20px; padding: 0 0 0 10px; border-left: 1px solid rgba(255,255,255,.14); display: flex; flex-direction: column; gap: 1px; }
+.m-filhos { list-style: none; flex: 0 0 calc(100% - 20px); box-sizing: border-box; margin: 0 0 6px 20px; padding: 0 0 0 10px; border-left: 1px solid rgba(255,255,255,.14); display: flex; flex-direction: column; gap: 1px; }
 .m-filhos li { display: block; }
 .m-filhos .m-item { width: 100%; }
-.m-cortes-btn { flex: 0 0 100%; display: flex; align-items: center; gap: 6px; margin: 0 0 2px 20px; padding: 3px 8px; border: 0; border-radius: 6px; background: none; color: #A897B5; font: inherit; font-size: 12px; font-weight: 600; cursor: pointer; text-align: left; }
+.m-cortes-btn { flex: 0 0 calc(100% - 20px); box-sizing: border-box; display: flex; align-items: center; gap: 6px; margin: 0 0 2px 20px; padding: 3px 8px; border: 0; border-radius: 6px; background: none; color: #A897B5; font: inherit; font-size: 12px; font-weight: 600; cursor: pointer; text-align: left; }
 .m-cortes-btn:hover, .m-cortes-btn.on { color: #fff; background: rgba(255,255,255,.06); }
 .m--mini .m-filhos { margin-left: 0; border-left: 0; padding: 0; }
 .pl-pai { font-size: 13px; color: #7A6A85; margin: 2px 0 0; }
