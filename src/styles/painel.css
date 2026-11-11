@@ -1637,3 +1637,4 @@ a.crm-btn { text-decoration: none; display: inline-flex; align-items: center; }
   .ct-lista button { grid-template-columns: 40px 1fr auto; }
   .ct-pos, .ct-num--rede { display: none; }
 }
+.crm-nota { color: #8A5A00 !important; font-weight: 700; }

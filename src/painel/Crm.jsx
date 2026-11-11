@@ -47,7 +47,7 @@ function colunaDo(l, a) {
   const n = a?.total_envios || 0
   return n <= 1 ? 'contato1' : n === 2 ? 'fup1' : 'fup2'
 }
-const CAMPOS_LEAD = 'id,nome,status,bairro,nicho,categoria,cidade,tipo_site,site_raw,whatsapp,instagram,avaliacoes,nota,updated_at,proximo_contato,mercado,pais,fuso,email,email_status,idioma,wa_status'
+const CAMPOS_LEAD = 'id,nome,status,bairro,nicho,categoria,cidade,tipo_site,site_raw,whatsapp,instagram,avaliacoes,nota,updated_at,proximo_contato,mercado,pais,fuso,email,email_status,idioma,wa_status,qualificado'
 const dataDia = (iso) => new Date(iso).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' })
 
 const POR_COLUNA = 60
@@ -65,6 +65,7 @@ export function pontosGringo(l) {
   if (l.wa_status === 'ok') p += 5
   // o perfil que mais respondeu até agora: casa de comida em Portugal, sem site, com celular
   if (l.pais === 'PT' && /restaurante|cafeteria|padaria/.test(l.nicho || '') && l.wa_status === 'ok' && l.tipo_site !== 'site_ok') p += 25
+  if (l.qualificado) p += 30
   if (REDE.test(l.nome || '')) p -= 100
   return p
 }
@@ -88,7 +89,7 @@ export default function Crm() {
   const [extra, setExtra] = useState({ wa: 0, dm: 0, gr: 0, em: 0 })
   const VISIVEIS = 40
   const [busca, setBusca] = useState('')
-  const [gfiltro, setGfiltro] = useState({ pais: 'todos', idioma: 'todos' })
+  const [gfiltro, setGfiltro] = useState({ pais: 'todos', idioma: 'todos', qual: true })
   const [brutos, setBrutos] = useState([])
   const [alvo, setAlvo] = useState(null)
   const [arrastando, setArrastando] = useState(null)
@@ -136,7 +137,7 @@ export default function Crm() {
   // Filas de gringo: filtros de país e idioma, e as melhores oportunidades no topo
   useEffect(() => {
     if (!gringa) return
-    const novos = brutos.filter((l) => (gfiltro.pais === 'todos' || l.pais === gfiltro.pais) && (gfiltro.idioma === 'todos' || (l.idioma || 'pt') === gfiltro.idioma))
+    const novos = brutos.filter((l) => (!gfiltro.qual || l.qualificado) && (gfiltro.pais === 'todos' || l.pais === gfiltro.pais) && (gfiltro.idioma === 'todos' || (l.idioma || 'pt') === gfiltro.idioma))
     const ordem = (a, b) => (pontosGringo(b) - pontosGringo(a)) || (Number(bomHorario(b.fuso)) - Number(bomHorario(a.fuso)))
     setFila({
       wa: [],
@@ -379,6 +380,8 @@ export default function Crm() {
                 <button key={v} type="button" className={`crm-chip ${gfiltro.pais === v ? 'on' : ''}`} aria-pressed={gfiltro.pais === v} onClick={() => setGfiltro((f) => ({ ...f, pais: v }))}>{t}</button>
               ))}
               <span className="crm-gsep" aria-hidden="true" />
+              <button type="button" className={`crm-chip ${gfiltro.qual ? 'on' : ''}`} aria-pressed={gfiltro.qual} onClick={() => setGfiltro((f) => ({ ...f, qual: !f.qual }))}>★ Só qualificados</button>
+              <span className="crm-gsep" aria-hidden="true" />
               {[['todos', 'Qualquer idioma'], ['pt', 'Português'], ['en', 'Inglês']].map(([v, t]) => (
                 <button key={v} type="button" className={`crm-chip ${gfiltro.idioma === v ? 'on' : ''}`} aria-pressed={gfiltro.idioma === v} onClick={() => setGfiltro((f) => ({ ...f, idioma: v }))}>{t}</button>
               ))}
@@ -422,6 +425,7 @@ export default function Crm() {
                     onPointerDown={(e) => inicio(e, l, col)} onContextMenu={(e) => e.preventDefault()} onKeyDown={(e) => { if (e.key === 'Enter') abrirLead(l.id) }}
                     aria-label={`${l.nome}, ainda não chamado. Enter abre o lead.`}>
                     <strong>{gringa && pontosGringo(l) >= TOP && <span className="crm-top" title="Boa oportunidade">Top</span>}{l.nome}</strong>
+                    {gringa && l.nota != null && <small className="crm-nota">★ {String(l.nota).replace('.', ',')}{l.avaliacoes ? ` · ${l.avaliacoes} avaliações` : ''}</small>}
                     <small>{[l.categoria || l.nicho, gringa ? l.cidade : l.bairro].filter(Boolean).join(' · ')}</small>
                     {local(l)}
                     <span className={`p-card-canal p-card-canal--${canal}`}>{canal === 'instagram' ? l.instagram : canal === 'email' ? l.email : gringa ? `+${l.whatsapp}` : formatTel(l.whatsapp)}</span>
