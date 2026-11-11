@@ -1585,3 +1585,16 @@ a.crm-btn { text-decoration: none; display: inline-flex; align-items: center; }
 .gr-google { margin-top: 18px; padding: 16px; border-radius: 14px; background: #FBF6FE; border: 1px solid #EAD7F7; display: grid; gap: 8px; }
 .gr-google h3 { font-size: 16px; margin: 0; }
 .gr-google .p-btn { justify-self: start; }
+
+/* Contas do canal (cortes) */
+.ct-nova { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.ct-nova select, .ct-nova input { font: inherit; padding: 10px 12px; border-radius: 10px; border: 1px solid #E2D2EE; background: var(--branco); }
+.ct-nova input { flex: 1 1 220px; min-width: 0; }
+.ct-tabela { width: 100%; border-collapse: collapse; font-size: 14px; }
+.ct-tabela th { text-align: left; font-size: 12px; color: #7A6A85; font-weight: 600; padding: 6px 8px; border-bottom: 1px solid #EEE3F5; }
+.ct-tabela td { padding: 10px 8px; border-bottom: 1px solid #F3ECF8; vertical-align: middle; }
+.ct-tabela td small { display: block; color: #8A7B95; font-size: 12px; }
+.ct-acoes { white-space: nowrap; text-align: right; }
+.ct-acoes .crm-btn + .crm-btn { margin-left: 6px; }
+.ct-off { opacity: .5; }
+@media (max-width: 640px) { .ct-tabela th:nth-child(3), .ct-tabela td:nth-child(3) { display: none; } }
