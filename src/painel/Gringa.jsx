@@ -23,7 +23,9 @@ export const CIDADES_GRINGA = [
   ['framingham', 'Framingham, MA', 'US'], ['boston', 'Boston, MA', 'US'], ['marlborough', 'Marlborough e Hudson, MA', 'US'],
   ['newark', 'Newark, NJ', 'US'], ['astoria', 'Astoria, NY', 'US'], ['danbury', 'Danbury, CT', 'US'],
   ['pompano', 'Pompano e Deerfield Beach, FL', 'US'], ['miami', 'Miami, FL', 'US'], ['orlando', 'Orlando e Kissimmee, FL', 'US'],
-  ['atlanta', 'Marietta, GA (Atlanta)', 'US'], ['lisboa', 'Lisboa', 'PT'], ['porto', 'Porto', 'PT'],
+  ['atlanta', 'Marietta, GA (Atlanta)', 'US'], ['longbranch', 'Long Branch, NJ', 'US'], ['tampa', 'Tampa, FL', 'US'],
+  ['charlotte', 'Charlotte, NC', 'US'], ['houston', 'Houston, TX', 'US'], ['dallas', 'Dallas, TX', 'US'], ['austin', 'Austin, TX', 'US'],
+  ['phoenix', 'Phoenix, AZ', 'US'], ['losangeles', 'Los Angeles, CA', 'US'], ['lisboa', 'Lisboa', 'PT'], ['porto', 'Porto', 'PT'],
 ]
 
 async function chamar(nome, body) {
@@ -62,6 +64,18 @@ export function JanelaBusca({ fechar, depois }) {
     if (!r.ok) return avisar(r.erro || 'Não consegui pedir a busca')
     ler()
   }
+  // Google Places (EUA): americanos em inglês ou brasileiros, 2 cidades por vez (cada uma leva ~40 s)
+  const [gPublico, setGPublico] = useState('en')
+  const [gCidades, setGCidades] = useState([])
+  const [gRodando, setGRodando] = useState(false)
+  async function buscarGoogle() {
+    setGRodando(true)
+    const r = await chamar('coletar-gringa', { acao: 'google', publico: gPublico, cidades: gCidades })
+    setGRodando(false)
+    if (!r.ok) return avisar(r.erro || 'Não consegui buscar no Google')
+    avisar(`${r.gravados} leads novos${r.erro ? ` (aviso: ${r.erro})` : ''}`)
+    depois?.()
+  }
   const ultimo = (id) => pedidos.find((p) => p.cidade === id)
   const texto = (p) => {
     if (!p) return 'ainda não buscada'
@@ -88,7 +102,23 @@ export function JanelaBusca({ fechar, depois }) {
           )
         })}
       </ul>
-      <p className="p-meta">Fonte: OpenStreetMap (grátis). Depois de gravar, o painel visita o site de quem tem um e procura o e-mail de contato para a sequência de e-mail.</p>
+      <div className="gr-google">
+        <h3>Google (EUA): os melhores leads</h3>
+        <p className="p-meta">Só traz quem não tem site bom, tem telefone e já tem 5+ avaliações. Uma cidade por vez (leva cerca de 1 minuto).</p>
+        <div className="crm-gfiltros">
+          <button type="button" className={`crm-chip ${gPublico === 'en' ? 'on' : ''}`} onClick={() => setGPublico('en')}>Americanos (inglês)</button>
+          <button type="button" className={`crm-chip ${gPublico === 'br' ? 'on' : ''}`} onClick={() => setGPublico('br')}>Brasileiros nos EUA</button>
+        </div>
+        <div className="crm-gfiltros">
+          {CIDADES_GRINGA.filter((c) => c[2] === 'US').map(([id, nome]) => {
+            const on = gCidades.includes(id)
+            return <button key={id} type="button" className={`crm-chip ${on ? 'on' : ''}`} aria-pressed={on}
+              onClick={() => setGCidades((g) => (on ? g.filter((x) => x !== id) : [id]))}>{nome}</button>
+          })}
+        </div>
+        <button type="button" className="p-btn p-btn--forte" disabled={gRodando || !gCidades.length} onClick={buscarGoogle}>{gRodando ? 'Buscando no Google (cerca de 1 min)…' : 'Buscar no Google'}</button>
+      </div>
+      <p className="p-meta">Fonte da lista acima: OpenStreetMap (grátis). Depois de gravar, o painel visita o site de quem tem um e procura o e-mail de contato para a sequência de e-mail.</p>
     </Janela>
   )
 }

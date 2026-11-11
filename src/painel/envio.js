@@ -11,8 +11,14 @@ export const etapaNoCanal = (etapa, canal) => (etapa === 'abertura' && canal ===
 export const ehGringo = (lead) => !!lead?.mercado && lead.mercado !== 'br'
 export const extrasGringo = (lead) => (ehGringo(lead) ? { moeda: lead.pais === 'PT' ? '€' : 'US$', cidade: lead.cidade || lead.bairro || '' } : {})
 
+// Qual texto o gringo recebe: inglês (americano), português de Portugal (negócio português) ou o de brasileiro fora
+const BR_NOME = /brazil|brasil|brasileir|carioca|mineir|baian|ga[uú]ch|capixab|goian|paulist|nordestin|p[aã]o de queijo|a[cç]a[ií]|coxinha|tapioca|rod[ií]zio|feijoada|brigadeiro|churrascaria|guaran[aá]|picanha/i
+export const publicoGringo = (lead) => (lead?.idioma === 'en' ? 'gringa_en' : lead?.pais === 'PT' && !BR_NOME.test(lead?.nome || '') ? 'portugal' : 'gringa')
+
 export function mensagemPara(mensagens, lead, etapa, variante) {
-  const publico = ehGringo(lead) ? 'gringa' : lead.tipo_site === 'site_falso' ? 'site_falso' : 'sem_site'
+  let publico = ehGringo(lead) ? publicoGringo(lead) : lead.tipo_site === 'site_falso' ? 'site_falso' : 'sem_site'
+  // Portugal só tem textos próprios em algumas etapas: no resto usa o de gringo
+  if (publico === 'portugal' && !mensagens.some((m) => m.ativo && m.etapa === etapa && m.publico === 'portugal')) publico = 'gringa'
   const vs = variantesDe(mensagens, etapa, publico)
   const pref = variante || varianteDe(lead.id, vs)
   const v = vs.includes(pref) ? pref : vs[0] || 'A'

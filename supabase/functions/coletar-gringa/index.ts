@@ -28,6 +28,14 @@ export const CIDADES: Cidade[] = [
   { id: "miami", nome: "Miami, FL", pais: "US", lat: 25.79, lon: -80.2, raio: 18000, fuso: "America/New_York" },
   { id: "orlando", nome: "Orlando e Kissimmee, FL", pais: "US", lat: 28.42, lon: -81.43, raio: 26000, fuso: "America/New_York" },
   { id: "atlanta", nome: "Marietta, GA (Atlanta)", pais: "US", lat: 33.95, lon: -84.52, raio: 18000, fuso: "America/New_York" },
+  { id: "longbranch", nome: "Long Branch, NJ", pais: "US", lat: 40.304, lon: -73.992, raio: 9000, fuso: "America/New_York" },
+  { id: "tampa", nome: "Tampa, FL", pais: "US", lat: 27.95, lon: -82.46, raio: 20000, fuso: "America/New_York" },
+  { id: "charlotte", nome: "Charlotte, NC", pais: "US", lat: 35.227, lon: -80.843, raio: 20000, fuso: "America/New_York" },
+  { id: "houston", nome: "Houston, TX", pais: "US", lat: 29.76, lon: -95.37, raio: 25000, fuso: "America/Chicago" },
+  { id: "dallas", nome: "Dallas, TX", pais: "US", lat: 32.78, lon: -96.8, raio: 25000, fuso: "America/Chicago" },
+  { id: "austin", nome: "Austin, TX", pais: "US", lat: 30.27, lon: -97.74, raio: 20000, fuso: "America/Chicago" },
+  { id: "phoenix", nome: "Phoenix, AZ", pais: "US", lat: 33.45, lon: -112.07, raio: 25000, fuso: "America/Phoenix" },
+  { id: "losangeles", nome: "Los Angeles, CA", pais: "US", lat: 34.05, lon: -118.25, raio: 25000, fuso: "America/Los_Angeles" },
   { id: "lisboa", nome: "Lisboa", pais: "PT", lat: 38.722, lon: -9.14, raio: 9000, fuso: "Europe/Lisbon" },
   { id: "porto", nome: "Porto", pais: "PT", lat: 41.157, lon: -8.62, raio: 7000, fuso: "Europe/Lisbon" },
 ];
@@ -199,6 +207,70 @@ async function enriquecerEmails(db: SupabaseClient, limite = 40) {
   return { sites: data?.length ?? 0, achados };
 }
 
+// ── Google Places (precisa da chave salva em Coleta): negócios americanos em inglês e brasileiros nos EUA ──
+// Só grava quem não tem site bom (é quem compra) e prioriza negócio estabelecido (muitas avaliações).
+const BR_NOME = /brazil|brasil|brasileir|carioca|mineir|baian|ga[uú]ch|capixab|goian|paulist|nordestin|p[aã]o de queijo|a[cç]a[ií]|coxinha|tapioca|rod[ií]zio|feijoada|brigadeiro|churrascaria|guaran[aá]|picanha/i;
+export const TERMOS_EN = ["med spa", "dentist", "hair salon", "nail salon", "barber shop", "house cleaning service", "landscaping", "general contractor", "auto repair", "pet grooming", "bakery", "restaurant", "real estate agent", "personal trainer"];
+export const TERMOS_BR = ["brazilian restaurant", "brazilian bakery", "brazilian hair salon", "brazilian market", "brazilian cleaning service", "brazilian construction"];
+const NICHO_TERMO: Record<string, string> = { "med spa": "estética", "dentist": "odontologia", "hair salon": "salão de beleza", "nail salon": "estética", "barber shop": "barbearia", "house cleaning service": "limpeza", "landscaping": "serviços", "general contractor": "construção", "auto repair": "serviços", "pet grooming": "pet", "bakery": "padaria", "restaurant": "restaurante", "real estate agent": "serviços", "personal trainer": "serviços", "brazilian restaurant": "restaurante", "brazilian bakery": "padaria", "brazilian hair salon": "salão de beleza", "brazilian market": "mercado", "brazilian cleaning service": "limpeza", "brazilian construction": "construção" };
+type Lugar = { id: string; displayName?: { text: string }; formattedAddress?: string; internationalPhoneNumber?: string; websiteUri?: string; rating?: number; userRatingCount?: number; businessStatus?: string; primaryTypeDisplayName?: { text: string }; googleMapsUri?: string };
+const CAMPOS_G = ["places.id", "places.displayName", "places.formattedAddress", "places.internationalPhoneNumber", "places.websiteUri", "places.rating", "places.userRatingCount", "places.businessStatus", "places.primaryTypeDisplayName", "places.googleMapsUri", "nextPageToken"].join(",");
+
+async function google(db: SupabaseClient, chave: string, c: Cidade, termo: string, ingles: boolean) {
+  const r = { cidade: c.nome, termo, encontrados: 0, novos: 0, gravados: 0, erro: null as string | null };
+  try {
+    const lugares: Lugar[] = [];
+    let token: string | undefined;
+    for (let pag = 0; pag < 2; pag++) {
+      const res = await fetch("https://places.googleapis.com/v1/places:searchText", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "X-Goog-Api-Key": chave, "X-Goog-FieldMask": CAMPOS_G },
+        body: JSON.stringify({ textQuery: `${termo} in ${c.nome}`, languageCode: c.pais === "PT" ? "pt-PT" : "en", regionCode: c.pais, pageSize: 20,
+          locationBias: { circle: { center: { latitude: c.lat, longitude: c.lon }, radius: Math.min(50000, c.raio * 1.5) } }, ...(token ? { pageToken: token } : {}) }),
+      });
+      const d = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(d.error?.message || `Google respondeu ${res.status}`);
+      lugares.push(...(d.places ?? []));
+      token = d.nextPageToken;
+      if (!token) break;
+    }
+    r.encontrados = lugares.length;
+    const leads = lugares.filter((l) => l.businessStatus !== "CLOSED_PERMANENTLY" && l.displayName?.text && !FORA.test(l.displayName.text))
+      .map((l) => {
+        const nome = l.displayName!.text.trim();
+        const tel = telefone(l.internationalPhoneNumber || "", c.pais);
+        const tipo = classificar(l.websiteUri || "");
+        const cat = l.primaryTypeDisplayName?.text || termo;
+        return {
+          place_id: l.id, nome, categoria: cat, nicho: NICHO_TERMO[termo] || "geral",
+          cidade: c.nome.split(",")[0], bairro: c.nome, endereco: l.formattedAddress || null,
+          telefone: tel.tel, whatsapp: tel.whatsapp, telefone_fixo: tel.fixo, site_raw: l.websiteUri || null, tipo_site: tipo,
+          instagram: null, email: null, avaliacoes: l.userRatingCount ?? 0, nota: l.rating ?? null, origem_dado: "google_places",
+          mercado: c.pais.toLowerCase(), pais: c.pais, fuso: c.fuso,
+          idioma: ingles && !BR_NOME.test(nome) ? "en" : "pt",
+          observacoes: l.googleMapsUri ? `Maps: ${l.googleMapsUri}` : null,
+        };
+      })
+      // quem compra: sem site bom, com telefone, e já com algum movimento (5+ avaliações)
+      .filter((l) => l.tipo_site !== "site_ok" && l.telefone && (l.avaliacoes ?? 0) >= 5);
+    const pids = leads.map((l) => l.place_id);
+    const [{ data: ja }, { data: apag }] = await Promise.all([
+      db.from("leads").select("place_id").in("place_id", pids),
+      db.from("leads_apagados").select("place_id").in("place_id", pids),
+    ]);
+    const conhecidos = new Set([...(ja ?? []), ...(apag ?? [])].map((x: { place_id: string }) => x.place_id));
+    const novos = leads.filter((l) => !conhecidos.has(l.place_id));
+    r.novos = novos.length;
+    if (novos.length) {
+      const { data, error } = await db.from("leads").upsert(novos, { onConflict: "place_id", ignoreDuplicates: true }).select("id");
+      if (error) throw new Error(error.message);
+      r.gravados = data?.length ?? 0;
+    }
+  } catch (e) { r.erro = (e as Error).message.slice(0, 300); }
+  await db.from("coleta_buscas").insert({ termo, nicho: "gringa", bairro: c.id, cidade: c.nome, origem: "google-gringa", paginas: 0, retornados: r.encontrados, novos: r.novos, qualificados: r.gravados, erro: r.erro });
+  return r;
+}
+
 async function autorizado(db: SupabaseClient, req: Request) {
   const { data: cfg } = await db.from("app_config").select("value").eq("key", "ingest_token").maybeSingle();
   if (cfg && req.headers.get("x-ingest-token") === cfg.value) return true;
@@ -216,7 +288,22 @@ Deno.serve(async (req) => {
   if (!(await autorizado(db, req))) return json(401, { ok: false, erro: "não autorizado" });
   const body = await req.json().catch(() => ({}));
 
-  if (body.listar) return json(200, { ok: true, cidades: CIDADES.map(({ id, nome, pais }) => ({ id, nome, pais })) });
+  if (body.listar) return json(200, { ok: true, cidades: CIDADES.map(({ id, nome, pais }) => ({ id, nome, pais })), termos_en: TERMOS_EN, termos_br: TERMOS_BR });
+
+  // Google Places: { acao: 'google', cidades: [...], publico: 'en' | 'br' }
+  if (body.acao === "google") {
+    const { data: k } = await db.from("app_config").select("value").eq("key", "google_places_key").maybeSingle();
+    if (!k?.value) return json(200, { ok: false, erro: "Falta a chave do Google Places: cole em Coleta → Google." });
+    const ingles = body.publico !== "br";
+    const termos = ingles ? TERMOS_EN : TERMOS_BR;
+    const cidades = CIDADES.filter((c) => c.pais === "US" && (body.cidades || []).includes(c.id)).slice(0, 1);
+    if (!cidades.length) return json(400, { ok: false, erro: "Escolha uma cidade dos EUA" });
+    const res = [];
+    for (const c of cidades) for (const t of termos) res.push(await google(db, k.value, c, t, ingles));
+    const gravados = res.reduce((s, x) => s + x.gravados, 0);
+    const erro = res.find((x) => x.erro)?.erro ?? null;
+    return json(200, { ok: !erro || gravados > 0, gravados, buscas: res.length, erro });
+  }
   if (body.emails) return json(200, { ok: true, ...(await enriquecerEmails(db, Number(body.limite) || 40)) });
 
   // 2) volta do Overpass (via banco): grava os leads

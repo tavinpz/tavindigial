@@ -57,10 +57,10 @@ function separar(texto: string) {
   return m ? { assunto: m[1].trim(), corpo: texto.slice(m[0].length).trim() } : { assunto: "Uma ideia para o seu negócio", corpo: texto.trim() };
 }
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-function html(corpo: string, rodape: string, sair: string) {
+function html(corpo: string, rodape: string, sair: string, en = false) {
   const ps = esc(corpo).split(/\n{2,}/).map((p) => `<p style="margin:0 0 14px">${p.replace(/\n/g, "<br>").replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1">$1</a>')}</p>`).join("");
   return `<div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:#222;max-width:560px">${ps}` +
-    `<p style="margin:22px 0 0;font-size:12px;color:#888">${esc(rodape).replace(/\n/g, "<br>")}<br><a href="${sair}" style="color:#888">Não quero receber mais e-mails</a></p></div>`;
+    `<p style="margin:22px 0 0;font-size:12px;color:#888">${esc(rodape).replace(/\n/g, "<br>")}<br><a href="${sair}" style="color:#888">${en ? "Unsubscribe" : "Não quero receber mais e-mails"}</a></p></div>`;
 }
 
 async function config(db: SupabaseClient): Promise<Smtp> {
@@ -77,7 +77,7 @@ function transporte(c: Smtp) {
   });
 }
 
-async function mandar(tr: ReturnType<typeof transporte>, c: Smtp, para: string, texto: string, token: string) {
+async function mandar(tr: ReturnType<typeof transporte>, c: Smtp, para: string, texto: string, token: string, en = false) {
   const { assunto, corpo } = separar(texto);
   const sair = `${URL_SB}/functions/v1/email-prospeccao?sair=${token}`;
   const rodape = `${c.assinatura || `${c.nome || "Gustavo"} · Tavin Digital`}\n${c.endereco}`;
@@ -85,11 +85,13 @@ async function mandar(tr: ReturnType<typeof transporte>, c: Smtp, para: string, 
     from: { name: c.nome || "Gustavo · Tavin Digital", address: c.email! },
     to: para,
     subject: assunto,
-    text: `${corpo}\n\n--\n${rodape}\nNão quer receber mais e-mails? ${sair}`,
-    html: html(corpo, rodape, sair),
+    text: `${corpo}\n\n--\n${rodape}\n${en ? "Unsubscribe:" : "Não quer receber mais e-mails?"} ${sair}`,
+    html: html(corpo, rodape, sair, en),
     headers: { "List-Unsubscribe": `<${sair}>, <mailto:${c.email}?subject=sair>`, "List-Unsubscribe-Post": "List-Unsubscribe=One-Click" },
   });
 }
+
+const BR_NOME = /brazil|brasil|brasileir|carioca|mineir|baian|ga[uú]ch|capixab|goian|paulist|nordestin|p[aã]o de queijo|a[cç]a[ií]|coxinha|tapioca|rod[ií]zio|feijoada|brigadeiro|churrascaria|guaran[aá]|picanha/i;
 
 function variante(id: string, vs: string[]) {
   let h = 0;
@@ -99,23 +101,30 @@ function variante(id: string, vs: string[]) {
 
 async function enfileirar(db: SupabaseClient, ids: string[]) {
   const [{ data: leads }, { data: modelos }, { data: sairam }, { data: ja }] = await Promise.all([
-    db.from("leads").select("id,email,status,mercado").in("id", ids),
-    db.from("mensagens").select("id,etapa,variante").eq("ativo", true).in("etapa", ["email_1", "email_2", "email_3"]),
+    db.from("leads").select("id,email,status,mercado,pais,nome,idioma").in("id", ids),
+    db.from("mensagens").select("id,etapa,variante,publico").eq("ativo", true).in("etapa", ["email_1", "email_2", "email_3"]),
     db.from("email_descadastros").select("email"),
     db.from("email_envios").select("lead_id").in("lead_id", ids),
   ]);
   const fora = new Set((sairam ?? []).map((x) => x.email));
   const tem = new Set((ja ?? []).map((x) => x.lead_id));
-  const vs = [...new Set((modelos ?? []).filter((m) => m.etapa === "email_1").map((m) => m.variante))].sort();
-  if (!vs.length) return { ok: false, erro: "Não há modelo ativo de e-mail (Mensagens → E-mail 1)" };
+  // texto por público: inglês (americano), Portugal (negócio português) ou brasileiro fora; Portugal cai no de brasileiro onde não tiver
+  const doPublico = (pub: string, etapa: string) => (modelos ?? []).filter((m) => m.publico === pub && m.etapa === etapa);
+  const publicoDe = (l: { idioma?: string; pais?: string; nome?: string }) =>
+    l.idioma === "en" ? "gringa_en" : l.pais === "PT" && !BR_NOME.test(l.nome || "") ? "portugal" : "gringa";
+  if (!doPublico("gringa", "email_1").length) return { ok: false, erro: "Não há modelo ativo de e-mail (Mensagens → E-mail 1)" };
   const linhas = [];
   let pulados = 0;
   for (const l of leads ?? []) {
     const email = String(l.email || "").toLowerCase();
     if (!email || fora.has(email) || tem.has(l.id) || !ATIVOS.includes(l.status) || l.mercado === "br") { pulados++; continue; }
-    const v = variante(l.id, vs);
+    const pub = publicoDe(l);
+    const vs = [...new Set(doPublico(pub, "email_1").map((m) => m.variante))].sort();
+    const v = variante(l.id, vs.length ? vs : ["A"]);
     DIAS.forEach((d, i) => {
-      const m = (modelos ?? []).find((x) => x.etapa === `email_${i + 1}` && x.variante === v) || (modelos ?? []).find((x) => x.etapa === `email_${i + 1}`);
+      const etapa = `email_${i + 1}`;
+      const lista = doPublico(pub, etapa).length ? doPublico(pub, etapa) : doPublico(pub === "gringa_en" ? "gringa_en" : "gringa", etapa);
+      const m = lista.find((x) => x.variante === v) || lista[0];
       if (m) linhas.push({ lead_id: l.id, email, passo: i + 1, mensagem_id: m.id, enviar_em: new Date(Date.now() + d * 86400000).toISOString() });
     });
   }
@@ -146,7 +155,7 @@ async function enviar(db: SupabaseClient) {
   if (saldo <= 0) return { ok: true, enviados: 0, aviso: "teto do dia" };
 
   const { data: fila } = await db.from("email_envios")
-    .select("id,lead_id,email,passo,token,tentativas,mensagem_id,leads(id,nome,cidade,pais,fuso,status),mensagens(texto)")
+    .select("id,lead_id,email,passo,token,tentativas,mensagem_id,leads(id,nome,cidade,pais,fuso,status,idioma),mensagens(texto)")
     .eq("status", "pendente").lte("enviar_em", new Date().toISOString()).order("enviar_em").limit(60);
   if (!fila?.length) return { ok: true, enviados: 0 };
   const { data: sairam } = await db.from("email_descadastros").select("email").in("email", fila.map((f) => f.email));
@@ -173,7 +182,7 @@ async function enviar(db: SupabaseClient) {
       }
       const texto = preencher(modelo, l, c);
       try {
-        const info = await mandar(tr, c, f.email, texto, f.token);
+        const info = await mandar(tr, c, f.email, texto, f.token, l.idioma === "en");
         if ((info.rejected || []).length) throw Object.assign(new Error("O servidor recusou o destinatário"), { responseCode: 550 });
         await db.from("email_envios").update({ status: "enviado", enviado_em: new Date().toISOString(), erro: null }).eq("id", f.id);
         await db.from("envios").insert({ lead_id: f.lead_id, mensagem_id: f.mensagem_id, etapa: `email_${f.passo}`, canal: "email", texto_enviado: texto });
@@ -250,7 +259,7 @@ Deno.serve(async (req) => {
   if (body.acao === "teste") {
     const c = await config(db);
     if (!pronto(c)) return json(200, { ok: false, erro: "Preencha servidor, usuário, senha de app, e-mail e endereço" });
-    const { data: m } = await db.from("mensagens").select("texto").eq("ativo", true).eq("etapa", body.etapa || "email_1").order("variante").limit(1).maybeSingle();
+    const { data: m } = await db.from("mensagens").select("texto").eq("ativo", true).eq("etapa", body.etapa || "email_1").eq("publico", "gringa").order("variante").limit(1).maybeSingle();
     if (!m) return json(200, { ok: false, erro: "Não há modelo ativo de e-mail" });
     const exemplo = { id: "00000000-teste", nome: "Padaria Pão de Queijo", cidade: "Framingham", pais: "US" };
     const tr = transporte(c);

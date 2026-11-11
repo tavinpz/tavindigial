@@ -47,10 +47,26 @@ function colunaDo(l, a) {
   const n = a?.total_envios || 0
   return n <= 1 ? 'contato1' : n === 2 ? 'fup1' : 'fup2'
 }
-const CAMPOS_LEAD = 'id,nome,status,bairro,nicho,categoria,cidade,tipo_site,site_raw,whatsapp,instagram,avaliacoes,nota,updated_at,proximo_contato,mercado,pais,fuso,email,email_status'
+const CAMPOS_LEAD = 'id,nome,status,bairro,nicho,categoria,cidade,tipo_site,site_raw,whatsapp,instagram,avaliacoes,nota,updated_at,proximo_contato,mercado,pais,fuso,email,email_status,idioma,wa_status'
 const dataDia = (iso) => new Date(iso).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' })
 
 const POR_COLUNA = 60
+
+// Melhores oportunidades de gringo primeiro: negócio estabelecido, sem site bom, nicho que paga, EUA (dólar)
+const NICHO_RICO = /dent|odont|est[eé]tic|m[eé]dic|clinic|cl[ií]nic|spa|advog|law|contab|account|imobil|real.?estate|constru|contractor|remodel|roof|clean|limpeza|auto|mec[aâ]n|sal[aã]o|salon|barb|nail|restaur|bakery|padaria/i
+export function pontosGringo(l) {
+  let p = Math.min(30, Math.round(Math.log10((l.avaliacoes || 0) + 1) * 15))
+  if (l.nota >= 4.5) p += 10; else if (l.nota >= 4) p += 5
+  if (l.tipo_site !== 'site_ok') p += 20
+  if (l.instagram) p += 8
+  if (l.email) p += 6
+  if (l.pais === 'US') p += 15
+  if (NICHO_RICO.test(`${l.categoria || ''} ${l.nicho || ''} ${l.nome || ''}`)) p += 10
+  if (l.wa_status === 'ok') p += 5
+  return p
+}
+const TOP = 60
+const temWhats = (l) => l.whatsapp && !['sem', 'fixo'].includes(l.wa_status)
 
 // Quadro arrastável: segure e arraste (no celular, toque longo). Toque rápido abre o lead.
 export default function Crm() {
@@ -68,6 +84,8 @@ export default function Crm() {
   const [extra, setExtra] = useState({ wa: 0, dm: 0, gr: 0, em: 0 })
   const VISIVEIS = 40
   const [busca, setBusca] = useState('')
+  const [gfiltro, setGfiltro] = useState({ pais: 'todos', idioma: 'todos' })
+  const [brutos, setBrutos] = useState([])
   const [alvo, setAlvo] = useState(null)
   const [arrastando, setArrastando] = useState(null)
   const quadro = useRef(null)
@@ -100,13 +118,7 @@ export default function Crm() {
         else if (!m.prox || e.passo < m.prox.passo) m.prox = e
       }
       const bloq = new Set((f3.data || []).map((s) => s.whatsapp))
-      const novos = (f1.data || []).filter((l) => !(l.whatsapp && bloq.has(l.whatsapp)))
-      const peso = (l) => (l.tipo_site === 'site_ok' ? 2 : 0) + (bomHorario(l.fuso) ? 0 : 1)
-      setFila({
-        wa: [], dm: [],
-        gr: novos.filter((l) => l.whatsapp).sort((a, b) => peso(a) - peso(b)),
-        em: novos.filter((l) => l.email && l.email_status !== 'invalido').sort((a, b) => Number(!!mapa[a.id]) - Number(!!mapa[b.id])),
-      })
+      setBrutos((f1.data || []).filter((l) => !(l.whatsapp && bloq.has(l.whatsapp))))
       setEmails(mapa)
     } else {
       setFila({ ...separarFilas(f1.data || [], f2.data || [], CONFIG.META_DM), gr: [], em: [] })
@@ -117,7 +129,32 @@ export default function Crm() {
   }, [gringa])
   useEffect(() => { carregar() }, [carregar, versao])
 
-  const tirarDaFila = (id) => setFila((f) => Object.fromEntries(Object.entries(f).map(([k, v]) => [k, v.filter((l) => l.id !== id)])))
+  // Filas de gringo: filtros de país e idioma, e as melhores oportunidades no topo
+  useEffect(() => {
+    if (!gringa) return
+    const novos = brutos.filter((l) => (gfiltro.pais === 'todos' || l.pais === gfiltro.pais) && (gfiltro.idioma === 'todos' || (l.idioma || 'pt') === gfiltro.idioma))
+    const ordem = (a, b) => (pontosGringo(b) - pontosGringo(a)) || (Number(bomHorario(b.fuso)) - Number(bomHorario(a.fuso)))
+    setFila({
+      wa: [],
+      gr: novos.filter(temWhats).sort(ordem),
+      dm: novos.filter((l) => l.instagram).sort(ordem),
+      em: novos.filter((l) => l.email && l.email_status !== 'invalido').sort((a, b) => (Number(!!emails[a.id]) - Number(!!emails[b.id])) || ordem(a, b)),
+    })
+  }, [gringa, brutos, gfiltro, emails])
+
+  async function semWhatsapp(lead) {
+    setBrutos((b) => b.map((x) => (x.id === lead.id ? { ...x, wa_status: 'sem' } : x)))
+    const { error } = await supabase.from('leads').update({ wa_status: 'sem' }).eq('id', lead.id)
+    avisar(error ? 'Não consegui marcar. Tente de novo.' : `${lead.nome} saiu do WhatsApp${lead.instagram ? ' e segue no Instagram' : ''}${lead.email ? ' e no e-mail' : ''}.`)
+  }
+  async function trocarIdioma(lead) {
+    const idioma = lead.idioma === 'en' ? 'pt' : 'en'
+    setBrutos((b) => b.map((x) => (x.id === lead.id ? { ...x, idioma } : x)))
+    const { error } = await supabase.from('leads').update({ idioma }).eq('id', lead.id)
+    avisar(error ? 'Não consegui trocar o idioma.' : `${lead.nome}: mensagens em ${idioma === 'en' ? 'inglês' : 'português'}.`)
+  }
+
+  const tirarDaFila = (id) => (setBrutos((b) => b.filter((l) => l.id !== id)), setFila((f) => Object.fromEntries(Object.entries(f).map(([k, v]) => [k, v.filter((l) => l.id !== id)]))))
 
   async function comecarEmails(lista) {
     const ids = lista.filter((l) => !emails[l.id]).map((l) => l.id)
@@ -309,7 +346,7 @@ export default function Crm() {
   const visiveis = filtro ? leads.filter((l) => bateBusca(l, filtro)) : leads
   const achados = filtro ? visiveis.length + Object.values(fila).reduce((s, l) => s + l.filter((x) => bateBusca(x, filtro)).length, 0) : 0
   const FILAS = gringa
-    ? [['chamar_gringa', 'Chamar gringos no WhatsApp', 'gr', null], ['chamar_email', 'E-mail automático', 'em', null]]
+    ? [['chamar_gringa', 'Chamar no WhatsApp', 'gr', null], ['chamar_dm', 'Chamar no Instagram', 'dm', null], ['chamar_email', 'E-mail automático', 'em', null]]
     : [['chamar_wa', 'Chamar no WhatsApp', 'wa', CONFIG.META_WHATS], ['chamar_dm', 'Chamar no Instagram', 'dm', CONFIG.META_DM]]
   const semEmail = fila.em.filter((l) => !emails[l.id])
   const linhaEmail = (l) => {
@@ -332,8 +369,19 @@ export default function Crm() {
               <button type="button" role="tab" aria-selected={gringa} className={`crm-pipe crm-pipe--gringa ${gringa ? 'on' : ''}`} onClick={() => setPipe('gringa')}>Gringos <small>EUA · Portugal</small></button>
             </div>
           </div>
+          {gringa && (
+            <div className="crm-gfiltros" role="group" aria-label="Filtrar gringos">
+              {[['todos', 'Todos'], ['US', '🇺🇸 EUA'], ['PT', '🇵🇹 Portugal']].map(([v, t]) => (
+                <button key={v} type="button" className={`crm-chip ${gfiltro.pais === v ? 'on' : ''}`} aria-pressed={gfiltro.pais === v} onClick={() => setGfiltro((f) => ({ ...f, pais: v }))}>{t}</button>
+              ))}
+              <span className="crm-gsep" aria-hidden="true" />
+              {[['todos', 'Qualquer idioma'], ['pt', 'Português'], ['en', 'Inglês']].map(([v, t]) => (
+                <button key={v} type="button" className={`crm-chip ${gfiltro.idioma === v ? 'on' : ''}`} aria-pressed={gfiltro.idioma === v} onClick={() => setGfiltro((f) => ({ ...f, idioma: v }))}>{t}</button>
+              ))}
+            </div>
+          )}
           <p className="p-sub">{gringa
-            ? <>Negócios brasileiros nos EUA e negócios de Portugal. Chame no WhatsApp em horário de lá (a hora local aparece no card) ou deixe o <b>e-mail automático</b> fazer os 3 contatos sozinho.</>
+            ? <>EUA e Portugal, com as <b>melhores oportunidades no topo</b>. Número sem WhatsApp? Toque em <b>Sem Whats</b> e o lead segue no Instagram ou no e-mail. O selo <b>PT/EN</b> no card troca o idioma das mensagens.</>
             : <>Em cada card: <b>Web</b> abre na sua aba do WhatsApp Web, <b>App</b> abre no WhatsApp do computador. Lead respondeu? Clique em <b>Respondeu</b> e a mensagem certa (com o link) aparece pronta para copiar.</>}</p>
         </div>
         <div className="crm-ferr">
@@ -363,22 +411,24 @@ export default function Crm() {
                   <p className="p-col-meta">
                     {semEmail.length ? <button type="button" className="crm-btn crm-btn--forte" onClick={() => comecarEmails(semEmail)}>Começar e-mails para {semEmail.length}</button> : 'Todos com e-mail já estão na sequência'}
                   </p>
-                ) : <p className="p-col-meta">Primeiro quem está em horário comercial lá</p>}
+                ) : <p className="p-col-meta">Melhores oportunidades primeiro</p>}
               <div className="p-col-cards">
                 {mostrar.map((l) => (
                   <div key={l.id} className={`p-card p-card--chamar ${arrastando === l.id ? 'saindo' : ''}`} role="button" tabIndex={0}
                     onPointerDown={(e) => inicio(e, l, col)} onContextMenu={(e) => e.preventDefault()} onKeyDown={(e) => { if (e.key === 'Enter') abrirLead(l.id) }}
                     aria-label={`${l.nome}, ainda não chamado. Enter abre o lead.`}>
-                    <strong>{l.nome}</strong>
+                    <strong>{gringa && pontosGringo(l) >= TOP && <span className="crm-top" title="Boa oportunidade">Top</span>}{l.nome}</strong>
                     <small>{[l.categoria || l.nicho, gringa ? l.cidade : l.bairro].filter(Boolean).join(' · ')}</small>
                     {local(l)}
                     <span className={`p-card-canal p-card-canal--${canal}`}>{canal === 'instagram' ? l.instagram : canal === 'email' ? l.email : gringa ? `+${l.whatsapp}` : formatTel(l.whatsapp)}</span>
                     <em>{l.tipo_site === 'site_ok' ? 'Tem site' : l.tipo_site === 'site_falso' ? 'Link fraco' : 'Sem site'}{l.avaliacoes ? ` · ${l.avaliacoes} avaliações` : ''}{gringa && canal === 'whatsapp' && l.email ? ' · tem e-mail' : ''}</em>
                     {linhaEmail(l)}
                     <span className="crm-botoes" onPointerDown={parar}>
+                      {gringa && <button type="button" className="crm-idioma" title="Trocar o idioma das mensagens" onClick={(e) => { parar(e); trocarIdioma(l) }}>{l.idioma === 'en' ? 'EN' : 'PT'}</button>}
                       {canal === 'email' ? (
                         emails[l.id] ? null : <button type="button" className="crm-btn crm-btn--forte" onClick={(e) => { parar(e); comecarEmails([l]) }}>Começar e-mails</button>
                       ) : canal === 'whatsapp' ? <>
+                        {gringa && <button type="button" className="crm-btn crm-btn--leve" onClick={(e) => { parar(e); semWhatsapp(l) }}>Sem Whats</button>}
                         <span className="crm-rot">1ª mensagem:</span>
                         <button type="button" className="crm-btn crm-btn--forte" onClick={(e) => { parar(e); chamar(l, col, 'enviado', 'web') }}>Web</button>
                         <button type="button" className="crm-btn" onClick={(e) => { parar(e); chamar(l, col, 'enviado', 'app') }}>App</button>

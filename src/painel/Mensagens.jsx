@@ -5,7 +5,7 @@ import { ETAPAS } from './api'
 import { usePainel } from './Painel'
 import { extrasGringo } from './envio'
 
-const PUBLICOS = { sem_site: 'Sem site', site_falso: 'Link fraco', gringa: 'Gringo', todos: 'Todos' }
+const PUBLICOS = { sem_site: 'Sem site', site_falso: 'Link fraco', gringa: 'Gringo (brasileiro)', gringa_en: 'Gringo (inglês)', portugal: 'Portugal', todos: 'Todos' }
 
 // A ordem do funil: quando cada mensagem é usada e onde ela aparece no painel
 const GRUPOS = [
@@ -36,7 +36,7 @@ function Item({ m, canal }) {
   const { recarregarMensagens, avisar, mensagens } = usePainel()
   const [texto, setTexto] = useState(m.texto)
   const mudou = texto !== m.texto
-  const lead = m.publico === 'gringa' ? EXEMPLO_GRINGO : m.publico === 'sem_site' ? { ...EXEMPLO, site_raw: null } : EXEMPLO
+  const lead = ['gringa', 'gringa_en', 'portugal'].includes(m.publico) ? EXEMPLO_GRINGO : m.publico === 'sem_site' ? { ...EXEMPLO, site_raw: null } : EXEMPLO
   const previa = preencher(texto, lead, extrasGringo(lead))
 
   async function salvar() {
@@ -87,7 +87,7 @@ function Item({ m, canal }) {
 
 // Uma etapa: abas com as versões (A, B, C…) e um editor por vez
 function Etapa({ etapa, itens, canal }) {
-  const ordem = (m) => `${m.publico === 'site_falso' ? 0 : m.publico === 'sem_site' ? 1 : m.publico === 'gringa' ? 3 : 2}${m.variante}`
+  const ordem = (m) => `${m.publico === 'site_falso' ? 0 : m.publico === 'sem_site' ? 1 : m.publico === 'gringa' ? 3 : m.publico === 'portugal' ? 4 : m.publico === 'gringa_en' ? 5 : 2}${m.variante}`
   const lista = [...itens].sort((a, b) => ordem(a).localeCompare(ordem(b)))
   const [sel, setSel] = useState(lista[0]?.id)
   const atual = lista.find((m) => m.id === sel) || lista[0]

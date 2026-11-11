@@ -1573,3 +1573,15 @@ a.crm-btn { text-decoration: none; display: inline-flex; align-items: center; }
 }
 .cc-arq-tit { font-size: 15px; margin: 22px 0 8px; color: var(--cinza, #6B6375); }
 .cc-lista--arq li { opacity: .75; }
+
+/* CRM gringo: filtros, selo Top, idioma e "sem WhatsApp" */
+.crm-gfiltros { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 10px 0 2px; }
+.crm-chip { font: inherit; font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 999px; border: 1px solid #E7C2FB; background: var(--branco); color: var(--tinta); cursor: pointer; }
+.crm-chip.on { background: var(--tinta); color: var(--branco); border-color: var(--tinta); }
+.crm-gsep { width: 1px; height: 20px; background: #E7C2FB; margin: 0 4px; }
+.crm-top { display: inline-block; font-size: 10.5px; font-weight: 800; letter-spacing: .02em; padding: 2px 7px; margin-right: 6px; border-radius: 999px; background: #FFE9A8; color: #6B4A00; vertical-align: 2px; }
+.crm-idioma { font: inherit; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 6px; border: 1px solid #C9B6D6; background: #F6F0FA; color: var(--tinta); cursor: pointer; }
+.crm-btn--leve { background: transparent; border-style: dashed; color: #7A6A85; }
+.gr-google { margin-top: 18px; padding: 16px; border-radius: 14px; background: #FBF6FE; border: 1px solid #EAD7F7; display: grid; gap: 8px; }
+.gr-google h3 { font-size: 16px; margin: 0; }
+.gr-google .p-btn { justify-self: start; }
