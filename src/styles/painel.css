@@ -1600,3 +1600,34 @@ a.crm-btn { text-decoration: none; display: inline-flex; align-items: center; }
 @media (max-width: 640px) { .ct-tabela th:nth-child(3), .ct-tabela td:nth-child(3) { display: none; } }
 .pl-avatar { padding: 0; border: 0; background: none; cursor: pointer; border-radius: 50%; display: inline-flex; }
 .pl-avatar:hover { box-shadow: 0 0 0 3px color-mix(in srgb, var(--c, #B600F6) 35%, transparent); }
+
+/* Cortes: subcanais do perfil central */
+.m-filhos { list-style: none; margin: 2px 0 4px 18px; padding: 0 0 0 8px; border-left: 1px solid rgba(255,255,255,.12); }
+.m--mini .m-filhos { margin-left: 0; border-left: 0; padding: 0; }
+.pl-pai { font-size: 13px; color: #7A6A85; margin: 2px 0 0; }
+.pl-pai button { font: inherit; color: var(--tinta); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; }
+.ct { display: grid; gap: 22px; padding: 6px 0 24px; }
+.ct-resumo { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.ct-resumo div { background: var(--branco); border: 1px solid #EEE3F5; border-radius: 16px; padding: 16px; display: grid; gap: 4px; }
+.ct-resumo b { font-size: 24px; letter-spacing: -.02em; overflow-wrap: anywhere; }
+.ct-resumo span { font-size: 13px; color: #7A6A85; }
+.ct-lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.ct-lista button { width: 100%; display: grid; grid-template-columns: 24px 40px 1fr auto auto; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 14px; border: 1px solid #EEE3F5; background: var(--branco); font: inherit; text-align: left; cursor: pointer; }
+.ct-lista button:hover { border-color: #C9A6E0; }
+.ct-pos { font-weight: 800; color: #9A8AA6; text-align: center; }
+.ct-lista img, .ct-sigla { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 13px; }
+.ct-nome { display: grid; min-width: 0; }
+.ct-nome b, .ct-nome small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-nome small, .ct-num small { color: #8A7B95; font-size: 12px; }
+.ct-num { display: grid; text-align: right; }
+.ct-num b { font-size: 18px; }
+.ct-nova { background: #FBF6FE; border: 1px solid #EAD7F7; border-radius: 16px; padding: 18px; display: grid; gap: 10px; }
+.ct-nova h3 { margin: 0; font-size: 16px; }
+.ct-campos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.ct-campos input { font: inherit; padding: 10px 12px; border-radius: 10px; border: 1px solid #E2D2EE; background: var(--branco); min-width: 0; }
+.ct-nova .p-btn { justify-self: start; }
+@media (max-width: 760px) {
+  .ct-resumo, .ct-campos { grid-template-columns: 1fr 1fr; }
+  .ct-lista button { grid-template-columns: 40px 1fr auto; }
+  .ct-pos, .ct-num--rede { display: none; }
+}

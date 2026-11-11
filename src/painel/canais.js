@@ -15,7 +15,7 @@ export const CANAIS = [
 
 // Troca o conteúdo da lista (mesma referência: quem importou CANAIS vê a lista nova)
 export async function carregarCanais() {
-  const { data, error } = await supabase.from('canais').select('id,nome,tipo,cor,sigla,logo,banner,perfil,instagram,youtube,tiktok,ativo').eq('ativo', true).order('criado_em')
+  const { data, error } = await supabase.from('canais').select('id,nome,tipo,cor,sigla,logo,banner,perfil,instagram,youtube,tiktok,ativo,pai').eq('ativo', true).order('criado_em')
   if (error || !data?.length) return CANAIS
   const novos = data.map((c) => ({ ...c, sigla: c.sigla || c.nome.slice(0, 2).toUpperCase() }))
   CANAIS.splice(0, CANAIS.length, ...novos)

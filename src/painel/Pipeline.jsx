@@ -6,6 +6,7 @@ import { MiniVideo, Previa } from './Previa'
 import Metricas from './Metricas'
 import { CalendarioConteudo } from './Calendario'
 import { CANAIS } from './canais'
+import Cortes from './Cortes'
 const PerfilCanal = lazy(() => import('./YouTubeLongo').then((m) => ({ default: m.PerfilCanal })))
 
 // Pipeline padrão de todos os canais: Prontos → Programados → Postados.
@@ -571,6 +572,7 @@ export default function Pipeline({ canal, fases = FASES_PADRAO, itens, mover, pr
           </button>
           <div>
             <h1>{canal.nome}</h1>
+            {(() => { const pai = CANAIS.find((x) => x.id === CANAIS.find((y) => y.id === canal.id)?.pai); return pai ? <p className="pl-pai">Conta de cortes de <button type="button" onClick={() => painel?.irPara?.(`canal:${pai.id}`)}>{pai.nome}</button></p> : null })()}
             <RedesCanal canal={canal} />
             {fila && <p>Fila até {fmtCurto(fila).replace(/ \S+$/, '')}</p>}
           </div>
@@ -598,9 +600,14 @@ export default function Pipeline({ canal, fases = FASES_PADRAO, itens, mover, pr
         <button type="button" role="tab" aria-selected={vista === 'metricas'} className={vista === 'metricas' ? 'on' : ''} onClick={() => setVista('metricas')}>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18M7 15l4-4 3 3 6-7" /></svg>Métricas
         </button>
+        {!CANAIS.find((x) => x.id === canal.id)?.pai && (
+          <button type="button" role="tab" aria-selected={vista === 'cortes'} className={vista === 'cortes' ? 'on' : ''} onClick={() => setVista('cortes')}>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM6 15a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM8.5 7.5 20 18M8.5 16.5 20 6" /></svg>Cortes{CANAIS.filter((x) => x.pai === canal.id).length ? ` (${CANAIS.filter((x) => x.pai === canal.id).length})` : ''}
+          </button>
+        )}
       </div>
 
-      {vista === 'metricas' ? <Metricas canal={canal} embutido /> : vista === 'calendario' ? <CalendarioConteudo canal={canal} itens={itens} programar={programar} /> : <>
+      {vista === 'cortes' ? <Cortes canal={canal} /> : vista === 'metricas' ? <Metricas canal={canal} embutido /> : vista === 'calendario' ? <CalendarioConteudo canal={canal} itens={itens} programar={programar} /> : <>
       <div className="pl-abas" role="tablist" aria-label="Colunas">
         {visiveis.map((f) => (
           <button key={f.k} type="button" role="tab" aria-selected={abaAtual === f.k} className={abaAtual === f.k ? 'on' : ''} onClick={() => setAba(f.k)}>{f.nome} <small>{col[f.k].length}</small></button>

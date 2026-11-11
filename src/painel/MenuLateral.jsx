@@ -90,9 +90,13 @@ function Canais({ itens, aba, ir, recolhido, organizar, views = {} }) {
     return [...itens].sort((a, b) => vw(b[4].id) - vw(a[4].id) || pos(a[4].id) - pos(b[4].id))
   }, [itens, ordem, views])
   const t = busca.trim().toLowerCase()
-  const visiveis = t ? ordenados.filter(([, nome]) => nome.toLowerCase().includes(t)) : ordenados
+  // contas de cortes ficam embaixo do perfil central (na busca, aparecem soltas)
+  const ids0 = new Set(itens.map((x) => x[4].id))
+  const ehFilho = (c) => c.pai && ids0.has(c.pai)
+  const filhosDe = (id) => ordenados.filter((x) => x[4].pai === id)
+  const visiveis = t ? ordenados.filter(([, nome]) => nome.toLowerCase().includes(t)) : ordenados.filter((x) => !ehFilho(x[4]))
   const salvar = (ids) => { setOrdem(ids); guardar('menu-ordem', ids) }
-  const ids = () => ordenados.map((x) => x[4].id)
+  const ids = () => ordenados.filter((x) => !ehFilho(x[4])).map((x) => x[4].id)
   function mover(id, d) {
     const l = ids(), i = l.indexOf(id), j = i + d
     if (j < 0 || j >= l.length) return
@@ -115,6 +119,13 @@ function Canais({ itens, aba, ir, recolhido, organizar, views = {} }) {
             onDragOver={(e) => { if (arrastando) { e.preventDefault(); if (sobre !== c.id) setSobre(c.id) } }}
             onDrop={(e) => { e.preventDefault(); soltar(c.id); setArrastando(null); setSobre(null) }}>
             <Item id={id} nome={nome} canal={c} aba={aba} ir={ir} recolhido={recolhido} v={views[c.id]} />
+            {!t && filhosDe(c.id).length > 0 && (
+              <ul className="m-filhos" aria-label={`Contas de cortes de ${nome}`}>
+                {filhosDe(c.id).map(([fid, fnome, , , fc]) => (
+                  <li key={fid}><Item id={fid} nome={fnome} canal={fc} aba={aba} ir={ir} recolhido={recolhido} v={views[fc.id]} /></li>
+                ))}
+              </ul>
+            )}
             {organizar && !recolhido && (
               <span className="m-setas">
                 <button type="button" onClick={() => mover(c.id, -1)} disabled={i === 0} aria-label={`Subir ${nome}`}><Ico d="m6 15 6-6 6 6" t={13} /></button>
