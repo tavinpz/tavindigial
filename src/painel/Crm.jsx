@@ -63,8 +63,12 @@ export function pontosGringo(l) {
   if (l.pais === 'US') p += 15
   if (NICHO_RICO.test(`${l.categoria || ''} ${l.nicho || ''} ${l.nome || ''}`)) p += 10
   if (l.wa_status === 'ok') p += 5
+  // o perfil que mais respondeu até agora: casa de comida em Portugal, sem site, com celular
+  if (l.pais === 'PT' && /restaurante|cafeteria|padaria/.test(l.nicho || '') && l.wa_status === 'ok' && l.tipo_site !== 'site_ok') p += 25
+  if (REDE.test(l.nome || '')) p -= 100
   return p
 }
+const REDE = /pingo doce|continente|mcdonald|burger king|starbucks|telepizza|\bh3\b|vitaminas|padaria portuguesa|ogi by|kfc|pizza hut|domino|subway|lidl|aldi|celeiro/i
 const TOP = 60
 const temWhats = (l) => l.whatsapp && !['sem', 'fixo'].includes(l.wa_status)
 
