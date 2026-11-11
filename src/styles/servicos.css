@@ -1,0 +1,70 @@
+/* Página de serviços: a esteira em degraus. Usa os tokens da home (home.css). */
+.sv-topo { position: sticky; top: 0; z-index: 20; background: rgba(18, 14, 21, 0.88); backdrop-filter: blur(10px); border-bottom: 1px solid var(--linha-esc); }
+.sv-topo .td-sec { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.sv-logo { color: var(--branco); display: inline-flex; }
+.sv-logo svg { height: 26px; width: auto; }
+
+.sv-heroi { padding: clamp(64px, 11vw, 120px) 0 0; overflow: hidden; }
+.sv-h1 em { display: block; font-style: normal; color: var(--rosa); }
+.sv-heroi .td-lede { margin-top: 24px; }
+.sv-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+
+/* a escada: quatro degraus que sobem da esquerda para a direita */
+.sv-escada { list-style: none; margin: clamp(56px, 9vw, 96px) 0 0; padding: 0 20px; display: grid; grid-template-columns: repeat(4, 1fr); align-items: end; gap: 8px; max-width: var(--max); margin-inline: auto; }
+.sv-escada li { height: calc(72px + var(--i) * 46px); }
+.sv-escada a { display: flex; flex-direction: column; justify-content: flex-start; gap: 6px; height: 100%; padding: 16px 16px 0; border-radius: 16px 16px 0 0;
+  background: color-mix(in srgb, var(--el) calc(30% + var(--i) * 22%), var(--noite3)); color: var(--branco); text-decoration: none;
+  font-family: var(--d); font-weight: 700; font-size: clamp(14px, 2vw, 19px); line-height: 1.15; letter-spacing: -0.02em; transition: transform .25s var(--ease); }
+.sv-escada a:hover { transform: translateY(-4px); }
+.sv-escada b { font-family: var(--b); font-weight: 900; font-size: 13px; color: var(--rosa); }
+.sv-escada li:last-child a b { color: var(--branco); }
+
+/* degraus */
+.sv-esteira { background: var(--papel); color: var(--fg); padding: clamp(72px, 10vw, 112px) 0; }
+.sv-degrau + .sv-degrau { margin-top: clamp(64px, 9vw, 104px); }
+.sv-degrau { scroll-margin-top: 90px; }
+.sv-degrau-cab { display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start; max-width: 760px; margin-bottom: 28px; }
+.sv-num { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 16px; background: var(--el); color: var(--branco); font-family: var(--d); font-weight: 800; font-size: 22px; }
+.sv-degrau-cab h2 { font-family: var(--d); font-size: clamp(30px, 5vw, 44px); font-weight: 700; letter-spacing: -0.04em; line-height: 1.05; color: var(--ink); }
+.sv-degrau-cab p { margin-top: 10px; font-size: 18px; color: var(--fg2); max-width: 56ch; }
+
+.sv-itens { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+.sv-itens li { display: flex; flex-direction: column; background: var(--branco); border: 1px solid var(--linha); border-radius: 20px; padding: 22px; }
+.sv-itens h3 { font-family: var(--d); font-size: 20px; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); }
+.sv-itens li > p { margin-top: 8px; color: var(--fg2); font-size: 16px; line-height: 1.5; }
+.sv-itens .sv-preco { margin-top: auto; padding-top: 18px; display: flex; flex-direction: column; gap: 2px; }
+.sv-preco b { font-family: var(--d); font-size: 26px; font-weight: 800; color: var(--ink); letter-spacing: -0.03em; }
+.sv-preco small { font-size: 13px; color: var(--fg3); }
+.sv-itens .sv-preco--orc { font-size: 14px; font-weight: 600; color: var(--prof); }
+.sv-quero { margin-top: 14px; align-self: flex-start; font-weight: 700; font-size: 15px; color: var(--el); text-decoration: none; border-bottom: 2px solid rgba(182, 0, 246, 0.25); }
+.sv-quero:hover { border-color: var(--el); }
+
+/* como funciona */
+.sv-passos { padding: clamp(80px, 11vw, 120px) 0; }
+.sv-passos .td-h2 { color: var(--branco); }
+.sv-passos .td-h2 em { font-style: normal; display: block; color: var(--fg3); }
+.sv-passos ol { list-style: none; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; counter-reset: p; }
+.sv-passos li { counter-increment: p; padding: 22px; border-radius: 20px; background: var(--noite2); border: 1px solid var(--linha-esc); }
+.sv-passos li::before { content: counter(p); display: block; font-family: var(--d); font-weight: 800; font-size: 15px; color: var(--rosa); margin-bottom: 12px; }
+.sv-passos h3 { font-family: var(--d); font-size: 20px; color: var(--branco); letter-spacing: -0.02em; }
+.sv-passos p { margin-top: 6px; color: #C9BFD1; font-size: 16px; }
+
+.sv-fim { padding: 0 0 clamp(80px, 11vw, 120px); }
+.sv-fim .td-h2 { color: var(--branco); margin-bottom: 32px; }
+.sv-fim .td-h2 em { font-style: normal; display: block; color: var(--rosa); }
+
+.sv-rodape { border-top: 1px solid var(--linha-esc); padding: 28px 0 40px; font-size: 14px; color: var(--fg3); }
+.sv-rodape .td-sec { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+.sv-rodape a { color: inherit; }
+
+@media (max-width: 760px) {
+  .sv-cta .td-btn { flex: 1 1 100%; }
+  .sv-escada { gap: 5px; padding: 0 16px; }
+  .sv-escada li { height: calc(64px + var(--i) * 30px); }
+  .sv-escada a { padding: 12px 10px 0; font-size: 13px; border-radius: 12px 12px 0 0; }
+  .sv-degrau-cab { grid-template-columns: 1fr; gap: 14px; }
+  .sv-num { width: 44px; height: 44px; font-size: 19px; border-radius: 13px; }
+  .sv-passos ol { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 440px) { .sv-passos ol { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .sv-escada a { transition: none; } }

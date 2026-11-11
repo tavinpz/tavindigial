@@ -6,6 +6,7 @@ import Home from './site/Home'
 import Modelos from './site/Modelos'
 import Previa from './site/Previa'
 import Briefing from './site/Briefing'
+import Servicos from './site/Servicos'
 import { Termos, Privacidade } from './site/Legal'
 
 // página aberta dentro do celular da prévia: sem barra de rolagem aparecendo
@@ -28,6 +29,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/demo/:id" element={<Suspense fallback={null}><BioDemo /></Suspense>} />
         <Route path="/site/:id" element={<Suspense fallback={null}><SiteDemo /></Suspense>} />
         <Route path="/briefing" element={<Briefing />} />
+        <Route path="/servicos" element={<Servicos />} />
         <Route path="/termos" element={<Termos />} />
         <Route path="/privacidade" element={<Privacidade />} />
         <Route path="/painel/*" element={<Suspense fallback={<div className="p-carregando">Carregando…</div>}><Painel /></Suspense>} />
