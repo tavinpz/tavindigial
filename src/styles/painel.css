@@ -1602,7 +1602,14 @@ a.crm-btn { text-decoration: none; display: inline-flex; align-items: center; }
 .pl-avatar:hover { box-shadow: 0 0 0 3px color-mix(in srgb, var(--c, #B600F6) 35%, transparent); }
 
 /* Cortes: subcanais do perfil central */
-.m-filhos { list-style: none; margin: 2px 0 4px 18px; padding: 0 0 0 8px; border-left: 1px solid rgba(255,255,255,.12); }
+.m-lista li:has(> .m-filhos), .m-lista li:has(> .m-cortes-btn) { flex-wrap: wrap; }
+.m-lista li > .m-item { flex: 1 1 0; min-width: 0; }
+.m-filhos { list-style: none; flex: 0 0 100%; margin: 2px 0 6px 20px; padding: 0 0 0 10px; border-left: 1px solid rgba(255,255,255,.14); display: flex; flex-direction: column; gap: 1px; }
+.m-filhos li { display: block; }
+.m-filhos .m-item { width: 100%; }
+.m-cortes-btn { flex: none; display: inline-flex; align-items: center; gap: 3px; height: 26px; padding: 0 6px; border: 0; border-radius: 7px; background: rgba(255,255,255,.06); color: #CBBDD6; font: inherit; cursor: pointer; }
+.m-cortes-btn small { font-size: 11px; font-weight: 700; }
+.m-cortes-btn:hover, .m-cortes-btn.on { background: rgba(182,0,246,.25); color: #fff; }
 .m--mini .m-filhos { margin-left: 0; border-left: 0; padding: 0; }
 .pl-pai { font-size: 13px; color: #7A6A85; margin: 2px 0 0; }
 .pl-pai button { font: inherit; color: var(--tinta); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; }

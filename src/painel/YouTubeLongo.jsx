@@ -57,7 +57,7 @@ export function PerfilCanal({ c, fechar }) {
   const p = c.perfil || {}
   const abs = (u) => (u && u.startsWith('/') ? `${window.location.origin}${u}` : u)
   return (
-    <Janela titulo={`Perfil do canal · ${c.nome}`} sub="YouTube Studio → Personalização: copie cada campo e suba o logo e o banner" fechar={fechar} larga>
+    <Janela titulo={`Perfil do canal · ${c.nome}`} sub="Tudo do canal: copie cada campo para o YouTube, Instagram e TikTok" fechar={fechar} larga>
       <div className="yl-perfil">
         {c.banner && <img className="yl-banner" src={c.banner} alt={`Banner do ${c.nome}`} />}
         <div className="yl-perfil-topo">
@@ -75,7 +75,14 @@ export function PerfilCanal({ c, fechar }) {
         <Bloco titulo="Identificador (@)" texto={p.handle} linhas={1} />
         <Bloco titulo="Descrição do canal" texto={p.descricao} linhas={7} />
         <Bloco titulo="Palavras-chave do canal" texto={p.palavras} linhas={2} />
+        {p.bio && <Bloco titulo="Bio (Instagram e TikTok)" texto={p.bio} linhas={3} />}
         <Bloco titulo="Assunto (para nós)" texto={p.assunto} linhas={3} />
+        {p.formato && <Bloco titulo="Formato dos vídeos" texto={p.formato} linhas={3} />}
+        {p.dinheiro && <Bloco titulo="Como o canal ganha dinheiro" texto={p.dinheiro} linhas={3} />}
+        {(p.criado || p.historia) && <Bloco titulo="Desde a criação" texto={[p.criado && `Criado em: ${p.criado}`, p.historia].filter(Boolean).join('\n')} linhas={3} />}
+        {['instagram', 'youtube', 'tiktok'].some((r) => c[r]) && (
+          <p className="v-dica">Redes: {[c.instagram && `Instagram ${c.instagram}`, c.youtube && `YouTube ${c.youtube}`, c.tiktok && `TikTok ${c.tiktok}`].filter(Boolean).join(' · ')}</p>
+        )}
         <p className="v-dica">Criar como canal de marca · verificar o telefone (libera vídeo longo, thumbnail própria e "Testar e comparar") · país: {p.pais || '—'} · categoria: {p.categoria || '—'}.</p>
       </div>
     </Janela>

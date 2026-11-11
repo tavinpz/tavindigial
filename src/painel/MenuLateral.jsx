@@ -80,6 +80,9 @@ function Canais({ itens, aba, ir, recolhido, organizar, views = {} }) {
   const [busca, setBusca] = useState('')
   const [arrastando, setArrastando] = useState(null)
   const [sobre, setSobre] = useState(null)
+  // submenu de cortes: fechado por padrão, abre ao clicar na seta (ou sozinho quando um corte está aberto)
+  const [abertosF, setAbertosF] = useState(() => ler('menu-cortes', {}))
+  const abrirF = (id) => { const v = { ...abertosF, [id]: !abertosF[id] }; setAbertosF(v); guardar('menu-cortes', v) }
   useEffect(() => {
     supabase.from('painel_prefs').select('valor').eq('chave', 'menu-ordem').maybeSingle().then(({ data }) => { if (Array.isArray(data?.valor)) setOrdem(data.valor) })
   }, [])
@@ -119,7 +122,16 @@ function Canais({ itens, aba, ir, recolhido, organizar, views = {} }) {
             onDragOver={(e) => { if (arrastando) { e.preventDefault(); if (sobre !== c.id) setSobre(c.id) } }}
             onDrop={(e) => { e.preventDefault(); soltar(c.id); setArrastando(null); setSobre(null) }}>
             <Item id={id} nome={nome} canal={c} aba={aba} ir={ir} recolhido={recolhido} v={views[c.id]} />
-            {!t && filhosDe(c.id).length > 0 && (
+            {!t && !recolhido && filhosDe(c.id).length > 0 && (() => {
+              const aberto = abertosF[c.id] || filhosDe(c.id).some(([fid]) => fid === aba)
+              return (
+                <button type="button" className={`m-cortes-btn ${aberto ? 'on' : ''}`} onClick={() => abrirF(c.id)} aria-expanded={aberto}
+                  aria-label={`${aberto ? 'Fechar' : 'Abrir'} as ${filhosDe(c.id).length} contas de cortes de ${nome}`} title="Contas de cortes">
+                  <small>{filhosDe(c.id).length}</small><Ico d={aberto ? 'm6 15 6-6 6 6' : 'm6 9 6 6 6-6'} t={12} />
+                </button>
+              )
+            })()}
+            {!t && filhosDe(c.id).length > 0 && (recolhido || abertosF[c.id] || filhosDe(c.id).some(([fid]) => fid === aba)) && (
               <ul className="m-filhos" aria-label={`Contas de cortes de ${nome}`}>
                 {filhosDe(c.id).map(([fid, fnome, , , fc]) => (
                   <li key={fid}><Item id={fid} nome={fnome} canal={fc} aba={aba} ir={ir} recolhido={recolhido} v={views[fc.id]} /></li>
