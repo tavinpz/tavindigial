@@ -37,6 +37,13 @@ export const CIDADES: Cidade[] = [
   { id: "phoenix", nome: "Phoenix, AZ", pais: "US", lat: 33.45, lon: -112.07, raio: 25000, fuso: "America/Phoenix" },
   { id: "losangeles", nome: "Los Angeles, CA", pais: "US", lat: 34.05, lon: -118.25, raio: 25000, fuso: "America/Los_Angeles" },
   { id: "lisboa", nome: "Lisboa", pais: "PT", lat: 38.722, lon: -9.14, raio: 9000, fuso: "Europe/Lisbon" },
+  { id: "gaia", nome: "Vila Nova de Gaia", pais: "PT", lat: 41.124, lon: -8.611, raio: 6000, fuso: "Europe/Lisbon" },
+  { id: "matosinhos", nome: "Matosinhos", pais: "PT", lat: 41.185, lon: -8.69, raio: 5000, fuso: "Europe/Lisbon" },
+  { id: "braga", nome: "Braga", pais: "PT", lat: 41.551, lon: -8.423, raio: 6000, fuso: "Europe/Lisbon" },
+  { id: "coimbra", nome: "Coimbra", pais: "PT", lat: 40.205, lon: -8.419, raio: 6000, fuso: "Europe/Lisbon" },
+  { id: "aveiro", nome: "Aveiro", pais: "PT", lat: 40.641, lon: -8.653, raio: 5000, fuso: "Europe/Lisbon" },
+  { id: "faro", nome: "Faro e Loulé (Algarve)", pais: "PT", lat: 37.06, lon: -7.98, raio: 14000, fuso: "Europe/Lisbon" },
+  { id: "albufeira", nome: "Albufeira e Portimão (Algarve)", pais: "PT", lat: 37.11, lon: -8.39, raio: 18000, fuso: "Europe/Lisbon" },
   { id: "porto", nome: "Porto", pais: "PT", lat: 41.157, lon: -8.62, raio: 7000, fuso: "Europe/Lisbon" },
 ];
 

@@ -25,7 +25,7 @@ export const CIDADES_GRINGA = [
   ['pompano', 'Pompano e Deerfield Beach, FL', 'US'], ['miami', 'Miami, FL', 'US'], ['orlando', 'Orlando e Kissimmee, FL', 'US'],
   ['atlanta', 'Marietta, GA (Atlanta)', 'US'], ['longbranch', 'Long Branch, NJ', 'US'], ['tampa', 'Tampa, FL', 'US'],
   ['charlotte', 'Charlotte, NC', 'US'], ['houston', 'Houston, TX', 'US'], ['dallas', 'Dallas, TX', 'US'], ['austin', 'Austin, TX', 'US'],
-  ['phoenix', 'Phoenix, AZ', 'US'], ['losangeles', 'Los Angeles, CA', 'US'], ['lisboa', 'Lisboa', 'PT'], ['porto', 'Porto', 'PT'],
+  ['phoenix', 'Phoenix, AZ', 'US'], ['losangeles', 'Los Angeles, CA', 'US'], ['lisboa', 'Lisboa', 'PT'], ['porto', 'Porto', 'PT'], ['gaia', 'Vila Nova de Gaia', 'PT'], ['matosinhos', 'Matosinhos', 'PT'], ['braga', 'Braga', 'PT'], ['coimbra', 'Coimbra', 'PT'], ['aveiro', 'Aveiro', 'PT'], ['faro', 'Faro e Loulé', 'PT'], ['albufeira', 'Albufeira e Portimão', 'PT'],
 ]
 
 async function chamar(nome, body) {
