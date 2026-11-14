@@ -38,15 +38,15 @@ export const PPBrand: React.FC<{ v: 'logo' | 'banner' }> = ({ v }) => {
         <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#7CC8FF" /><stop offset="1" stopColor="#B49BFF" /></linearGradient></defs>
         <rect width={2560} height={1440} fill="url(#bg)" />
         <Dots w={2560} h={1440} />
-        <rect y={900} width={2560} height={540} fill="#F3C48E" />
-        <rect y={880} width={2560} height={24} fill="#fff" />
+        <rect y={1010} width={2560} height={430} fill="#F3C48E" />
+        <rect y={990} width={2560} height={24} fill="#fff" />
         {/* área segura: x 507–2053, y 508–931 */}
-        <BoBunny x={720} y={1010} s={0.95} t={0.4} viseme="grin" look={[0.6, -0.3]} armR={0.95} armL={0.1} />
-        <CoachKiwi x={1860} y={1010} s={0.85} t={0.2} flip viseme="smile" wing={0.3} point={0.4} />
-        <Title x={1280} y={640} size={190} />
-        <g transform="translate(1280 790)">
-          <rect x={-470} y={-48} width={940} height={96} rx={48} fill="#fff" stroke={INK} strokeWidth={8} />
-          <text textAnchor="middle" dominantBaseline="middle" y={4} fontFamily="Fredoka" fontWeight={700} fontSize={52} fill={INK}>Which one is right? New video every day!</text>
+        <BoBunny x={700} y={1330} s={1.55} t={0.4} viseme="grin" look={[0.6, -0.3]} armR={0.95} armL={0.1} />
+        <CoachKiwi x={1880} y={1330} s={1.35} t={0.2} flip viseme="smile" wing={0.3} point={0.4} />
+        <Title x={1290} y={650} size={180} />
+        <g transform="translate(1290 840)">
+          <rect x={-450} y={-44} width={900} height={88} rx={44} fill="#fff" stroke={INK} strokeWidth={8} />
+          <text textAnchor="middle" dominantBaseline="middle" y={4} fontFamily="Fredoka" fontWeight={700} fontSize={46} fill={INK}>Which one is right? New video every day!</text>
         </g>
       </svg>
     </AbsoluteFill>
