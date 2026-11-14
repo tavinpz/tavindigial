@@ -18,6 +18,7 @@ import LeadDrawer from './LeadDrawer'
 import MenuLateral from './MenuLateral'
 import Jogos from './Jogos'
 import Mensagens from './Mensagens'
+import Acessos from './Acessos'
 import '../styles/painel.css'
 
 const Ctx = createContext(null)
@@ -30,6 +31,7 @@ const ABAS = [
   ['prospectar', 'Leads', LeadsUnico, 'm22 2-7 20-4-9-9-4 20-7Z'],
   ['crm', 'CRM', Crm, 'M4 4h5v16H4zM10 4h5v10h-5zM16 4h4v13h-4z'],
   ['cofre', 'Cofre', Cofre, 'M5 11h14v10H5zM8 11V7a4 4 0 0 1 8 0v4'],
+  ['acessos', 'Acessos', Acessos, 'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8'],
 ]
 // Um item de menu por canal (o componente muda conforme o tipo do canal). A lista vem do banco: monta de novo quando carrega.
 const abasCanais = () => CANAIS.map((c) => [`canal:${c.id}`, c.nome, c.tipo === 'marca'
@@ -43,9 +45,10 @@ const EXTRAS = [
 ]
 const JOGOS_ABAS = [['jogos', 'Todos os jogos', Jogos, 'M6 11h4M8 9v4M15 12h.01M18 10h.01M17.3 5H6.7a4 4 0 0 0-3.9 3.2L2 14.5a2.5 2.5 0 0 0 4.4 2L8 15h8l1.6 1.5a2.5 2.5 0 0 0 4.4-2l-.8-6.3A4 4 0 0 0 17.3 5Z']]
 // Menu: fixos no topo + um grupo (acordeão) por frente de renda. Frente nova = mais um grupo aqui.
-const TOPO = ABAS.filter(([id]) => ['inicio', 'metricas', 'cofre'].includes(id))
-function montarMenu() {
+const TOPO = ABAS.filter(([id]) => ['inicio', 'metricas', 'cofre', 'acessos'].includes(id))
+function montarMenu(leitura = false) {
   const canais = abasCanais()
+  if (leitura) return { grupos: [{ id: 'canais', nome: 'Canais', canais: true, itens: canais }], todas: canais }
   return {
     grupos: [
       { id: 'sites', nome: 'Sites', itens: [...ABAS.filter(([id]) => ['prospectar', 'crm'].includes(id)), ...EXTRAS] },
@@ -93,12 +96,15 @@ function Login() {
 export default function Painel() {
   const [sessao, setSessao] = useState(undefined)
   const [admin, setAdmin] = useState(null)
+  // visitante: login criado em Acessos, vê só os canais liberados e não mexe em nada
+  const [acesso, setAcesso] = useState(null)
+  const leitura = admin === false && !!acesso
   const [aba, setAba] = useState(() => {
     try { const q = new URLSearchParams(window.location.search); if (q.get('yt') && /^[a-z0-9-]+$/.test(q.get('canal') || '')) return `canal:${q.get('canal')}` } catch { /* segue */ }
     try { const a = ANTIGAS[localStorage.getItem('p-aba')] || localStorage.getItem('p-aba'); return a && (a.startsWith('canal:') || FIXAS.some(([id]) => id === a)) ? a : 'inicio' } catch { return 'inicio' }
   })
   const [canaisV, setCanaisV] = useState(0)
-  const menu = useMemo(() => montarMenu(), [canaisV])
+  const menu = useMemo(() => montarMenu(leitura), [canaisV, leitura])
   const recarregarCanais = useCallback(() => carregarCanais().then(() => setCanaisV((v) => v + 1)), [])
   // views de hoje por canal: o menu põe quem está com mais views no topo
   const [views, setViews] = useState({})
@@ -128,13 +134,18 @@ export default function Painel() {
   }, [])
 
   useEffect(() => {
-    if (!sessao) { setAdmin(null); return }
-    supabase.rpc('is_admin').then(({ data }) => { setAdmin(!!data); if (data) marcarDono() })
+    if (!sessao) { setAdmin(null); setAcesso(null); return }
+    supabase.rpc('is_admin').then(async ({ data }) => {
+      if (data) { marcarDono(); setAdmin(true); return }
+      const { data: a } = await supabase.from('painel_acessos').select('nome,canais').eq('user_id', sessao.user.id).maybeSingle()
+      setAcesso(a || false); setAdmin(false)
+    })
   }, [sessao])
 
   const recarregarMensagens = useCallback(() => carregarMensagens().then(setMensagens).catch(() => {}).finally(() => setProntas(true)), [])
   useEffect(() => { if (admin) recarregarMensagens() }, [admin, recarregarMensagens])
-  useEffect(() => { if (admin) recarregarCanais() }, [admin, recarregarCanais])
+  useEffect(() => { if (admin || leitura) recarregarCanais() }, [admin, leitura, recarregarCanais])
+  useEffect(() => { if (leitura) setProntas(true) }, [leitura])
   useEffect(() => {
     if (!admin) return undefined
     const ler = () => supabase.from('v_views_hoje').select('canal,views,curtidas,por_rede,atualizado_em,desde')
@@ -226,25 +237,25 @@ export default function Painel() {
   if (sessao === undefined) return <div className="p-carregando">Carregando…</div>
   if (!sessao) return <Login />
   if (admin === null) return <div className="p-carregando">Verificando acesso…</div>
-  if (!admin) {
+  if (!admin && !leitura) {
     return (
       <main className="p-login"><form><h1>Sem acesso</h1><p>Este e-mail não tem permissão para o painel.</p>
         <button type="button" className="p-btn" onClick={() => supabase.auth.signOut()}>Sair</button></form></main>
     )
   }
 
-  const Atual = (menu.todas.find(([id]) => id === aba) || ABAS[0])[2]
+  const Atual = (menu.todas.find(([id]) => id === aba) || (leitura ? menu.todas[0] : null) || ABAS[0])?.[2] || (() => <p className="p-vazio">Nenhum canal liberado para você ainda.</p>)
   const irPara = (id) => { setAba(id); setMenuAberto(false) }
 
   return (
-    <Ctx.Provider value={{ mensagens, recarregarMensagens, abrirLead: (id, opcoes = {}) => setLeadAberto({ id, ...opcoes }), avisar, versao, atualizar, irPara, recarregarCanais, views }}>
+    <Ctx.Provider value={{ leitura, mensagens, recarregarMensagens, abrirLead: (id, opcoes = {}) => setLeadAberto({ id, ...opcoes }), avisar, versao, atualizar, irPara, recarregarCanais, views }}>
       <div className={`p-app ${menuAberto ? 'menu-aberto' : ''} ${recolhido && !celular ? 'menu-mini' : ''}`}>
         <header className="p-topbar">
           <button className="p-hamb" onClick={() => setMenuAberto(true)} aria-label="Abrir menu"><Ico d="M4 7h16M4 12h16M4 17h16" /></button>
           <strong className="p-logo"><Logo /></strong>
         </header>
         <div className="p-veu" onClick={() => setMenuAberto(false)} aria-hidden="true" />
-        <MenuLateral topo={TOPO} grupos={menu.grupos} aba={aba} ir={irPara} aoVivo={aoVivo} views={views}
+        <MenuLateral topo={leitura ? [] : TOPO} grupos={menu.grupos} aba={aba} ir={irPara} aoVivo={aoVivo} views={views}
           recolhido={recolhido && !celular} setRecolhido={setRecolhido} sair={() => supabase.auth.signOut()} />
         <main className="p-conteudo">
           {prontas ? <Atual key={aba} /> : <p className="p-vazio">Carregando…</p>}

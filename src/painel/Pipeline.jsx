@@ -525,6 +525,8 @@ export default function Pipeline({ canal, fases = FASES_PADRAO, itens, mover, pr
   useEffect(() => gravarLS(`pl-vista-${canal.id}`, vista), [vista, canal.id])
   const [previa, setPrevia] = useState(null)
   const painel = usePainel()
+  const leitura = !!painel?.leitura
+  const abrirItem = leitura ? (i) => { if (i?.video_url) setPrevia(i.chave) } : abrir
   // Arquivar: sai do menu e das contas de views; os vídeos ficam guardados (volta em Cofre → Canais → Arquivados)
   async function arquivar() {
     if (!window.confirm(`Arquivar ${canal.nome}? Ele sai do menu e das views; os vídeos ficam guardados e dá para desarquivar em Cofre → Canais.`)) return
@@ -542,6 +544,7 @@ export default function Pipeline({ canal, fases = FASES_PADRAO, itens, mover, pr
   const fase = (i) => local[i.chave] || i.fase
   const deFase = (k) => fases.find((f) => f.k === k)
   async function moverAqui(chave, alvo) {
+    if (leitura) return
     const it = itens.find((i) => i.chave === chave)
     if (!it || it.movel === false || fase(it) === alvo || deFase(alvo)?.soltar === false) return
     setLocal((l) => ({ ...l, [chave]: alvo }))
@@ -577,7 +580,7 @@ export default function Pipeline({ canal, fases = FASES_PADRAO, itens, mover, pr
             {fila && <p>Fila até {fmtCurto(fila).replace(/ \S+$/, '')}</p>}
           </div>
         </div>
-        <div className="pl-acoes">
+        {!leitura && <div className="pl-acoes">
           <button className="p-btn" onClick={() => setJanela('integ')}>
             <span className={`pl-ponto ${cx.igOk ? 'on' : ''}`} aria-hidden="true" />Integrações
           </button>
@@ -586,7 +589,7 @@ export default function Pipeline({ canal, fases = FASES_PADRAO, itens, mover, pr
           <button className="p-btn p-btn--fraco" onClick={arquivar}>Arquivar canal</button>
           <button className="p-btn" onClick={() => setJanela('subir')}>Subir vídeo</button>
           <button className="p-btn p-btn--forte" onClick={() => setJanela('programar')} disabled={!programaveis.length}>Programar tudo</button>
-        </div>
+        </div>}
       </header>
       {ocupado && <p className="pl-ocupado" role="status">{ocupado}</p>}
 
@@ -631,7 +634,7 @@ export default function Pipeline({ canal, fases = FASES_PADRAO, itens, mover, pr
               </header>
               {recolhida && col[k].length > 0 && <button type="button" className="pl-col-btn pl-col-abrir" onClick={() => setVerPostados(true)}>Mostrar os {col[k].length}</button>}
               {lista.map((i) => (
-                <Cartao key={i.chave} item={i} fase={k} papel={f.papel} fases={visiveis} abrir={abrir} previa={setPrevia} mover={moverAqui} arrastando={arr === i.chave}
+                <Cartao key={i.chave} item={i} fase={k} papel={f.papel} fases={visiveis} abrir={abrirItem} previa={setPrevia} mover={moverAqui} arrastando={arr === i.chave}
                   arrastar={(c) => { setArr(c); if (!c) setSobre(null) }} />
               ))}
               {col[k].length === 0 && <p className="pl-vazia">{f.papel === 'fila' ? 'Vazio.' : f.papel === 'programado' ? 'Nada programado.' : 'Nada postado ainda.'}</p>}
@@ -645,7 +648,7 @@ export default function Pipeline({ canal, fases = FASES_PADRAO, itens, mover, pr
       </div>
       </>}
 
-      {previa && <Previa lista={listaPrevia} id={previa} setId={setPrevia} abrirFicha={(ch) => abrir(itens.find((i) => i.chave === ch))} />}
+      {previa && <Previa lista={listaPrevia} id={previa} setId={setPrevia} abrirFicha={leitura ? undefined : (ch) => abrir(itens.find((i) => i.chave === ch))} />}
       {janela === 'metricas' && <Metricas canal={canal} fechar={() => setJanela(null)} />}
       {janela === 'integ' && <Integracoes canal={canal} marca={marca} cx={cx} recarregar={recarregar} fechar={() => setJanela(null)} />}
       {janela === 'programar' && <ProgramarTudo itens={programaveis} fila={fila} programar={programar} fechar={() => setJanela(null)} />}
