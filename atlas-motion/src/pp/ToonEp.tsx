@@ -7,36 +7,36 @@ import { BoBunny, CoachKiwi, RoomBG } from './Toon';
 type Beat = { t0: number; t1: number; txt: string; who: string };
 type Dados = { dur: number; quadros: number; beats: Record<string, Beat>; boca: number[]; quem: string };
 const FONT = 'Fredoka';
-const CX = 510;
-const cl = (v: number, a = 0, b = 1) => Math.max(a, Math.min(b, v));
-const ease = (x: number) => Easing.bezier(0.33, 1, 0.68, 1)(cl(x));
-const eio = (x: number) => Easing.bezier(0.65, 0, 0.35, 1)(cl(x));
-const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
-const sp = (f: number, fps: number, at: number, damping = 11) => spring({ frame: f - Math.round(at * fps), fps, config: { damping, mass: 0.7, stiffness: 170 } });
+export const CX = 510;
+export const cl = (v: number, a = 0, b = 1) => Math.max(a, Math.min(b, v));
+export const ease = (x: number) => Easing.bezier(0.33, 1, 0.68, 1)(cl(x));
+export const eio = (x: number) => Easing.bezier(0.65, 0, 0.35, 1)(cl(x));
+export const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+export const sp = (f: number, fps: number, at: number, damping = 11) => spring({ frame: f - Math.round(at * fps), fps, config: { damping, mass: 0.7, stiffness: 170 } });
 const PC = [C.tomato, C.sun, C.grape, C.mint, C.pink];
 
-const Txt: React.FC<{ x: number; y: number; size: number; fill?: string; stroke?: string; sw?: number; children: React.ReactNode; s?: number; rot?: number; o?: number }> = ({
+export const Txt: React.FC<{ x: number; y: number; size: number; fill?: string; stroke?: string; sw?: number; children: React.ReactNode; s?: number; rot?: number; o?: number }> = ({
   x, y, size, fill = C.white, stroke = C.ink, sw, children, s = 1, rot = 0, o = 1,
 }) => (
   <g transform={`translate(${x} ${y}) rotate(${rot}) scale(${s})`} opacity={o}>
     <text textAnchor="middle" fontFamily={FONT} fontWeight={700} fontSize={size} fill={fill} stroke={stroke} strokeWidth={sw ?? size * 0.16} strokeLinejoin="round" paintOrder="stroke" dominantBaseline="middle">{children}</text>
   </g>
 );
-const Chip: React.FC<{ y: number; s: number; children: React.ReactNode; w?: number; fill?: string }> = ({ y, s, children, w = 760, fill = C.white }) => (
+export const Chip: React.FC<{ y: number; s: number; children: React.ReactNode; w?: number; fill?: string }> = ({ y, s, children, w = 760, fill = C.white }) => (
   <g transform={`translate(${CX} ${y}) scale(${s})`} opacity={s > 0.02 ? 1 : 0}>
     <rect x={-w / 2} y={-62} width={w} height={124} rx={62} fill={fill} stroke={C.ink} strokeWidth={9} />
     <rect x={-w / 2 + 14} y={-52} width={w - 28} height={34} rx={17} fill="#fff" opacity={0.25} />
     {children}
   </g>
 );
-const CandyIcon: React.FC<{ x: number; y: number; s?: number; c?: string }> = ({ x, y, s = 1, c = C.pink }) => (
+export const CandyIcon: React.FC<{ x: number; y: number; s?: number; c?: string }> = ({ x, y, s = 1, c = C.pink }) => (
   <g transform={`translate(${x} ${y}) scale(${s})`}>
     <path d="M-46 -18 L -26 0 L -46 18 Z M46 -18 L 26 0 L 46 18 Z" fill={c} stroke={C.ink} strokeWidth={5} strokeLinejoin="round" />
     <circle r={28} fill={c} stroke={C.ink} strokeWidth={6} />
     <path d="M-14 -10 Q 0 -22 12 -13" stroke={C.white} strokeWidth={6} fill="none" strokeLinecap="round" />
   </g>
 );
-const Table: React.FC<{ x: number; y: number; w?: number }> = ({ x, y, w = 380 }) => (
+export const Table: React.FC<{ x: number; y: number; w?: number }> = ({ x, y, w = 380 }) => (
   <g transform={`translate(${x} ${y})`}>
     <ellipse cy={250} rx={w * 0.55} ry={22} fill="#3A2340" opacity={0.14} />
     {[-w / 2 + 40, w / 2 - 40].map((lx) => <rect key={lx} x={lx - 14} y={20} width={28} height={230} rx={12} fill="#C47E44" stroke="#5B3A2A" strokeWidth={7} />)}
@@ -44,7 +44,7 @@ const Table: React.FC<{ x: number; y: number; w?: number }> = ({ x, y, w = 380 }
     <rect x={-w / 2 + 16} y={0} width={w - 32} height={12} rx={6} fill="#fff" opacity={0.3} />
   </g>
 );
-const Captions: React.FC<{ b?: Beat; t: number }> = ({ b, t }) => {
+export const Captions: React.FC<{ b?: Beat; t: number }> = ({ b, t }) => {
   if (!b) return null;
   const words = b.txt.split(' ');
   const tot = words.reduce((s, w) => s + w.length + 1, 0);
@@ -67,7 +67,7 @@ const Captions: React.FC<{ b?: Beat; t: number }> = ({ b, t }) => {
     </g>
   );
 };
-const Stamp: React.FC<{ t: number; ok?: boolean; x: number; y: number }> = ({ t, ok, x, y }) => {
+export const Stamp: React.FC<{ t: number; ok?: boolean; x: number; y: number }> = ({ t, ok, x, y }) => {
   const s = interpolate(t, [0, 0.14, 0.26], [2.6, 0.9, 1], { extrapolateRight: 'clamp' });
   return (
     <g transform={`translate(${x} ${y}) scale(${s}) rotate(${ok ? -8 : 8})`}>
@@ -77,7 +77,7 @@ const Stamp: React.FC<{ t: number; ok?: boolean; x: number; y: number }> = ({ t,
     </g>
   );
 };
-const Confetti: React.FC<{ t: number; x: number; y: number; n?: number }> = ({ t, x, y, n = 44 }) => {
+export const Confetti: React.FC<{ t: number; x: number; y: number; n?: number }> = ({ t, x, y, n = 44 }) => {
   if (t < 0 || t > 2.2) return null;
   const cols = [C.tomato, C.sun, C.mint, C.grape, C.pink, C.bo];
   return <g>{Array.from({ length: n }).map((_, i) => {
@@ -86,13 +86,13 @@ const Confetti: React.FC<{ t: number; x: number; y: number; n?: number }> = ({ t
     return <rect key={i} x={px} y={py} width={16} height={28} rx={6} fill={cols[i % 6]} transform={`rotate(${i * 40 + t * 600} ${px} ${py})`} opacity={cl(2.2 - t)} />;
   })}</g>;
 };
-const Sparkle: React.FC<{ x: number; y: number; t: number; s?: number }> = ({ x, y, t, s = 1 }) => {
+export const Sparkle: React.FC<{ x: number; y: number; t: number; s?: number }> = ({ x, y, t, s = 1 }) => {
   if (t < 0 || t > 1) return null;
   const k = Math.sin(cl(t) * Math.PI) * s;
   return <path transform={`translate(${x} ${y}) scale(${k}) rotate(${t * 90})`} d="M0 -30 L 8 -8 L 30 0 L 8 8 L 0 30 L -8 8 L -30 0 L -8 -8 Z" fill={C.sun} stroke={C.ink} strokeWidth={4} />;
 };
 /* câmera: foco (fx, fy) com zoom z */
-const cam = (fx: number, fy: number, z: number, sx = 0) => `translate(${540 + sx} 960) scale(${z}) translate(${-fx} ${-fy})`;
+export const cam = (fx: number, fy: number, z: number, sx = 0) => `translate(${540 + sx} 960) scale(${z}) translate(${-fx} ${-fy})`;
 
 export const ToonEp: React.FC<{ id: string; dados: Dados; semAudio?: boolean }> = ({ id, dados, semAudio }) => {
   const f = useCurrentFrame();

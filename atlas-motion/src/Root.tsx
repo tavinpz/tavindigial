@@ -14,6 +14,8 @@ import { PickPals, PPMarca } from './pp/PickPals';
 import { PP3D } from './pp/PP3D';
 import { ToonTest } from './pp/Toon';
 import { ToonEp } from './pp/ToonEp';
+import { KitEp } from './pp/Eps';
+import { PPBrand } from './pp/Brand';
 import { Superficie } from './arte/comum';
 const Tex: React.FC<{ tipo: any }> = ({ tipo }) => <Superficie tema={null as any} px={0} py={0} tipo={tipo} bruta />;
 
@@ -93,5 +95,13 @@ export const Root: React.FC = () => (
         const dados = await fetch(staticFile(`pp/${props.id}/data.json`)).then((r) => r.json());
         return { durationInFrames: dados.quadros, props: { ...props, dados } };
       }} />
+    <Composition id="KitEp" component={KitEp as any} durationInFrames={300} fps={30} width={1080} height={1920}
+      defaultProps={{ id: 'ep002', semAudio: false }}
+      calculateMetadata={async ({ props }: any) => {
+        const dados = await fetch(staticFile(`pp/${props.id}/data.json`)).then((r) => r.json());
+        return { durationInFrames: dados.quadros, props: { ...props, dados } };
+      }} />
+    <Composition id="PPLogo2" component={PPBrand as any} durationInFrames={1} fps={30} width={800} height={800} defaultProps={{ v: 'logo' }} />
+    <Composition id="PPBanner" component={PPBrand as any} durationInFrames={1} fps={30} width={2560} height={1440} defaultProps={{ v: 'banner' }} />
   </>
 );

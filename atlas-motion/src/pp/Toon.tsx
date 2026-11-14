@@ -67,7 +67,7 @@ const Mouth: React.FC<{ y: number; w: number; f: Face; line: string }> = ({ y, w
 };
 
 /* ---------- BO: coelhinho de macacão ---------- */
-export type BoT = Face & { x: number; y: number; s?: number; t: number; armL?: number; armR?: number; walk?: number; headTilt?: number; bounce?: number; sick?: number; holdR?: React.ReactNode; flip?: boolean };
+export type BoT = Face & { suit?: string; hands?: string; x: number; y: number; s?: number; t: number; armL?: number; armR?: number; walk?: number; headTilt?: number; bounce?: number; sick?: number; holdR?: React.ReactNode; flip?: boolean };
 export const BoBunny: React.FC<BoT> = (p) => {
   const { x, y, s = 1, t, armL = 0, armR = 0, walk = 0, headTilt = 0, bounce = 0, sick = 0, holdR, flip } = p;
   const fur = sick > 0 ? mixHex('#FFF3E2', '#D9F2B4', sick) : '#FFF3E2';
@@ -76,7 +76,7 @@ export const BoBunny: React.FC<BoT> = (p) => {
   const step = Math.sin(walk * Math.PI * 2);
   const tk = cl(p.mouth || 0);
   const earW = Math.sin(t * 3.1) * 4 + bounce * 10 + tk * 5 * Math.sin(t * 8) + Math.sin(t * 1.3) * 2;
-  const hand = <circle r={19} fill={fur} stroke={line} strokeWidth={6} />;
+  const hand = <circle r={19} fill={p.hands || fur} stroke={line} strokeWidth={6} />;
   return (
     <g transform={`translate(${x} ${y - Math.abs(step) * 14 * (walk ? 1 : 0)}) scale(${flip ? -s : s} ${s})`}>
       <ellipse cy={6} rx={110} ry={18} fill="#3A2340" opacity={0.16} />
@@ -88,7 +88,7 @@ export const BoBunny: React.FC<BoT> = (p) => {
         <Limb x={-58} y={-78} ang={-18 - armL * 135} len={92} bend={0.3} w={30} fill={fur} line={line} end={hand} />
         {/* corpo: camiseta + macacão */}
         <path d="M-70 -95 Q -90 30 -62 52 L 62 52 Q 90 30 70 -95 Q 0 -128 -70 -95 Z" fill="#FFC83A" stroke={line} strokeWidth={7} strokeLinejoin="round" />
-        <path d="M-66 -40 L 66 -40 Q 80 30 62 52 L -62 52 Q -80 30 -66 -40 Z" fill="#3E7BEA" stroke={line} strokeWidth={7} strokeLinejoin="round" />
+        <path d="M-66 -40 L 66 -40 Q 80 30 62 52 L -62 52 Q -80 30 -66 -40 Z" fill={p.suit || '#3E7BEA'} stroke={line} strokeWidth={7} strokeLinejoin="round" />
         <path d="M-50 -40 L -44 -92 M50 -40 L 44 -92" stroke="#3E7BEA" strokeWidth={14} strokeLinecap="round" />
         <circle cx={-46} cy={-46} r={7} fill="#FFC83A" stroke={line} strokeWidth={3} /><circle cx={46} cy={-46} r={7} fill="#FFC83A" stroke={line} strokeWidth={3} />
         {/* bolso com folhinha (assinatura) */}
@@ -209,7 +209,9 @@ export const RoomBG: React.FC<{ w?: number; h?: number; wall?: string; wall2?: s
       <circle cx={50} cy={-34} r={34} fill={C.sun} /><path d="M100 0 l 20 -60 l 20 60 z" fill={C.mint} />
     </g>
     {/* chão */}
-    <rect y={floorY} width={w} height={h - floorY} fill="url(#floorG)" />
+    <rect y={floorY} width={w} height={h - floorY + 800} fill="url(#floorG)" />
+    <rect x={-600} y={-400} width={w + 1200} height={400} fill={wall2} />
+    <rect x={-600} y={floorY} width={600} height={h} fill="url(#floorG)" /><rect x={w} y={floorY} width={600} height={h} fill="url(#floorG)" />
     <rect y={floorY - 26} width={w} height={26} fill="#fff" />
     <ellipse cx={w * 0.45 + px * 0.5} cy={floorY + 150} rx={420} ry={80} fill="#FFE08A" opacity={0.9} />
   </g>

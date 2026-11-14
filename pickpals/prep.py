@@ -67,6 +67,8 @@ FX = {
     'boing': (lambda n: np.sin(2 * np.pi * np.cumsum(220 + 120 * np.sin(np.linspace(0, 18, n)) * np.exp(-np.linspace(0, 4, n))) / SR) * env(n, .003, .25) * .5)(int(.6 * SR)),
     'sparkle': sum(np.pad(tone(f, 0.35, 0.12, (1, .3)), (int(i * 0.06 * SR), int(1.2*SR)))[:int(1.2 * SR)] for i, f in enumerate([2093, 2637, 3136, 2637, 3520, 4186])) * 0.18,
     'scratch': (lambda n: (rng.normal(0, 1, n) * 0.5 + np.sin(2 * np.pi * np.cumsum(np.linspace(900, 120, n)) / SR)) * env(n, .002, .12) * .6)(int(.35 * SR)),
+    'knock': np.concatenate([np.pad(sweep(180, 90, 0.09, 0.04) * 1.2, (0, int(.12 * SR))) for _ in range(3)]),
+    'snore': (lambda n: rng.normal(0, 1, n) * np.sin(np.linspace(0, np.pi, n)) ** 2 * np.abs(np.sin(np.linspace(0, 6, n))) * .25)(int(1.2 * SR)),
     'slam': (sweep(120, 50, 0.35, 0.15) + rng.normal(0, 1, int(.35 * SR)) * env(int(.35 * SR), .001, .04) * .3) * 0.9,
 }
 
