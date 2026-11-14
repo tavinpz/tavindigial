@@ -1,0 +1,84 @@
+{
+ "dur": 22.02,
+ "quadros": 661,
+ "beats": {
+  "hook": {
+   "t0": 0.45,
+   "t1": 1.913,
+   "txt": "Bo found these on the table!",
+   "who": "n"
+  },
+  "bo1": {
+   "t0": 2.063,
+   "t1": 2.651,
+   "txt": "Ooh! Candy?",
+   "who": "b"
+  },
+  "q": {
+   "t0": 3.001,
+   "t1": 4.011,
+   "txt": "Which one is right?",
+   "who": "n"
+  },
+  "a": {
+   "t0": 4.511,
+   "t1": 5.302,
+   "txt": "A. Eat them!",
+   "who": "n"
+  },
+  "b": {
+   "t0": 6.902,
+   "t1": 8.743,
+   "txt": "Or B. Ask a grown-up first!",
+   "who": "n"
+  },
+  "point": {
+   "t0": 10.443,
+   "t1": 11.543,
+   "txt": "Point to the right one!",
+   "who": "n"
+  },
+  "c3": {
+   "t0": 11.793,
+   "t1": 12.303,
+   "txt": "Three!",
+   "who": "n"
+  },
+  "c2": {
+   "t0": 12.753,
+   "t1": 13.216,
+   "txt": "Two!",
+   "who": "n"
+  },
+  "c1": {
+   "t0": 13.666,
+   "t1": 14.107,
+   "txt": "One!",
+   "who": "n"
+  },
+  "ans": {
+   "t0": 14.457,
+   "t1": 15.592,
+   "txt": "B! Great job!",
+   "who": "n"
+  },
+  "why": {
+   "t0": 16.292,
+   "t1": 17.38,
+   "txt": "Medicine is NOT candy!",
+   "who": "k"
+  },
+  "rule": {
+   "t0": 17.63,
+   "t1": 19.232,
+   "txt": "Only a grown-up can give you medicine.",
+   "who": "k"
+  },
+  "next": {
+   "t0": 19.832,
+   "t1": 21.02,
+   "txt": "Ready for the next one?",
+   "who": "n"
+  }
+ }
+}
