@@ -13,6 +13,7 @@ import { Arte } from './arte/Arte';
 import { PickPals, PPMarca } from './pp/PickPals';
 import { PP3D } from './pp/PP3D';
 import { ToonTest } from './pp/Toon';
+import { ToonEp } from './pp/ToonEp';
 import { Superficie } from './arte/comum';
 const Tex: React.FC<{ tipo: any }> = ({ tipo }) => <Superficie tema={null as any} px={0} py={0} tipo={tipo} bruta />;
 
@@ -86,5 +87,11 @@ export const Root: React.FC = () => (
         return { durationInFrames: dados.quadros, props: { ...props, dados } };
       }} />
     <Composition id="ToonTest" component={ToonTest} durationInFrames={1} fps={30} width={1080} height={1920} />
+    <Composition id="ToonEp" component={ToonEp as any} durationInFrames={300} fps={30} width={1080} height={1920}
+      defaultProps={{ id: 'ep001b', semAudio: false }}
+      calculateMetadata={async ({ props }: any) => {
+        const dados = await fetch(staticFile(`pp/${props.id}/data.json`)).then((r) => r.json());
+        return { durationInFrames: dados.quadros, props: { ...props, dados } };
+      }} />
   </>
 );

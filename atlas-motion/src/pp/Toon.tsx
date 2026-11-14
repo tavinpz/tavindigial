@@ -74,7 +74,8 @@ export const BoBunny: React.FC<BoT> = (p) => {
   const line = '#5B3A55';
   const breathe = Math.sin(t * 2.4) * 0.012;
   const step = Math.sin(walk * Math.PI * 2);
-  const earW = Math.sin(t * 3.1) * 4 + bounce * 10;
+  const tk = cl(p.mouth || 0);
+  const earW = Math.sin(t * 3.1) * 4 + bounce * 10 + tk * 5 * Math.sin(t * 8) + Math.sin(t * 1.3) * 2;
   const hand = <circle r={19} fill={fur} stroke={line} strokeWidth={6} />;
   return (
     <g transform={`translate(${x} ${y - Math.abs(step) * 14 * (walk ? 1 : 0)}) scale(${flip ? -s : s} ${s})`}>
@@ -96,7 +97,7 @@ export const BoBunny: React.FC<BoT> = (p) => {
         {/* rabinho */}
         <circle cx={-70} cy={20} r={18} fill={fur} stroke={line} strokeWidth={6} />
         {/* cabeça */}
-        <g transform={`translate(0 -110) rotate(${headTilt})`}>
+        <g transform={`translate(0 ${-110 - tk * 4 * Math.abs(Math.sin(t * 7))}) rotate(${headTilt + tk * 3 * Math.sin(t * 6.5) + Math.sin(t * 1.7) * 1.5})`}>
           {/* orelhas */}
           <g transform={`rotate(${-12 - earW})`}><path d="M-60 -120 C -96 -250 -40 -300 -26 -220 C -20 -180 -28 -150 -30 -118 Z" fill={fur} stroke={line} strokeWidth={7} strokeLinejoin="round" />
             <path d="M-50 -132 C -74 -228 -44 -258 -36 -206 C -32 -178 -36 -156 -38 -132 Z" fill="#FFB3C4" /></g>
@@ -149,7 +150,7 @@ export const CoachKiwi: React.FC<KiT> = (p) => {
         <path d="M-60 -215 Q 0 -120 60 -215" stroke="#fff" strokeWidth={5} fill="none" />
         <g transform="translate(10 -140) rotate(-12)"><rect x={-26} y={-14} width={52} height={28} rx={12} fill={C.grape} stroke={line} strokeWidth={5} /><circle cx={-12} cy={0} r={6} fill="#2a1a40" /></g>
         {/* cabeça (parte de cima do corpo) */}
-        <g transform={`translate(0 -250) rotate(${headTilt})`}>
+        <g transform={`translate(0 ${-250 - m * 5 * Math.abs(Math.sin(t * 6))}) rotate(${headTilt + m * 3 * Math.sin(t * 5.5) + Math.sin(t * 1.4) * 1.2})`}>
           <ellipse cx={-36} cy={-30} rx={34} ry={14} fill="#fff" opacity={0.3} transform="rotate(-20 -36 -30)" />
           <Eyes {...p} dx={38} y={-4} r={20} line={line} />
           {/* bico longo curvo, abre com a fala */}
