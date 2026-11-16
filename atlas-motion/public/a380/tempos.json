@@ -1,0 +1,536 @@
+{
+ "total": 487.081,
+ "blocos": [
+  {
+   "cena": "gigante",
+   "ini": 0.6,
+   "fim": 41.114,
+   "falas": [
+    {
+     "t": 0.6,
+     "d": 4.675,
+     "txt": "This is the Airbus A-three-eighty. The biggest passenger airplane ever built."
+    },
+    {
+     "t": 5.695,
+     "d": 5.376,
+     "txt": "Two full decks. Room for more than five hundred people. Some of them even had showers."
+    },
+    {
+     "t": 11.491,
+     "d": 1.082,
+     "txt": "Passengers loved it."
+    },
+    {
+     "t": 12.994,
+     "d": 5.972,
+     "txt": "And in twenty twenty one, after only two hundred and fifty one airplanes, Airbus stopped building it."
+    },
+    {
+     "t": 19.386,
+     "d": 5.38,
+     "txt": "Now look at the seven forty seven. Older. Smaller. Designed in the nineteen sixties."
+    },
+    {
+     "t": 25.185,
+     "d": 5.671,
+     "txt": "Boeing built one thousand, five hundred and seventy four of them, over more than half a century."
+    },
+    {
+     "t": 31.276,
+     "d": 8.518,
+     "txt": "So why did the old giant win, and the new one lose? The answer is hiding in the strangest part of the seven forty seven. The hump."
+    }
+   ]
+  },
+  {
+   "cena": "titulo",
+   "ini": 41.114,
+   "fim": 47.719,
+   "falas": [
+    {
+     "t": 41.114,
+     "d": 5.835,
+     "txt": "To understand it, we have to go back to a time when Boeing was sure the seven forty seven would fail."
+    }
+   ]
+  },
+  {
+   "cena": "nascimento",
+   "ini": 47.719,
+   "fim": 75.889,
+   "falas": [
+    {
+     "t": 47.719,
+     "d": 4.89,
+     "txt": "It's the late nineteen sixties. Air travel is booming, and airports are filling up."
+    },
+    {
+     "t": 53.029,
+     "d": 6.144,
+     "txt": "Boeing's answer is an airplane far bigger than anything flying. The first airliner with two aisles."
+    },
+    {
+     "t": 59.593,
+     "d": 6.008,
+     "txt": "To build it, they need a new factory. It's still considered the largest building in the world by volume."
+    },
+    {
+     "t": 66.021,
+     "d": 5.024,
+     "txt": "In January nineteen seventy, the first passengers fly it from New York to London."
+    },
+    {
+     "t": 71.465,
+     "d": 3.654,
+     "txt": "But inside Boeing, almost nobody thinks this is the future."
+    }
+   ]
+  },
+  {
+   "cena": "supersonico",
+   "ini": 75.889,
+   "fim": 101.204,
+   "falas": [
+    {
+     "t": 75.889,
+     "d": 2.187,
+     "txt": "The future is supposed to be supersonic."
+    },
+    {
+     "t": 78.496,
+     "d": 10.144,
+     "txt": "Boeing is developing its own supersonic airliner at the same time. And many people in the company expect it to replace the seven forty seven within a few years."
+    },
+    {
+     "t": 89.06,
+     "d": 8.559,
+     "txt": "So the engineers plan for that day. When passengers move on to faster jets, the seven forty seven should be easy to turn into a freighter."
+    },
+    {
+     "t": 98.04,
+     "d": 2.395,
+     "txt": "And that one assumption shapes the whole airplane."
+    }
+   ]
+  },
+  {
+   "cena": "corcunda",
+   "ini": 101.204,
+   "fim": 129.285,
+   "falas": [
+    {
+     "t": 101.204,
+     "d": 6.654,
+     "txt": "The best way to load big cargo is straight through the front. So the nose has to swing up, like a giant door."
+    },
+    {
+     "t": 108.278,
+     "d": 4.37,
+     "txt": "But the cockpit is in the nose. And you can't open a door through the pilots."
+    },
+    {
+     "t": 113.068,
+     "d": 4.377,
+     "txt": "So they move the cockpit up, above the main deck, and smooth a fairing behind it."
+    },
+    {
+     "t": 117.865,
+     "d": 4.147,
+     "txt": "That's the hump. It's not there for luxury. It's there so the nose can open."
+    },
+    {
+     "t": 122.432,
+     "d": 6.084,
+     "txt": "The supersonic airliner was cancelled. The backup plan became the most famous airplane in the world."
+    }
+   ]
+  },
+  {
+   "cena": "quatro",
+   "ini": 129.285,
+   "fim": 158.635,
+   "falas": [
+    {
+     "t": 129.285,
+     "d": 3.159,
+     "txt": "And for decades, nothing else was as big. Here's why."
+    },
+    {
+     "t": 132.865,
+     "d": 6.894,
+     "txt": "Back then, a twin engine airliner had to stay within sixty minutes of an airport, in case one engine failed."
+    },
+    {
+     "t": 140.179,
+     "d": 6.981,
+     "txt": "That makes crossing an ocean nearly impossible. So long flights belonged to airplanes with three or four engines."
+    },
+    {
+     "t": 147.58,
+     "d": 4.622,
+     "txt": "And if you wanted to move a lot of people a long way, there was really one choice."
+    },
+    {
+     "t": 152.622,
+     "d": 5.243,
+     "txt": "Airbus watched Boeing own that market for thirty years. Then it decided to go bigger."
+    }
+   ]
+  },
+  {
+   "cena": "aposta",
+   "ini": 158.635,
+   "fim": 187.811,
+   "falas": [
+    {
+     "t": 158.635,
+     "d": 5.961,
+     "txt": "The idea made sense. Air traffic kept growing. The biggest airports were running out of room."
+    },
+    {
+     "t": 165.016,
+     "d": 4.512,
+     "txt": "You can't easily add runways. But you can put more people on every flight."
+    },
+    {
+     "t": 169.948,
+     "d": 4.503,
+     "txt": "So in December of the year two thousand, Airbus launches the A-three-eighty."
+    },
+    {
+     "t": 174.871,
+     "d": 4.124,
+     "txt": "A full length double decker, with a wingspan of almost eighty meters."
+    },
+    {
+     "t": 179.416,
+     "d": 7.625,
+     "txt": "Airbus talked about a market for nearly twelve hundred very large airplanes. It was the biggest bet in the company's history."
+    }
+   ]
+  },
+  {
+   "cena": "aeroportos",
+   "ini": 187.811,
+   "fim": 215.1,
+   "falas": [
+    {
+     "t": 187.811,
+     "d": 2.885,
+     "txt": "There was one more problem. The airplane didn't fit."
+    },
+    {
+     "t": 191.116,
+     "d": 8.477,
+     "txt": "Its wings are so wide that airports had to widen taxiways and rebuild gates, with boarding bridges tall enough to reach the upper deck."
+    },
+    {
+     "t": 200.014,
+     "d": 6.949,
+     "txt": "In the United States alone, eighteen airports planned to spend more than nine hundred million dollars getting ready for it."
+    },
+    {
+     "t": 207.383,
+     "d": 6.948,
+     "txt": "So before it carried a single passenger, the A-three-eighty could only go where an airport had been rebuilt around it."
+    }
+   ]
+  },
+  {
+   "cena": "fios",
+   "ini": 215.1,
+   "fim": 247.805,
+   "falas": [
+    {
+     "t": 215.1,
+     "d": 1.018,
+     "txt": "Then came the wiring."
+    },
+    {
+     "t": 216.538,
+     "d": 6.666,
+     "txt": "Each A-three-eighty has around five hundred and thirty kilometers of wires. About a hundred thousand of them."
+    },
+    {
+     "t": 223.624,
+     "d": 7.304,
+     "txt": "The airplane was designed in four countries. And the teams were not all using the same version of the design software."
+    },
+    {
+     "t": 231.348,
+     "d": 6.988,
+     "txt": "When the wiring arrived for assembly, some of the cables were too short. In places, by just a few centimeters."
+    },
+    {
+     "t": 238.756,
+     "d": 4.305,
+     "txt": "You can't stretch a cable. The first airplanes had to be rewired by hand."
+    },
+    {
+     "t": 243.48,
+     "d": 3.554,
+     "txt": "It delayed the program by about two years, and cost billions."
+    }
+   ]
+  },
+  {
+   "cena": "motores",
+   "ini": 247.805,
+   "fim": 276.677,
+   "falas": [
+    {
+     "t": 247.805,
+     "d": 3.713,
+     "txt": "The delay was painful. But what happened to the engines was worse."
+    },
+    {
+     "t": 251.938,
+     "d": 5.452,
+     "txt": "When Airbus chose its engines, they were the best available. Nothing better was on the horizon."
+    },
+    {
+     "t": 257.81,
+     "d": 8.852,
+     "txt": "Three years later, before a single A-three-eighty was delivered, engine makers had new designs that burned about fifteen percent less fuel."
+    },
+    {
+     "t": 267.083,
+     "d": 4.923,
+     "txt": "They weren't for the A-three-eighty. They were for a new, smaller Boeing. The seven eighty seven."
+    },
+    {
+     "t": 272.425,
+     "d": 3.482,
+     "txt": "The giant was out of date before it carried its first passenger."
+    }
+   ]
+  },
+  {
+   "cena": "gemeos",
+   "ini": 276.677,
+   "fim": 305.117,
+   "falas": [
+    {
+     "t": 276.677,
+     "d": 2.695,
+     "txt": "And remember that sixty minute rule? It was gone."
+    },
+    {
+     "t": 279.792,
+     "d": 7.2,
+     "txt": "Engines had become so reliable that twin engine jets were now allowed to fly for hours away from the nearest airport."
+    },
+    {
+     "t": 287.413,
+     "d": 10.808,
+     "txt": "In two thousand five, a twin engine Boeing triple seven flew non stop from Hong Kong to London, the long way around. More than twenty one thousand kilometers."
+    },
+    {
+     "t": 298.641,
+     "d": 5.707,
+     "txt": "Two engines to feed and maintain, instead of four. For an airline, that changes everything."
+    }
+   ]
+  },
+  {
+   "cena": "rede",
+   "ini": 305.117,
+   "fim": 333.833,
+   "falas": [
+    {
+     "t": 305.117,
+     "d": 1.371,
+     "txt": "It also changed the map."
+    },
+    {
+     "t": 306.909,
+     "d": 6.222,
+     "txt": "The A-three-eighty was built for hubs. You fly to a giant airport, change planes, and continue."
+    },
+    {
+     "t": 313.55,
+     "d": 8.196,
+     "txt": "It's efficient. Ten cities can be connected with just nine routes through a hub. Linking each one directly would take forty five."
+    },
+    {
+     "t": 322.166,
+     "d": 3.571,
+     "txt": "But passengers don't want to connect. They want to go straight there."
+    },
+    {
+     "t": 326.157,
+     "d": 6.906,
+     "txt": "And with efficient twins, airlines could finally afford to offer that. Smaller airplanes, more routes, no stop."
+    }
+   ]
+  },
+  {
+   "cena": "cheio",
+   "ini": 333.833,
+   "fim": 368.673,
+   "falas": [
+    {
+     "t": 333.833,
+     "d": 4.792,
+     "txt": "That left the A-three-eighty with one hard rule. It only makes money when it's full."
+    },
+    {
+     "t": 339.044,
+     "d": 5.928,
+     "txt": "Around five hundred seats are easy to fill between two giant hubs. On most routes, they're not."
+    },
+    {
+     "t": 345.393,
+     "d": 8.139,
+     "txt": "One airline made it work. Emirates took one hundred and twenty three of them. Almost half of all the A-three-eighties ever built."
+    },
+    {
+     "t": 353.952,
+     "d": 3.223,
+     "txt": "It was also the only airline that kept coming back for more."
+    },
+    {
+     "t": 357.595,
+     "d": 10.308,
+     "txt": "So when Emirates cut its last order in twenty nineteen, Airbus announced the end. The program had cost around twenty five billion euros, and it never earned that back."
+    }
+   ]
+  },
+  {
+   "cena": "virada",
+   "ini": 368.673,
+   "fim": 389.901,
+   "falas": [
+    {
+     "t": 368.673,
+     "d": 1.856,
+     "txt": "But here's the part most people miss."
+    },
+    {
+     "t": 370.95,
+     "d": 2.553,
+     "txt": "The seven forty seven lost that same fight."
+    },
+    {
+     "t": 373.922,
+     "d": 5.841,
+     "txt": "The newest passenger version sold just thirty six airplanes. Airlines wanted twins there too."
+    },
+    {
+     "t": 380.183,
+     "d": 5.468,
+     "txt": "As a passenger airplane, the seven forty seven was finished years before the A-three-eighty."
+    },
+    {
+     "t": 386.071,
+     "d": 3.06,
+     "txt": "So why was Boeing still building them in twenty twenty two?"
+    }
+   ]
+  },
+  {
+   "cena": "carga",
+   "ini": 389.901,
+   "fim": 422.684,
+   "falas": [
+    {
+     "t": 389.901,
+     "d": 0.976,
+     "txt": "Because of the hump."
+    },
+    {
+     "t": 391.297,
+     "d": 9.328,
+     "txt": "Lift the nose, and a seven forty seven swallows cargo that fits in almost nothing else. Long, heavy, awkward loads, straight in through the front."
+    },
+    {
+     "t": 401.045,
+     "d": 5.327,
+     "txt": "That's what kept the line alive. More than a hundred of the last model were built as freighters."
+    },
+    {
+     "t": 406.792,
+     "d": 7.25,
+     "txt": "By the end of twenty twenty two, about four hundred and fifty were still flying. All but forty four were hauling cargo."
+    },
+    {
+     "t": 414.462,
+     "d": 7.451,
+     "txt": "Airbus planned a freighter too. It even had orders. But after the delays, the customers walked away, and it was never built."
+    }
+   ]
+  },
+  {
+   "cena": "ironia",
+   "ini": 422.684,
+   "fim": 446.902,
+   "falas": [
+    {
+     "t": 422.684,
+     "d": 1.422,
+     "txt": "And that's the real difference."
+    },
+    {
+     "t": 424.526,
+     "d": 9.667,
+     "txt": "The A-three-eighty was designed for one future. Giant hubs, full airplanes, four engines. When that future didn't arrive, it had nowhere else to go."
+    },
+    {
+     "t": 434.613,
+     "d": 6.431,
+     "txt": "The seven forty seven was designed by people who expected to be wrong. So they gave it a second job."
+    },
+    {
+     "t": 441.464,
+     "d": 4.668,
+     "txt": "The feature that made it look strange is the one that kept it alive for fifty years."
+    }
+   ]
+  },
+  {
+   "cena": "hoje",
+   "ini": 446.902,
+   "fim": 464.227,
+   "falas": [
+    {
+     "t": 446.902,
+     "d": 8.882,
+     "txt": "The last seven forty seven left the factory in January, twenty twenty three. Number one thousand, five hundred and seventy four. A freighter."
+    },
+    {
+     "t": 456.204,
+     "d": 7.253,
+     "txt": "The A-three-eighty isn't gone either. Production ended, but the airplanes are still flying, and it's still a passenger favorite."
+    }
+   ]
+  },
+  {
+   "cena": "final",
+   "ini": 464.227,
+   "fim": 483.081,
+   "falas": [
+    {
+     "t": 464.227,
+     "d": 3.04,
+     "txt": "So the A-three-eighty didn't fail because it was too big."
+    },
+    {
+     "t": 467.687,
+     "d": 2.321,
+     "txt": "It failed because it could only be one thing."
+    },
+    {
+     "t": 470.428,
+     "d": 4.842,
+     "txt": "And the seven forty seven survived because of a hump it was never supposed to need."
+    },
+    {
+     "t": 475.69,
+     "d": 6.62,
+     "txt": "Next time, a spy plane so hard to land, that a sports car has to chase it down the runway. The U two."
+    }
+   ]
+  }
+ ]
+}

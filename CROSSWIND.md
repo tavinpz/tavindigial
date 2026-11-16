@@ -38,7 +38,8 @@ curl -LO https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-fil
 | # | Título de trabalho | Observação |
 |---|---|---|
 | 02 | Why the SR-71 Leaked Fuel on the Ground | **Feito (16/11/2026), 8:16.** Código em `atlas-motion/src/sr71/`, som em `cw02/sfx.py`. |
-| 03 | Why the A380 Failed but the 747 Didn't | **Já foi prometido no final do #02.** Fazer primeiro. Comparação de dois gigantes. Mais negócio e engenharia. |
+| 03 | Why the A380 Failed but the 747 Didn't | **Feito (16/11/2026), 8:07.** Código em `atlas-motion/src/a380/` (aviões brancos: `QuadTopo`, `B747Lado` com nariz que abre, `A380Lado`), som em `cw03/sfx.py`. |
+| 04 | Why a Car Chases the U-2 Down the Runway | **Já foi prometido no final do #03.** Fazer primeiro. Conferir os fatos do carro de perseguição antes do roteiro. |
 
 Próximas boas: ideias na linha "por que esse avião é estranho" (A-10 construído em volta do canhão, U-2 com rodinhas que caem na decolagem, V-22, Concorde com nariz que abaixa).
 Meta de duração: **8 a 10 min**. O #01 ficou com 6:10; o próximo deve ser mais longo, mas sem enrolação.
