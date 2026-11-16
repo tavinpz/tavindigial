@@ -1,0 +1,37 @@
+[
+ {
+  "t": 0.3,
+  "d": 1.652,
+  "txt": "This is a B-52 landing."
+ },
+ {
+  "t": 2.202,
+  "d": 0.926,
+  "txt": "And it's coming in..."
+ },
+ {
+  "t": 3.248,
+  "d": 0.728,
+  "txt": "sideways."
+ },
+ {
+  "t": 4.326,
+  "d": 1.069,
+  "txt": "That's not a mistake."
+ },
+ {
+  "t": 5.695,
+  "d": 3.538,
+  "txt": "Its wings are so long, the pilots can't tip them into the wind."
+ },
+ {
+  "t": 9.534,
+  "d": 1.888,
+  "txt": "So Boeing made the wheels turn instead."
+ },
+ {
+  "t": 11.671,
+  "d": 1.183,
+  "txt": "Up to twenty degrees."
+ }
+]

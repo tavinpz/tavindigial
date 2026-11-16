@@ -1,0 +1,428 @@
+{
+ "total": 370.403,
+ "blocos": [
+  {
+   "cena": "pista",
+   "ini": 0.6,
+   "fim": 35.559,
+   "falas": [
+    {
+     "t": 0.6,
+     "d": 2.714,
+     "txt": "This is a B-52 landing in a crosswind."
+    },
+    {
+     "t": 3.734,
+     "d": 2.384,
+     "txt": "And it's coming in... completely sideways."
+    },
+    {
+     "t": 6.538,
+     "d": 3.612,
+     "txt": "The nose is pointing almost twenty degrees away from the runway."
+    },
+    {
+     "t": 10.57,
+     "d": 10.814,
+     "txt": "If an airliner touched down like this, it would be in serious trouble. The tires would scrub, the landing gear would twist, and the plane would try to swerve off the side of the runway."
+    },
+    {
+     "t": 21.804,
+     "d": 4.581,
+     "txt": "But the B-52 does it on purpose. Crews are trained to land it this way."
+    },
+    {
+     "t": 26.805,
+     "d": 7.434,
+     "txt": "And the reason goes all the way back to one decision Boeing made in the late 1940s. Where to put the wheels."
+    }
+   ]
+  },
+  {
+   "cena": "titulo",
+   "ini": 35.559,
+   "fim": 41.771,
+   "falas": [
+    {
+     "t": 35.559,
+     "d": 5.442,
+     "txt": "To understand it, we first need to understand what a crosswind actually does to an airplane."
+    }
+   ]
+  },
+  {
+   "cena": "vetor",
+   "ini": 41.771,
+   "fim": 84.36,
+   "falas": [
+    {
+     "t": 41.771,
+     "d": 3.148,
+     "txt": "An airplane flies through the air, not over the ground."
+    },
+    {
+     "t": 45.339,
+     "d": 4.969,
+     "txt": "So if the whole mass of air is moving sideways, the airplane moves sideways with it."
+    },
+    {
+     "t": 50.728,
+     "d": 5.174,
+     "txt": "Point the nose straight down the runway, and the wind slowly pushes you off the centerline."
+    },
+    {
+     "t": 56.322,
+     "d": 2.702,
+     "txt": "The fix is to turn the nose a little into the wind."
+    },
+    {
+     "t": 59.444,
+     "d": 5.977,
+     "txt": "Now part of your speed cancels out the drift, and your path over the ground lines up with the runway again."
+    },
+    {
+     "t": 65.841,
+     "d": 6.356,
+     "txt": "Pilots call this crabbing, because the plane moves a bit like a crab. Pointing one way, while traveling another."
+    },
+    {
+     "t": 72.616,
+     "d": 8.284,
+     "txt": "The angle depends on the wind. Approach at a hundred and forty knots with a twenty knot crosswind, and you need about eight degrees of crab."
+    },
+    {
+     "t": 81.321,
+     "d": 2.269,
+     "txt": "Double the wind, and it's around seventeen."
+    }
+   ]
+  },
+  {
+   "cena": "comercial",
+   "ini": 84.36,
+   "fim": 117.234,
+   "falas": [
+    {
+     "t": 84.36,
+     "d": 3.432,
+     "txt": "Every airliner crabs on the way down. But here's the catch."
+    },
+    {
+     "t": 88.211,
+     "d": 3.828,
+     "txt": "Just before the wheels touch, the pilot has to straighten the nose out."
+    },
+    {
+     "t": 92.459,
+     "d": 2.726,
+     "txt": "Wheels are built to roll forward, not sideways."
+    },
+    {
+     "t": 95.606,
+     "d": 11.109,
+     "txt": "So in the last few seconds, the pilot pushes the rudder to swing the nose in line with the runway, and lowers the upwind wing a little, so the wind can't push the plane sideways again."
+    },
+    {
+     "t": 107.135,
+     "d": 6.527,
+     "txt": "On a regular airliner, that's routine. A few degrees of bank, and the wingtip is still well clear of the ground."
+    },
+    {
+     "t": 114.082,
+     "d": 2.382,
+     "txt": "Now try the same move on a B-52."
+    }
+   ]
+  },
+  {
+   "cena": "frente",
+   "ini": 117.234,
+   "fim": 152.803,
+   "falas": [
+    {
+     "t": 117.234,
+     "d": 5.282,
+     "txt": "Its wing is a hundred and eighty five feet across. That's longer than the airplane itself."
+    },
+    {
+     "t": 122.936,
+     "d": 2.598,
+     "txt": "Eight engines hang under it, in four pods."
+    },
+    {
+     "t": 125.954,
+     "d": 6.714,
+     "txt": "And the wing is so long and so flexible, that the tips carry their own little wheels, so they don't scrape the runway."
+    },
+    {
+     "t": 133.088,
+     "d": 1.781,
+     "txt": "Look at how little room that leaves."
+    },
+    {
+     "t": 135.289,
+     "d": 4.715,
+     "txt": "Near the ground, just a couple of degrees of bank can drop a wingtip by several feet."
+    },
+    {
+     "t": 140.424,
+     "d": 7.038,
+     "txt": "Lower the wing to fight the wind, and you risk dragging an engine pod, or the wingtip itself, along the concrete."
+    },
+    {
+     "t": 147.882,
+     "d": 4.151,
+     "txt": "So the usual trick is off the table. But that's only half the problem."
+    }
+   ]
+  },
+  {
+   "cena": "layout",
+   "ini": 152.803,
+   "fim": 190.335,
+   "falas": [
+    {
+     "t": 152.803,
+     "d": 1.484,
+     "txt": "The other half is the wheels."
+    },
+    {
+     "t": 154.707,
+     "d": 8.625,
+     "txt": "An airliner uses what's called a tricycle layout. A nose wheel up front, and two main legs under the wings, spread wide apart."
+    },
+    {
+     "t": 163.752,
+     "d": 2.813,
+     "txt": "That wide stance is what keeps it steady on the ground."
+    },
+    {
+     "t": 166.985,
+     "d": 9.825,
+     "txt": "The B-52 couldn't do that. Its wings are thin, and the middle of the fuselage is taken by the bomb bay, right where an airliner's main gear would go."
+    },
+    {
+     "t": 177.23,
+     "d": 8.118,
+     "txt": "So Boeing put the wheels in a line, like a bicycle. Four trucks with two wheels each. Two in front of the bomb bay, and two behind it."
+    },
+    {
+     "t": 185.768,
+     "d": 3.797,
+     "txt": "The small outrigger wheels near the wingtips keep it from tipping over."
+    }
+   ]
+  },
+  {
+   "cena": "atitude",
+   "ini": 190.335,
+   "fim": 216.241,
+   "falas": [
+    {
+     "t": 190.335,
+     "d": 2.029,
+     "txt": "That layout has a strange side effect."
+    },
+    {
+     "t": 192.783,
+     "d": 7.187,
+     "txt": "With wheels at the front and at the back, the B-52 can't raise its nose on the runway the way an airliner does."
+    },
+    {
+     "t": 200.39,
+     "d": 3.632,
+     "txt": "It lifts off almost flat, and it touches down almost flat."
+    },
+    {
+     "t": 204.442,
+     "d": 11.029,
+     "txt": "To make enough lift without rotating, the wing is mounted to the fuselage at a steep angle. That's why a B-52 on the ground always looks like it's slightly nose down."
+    }
+   ]
+  },
+  {
+   "cena": "erro",
+   "ini": 216.241,
+   "fim": 241.716,
+   "falas": [
+    {
+     "t": 216.241,
+     "d": 1.284,
+     "txt": "Now put it all together."
+    },
+    {
+     "t": 217.945,
+     "d": 3.184,
+     "txt": "A heavy bomber, coming in crabbed into a strong crosswind."
+    },
+    {
+     "t": 221.549,
+     "d": 6.662,
+     "txt": "It can't lower a wing. And with its wheels in a straight line, it can't kick the nose straight at the last second either."
+    },
+    {
+     "t": 228.631,
+     "d": 7.523,
+     "txt": "If it touched down crabbed with the wheels locked straight, the tires would be dragged sideways at well over a hundred miles an hour."
+    },
+    {
+     "t": 236.574,
+     "d": 4.372,
+     "txt": "That's a huge side load, on a narrow gear, under a very heavy airplane."
+    }
+   ]
+  },
+  {
+   "cena": "cabine",
+   "ini": 241.716,
+   "fim": 256.695,
+   "falas": [
+    {
+     "t": 241.716,
+     "d": 2.009,
+     "txt": "Boeing's answer was brilliantly simple."
+    },
+    {
+     "t": 244.145,
+     "d": 4.576,
+     "txt": "If the airplane can't line up with the runway... make the wheels line up instead."
+    },
+    {
+     "t": 249.142,
+     "d": 1.792,
+     "txt": "It's called the crosswind crab system."
+    },
+    {
+     "t": 251.353,
+     "d": 4.572,
+     "txt": "Before landing, the crew dials the runway heading into a control in the cockpit."
+    }
+   ]
+  },
+  {
+   "cena": "trem",
+   "ini": 256.695,
+   "fim": 274.489,
+   "falas": [
+    {
+     "t": 256.695,
+     "d": 5.146,
+     "txt": "All four main gear trucks swivel to match it. Up to twenty degrees, left or right."
+    },
+    {
+     "t": 262.262,
+     "d": 4.969,
+     "txt": "The fuselage stays pointed into the wind. The wheels point straight down the runway."
+    },
+    {
+     "t": 267.651,
+     "d": 6.069,
+     "txt": "And the B-52 touches down with its wings level, still crabbed, and rolls out in a straight line."
+    }
+   ]
+  },
+  {
+   "cena": "rolagem",
+   "ini": 274.489,
+   "fim": 306.68,
+   "falas": [
+    {
+     "t": 274.489,
+     "d": 1.777,
+     "txt": "From the outside, it looks unreal."
+    },
+    {
+     "t": 276.686,
+     "d": 5.532,
+     "txt": "The nose is pointing at the grass, while the airplane rolls perfectly straight along the centerline."
+    },
+    {
+     "t": 282.639,
+     "d": 6.075,
+     "txt": "It works for takeoff too. The bomber can roll down the runway and lift off still crabbed into the wind."
+    },
+    {
+     "t": 289.134,
+     "d": 2.889,
+     "txt": "For years, the details of this system were kept secret."
+    },
+    {
+     "t": 292.443,
+     "d": 13.467,
+     "txt": "And in strong winds, the view from the side can get very close. During one crabbed demonstration at an air show in England, a wing reportedly swung out over the edge of the runway and clipped a row of runway lights."
+    }
+   ]
+  },
+  {
+   "cena": "c5",
+   "ini": 306.68,
+   "fim": 322.68,
+   "falas": [
+    {
+     "t": 306.68,
+     "d": 3.773,
+     "txt": "The B-52 wasn't the only giant to get this idea."
+    },
+    {
+     "t": 310.873,
+     "d": 6.529,
+     "txt": "The first C-5A Galaxy transports were also built with crosswind positioning for their landing gear."
+    },
+    {
+     "t": 317.822,
+     "d": 4.088,
+     "txt": "On the C-5, it was later removed. On the B-52, it stayed."
+    }
+   ]
+  },
+  {
+   "cena": "linha",
+   "ini": 322.68,
+   "fim": 346.85,
+   "falas": [
+    {
+     "t": 322.68,
+     "d": 1.919,
+     "txt": "And it's going to stay for a long time."
+    },
+    {
+     "t": 325.019,
+     "d": 3.3,
+     "txt": "The B-52 first flew in 1952."
+    },
+    {
+     "t": 328.738,
+     "d": 9.171,
+     "txt": "Today, the Air Force is fitting the fleet with new engines, under the B-52J program, to keep it flying into the 2050s."
+    },
+    {
+     "t": 338.329,
+     "d": 7.751,
+     "txt": "That's almost a century of service, for an airplane whose wheels still steer sideways, because of where the bomb bay had to go."
+    }
+   ]
+  },
+  {
+   "cena": "final",
+   "ini": 346.85,
+   "fim": 366.403,
+   "falas": [
+    {
+     "t": 346.85,
+     "d": 5.993,
+     "txt": "So the next time you see a B-52 coming in sideways, it's not the pilots fighting the wind."
+    },
+    {
+     "t": 353.264,
+     "d": 3.297,
+     "txt": "It's the airplane doing exactly what it was designed to do."
+    },
+    {
+     "t": 356.981,
+     "d": 8.653,
+     "txt": "And if you like strange engineering decisions, the SR-71 had one even weirder. It leaked fuel on the ground... on purpose."
+    }
+   ]
+  }
+ ]
+}

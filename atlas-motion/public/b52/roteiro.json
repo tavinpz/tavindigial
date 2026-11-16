@@ -1,0 +1,95 @@
+[
+ {"cena": "pista", "falas": [
+  "This is a B-52 landing in a crosswind.",
+  "And it's coming in... completely sideways.",
+  "The nose is pointing almost twenty degrees away from the runway.",
+  "If an airliner touched down like this, it would be in serious trouble. The tires would scrub, the landing gear would twist, and the plane would try to swerve off the side of the runway.",
+  "But the B-52 does it on purpose. Crews are trained to land it this way.",
+  "And the reason goes all the way back to one decision Boeing made in the late 1940s. Where to put the wheels."
+ ]},
+ {"cena": "titulo", "falas": [
+  "To understand it, we first need to understand what a crosswind actually does to an airplane."
+ ]},
+ {"cena": "vetor", "falas": [
+  "An airplane flies through the air, not over the ground.",
+  "So if the whole mass of air is moving sideways, the airplane moves sideways with it.",
+  "Point the nose straight down the runway, and the wind slowly pushes you off the centerline.",
+  "The fix is to turn the nose a little into the wind.",
+  "Now part of your speed cancels out the drift, and your path over the ground lines up with the runway again.",
+  "Pilots call this crabbing, because the plane moves a bit like a crab. Pointing one way, while traveling another.",
+  "The angle depends on the wind. Approach at a hundred and forty knots with a twenty knot crosswind, and you need about eight degrees of crab.",
+  "Double the wind, and it's around seventeen."
+ ]},
+ {"cena": "comercial", "falas": [
+  "Every airliner crabs on the way down. But here's the catch.",
+  "Just before the wheels touch, the pilot has to straighten the nose out.",
+  "Wheels are built to roll forward, not sideways.",
+  "So in the last few seconds, the pilot pushes the rudder to swing the nose in line with the runway, and lowers the upwind wing a little, so the wind can't push the plane sideways again.",
+  "On a regular airliner, that's routine. A few degrees of bank, and the wingtip is still well clear of the ground.",
+  "Now try the same move on a B-52."
+ ]},
+ {"cena": "frente", "falas": [
+  "Its wing is a hundred and eighty five feet across. That's longer than the airplane itself.",
+  "Eight engines hang under it, in four pods.",
+  "And the wing is so long and so flexible, that the tips carry their own little wheels, so they don't scrape the runway.",
+  "Look at how little room that leaves.",
+  "Near the ground, just a couple of degrees of bank can drop a wingtip by several feet.",
+  "Lower the wing to fight the wind, and you risk dragging an engine pod, or the wingtip itself, along the concrete.",
+  "So the usual trick is off the table. But that's only half the problem."
+ ]},
+ {"cena": "layout", "falas": [
+  "The other half is the wheels.",
+  "An airliner uses what's called a tricycle layout. A nose wheel up front, and two main legs under the wings, spread wide apart.",
+  "That wide stance is what keeps it steady on the ground.",
+  "The B-52 couldn't do that. Its wings are thin, and the middle of the fuselage is taken by the bomb bay, right where an airliner's main gear would go.",
+  "So Boeing put the wheels in a line, like a bicycle. Four trucks with two wheels each. Two in front of the bomb bay, and two behind it.",
+  "The small outrigger wheels near the wingtips keep it from tipping over."
+ ]},
+ {"cena": "atitude", "falas": [
+  "That layout has a strange side effect.",
+  "With wheels at the front and at the back, the B-52 can't raise its nose on the runway the way an airliner does.",
+  "It lifts off almost flat, and it touches down almost flat.",
+  "To make enough lift without rotating, the wing is mounted to the fuselage at a steep angle. That's why a B-52 on the ground always looks like it's slightly nose down."
+ ]},
+ {"cena": "erro", "falas": [
+  "Now put it all together.",
+  "A heavy bomber, coming in crabbed into a strong crosswind.",
+  "It can't lower a wing. And with its wheels in a straight line, it can't kick the nose straight at the last second either.",
+  "If it touched down crabbed with the wheels locked straight, the tires would be dragged sideways at well over a hundred miles an hour.",
+  "That's a huge side load, on a narrow gear, under a very heavy airplane."
+ ]},
+ {"cena": "cabine", "falas": [
+  "Boeing's answer was brilliantly simple.",
+  "If the airplane can't line up with the runway... make the wheels line up instead.",
+  "It's called the crosswind crab system.",
+  "Before landing, the crew dials the runway heading into a control in the cockpit."
+ ]},
+ {"cena": "trem", "falas": [
+  "All four main gear trucks swivel to match it. Up to twenty degrees, left or right.",
+  "The fuselage stays pointed into the wind. The wheels point straight down the runway.",
+  "And the B-52 touches down with its wings level, still crabbed, and rolls out in a straight line."
+ ]},
+ {"cena": "rolagem", "falas": [
+  "From the outside, it looks unreal.",
+  "The nose is pointing at the grass, while the airplane rolls perfectly straight along the centerline.",
+  "It works for takeoff too. The bomber can roll down the runway and lift off still crabbed into the wind.",
+  "For years, the details of this system were kept secret.",
+  "And in strong winds, the view from the side can get very close. During one crabbed demonstration at an air show in England, a wing reportedly swung out over the edge of the runway and clipped a row of runway lights."
+ ]},
+ {"cena": "c5", "falas": [
+  "The B-52 wasn't the only giant to get this idea.",
+  "The first C-5A Galaxy transports were also built with crosswind positioning for their landing gear.",
+  "On the C-5, it was later removed. On the B-52, it stayed."
+ ]},
+ {"cena": "linha", "falas": [
+  "And it's going to stay for a long time.",
+  "The B-52 first flew in 1952.",
+  "Today, the Air Force is fitting the fleet with new engines, under the B-52J program, to keep it flying into the 2050s.",
+  "That's almost a century of service, for an airplane whose wheels still steer sideways, because of where the bomb bay had to go."
+ ]},
+ {"cena": "final", "falas": [
+  "So the next time you see a B-52 coming in sideways, it's not the pilots fighting the wind.",
+  "It's the airplane doing exactly what it was designed to do.",
+  "And if you like strange engineering decisions, the SR-71 had one even weirder. It leaked fuel on the ground... on purpose."
+ ]}
+]
