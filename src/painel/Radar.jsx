@@ -71,6 +71,38 @@ function Aposta({ i }) {
   )
 }
 
+const ORDEM_FAZER = { 'fácil': 0, 'média': 1, 'difícil': 2, 'não dá': 3 }
+const mediana = (xs) => {
+  const s = [...xs].sort((a, b) => a - b), m = Math.floor(s.length / 2)
+  return s.length ? (s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2) : 0
+}
+
+function Nicho({ n, i, onVer }) {
+  return (
+    <details className="rd-aposta">
+      <summary>
+        <span className="rd-num">{i + 1}</span>
+        <span className="rd-aposta-tit"><b>{n.formato}</b>
+          <small>{n.canais.length} canais novos · típico {mil(n.tipico)} views{n.rpm_min != null ? ` ≈ ${ganho(n.tipico, n.rpm_min, n.rpm_max)} por vídeo` : ''}</small></span>
+        <Chip c={n.complexidade} />
+      </summary>
+      <div className="rd-aposta-corpo">
+        {n.o_video && <p><b>O vídeo:</b> {n.o_video}</p>}
+        {n.nota && <p><b>Como a gente faz:</b> {n.nota} {n.tempo && n.tempo !== '—' ? `Tempo: ${n.tempo}.` : ''}</p>}
+        {n.rpm_min != null && <p className="rd-cinza">Valor estimado: US$ {n.rpm_min} a {n.rpm_max} por mil views.</p>}
+        <div>
+          <h4>Canais novos que estão pegando</h4>
+          <ul className="rd-nicho-lista">{n.canais.slice(0, 6).map((c) => (
+            <li key={c.canal_id}><a href={canalUrl(c.canal_id)} target="_blank" rel="noreferrer">{c.nome}</a> <span className="rd-cinza">· {c.dias} dias · típico {mil(c.mediana_longo)} · {IDIOMA[c.idioma] || c.idioma || '—'}</span>
+              {c.top_video && <a className="rd-card-video" href={videoUrl(c.top_video)} target="_blank" rel="noreferrer">▶ {c.top_titulo}</a>}</li>
+          ))}</ul>
+        </div>
+        <button type="button" className="rd-ver" onClick={() => onVer(n.formato)}>Ver só esse nicho na tabela</button>
+      </div>
+    </details>
+  )
+}
+
 export default function Radar() {
   const [d, setD] = useState(null)
   const [erro, setErro] = useState('')
@@ -98,6 +130,14 @@ export default function Radar() {
       && c.mediana_longo >= Number(f.views))
   }, [canais, f])
   const explodindo = useMemo(() => filtrados.filter((c) => c.mediana_longo >= 100000 && c.dias <= 120).slice(0, 12), [filtrados])
+  const nichos = useMemo(() => {
+    const info = Object.fromEntries((d?.formatos || []).map((x) => [x.formato, x]))
+    const g = {}
+    filtrados.forEach((c) => { if (c.formato && c.formato !== 'Sem rótulo') (g[c.formato] ||= []).push(c) })
+    return Object.entries(g).map(([formato, cs]) => ({ ...(info[formato] || {}), formato, complexidade: info[formato]?.complexidade || cs[0].complexidade, canais: cs, tipico: mediana(cs.map((c) => c.mediana_longo)) }))
+      .sort((a, b) => (ORDEM_FAZER[a.complexidade] ?? 4) - (ORDEM_FAZER[b.complexidade] ?? 4) || (b.canais.length >= 2) - (a.canais.length >= 2) || b.tipico * (b.rpm_max || 1) - a.tipico * (a.rpm_max || 1))
+  }, [filtrados, d])
+  const verNicho = (formato) => { setF((v) => ({ ...v, formato })); document.getElementById('rd-tabela')?.scrollIntoView({ behavior: 'smooth' }) }
 
   if (erro) return <div className="p-vazio"><p>Não carregou o radar: {erro}</p></div>
   if (!d) return <div className="p-vazio"><p>Carregando o radar…</p></div>
@@ -154,6 +194,15 @@ export default function Radar() {
       </section>
 
       <section>
+        <div className="rd-sec-cab">
+          <h2>Nichos em alta</h2>
+          <span className="rd-cinza">Canais novos agrupados por tipo de vídeo. Os que dá para fazer vêm primeiro. Clique para abrir.</span>
+        </div>
+        {nichos.length ? <div className="rd-apostas">{nichos.map((n, i) => <Nicho key={n.formato} n={n} i={i} onVer={verNicho} />)}</div>
+          : <p className="p-vazio">Nenhum nicho com esses filtros.</p>}
+      </section>
+
+      <section id="rd-tabela">
         <div className="rd-sec-cab">
           <h2>Todos os canais novos que estão pegando</h2>
           <span className="rd-cinza">{filtrados.length} canais</span>
