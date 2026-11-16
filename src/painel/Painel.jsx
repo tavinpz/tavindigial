@@ -19,6 +19,7 @@ import MenuLateral from './MenuLateral'
 import Jogos from './Jogos'
 import Mensagens from './Mensagens'
 import Acessos from './Acessos'
+import Radar from './Radar'
 import '../styles/painel.css'
 
 const Ctx = createContext(null)
@@ -43,9 +44,10 @@ const EXTRAS = [
   ['briefings', 'Briefings', Briefings, 'M9 3h6l1 2h3v16H5V5h3zM9 12h6M9 16h4'],
   ['mensagens', 'Mensagens', Mensagens, 'M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z'],
 ]
+const RADAR_ABA = [['radar', 'Radar de oportunidades', Radar, 'M12 12m-9 0a9 9 0 1 0 18 0 9 9 0 1 0-18 0M12 12m-5 0a5 5 0 1 0 10 0 5 5 0 1 0-10 0M12 12l6-6']]
 const JOGOS_ABAS = [['jogos', 'Todos os jogos', Jogos, 'M6 11h4M8 9v4M15 12h.01M18 10h.01M17.3 5H6.7a4 4 0 0 0-3.9 3.2L2 14.5a2.5 2.5 0 0 0 4.4 2L8 15h8l1.6 1.5a2.5 2.5 0 0 0 4.4-2l-.8-6.3A4 4 0 0 0 17.3 5Z']]
 // Menu: fixos no topo + um grupo (acordeão) por frente de renda. Frente nova = mais um grupo aqui.
-const TOPO = ABAS.filter(([id]) => ['inicio', 'metricas', 'cofre', 'acessos'].includes(id))
+const TOPO = [...ABAS.filter(([id]) => ['inicio', 'metricas'].includes(id)), ...RADAR_ABA, ...ABAS.filter(([id]) => ['cofre', 'acessos'].includes(id))]
 function montarMenu(leitura = false) {
   const canais = abasCanais()
   if (leitura) return { grupos: [{ id: 'canais', nome: 'Canais', canais: true, itens: canais }], todas: canais }
@@ -55,10 +57,10 @@ function montarMenu(leitura = false) {
       { id: 'canais', nome: 'Canais', canais: true, itens: canais },
       { id: 'jogos', nome: 'Jogos', itens: JOGOS_ABAS },
     ],
-    todas: [...ABAS, ...canais, ...EXTRAS, ...JOGOS_ABAS],
+    todas: [...ABAS, ...RADAR_ABA, ...canais, ...EXTRAS, ...JOGOS_ABAS],
   }
 }
-const FIXAS = [...ABAS, ...EXTRAS, ...JOGOS_ABAS]
+const FIXAS = [...ABAS, ...RADAR_ABA, ...EXTRAS, ...JOGOS_ABAS]
 const ANTIGAS = { conteudo: 'canal:tavin-digital', videos: 'canal:concrete-atlas', leads: 'prospectar' }
 
 const Ico = ({ d }) => (

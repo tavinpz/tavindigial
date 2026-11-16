@@ -1659,3 +1659,33 @@ a.crm-btn { text-decoration: none; display: inline-flex; align-items: center; }
 .ac-pessoa-cab small { display: block; color: var(--cinza); font-size: 13px; }
 .ac-acoes { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .ac-senha { border: 1px solid var(--linha); border-radius: 10px; padding: 7px 10px; font: inherit; font-size: 14px; min-width: 0; width: 170px; }
+
+/* Radar de canais */
+.rd { display: grid; gap: 18px; }
+.rd-intro { margin: 0; max-width: 80ch; }
+.rd-ideia { background: var(--branco); border: 1px solid var(--linha); border-radius: 14px; padding: 20px; display: grid; gap: 14px; }
+.rd-ideia-cab { display: flex; gap: 14px; align-items: flex-start; }
+.rd-ideia h2 { font-family: var(--f-display); font-size: 21px; margin: 0; letter-spacing: -0.01em; }
+.rd-ideia h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--cinza); margin: 12px 0 4px; }
+.rd-ideia h3:first-child { margin-top: 0; }
+.rd-ideia p { margin: 0; }
+.rd-num { flex: none; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--tinta); color: #fff; font-weight: 800; }
+.rd-tipo { font-size: 16px; }
+.rd-nums { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; }
+.rd-nums > div { border: 1px solid var(--linha); border-radius: 10px; padding: 10px 12px; display: grid; gap: 2px; }
+.rd-nums b { font-size: 20px; font-variant-numeric: tabular-nums; }
+.rd-nums span { color: var(--cinza); font-size: 13px; }
+.rd-nums small { font-size: 13px; color: #1E9E5A; font-weight: 600; }
+.rd-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.rd-cols > div { min-width: 0; }
+.rd-pilotos { margin: 0; padding-left: 20px; display: grid; gap: 2px; }
+.rd-risco { margin-top: 12px !important; color: var(--cinza); }
+.rd-refs { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.rd-refs a { color: var(--tinta); text-decoration: none; }
+.rd-refs a:hover { text-decoration: underline; }
+.rd-top { display: block; font-size: 13px; margin-top: 2px; }
+.rd-top span { color: var(--cinza); }
+.rd-filtro { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin: 12px 0; }
+.rd-tab-wrap { overflow-x: auto; }
+.rd-n { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.rd-nota { font-size: 13px; }
