@@ -11,3 +11,5 @@ atlas-motion/.claude/
 cw01/*.png
 cw01/*.jpg
 cw01/lista.txt
+atlas-motion/public/*/voz_cru.wav
+atlas-motion/public/*/voz_longo.wav
