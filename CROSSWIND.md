@@ -3,6 +3,8 @@
 Este é o guia para produzir os próximos vídeos do canal Crosswind ("Aviation engineering, explained"). Cada vídeo longo é feito numa conversa nova.
 O **#01, "Why the B-52 Lands Sideways"**, é a régua de qualidade. O Tavin aprovou o vídeo e a voz, e disse: "a voz é boa demais". Nenhum vídeo novo pode ficar abaixo dele.
 
+Código do #02 (SR-71), que já reaproveita o #01 e traz peças novas (`marca()` para sincronizar por palavra, `T`, `Painel`, `Termo`, `Emenda`, `Riscos`, `SR71Topo`, `SR71Lado`): `atlas-motion/src/sr71/` e `atlas-motion/public/sr71/roteiro.json`. A legenda do #02 troca a grafia falada pela escrita (`ESCRITA` em `Crosswind02.tsx`).
+
 Código do #01, para estudar e reaproveitar: `atlas-motion/src/b52/` (lib.tsx, cenas1.tsx, cenas2.tsx, Crosswind01.tsx, Thumbs.tsx) e `atlas-motion/public/b52/roteiro.json`.
 
 ---
@@ -35,8 +37,8 @@ curl -LO https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-fil
 
 | # | Título de trabalho | Observação |
 |---|---|---|
-| 02 | Why the SR-71 Leaked Fuel on the Ground | **Já foi prometido no final do #01.** Fazer primeiro. |
-| 03 | Why the A380 Failed but the 747 Didn't | Comparação de dois gigantes. Mais negócio e engenharia. |
+| 02 | Why the SR-71 Leaked Fuel on the Ground | **Feito (16/11/2026), 8:16.** Código em `atlas-motion/src/sr71/`, som em `cw02/sfx.py`. |
+| 03 | Why the A380 Failed but the 747 Didn't | **Já foi prometido no final do #02.** Fazer primeiro. Comparação de dois gigantes. Mais negócio e engenharia. |
 
 Próximas boas: ideias na linha "por que esse avião é estranho" (A-10 construído em volta do canhão, U-2 com rodinhas que caem na decolagem, V-22, Concorde com nariz que abaixa).
 Meta de duração: **8 a 10 min**. O #01 ficou com 6:10; o próximo deve ser mais longo, mas sem enrolação.
@@ -116,6 +118,7 @@ Alvo: cerca de −16 LUFS (o #01 deu −15,6).
 
 - Composição 1920×1080, 30 fps, `durationInFrames = ceil(tempos.total*30)`. Registrar em `src/Root.tsx`.
 - Usar `--muted --crf=18 --concurrency=2`. Velocidade medida: cerca de 3700 quadros em 74 min.
+  No #02 (cenas só em SVG, sem `Pista3D`) a mesma máquina fez 3700 quadros em 16 a 26 min; o vídeo de 8:16 saiu em 4 partes, ~1h23 no total. Medir no teste curto antes de estimar.
 - **Tarefas em segundo plano duram no máximo 2 h**, então renderizar em partes de ~3700 quadros (`--frames=0-3699`, `3700-7399`…), uma de cada vez. Juntar com `ffmpeg -f concat -c copy` e depois fazer a mixagem.
 - Mandar cada parte pronta para o Tavin, já com som (cortar voz/sfx com `-ss/-t`), para ele acompanhar.
 

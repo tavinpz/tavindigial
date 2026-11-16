@@ -1,0 +1,171 @@
+[
+ {
+  "cena": "rampa",
+  "falas": [
+   "This is the SR-71 Blackbird. The fastest crewed jet ever built.",
+   "And right now, sitting on the ramp... it's leaking.",
+   "Fuel is dripping out of the wings and the belly, and pooling on the concrete.",
+   "On any other airplane, this would ground it on the spot. A fuel leak means a fire risk, and nobody is going anywhere.",
+   "But this crew walks right through the puddles, climbs in, and starts the engines.",
+   "Because nothing is broken. This airplane was built to leak. And the reason is something that only happens at three times the speed of sound."
+  ]
+ },
+ {
+  "cena": "titulo",
+  "falas": [
+   "To understand it, we need to follow the Blackbird up to the place it was actually designed for."
+  ]
+ },
+ {
+  "cena": "altitude",
+  "falas": [
+   "Eighty five thousand feet. More than twice as high as an airliner.",
+   "Speed, Mach three point two. Over two thousand miles an hour.",
+   "That's more than thirty miles every minute. Faster than a rifle bullet.",
+   "Up here, the air outside is around seventy degrees below zero.",
+   "And yet the airplane itself is hot enough to cook on."
+  ]
+ },
+ {
+  "cena": "calor",
+  "falas": [
+   "At that speed, the air in front of the airplane can't get out of the way fast enough.",
+   "It gets squeezed against the nose and the leading edges. And when you squeeze air, it heats up.",
+   "The skin of the Blackbird averaged close to six hundred degrees Fahrenheit.",
+   "The cockpit windows, around six hundred and twenty. Near the engine exhausts, close to a thousand.",
+   "Aluminum, the metal almost every airplane is made of, would go soft.",
+   "So Lockheed built it out of titanium instead. More than eighty five percent of the structure."
+  ]
+ },
+ {
+  "cena": "titanio",
+  "falas": [
+   "But here's the catch. In the early nineteen sixties, America didn't have enough of it.",
+   "The world's biggest supplier was the Soviet Union. The very country this airplane was built to spy on.",
+   "So the titanium was bought quietly, through third parties and dummy companies.",
+   "Then it had to be worked. Titanium was so touchy that ordinary cadmium plated tools made it brittle. Lockheed had to make new tools.",
+   "At one point, reportedly eighty percent of the delivered metal was rejected.",
+   "Titanium solved the heat. But it couldn't change one basic law of physics."
+  ]
+ },
+ {
+  "cena": "expansao",
+  "falas": [
+   "Heat a piece of metal, and it grows.",
+   "Not by much. For every degree, titanium grows by just a few millionths of its length.",
+   "It's the same reason bridges have expansion joints, and old railroad tracks have gaps.",
+   "But the Blackbird was a hundred and seven feet long. And in flight, it got hundreds of degrees hotter.",
+   "Add it up, and the airplane grew three to four inches in length. And one to two inches in width.",
+   "At cruise, the Blackbird was literally a bigger airplane than the one sitting on the ramp."
+  ]
+ },
+ {
+  "cena": "dilema",
+  "falas": [
+   "Now think about what that means for the people building it.",
+   "If you build it to fit perfectly on the ground, with tight seams and no gaps, then at Mach three it has nowhere to grow.",
+   "The panels push against each other. The skin buckles and warps, and the structure fights itself.",
+   "So Kelly Johnson's team at the Skunk Works made a strange decision.",
+   "They built the airplane to fit together at six hundred degrees. Not at room temperature."
+  ]
+ },
+ {
+  "cena": "folgas",
+  "falas": [
+   "On the ground, the panels fit loosely. On purpose.",
+   "Parts of the wing skin were corrugated, with ridges running front to back, so the metal could grow without tearing.",
+   "Other engineers joked that it looked like a Mach three version of the Ford Trimotor, a tin airliner from the nineteen twenties.",
+   "But it worked. The ridges just got a little deeper, and the wing kept its shape.",
+   "There was only one place where a loose fit was a real problem."
+  ]
+ },
+ {
+  "cena": "tanques",
+  "falas": [
+   "The fuel tanks.",
+   "On the Blackbird, there's no separate tank hidden inside the wing. The skin is the tank. Six main tanks, with the fuel sitting right against the outer skin.",
+   "And there was a lot of it. Eighty thousand pounds, about twelve thousand gallons. More than half of the airplane's takeoff weight.",
+   "A rubber liner couldn't survive in there. And no sealant of the time could stay leak free, flight after flight, going from freezing cold to six hundred degrees and back.",
+   "So on the ground, with every seam relaxed, the fuel found its way out. Drip by drip.",
+   "That's the puddle under the airplane."
+  ]
+ },
+ {
+  "cena": "selar",
+  "falas": [
+   "Then it takes off, and accelerates.",
+   "The skin heats up. The metal grows. The gaps close.",
+   "By the time it's cruising at Mach three, the seams are squeezed tight, and the tanks are sealed.",
+   "So the leak isn't a flaw. It's what a Mach three airplane looks like when it's standing still."
+  ]
+ },
+ {
+  "cena": "fosforo",
+  "falas": [
+   "But wait. Fuel dripping around hot engines and ground crews. How is that not a disaster?",
+   "Because this isn't normal jet fuel. It's called J P seven, and it was created for this airplane.",
+   "It's so hard to ignite that, reportedly, you could drop a lit match into a puddle of it, and the match would go out.",
+   "It had to be that stable. In flight, the fuel was also the coolant. It soaked up heat from the cockpit, the sensors and the hydraulics, before it was finally burned. The engines even used it as hydraulic fluid.",
+   "Which created a new problem. How do you light a fuel that refuses to burn?"
+  ]
+ },
+ {
+  "cena": "teb",
+  "falas": [
+   "With a chemical called tri ethyl borane. T E B for short.",
+   "It bursts into flame the moment it touches air.",
+   "A small shot goes into each engine to start it, and another to light the afterburner. That's the green flash behind a Blackbird.",
+   "Each engine carried enough for about sixteen shots. Use them up, and there's no relighting."
+  ]
+ },
+ {
+  "cena": "mito",
+  "falas": [
+   "Now, there's a famous story about all of this. You may have heard it.",
+   "The Blackbird leaked so badly, that it had to take off almost empty, and refuel in the air right away.",
+   "Half of that is true. It did take off with a partial load. And it did meet a tanker minutes later.",
+   "But pilots who flew it, like Colonel Richard Graham, say the leaks were never the reason. It simply didn't lose that much fuel.",
+   "The real reason was the heat. Again."
+  ]
+ },
+ {
+  "cena": "nitrogenio",
+  "falas": [
+   "Above about Mach two point six, the tanks get so hot that the fumes inside could ignite.",
+   "So the empty space had to be filled with nitrogen. A gas that can't burn.",
+   "And the surest way to do that was to fill the tanks to the top in flight, pushing all the air out, and let nitrogen take its place as the fuel burned off.",
+   "A lighter takeoff was also kinder to the tires, and safer if an engine quit.",
+   "That's why a whole fleet of special tankers existed, just for this one airplane. Fifty six of them, for thirty two Blackbirds."
+  ]
+ },
+ {
+  "cena": "preto",
+  "falas": [
+   "Heat decided almost everything on this airplane. Even its color.",
+   "That blue black paint isn't there for looks. A dark surface radiates heat away better, and it took up to fifty degrees off the skin.",
+   "The windshield couldn't be ordinary glass either. It was quartz, about two inches thick.",
+   "And the top speed? It wasn't set by engine power. It was set by temperature.",
+   "Push past about Mach three point three, and the air going into the engines got too hot for them to take."
+  ]
+ },
+ {
+  "cena": "legado",
+  "falas": [
+   "All of that, for an airplane designed with slide rules.",
+   "It first flew in December, nineteen sixty four. Thirty two were built.",
+   "In nineteen seventy six, one of them set a speed record. Two thousand, one hundred and ninety three miles an hour. For a crewed jet, it still stands.",
+   "Another one crossed from New York to London in under two hours.",
+   "In more than two decades of missions, not one was ever shot down. When a missile was launched, the standard response was simple. Accelerate.",
+   "The Air Force retired it in the nineties. NASA flew the very last flight in October, nineteen ninety nine."
+  ]
+ },
+ {
+  "cena": "final",
+  "falas": [
+   "And some of them are still leaking. In museums, decades later, a few Blackbirds reportedly still drip fuel onto the floor.",
+   "So the next time you see an SR-71 sitting in a puddle, it's not a worn out airplane.",
+   "It's an airplane waiting to get hot enough to fit together.",
+   "Next time, two giants. The seven forty seven changed the world. The A three eighty was bigger, newer... and it failed. Why?"
+  ]
+ }
+]

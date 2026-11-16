@@ -15,6 +15,9 @@ import { B52v2 } from './b52/B52v2';
 import { Crosswind01 } from './b52/Crosswind01';
 import { Thumb } from './b52/Thumbs';
 import temposCW01 from '../public/b52/tempos.json';
+import { Crosswind02 } from './sr71/Crosswind02';
+import { Thumb02 } from './sr71/Thumbs02';
+import temposCW02 from '../public/sr71/tempos.json';
 import marcasB52v2 from '../public/b52/marcas2.json';
 import marcasB52 from '../public/b52/marcas.json';
 import { PickPals, PPMarca } from './pp/PickPals';
@@ -36,6 +39,8 @@ const S3: React.FC<{ dur: number }> = ({ dur }) => <Salao3D f={useCurrentFrame()
 export const Root: React.FC = () => (
   <>
     <Composition id="CWThumb" component={Thumb as any} durationInFrames={1} fps={30} width={1280} height={720} defaultProps={{ v: 'a' }} />
+    <Composition id="CWThumb02" component={Thumb02 as any} durationInFrames={1} fps={30} width={1280} height={720} defaultProps={{ v: 'a' }} />
+    <Composition id="Crosswind02" component={Crosswind02 as any} durationInFrames={Math.ceil(temposCW02.total * 30)} fps={30} width={1920} height={1080} defaultProps={{ tempos: temposCW02 }} />
     <Composition id="Crosswind01" component={Crosswind01 as any} durationInFrames={Math.ceil(temposCW01.total * 30)} fps={30} width={1920} height={1080} defaultProps={{ tempos: temposCW01 }} />
     <Composition id="B52v2" component={B52v2 as any} durationInFrames={450} fps={30} width={1920} height={1080} defaultProps={{ marcas: marcasB52v2 }} />
     <Composition id="B52" component={B52 as any} durationInFrames={450} fps={30} width={1920} height={1080} defaultProps={{ marcas: marcasB52 }} />

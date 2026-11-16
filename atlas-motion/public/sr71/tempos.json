@@ -1,0 +1,544 @@
+{
+ "total": 496.202,
+ "blocos": [
+  {
+   "cena": "rampa",
+   "ini": 0.6,
+   "fim": 35.773,
+   "falas": [
+    {
+     "t": 0.6,
+     "d": 4.701,
+     "txt": "This is the SR-71 Blackbird. The fastest crewed jet ever built."
+    },
+    {
+     "t": 5.721,
+     "d": 2.489,
+     "txt": "And right now, sitting on the ramp... it's leaking."
+    },
+    {
+     "t": 8.63,
+     "d": 4.197,
+     "txt": "Fuel is dripping out of the wings and the belly, and pooling on the concrete."
+    },
+    {
+     "t": 13.248,
+     "d": 7.367,
+     "txt": "On any other airplane, this would ground it on the spot. A fuel leak means a fire risk, and nobody is going anywhere."
+    },
+    {
+     "t": 21.035,
+     "d": 4.331,
+     "txt": "But this crew walks right through the puddles, climbs in, and starts the engines."
+    },
+    {
+     "t": 25.785,
+     "d": 8.668,
+     "txt": "Because nothing is broken. This airplane was built to leak. And the reason is something that only happens at three times the speed of sound."
+    }
+   ]
+  },
+  {
+   "cena": "titulo",
+   "ini": 35.773,
+   "fim": 42.162,
+   "falas": [
+    {
+     "t": 35.773,
+     "d": 5.619,
+     "txt": "To understand it, we need to follow the Blackbird up to the place it was actually designed for."
+    }
+   ]
+  },
+  {
+   "cena": "altitude",
+   "ini": 42.162,
+   "fim": 63.077,
+   "falas": [
+    {
+     "t": 42.162,
+     "d": 3.996,
+     "txt": "Eighty five thousand feet. More than twice as high as an airliner."
+    },
+    {
+     "t": 46.578,
+     "d": 3.789,
+     "txt": "Speed, Mach three point two. Over two thousand miles an hour."
+    },
+    {
+     "t": 50.788,
+     "d": 4.176,
+     "txt": "That's more than thirty miles every minute. Faster than a rifle bullet."
+    },
+    {
+     "t": 55.384,
+     "d": 3.659,
+     "txt": "Up here, the air outside is around seventy degrees below zero."
+    },
+    {
+     "t": 59.463,
+     "d": 2.844,
+     "txt": "And yet the airplane itself is hot enough to cook on."
+    }
+   ]
+  },
+  {
+   "cena": "calor",
+   "ini": 63.077,
+   "fim": 95.521,
+   "falas": [
+    {
+     "t": 63.077,
+     "d": 4.256,
+     "txt": "At that speed, the air in front of the airplane can't get out of the way fast enough."
+    },
+    {
+     "t": 67.753,
+     "d": 5.283,
+     "txt": "It gets squeezed against the nose and the leading edges. And when you squeeze air, it heats up."
+    },
+    {
+     "t": 73.456,
+     "d": 3.982,
+     "txt": "The skin of the Blackbird averaged close to six hundred degrees Fahrenheit."
+    },
+    {
+     "t": 77.858,
+     "d": 6.082,
+     "txt": "The cockpit windows, around six hundred and twenty. Near the engine exhausts, close to a thousand."
+    },
+    {
+     "t": 84.36,
+     "d": 4.188,
+     "txt": "Aluminum, the metal almost every airplane is made of, would go soft."
+    },
+    {
+     "t": 88.969,
+     "d": 5.782,
+     "txt": "So Lockheed built it out of titanium instead. More than eighty five percent of the structure."
+    }
+   ]
+  },
+  {
+   "cena": "titanio",
+   "ini": 95.521,
+   "fim": 132.377,
+   "falas": [
+    {
+     "t": 95.521,
+     "d": 4.702,
+     "txt": "But here's the catch. In the early nineteen sixties, America didn't have enough of it."
+    },
+    {
+     "t": 100.643,
+     "d": 6.508,
+     "txt": "The world's biggest supplier was the Soviet Union. The very country this airplane was built to spy on."
+    },
+    {
+     "t": 107.571,
+     "d": 4.822,
+     "txt": "So the titanium was bought quietly, through third parties and dummy companies."
+    },
+    {
+     "t": 112.813,
+     "d": 8.831,
+     "txt": "Then it had to be worked. Titanium was so touchy that ordinary cadmium plated tools made it brittle. Lockheed had to make new tools."
+    },
+    {
+     "t": 122.064,
+     "d": 4.358,
+     "txt": "At one point, reportedly eighty percent of the delivered metal was rejected."
+    },
+    {
+     "t": 126.842,
+     "d": 4.765,
+     "txt": "Titanium solved the heat. But it couldn't change one basic law of physics."
+    }
+   ]
+  },
+  {
+   "cena": "expansao",
+   "ini": 132.377,
+   "fim": 164.174,
+   "falas": [
+    {
+     "t": 132.377,
+     "d": 1.807,
+     "txt": "Heat a piece of metal, and it grows."
+    },
+    {
+     "t": 134.605,
+     "d": 5.647,
+     "txt": "Not by much. For every degree, titanium grows by just a few millionths of its length."
+    },
+    {
+     "t": 140.672,
+     "d": 5.479,
+     "txt": "It's the same reason bridges have expansion joints, and old railroad tracks have gaps."
+    },
+    {
+     "t": 146.571,
+     "d": 5.943,
+     "txt": "But the Blackbird was a hundred and seven feet long. And in flight, it got hundreds of degrees hotter."
+    },
+    {
+     "t": 152.934,
+     "d": 5.339,
+     "txt": "Add it up, and the airplane grew three to four inches in length. And one to two inches in width."
+    },
+    {
+     "t": 158.692,
+     "d": 4.711,
+     "txt": "At cruise, the Blackbird was literally a bigger airplane than the one sitting on the ramp."
+    }
+   ]
+  },
+  {
+   "cena": "dilema",
+   "ini": 164.174,
+   "fim": 190.566,
+   "falas": [
+    {
+     "t": 164.174,
+     "d": 2.66,
+     "txt": "Now think about what that means for the people building it."
+    },
+    {
+     "t": 167.253,
+     "d": 6.915,
+     "txt": "If you build it to fit perfectly on the ground, with tight seams and no gaps, then at Mach three it has nowhere to grow."
+    },
+    {
+     "t": 174.588,
+     "d": 5.443,
+     "txt": "The panels push against each other. The skin buckles and warps, and the structure fights itself."
+    },
+    {
+     "t": 180.451,
+     "d": 3.784,
+     "txt": "So Kelly Johnson's team at the Skunk Works made a strange decision."
+    },
+    {
+     "t": 184.655,
+     "d": 5.141,
+     "txt": "They built the airplane to fit together at six hundred degrees. Not at room temperature."
+    }
+   ]
+  },
+  {
+   "cena": "folgas",
+   "ini": 190.566,
+   "fim": 218.055,
+   "falas": [
+    {
+     "t": 190.566,
+     "d": 2.925,
+     "txt": "On the ground, the panels fit loosely. On purpose."
+    },
+    {
+     "t": 193.911,
+     "d": 6.682,
+     "txt": "Parts of the wing skin were corrugated, with ridges running front to back, so the metal could grow without tearing."
+    },
+    {
+     "t": 201.012,
+     "d": 7.626,
+     "txt": "Other engineers joked that it looked like a Mach three version of the Ford Trimotor, a tin airliner from the nineteen twenties."
+    },
+    {
+     "t": 209.058,
+     "d": 4.352,
+     "txt": "But it worked. The ridges just got a little deeper, and the wing kept its shape."
+    },
+    {
+     "t": 213.83,
+     "d": 3.455,
+     "txt": "There was only one place where a loose fit was a real problem."
+    }
+   ]
+  },
+  {
+   "cena": "tanques",
+   "ini": 218.055,
+   "fim": 256.119,
+   "falas": [
+    {
+     "t": 218.055,
+     "d": 0.939,
+     "txt": "The fuel tanks."
+    },
+    {
+     "t": 219.414,
+     "d": 9.563,
+     "txt": "On the Blackbird, there's no separate tank hidden inside the wing. The skin is the tank. Six main tanks, with the fuel sitting right against the outer skin."
+    },
+    {
+     "t": 229.397,
+     "d": 7.633,
+     "txt": "And there was a lot of it. Eighty thousand pounds, about twelve thousand gallons. More than half of the airplane's takeoff weight."
+    },
+    {
+     "t": 237.449,
+     "d": 10.116,
+     "txt": "A rubber liner couldn't survive in there. And no sealant of the time could stay leak free, flight after flight, going from freezing cold to six hundred degrees and back."
+    },
+    {
+     "t": 247.986,
+     "d": 5.333,
+     "txt": "So on the ground, with every seam relaxed, the fuel found its way out. Drip by drip."
+    },
+    {
+     "t": 253.738,
+     "d": 1.611,
+     "txt": "That's the puddle under the airplane."
+    }
+   ]
+  },
+  {
+   "cena": "selar",
+   "ini": 256.119,
+   "fim": 273.439,
+   "falas": [
+    {
+     "t": 256.119,
+     "d": 1.813,
+     "txt": "Then it takes off, and accelerates."
+    },
+    {
+     "t": 258.353,
+     "d": 2.967,
+     "txt": "The skin heats up. The metal grows. The gaps close."
+    },
+    {
+     "t": 261.74,
+     "d": 5.34,
+     "txt": "By the time it's cruising at Mach three, the seams are squeezed tight, and the tanks are sealed."
+    },
+    {
+     "t": 267.5,
+     "d": 5.168,
+     "txt": "So the leak isn't a flaw. It's what a Mach three airplane looks like when it's standing still."
+    }
+   ]
+  },
+  {
+   "cena": "fosforo",
+   "ini": 273.439,
+   "fim": 312.496,
+   "falas": [
+    {
+     "t": 273.439,
+     "d": 5.707,
+     "txt": "But wait. Fuel dripping around hot engines and ground crews. How is that not a disaster?"
+    },
+    {
+     "t": 279.565,
+     "d": 6.216,
+     "txt": "Because this isn't normal jet fuel. It's called J P seven, and it was created for this airplane."
+    },
+    {
+     "t": 286.202,
+     "d": 6.722,
+     "txt": "It's so hard to ignite that, reportedly, you could drop a lit match into a puddle of it, and the match would go out."
+    },
+    {
+     "t": 293.344,
+     "d": 13.303,
+     "txt": "It had to be that stable. In flight, the fuel was also the coolant. It soaked up heat from the cockpit, the sensors and the hydraulics, before it was finally burned. The engines even used it as hydraulic fluid."
+    },
+    {
+     "t": 307.067,
+     "d": 4.659,
+     "txt": "Which created a new problem. How do you light a fuel that refuses to burn?"
+    }
+   ]
+  },
+  {
+   "cena": "teb",
+   "ini": 312.496,
+   "fim": 334.194,
+   "falas": [
+    {
+     "t": 312.496,
+     "d": 3.931,
+     "txt": "With a chemical called tri ethyl borane. T E B for short."
+    },
+    {
+     "t": 316.847,
+     "d": 2.512,
+     "txt": "It bursts into flame the moment it touches air."
+    },
+    {
+     "t": 319.779,
+     "d": 7.928,
+     "txt": "A small shot goes into each engine to start it, and another to light the afterburner. That's the green flash behind a Blackbird."
+    },
+    {
+     "t": 328.127,
+     "d": 5.297,
+     "txt": "Each engine carried enough for about sixteen shots. Use them up, and there's no relighting."
+    }
+   ]
+  },
+  {
+   "cena": "mito",
+   "ini": 334.194,
+   "fim": 362.1,
+   "falas": [
+    {
+     "t": 334.194,
+     "d": 3.53,
+     "txt": "Now, there's a famous story about all of this. You may have heard it."
+    },
+    {
+     "t": 338.144,
+     "d": 6.222,
+     "txt": "The Blackbird leaked so badly, that it had to take off almost empty, and refuel in the air right away."
+    },
+    {
+     "t": 344.786,
+     "d": 6.04,
+     "txt": "Half of that is true. It did take off with a partial load. And it did meet a tanker minutes later."
+    },
+    {
+     "t": 351.246,
+     "d": 7.518,
+     "txt": "But pilots who flew it, like Colonel Richard Graham, say the leaks were never the reason. It simply didn't lose that much fuel."
+    },
+    {
+     "t": 359.183,
+     "d": 2.147,
+     "txt": "The real reason was the heat. Again."
+    }
+   ]
+  },
+  {
+   "cena": "nitrogenio",
+   "ini": 362.1,
+   "fim": 396.944,
+   "falas": [
+    {
+     "t": 362.1,
+     "d": 5.549,
+     "txt": "Above about Mach two point six, the tanks get so hot that the fumes inside could ignite."
+    },
+    {
+     "t": 368.07,
+     "d": 4.557,
+     "txt": "So the empty space had to be filled with nitrogen. A gas that can't burn."
+    },
+    {
+     "t": 373.047,
+     "d": 9.521,
+     "txt": "And the surest way to do that was to fill the tanks to the top in flight, pushing all the air out, and let nitrogen take its place as the fuel burned off."
+    },
+    {
+     "t": 382.987,
+     "d": 4.952,
+     "txt": "A lighter takeoff was also kinder to the tires, and safer if an engine quit."
+    },
+    {
+     "t": 388.359,
+     "d": 7.815,
+     "txt": "That's why a whole fleet of special tankers existed, just for this one airplane. Fifty six of them, for thirty two Blackbirds."
+    }
+   ]
+  },
+  {
+   "cena": "preto",
+   "ini": 396.944,
+   "fim": 427.581,
+   "falas": [
+    {
+     "t": 396.944,
+     "d": 3.983,
+     "txt": "Heat decided almost everything on this airplane. Even its color."
+    },
+    {
+     "t": 401.347,
+     "d": 7.981,
+     "txt": "That blue black paint isn't there for looks. A dark surface radiates heat away better, and it took up to fifty degrees off the skin."
+    },
+    {
+     "t": 409.748,
+     "d": 5.124,
+     "txt": "The windshield couldn't be ordinary glass either. It was quartz, about two inches thick."
+    },
+    {
+     "t": 415.292,
+     "d": 4.787,
+     "txt": "And the top speed? It wasn't set by engine power. It was set by temperature."
+    },
+    {
+     "t": 420.499,
+     "d": 6.312,
+     "txt": "Push past about Mach three point three, and the air going into the engines got too hot for them to take."
+    }
+   ]
+  },
+  {
+   "cena": "legado",
+   "ini": 427.581,
+   "fim": 465.747,
+   "falas": [
+    {
+     "t": 427.581,
+     "d": 2.973,
+     "txt": "All of that, for an airplane designed with slide rules."
+    },
+    {
+     "t": 430.974,
+     "d": 4.15,
+     "txt": "It first flew in December, nineteen sixty four. Thirty two were built."
+    },
+    {
+     "t": 435.544,
+     "d": 9.311,
+     "txt": "In nineteen seventy six, one of them set a speed record. Two thousand, one hundred and ninety three miles an hour. For a crewed jet, it still stands."
+    },
+    {
+     "t": 445.275,
+     "d": 3.534,
+     "txt": "Another one crossed from New York to London in under two hours."
+    },
+    {
+     "t": 449.229,
+     "d": 8.431,
+     "txt": "In more than two decades of missions, not one was ever shot down. When a missile was launched, the standard response was simple. Accelerate."
+    },
+    {
+     "t": 458.08,
+     "d": 6.897,
+     "txt": "The Air Force retired it in the nineties. NASA flew the very last flight in October, nineteen ninety nine."
+    }
+   ]
+  },
+  {
+   "cena": "final",
+   "ini": 465.747,
+   "fim": 492.202,
+   "falas": [
+    {
+     "t": 465.747,
+     "d": 7.698,
+     "txt": "And some of them are still leaking. In museums, decades later, a few Blackbirds reportedly still drip fuel onto the floor."
+    },
+    {
+     "t": 473.865,
+     "d": 5.863,
+     "txt": "So the next time you see an SR-71 sitting in a puddle, it's not a worn out airplane."
+    },
+    {
+     "t": 480.148,
+     "d": 2.962,
+     "txt": "It's an airplane waiting to get hot enough to fit together."
+    },
+    {
+     "t": 483.53,
+     "d": 7.901,
+     "txt": "Next time, two giants. The seven forty seven changed the world. The A three eighty was bigger, newer... and it failed. Why?"
+    }
+   ]
+  }
+ ]
+}
