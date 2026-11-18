@@ -45,6 +45,42 @@ export const SNBThumb: React.FC<{ v: string }> = ({ v }) => (
       <Img src={staticFile('snb/poses/mao_close.png')} style={{ position: 'absolute', left: -150, top: 110, width: 1000 }} />
       <Svg><T x={880} y={130} t="beats" s={96} /><T x={880} y={235} t="*blood pressure*" s={96} /><Seta x1={1000} y1={275} x2={760} y2={470} c={-0.3} /></Svg>
     </>}
+    {v === 'a3' && <>
+      <P p="argolas" x={300} a={797} base={944} />
+      <Svg><T x={900} y={330} t="zero" s={132} /><T x={900} y={470} t="*weights*" s={132} /><Seta x1={680} y1={250} x2={450} y2={150} c={-0.22} /></Svg>
+    </>}
+    {v === 'b3' && <>
+      <P p="academia" x={250} a={900} base={930} /><P p="argolas" x={700} a={720} base={900} />
+      <Svg><T x={1075} y={320} t="who's" s={88} /><T x={1075} y={425} t="*stronger?*" s={88} /><Seta x1={1040} y1={470} x2={850} y2={600} c={-0.3} /></Svg>
+    </>}
+    {v === 'c3' && <>
+      <Img src={staticFile('snb/poses/mao_close.png')} style={{ position: 'absolute', left: -150, top: 110, width: 1000 }} />
+      <Svg><T x={900} y={130} t="they *hold*" s={104} /><T x={900} y={240} t="you lift" s={104} /><Seta x1={1000} y1={280} x2={760} y2={470} c={-0.3} /></Svg>
+    </>}
+    {v === 'a4' && <>
+      <P p="pai_saco" x={330} a={1100} base={1180} />
+      <Svg><T x={920} y={270} t="*55* years old" s={104} /><T x={920} y={390} t="never trained" s={104} /><Seta x1={890} y1={440} x2={585} y2={640} c={-0.25} /></Svg>
+    </>}
+    {v === 'b4' && <>
+      <P p="pai" x={270} a={1000} base={1090} /><P p="heroi" x={700} a={900} base={1010} />
+      <Svg><T x={1050} y={300} t="dad" s={120} /><T x={1050} y={430} t="*wins*" s={120} /><Seta x1={930} y1={330} x2={450} y2={420} c={0.25} /></Svg>
+    </>}
+    {v === 'c4' && <>
+      <Img src={staticFile('snb/poses/mao_close.png')} style={{ position: 'absolute', left: -150, top: 110, width: 1000 }} />
+      <Svg><T x={900} y={130} t="old man" s={104} /><T x={900} y={240} t="*strength*" s={104} /><Seta x1={1000} y1={280} x2={760} y2={470} c={-0.3} /></Svg>
+    </>}
+    {v === 'a5' && <>
+      <P p="academia_barra" x={330} a={760} base={900} />
+      <Svg><T x={930} y={300} t="big," s={132} /><T x={930} y={440} t="*not strong*" s={118} /><Seta x1={760} y1={480} x2={520} y2={520} c={-0.3} /></Svg>
+    </>}
+    {v === 'b5' && <>
+      <P p="academia" x={340} a={1000} base={1090} />
+      <Svg><T x={930} y={270} t="*5* habits" s={124} /><T x={930} y={400} t="keep you weak" s={92} /><Seta x1={900} y1={450} x2={580} y2={520} c={-0.25} /></Svg>
+    </>}
+    {v === 'c5' && <>
+      <Img src={staticFile('snb/poses/mao_close.png')} style={{ position: 'absolute', left: -150, top: 110, width: 1000 }} />
+      <Svg><T x={900} y={130} t="lose the" s={104} /><T x={900} y={240} t="*straps*" s={104} /><Seta x1={1000} y1={280} x2={760} y2={470} c={-0.3} /></Svg>
+    </>}
     {v === 'c' && <>
       <Img src={staticFile('snb/poses/mao_close.png')} style={{ position: 'absolute', left: -150, top: 110, width: 1000 }} />
       <Svg><T x={900} y={170} t="it's the *hands*" s={100} /><Seta x1={1000} y1={215} x2={760} y2={470} c={-0.3} /></Svg>

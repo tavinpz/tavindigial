@@ -1,0 +1,2430 @@
+[
+ {
+  "cena": "gancho",
+  "et": "5 HABITS · THE STUDIES · THE FIX",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "This guy has trained for three years. Five days a week. He looks the part.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "3 YEARS",
+     "sub": "5 days a week. he LOOKS the part.",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "And his numbers have barely moved since year one.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "STUCK",
+     "sub": "since year ONE",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia_barra",
+       "x": 520,
+       "a": 640
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "He's not lazy. He works harder than almost anyone in the room.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "NOT LAZY",
+     "sub": "he works HARDER than anyone",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "The problem is five habits that feel like strength training, and aren't.",
+    "p": 0.9,
+    "v": {
+     "icone": null,
+     "big": "5 HABITS",
+     "sub": "that only FEEL like strength training",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   }
+  ]
+ },
+ {
+  "cena": "origem",
+  "et": null,
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "Here's where these habits come from.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "WHERE FROM?",
+     "sub": "do these habits COME",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Most gym advice was built by bodybuilders, for one goal. Bigger muscles.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "BODYBUILDING",
+     "sub": "built most gym ADVICE",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "And for that goal, a lot of it works.",
+    "p": 0,
+    "v": {
+     "big": "IT WORKS",
+     "sub": "for SIZE",
+     "c": 1
+    }
+   },
+   {
+    "txt": "But size and strength are two different targets. Related. Not the same.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": {
+      "it": [
+       [
+        "SIZE",
+        "how much muscle",
+        ""
+       ],
+       [
+        "STRENGTH",
+        "how much you can move",
+        ""
+       ]
+      ]
+     },
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "You can train for years, hit one, and miss the other. That's what happened to our guy.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "MISSED ONE",
+     "sub": "that is what HAPPENED to him",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   }
+  ]
+ },
+ {
+  "cena": "promessa",
+  "et": null,
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "Every one of them has been tested in a study. I'll show you each one.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "TESTED",
+     "sub": "every one, in a STUDY",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "And here's your job. Keep count of how many you do.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "KEEP COUNT",
+     "sub": "of how many YOU do",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "At the end, comment your score out of five. Most people who lift are at three or more. That's my guess, not a statistic.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "OUT OF 5",
+     "sub": "comment your SCORE at the end",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "Then I'll give you a one week fix for each.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "THE FIX",
+     "sub": "one week for EACH",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "None of these fixes need more time in the gym. Most of them need less effort, pointed in a better direction.",
+    "p": 0,
+    "v": {
+     "big": "LESS EFFORT",
+     "sub": "pointed in a better DIRECTION"
+    }
+   }
+  ]
+ },
+ {
+  "cena": "h1",
+  "et": "HABIT 1 · ALWAYS 8 TO 12 REPS",
+  "fonte": "Schoenfeld et al. 2014 · J Strength Cond Res · 17 trained men · 8 weeks",
+  "falas": [
+   {
+    "txt": "Habit one. You live in the eight to twelve rep range.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "8 TO 12",
+     "sub": "HABIT 1 · you LIVE there",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia_barra",
+       "x": 520,
+       "a": 640
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Three sets of ten. On everything. For years.",
+    "p": 0,
+    "v": {
+     "big": "3 × 10",
+     "sub": "on EVERYTHING. for years."
+    }
+   },
+   {
+    "txt": "It's what the poster on the wall says. It's what the machines are set up for. It's what everybody around you is doing.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "lista": {
+      "it": [
+       "the POSTER says so",
+       "the MACHINES expect it",
+       "EVERYBODY does it"
+      ],
+      "auto": 1,
+      "lado": 1
+     }
+    }
+   },
+   {
+    "txt": "It's not wrong. It builds muscle. But here's what it doesn't do.",
+    "p": 0,
+    "v": {
+     "lista": null,
+     "big": "NOT WRONG",
+     "sub": "but here is what it does NOT do"
+    }
+   },
+   {
+    "txt": "Seventeen trained men were split into two groups. Same total work. Eight weeks.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": {
+      "ate": 17,
+      "rot": "trained men · same total work · 8 weeks"
+     },
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "One group did three sets of ten. The other did seven sets of three, with a much heavier bar.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": {
+      "it": [
+       [
+        "3 × 10",
+        "moderate weight",
+        ""
+       ],
+       [
+        "7 × 3",
+        "heavy weight",
+        ""
+       ]
+      ]
+     },
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Both groups built the same amount of muscle.",
+    "p": 0,
+    "v": {
+     "cart": {
+      "it": [
+       [
+        "3 × 10",
+        "moderate weight",
+        "SAME MUSCLE"
+       ],
+       [
+        "7 × 3",
+        "heavy weight",
+        "SAME MUSCLE"
+       ]
+      ]
+     }
+    }
+   },
+   {
+    "txt": "But the heavy group gained more strength on the bench press.",
+    "p": 0.8,
+    "v": {
+     "cart": {
+      "it": [
+       [
+        "3 × 10",
+        "moderate weight",
+        "SAME MUSCLE"
+       ],
+       [
+        "7 × 3",
+        "heavy weight",
+        "MORE STRENGTH"
+       ]
+      ]
+     }
+    }
+   },
+   {
+    "txt": "Same size. Different strength. Because lifting heavy is its own skill.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "SAME SIZE",
+     "sub": "different STRENGTH",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "If you never touch a weight you can only lift three or four times, your body never learns to.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "NEVER HEAVY",
+     "sub": "so your body never LEARNS it",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia_barra",
+       "x": 520,
+       "a": 640
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Heavy doesn't mean a one rep max every week. It means sets of three to five, where the bar moves well and you could do one more.",
+    "p": 0,
+    "v": {
+     "big": "3 TO 5 REPS",
+     "sub": "and you could do ONE more"
+    }
+   },
+   {
+    "txt": "That's enough to teach your nervous system what heavy feels like.",
+    "p": 0,
+    "v": {
+     "big": "TEACH IT",
+     "sub": "what HEAVY feels like"
+    }
+   },
+   {
+    "txt": "If that's you, that's one.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "THAT IS 1",
+     "sub": "if that is YOU",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   }
+  ]
+ },
+ {
+  "cena": "h2",
+  "et": "HABIT 2 · RACING THE CLOCK",
+  "fonte": "Schoenfeld et al. 2016 · J Strength Cond Res · 21 trained men · 8 weeks",
+  "falas": [
+   {
+    "txt": "Habit two. You rest for one minute, because it feels more intense.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "1 MINUTE",
+     "sub": "HABIT 2 · because it FEELS intense",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Heart pounding. Shirt soaked. Huge pump. It has to be working, right?",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "lista": {
+      "it": [
+       "heart POUNDING",
+       "shirt SOAKED",
+       "huge PUMP"
+      ],
+      "auto": 1,
+      "lado": 1
+     }
+    }
+   },
+   {
+    "txt": "Twenty one trained men. Same program. One difference.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": {
+      "ate": 21,
+      "rot": "trained men · same program · 8 weeks"
+     },
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Half rested one minute between sets. Half rested three.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": {
+      "it": [
+       [
+        "1 MINUTE",
+        "rest between sets",
+        ""
+       ],
+       [
+        "3 MINUTES",
+        "rest between sets",
+        ""
+       ]
+      ]
+     },
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "After eight weeks, the three minute group had gained more strength.",
+    "p": 0,
+    "v": {
+     "cart": {
+      "it": [
+       [
+        "1 MINUTE",
+        "rest between sets",
+        ""
+       ],
+       [
+        "3 MINUTES",
+        "rest between sets",
+        "MORE STRENGTH"
+       ]
+      ]
+     }
+    }
+   },
+   {
+    "txt": "And here's the part that surprises people. More muscle, too.",
+    "p": 0.8,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": {
+      "it": [
+       [
+        "1 MINUTE",
+        "rest between sets",
+        "LESS OF BOTH"
+       ],
+       [
+        "3 MINUTES",
+        "rest between sets",
+        "MORE MUSCLE TOO"
+       ]
+      ]
+     },
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "The reason is simple. When you rush, your next set is weaker. Fewer reps, with less weight.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "WEAKER SETS",
+     "sub": "fewer reps, less WEIGHT",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia_barra",
+       "x": 520,
+       "a": 640
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Being out of breath is not the same as getting stronger.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "OUT OF BREATH",
+     "sub": "is not the same as STRONGER",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "Short rests have a place. Conditioning. Small exercises at the end. Days when you have twenty minutes.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": {
+      "it": [
+       "CONDITIONING",
+       "SMALL exercises",
+       "SHORT on time"
+      ],
+      "auto": 1,
+      "lado": 1,
+      "ok": 1
+     },
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "But on your main lift, the clock is not your friend. The bar is.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "THE BAR",
+     "sub": "is your friend. not the CLOCK.",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia_barra",
+       "x": 520,
+       "a": 640
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "If you watch the clock instead of the bar, that's two.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "THAT IS 2",
+     "sub": "if you watch the CLOCK",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   }
+  ]
+ },
+ {
+  "cena": "h3",
+  "et": "HABIT 3 · EVERY SET TO FAILURE",
+  "fonte": "Davies et al. 2016 · Sports Medicine · 8 studies   |   Grgic et al. 2021 · J Sport Health Sci",
+  "falas": [
+   {
+    "txt": "Habit three. Every set goes to failure.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "TO FAILURE",
+     "sub": "HABIT 3 · every single SET",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia_barra",
+       "x": 520,
+       "a": 640,
+       "treme": 1
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "If you didn't collapse, it didn't count. That's the rule in a lot of gyms.",
+    "p": 0,
+    "v": {
+     "big": "DIDN'T COUNT",
+     "sub": "unless you COLLAPSED"
+    }
+   },
+   {
+    "txt": "It feels like the most honest way to train. Nothing left in the tank.",
+    "p": 0,
+    "v": {
+     "big": "NOTHING LEFT",
+     "sub": "it FEELS honest"
+    }
+   },
+   {
+    "txt": "Researchers pooled eight studies that compared the two ways to train.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": {
+      "ate": 8,
+      "rot": "studies pooled · failure vs not to failure"
+     },
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Going to failure. And stopping a few reps short.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": {
+      "it": [
+       [
+        "TO FAILURE",
+        "every set",
+        ""
+       ],
+       [
+        "A FEW REPS SHORT",
+        "every set",
+        ""
+       ]
+      ]
+     },
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "For strength, the results were about the same.",
+    "p": 0.8,
+    "v": {
+     "cart": {
+      "it": [
+       [
+        "TO FAILURE",
+        "every set",
+        "SAME STRENGTH"
+       ],
+       [
+        "A FEW REPS SHORT",
+        "every set",
+        "SAME STRENGTH"
+       ]
+      ]
+     }
+    }
+   },
+   {
+    "txt": "The authors' conclusion: failure isn't needed for strength. And if you use it, use it sparingly.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "SPARINGLY",
+     "sub": "said the AUTHORS",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "So what does failure cost you? Your next set. And sometimes your next workout.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "THE COST",
+     "sub": "your next SET. your next workout.",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Strength is practice. And you can't practice a clean heavy rep when you're wrecked.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "PRACTICE",
+     "sub": "needs you FRESH",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia_barra",
+       "x": 520,
+       "a": 640
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "A later analysis of more studies landed in the same place. Failure is not required, for strength or for size.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "NOT REQUIRED",
+     "sub": "a later analysis AGREED",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "So keep failure for the last set of a small exercise. Curls. Raises. Not your squat.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "CURLS, SURE",
+     "sub": "not your SQUAT",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "If your last rep is always a fight for survival, that's three.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "THAT IS 3",
+     "sub": "if every set is a FIGHT",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   }
+  ]
+ },
+ {
+  "cena": "h4",
+  "et": "HABIT 4 · A NEW WORKOUT EVERY WEEK",
+  "fonte": "Mattocks et al. 2017 · Med Sci Sports Exerc · 38 untrained adults · 8 weeks",
+  "falas": [
+   {
+    "txt": "Habit four. You change your exercises all the time.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "ALWAYS NEW",
+     "sub": "HABIT 4 · exercises",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "New routine from a new video, every couple of weeks. To keep the muscle guessing.",
+    "p": 0,
+    "v": {
+     "big": "GUESSING",
+     "sub": "keep the muscle. every 2 WEEKS."
+    }
+   },
+   {
+    "txt": "And yes, I know. You might have found this channel that way. Stay with me.",
+    "p": 0,
+    "v": {
+     "big": "I KNOW",
+     "sub": "stay with ME"
+    }
+   },
+   {
+    "txt": "Here's the problem. Strength is specific.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "SPECIFIC",
+     "sub": "strength is",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "Thirty eight beginners. One group did hard sets, like a bodybuilder. The other group only practiced one thing: lifting a max.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": {
+      "it": [
+       [
+        "GROUP 1",
+        "4 hard sets, to failure",
+        ""
+       ],
+       [
+        "GROUP 2",
+        "just practiced the max",
+        ""
+       ]
+      ]
+     },
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Group one built more muscle. But both got equally strong at that lift.",
+    "p": 0.8,
+    "v": {
+     "cart": {
+      "it": [
+       [
+        "GROUP 1",
+        "4 hard sets, to failure",
+        "MORE MUSCLE"
+       ],
+       [
+        "GROUP 2",
+        "just practiced the max",
+        "JUST AS STRONG"
+       ]
+      ]
+     }
+    }
+   },
+   {
+    "txt": "A big part of strength is your nervous system learning one movement.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "LEARNING",
+     "sub": "one MOVEMENT. your nerves do that.",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": 1,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Change the movement every two weeks, and you restart the lesson every two weeks.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "RESTART",
+     "sub": "the lesson, every 2 WEEKS",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Variety isn't bad. Change your small exercises as often as you like.",
+    "p": 0,
+    "v": {
+     "big": "VARIETY",
+     "sub": "is fine for the SMALL stuff"
+    }
+   },
+   {
+    "txt": "But the two or three lifts you want to be strong at? Those need boredom. The good kind.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "BOREDOM",
+     "sub": "the GOOD kind",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia_barra",
+       "x": 520,
+       "a": 640
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Pick a few lifts. Keep them for months. Let the numbers climb.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "lista": {
+      "it": [
+       "pick a FEW lifts",
+       "keep them for MONTHS",
+       "let the numbers CLIMB"
+      ],
+      "auto": 1,
+      "lado": 1,
+      "ok": 1
+     }
+    }
+   },
+   {
+    "txt": "If you can't name your squat from eight weeks ago, that's four.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "THAT IS 4",
+     "sub": "if you cannot NAME your old numbers",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   }
+  ]
+ },
+ {
+  "cena": "h5",
+  "et": "HABIT 5 · STRAPS AND MACHINES FOR EVERYTHING",
+  "fonte": "Winwood et al. 2015 · 30 trained rugby players · 7 weeks   |   Fain & Weatherford 2016 · 237 adults",
+  "falas": [
+   {
+    "txt": "Habit five. You outsource the hard parts.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "OUTSOURCED",
+     "sub": "HABIT 5 · the HARD parts",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": 1,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Straps, so your grip never limits you. Machines, so nothing has to be balanced.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "lista": {
+      "it": [
+       "STRAPS for your grip",
+       "MACHINES for balance",
+       "a PAD for everything"
+      ],
+      "auto": 1,
+      "lado": 1
+     }
+    }
+   },
+   {
+    "txt": "Both are useful tools. The habit is using them for everything.",
+    "p": 0,
+    "v": {
+     "lista": null,
+     "big": "FOR EVERYTHING",
+     "sub": "that is the HABIT"
+    }
+   },
+   {
+    "txt": "Because your hands and your trunk are part of your strength. And they only grow when they're asked to work.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "HANDS + TRUNK",
+     "sub": "only grow when they WORK",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "farmer_carry",
+       "x": 520,
+       "a": 800,
+       "ambar": 1
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "I'll be honest. The evidence here is thinner than for the other four.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "THINNER",
+     "sub": "evidence than the other FOUR",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "But here's what we have. Young men today squeeze about twenty pounds less than young men did in nineteen eighty five.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": {
+      "un": " lb",
+      "it": [
+       [
+        "YOUNG MEN, 1985",
+        121,
+        "cinza"
+       ],
+       [
+        "YOUNG MEN, 2016",
+        101,
+        "verm"
+       ]
+      ],
+      "nota": "−20 LB"
+     },
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "And when thirty trained rugby players swapped barbell work for carries, logs, and sleds, for seven weeks,",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": {
+      "ate": 30,
+      "rot": "trained rugby players · 7 weeks"
+     },
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "they gained just as much as the barbell group.",
+    "p": 0.8,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": {
+      "it": [
+       [
+        "BARBELL",
+        "2× a week · 7 weeks",
+        "SIMILAR GAINS"
+       ],
+       [
+        "CARRIES + LOGS",
+        "2× a week · 7 weeks",
+        "SIMILAR GAINS"
+       ]
+      ]
+     },
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Awkward, unsupported work counts. And a pad never taught anybody to brace.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "IT COUNTS",
+     "sub": "awkward and UNSUPPORTED",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "bear_hug",
+       "x": 520,
+       "a": 800,
+       "anda": 1
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Use straps on your heaviest set if your grip would cut it short. Just don't put them on for the warm up.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "HEAVIEST SET",
+     "sub": "straps there. not in the WARM UP.",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": 1,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "If you can't remember your last set without straps, that's five.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "THAT IS 5",
+     "sub": "if you LIVE in straps",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   }
+  ]
+ },
+ {
+  "cena": "placar",
+  "et": "YOUR SCORE",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "So. What's your score?",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "YOUR SCORE",
+     "sub": "out of 5",
+     "num": null,
+     "lista": {
+      "it": [
+       "always 8 TO 12",
+       "racing the CLOCK",
+       "every set to FAILURE",
+       "always NEW exercises",
+       "STRAPS and machines"
+      ],
+      "n": 0
+     },
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Always eight to twelve. Racing the clock. Every set to failure. Always new exercises. Straps and machines.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "lista": {
+      "it": [
+       "always 8 TO 12",
+       "racing the CLOCK",
+       "every set to FAILURE",
+       "always NEW exercises",
+       "STRAPS and machines"
+      ],
+      "auto": 1,
+      "x": 1
+     }
+    }
+   },
+   {
+    "txt": "Comment your number. No judgment. I'd bet the guy from the start of this video is a five.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "COMMENT",
+     "sub": "your NUMBER. he is a 5.",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "And notice what all five have in common.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "IN COMMON",
+     "sub": "all 5 share ONE thing",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "They all feel hard. Pump, sweat, burn, variety, exhaustion.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": {
+      "it": [
+       "PUMP",
+       "SWEAT",
+       "BURN",
+       "VARIETY",
+       "EXHAUSTION"
+      ],
+      "auto": 1
+     },
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Your body doesn't get stronger from feeling tired. It gets stronger from lifting something heavy, well, again and again.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "HEAVY + WELL",
+     "sub": "again and AGAIN",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia_barra",
+       "x": 520,
+       "a": 640
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Tired is a side effect. It was never the goal.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "SIDE EFFECT",
+     "sub": "tired was never the GOAL",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "And the opposite is true too. A great strength session can feel almost too easy. Long rests. Few reps. You leave fresh.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": {
+      "it": [
+       "LONG rests",
+       "FEW reps",
+       "you leave FRESH"
+      ],
+      "auto": 1,
+      "lado": 1,
+      "ok": 1
+     },
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "That feeling of, did I even work out? Get used to it. That's what practice feels like.",
+    "p": 0,
+    "v": {
+     "lista": null,
+     "big": "TOO EASY?",
+     "sub": "that is what PRACTICE feels like"
+    }
+   }
+  ]
+ },
+ {
+  "cena": "fix",
+  "et": "THE ONE WEEK FIX",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "Here's the fix. You don't have to change your whole program.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "THE FIX",
+     "sub": "keep your PROGRAM",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "One. Pick one big lift per workout. Do it first, heavy. Five sets of three.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": {
+      "it": [
+       "HEAVY first: 5 × 3",
+       "REST 3 minutes",
+       "STOP 1 or 2 early",
+       "SAME lifts, 8 weeks",
+       "ONE carry, no straps"
+      ],
+      "n": 1,
+      "lado": 1
+     },
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia_barra",
+       "x": 520,
+       "a": 640
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Two. On that lift, rest three full minutes. Set a timer. It will feel lazy. Do it anyway.",
+    "p": 0,
+    "v": {
+     "lista": {
+      "it": [
+       "HEAVY first: 5 × 3",
+       "REST 3 minutes",
+       "STOP 1 or 2 early",
+       "SAME lifts, 8 weeks",
+       "ONE carry, no straps"
+      ],
+      "n": 2,
+      "lado": 1
+     }
+    }
+   },
+   {
+    "txt": "Three. Stop every set with one or two good reps left.",
+    "p": 0,
+    "v": {
+     "lista": {
+      "it": [
+       "HEAVY first: 5 × 3",
+       "REST 3 minutes",
+       "STOP 1 or 2 early",
+       "SAME lifts, 8 weeks",
+       "ONE carry, no straps"
+      ],
+      "n": 3,
+      "lado": 1
+     }
+    }
+   },
+   {
+    "txt": "Four. Keep the same main lifts for eight weeks, and write down every session.",
+    "p": 0,
+    "v": {
+     "lista": {
+      "it": [
+       "HEAVY first: 5 × 3",
+       "REST 3 minutes",
+       "STOP 1 or 2 early",
+       "SAME lifts, 8 weeks",
+       "ONE carry, no straps"
+      ],
+      "n": 4,
+      "lado": 1
+     }
+    }
+   },
+   {
+    "txt": "Five. Finish with one carry. Heavy weights, no straps, walk until your grip is nearly gone.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": {
+      "it": [
+       "HEAVY first: 5 × 3",
+       "REST 3 minutes",
+       "STOP 1 or 2 early",
+       "SAME lifts, 8 weeks",
+       "ONE carry, no straps"
+      ],
+      "n": 5,
+      "lado": 1
+     },
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "farmer_carry",
+       "x": 520,
+       "a": 800,
+       "anda": 1,
+       "ambar": 1
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Then do the rest of your workout exactly the way you like it. Tens, pumps, machines, all of it.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "THEN",
+     "sub": "train the way you LIKE",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "You're not giving anything up. You're adding the one thing that was missing.",
+    "p": 0,
+    "v": {
+     "big": "ADD",
+     "sub": "the one thing that was MISSING"
+    }
+   },
+   {
+    "txt": "Each week, add a little weight to that first lift. Five pounds is plenty. If the bar slows down a lot, hold the weight for another week.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "+5 LB",
+     "sub": "a week. or HOLD if it slows down.",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia_barra",
+       "x": 520,
+       "a": 640
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Small, boring, written down. That's how the number moves.",
+    "p": 0,
+    "v": {
+     "big": "BORING",
+     "sub": "and WRITTEN down"
+    }
+   },
+   {
+    "txt": "And give it the full eight weeks before you judge it. Strength shows up slower than a pump, and it stays a lot longer.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "GIVE IT 8",
+     "sub": "weeks. strength shows up SLOWER.",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "This is a general starting point I put together, not a program from a study.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "A START",
+     "sub": "not a study PROGRAM",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": 1,
+     "bigy": null,
+     "c": null
+    }
+   }
+  ]
+ },
+ {
+  "cena": "cuidado",
+  "et": "BE SAFE",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "Heavy doesn't mean reckless. Learn the lift with a light bar first, and add weight slowly.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "NOT RECKLESS",
+     "sub": "light bar first. add SLOWLY.",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia_barra",
+       "x": 520,
+       "a": 640
+      }
+     ],
+     "mao": null,
+     "aviso": 1,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Use a spotter or safety bars for heavy sets. And if you have an injury, check with a professional first.",
+    "p": 0,
+    "v": {
+     "big": "SPOTTER",
+     "sub": "or SAFETY bars"
+    }
+   },
+   {
+    "txt": "This is education, not medical advice.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "NOT MEDICAL",
+     "sub": "advice. EDUCATION.",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   }
+  ]
+ },
+ {
+  "cena": "final",
+  "et": null,
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "So, back to the guy who's been stuck for two years.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "STUCK",
+     "sub": "back to THAT guy",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "He doesn't need more effort. He's already giving more than enough.",
+    "p": 0,
+    "v": {
+     "big": "NOT EFFORT",
+     "sub": "he has PLENTY"
+    }
+   },
+   {
+    "txt": "He needs to aim it. Heavier. Calmer. Fresher. The same lifts. And his own hands on the weight.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": {
+      "it": [
+       "HEAVIER",
+       "CALMER",
+       "FRESHER",
+       "the SAME lifts",
+       "his OWN hands"
+      ],
+      "auto": 1,
+      "ok": 1
+     },
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Eight weeks of that, and the numbers that haven't moved in years will move.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "8 WEEKS",
+     "sub": "and the numbers MOVE",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia_barra",
+       "x": 520,
+       "a": 640
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "I can't promise how much. Nobody honest can. But the direction is not in doubt.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "NO PROMISES",
+     "sub": "but the DIRECTION is clear",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "Comment your score out of five. And which habit you're fixing first.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "COMMENT",
+     "sub": "your SCORE + your first FIX",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "And if you haven't done the three strength tests yet, that video is on the channel. Go get your numbers.",
+    "p": 4.5,
+    "v": {
+     "icone": null,
+     "big": "3 TESTS",
+     "sub": "go get your NUMBERS",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   }
+  ]
+ }
+]

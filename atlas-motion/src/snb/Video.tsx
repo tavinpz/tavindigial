@@ -46,6 +46,26 @@ const Icone: React.FC<{ g: number; ini: number; tipo: string }> = ({ g, ini, tip
       <path d={`M 716,${sy} L 250,812`} {...st} strokeWidth={46} />
       <path d={`M 716,${sy} L ${716 - 60 * k},${(sy + 820) / 2 + 20 * k} L 716,820`} {...st} stroke={K.ambar} />
       <path d="M 250,812 L 206,826" {...st} /></>;
+  } else if (tipo === 'flexao_baixo') {
+    const tr = Math.sin(g * 1.7) * 2.2, sy = 760 + tr;     // parado embaixo, tremendo
+    d = <>{chao}<circle cx={792} cy={sy - 54} r={46} fill={K.osso} />
+      <path d={`M 716,${sy} L 250,812`} {...st} strokeWidth={46} />
+      <path d={`M 716,${sy} L 656,${sy + 44} L 716,820`} {...st} stroke={K.ambar} />
+      <path d="M 250,812 L 206,826" {...st} /></>;
+  } else if (tipo === 'cruz') {
+    const r = Math.sin(g / 14) * 1.2, y0 = 470;     // cruz de ferro, de frente, nas argolas
+    d = <g transform={`rotate(${r} 520 ${y0})`}>
+      <path d="M 250,120 L 250,440 M 790,120 L 790,440" {...st} strokeWidth={8} opacity={0.5} />
+      <circle cx={250} cy={470} r={34} {...st} strokeWidth={14} /><circle cx={790} cy={470} r={34} {...st} strokeWidth={14} />
+      <path d={`M 262,${y0} L 778,${y0}`} {...st} stroke={K.ambar} strokeWidth={34} />
+      <circle cx={520} cy={y0 - 84} r={50} fill={K.osso} />
+      <path d={`M 520,${y0 - 10} L 520,${y0 + 230}`} {...st} strokeWidth={54} />
+      <path d={`M 506,${y0 + 230} L 500,${y0 + 430} M 534,${y0 + 230} L 540,${y0 + 430}`} {...st} strokeWidth={30} /></g>;
+  } else if (tipo === 'prancha') {
+    const b = Math.sin(g / 12) * 4;     // planche: corpo horizontal sobre os braços esticados
+    d = <>{chao}<circle cx={742} cy={598 + b} r={46} fill={K.osso} />
+      <path d={`M 660,${624 + b} L 240,${640 + b}`} {...st} strokeWidth={46} />
+      <path d={`M 640,${630 + b} L 600,826`} {...st} stroke={K.ambar} strokeWidth={34} /></>;
   } else {
     const k = (1 - Math.cos(g / 26)) / 2, q = 500 + 290 * k, om = q - 250 + 20 * k;   // quadril desce até o chão
     d = <>{chao}<circle cx={520} cy={om - 76} r={50} fill={K.osso} />
@@ -110,7 +130,7 @@ const Cena: React.FC<{ g: number; D: number; b: Bloco; ini: number }> = ({ g, D,
       let j = i; while (j > 0 && est[j - 1].cart && est[j - 1].cart.it[n] && est[j - 1].cart.it[n][2] === c[2]) j--;
       let j1 = i; while (j1 > 0 && est[j1 - 1].cart && est[j1 - 1].cart.it[n] && est[j1 - 1].cart.it[n][1] === c[1]) j1--;
       const r = entra(g, Math.max(0, ts[j])), r1 = entra(g, Math.max(0, ts[j1]));
-      const bom = /SAME|JUST|SIMILAR|NO DROP|MORE|LOWER|ALL 3/.test(c[2]) && !/DROPPED/.test(c[2]);
+      const bom = /SAME|JUST|SIMILAR|NO DROP|MORE|LOWER|ALL 3|STRONGER|4X|PEAK AT 35/.test(c[2]) && !/DROPPED|NO STRONGER/.test(c[2]);
       el.push(<g key={'c' + n} opacity={o} transform={`translate(0,${(1 - Math.min(1, s)) * 40})`}>
         <rect x={x} y={y} width={690} height={500} fill={K.painel} stroke="#2c2c31" strokeWidth={3} />
         <rect x={x} y={y} width={690} height={10} fill={n ? K.verm : K.cinza} />

@@ -96,6 +96,9 @@ def pose(nome):
     if nome == 'academia_largou': return figura('frente', larg=1.24, cor=CINZA, reto=True) + saco(0, 1440, 440, 300, rot=-7)
     if nome == 'academia_barra':  return halter_barra(-452) + figura('pendurado', larg=1.24, cor=CINZA, reto=True, pe='chao')
     if nome == 'heroi':           return figura('frente')
+    if nome == 'argolas':         return ''.join(f'<path d="M {s*236},-1200 L {s*236},-520" stroke="{OSSO}" stroke-width="12" opacity=".7"/><circle cx="{s*236}" cy="-457" r="62" fill="none" stroke="{OSSO}" stroke-width="20"/>' for s in (-1, 1)) + figura('pendurado', True)
+    if nome == 'pai':             return figura('frente', larg=1.12, roupa='macacao', cor=CINZA).replace('#2A2A2E', '#CFC8B8')
+    if nome == 'pai_saco':        return figura('abraco', larg=1.12, roupa='macacao', cor=CINZA).replace('#2A2A2E', '#CFC8B8') + saco(0, 470, 420, 330) + f'<g transform="scale(1.12,1)">{antebracos_abraco(True)}</g>'
     if nome == 'pendurado':       return f'<rect x="-430" y="-470" width="860" height="18" rx="9" fill="{OSSO}"/>' + figura('pendurado', True)
     if nome == 'farmer_carry_ambar': return figura('frente', True) + kettlebell(-262, 912, 84) + kettlebell(262, 912, 84) + punho(1) + punho(-1)
     if nome == 'farmer_carry':    return figura('frente') + kettlebell(-262, 912, 84) + kettlebell(262, 912, 84) + punho(1) + punho(-1)
@@ -116,7 +119,7 @@ if __name__ == '__main__':
     if len(sys.argv) > 2 and sys.argv[1] == 'poses':
         d = sys.argv[2]
         import os
-        for n in [x for x, _ in FOLHA] + ['heroi', 'farmer_carry_ambar', 'fazendeiro_saco_ambar', 'pendurado']:
+        for n in [x for x, _ in FOLHA] + ['heroi', 'farmer_carry_ambar', 'fazendeiro_saco_ambar', 'pendurado', 'argolas', 'pai', 'pai_saco']:
             open(f'{d}/{n}.svg', 'w').write(svg_pose(n)); subprocess.run(['rsvg-convert', '-h', '1500', f'{d}/{n}.svg', '-o', f'{d}/{n}.png'], check=True); os.remove(f'{d}/{n}.svg')
         open(f'{d}/mao_close.svg', 'w').write(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="-60 -140 1000 900" width="1000" height="900">{DEFS}{mao_close()}</svg>')
         subprocess.run(['rsvg-convert', '-w', '1400', f'{d}/mao_close.svg', '-o', f'{d}/mao_close.png'], check=True); os.remove(f'{d}/mao_close.svg'); print('poses ok'); sys.exit()

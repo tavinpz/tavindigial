@@ -1,0 +1,2611 @@
+[
+ {
+  "cena": "gancho",
+  "et": "OLD MAN STRENGTH · THE SCIENCE",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "He's fifty five. He has never had a gym membership.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "55",
+     "sub": "years old. ZERO gym memberships.",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pai",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "His son is twenty five, and lifts four days a week.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "25",
+     "sub": "and lifts 4 days a WEEK",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pai",
+       "x": 430,
+       "a": 800
+      },
+      {
+       "p": "heroi",
+       "x": 900,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "And when they shake hands, it's the son who winces.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "THE SON",
+     "sub": "is the one who WINCES",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": 1,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Same story with the jar nobody can open. The bolt that won't move. The heavy end of the couch.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": {
+      "it": [
+       "the stuck JAR",
+       "the frozen BOLT",
+       "the heavy end of the COUCH"
+      ],
+      "auto": 1,
+      "lado": 1
+     },
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pai",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Somehow, the old guy always gets it.",
+    "p": 0,
+    "v": {
+     "lista": null,
+     "big": "HE GETS IT",
+     "sub": "somehow. every TIME."
+    }
+   },
+   {
+    "txt": "People call it old man strength. And science has a few things to say about it.",
+    "p": 0.9,
+    "v": {
+     "icone": null,
+     "big": "OLD MAN",
+     "sub": "STRENGTH. is it real?",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pai",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   }
+  ]
+ },
+ {
+  "cena": "prova",
+  "et": null,
+  "fonte": "Solberg et al. 2019 · Int J Sports Physiol Perform · world championships 1998 to 2017",
+  "falas": [
+   {
+    "txt": "Start with the strongest people on earth.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "THE STRONGEST",
+     "sub": "people on EARTH",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia_barra",
+       "x": 520,
+       "a": 640
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Researchers went through twenty years of world championship results, in two sports.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "20 YEARS",
+     "sub": "of world championship RESULTS",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "Olympic weightlifting, where the bar has to move fast. And powerlifting, where it just has to move.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": {
+      "it": [
+       [
+        "WEIGHTLIFTING",
+        "fast and explosive",
+        ""
+       ],
+       [
+        "POWERLIFTING",
+        "slow and heavy",
+        ""
+       ]
+      ]
+     },
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Then they asked one question. At what age do these athletes peak?",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "WHAT AGE?",
+     "sub": "do they PEAK",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "For the fast sport, twenty six.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": {
+      "it": [
+       [
+        "WEIGHTLIFTING",
+        "fast and explosive",
+        "PEAK AT 26"
+       ],
+       [
+        "POWERLIFTING",
+        "slow and heavy",
+        ""
+       ]
+      ]
+     },
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "For the slow, heavy one? Thirty five.",
+    "p": 0.8,
+    "v": {
+     "cart": {
+      "it": [
+       [
+        "WEIGHTLIFTING",
+        "fast and explosive",
+        "PEAK AT 26"
+       ],
+       [
+        "POWERLIFTING",
+        "slow and heavy",
+        "PEAK AT 35"
+       ]
+      ]
+     }
+    }
+   },
+   {
+    "txt": "Nine years later. And that's the average. Some of them peaked in their forties.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "+9 YEARS",
+     "sub": "and some peaked in their FORTIES",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "Raw, grinding strength is the last thing an athlete loses.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "THE LAST",
+     "sub": "thing to GO",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pai",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "These are world class athletes, not dads. But the order things fade in is the same for everybody.",
+    "p": 0,
+    "v": {
+     "big": "SAME ORDER",
+     "sub": "for athletes and for DADS"
+    }
+   }
+  ]
+ },
+ {
+  "cena": "promessa",
+  "et": null,
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "So today: four reasons old man strength is real.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": {
+      "it": [
+       "4 REASONS it is real",
+       "THE CATCH: it runs out",
+       "HOW to keep it, or build it"
+      ],
+      "n": 1
+     },
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "The catch. Because it does run out.",
+    "p": 0,
+    "v": {
+     "lista": {
+      "it": [
+       "4 REASONS it is real",
+       "THE CATCH: it runs out",
+       "HOW to keep it, or build it"
+      ],
+      "n": 2
+     }
+    }
+   },
+   {
+    "txt": "And what to do about it, whether you're the son or the old man.",
+    "p": 0,
+    "v": {
+     "lista": {
+      "it": [
+       "4 REASONS it is real",
+       "THE CATCH: it runs out",
+       "HOW to keep it, or build it"
+      ],
+      "n": 3
+     }
+    }
+   }
+  ]
+ },
+ {
+  "cena": "tarefa",
+  "et": "QUICK TEST · DO IT NOW",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "First, a quick test. And I want your age on this one.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "QUICK TEST",
+     "sub": "and I want your AGE",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "farmer_carry",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Grab the two heaviest things in your house with handles. Stand tall. Hold them at your sides.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "lista": {
+      "it": [
+       "2 HEAVY things",
+       "with HANDLES",
+       "stand TALL",
+       "HOLD"
+      ],
+      "auto": 1,
+      "lado": 1
+     }
+    }
+   },
+   {
+    "txt": "Time it until your fingers open.",
+    "p": 4.5,
+    "v": {
+     "lista": null,
+     "anel": {
+      "seg": 60
+     },
+     "aviso": 1,
+     "figs": [
+      {
+       "p": "farmer_carry",
+       "x": 520,
+       "a": 800,
+       "ambar": 1
+      }
+     ]
+    }
+   },
+   {
+    "txt": "Comment your age, the weight, and your time.",
+    "p": 0,
+    "v": {
+     "anel": null,
+     "big": "COMMENT",
+     "sub": "AGE + weight + time"
+    }
+   },
+   {
+    "txt": "Let's see who really wins. The twenties, or the fifties.",
+    "p": 0,
+    "v": {
+     "big": "20s vs 50s",
+     "sub": "who really WINS"
+    }
+   },
+   {
+    "txt": "If your dad is nearby, hand him the same weights. Then stay for reason three. It explains what you're about to see.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "TEST DAD TOO",
+     "sub": "then stay for REASON 3",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pai",
+       "x": 430,
+       "a": 800
+      },
+      {
+       "p": "heroi",
+       "x": 900,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   }
+  ]
+ },
+ {
+  "cena": "regra1",
+  "et": "REASON 1 · STRENGTH PEAKS LATE",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "Reason one. Strength peaks late, and fades slow.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "LATE PEAK",
+     "sub": "REASON 1 · and a slow FADE",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pai",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Look at those two sports again.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": {
+      "it": [
+       [
+        "WEIGHTLIFTING",
+        "peak at 26",
+        ""
+       ],
+       [
+        "POWERLIFTING",
+        "peak at 35",
+        ""
+       ]
+      ]
+     },
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "The difference between them is speed.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "SPEED",
+     "sub": "is the DIFFERENCE",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "A snatch has to be explosive. A heavy deadlift can take five slow seconds, and still count.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "5 SECONDS",
+     "sub": "slow still COUNTS",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia_barra",
+       "x": 520,
+       "a": 640
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Speed is what leaves first. Ask any sprinter over thirty.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "SPEED GOES",
+     "sub": "first. ask any SPRINTER.",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "But the ability to squeeze, hold, and grind? That hangs around for decades.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "THE GRIND",
+     "sub": "stays for DECADES",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": 1,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "So your dad lost the hundred meter dash a long time ago.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "THE SPRINT",
+     "sub": "he lost that long AGO",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pai",
+       "x": 430,
+       "a": 800
+      },
+      {
+       "p": "heroi",
+       "x": 900,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "The handshake, the stuck jar, the heavy end of the couch? He's still right in his window.",
+    "p": 0,
+    "v": {
+     "big": "HIS WINDOW",
+     "sub": "jars, couches and HANDSHAKES"
+    }
+   },
+   {
+    "txt": "None of those need speed. All of them need a slow, stubborn squeeze.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "STUBBORN",
+     "sub": "a slow SQUEEZE. no speed needed.",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": 1,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "That is exactly the kind of strength that powerlifters keep into their forties.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "INTO THEIR 40s",
+     "sub": "the kind that LASTS",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia_barra",
+       "x": 520,
+       "a": 640
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   }
+  ]
+ },
+ {
+  "cena": "regra2",
+  "et": "REASON 2 · THIRTY YEARS OF PRACTICE",
+  "fonte": "Mattocks et al. 2017 · Med Sci Sports Exerc · 38 untrained adults · 8 weeks",
+  "falas": [
+   {
+    "txt": "Reason two. He's had thirty more years of practice than you.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "30 YEARS",
+     "sub": "REASON 2 · of PRACTICE",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pai_saco",
+       "x": 520,
+       "a": 800,
+       "anda": 1
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "We covered this study before, and it keeps being relevant.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "ONE STUDY",
+     "sub": "that keeps coming BACK",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "Thirty eight beginners. One group trained like bodybuilders. The other only practiced lifting a max.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": {
+      "it": [
+       [
+        "GROUP 1",
+        "4 hard sets, to failure",
+        ""
+       ],
+       [
+        "GROUP 2",
+        "just practiced the max",
+        ""
+       ]
+      ]
+     },
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "After eight weeks, group one had more muscle. But both were equally strong at the lift.",
+    "p": 0,
+    "v": {
+     "cart": {
+      "it": [
+       [
+        "GROUP 1",
+        "4 hard sets, to failure",
+        "MORE MUSCLE"
+       ],
+       [
+        "GROUP 2",
+        "just practiced the max",
+        "JUST AS STRONG"
+       ]
+      ]
+     }
+    }
+   },
+   {
+    "txt": "Strength is partly a skill. Your nervous system learns the job.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "A SKILL",
+     "sub": "your NERVES learn the job",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": 1,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Now think about what a fifty five year old has practiced.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "HIS PRACTICE",
+     "sub": "think about IT",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pai",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Carrying kids. Moving furniture. Loosening bolts. Opening every jar in the house since nineteen ninety.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "lista": {
+      "it": [
+       "carrying KIDS",
+       "moving FURNITURE",
+       "loosening BOLTS",
+       "every JAR since 1990"
+      ],
+      "auto": 1,
+      "lado": 1,
+      "ok": 1
+     }
+    }
+   },
+   {
+    "txt": "He's not stronger at everything. He's stronger at the things he's done ten thousand times.",
+    "p": 0,
+    "v": {
+     "lista": null,
+     "big": "10,000 TIMES",
+     "sub": "that is what he is STRONG at"
+    }
+   },
+   {
+    "txt": "And practice teaches something else. Economy.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "ECONOMY",
+     "sub": "practice teaches THAT too",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pai_saco",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "He doesn't lift the couch with his arms. He gets under it, locks his trunk, and stands up with his legs.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "lista": {
+      "it": [
+       "gets UNDER it",
+       "LOCKS his trunk",
+       "stands up with his LEGS"
+      ],
+      "auto": 1,
+      "lado": 1
+     }
+    }
+   },
+   {
+    "txt": "Half of old man strength is knowing where to stand.",
+    "p": 0,
+    "v": {
+     "lista": null,
+     "big": "WHERE TO STAND",
+     "sub": "is half of IT"
+    }
+   },
+   {
+    "txt": "Put him under your squat bar, and you'd win. Hand him the stuck lug nut, and you lose.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "LUG NUT",
+     "sub": "his game. not YOURS.",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pai",
+       "x": 430,
+       "a": 800
+      },
+      {
+       "p": "heroi",
+       "x": 900,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   }
+  ]
+ },
+ {
+  "cena": "regra3",
+  "et": "REASON 3 · HIS GENERATION USED ITS HANDS",
+  "fonte": "Fain & Weatherford 2016 · J Hand Therapy · 237 adults   |   Josty et al. 1997 · J Hand Surg Br",
+  "falas": [
+   {
+    "txt": "Reason three. It might not be his age. It might be his era.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "HIS ERA",
+     "sub": "REASON 3 · maybe not his AGE",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": 1,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "In nineteen eighty five, researchers measured the grip of young American men.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "1985",
+     "sub": "young American men, TESTED",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "Men in their early twenties averaged a hundred and twenty one pounds with the right hand.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": {
+      "ate": 121,
+      "suf": " LB",
+      "rot": "1985 · men 20 to 24 · right hand"
+     },
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "In twenty sixteen, another team tested the same age group.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "2016",
+     "sub": "same age group, tested AGAIN",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "A hundred and one pounds.",
+    "p": 0.8,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": {
+      "un": " lb",
+      "it": [
+       [
+        "YOUNG MEN, 1985",
+        121,
+        "cinza"
+       ],
+       [
+        "YOUNG MEN, 2016",
+        101,
+        "verm"
+       ]
+      ]
+     },
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "It was a small study. But think about who those nineteen eighty five guys are today.",
+    "p": 0,
+    "v": {
+     "barras": {
+      "un": " lb",
+      "it": [
+       [
+        "YOUNG MEN, 1985",
+        121,
+        "cinza"
+       ],
+       [
+        "YOUNG MEN, 2016",
+        101,
+        "verm"
+       ]
+      ],
+      "nota": "−20 LB"
+     }
+    }
+   },
+   {
+    "txt": "They're your dad.",
+    "p": 0.8,
+    "v": {
+     "icone": null,
+     "big": "YOUR DAD",
+     "sub": "is one of those 1985 GUYS",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pai",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "The authors pointed at one cause. Fewer people work with their hands.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "FEWER HANDS",
+     "sub": "at work. said the AUTHORS.",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": 1,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "And an older British study found the same pattern across jobs. Heavy manual workers had the strongest grip. Office workers, the weakest.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": {
+      "tit": "GRIP STRENGTH BY JOB",
+      "it": [
+       "HEAVY MANUAL",
+       "LIGHT MANUAL",
+       "OFFICE"
+      ]
+     },
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "So part of old man strength is just, a man who grew up before the keyboard.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "PRE KEYBOARD",
+     "sub": "he grew up BEFORE it",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pai",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   }
+  ]
+ },
+ {
+  "cena": "regra4",
+  "et": "REASON 4 · HE NEVER STOPPED",
+  "fonte": "Uonuma Cohort Study, Japan · 4,774 adults aged 40+   |   Akiyama et al. 2026 · J Rural Med · 126 adults",
+  "falas": [
+   {
+    "txt": "Reason four. The ones who still have it, never stopped using it.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "NEVER STOPPED",
+     "sub": "REASON 4",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pai_saco",
+       "x": 520,
+       "a": 800,
+       "anda": 1
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "In a Japanese study of almost five thousand adults over forty,",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": {
+      "ate": 4774,
+      "rot": "adults over 40 · Japan"
+     },
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "the people who did farm work had clearly lower odds of a weak grip.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "−37%",
+     "sub": "odds of a WEAK grip · odds ratio 0.63",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "A smaller study looked at how grip changes with age.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": {
+      "ate": 126,
+      "rot": "adults · Japan · a smaller study"
+     },
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "In people who didn't farm, grip dropped as they got older. In the ones who farmed, it didn't.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": {
+      "it": [
+       [
+        "NO FARMING",
+        "as they got older",
+        "GRIP DROPPED"
+       ],
+       [
+        "FARMING",
+        "about 10 years older",
+        "NO DROP"
+       ]
+      ]
+     },
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "That's the pattern behind every strong old man you know.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "THE PATTERN",
+     "sub": "behind every strong OLD man",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pai",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "The mechanic. The carpenter. The grandfather who still splits his own wood.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "lista": {
+      "it": [
+       "the MECHANIC",
+       "the CARPENTER",
+       "the WOOD splitter"
+      ],
+      "auto": 1,
+      "lado": 1
+     }
+    }
+   },
+   {
+    "txt": "None of them train. All of them load their hands and their back, a little, almost every day.",
+    "p": 0,
+    "v": {
+     "lista": null,
+     "big": "EVERY DAY",
+     "sub": "a little load. hands and BACK."
+    }
+   },
+   {
+    "txt": "They didn't keep their strength because of their age. They kept it in spite of it.",
+    "p": 0,
+    "v": {
+     "lista": null,
+     "big": "IN SPITE",
+     "sub": "of their age. not because of IT."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "naoe",
+  "et": "WHAT IT IS NOT",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "So let's be precise about what old man strength is, and what it isn't.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "BE PRECISE",
+     "sub": "what it IS and what it is NOT",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pai",
+       "x": 430,
+       "a": 800
+      },
+      {
+       "p": "heroi",
+       "x": 900,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "It is not speed. The twenty five year old is faster.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": {
+      "it": [
+       "NOT speed",
+       "NOT endurance",
+       "NOT bigger muscles"
+      ],
+      "n": 1,
+      "x": 1
+     },
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "It is not endurance. He'll gas out first.",
+    "p": 0,
+    "v": {
+     "lista": {
+      "it": [
+       "NOT speed",
+       "NOT endurance",
+       "NOT bigger muscles"
+      ],
+      "n": 2,
+      "x": 1
+     }
+    }
+   },
+   {
+    "txt": "And it is usually not bigger muscles.",
+    "p": 0,
+    "v": {
+     "lista": {
+      "it": [
+       "NOT speed",
+       "NOT endurance",
+       "NOT bigger muscles"
+      ],
+      "n": 3,
+      "x": 1
+     }
+    }
+   },
+   {
+    "txt": "It's grip. It's leverage. And it's a nervous system that has done this exact job for thirty years.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": {
+      "it": [
+       "GRIP",
+       "LEVERAGE",
+       "30 YEARS of the same job"
+      ],
+      "auto": 1,
+      "ok": 1
+     },
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "That's why it shows up in short, slow, heavy moments. And almost nowhere else.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "SHORT + HEAVY",
+     "sub": "that is where it SHOWS up",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": 1,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   }
+  ]
+ },
+ {
+  "cena": "virada",
+  "et": "THE CATCH",
+  "fonte": "Walker-Bone et al. 2016 · Occup Environ Med · 1,418 men, mean age 65.8",
+  "falas": [
+   {
+    "txt": "Now the catch. Old man strength runs out.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "IT RUNS OUT",
+     "sub": "THE CATCH",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pai",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "British researchers measured the grip of fourteen hundred men at retirement age.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": {
+      "ate": 1418,
+      "rot": "men · retirement age · UK"
+     },
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Then they compared the ones who'd done decades of heavy physical work with the ones who hadn't.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": {
+      "it": [
+       [
+        "HEAVY WORK",
+        "for decades",
+        ""
+       ],
+       [
+        "LIGHT WORK",
+        "for decades",
+        ""
+       ]
+      ]
+     },
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "By sixty five, the hard workers were no stronger.",
+    "p": 0.8,
+    "v": {
+     "cart": {
+      "it": [
+       [
+        "HEAVY WORK",
+        "for decades",
+        "NO STRONGER"
+       ],
+       [
+        "LIGHT WORK",
+        "for decades",
+        "SAME GRIP"
+       ]
+      ]
+     }
+    }
+   },
+   {
+    "txt": "The researchers said other factors, like money and health, may have hidden a benefit.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "MAYBE",
+     "sub": "money and health hid a BENEFIT",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "But it fits what you see in real life. Work builds strength. It doesn't protect it forever.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "NOT FOREVER",
+     "sub": "work builds it. it does not PROTECT it.",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pai",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "And there's a second problem. You only notice the old men who are strong.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "YOU NOTICE",
+     "sub": "only the STRONG ones",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "The ones with the wrecked backs and the bad shoulders aren't crushing anybody's hand.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "THE OTHERS",
+     "sub": "aren't crushing anybody's HAND",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pai",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "So old man strength is real. It's just not a gift. It's a balance that's slowly being spent.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "BEING SPENT",
+     "sub": "it is a balance, not a GIFT",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "And if nothing refills it, one day the jar wins.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "THE JAR WINS",
+     "sub": "one day. if nothing REFILLS it.",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pai",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   }
+  ]
+ },
+ {
+  "cena": "boa",
+  "et": "THE GOOD NEWS",
+  "fonte": "Fiatarone et al. 1990 · JAMA · 10 frail volunteers aged about 90 · 8 weeks",
+  "falas": [
+   {
+    "txt": "Here's the good news. You can refill it. At almost any age.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "REFILL IT",
+     "sub": "at almost ANY age",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pai",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "In nineteen ninety, researchers did something that sounded crazy at the time.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "1990",
+     "sub": "it sounded CRAZY",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "They took ten frail nursing home residents. Average age, ninety.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": {
+      "ate": 90,
+      "rot": "average age · 10 frail nursing home residents"
+     },
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "And they put them on heavy leg training. Three times a week, for eight weeks.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "HEAVY",
+     "sub": "leg training · 3× a week · 8 WEEKS",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "Nine of them finished. Their leg strength went up by a hundred and seventy four percent.",
+    "p": 0.9,
+    "v": {
+     "icone": null,
+     "big": "+174%",
+     "sub": "leg strength, at NINETY",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "Their thigh muscle grew by about nine percent. And they walked faster.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": {
+      "it": [
+       "+174% STRENGTH",
+       "+9% thigh MUSCLE",
+       "FASTER walking"
+      ],
+      "auto": 1,
+      "ok": 1
+     },
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "The researchers concluded that heavy training works for frail people up to ninety six years old.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "UP TO 96",
+     "sub": "years old. it still WORKED.",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "One caution. It was ten people, with medical staff watching. It shows what's possible, not what's typical.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "10 PEOPLE",
+     "sub": "it shows what is POSSIBLE",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "Ninety years old. Eight weeks.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "90 YEARS",
+     "sub": "old. 8 WEEKS.",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pai",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "If that's possible at ninety, there is no age where it's too late for you, or for your dad.",
+    "p": 0,
+    "v": {
+     "big": "NEVER",
+     "sub": "too late. for you or your DAD."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "plano",
+  "et": "WHAT TO DO",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "So here's what to do. Two versions.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "2 VERSIONS",
+     "sub": "the son and the OLD man",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pai",
+       "x": 430,
+       "a": 800
+      },
+      {
+       "p": "heroi",
+       "x": 900,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "If you're the son. You have the gym. Now add what he has.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "THE SON",
+     "sub": "add what HE has",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Carry heavy things. Hang from a bar. And lift heavy for a few reps, instead of light for many.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "lista": {
+      "it": [
+       "CARRY heavy things",
+       "HANG from a bar",
+       "HEAVY, for few reps"
+      ],
+      "auto": 1,
+      "lado": 1
+     }
+    }
+   },
+   {
+    "txt": "Stop using straps for everything. Let your hands be the limit for a while.",
+    "p": 0,
+    "v": {
+     "lista": null,
+     "big": "NO STRAPS",
+     "sub": "let your HANDS be the limit"
+    }
+   },
+   {
+    "txt": "And once a week, move something awkward. A sandbag. A heavy box. Something with no handle.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "AWKWARD",
+     "sub": "once a week. NO handle.",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "bear_hug",
+       "x": 520,
+       "a": 800,
+       "anda": 1
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "If you're the old man. You have the hands. Now add the plan.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "THE OLD MAN",
+     "sub": "add the PLAN",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pai",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Two short sessions a week. Legs, a push, a pull, and a carry. Start light. Add a little each week.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "lista": {
+      "it": [
+       "2 sessions a WEEK",
+       "LEGS · push · pull · carry",
+       "start LIGHT",
+       "add a LITTLE each week"
+      ],
+      "auto": 1,
+      "lado": 1
+     }
+    }
+   },
+   {
+    "txt": "Standing up from a chair with a weight. Pushing something. Pulling something. Carrying something.",
+    "p": 0,
+    "v": {
+     "lista": {
+      "it": [
+       "STAND UP with a weight",
+       "PUSH something",
+       "PULL something",
+       "CARRY something"
+      ],
+      "auto": 1,
+      "lado": 1
+     }
+    }
+   },
+   {
+    "txt": "It doesn't need to be fancy. It needs to be written down, and a little harder than last week.",
+    "p": 0,
+    "v": {
+     "lista": null,
+     "big": "WRITE IT",
+     "sub": "and make it a little HARDER"
+    }
+   },
+   {
+    "txt": "That one rule, a little more each week, is exactly what a lifetime of work never gave him.",
+    "p": 0,
+    "v": {
+     "lista": null,
+     "big": "A LITTLE MORE",
+     "sub": "each week. work never gave him THAT."
+    }
+   },
+   {
+    "txt": "This is a general starting point, not a program from a study.",
+    "p": 0,
+    "v": {
+     "big": "A START",
+     "sub": "not a study PROGRAM",
+     "aviso": 1
+    }
+   }
+  ]
+ },
+ {
+  "cena": "cuidado",
+  "et": "BE SAFE",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "And this matters more the older you are. Talk to your doctor before starting heavy training, especially with heart or joint problems.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "DOCTOR FIRST",
+     "sub": "especially heart or JOINTS",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pai",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": 1,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "This video is education, not medical advice.",
+    "p": 0,
+    "v": {
+     "big": "NOT MEDICAL",
+     "sub": "advice. EDUCATION."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "final",
+  "et": null,
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "So, back to the handshake.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "THE HANDSHAKE",
+     "sub": "back to IT",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": 1,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Your dad isn't strong because he's old.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "NOT AGE",
+     "sub": "that's not WHY",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pai",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "He's strong because strength peaks late. Because he's practiced for decades. Because his generation used its hands. And because he never stopped.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": {
+      "it": [
+       "strength PEAKS late",
+       "decades of PRACTICE",
+       "a hands-on GENERATION",
+       "he never STOPPED"
+      ],
+      "auto": 1
+     },
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Three of those four, you can copy.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "3 OF 4",
+     "sub": "you can COPY",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "You can't choose the year you were born. But you can train heavy, use your hands, and keep going.",
+    "p": 0,
+    "v": {
+     "big": "KEEP GOING",
+     "sub": "heavy. hands. for YEARS."
+    }
+   },
+   {
+    "txt": "And if he's reading this over your shoulder: it's not too late to get even stronger.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "NOT TOO LATE",
+     "sub": "ask the 90 year OLDS",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pai",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Comment your age and your hold time. Let's settle it.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "COMMENT",
+     "sub": "your AGE + your TIME",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "farmer_carry",
+       "x": 520,
+       "a": 800,
+       "ambar": 1
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Next time: five gym habits that make you look stronger, without making you stronger.",
+    "p": 4.5,
+    "v": {
+     "icone": null,
+     "big": "NEXT VIDEO",
+     "sub": "5 gym habits that FOOL you",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   }
+  ]
+ }
+]

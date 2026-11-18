@@ -1,0 +1,2662 @@
+{
+ "total": 498.885,
+ "blocos": [
+  {
+   "cena": "gancho",
+   "et": "BODYWEIGHT STRENGTH · THE SCIENCE · AT HOME",
+   "fonte": null,
+   "ini": 0.6,
+   "fim": 23.219,
+   "falas": [
+    {
+     "t": 0.6,
+     "d": 2.559,
+     "txt": "This guy has never done a bench press in his life.",
+     "v": {
+      "icone": null,
+      "big": "ZERO",
+      "sub": "bench presses. EVER.",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": [
+       {
+        "p": "heroi",
+        "x": 520,
+        "a": 800
+       }
+      ],
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 3.579,
+     "d": 5.128,
+     "txt": "And he can hold his whole body in the air, on two rings, with his arms straight out to the sides.",
+     "v": {
+      "icone": "cruz",
+      "big": "THE CROSS",
+      "sub": "arms STRAIGHT. whole body in the air.",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 9.127,
+     "d": 3.782,
+     "txt": "Most of a gymnast's strength is built with one tool. Their own body.",
+     "v": {
+      "icone": null,
+      "big": "ONE TOOL",
+      "sub": "their own BODY",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": [
+       {
+        "p": "argolas",
+        "x": 520,
+        "a": 700
+       }
+      ],
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 13.328,
+     "d": 5.329,
+     "txt": "No plates. No machines. And shoulders that most lifters would trade a year of training for.",
+     "v": {
+      "icone": null,
+      "big": null,
+      "sub": null,
+      "num": null,
+      "lista": {
+       "it": [
+        "NO plates",
+        "NO machines",
+        "and THOSE shoulders"
+       ],
+       "auto": 1,
+       "lado": 1,
+       "x": 1
+      },
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": [
+       {
+        "p": "argolas",
+        "x": 520,
+        "a": 700
+       }
+      ],
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 19.078,
+     "d": 2.322,
+     "txt": "So how do they get that strong, without the weights?",
+     "v": {
+      "icone": null,
+      "big": "HOW?",
+      "sub": "without the WEIGHTS",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": 1
+     }
+    }
+   ]
+  },
+  {
+   "cena": "prova",
+   "et": null,
+   "fonte": "Kotarsky et al. 2018 · J Strength Cond Res · 23 moderately trained men · 4 weeks",
+   "ini": 23.219,
+   "fim": 67.969,
+   "falas": [
+    {
+     "t": 23.219,
+     "d": 4.606,
+     "txt": "First, is bodyweight training even real strength training? Researchers tested it.",
+     "v": {
+      "icone": "flexao",
+      "big": "REAL?",
+      "sub": "is bodyweight REAL strength training",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 28.245,
+     "d": 3.272,
+     "txt": "Twenty three trained men. Four weeks. Three sessions a week.",
+     "v": {
+      "icone": null,
+      "big": null,
+      "sub": null,
+      "num": {
+       "ate": 23,
+       "rot": "trained men · 4 weeks · 3 sessions a week"
+      },
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 31.937,
+     "d": 3.489,
+     "txt": "One group did the bench press. The other group did only push-ups.",
+     "v": {
+      "icone": null,
+      "big": null,
+      "sub": null,
+      "num": null,
+      "lista": null,
+      "cart": {
+       "it": [
+        [
+         "BENCH PRESS",
+         "barbell and plates",
+         ""
+        ],
+        [
+         "PUSH-UPS",
+         "bodyweight only",
+         ""
+        ]
+       ]
+      },
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 35.846,
+     "d": 5.269,
+     "txt": "But not the same push-up every day. Each time it got easy, they moved to a harder version.",
+     "v": {
+      "cart": {
+       "it": [
+        [
+         "BENCH PRESS",
+         "barbell and plates",
+         ""
+        ],
+        [
+         "PUSH-UPS",
+         "a HARDER version each time",
+         ""
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "t": 41.536,
+     "d": 7.274,
+     "txt": "They used a ladder. Wall push-ups. Incline. Knees. Full push-ups. Then close grip, uneven, and one arm versions.",
+     "v": {
+      "icone": "flexao",
+      "big": null,
+      "sub": null,
+      "num": null,
+      "lista": {
+       "it": [
+        "WALL",
+        "INCLINE",
+        "KNEES",
+        "FULL",
+        "CLOSE GRIP",
+        "UNEVEN",
+        "ONE ARM"
+       ],
+       "auto": 1,
+       "lado": 1
+      },
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 49.23,
+     "d": 2.557,
+     "txt": "Nobody added a single pound. They just climbed.",
+     "v": {
+      "lista": null,
+      "big": "THEY CLIMBED",
+      "sub": "not ONE pound added"
+     }
+    },
+    {
+     "t": 52.207,
+     "d": 2.645,
+     "txt": "At the end, both groups were tested on the bench press.",
+     "v": {
+      "icone": null,
+      "big": "THE TEST",
+      "sub": "both groups, on the BENCH press",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": 1
+     }
+    },
+    {
+     "t": 55.272,
+     "d": 3.785,
+     "txt": "Both groups got stronger. Including the men who never touched the bar.",
+     "v": {
+      "icone": null,
+      "big": null,
+      "sub": null,
+      "num": null,
+      "lista": null,
+      "cart": {
+       "it": [
+        [
+         "BENCH PRESS",
+         "barbell and plates",
+         "STRONGER"
+        ],
+        [
+         "PUSH-UPS",
+         "never touched the bar",
+         "STRONGER"
+        ]
+       ]
+      },
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 60.278,
+     "d": 6.772,
+     "txt": "That is the whole secret of gymnastics, in one study. You don't add weight. You make the same body harder to move.",
+     "v": {
+      "icone": null,
+      "big": "THE SECRET",
+      "sub": "same body. HARDER to move.",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": [
+       {
+        "p": "heroi",
+        "x": 520,
+        "a": 800
+       }
+      ],
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    }
+   ]
+  },
+  {
+   "cena": "promessa",
+   "et": null,
+   "fonte": null,
+   "ini": 67.969,
+   "fim": 78.15,
+   "falas": [
+    {
+     "t": 67.969,
+     "d": 4.462,
+     "txt": "So today: the four things gymnasts do that most people in a gym never do.",
+     "v": {
+      "icone": null,
+      "big": null,
+      "sub": null,
+      "num": null,
+      "lista": {
+       "it": [
+        "4 THINGS gymnasts do",
+        "THE CATCH nobody mentions",
+        "A ROUTINE you can start today"
+       ],
+       "n": 1
+      },
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 72.851,
+     "d": 1.564,
+     "txt": "The catch that nobody mentions.",
+     "v": {
+      "lista": {
+       "it": [
+        "4 THINGS gymnasts do",
+        "THE CATCH nobody mentions",
+        "A ROUTINE you can start today"
+       ],
+       "n": 2
+      }
+     }
+    },
+    {
+     "t": 74.835,
+     "d": 2.395,
+     "txt": "And a routine you can start today, on your floor.",
+     "v": {
+      "lista": {
+       "it": [
+        "4 THINGS gymnasts do",
+        "THE CATCH nobody mentions",
+        "A ROUTINE you can start today"
+       ],
+       "n": 3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "cena": "tarefa",
+   "et": "QUICK TEST · DO IT NOW",
+   "fonte": null,
+   "ini": 78.15,
+   "fim": 101.444,
+   "falas": [
+    {
+     "t": 78.15,
+     "d": 1.044,
+     "txt": "But first, a test.",
+     "v": {
+      "icone": "flexao",
+      "big": "A TEST",
+      "sub": "do it right now",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 79.614,
+     "d": 4.235,
+     "txt": "Get into a push-up. Lower yourself until your chest is a fist from the floor.",
+     "v": {
+      "big": "GO DOWN",
+      "sub": "chest a FIST from the floor"
+     }
+    },
+    {
+     "t": 84.269,
+     "d": 1.667,
+     "txt": "Now stay there. Don't move. Time it.",
+     "v": {
+      "big": null,
+      "sub": null,
+      "anel": {
+       "seg": 60,
+       "txt": "stay DOWN · do not move · time it"
+      },
+      "aviso": 1,
+      "icone": "flexao_baixo"
+     }
+    },
+    {
+     "t": 90.856,
+     "d": 3.288,
+     "txt": "Comment your time. Most people are shocked by how short it is.",
+     "v": {
+      "anel": null,
+      "big": "COMMENT",
+      "sub": "your HOLD time"
+     }
+    },
+    {
+     "t": 94.564,
+     "d": 3.004,
+     "txt": "By the end, you'll know exactly why. And how to fix it.",
+     "v": {
+      "big": "WHY",
+      "sub": "and how to FIX it"
+     }
+    },
+    {
+     "t": 97.988,
+     "d": 2.535,
+     "txt": "Keep that number in your head. We're going to use it.",
+     "v": {
+      "big": "REMEMBER IT",
+      "sub": "we will USE that number"
+     }
+    }
+   ]
+  },
+  {
+   "cena": "regra1",
+   "et": "REASON 1 · THE LEVER",
+   "fonte": null,
+   "ini": 101.444,
+   "fim": 155.046,
+   "falas": [
+    {
+     "t": 101.444,
+     "d": 2.487,
+     "txt": "Reason one. They change the lever, not the load.",
+     "v": {
+      "icone": null,
+      "big": "THE LEVER",
+      "sub": "REASON 1 · not the load",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": [
+       {
+        "p": "heroi",
+        "x": 520,
+        "a": 800
+       }
+      ],
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 104.351,
+     "d": 2.788,
+     "txt": "In a gym, when something gets easy, you add a plate.",
+     "v": {
+      "icone": null,
+      "big": "ADD A PLATE",
+      "sub": "the GYM way",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": [
+       {
+        "p": "academia_barra",
+        "x": 520,
+        "a": 640
+       }
+      ],
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 107.559,
+     "d": 3.411,
+     "txt": "A gymnast can't do that. Their body weighs the same every day.",
+     "v": {
+      "icone": null,
+      "big": "SAME WEIGHT",
+      "sub": "every single DAY",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": [
+       {
+        "p": "heroi",
+        "x": 520,
+        "a": 800
+       }
+      ],
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 111.39,
+     "d": 2.054,
+     "txt": "So they move the weight farther from their hands.",
+     "v": {
+      "icone": "flexao",
+      "big": "FARTHER",
+      "sub": "from the HANDS",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 113.864,
+     "d": 5.724,
+     "txt": "Think about holding a bucket of water. Close to your chest, it's easy. At arm's length, it's brutal.",
+     "v": {
+      "icone": null,
+      "big": "ARM'S LENGTH",
+      "sub": "same bucket. BRUTAL.",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": 1,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 120.008,
+     "d": 2.667,
+     "txt": "The bucket didn't get heavier. The lever got longer.",
+     "v": {
+      "big": "LONGER",
+      "sub": "lever. same WEIGHT."
+     }
+    },
+    {
+     "t": 123.095,
+     "d": 3.352,
+     "txt": "A push-up, with your feet on a chair, puts more of you on your hands.",
+     "v": {
+      "icone": "flexao",
+      "big": null,
+      "sub": null,
+      "num": null,
+      "lista": {
+       "it": [
+        "PUSH-UP",
+        "FEET on a chair",
+        "LEAN forward",
+        "FEET off the floor"
+       ],
+       "n": 2,
+       "lado": 1
+      },
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 126.867,
+     "d": 3.072,
+     "txt": "Lean your shoulders past your hands, and it gets harder again.",
+     "v": {
+      "lista": {
+       "it": [
+        "PUSH-UP",
+        "FEET on a chair",
+        "LEAN forward",
+        "FEET off the floor"
+       ],
+       "n": 3,
+       "lado": 1
+      }
+     }
+    },
+    {
+     "t": 130.358,
+     "d": 3.479,
+     "txt": "Keep going, and one day your feet leave the floor. That's a planche.",
+     "v": {
+      "icone": "prancha",
+      "big": null,
+      "sub": null,
+      "num": null,
+      "lista": {
+       "it": [
+        "PUSH-UP",
+        "FEET on a chair",
+        "LEAN forward",
+        "FEET off the floor"
+       ],
+       "n": 4,
+       "lado": 1
+      },
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 134.257,
+     "d": 3.275,
+     "txt": "Same body. And a load that most lifters could never press.",
+     "v": {
+      "icone": "prancha",
+      "big": "SAME BODY",
+      "sub": "a load most lifters cannot PRESS",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 137.952,
+     "d": 1.555,
+     "txt": "It works the same way for pulling.",
+     "v": {
+      "icone": null,
+      "big": "PULLING",
+      "sub": "works the SAME way",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": [
+       {
+        "p": "argolas",
+        "x": 520,
+        "a": 700
+       }
+      ],
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 139.928,
+     "d": 7.287,
+     "txt": "A row with your feet on the floor. Then a pull-up. Then a pull-up with your body tilted back. Then flat, like a plank in the air.",
+     "v": {
+      "big": null,
+      "sub": null,
+      "lista": {
+       "it": [
+        "ROW, feet down",
+        "PULL-UP",
+        "TILTED pull-up",
+        "body FLAT in the air"
+       ],
+       "auto": 1,
+       "lado": 1
+      }
+     }
+    },
+    {
+     "t": 147.635,
+     "d": 3.079,
+     "txt": "And for legs. Two legs. Then a split squat. Then one leg.",
+     "v": {
+      "icone": null,
+      "big": null,
+      "sub": null,
+      "num": null,
+      "lista": {
+       "it": [
+        "TWO legs",
+        "SPLIT squat",
+        "ONE leg"
+       ],
+       "auto": 1,
+       "lado": 1
+      },
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": [
+       {
+        "p": "heroi",
+        "x": 380,
+        "a": 760
+       }
+      ],
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 151.134,
+     "d": 2.992,
+     "txt": "Every step is harder than the last, with zero equipment.",
+     "v": {
+      "lista": null,
+      "big": "NO GEAR",
+      "sub": "every step is HARDER"
+     }
+    }
+   ]
+  },
+  {
+   "cena": "regra2",
+   "et": "REASON 2 · THEY HOLD STILL",
+   "fonte": "Mattocks et al. 2017 · 38 untrained adults   |   Schoenfeld et al. 2014 · 17 trained men",
+   "ini": 155.046,
+   "fim": 213.185,
+   "falas": [
+    {
+     "t": 155.046,
+     "d": 1.422,
+     "txt": "Reason two. They hold still.",
+     "v": {
+      "icone": "cruz",
+      "big": "HOLD STILL",
+      "sub": "REASON 2",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 156.888,
+     "d": 3.177,
+     "txt": "In the gym, a rep takes two seconds. Up, down, done.",
+     "v": {
+      "icone": null,
+      "big": "2 SECONDS",
+      "sub": "up. down. DONE.",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": [
+       {
+        "p": "academia_barra",
+        "x": 520,
+        "a": 640
+       }
+      ],
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 160.485,
+     "d": 3.543,
+     "txt": "In gymnastics, a strength move only counts if you freeze in it.",
+     "v": {
+      "icone": "cruz",
+      "big": "FREEZE",
+      "sub": "or it does not COUNT",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 164.449,
+     "d": 3.975,
+     "txt": "That means every muscle fighting, at the hardest point, with nowhere to hide.",
+     "v": {
+      "big": "NO HIDING",
+      "sub": "at the HARDEST point"
+     }
+    },
+    {
+     "t": 168.844,
+     "d": 2.575,
+     "txt": "No bounce. No momentum. No rest at the top.",
+     "v": {
+      "big": null,
+      "sub": null,
+      "lista": {
+       "it": [
+        "NO bounce",
+        "NO momentum",
+        "NO rest at the top"
+       ],
+       "auto": 1,
+       "lado": 1,
+       "x": 1
+      }
+     }
+    },
+    {
+     "t": 171.839,
+     "d": 2.621,
+     "txt": "And here's why that matters. Strength is specific.",
+     "v": {
+      "icone": null,
+      "big": "SPECIFIC",
+      "sub": "strength is",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": 1
+     }
+    },
+    {
+     "t": 174.88,
+     "d": 6.892,
+     "txt": "In one study, beginners who only practiced a max lift got just as strong at it as a group doing four hard sets.",
+     "v": {
+      "icone": null,
+      "big": null,
+      "sub": null,
+      "num": null,
+      "lista": null,
+      "cart": {
+       "it": [
+        [
+         "4 HARD SETS",
+         "to failure",
+         "MORE MUSCLE"
+        ],
+        [
+         "JUST THE TEST",
+         "a few max attempts",
+         "JUST AS STRONG"
+        ]
+       ]
+      },
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 182.192,
+     "d": 5.676,
+     "txt": "Your body gets good at exactly what you ask for. Gymnasts ask for the hardest position, held.",
+     "v": {
+      "icone": "prancha",
+      "big": "ASK FOR IT",
+      "sub": "the hardest position, HELD",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 188.287,
+     "d": 5.737,
+     "txt": "It holds for trained lifters too. Seventeen experienced men, same total work, eight weeks.",
+     "v": {
+      "icone": null,
+      "big": null,
+      "sub": null,
+      "num": {
+       "ate": 17,
+       "rot": "trained men · same total work · 8 weeks"
+      },
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 194.445,
+     "d": 6.812,
+     "txt": "The group lifting heavy for three reps grew the same muscle as the group doing sets of ten. But gained more strength.",
+     "v": {
+      "icone": null,
+      "big": null,
+      "sub": null,
+      "num": null,
+      "lista": null,
+      "cart": {
+       "it": [
+        [
+         "3 × 10",
+         "moderate weight",
+         "SAME MUSCLE"
+        ],
+        [
+         "7 × 3",
+         "heavy weight",
+         "MORE STRENGTH"
+        ]
+       ]
+      },
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 201.677,
+     "d": 4.872,
+     "txt": "Hard and few beats easy and many. A gymnast's whole sport is built on that.",
+     "v": {
+      "icone": "cruz",
+      "big": "HARD + FEW",
+      "sub": "beats easy and MANY",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 206.968,
+     "d": 5.297,
+     "txt": "That's why your push-up hold was so short. You've done thousands of reps. And almost no holding.",
+     "v": {
+      "icone": "flexao_baixo",
+      "big": "NO HOLDING",
+      "sub": "thousands of reps. almost ZERO holds.",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    }
+   ]
+  },
+  {
+   "cena": "regra3",
+   "et": "REASON 3 · STRENGTH PER POUND",
+   "fonte": null,
+   "ini": 213.185,
+   "fim": 266.323,
+   "falas": [
+    {
+     "t": 213.185,
+     "d": 3.201,
+     "txt": "Reason three. They are strong for their size, not just strong.",
+     "v": {
+      "icone": null,
+      "big": "PER POUND",
+      "sub": "REASON 3",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": [
+       {
+        "p": "academia",
+        "x": 430,
+        "a": 800
+       },
+       {
+        "p": "heroi",
+        "x": 900,
+        "a": 800
+       }
+      ],
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 216.806,
+     "d": 2.579,
+     "txt": "Here's a piece of physics that most lifters ignore.",
+     "v": {
+      "icone": null,
+      "big": "PHYSICS",
+      "sub": "most lifters IGNORE this",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": 1
+     }
+    },
+    {
+     "t": 219.805,
+     "d": 3.601,
+     "txt": "A muscle's strength depends on how thick it is. Its cross section.",
+     "v": {
+      "icone": null,
+      "big": "THICKNESS",
+      "sub": "a muscle's strength = its CROSS section",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": 1,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 223.826,
+     "d": 2.147,
+     "txt": "But your weight depends on your whole volume.",
+     "v": {
+      "icone": null,
+      "big": "VOLUME",
+      "sub": "your weight = your whole BODY",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": [
+       {
+        "p": "academia",
+        "x": 520,
+        "a": 800
+       }
+      ],
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 226.394,
+     "d": 3.314,
+     "txt": "So when a body gets bigger, weight grows faster than strength.",
+     "v": {
+      "icone": null,
+      "big": null,
+      "sub": null,
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": {
+       "un": "",
+       "it": [
+        [
+         "STRENGTH grows like",
+         2,
+         "verde"
+        ],
+        [
+         "WEIGHT grows like",
+         3,
+         "verm"
+        ]
+       ],
+       "nota": "x² vs x³"
+      },
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 230.128,
+     "d": 4.288,
+     "txt": "That's why an ant carries many times its weight, and an elephant can't jump.",
+     "v": {
+      "icone": null,
+      "big": "ANT vs ELEPHANT",
+      "sub": "the small one WINS per pound",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": 1
+     }
+    },
+    {
+     "t": 234.835,
+     "d": 5.184,
+     "txt": "Double the size of a body, and it gets about four times stronger. But eight times heavier.",
+     "v": {
+      "icone": null,
+      "big": null,
+      "sub": null,
+      "num": null,
+      "lista": null,
+      "cart": {
+       "it": [
+        [
+         "STRENGTH",
+         "twice the size",
+         "4X"
+        ],
+        [
+         "WEIGHT",
+         "twice the size",
+         "8X"
+        ]
+       ]
+      },
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 240.439,
+     "d": 4.604,
+     "txt": "That's a simplified model. Real bodies are messier. But the direction is real.",
+     "v": {
+      "icone": null,
+      "big": "SIMPLIFIED",
+      "sub": "but the direction is REAL",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": 1
+     }
+    },
+    {
+     "t": 245.463,
+     "d": 4.891,
+     "txt": "A big lifter moves more total weight. But a lighter athlete moves more of himself.",
+     "v": {
+      "icone": null,
+      "big": "MORE OF HIM",
+      "sub": "the lighter one moves more of HIMSELF",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": [
+       {
+        "p": "academia",
+        "x": 430,
+        "a": 800
+       },
+       {
+        "p": "heroi",
+        "x": 900,
+        "a": 800
+       }
+      ],
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 250.774,
+     "d": 3.599,
+     "txt": "And in gymnastics, yourself is the only thing you have to move.",
+     "v": {
+      "icone": null,
+      "big": "ONLY YOU",
+      "sub": "is all you have to MOVE",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": [
+       {
+        "p": "argolas",
+        "x": 520,
+        "a": 700
+       }
+      ],
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 254.794,
+     "d": 5.631,
+     "txt": "This is not a reason to starve yourself. It's a reason to stop chasing size you'll never use.",
+     "v": {
+      "icone": null,
+      "big": "NOT A DIET",
+      "sub": "just skip the size you never USE",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": [
+       {
+        "p": "heroi",
+        "x": 520,
+        "a": 800
+       }
+      ],
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 260.844,
+     "d": 4.558,
+     "txt": "Every pound you add has to be lifted, on every single rep, for the rest of your life.",
+     "v": {
+      "big": "EVERY POUND",
+      "sub": "gets lifted on every REP"
+     }
+    }
+   ]
+  },
+  {
+   "cena": "regra4",
+   "et": "REASON 4 · EVERY DAY, FOR YEARS",
+   "fonte": "Calatayud et al. 2015 · J Strength Cond Res · 30 trained students · 5 weeks",
+   "ini": 266.323,
+   "fim": 308.206,
+   "falas": [
+    {
+     "t": 266.323,
+     "d": 4.276,
+     "txt": "Reason four. They practice it like a skill. Almost every day. For years.",
+     "v": {
+      "icone": null,
+      "big": "A SKILL",
+      "sub": "REASON 4 · practiced for YEARS",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": [
+       {
+        "p": "argolas",
+        "x": 520,
+        "a": 700
+       }
+      ],
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 271.019,
+     "d": 2.88,
+     "txt": "A lifter trains a muscle, then lets it rest for days.",
+     "v": {
+      "icone": null,
+      "big": "THEN REST",
+      "sub": "for DAYS",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": [
+       {
+        "p": "academia",
+        "x": 520,
+        "a": 800
+       }
+      ],
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 274.318,
+     "d": 4.554,
+     "txt": "A gymnast repeats the same shapes, again and again, staying far from failure.",
+     "v": {
+      "icone": "cruz",
+      "big": "AGAIN",
+      "sub": "same shapes. far from FAILURE.",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 279.292,
+     "d": 3.02,
+     "txt": "Short, clean efforts. Many times a week. Never grinding.",
+     "v": {
+      "big": null,
+      "sub": null,
+      "lista": {
+       "it": [
+        "SHORT efforts",
+        "CLEAN every time",
+        "MANY times a week",
+        "NEVER grinding"
+       ],
+       "auto": 1,
+       "lado": 1
+      }
+     }
+    },
+    {
+     "t": 282.732,
+     "d": 2.697,
+     "txt": "That's how you learn a skill. And remember, strength is one.",
+     "v": {
+      "lista": null,
+      "big": "A SKILL",
+      "sub": "is learned by REPEATING it fresh"
+     }
+    },
+    {
+     "t": 285.849,
+     "d": 2.497,
+     "txt": "And the muscle doesn't care where the tension comes from.",
+     "v": {
+      "icone": null,
+      "big": "DOESN'T CARE",
+      "sub": "where the TENSION comes from",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": 1
+     }
+    },
+    {
+     "t": 288.765,
+     "d": 4.154,
+     "txt": "In another study, thirty trained students were split into groups for five weeks.",
+     "v": {
+      "icone": null,
+      "big": null,
+      "sub": null,
+      "num": {
+       "ate": 30,
+       "rot": "trained students · 5 weeks"
+      },
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 293.339,
+     "d": 6.254,
+     "txt": "One group benched a weight they could lift six times. The other did push-ups against bands, just as hard.",
+     "v": {
+      "icone": null,
+      "big": null,
+      "sub": null,
+      "num": null,
+      "lista": null,
+      "cart": {
+       "it": [
+        [
+         "BENCH PRESS",
+         "6 rep max",
+         ""
+        ],
+        [
+         "BAND PUSH-UPS",
+         "just as hard",
+         ""
+        ]
+       ]
+      },
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 300.014,
+     "d": 2.932,
+     "txt": "Same effort in the muscle. And the same gain in strength.",
+     "v": {
+      "cart": {
+       "it": [
+        [
+         "BENCH PRESS",
+         "6 rep max",
+         "SAME GAIN"
+        ],
+        [
+         "BAND PUSH-UPS",
+         "just as hard",
+         "SAME GAIN"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "t": 304.166,
+     "d": 3.12,
+     "txt": "If it's hard enough, your body counts it. Bar or no bar.",
+     "v": {
+      "icone": "flexao",
+      "big": "IT COUNTS",
+      "sub": "if it is HARD enough",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    }
+   ]
+  },
+  {
+   "cena": "virada",
+   "et": "THE CATCH",
+   "fonte": null,
+   "ini": 308.206,
+   "fim": 354.6,
+   "falas": [
+    {
+     "t": 308.206,
+     "d": 2.712,
+     "txt": "So should you throw away your weights? No. Here's the catch.",
+     "v": {
+      "icone": null,
+      "big": "THE CATCH",
+      "sub": "keep your WEIGHTS",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": [
+       {
+        "p": "academia",
+        "x": 430,
+        "a": 800
+       },
+       {
+        "p": "heroi",
+        "x": 900,
+        "a": 800
+       }
+      ],
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 311.338,
+     "d": 1.718,
+     "txt": "First. You are looking at the survivors.",
+     "v": {
+      "icone": null,
+      "big": "SURVIVORS",
+      "sub": "is who you are LOOKING at",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": 1
+     }
+    },
+    {
+     "t": 313.476,
+     "d": 6.294,
+     "txt": "Elite gymnasts are picked young, and they're usually short and light. The exact body the physics rewards.",
+     "v": {
+      "icone": null,
+      "big": null,
+      "sub": null,
+      "num": null,
+      "lista": {
+       "it": [
+        "picked YOUNG",
+        "short and LIGHT",
+        "the ones NOT hurt"
+       ],
+       "n": 2
+      },
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 320.19,
+     "d": 2.85,
+     "txt": "The ones whose shoulders and wrists gave out, you never see.",
+     "v": {
+      "lista": {
+       "it": [
+        "picked YOUNG",
+        "short and LIGHT",
+        "the ones NOT hurt"
+       ],
+       "n": 3
+      }
+     }
+    },
+    {
+     "t": 323.46,
+     "d": 5.159,
+     "txt": "Second. Those holds took them years. Tendons and joints adapt much slower than muscles.",
+     "v": {
+      "icone": null,
+      "big": "YEARS",
+      "sub": "tendons adapt SLOWER than muscle",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": 1,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 329.039,
+     "d": 3.297,
+     "txt": "Jump straight to the hard versions, and your elbows will tell you.",
+     "v": {
+      "big": "TOO FAST",
+      "sub": "and your ELBOWS will tell you"
+     }
+    },
+    {
+     "t": 332.756,
+     "d": 5.897,
+     "txt": "And third. Legs. Your legs already carry you all day. Bodyweight alone gets too easy for them, fast.",
+     "v": {
+      "icone": null,
+      "big": "LEGS",
+      "sub": "outgrow bodyweight FAST",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": [
+       {
+        "p": "heroi",
+        "x": 520,
+        "a": 800
+       }
+      ],
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 339.073,
+     "d": 5.45,
+     "txt": "A gymnast's legs are built mostly by sprinting, jumping and landing, not by slow holds.",
+     "v": {
+      "big": "JUMPING",
+      "sub": "builds their legs. not HOLDS."
+     }
+    },
+    {
+     "t": 344.944,
+     "d": 4.75,
+     "txt": "For strong legs, a barbell or a heavy backpack is still the simplest tool there is.",
+     "v": {
+      "icone": null,
+      "big": "ADD LOAD",
+      "sub": "for legs. a bar or a heavy PACK.",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": [
+       {
+        "p": "bear_hug",
+        "x": 520,
+        "a": 800
+       }
+      ],
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 350.114,
+     "d": 3.566,
+     "txt": "So the lesson is not, quit the gym. It's, steal the four rules.",
+     "v": {
+      "icone": null,
+      "big": "STEAL",
+      "sub": "the 4 RULES",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": 1
+     }
+    }
+   ]
+  },
+  {
+   "cena": "regras",
+   "et": "THE 4 RULES",
+   "fonte": null,
+   "ini": 354.6,
+   "fim": 367.299,
+   "falas": [
+    {
+     "t": 354.6,
+     "d": 3.492,
+     "txt": "One. When it gets easy, make the lever harder, not the set longer.",
+     "v": {
+      "icone": "flexao",
+      "big": null,
+      "sub": null,
+      "num": null,
+      "lista": {
+       "it": [
+        "a harder LEVER",
+        "HOLD the hard point",
+        "stay LIGHT",
+        "practice OFTEN"
+       ],
+       "n": 1,
+       "lado": 1
+      },
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 358.512,
+     "d": 1.365,
+     "txt": "Two. Hold the hardest point.",
+     "v": {
+      "lista": {
+       "it": [
+        "a harder LEVER",
+        "HOLD the hard point",
+        "stay LIGHT",
+        "practice OFTEN"
+       ],
+       "n": 2,
+       "lado": 1
+      },
+      "icone": "flexao_baixo"
+     }
+    },
+    {
+     "t": 360.297,
+     "d": 2.911,
+     "txt": "Three. Build strength without chasing size you don't need.",
+     "v": {
+      "icone": null,
+      "big": null,
+      "sub": null,
+      "num": null,
+      "lista": {
+       "it": [
+        "a harder LEVER",
+        "HOLD the hard point",
+        "stay LIGHT",
+        "practice OFTEN"
+       ],
+       "n": 3,
+       "lado": 1
+      },
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": [
+       {
+        "p": "heroi",
+        "x": 380,
+        "a": 760
+       }
+      ],
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 363.628,
+     "d": 2.752,
+     "txt": "Four. Practice often, and stop well before failure.",
+     "v": {
+      "lista": {
+       "it": [
+        "a harder LEVER",
+        "HOLD the hard point",
+        "stay LIGHT",
+        "practice OFTEN"
+       ],
+       "n": 4,
+       "lado": 1
+      }
+     }
+    }
+   ]
+  },
+  {
+   "cena": "erros",
+   "et": "3 MISTAKES",
+   "fonte": null,
+   "ini": 367.299,
+   "fim": 391.992,
+   "falas": [
+    {
+     "t": 367.299,
+     "d": 1.864,
+     "txt": "And three mistakes that kill progress.",
+     "v": {
+      "icone": null,
+      "big": "3 MISTAKES",
+      "sub": "that kill PROGRESS",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": [
+       {
+        "p": "heroi",
+        "x": 520,
+        "a": 800
+       }
+      ],
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 369.583,
+     "d": 6.912,
+     "txt": "Mistake one. Chasing reps. If you can do thirty push-ups, the thirty first won't make you stronger. A harder version will.",
+     "v": {
+      "icone": "flexao",
+      "big": "CHASING REPS",
+      "sub": "30 easy ones teach you NOTHING new",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 376.915,
+     "d": 7.566,
+     "txt": "Mistake two. Bending your arms. In the lean and in the hang, straight arms are the whole point. That's where the tendons do the work.",
+     "v": {
+      "icone": null,
+      "big": "BENT ARMS",
+      "sub": "straight arms are the whole POINT",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": [
+       {
+        "p": "argolas",
+        "x": 520,
+        "a": 700
+       }
+      ],
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 384.902,
+     "d": 6.171,
+     "txt": "Mistake three. Holding until you shake and collapse. Stop while it still looks good. Quality is the training.",
+     "v": {
+      "icone": "flexao_baixo",
+      "big": "SHAKING",
+      "sub": "stop while it still looks GOOD",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    }
+   ]
+  },
+  {
+   "cena": "rotina",
+   "et": "THE GYMNAST STARTER · 10 MIN · 3× A WEEK",
+   "fonte": null,
+   "ini": 391.992,
+   "fim": 440.372,
+   "falas": [
+    {
+     "t": 391.992,
+     "d": 4.286,
+     "txt": "Here's a starter. Ten minutes, three times a week. Add it to what you already do.",
+     "v": {
+      "icone": null,
+      "big": "10 MIN",
+      "sub": "3 times a week. an ADD ON.",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": [
+       {
+        "p": "heroi",
+        "x": 520,
+        "a": 800
+       }
+      ],
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 396.698,
+     "d": 1.116,
+     "txt": "One. The bottom hold.",
+     "v": {
+      "icone": "flexao_baixo",
+      "big": "1",
+      "sub": "THE BOTTOM HOLD",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 398.234,
+     "d": 6.753,
+     "txt": "The same test you just did. Chest a fist from the floor. Three holds. Stop a few seconds before you'd collapse.",
+     "v": {
+      "big": null,
+      "sub": null,
+      "lista": {
+       "it": [
+        "1 · BOTTOM HOLD",
+        "chest a fist from the floor",
+        "3 holds",
+        "stop BEFORE you collapse"
+       ],
+       "auto": 1,
+       "lado": 1,
+       "tit": 1
+      }
+     }
+    },
+    {
+     "t": 405.407,
+     "d": 2.427,
+     "txt": "Too hard? Put your hands on a bench. Same hold.",
+     "v": {}
+    },
+    {
+     "t": 409.754,
+     "d": 0.773,
+     "txt": "Two. The lean.",
+     "v": {
+      "icone": "flexao",
+      "big": "2",
+      "sub": "THE LEAN",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 410.947,
+     "d": 5.336,
+     "txt": "Top of a push-up. Arms locked. Now shift your shoulders forward, past your hands, and hold.",
+     "v": {
+      "big": null,
+      "sub": null,
+      "lista": {
+       "it": [
+        "2 · THE LEAN",
+        "arms LOCKED",
+        "shoulders past your hands",
+        "hold"
+       ],
+       "auto": 1,
+       "lado": 1,
+       "tit": 1
+      }
+     }
+    },
+    {
+     "t": 416.703,
+     "d": 3.461,
+     "txt": "That's the first step toward a planche. An inch forward is a lot.",
+     "v": {}
+    },
+    {
+     "t": 422.084,
+     "d": 0.828,
+     "txt": "Three. The hang.",
+     "v": {
+      "icone": null,
+      "big": "3",
+      "sub": "THE HANG",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": [
+       {
+        "p": "argolas",
+        "x": 520,
+        "a": 700,
+        "anda": 0
+       }
+      ],
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 423.332,
+     "d": 7.27,
+     "txt": "Hang from a bar or rings, arms straight. Then pull your shoulders down, away from your ears, without bending your arms.",
+     "v": {
+      "big": null,
+      "sub": null,
+      "lista": {
+       "it": [
+        "3 · THE HANG",
+        "arms STRAIGHT",
+        "shoulders DOWN",
+        "no bending"
+       ],
+       "auto": 1,
+       "lado": 1,
+       "tit": 1
+      }
+     }
+    },
+    {
+     "t": 431.021,
+     "d": 4.269,
+     "txt": "Three holds of each. Next week, hold a little longer, or lean a little farther.",
+     "v": {
+      "icone": null,
+      "big": "3 HOLDS",
+      "sub": "of each. then a little MORE.",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": [
+       {
+        "p": "heroi",
+        "x": 520,
+        "a": 800
+       }
+      ],
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 435.711,
+     "d": 3.742,
+     "txt": "This is a starting point I put together, not a program from a study.",
+     "v": {
+      "big": "A START",
+      "sub": "not a study PROGRAM",
+      "aviso": 1
+     }
+    }
+   ]
+  },
+  {
+   "cena": "cuidado",
+   "et": "BE SAFE",
+   "fonte": null,
+   "ini": 440.372,
+   "fim": 457.356,
+   "falas": [
+    {
+     "t": 440.372,
+     "d": 4.931,
+     "txt": "Go slower than you want to. Your muscles will be ready long before your wrists and elbows are.",
+     "v": {
+      "icone": null,
+      "big": "GO SLOW",
+      "sub": "wrists and ELBOWS need longer",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": 1,
+      "aviso": 1,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 445.723,
+     "d": 4.522,
+     "txt": "Warm up your wrists first. And if a joint hurts, back off to the easier version.",
+     "v": {
+      "big": "BACK OFF",
+      "sub": "if a JOINT hurts"
+     }
+    },
+    {
+     "t": 450.665,
+     "d": 5.771,
+     "txt": "This is education, not medical advice. If you have an injury, check with a professional first.",
+     "v": {
+      "icone": null,
+      "big": "NOT MEDICAL",
+      "sub": "advice. check with a PROFESSIONAL.",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": [
+       {
+        "p": "heroi",
+        "x": 520,
+        "a": 800
+       }
+      ],
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    }
+   ]
+  },
+  {
+   "cena": "final",
+   "et": null,
+   "fonte": null,
+   "ini": 457.356,
+   "fim": 494.885,
+   "falas": [
+    {
+     "t": 457.356,
+     "d": 1.573,
+     "txt": "So, back to the guy on the rings.",
+     "v": {
+      "icone": "cruz",
+      "big": "THE RINGS",
+      "sub": "back to that GUY",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 459.349,
+     "d": 5.234,
+     "txt": "He's not strong in spite of having no weights. He's strong because of how he uses his body.",
+     "v": {
+      "icone": null,
+      "big": "BECAUSE",
+      "sub": "not in spite of it",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": 1
+     }
+    },
+    {
+     "t": 465.003,
+     "d": 4.136,
+     "txt": "A longer lever. A frozen hold. A light frame. And years of practice.",
+     "v": {
+      "icone": null,
+      "big": null,
+      "sub": null,
+      "num": null,
+      "lista": {
+       "it": [
+        "a longer LEVER",
+        "a frozen HOLD",
+        "a light FRAME",
+        "years of PRACTICE"
+       ],
+       "auto": 1
+      },
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 469.559,
+     "d": 2.02,
+     "txt": "You can take three of those four home today.",
+     "v": {
+      "icone": null,
+      "big": "3 OF 4",
+      "sub": "you can take home TODAY",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": [
+       {
+        "p": "heroi",
+        "x": 520,
+        "a": 800
+       }
+      ],
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 471.999,
+     "d": 8.802,
+     "txt": "You won't hold a cross. Almost nobody will. But a longer hold, a harder lever, and a body you can actually move? That's on the table for anyone.",
+     "v": {
+      "icone": null,
+      "big": "FOR ANYONE",
+      "sub": "a body you can actually MOVE",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": [
+       {
+        "p": "argolas",
+        "x": 520,
+        "a": 700
+       }
+      ],
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 481.222,
+     "d": 3.728,
+     "txt": "Repeat the bottom hold test in four weeks, and comment your new time.",
+     "v": {
+      "icone": "flexao_baixo",
+      "big": "4 WEEKS",
+      "sub": "then comment your NEW time",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": null
+     }
+    },
+    {
+     "t": 485.37,
+     "d": 4.095,
+     "txt": "Next time: why a fifty year old who never trained can still crush your hand.",
+     "v": {
+      "icone": null,
+      "big": "NEXT VIDEO",
+      "sub": "old man STRENGTH",
+      "num": null,
+      "lista": null,
+      "cart": null,
+      "rank": null,
+      "barras": null,
+      "anel": null,
+      "brilho": null,
+      "figs": null,
+      "mao": null,
+      "aviso": null,
+      "bigy": null,
+      "c": 1
+     }
+    }
+   ]
+  }
+ ]
+}
