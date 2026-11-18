@@ -38,13 +38,13 @@ def punho(lado):
     return (f'<g transform="scale({lado},1)">' + P("M 222,850 L 302,850 C 314,880 314,930 300,956 C 284,972 240,972 224,956 C 212,930 212,880 222,850 Z", 7)
             + L("M 222,896 C 250,902 276,902 304,896", 3) + L("M 240,900 L 240,962", 2.5, .8) + L("M 262,902 L 262,966", 2.5, .8) + L("M 284,900 L 284,962", 2.5, .8) + '</g>')
 
-def antebracos_abraco():
+def antebracos_abraco(destaque=False):
     """Antebraços por cima da carga, mãos travadas no meio (desenha um lado e espelha)."""
     o = []
     for e in (False, True):
         t = 'transform="scale(-1,1)"' if e else ''
         tubo = "M 292,618 C 304,662 282,696 238,694 C 170,688 96,662 40,628 C 22,612 22,576 44,566 C 104,574 176,588 236,598 C 260,598 280,604 292,618 Z"
-        o.append(f'<g {t}>' + P(tubo) + H("M 238,694 C 170,688 96,662 40,628 C 100,650 176,668 244,668 C 272,664 288,646 292,618 C 304,662 282,696 238,694 Z")
+        o.append(f'<g {t}>' + P(tubo) + (f'<path d="{tubo}" fill="{AMBAR}" opacity=".8" style="mix-blend-mode:multiply"/>' if destaque else '') + H("M 238,694 C 170,688 96,662 40,628 C 100,650 176,668 244,668 C 272,664 288,646 292,618 C 304,662 282,696 238,694 Z")
                  + L("M 226,610 C 170,606 110,596 60,584", 2, .7) + L("M 244,636 C 190,636 130,626 76,608", 2, .7)
                  + P("M 48,632 C 14,640 -14,620 -12,590 C -10,566 16,554 46,562 C 58,580 58,612 48,632 Z", 7)
                  + L("M 10,572 L 6,626", 3) + L("M 28,566 L 26,632", 3) + '</g>')
@@ -91,6 +91,7 @@ def pose(nome):
     if nome == 'fazendeiro':      return figura('frente', roupa='macacao', chap=True)
     if nome == 'academia':        return figura('frente', larg=1.24, cor=CINZA, reto=True)
     if nome == 'fazendeiro_saco': return figura('abraco', roupa='macacao', chap=True) + saco(0, 470, 420, 330) + antebracos_abraco()
+    if nome == 'fazendeiro_saco_ambar': return figura('abraco', roupa='macacao', chap=True) + saco(0, 470, 420, 330) + antebracos_abraco(True)
     if nome == 'academia_saco':   return f'<g transform="scale(1.24,1)">' + '</g>' + figura('abraco', larg=1.24, cor=CINZA, reto=True) + saco(0, 470, 420, 330) + f'<g transform="scale(1.24,1)">{antebracos_abraco()}</g>'
     if nome == 'academia_largou': return figura('frente', larg=1.24, cor=CINZA, reto=True) + saco(0, 1440, 440, 300, rot=-7)
     if nome == 'academia_barra':  return halter_barra(-452) + figura('pendurado', larg=1.24, cor=CINZA, reto=True, pe='chao')
@@ -114,7 +115,7 @@ if __name__ == '__main__':
     if len(sys.argv) > 2 and sys.argv[1] == 'poses':
         d = sys.argv[2]
         import os
-        for n in [x for x, _ in FOLHA] + ['heroi', 'farmer_carry_ambar']:
+        for n in [x for x, _ in FOLHA] + ['heroi', 'farmer_carry_ambar', 'fazendeiro_saco_ambar']:
             open(f'{d}/{n}.svg', 'w').write(svg_pose(n)); subprocess.run(['rsvg-convert', '-h', '1500', f'{d}/{n}.svg', '-o', f'{d}/{n}.png'], check=True); os.remove(f'{d}/{n}.svg')
         open(f'{d}/mao_close.svg', 'w').write(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="-60 -140 1000 900" width="1000" height="900">{DEFS}{mao_close()}</svg>')
         subprocess.run(['rsvg-convert', '-w', '1400', f'{d}/mao_close.svg', '-o', f'{d}/mao_close.png'], check=True); os.remove(f'{d}/mao_close.svg'); print('poses ok'); sys.exit()
