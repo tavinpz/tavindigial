@@ -1,5 +1,7 @@
 # Two Childhoods #01 (tc001) — roteiro para aprovação
 
+> Versão final de produção: `atlas-motion/tc01_roteiro.py` (acrescentou a cena dos dois quebra-cabeças aos 6 anos e o capítulo "Age 22: The first rejection"; ficou com 1.369 palavras e 8:37).
+
 **Título:** Praised for Being Smart vs Praised for Trying: The Whole Life
 **Duração estimada:** ~9 min (cerca de 1.240 palavras de narração, mais pausas e cartões de capítulo; os tempos abaixo são aproximados e a duração real sai quando a voz for gerada)
 **Formato:** tela dividida, Casa A (âmbar, "You're so smart") x Casa B (marinho, "You worked hard"), mesmo personagem (Sam) nas duas.
