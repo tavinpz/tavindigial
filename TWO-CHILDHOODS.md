@@ -20,13 +20,13 @@ Ambiente, voz, render, painel: ver `CROSSWIND.md`. Fila de 20 máquinas: repo `t
 - Render local também é viável: ~10 quadros/s em 2 núcleos (8:37 em ~26 min), para uma versão em qualidade máxima.
 - Áudio (wav/m4a) não vai para este repo (está no .gitignore); o mix.m4a fica só no render-videos.
 
-## Padrão visual (próprio, não copiar o modelo)
-- Duas cores trocadas, tiradas da logo: Casa A = fundo âmbar #F2B441 com desenho marinho #17304B; Casa B = o inverso. Creme #FBF3E4 para balões, legenda e cartões. Coral #E5533D só para alerta (palavra-chave, carimbo, número ruim).
-- Personagem = o peão da logo (cabeça redonda + corpo trapezoidal), que cresce com a idade (`ALTURA`). Criança cheia, adulto ao lado dela claro com contorno. Olhos = dois pontos que mudam de direção; emoção por inclinação e olhar.
-- Fontes: Alfa Slab One (títulos, números), Inter 800/900 (legenda, balões), JetBrains Mono (aviso).
-- Assinaturas: selo AGE na emenda com a cor trocada em cada metade; título partido na emenda (`Partido`: "AGE" marinho | "16" âmbar); contagem em risquinhos por casa (`Topo conta`); linha da vida com os peões 6/16/30/60 nos cartões de capítulo.
-- Estudo real = cartão de fundo creme (`CenaD`), com autores, ano, revista, amostra e os peões contando a porcentagem. História = aviso fixo "ILLUSTRATED STORY · BASED ON PUBLISHED RESEARCH".
-- Legenda: tarja creme embaixo, palavra-chave com marca-texto âmbar. Nada de desenho abaixo de y=900.
+## Padrão visual (versão 2, 18/11/2026)
+O Tavin reprovou a versão 1 (tudo em amarelo e azul chapados: "ruim para o olho") e pediu mais tonalidades, sombra e algo mais real. Gostou do roteiro e das animações.
+- Casa A = parede amarela quente com luz; Casa B = parede azul clara. Piso de madeira, rodapé, tapete, planta, janela com céu (dia) ou lua e estrelas (a partir dos 22 anos), cortinas, móveis de madeira com sombra, livros coloridos, troféus dourados.
+- Personagens = o peão da logo humanizado (`Peao tipo="sam" | "pai" | "filho"`): pele, cabelo, bochecha, boca que muda com o humor (feliz, triste, neutro), roupa colorida com sombreado e sombra no chão. Sam usa sempre coral nas duas casas; pai/mãe da Casa A de verde, da Casa B de roxo; grisalho e óculos aos 60.
+- Cartões (capítulo, texto, resumo): amarelo quente | azul médio com luz e bolinhas; texto marinho à esquerda e branco à direita, com sombra.
+- Estudo real = cartão creme. Pictogramas de gráfico usam `Peao tipo="icone"`.
+- Capas: seguir a fórmula da capa que deu certo no vídeo-modelo (174 mil views): etiqueta AGE 6 → AGE 60 (ou 30), causa à esquerda, consequência à direita, frase curta embaixo de cada lado, uma palavra em vermelho. Ver `src/tc/Thumbs.tsx`.
 
 ## Regras de conteúdo
 - A vida inteira é dramatização: dizer isso no vídeo. Estudo só com número conferido na fonte primária; dizer também quando a ciência discorda (no #01: Li & Bates 2019 não replicou).

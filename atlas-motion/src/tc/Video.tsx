@@ -1,6 +1,6 @@
 import React from 'react';
 import { AbsoluteFill, useCurrentFrame } from 'remotion';
-import { ALTURA, Balao, Braco, Carimbo, CHAO, Fundo, H, Idade, Janela, L, Lado, Livros, Luminaria, MEIO, Mesa, MONO, P, Papel, Partido, Peao, Prateleira, SANS, SLAB, tema, Topo, Trofeu, W } from './lib';
+import { ALTURA, Balao, Braco, Carimbo, CHAO, Fundo, H, Idade, Janela, L, Lado, Livros, Luminaria, MEIO, Mesa, MONO, P, Papel, Partido, Peao, Planta, Prateleira, SANS, SLAB, Tapete, tema, Topo, Trofeu, W } from './lib';
 
 // Two Childhoods: motor do vídeo longo. Cada fala do tempos.json traz em `v` o que aparece na tela (ver tc01_roteiro.py).
 // O estado acumula dentro do bloco: a fala herda o `v` anterior e chave com null apaga.
@@ -18,22 +18,24 @@ const Pop: React.FC<{ g: number; t0: number; cx: number; cy: number; children: R
 const COR: Record<string, string> = { coral: P.coral, mar: P.mar, amb: P.amb };
 
 // ---------- objetos de cena ----------
-const Violao: React.FC<{ x: number; cor: string; fundo: string }> = ({ x, cor, fundo }) => (
-  <g transform={`translate(${x} ${CHAO}) rotate(-14)`}>
-    <rect x={-9} y={-330} width={18} height={190} rx={6} fill={cor} /><rect x={-17} y={-362} width={34} height={44} rx={8} fill={cor} />
-    <ellipse cx={0} cy={-150} rx={50} ry={46} fill={cor} /><ellipse cx={0} cy={-74} rx={68} ry={66} fill={cor} /><circle cx={0} cy={-96} r={20} fill={fundo} />
+const Violao: React.FC<{ x: number; cor: string; fundo: string }> = ({ x }) => (
+  <g><ellipse cx={x + 10} cy={CHAO + 4} rx={74} ry={12} fill="#000" opacity={0.18} />
+    <g transform={`translate(${x} ${CHAO}) rotate(-14)`}>
+      <rect x={-9} y={-330} width={18} height={190} rx={6} fill={P.madeiraEsc} /><rect x={-17} y={-362} width={34} height={44} rx={8} fill="#3B2A20" />
+      <ellipse cx={0} cy={-150} rx={50} ry={46} fill="#D98A3A" /><ellipse cx={0} cy={-74} rx={68} ry={66} fill="#D98A3A" /><ellipse cx={20} cy={-80} rx={44} ry={60} fill="#000" opacity={0.1} />
+      <circle cx={0} cy={-96} r={20} fill="#3B2A20" /><rect x={-22} y={-52} width={44} height={8} rx={3} fill="#3B2A20" />
+      {[-5, 0, 5].map((d) => <path key={d} d={`M ${d} -330 L ${d} -50`} stroke="#fff" strokeWidth={1.5} opacity={0.7} />)}
+    </g></g>
+);
+const Laptop: React.FC<{ lado: Lado; tela?: string }> = ({ tela }) => (
+  <g>
+    <rect x={434} y={CHAO - 268} width={172} height={116} rx={10} fill="#39424F" /><rect x={444} y={CHAO - 258} width={152} height={94} rx={4} fill={tela ? '#FFFFFF' : '#BFD9F2'} />
+    <rect x={414} y={CHAO - 162} width={212} height={12} rx={6} fill="#8894A3" />
+    {!tela && <path d={`M 456 ${CHAO - 236} l 80 0 M 456 ${CHAO - 218} l 120 0 M 456 ${CHAO - 200} l 60 0`} stroke="#fff" strokeWidth={6} strokeLinecap="round" opacity={0.8} />}
+    {tela === 'oferta' && <><text x={520} y={CHAO - 218} textAnchor="middle" fontFamily={SANS} fontWeight={900} fontSize={22} fill={P.mar} letterSpacing={1}>NEW ROLE</text><path d={`M 474 ${CHAO - 198} l 92 0 M 474 ${CHAO - 182} l 60 0`} stroke={P.azul} strokeWidth={5} strokeLinecap="round" opacity={0.6} /></>}
+    {tela === 'email' && <><rect x={478} y={CHAO - 242} width={84} height={58} rx={6} fill="#FFF2C9" stroke={P.mar} strokeWidth={5} /><path d={`M 478 ${CHAO - 240} l 42 32 l 42 -32`} fill="none" stroke={P.mar} strokeWidth={5} strokeLinejoin="round" /></>}
   </g>
 );
-const Laptop: React.FC<{ lado: Lado; tela?: string }> = ({ lado, tela }) => {
-  const t = tema(lado);
-  return (
-    <g>
-      <rect x={440} y={CHAO - 262} width={160} height={104} rx={8} fill={tela ? P.creme : t.claro} stroke={t.tinta} strokeWidth={7} /><rect x={420} y={CHAO - 160} width={200} height={10} rx={5} fill={t.tinta} />
-      {tela === 'oferta' && <><text x={520} y={CHAO - 218} textAnchor="middle" fontFamily={SANS} fontWeight={900} fontSize={22} fill={P.mar} letterSpacing={1}>NEW ROLE</text><path d={`M 474 ${CHAO - 198} l 92 0 M 474 ${CHAO - 182} l 60 0`} stroke={P.mar} strokeWidth={5} strokeLinecap="round" opacity={0.35} /></>}
-      {tela === 'email' && <><rect x={478} y={CHAO - 240} width={84} height={58} rx={6} fill="none" stroke={P.mar} strokeWidth={5} /><path d={`M 478 ${CHAO - 238} l 42 32 l 42 -32`} fill="none" stroke={P.mar} strokeWidth={5} strokeLinejoin="round" /></>}
-    </g>
-  );
-};
 const Caixa: React.FC<{ x: number; rot: string; lado: Lado; n: number; ativo: boolean; g: number }> = ({ x, rot, lado, n, ativo, g }) => {
   const t = tema(lado), y = CHAO - 150;
   return (
@@ -69,21 +71,24 @@ const Casa: React.FC<{ l: Lado; idade: number; v: V; g: number; desde: (k: strin
     } else el.push(<Luminaria key="lu" x={130} lado={l} />);
     // grande (pai/mãe aos 6; o próprio Sam aos 45) e pequeno (Sam aos 6; o filho aos 45)
     const gy = samGrande ? pulo : 0, py = samGrande ? 0 : pulo;
-    el.push(<g key="g" transform={`translate(0 ${bob * 0.6 + gy})`}><Peao x={610} h={samGrande ? hS : 350} cor={samGrande ? t.tinta : t.claro} contorno={samGrande ? undefined : t.tinta} olho={samGrande ? t.fundo : t.tinta} olhar={[-0.9, 0.5]} incl={-3} pisca={pisca} /></g>);
+    const bl = v['b' + l], falaP = bl && bl.q === 'p';
+    el.push(<Tapete key="tp" x={510} larg={470} lado={l} />); el.push(<Planta key="pl" x={905} g={g} />);
+    el.push(<g key="g" transform={`translate(0 ${bob * 0.6 + gy})`}><Peao x={610} h={samGrande ? hS : 350} tipo={samGrande ? 'sam' : 'pai'} coque={!samGrande && a} cor={samGrande ? P.coral : t.roupaPai} humor={falaP ? 'feliz' : 'neutro'} olhar={[-0.9, 0.5]} incl={-3} pisca={pisca} /></g>);
     el.push(<g key="k" transform={`translate(0 ${-bob + py})`}>
-      <Peao x={410} h={190} cor={samGrande ? t.claro : t.tinta} contorno={samGrande ? t.tinta : undefined} olho={samGrande ? t.tinta : t.fundo} olhar={f.triste && !samGrande ? [0.2, 0.9] : [0.8, -0.7]} incl={a ? 0 : 2} pisca={(g + 50) % 120 < 5 ? 1 : 0} />
-      {tem('nota') && <Pop g={g} t0={desde('o' + l)} cx={500} cy={CHAO - 186}><Braco de={[430, CHAO - 108]} ate={[478, CHAO - 150]} cor={samGrande ? t.tinta : t.tinta} /><Papel x={500} y={CHAO - 186} nota={val('nota')} rot={8 + Math.sin(g / 9) * 3} larg={84} /></Pop>}
+      <Peao x={410} h={190} tipo={samGrande ? 'filho' : 'sam'} cor={samGrande ? P.verde : P.coral} humor={f.triste && !samGrande ? 'triste' : f.pula || falaP || tem('nota') ? 'feliz' : 'neutro'} olhar={f.triste && !samGrande ? [0.2, 0.9] : [0.8, -0.7]} incl={a ? 0 : 2} pisca={(g + 50) % 120 < 5 ? 1 : 0} />
+      {tem('nota') && <Pop g={g} t0={desde('o' + l)} cx={500} cy={CHAO - 186}><Braco de={[430, CHAO - 108]} ate={[478, CHAO - 150]} cor={samGrande ? P.verde : P.coral} /><Papel x={500} y={CHAO - 186} nota={val('nota')} rot={8 + Math.sin(g / 9) * 3} larg={84} /></Pop>}
     </g>);
-    if (f.brilho) el.push(<Brilho key="br" x={samGrande ? 610 : 410} y={CHAO - (samGrande ? hS : 190) + 38 + py} r={samGrande ? 86 : 54} cor={P.creme} g={g} />);
+    if (f.brilho) el.push(<Brilho key="br" x={samGrande ? 610 : 410} y={CHAO - (samGrande ? hS : 190) + 38 + py} r={samGrande ? 86 : 54} cor="#FFFFFF" g={g} />);
   } else {
     const h = ALTURA[idade] || 320;
     el.push(<Janela key="j" x={690} y={250} lado={l} noite={noite} />);
     const nt = a ? (idade >= 60 ? 3 : idade >= 22 ? 2 : 1) : idade >= 30 ? 1 : 0, nl = a ? (idade >= 22 ? 2 : 3) : Math.min(5, 3 + Math.floor(idade / 20));
     el.push(<Prateleira key="p" x={385} y={500} lado={l} larg={270}>{a
       ? <>{Array.from({ length: nt }).map((_, i) => <Trofeu key={i} x={42 + i * 66} lado={l} />)}{nt < 3 && <Livros x={42 + nt * 66} lado={l} n={nl} />}</>
-      : <><Livros x={14} lado={l} n={nl} />{nt > 0 && <Trofeu x={176} lado={l} />}{idade >= 22 && <Papel x={236} y={-40} nota="C" rot={5} larg={50} cor={P.coral} />}</>}</Prateleira>);
+      : <><Livros x={14} lado={l} n={nl} />{nt > 0 && <Trofeu x={176} lado={l} />}{idade >= 22 && <Papel x={236} y={-44} nota="C" rot={5} larg={50} cor={P.coral} />}</>}</Prateleira>);
+    el.push(<Tapete key="tp" x={300} larg={420} lado={l} />); el.push(<Planta key="pl" x={905} g={g} />);
     el.push(<Mesa key="m" x={350} lado={l} larg={330} />);
-    if (idade === 16) el.push(<g key="lv"><rect x={400} y={CHAO - 172} width={120} height={22} rx={5} fill={t.tinta} /><rect x={410} y={CHAO - 192} width={100} height={20} rx={5} fill={t.sombra} stroke={t.tinta} strokeWidth={4} /></g>);
+    if (idade === 16) el.push(<g key="lv"><rect x={400} y={CHAO - 172} width={120} height={22} rx={5} fill={P.azul} /><rect x={410} y={CHAO - 192} width={100} height={20} rx={5} fill={P.coral} /><rect x={404} y={CHAO - 166} width={112} height={5} fill="#fff" opacity={0.6} /></g>);
     if (idade === 22 || idade === 30) el.push(<Laptop key="lp" lado={l} tela={tem('oferta') ? 'oferta' : tem('email') ? 'email' : undefined} />);
     if (idade === 60) el.push(<Luminaria key="lu" x={610} lado={l} />);
     if (tem('nota')) { const n = val('nota'); el.push(<Pop key={'n' + n} g={g} t0={desde('o' + l)} cx={600} cy={CHAO - 215}><Papel x={600} y={CHAO - 215} nota={n} rot={-7} larg={92} cor={n === 'F' ? P.coral : P.mar} /></Pop>); }
@@ -97,7 +102,7 @@ const Casa: React.FC<{ l: Lado; idade: number; v: V; g: number; desde: (k: strin
         {its.map((s, i) => g >= t0 + dur * (0.5 + i * 0.16) && <text key={i} x={632} y={646 + i * 40} fontFamily={SANS} fontWeight={800} fontSize={28} fill={P.mar}>{'☐ ' + s}</text>)}
       </g></Pop>);
     }
-    el.push(<g key="s" transform={`translate(0 ${bob + pulo})`}><Peao x={230} h={h} cor={t.tinta} olho={t.fundo} olhar={olharFoco} incl={f.triste ? -5 : a ? -1 : 3} oculos={idade >= 60} pisca={pisca} /></g>);
+    el.push(<g key="s" transform={`translate(0 ${bob + pulo})`}><Peao x={230} h={h} tipo="sam" cor={P.coral} velho={idade >= 60} humor={f.triste || val('carimbo') ? 'triste' : val('carimbo2') || tem('violao') ? 'feliz' : 'neutro'} olhar={olharFoco} incl={f.triste ? -5 : a ? -1 : 3} oculos={idade >= 60} pisca={pisca} /></g>);
     const c1 = val('carimbo'), c2 = val('carimbo2');
     if (c1) el.push(<Pop key={'c' + c1} g={g} t0={desde('o' + l)} cx={515} cy={735} d={7}><Carimbo x={515} y={735} txt={c1} tam={30} /></Pop>);
     if (c2) el.push(<Pop key={'d' + c2} g={g} t0={desde('o' + l)} cx={515} cy={735} d={7}><Carimbo x={515} y={735} txt={c2} cor={P.mar} tam={30} rot={7} /></Pop>);
@@ -120,24 +125,24 @@ const Duo: React.FC<{ b: Bloco; v: V; g: number; desde: (k: string) => number; f
   return (
     <g>
       <g transform={`translate(${MEIO} 560) scale(${z}) translate(${-MEIO} -560)`}>
-        <Fundo />
+        <Fundo noite={idade >= 22} />
         <Casa l="a" idade={idade} v={v} g={g} desde={desde} fala={fala} gi={0} />
         <Casa l="b" idade={idade} v={v} g={g} desde={desde} fala={fala} gi={0} />
       </g>
       <Topo lado="a" titulo="“You're so smart.”" conta={conta('a')} />
       <Topo lado="b" titulo="“You worked hard.”" conta={conta('b')} />
-      {v.conta && <g opacity={0.5 + 0.5 * Math.sin(g / 4)}><rect x={54} y={138} width={470} height={70} rx={14} fill="none" stroke={P.mar} strokeWidth={5} /><rect x={MEIO + 134} y={138} width={520} height={70} rx={14} fill="none" stroke={P.amb} strokeWidth={5} /></g>}
+      {v.conta && <g opacity={0.5 + 0.5 * Math.sin(g / 4)}><rect x={54} y={138} width={470} height={70} rx={14} fill="none" stroke={P.coral} strokeWidth={6} /><rect x={MEIO + 134} y={138} width={520} height={70} rx={14} fill="none" stroke={P.coral} strokeWidth={6} /></g>}
       <Idade n={idade} />
       {v.nota && <Pop g={g} t0={desde('nota')} cx={MEIO} cy={300}><rect x={MEIO - 290} y={266} width={580} height={68} rx={18} fill={P.creme} /><text x={MEIO} y={312} textAnchor="middle" fontFamily={MONO} fontWeight={700} fontSize={28} fill={P.mar} letterSpacing={3}>{v.nota}</text></Pop>}
       {big && <g>
-        <rect x={0} y={0} width={MEIO} height={H} fill={P.amb} opacity={L(g, [tb, tb + 7], [0, 0.9])} /><rect x={MEIO} y={0} width={MEIO} height={H} fill={P.mar} opacity={L(g, [tb, tb + 7], [0, 0.9])} />
+        <rect x={0} y={0} width={MEIO} height={H} fill="#F5BE45" opacity={L(g, [tb, tb + 7], [0, 0.92])} /><rect x={MEIO} y={0} width={MEIO} height={H} fill={P.azulEsc} opacity={L(g, [tb, tb + 7], [0, 0.92])} />
         <Pop g={g} t0={tb + 2} cx={MEIO} cy={560}>
           <g transform={big.al ? `translate(${Math.sin(g * 1.7) * 4 * Math.max(0, 1 - (g - desde('big')) / 30)} 0)` : undefined}>
             <Partido esq={big.e} dir={big.d} y={600} tam={big.tam || 120} folga={0.22} corE={big.al ? P.coral : P.mar} />
           </g>
         </Pop>
       </g>}
-      <text x={W - 60} y={1062} textAnchor="end" fontFamily={MONO} fontWeight={700} fontSize={17} fill={P.amb} letterSpacing={2} opacity={0.6}>ILLUSTRATED STORY · BASED ON PUBLISHED RESEARCH</text>
+      <text x={W - 60} y={1062} textAnchor="end" fontFamily={MONO} fontWeight={700} fontSize={17} fill="#FFFFFF" letterSpacing={2} opacity={0.75}>ILLUSTRATED STORY · BASED ON PUBLISHED RESEARCH</text>
     </g>
   );
 };
@@ -146,10 +151,10 @@ const Duo: React.FC<{ b: Bloco; v: V; g: number; desde: (k: string) => number; f
 const Linha: React.FC<{ atual?: number; y: number; g: number; marca?: number }> = ({ atual, y, g, marca }) => (
   <g>
     {IDADES.map((n, i) => (['a', 'b'] as Lado[]).map((l) => {
-      const t = tema(l), x = (l === 'a' ? 150 : MEIO + 150) + i * 110, h = ALTURA[n] * 0.4, on = n === atual, s = pop(g, 4 + i * 3);
+      const t = { tinta: l === 'a' ? P.mar : '#FFFFFF' }, x = (l === 'a' ? 150 : MEIO + 150) + i * 110, h = ALTURA[n] * 0.4, on = n === atual, s = pop(g, 4 + i * 3);
       return (
         <g key={l + n} opacity={(atual === undefined || on ? 1 : 0.36) * Math.min(1, s)}>
-          <Peao x={x} base={y - (on ? Math.abs(Math.sin(g / 6)) * 8 : 0)} h={h * Math.min(1.05, s)} cor={t.tinta} />
+          <Peao x={x} base={y - (on ? Math.abs(Math.sin(g / 6)) * 8 : 0)} h={h * Math.min(1.05, s)} tipo="sam" cor={P.coral} velho={n >= 60} humor={on ? 'feliz' : 'neutro'} />
           <text x={x} y={y + 38} textAnchor="middle" fontFamily={SANS} fontWeight={900} fontSize={24} fill={t.tinta}>{n}</text>
           {on && <rect x={x - 36} y={y + 50} width={72} height={8} rx={4} fill={t.tinta} />}
           {marca === n && <circle cx={x} cy={y - h / 2} r={h * 0.72 + Math.sin(g / 5) * 5} fill="none" stroke={P.coral} strokeWidth={7} />}
@@ -165,7 +170,7 @@ const Capitulo: React.FC<{ b: Bloco; g: number }> = ({ b, g }) => (
     <g opacity={L(g, [0, 6], [0, 1])}><Partido esq="CHAPTER" dir={b.cap!.n} y={250} tam={40} fam={SANS} peso={900} esp={16} folga={0.5} /></g>
     <Pop g={g} t0={3} cx={MEIO} cy={450} d={12}><Partido esq="AGE" dir={String(b.idade)} y={560} tam={330} /></Pop>
     <Pop g={g} t0={12} cx={MEIO} cy={682}>
-      <rect x={MEIO - (b.cap!.tit.length * 36 + 90) / 2} y={636} width={b.cap!.tit.length * 36 + 90} height={92} rx={20} fill={P.creme} />
+      <rect x={MEIO - (b.cap!.tit.length * 36 + 90) / 2 + 6} y={646} width={b.cap!.tit.length * 36 + 90} height={92} rx={20} fill="#000" opacity={0.18} /><rect x={MEIO - (b.cap!.tit.length * 36 + 90) / 2} y={636} width={b.cap!.tit.length * 36 + 90} height={92} rx={20} fill="#FFFFFF" />
       <text x={MEIO} y={700} textAnchor="middle" fontFamily={SANS} fontWeight={900} fontSize={52} fill={P.mar} letterSpacing={5}>{b.cap!.tit}</text>
     </Pop>
     <Linha atual={b.idade} y={930} g={g} />
@@ -192,7 +197,7 @@ const Estudo: React.FC<{ b: Bloco; v: V; g: number; desde: (k: string) => number
   if (d.k === 'num') {
     const n = Math.round(d.n * L(g, [t0, t0 + 26], [0, 1])), col = d.n > 200 ? 25 : 16, px = d.n > 200 ? 33 : 51, py = d.n > 200 ? 36 : 54, hh = d.n > 200 ? 28 : 42;
     el.push(<g key="num"><text x={1010} y={300} fontFamily={SLAB} fontSize={170} fill={P.mar}>{n}</text><text x={1010} y={356} fontFamily={SANS} fontWeight={900} fontSize={30} fill={P.mar} letterSpacing={5}>{d.rot}</text>
-      {Array.from({ length: d.n }).map((_, i) => i < n && <Peao key={i} x={1026 + (i % col) * px} base={430 + Math.floor(i / col) * py + hh} h={hh} cor={i % 2 ? P.amb : P.mar} />)}</g>);
+      {Array.from({ length: d.n }).map((_, i) => i < n && <Peao key={i} x={1026 + (i % col) * px} base={430 + Math.floor(i / col) * py + hh} h={hh} cor={[P.coral, P.azul, P.ouro, P.verde, P.roxo, P.mar][(i * 7 + Math.floor(i / col)) % 6]} />)}</g>);
   }
   if (d.k === 'frases') {
     const fr = [['“You must be smart', 'at these problems.”', P.coral], ['“You must have worked hard', 'at these problems.”', P.mar]];
@@ -279,9 +284,9 @@ const Vida: React.FC<{ v: V; g: number; desde: (k: string) => number }> = ({ v, 
       return on && (
         <g key={n}>
           <Pop g={g} t0={t0} cx={MEIO} cy={y - 34}><circle cx={MEIO} cy={y - 34} r={46} fill={P.creme} /><text x={MEIO} y={y - 17} textAnchor="middle" fontFamily={SLAB} fontSize={44} fill={P.mar}>{n}</text>
-            <Peao x={MEIO - 150} base={y + 20} h={ALTURA[n] * 0.44} cor={P.mar} olho={P.amb} olhar={[0, 0.4]} oculos={n === 60} /><Peao x={MEIO + 150} base={y + 20} h={ALTURA[n] * 0.44} cor={P.amb} olho={P.mar} olhar={[0, -0.2]} oculos={n === 60} /></Pop>
+            <Peao x={MEIO - 150} base={y + 20} h={ALTURA[n] * 0.44} tipo="sam" cor={P.coral} humor={n > 6 ? 'triste' : 'feliz'} velho={n === 60} olhar={[0, 0.4]} oculos={n === 60} /><Peao x={MEIO + 150} base={y + 20} h={ALTURA[n] * 0.44} tipo="sam" cor={P.coral} humor="feliz" velho={n === 60} olhar={[0, -0.2]} oculos={n === 60} /></Pop>
           <text x={MEIO - 250 - (1 - L(g, [t0 + 4, t0 + 14], [0, 1])) * 60} y={y - 16} textAnchor="end" fontFamily={SANS} fontWeight={800} fontSize={46} fill={P.mar} opacity={L(g, [t0 + 4, t0 + 14], [0, 1])}>{ea}</text>
-          <text x={MEIO + 250 + (1 - L(g, [t0 + 30, t0 + 40], [0, 1])) * 60} y={y - 16} textAnchor="start" fontFamily={SANS} fontWeight={800} fontSize={46} fill={P.amb} opacity={L(g, [t0 + 30, t0 + 40], [0, 1])}>{eb}</text>
+          <text x={MEIO + 250 + (1 - L(g, [t0 + 30, t0 + 40], [0, 1])) * 60} y={y - 16} textAnchor="start" fontFamily={SANS} fontWeight={800} fontSize={46} fill="#FFFFFF" opacity={L(g, [t0 + 30, t0 + 40], [0, 1])}>{eb}</text>
         </g>
       );
     })}
@@ -296,7 +301,7 @@ const Trocas: React.FC<{ v: V; g: number; desde: (k: string) => number; fala: Fa
       {v.tit ? <Pop g={g} t0={2} cx={MEIO} cy={500}><Partido esq="NEVER" dir="TOO LATE" y={560} tam={150} folga={0.2} /></Pop> : <>
         <Partido esq="THREE" dir="SWAPS" y={150} tam={84} folga={0.22} />
         <text x={MEIO - 110} y={236} textAnchor="end" fontFamily={SANS} fontWeight={900} fontSize={24} fill={P.mar} letterSpacing={5} opacity={0.7}>INSTEAD OF</text>
-        <text x={MEIO + 110} y={236} fontFamily={SANS} fontWeight={900} fontSize={24} fill={P.amb} letterSpacing={5} opacity={0.7}>TRY</text>
+        <text x={MEIO + 110} y={236} fontFamily={SANS} fontWeight={900} fontSize={24} fill="#FFFFFF" letterSpacing={5} opacity={0.85}>TRY</text>
         {TROCAS.map(([de, para], i) => {
           const y = 380 + i * 170, on = (v.n || 0) > i, t0 = i + 1 === v.n && !v.yet ? desde('n') : -200, t1 = t0 + dur * 0.5, larg = de.length * 27;
           return on && (
@@ -304,12 +309,12 @@ const Trocas: React.FC<{ v: V; g: number; desde: (k: string) => number; fala: Fa
               <text x={MEIO - 110} y={y} textAnchor="end" fontFamily={SANS} fontWeight={800} fontSize={50} fill={P.mar} opacity={L(g, [t0, t0 + 8], [0, 1]) * (g > t1 ? 0.55 : 1)}>{de}</text>
               <rect x={MEIO - 110 - larg} y={y - 20} width={larg * L(g, [t1, t1 + 10], [0, 1])} height={7} rx={3} fill={P.coral} />
               <Pop g={g} t0={t1} cx={MEIO} cy={y - 16}><circle cx={MEIO} cy={y - 16} r={44} fill={P.creme} /><path d={`M ${MEIO - 20} ${y - 16} l 34 0 m -14 -15 l 15 15 l -15 15`} fill="none" stroke={P.mar} strokeWidth={8} strokeLinecap="round" strokeLinejoin="round" /></Pop>
-              <text x={MEIO + 110} y={y} fontFamily={SANS} fontWeight={800} fontSize={para.length > 28 ? 44 : 50} fill={P.amb} opacity={L(g, [t1 + 4, t1 + 14], [0, 1])}>{para}</text>
+              <text x={MEIO + 110} y={y} fontFamily={SANS} fontWeight={800} fontSize={para.length > 28 ? 44 : 50} fill="#FFFFFF" opacity={L(g, [t1 + 4, t1 + 14], [0, 1])}>{para}</text>
             </g>
           );
         })}
       </>}
-      {v.yet && (() => { const t0 = desde('yet') + Math.round(dur * 0.78); return g >= t0 && <g><rect x={0} y={0} width={MEIO} height={H} fill={P.amb} opacity={0.93} /><rect x={MEIO} y={0} width={MEIO} height={H} fill={P.mar} opacity={0.93} /><Pop g={g} t0={t0} cx={MEIO} cy={520}><Partido esq="NOT" dir="YET." y={600} tam={230} folga={0.16} /></Pop></g>; })()}
+      {v.yet && (() => { const t0 = desde('yet') + Math.round(dur * 0.78); return g >= t0 && <g><rect x={0} y={0} width={MEIO} height={H} fill="#F5BE45" opacity={0.95} /><rect x={MEIO} y={0} width={MEIO} height={H} fill={P.azulEsc} opacity={0.95} /><Pop g={g} t0={t0} cx={MEIO} cy={520}><Partido esq="NOT" dir="YET." y={600} tam={230} folga={0.16} /></Pop></g>; })()}
     </g>
   );
 };
@@ -318,7 +323,7 @@ const Fim: React.FC<{ v: V; g: number; desde: (k: string) => number }> = ({ v, g
     <Fundo chao={false} />
     <g opacity={L(g, [0, 8], [0, 1])}><Partido esq="NEXT" dir="CHILDHOOD" y={170} tam={44} fam={SANS} peso={900} esp={14} folga={0.5} /></g>
     <Pop g={g} t0={6} cx={MEIO} cy={420}><Partido esq="RAISED BY" dir="RAISED BY" y={330} tam={70} folga={0.5} /><Partido esq="FEAR" dir="RESPECT" y={500} tam={170} folga={0.2} /></Pop>
-    {(['a', 'b'] as Lado[]).map((l) => { const t = tema(l), x0 = l === 'a' ? 210 : MEIO + 520; return <g key={l} opacity={L(g, [16, 26], [0, 1])}><Peao x={x0 + 60} base={790 + Math.sin(g / 15) * 2} h={210} cor={t.claro} contorno={t.tinta} olho={t.tinta} olhar={[-0.8, 0.5]} /><Peao x={x0 - 70} base={790 - Math.sin(g / 15) * 2} h={120} cor={t.tinta} olho={t.fundo} olhar={[0.8, -0.6]} /></g>; })}
+    {(['a', 'b'] as Lado[]).map((l) => { const t = tema(l), x0 = l === 'a' ? 210 : MEIO + 520; return <g key={l} opacity={L(g, [16, 26], [0, 1])}><Peao x={x0 + 60} base={790 + Math.sin(g / 15) * 2} h={210} tipo="pai" coque={l === 'a'} cor={t.roupaPai} humor={l === 'a' ? 'triste' : 'feliz'} olhar={[-0.8, 0.5]} /><Peao x={x0 - 70} base={790 - Math.sin(g / 15) * 2} h={120} tipo="sam" cor={P.coral} humor={l === 'a' ? 'triste' : 'feliz'} olhar={[0.8, -0.6]} /></g>; })}
     {(v.n || 0) > 1 && <Pop g={g} t0={desde('n')} cx={MEIO} cy={690}><g transform={`translate(${MEIO} 690) scale(${1 + 0.04 * Math.sin(g / 5)}) translate(${-MEIO} -690)`}>
       <rect x={MEIO - 250} y={640} width={500} height={100} rx={50} fill={P.coral} /><text x={MEIO} y={706} textAnchor="middle" fontFamily={SANS} fontWeight={900} fontSize={46} fill="#FFFFFF" letterSpacing={6}>SUBSCRIBE</text></g></Pop>}
   </g>
@@ -333,7 +338,7 @@ const Legenda: React.FC<{ f: Fala; q: number }> = ({ f, q }) => {
   const de = gi * por, ate = Math.min(pal.length, de + por), dest = (f.dest || []).map((s) => s.toLowerCase());
   return (
     <div style={{ position: 'absolute', left: 0, top: 916, width: W, height: 130, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-      <div style={{ background: P.creme, borderRadius: 22, padding: '16px 40px', fontFamily: SANS, fontWeight: 800, fontSize: 50, color: P.mar, whiteSpace: 'nowrap', boxShadow: '0 8px 0 rgba(0,0,0,0.14)' }}>
+      <div style={{ background: '#FFFFFF', borderRadius: 22, padding: '16px 40px', fontFamily: SANS, fontWeight: 800, fontSize: 50, color: P.mar, whiteSpace: 'nowrap', boxShadow: '0 10px 24px rgba(0,0,0,0.28)' }}>
         {pal.slice(de, ate).map((p, i) => {
           const k = de + i, dito = q >= ini[k] - 1, d = dest.includes(p.replace(/[^a-zA-Z'-]/g, '').toLowerCase());
           return <span key={k} style={{ opacity: dito ? 1 : 0.3, ...(d && dito ? { background: P.amb, borderRadius: 10, padding: '2px 10px', margin: '0 -10px' } : {}) }}>{p}{i < ate - de - 1 ? ' ' : ''}</span>;

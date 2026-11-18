@@ -18,7 +18,6 @@ import { SNBTeste } from './snb/Teste';
 import { SNBFicha } from './snb/Ficha';
 import { SNBVideo } from './snb/Video';
 import { SNBThumb } from './snb/Thumbs';
-import { TCStill } from './tc/Stills';
 import { TCVideo } from './tc/Video';
 import { TCThumb } from './tc/Thumbs';
 import temposSNB from '../public/snb/teste/tempos.json';
@@ -139,8 +138,6 @@ export const Root: React.FC = () => (
       }} />
     <Composition id="PPLogo2" component={PPBrand as any} durationInFrames={1} fps={30} width={800} height={800} defaultProps={{ v: 'logo' }} />
     <Composition id="PPBanner" component={PPBrand as any} durationInFrames={1} fps={30} width={2560} height={1440} defaultProps={{ v: 'banner' }} />
-    {/* Two Childhoods: imagens paradas do padrão visual */}
-    <Composition id="TCStill" component={TCStill as any} width={1920} height={1080} fps={30} durationInFrames={1} defaultProps={{ k: 'a' }} />
     <Composition id="TCVideo" component={TCVideo as any} width={1920} height={1080} fps={30} durationInFrames={300} defaultProps={{ pasta: 'tc/v01' }}
       calculateMetadata={async ({ props }: any) => { const tempos = await fetch(staticFile(`${props.pasta}/tempos.json`)).then((x) => x.json()); return { durationInFrames: props.n || Math.ceil(tempos.total * 30), props: { ...props, tempos } }; }} />
     <Composition id="TCThumb" component={TCThumb as any} width={1280} height={720} fps={30} durationInFrames={1} defaultProps={{ v: 'a' }} />
