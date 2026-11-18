@@ -57,6 +57,11 @@
      {
       "tipo": "cartas",
       "modo": "misterio",
+      "selo": "THE ARGUMENT"
+     },
+     {
+      "tipo": "cartas",
+      "modo": "misterio",
       "selo": "THE OLD ADVICE"
      },
      {
@@ -149,6 +154,17 @@
       "tipo": "numero",
       "txt": "?",
       "rotulo": "ARMIES YOU REALLY NEED"
+     },
+     {
+      "tipo": "tropas",
+      "a": 20,
+      "b": 2,
+      "selo": "HOW FAR?"
+     },
+     {
+      "tipo": "cartas",
+      "modo": "misterio",
+      "selo": "SEND IT TO YOUR GROUP"
      }
     ]
    },
@@ -156,6 +172,7 @@
     "In 1957, a French film director invented a board game about conquering the world.",
     "His name was Albert Lamorisse. The same year, his short film The Red Balloon won an Oscar.",
     "Two years later, Parker Brothers brought his game to America, and called it Risk.",
+    "Today, more than sixty years later, people still argue about it at kitchen tables all over the world.",
     "And for sixty years, players have repeated the same piece of advice.",
     "The defender has the advantage.",
     "Ties go to the defense. So never attack unless you clearly outnumber them.",
@@ -167,7 +184,9 @@
     "And the old advice is wrong. Not a little wrong.",
     "By the end of this video, you'll know when a smaller army beats a bigger one,",
     "the one attack you should almost never make,",
-    "and exactly how many armies you need to take any territory."
+    "exactly how many armies you need to take any territory,",
+    "and how far one big army can march before it runs out of steam.",
+    "If you play Risk with friends, send them this video before your next game. One of you is about to start winning a lot more."
    ]
   },
   {
@@ -363,6 +382,46 @@
       "rotulo": "YOU LOSE · 1 DIE VS 2"
      },
      {
+      "tipo": "batalha",
+      "ata": [
+       6,
+       4,
+       3
+      ],
+      "def": [
+       5
+      ],
+      "txt": "1 DIE OR 2?"
+     },
+     {
+      "tipo": "numero",
+      "txt": "66%",
+      "rotulo": "DEFENDER LOSES · 1 DIE VS 3"
+     },
+     {
+      "tipo": "teste",
+      "a": "DEFEND WITH 1",
+      "pa": "1.9 : 1",
+      "b": "DEFEND WITH 2",
+      "pb": "1.2 : 1",
+      "vence": "b"
+     },
+     {
+      "tipo": "ficha",
+      "titulo": "LAB NOTE · DEFENDING",
+      "linhas": [
+       [
+        "1 die",
+        "lose ~2 per kill"
+       ],
+       [
+        "2 dice",
+        "lose ~1.2 per kill"
+       ]
+      ],
+      "selo": "ALWAYS ROLL 2"
+     },
+     {
       "tipo": "ficha",
       "titulo": "LAB NOTE · ROLL BY ROLL",
       "linhas": [
@@ -406,6 +465,10 @@
     "Now the defender wins both pairs 45 percent of the time.",
     "And one die into two is the worst move in the game.",
     "You lose that roll 75 percent of the time.",
+    "And here's one for the defender. In the classic rules, you can choose to roll one die or two.",
+    "With one die against three, you lose that roll 66 percent of the time.",
+    "For every army the attacker loses, you lose almost two.",
+    "With two dice, it's about 1.2 to one. So if you're defending and you're allowed, always roll two.",
     "So the rule isn't that defense is strong. It's that small attacks are weak."
    ]
   },
@@ -625,6 +688,18 @@
        1
       ],
       "txt": "ONLY AT THE END"
+     },
+     {
+      "tipo": "teste",
+      "a": "KNEW IT",
+      "pa": "YES",
+      "b": "BELIEVED THE LEGEND",
+      "pb": "NO",
+      "vence": "b"
+     },
+     {
+      "tipo": "contador",
+      "txt": "GAMES PER VIDEO"
      }
     ],
     "n": 2,
@@ -653,7 +728,9 @@
     "A smaller army, beating a bigger one, more often than not.",
     "Why? Because in a long battle, the attacker keeps rolling three dice almost the whole time.",
     "And every one of those rolls tilts toward the attacker.",
-    "The defender's tie advantage only matters at the very end, when the attacker is down to one or two dice."
+    "The defender's tie advantage only matters at the very end, when the attacker is down to one or two dice.",
+    "Quick question before we keep going. Did you know this? Be honest. Drop a yes or a no in the comments. I want to see how many people believed the legend.",
+    "And if you're enjoying this, hit subscribe. Every video on this channel is ten thousand games of something, and we check every number."
    ]
   },
   {
@@ -818,6 +895,152 @@
      {
       "tipo": "capitulo",
       "n": "PART FOUR",
+      "txt": "THE LONG MARCH"
+     },
+     {
+      "tipo": "tropas",
+      "a": 10,
+      "b": 1,
+      "selo": "HOW FAR?"
+     },
+     {
+      "tipo": "ficha",
+      "titulo": "THE RULE OF THE MARCH",
+      "linhas": [
+       [
+        "Win a territory",
+        "leave 1 behind"
+       ],
+       [
+        "Move on",
+        "with the rest"
+       ]
+      ]
+     },
+     {
+      "tipo": "contador",
+      "txt": "MARCHES SIMULATED"
+     },
+     {
+      "tipo": "fichas",
+      "rotulo": "10 ARMIES VS 1 DEFENDER EACH · CHANCE TO REACH",
+      "itens": [
+       {
+        "cor": "#d64535",
+        "nome": "TERRITORY 1",
+        "v": 100
+       },
+       {
+        "cor": "#d64535",
+        "nome": "TERRITORY 2",
+        "v": 100
+       },
+       {
+        "cor": "#d64535",
+        "nome": "TERRITORY 3",
+        "v": 98
+       }
+      ]
+     },
+     {
+      "tipo": "fichas",
+      "rotulo": "10 ARMIES VS 1 DEFENDER EACH · CHANCE TO REACH",
+      "itens": [
+       {
+        "cor": "#d64535",
+        "nome": "TERRITORY 4",
+        "v": 93
+       },
+       {
+        "cor": "#d64535",
+        "nome": "TERRITORY 5",
+        "v": 78
+       },
+       {
+        "cor": "#d64535",
+        "nome": "TERRITORY 6",
+        "v": 54
+       },
+       {
+        "cor": "#d64535",
+        "nome": "TERRITORY 8",
+        "v": 9
+       }
+      ]
+     },
+     {
+      "tipo": "numero",
+      "txt": "5.6",
+      "rotulo": "TERRITORIES · 10 ARMIES VS SINGLE DEFENDERS"
+     },
+     {
+      "tipo": "numero",
+      "txt": "3.2",
+      "rotulo": "TERRITORIES · 10 ARMIES VS 2 DEFENDERS EACH"
+     },
+     {
+      "tipo": "teste",
+      "a": "1 DEFENDER EACH",
+      "pa": "5.6",
+      "b": "2 DEFENDERS EACH",
+      "pb": "3.2",
+      "vence": "a"
+     },
+     {
+      "tipo": "tropas",
+      "a": 20,
+      "b": 2,
+      "selo": "≈ 7 TERRITORIES"
+     },
+     {
+      "tipo": "ficha",
+      "titulo": "LAB NOTE · THE CHEAP WALL",
+      "linhas": [
+       [
+        "1 per territory",
+        "easy to march through"
+       ],
+       [
+        "2 per territory",
+        "march cut in half"
+       ]
+      ],
+      "selo": "THE CHEAP WALL"
+     },
+     {
+      "tipo": "teste",
+      "a": "THE MARCHER",
+      "pa": "?",
+      "b": "THE WALL",
+      "pb": "?",
+      "vence": "a"
+     }
+    ],
+    "n": 4,
+    "titulo": "The long march"
+   },
+   "falas": [
+    "Part four. The long march.",
+    "Taking one territory is nice. But the turns that win games are the ones where you tear through three, four, five territories in a row.",
+    "Every time you win, you have to leave one army behind. So your stack shrinks with every step.",
+    "So we started with ten armies and marched through territories with one defender each.",
+    "The first three are almost guaranteed. Then it starts to fade.",
+    "Territory five, 78 percent. Territory six, about a coin flip. Territory eight, almost never.",
+    "On average, ten armies take about 5.6 territories.",
+    "Now put two defenders on every territory. Ten armies take just 3.2 on average.",
+    "That second defender doesn't just slow you down. It cuts your march almost in half.",
+    "Double your stack to twenty armies, and against two defenders each, you take about 7.1.",
+    "And here's the defensive lesson. If you know someone is about to march through you, two armies per territory is the cheapest wall in the game.",
+    "Write that one down. And tell me in the comments: are you the player who marches, or the one who builds the wall?"
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "v": [
+     {
+      "tipo": "capitulo",
+      "n": "PART FIVE",
       "txt": "WHAT IT MEANS FOR THE GAME"
      },
      {
@@ -926,13 +1149,57 @@
       "a": 25,
       "b": 5,
       "selo": "99.99% TO WIN"
+     },
+     {
+      "tipo": "cartas",
+      "modo": "misterio",
+      "selo": "THE CARDS"
+     },
+     {
+      "tipo": "lista",
+      "titulo": "CARD SET VALUES · CLASSIC RULES",
+      "itens": [
+       "1st set: 4",
+       "2nd: 6 · 3rd: 8",
+       "4th: 10 · 5th: 12",
+       "6th: 15, then +5 each"
+      ]
+     },
+     {
+      "tipo": "numero",
+      "txt": "15",
+      "rotulo": "ARMIES FROM THE 6TH SET"
+     },
+     {
+      "tipo": "tropas",
+      "a": 16,
+      "b": 2,
+      "selo": "≈ 6 TERRITORIES"
+     },
+     {
+      "tipo": "ficha",
+      "titulo": "LAB NOTE · LATE GAME",
+      "linhas": [
+       [
+        "Card sets",
+        "grow every trade"
+       ],
+       [
+        "Big stacks",
+        "march farther"
+       ],
+       [
+        "Result",
+        "huge swings"
+       ]
+      ]
      }
     ],
-    "n": 4,
+    "n": 5,
     "titulo": "What it means for the game"
    },
    "falas": [
-    "Part four. What this means for the whole game.",
+    "Part five. What this means for the whole game.",
     "If big attacks win, then splitting your armies across the map is the real mistake.",
     "One stack of twenty beats four stacks of five.",
     "Because each stack of five is in the zone where the attacker barely wins half the time.",
@@ -941,7 +1208,12 @@
     "You become the giant stack. And giant stacks win.",
     "South America works the same way, with two ways in.",
     "Asia pays the biggest bonus, seven armies a turn. But it has five borders to hold.",
-    "Five borders means five thin stacks. And thin stacks are exactly what a big attack eats."
+    "Five borders means five thin stacks. And thin stacks are exactly what a big attack eats.",
+    "And then there are the cards.",
+    "In classic Risk, every set you trade in is worth more than the last one. Four armies, then six, eight, ten, twelve, fifteen, and then five more every time.",
+    "By the sixth set, one trade drops fifteen new armies on the board. Put them on top of a stack, and a whole continent can change hands in one turn.",
+    "Sixteen armies against a chain of territories with two defenders each? On average, you take about 5.5 of them.",
+    "That's why late game Risk feels so swingy. The cards turn every turn into a potential long march."
    ]
   },
   {
@@ -981,9 +1253,33 @@
       "selo": "GO BIG"
      },
      {
+      "tipo": "lista",
+      "titulo": "THE RISK CHEAT SHEET",
+      "itens": [
+       "Defend with 2 dice",
+       "No small attacks",
+       "Stack up, go big",
+       "2 on every border"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "titulo": "THE RISK CHEAT SHEET",
+      "itens": [
+       "Defend with 2 dice",
+       "No small attacks",
+       "Stack up, go big",
+       "2 on every border"
+      ]
+     },
+     {
       "tipo": "cartas",
       "modo": "misterio",
       "selo": "YOUR CRAZIEST COMEBACK?"
+     },
+     {
+      "tipo": "contador",
+      "txt": "GAMES FOR THE NEXT VIDEO"
      },
      {
       "tipo": "fim"
@@ -995,8 +1291,11 @@
     "Only in small fights. In big battles, the attacker wins, even outnumbered.",
     "Nineteen against twenty, and the attacker still wins 58 percent of the time.",
     "Don't poke. Stack up. And when you go, go big.",
-    "What's the craziest comeback you've ever seen in Risk? Tell us in the comments.",
-    "And subscribe. Next, we play ten thousand games of another classic."
+    "So here's your Risk cheat sheet. Roll two when you defend. Never poke with small attacks. Stack up, go big, and leave two on every border you care about.",
+    "Screenshot this. And send it to the friend who always wins, so the next game is fair.",
+    "What's the craziest comeback you've ever seen in Risk? Tell us in the comments. The best story gets pinned.",
+    "And which game should we play ten thousand times next? Write it below. We read every comment, and the most requested one is next.",
+    "Subscribe so you don't miss it. See you in the next ten thousand."
    ]
   }
  ]

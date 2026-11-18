@@ -51,6 +51,8 @@ intro = [
 cap1 = [
     F("Parte um. O homem do sertão.", {"tipo": "capitulo", "n": "PARTE UM", "txt": "O HOMEM DO SERTÃO"}),
     F("Quem manda aqui é um homem magro, de barba comprida e túnica azul.", {"tipo": "ficha", "titulo": "FICHA · O CONSELHEIRO", "linhas": [["NOME", "Antônio Vicente Mendes Maciel"], ["APELIDO", "Antônio Conselheiro"], ["ROUPA", "Túnica azul"]], "rodape": "Pregador no sertão da Bahia"}),
+    F("Ele nasceu em mil oitocentos e trinta, em Quixeramobim, no sertão do Ceará.", {"tipo": "ficha", "titulo": "FICHA · O CONSELHEIRO", "linhas": [["NASCEU", "1830"], ["ONDE", "Quixeramobim, CE"], ["ANTES", "Comerciante"]], "rodape": "Antônio Vicente Mendes Maciel"}),
+    F("Foi comerciante, foi professor, perdeu tudo. E um dia começou a andar pelo sertão, de cidade em cidade.", {"tipo": "bolso"}),
     F("O povo chama ele de Antônio Conselheiro.", {"tipo": "carimbo_doc", "titulo": "O LÍDER DE BELO MONTE", "txt": "O CONSELHEIRO"}),
     F("Por mais de vinte anos, ele andou pelo sertão reconstruindo igrejas e cemitérios, pregando e juntando seguidores.", {"tipo": "numero", "txt": "20", "rotulo": "anos pregando pelo sertão"}),
     F("Em mil oitocentos e noventa e três, ele parou numa velha fazenda às margens do rio Vaza-Barris. E fundou Belo Monte.", linha(0)),
@@ -62,6 +64,8 @@ cap1 = [
     F("Para você, que chegou sem nada, isso é muito. Um teto de barro, um pouco de farinha, e um lugar onde ninguém te expulsa.", barras(75, 55, 60, "UM TETO")),
     F("Mas para os fazendeiros da região, que estão perdendo trabalhadores, Belo Monte virou um problema.", {"tipo": "carimbo_doc", "titulo": "AOS OLHOS DOS FAZENDEIROS", "txt": "UM PROBLEMA"}),
     F("E para a Igreja, que perdeu o controle de um pregador, também.", {"tipo": "carimbo_doc", "titulo": "AOS OLHOS DA IGREJA", "txt": "UM PROBLEMA"}),
+    F("Antes de continuar, me responde uma coisa. Se você estivesse aqui, sem nada, você ficaria em Belo Monte?", {"tipo": "escolha", "a": "FICAR", "b": "IR EMBORA", "quando": "JANEIRO DE 1897"}),
+    F("Escreve ficar ou ir embora nos comentários, agora. No final do vídeo, você descobre se sobreviveu.", {"tipo": "escolha", "a": "FICAR", "b": "IR EMBORA", "txt": "COMENTE AGORA", "quando": "JANEIRO DE 1897"}),
 ]
 
 cap2 = [
@@ -84,6 +88,7 @@ cap2 = [
     F("Os jornais dizem que Canudos é um complô para trazer de volta o imperador.", {"tipo": "carimbo_doc", "titulo": "O QUE DIZEM OS JORNAIS", "txt": "COMPLÔ?"}),
     F("E o governo decide que agora não é mais uma expedição. É uma guerra.", {"tipo": "carimbo_doc", "titulo": "DECISÃO DO GOVERNO", "txt": "GUERRA"}),
     F("Para você, em Belo Monte, as armas largadas pela tropa viraram motivo de festa. Mas é a última boa notícia.", barras(65, 35, 30, "A ÚLTIMA BOA NOTÍCIA")),
+    F("E se você está gostando de viver a história por dentro, se inscreve no canal. Cada vídeo aqui é uma época diferente do Brasil, com documentos reais.", {"tipo": "mesa", "fotos": [A['arraial'], A['batalhao'], A['vila'], A['prisioneiros'], A['cavalaria']], "txt": "INSCREVA-SE"}),
 ]
 
 cap3 = [
@@ -97,6 +102,8 @@ cap3 = [
     F("Os tiros caem no meio das casas de barro. Não existe abrigo que aguente.", barras(50, 25, 12, "SEM ABRIGO")),
     F("O Exército fecha o cerco e corta o caminho até o rio.", foto('plano', zoom=[0.5, 0.45], ar=0.75)),
     F("Agora o inimigo não é só a bala. É a sede.", {"tipo": "carimbo_doc", "titulo": "O NOVO INIMIGO", "txt": "SEDE"}),
+    F("Para abastecer tanta gente, o próprio ministro da Guerra, o marechal Carlos Machado Bittencourt, vai até o sertão organizar os comboios de comida e munição.", {"tipo": "ficha", "titulo": "FICHA · O MINISTRO", "linhas": [["NOME", "Machado Bittencourt"], ["CARGO", "Ministro da Guerra"], ["MISSÃO", "Abastecer o cerco"]], "rodape": "Organizou os comboios a partir de Monte Santo"}),
+    F("Do lado de fora, chegam carroças e mulas. Do lado de dentro, não chega nada.", {"tipo": "comparacao", "a": "COMIDA DO EXÉRCITO", "va": 100, "b": "COMIDA EM BELO MONTE", "vb": 8, "ate": "b"}),
     F("A comida acaba. As pessoas comem o pouco que encontram.", barras(42, 10, 8, "SEM COMIDA")),
     F("Os feridos e os doentes morrem dentro das casas.", {"tipo": "bolso"}),
     F("Se você ainda está aqui em setembro, o seu painel está assim. E ainda vai piorar.", barras(35, 6, 5, "SETEMBRO")),
@@ -128,9 +135,13 @@ cap4 = [
     F("E nos anos sessenta, o governo construiu uma barragem no rio Vaza-Barris, o açude de Cocorobó.", {"tipo": "carimbo_doc", "titulo": "RIO VAZA-BARRIS · ANOS 1960", "txt": "AÇUDE DE COCOROBÓ"}),
     F("A água cobriu o lugar onde ficava Belo Monte.", foto('arraial', selo="SUBMERSO")),
     F("Até hoje, quando a seca é forte e a água baixa, as ruínas da velha igreja aparecem de novo.", foto('vila', zoom=[0.5, 0.45])),
+    F("Em mil novecentos e oitenta e seis, a área da guerra virou o Parque Estadual de Canudos. Ainda dá para ver as trincheiras e os lugares dos combates.", {"tipo": "carimbo_doc", "titulo": "BAHIA · 1986", "txt": "PARQUE ESTADUAL DE CANUDOS"}),
+    F("Então lembra do que você respondeu lá no começo. Ficar ou ir embora?", {"tipo": "escolha", "a": "FICAR", "b": "IR EMBORA", "quando": "JANEIRO DE 1897"}),
+    F("Se você respondeu ir embora antes de junho, você provavelmente sobreviveu. Se respondeu ficar, você estava entre os milhares que não saíram de Belo Monte.", barras(55, 20, 40, "IR EMBORA: VIVO")),
     F("Com fotos e documentos reais da época, essa foi a sua chance.", {"tipo": "mesa", "fotos": [A['prisioneiros'], A['arraial'], A['batalhao'], A['vila'], A['cavalaria']], "txt": "FOTOS E DOCUMENTOS REAIS"}),
-    F("E você? Ficaria em Belo Monte, ou fugiria antes do cerco? Me conta nos comentários.", {"tipo": "escolha", "a": "FICAR", "b": "FUGIR", "txt": "COMENTE A SUA", "quando": "JUNHO DE 1897"}),
-    F("E se inscreve, porque no próximo, você acorda em outra época do Brasil.", {"tipo": "fim"}),
+    F("Agora me conta nos comentários: você sabia que essa guerra tinha acontecido? Aprendeu na escola, ou está ouvindo pela primeira vez?", {"tipo": "escolha", "a": "JÁ SABIA", "b": "PRIMEIRA VEZ", "txt": "COMENTE A SUA", "quando": "1897"}),
+    F("E manda esse vídeo para alguém que gosta de história. Muita gente nunca ouviu falar de Canudos.", {"tipo": "mesa", "fotos": [A['prisioneiros'], A['arraial'], A['batalhao']], "txt": "COMPARTILHE"}),
+    F("Se inscreve e ativa o sininho, porque no próximo, você acorda em outra época do Brasil. E escreve aqui embaixo qual época você quer viver.", {"tipo": "fim"}),
 ]
 
 spec = {
@@ -139,7 +150,7 @@ spec = {
     "numeros": {"mil oitocentos e noventa e sete": "1897", "mil oitocentos e noventa e seis": "1896", "mil oitocentos e noventa e três": "1893",
                 "cinco mil e duzentas": "5.200", "vinte e cinco mil": "25 mil", "mil e trezentos": "1.300", "cinco mil": "5 mil", "oito mil": "8 mil", "doze mil": "12 mil",
                 "trezentas": "300", "dezessete": "17", "vinte e dois de setembro": "22 de setembro", "cinco de outubro": "5 de outubro", "trinta e dois": "32",
-                "vinte anos": "20 anos", "cem": "100"},
+                "vinte anos": "20 anos", "cem": "100", "mil oitocentos e trinta": "1830", "mil novecentos e oitenta e seis": "1986"},
     "blocos": [],
 }
 nomes = {1: 'O homem do sertão', 2: 'Três derrotas', 3: 'O cerco', 4: 'O veredito'}

@@ -18,6 +18,7 @@ ACIMA = [o['uf'] for o in C if o['rec'] >= 122]
 NUNCA110 = sum(o['rec'] < 110 for o in C)
 SEM_TOT = sum(o['sem_ac_mi'] for o in C)
 p = lambda st: POR[st]['pct_sem']
+def grupo(a, b): return [[o['rank'], o['nome'].upper() + ' · NO AC', o['pct_sem']] for o in C if a <= o['rank'] <= b]
 
 
 def F(t, v): return (t, v)
@@ -36,8 +37,11 @@ intro = [
     F("And in twenty twenty one, a heat wave pushed Washington State to a hundred and twenty.", rank('WA', pos="120°F", sub="HANFORD · JUNE 2021")),
     F("A state where a lot of people never needed air conditioning.", {"tipo": "icones2", "a": "casa", "b": "fogo", "txt": "NO AC"}),
     F("Washington's health department counted a hundred and twelve heat deaths.", {"tipo": "numero", "txt": "112", "rotulo": "HEAT DEATHS · WASHINGTON · 2021"}),
+    F("Oregon reported a hundred and sixteen more. In a single heat wave.", {"tipo": "numero", "txt": "116", "rotulo": "HEAT DEATHS REPORTED · OREGON · 2021"}),
     F("So here's the experiment. One week. A hundred and twenty two degrees. In every state at once.", mapa(grade=True, pergunta="ONE WEEK · 122°F · EVERYWHERE")),
     F("Which state breaks first?", mapa(misterio=True)),
+    F("Stay to the end, because the answer isn't one of the hot states. And the state with the most people at risk might be yours.", mapa(todos=True, pergunta="WHERE DOES YOURS LAND?")),
+    F("And if you have family or friends in another state, send them this. They'll want to know where their state lands.", {"tipo": "icones2", "a": "familia", "b": "balao", "txt": "SEND IT TO FAMILY"}),
 ]
 
 regras = [
@@ -54,6 +58,7 @@ c1 = [
     F(f"In {len(CHEIOS)} states, at least ninety five percent of homes have air conditioning.", mapa(destaque=CHEIOS, sticker={"txt": "95%+ AC"})),
     F(f"Florida, {POR['FL']['pct_ac']} percent. Texas, {POR['TX']['pct_ac']}.", {"tipo": "lista", "itens": [[POR['FL']['rank'], "FLORIDA · HOMES WITH AC", POR['FL']['pct_ac']], [POR['TX']['rank'], "TEXAS · HOMES WITH AC", POR['TX']['pct_ac']]]}),
     F("No surprise there. They live with heat every summer.", {"tipo": "icones2", "a": "ilha", "b": "fogo", "txt": "HEAT EVERY SUMMER"}),
+    F(f"Georgia and South Carolina, {POR['GA']['pct_ac']} percent. Oklahoma, {POR['OK']['pct_ac']}. Missouri and Kentucky, {POR['MO']['pct_ac']}.", {"tipo": "barras", "titulo": "HOMES WITH AIR CONDITIONING", "max": 100, "unid": "%", "itens": [["GEORGIA", POR['GA']['pct_ac'], "#7bc47f"], ["SOUTH CAROLINA", POR['SC']['pct_ac'], "#7bc47f"], ["OKLAHOMA", POR['OK']['pct_ac'], "#7bc47f"], ["MISSOURI", POR['MO']['pct_ac'], "#7bc47f"]]}),
     F("But here's one that is a surprise.", mapa(misterio=True)),
     F(f"Iowa. {POR['IA']['pct_ac']} percent of homes have air conditioning.", rank('IA', pos=f"{POR['IA']['pct_ac']}%", sub="HOMES WITH AC")),
     F(f"That's more than Arizona, at {POR['AZ']['pct_ac']}.", {"tipo": "barras", "titulo": "HOMES WITH AIR CONDITIONING", "max": 100, "unid": "%", "itens": [["IOWA", POR['IA']['pct_ac'], "#7bc47f"], ["ARIZONA", POR['AZ']['pct_ac'], "#e9874a"]]}),
@@ -72,17 +77,32 @@ c2 = [
     F("Along much of the coast, people never needed it. The ocean did the cooling for free.", {"tipo": "icones2", "a": "ilha", "b": "casa", "txt": "THE OCEAN WAS THE AC"}),
     F(f"New York has about {round(POR['NY']['sem_ac_mi'] * 1000):,} thousand homes with no AC. And of the ones that have it, most are window units.", {"tipo": "numero", "txt": f"{POR['NY']['sem_ac_mi']}M", "rotulo": "NEW YORK HOMES WITH NO AC"}),
     F(f"Only {POR['NY']['central']} percent of New York homes have central air.", rank('NY', pos=f"{POR['NY']['central']}%", sub="HOMES WITH CENTRAL AIR")),
+    F("And that matters. A window unit cools one room. Central air cools the whole house.", {"tipo": "icones2", "a": "casa", "b": "neve", "txt": "ONE ROOM VS WHOLE HOUSE"}),
+    F(f"In Vermont, only {POR['VT']['central']} percent of homes have central air. In Maine, {POR['ME']['central']}. In Hawaii, {POR['HI']['central']}.", {"tipo": "barras", "titulo": "HOMES WITH CENTRAL AIR", "max": 100, "unid": "%", "itens": [["VERMONT", POR['VT']['central'], "#e5484d"], ["MAINE", POR['ME']['central'], "#e5484d"], ["HAWAII", POR['HI']['central'], "#e5484d"], ["FLORIDA", POR['FL']['central'], "#7bc47f"]]}),
+    F(f"Compare that to Florida, at {POR['FL']['central']} percent.", rank('FL', pos=f"{POR['FL']['central']}%", sub="HOMES WITH CENTRAL AIR")),
+    F("Now here's the number that surprised us the most.", mapa(misterio=True)),
+    F(f"Texas. Ninety five percent of homes have AC. But Texas is so big that the other five percent is still about {round(POR['TX']['sem_ac_mi'] * 1000)} thousand homes.", rank('TX', pos=f"{round(POR['TX']['sem_ac_mi'] * 1000)}K", sub="TEXAS HOMES WITH NO AC")),
+    F("More homes without air conditioning than the entire state of Montana has.", {"tipo": "barras", "titulo": "THOUSANDS OF HOMES", "max": 600, "unid": "K", "itens": [["TEXAS · NO AC", round(POR['TX']['sem_ac_mi'] * 1000), "#e5484d"], ["MONTANA · ALL HOMES", round(POR['MT']['casas_mi'] * 1000), "#e9c46a"]]}),
+    F(f"Here's the full list of homes with no AC, in raw numbers. California, Washington, New York, Michigan, Texas.", {"tipo": "barras", "titulo": "HOMES WITH NO AC · MILLIONS", "max": 4, "unid": "M", "itens": [[POR[st]['nome'].upper(), POR[st]['sem_ac_mi'], "#e5484d"] for st in ['CA', 'WA', 'NY', 'MI', 'TX']]}),
+    F("Quick pause. Does your home have air conditioning? Central, window unit, or nothing at all? Tell us in the comments, and tell us your state.", {"tipo": "icones2", "a": "casa", "b": "balao", "txt": "CENTRAL · WINDOW · NONE?"}),
+    F("We'll read them and pin the most surprising one.", {"tipo": "icones2", "a": "balao", "b": "alvo", "txt": "WE READ THEM ALL"}),
 ]
 
 c3 = [
     F("Part three. The top ten. These are the states that break first.", {"tipo": "capitulo", "n": "TOP 10", "txt": "THE STATES THAT BREAK FIRST"}),
+    F("Before the top ten, let's run through the middle of the list. Fast.", {"tipo": "lista", "itens": grupo(26, 30)}),
+    F(f"Thirty, Arkansas. Twenty nine, Mississippi. Twenty eight, Louisiana. Twenty seven, Tennessee. All around {p('TN')} percent with no AC.", {"tipo": "lista", "itens": grupo(26, 30)}),
+    F(f"Twenty five, South Dakota. Twenty four, Utah. Twenty three, Wisconsin. Twenty two, Pennsylvania. Twenty one, North Carolina.", {"tipo": "lista", "itens": grupo(21, 25)}),
+    F(f"Twenty, Maryland. Nineteen, Connecticut. Eighteen, Rhode Island. Seventeen, West Virginia. Sixteen, New York.", {"tipo": "lista", "itens": grupo(16, 20)}),
+    F(f"Fifteen, Michigan. Fourteen, Massachusetts. Thirteen, New Mexico. Twelve, Colorado. And eleven, Idaho, with {p('ID')} percent of homes and no AC.", {"tipo": "lista", "itens": grupo(11, 15)}),
     F(f"Number ten. New Hampshire. {p('NH')} percent of homes with no AC.", rank('NH', sub=f"{p('NH')}% NO AC")),
     F(f"Number nine. Oregon. {p('OR')} percent. And Oregon already got a taste of this, in twenty twenty one.", rank('OR', sub=f"{p('OR')}% NO AC · 119°F IN 2021")),
     F(f"Number eight. California, with the most homes at risk.", rank('CA', sub=f"{p('CA')}% NO AC · 3.6M HOMES")),
-    F(f"Number seven. Wyoming. {p('WY')} percent.", rank('WY', sub=f"{p('WY')}% NO AC")),
+    F(f"Number seven. Wyoming. {p('WY')} percent. High, dry, and cool at night, so most people never needed it.", rank('WY', sub=f"{p('WY')}% NO AC")),
     F(f"Number six. Maine. {p('ME')} percent. Its record high is a hundred and five.", rank('ME', sub=f"{p('ME')}% NO AC · RECORD 105°F")),
     F(f"Number five. Vermont. {p('VT')} percent. And only {POR['VT']['central']} percent of homes have central air.", rank('VT', sub=f"{p('VT')}% NO AC · {POR['VT']['central']}% CENTRAL")),
     F(f"Number four. Montana. {p('MT')} percent.", rank('MT', sub=f"{p('MT')}% NO AC")),
+    F(f"And Montana's record isn't low at all. A hundred and seventeen degrees, back in nineteen thirty seven. The heat has visited before. The air conditioners never followed.", rank('MT', pos=f"{POR['MT']['rec']}°F", sub=f"RECORD · {POR['MT']['rec_ano']}")),
     F(f"Number three. Hawaii. {p('HI')} percent. The trade winds have done the job for generations. Its record is just a hundred.", rank('HI', sub=f"{p('HI')}% NO AC · RECORD 100°F")),
     F(f"Number two. Washington. {p('WA')} percent. Almost half the state.", rank('WA', sub=f"{p('WA')}% NO AC")),
     F("The state that already saw a hundred and twenty, and lost a hundred and twelve people.", {"tipo": "numero", "txt": "112", "rotulo": "HEAT DEATHS · WASHINGTON · 2021"}),
@@ -97,6 +117,10 @@ c4 = [
     F("Here's every state. Across the bottom, its hottest day ever. Up the side, the share of homes with AC.", {"tipo": "dispersao", "pts": PTS, "eixos": EIX}),
     F("The states that have felt real heat bought air conditioning. The ones that never did, didn't.", {"tipo": "dispersao", "pts": PTS, "eixos": EIX, "foco": ["AK", "HI", "WA", "VT", "ME"]}),
     F("That made sense for a hundred years.", {"tipo": "icones2", "a": "calendario", "b": "casa", "txt": "IT MADE SENSE"}),
+    F("And here's something strange about those records. Eleven states still hold their all-time high from one single summer. Nineteen thirty six.", mapa(destaque=[o['uf'] for o in C if o['rec_ano'] == 1936], sticker={"txt": "SUMMER OF 1936"})),
+    F("Michigan, Pennsylvania, Wisconsin, Indiana, Kansas, North Dakota, Nebraska and more. The Dust Bowl summer, before most homes had air conditioning at all.", {"tipo": "numero", "txt": "11", "rotulo": "STATE RECORDS STILL FROM 1936"}),
+    F("North Dakota hit a hundred and twenty one that year. North Dakota. Hotter than Texas has ever officially been.", {"tipo": "barras", "titulo": "ALL-TIME STATE RECORD · °F", "max": 125, "unid": "°", "itens": [["NORTH DAKOTA · 1936", POR['ND']['rec'], "#e5484d"], ["TEXAS · 1994", POR['TX']['rec'], "#e9874a"]]}),
+    F("So a hundred and twenty two isn't some alien number. America has already been there, in places nobody expects.", mapa(calor={o['uf']: o['rec'] for o in C}, pergunta="ALREADY BEEN THERE")),
     F("But look at where the new records are being set.", mapa(destaque=[o['uf'] for o in C if o['rec_ano'] >= 2019], sticker={"txt": "RECORDS SINCE 2019"})),
     F("Colorado in twenty nineteen. Oregon, Washington and Utah in twenty twenty one.", {"tipo": "barras", "titulo": "NEW STATE RECORD HIGHS · °F", "max": 125, "unid": "°", "itens": [["COLORADO · 2019", POR['CO']['rec'], "#e9874a"], ["OREGON · 2021", POR['OR']['rec'], "#e5484d"], ["WASHINGTON · 2021", POR['WA']['rec'], "#e5484d"], ["UTAH · 2021", POR['UT']['rec'], "#e5484d"]]}),
     F("The heat is moving to the places that are least ready for it.", mapa(calor=SEM, pergunta="HOMES WITH NO AC")),
@@ -105,8 +129,12 @@ c4 = [
 fim = [
     F("So which state breaks first? Alaska. Then Washington. Then Hawaii.", {"tipo": "lista", "itens": [[1, "ALASKA · NO AC", p('AK')], [2, "WASHINGTON · NO AC", p('WA')], [3, "HAWAII · NO AC", p('HI')]]}),
     F("And the state with the most people at risk is California.", rank('CA', sub="3.6M HOMES WITH NO AC")),
+    F("Meanwhile, the states everyone thinks of as hot, Arizona, Texas and Florida, would be miserable, but they'd keep running. They've been preparing for heat for decades.", mapa(destaque=['AZ', 'TX', 'FL'], sticker={"txt": "THEY'D KEEP RUNNING"})),
+    F("If a heat wave like this hits, the advice is simple. Know where the nearest cooling center is, check on older neighbors and anyone living alone, and keep water close.", {"tipo": "placa", "titulo": "IF IT HAPPENS", "txt": "Cooling center · check on neighbors · water", "fonte": "Basic heat safety"}),
     F("Does your home have air conditioning? And where do you live? Tell us in the comments.", {"tipo": "icones2", "a": "casa", "b": "balao", "txt": "TELL US"}),
-    F("And subscribe. Next week, another stress test for all fifty states.", {"tipo": "fim"}),
+    F("Share this with someone in Alaska, Washington or Hawaii. They might want to think about it before next summer.", mapa(destaque=['AK', 'WA', 'HI'], sticker={"txt": "SHARE IT"})),
+    F("And what should we stress test next? A blackout, a snowstorm, a water shortage? The most requested idea in the comments is the next video.", {"tipo": "icones2", "a": "raio", "b": "neve", "txt": "WHAT'S NEXT?"}),
+    F("Subscribe so you don't miss it. See you in the next ranking.", {"tipo": "fim"}),
 ]
 
 spec = {
@@ -114,8 +142,8 @@ spec = {
     "voz": "cw", "velocidade": 1.0, "lang": "en-us", "legenda": True, "acento": "#ff6b3d", "marca": "LAST STATE STANDING", "trilha": 0.14, "cauda": 4.0,
     "numeros": {"a hundred and twenty two degrees Fahrenheit": "122°F", "fifty degrees Celsius": "50°C", "a hundred and thirty four": "134", "nineteen thirteen": "1913",
                 "twenty twenty one": "2021", "a hundred and twenty two": "122", "a hundred and twenty": "120", "a hundred and twelve": "112", "a hundred and ten": "110",
-                "a hundred and five": "105", "a hundred": "100", "one hundred": "100", "nineteen fifteen": "1915", "twenty two": "22", "twenty nineteen": "2019",
-                "ninety five percent": "95%"},
+                "a hundred and five": "105", "a hundred": "100", "one hundred": "100", "nineteen fifteen": "1915", "nineteen thirty seven": "1937", "nineteen thirty six": "1936", "a hundred and twenty one": "121", "a hundred and seventeen": "117", "twenty two": "22", "twenty nineteen": "2019",
+                "ninety five percent": "95%", "a hundred and sixteen": "116"},
     "blocos": [],
 }
 nomes = {2: 'The states that stay cool', 3: 'The biggest number', 4: 'The states that break first', 5: 'The pattern'}

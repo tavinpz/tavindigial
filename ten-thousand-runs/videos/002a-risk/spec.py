@@ -24,6 +24,33 @@ def vence(A, D):  # conta exata, mesma de sim/risk.py
 
 
 b = lambda a, d: B.get(f'{a}v{d}', vence(a, d))
+
+
+@lru_cache(None)
+def dist(A, D):  # exércitos que sobram no território atacante ao final (0 = perdeu)
+    if D == 0: return {A: 1.0}
+    if A <= 1: return {0: 1.0}
+    a, d = min(3, A - 1), min(2, D); out = {}
+    for (pa, pd), p in EX[f'{a}v{d}'].items():
+        for k, q in dist(A - pa, D - pd).items(): out[k] = out.get(k, 0) + p * q
+    return out
+
+
+def cadeia(A, d, n=15):  # chance de conquistar o 1º, 2º, ... território seguidos, deixando 1 exército em cada
+    cur = {A: 1.0}; pr = []
+    for _ in range(n):
+        nxt = {}
+        for a, p in cur.items():
+            for k, q in dist(a, d).items():
+                if k > 0: nxt[k - 1] = nxt.get(k - 1, 0) + p * q
+        pr.append(sum(nxt.values())); cur = {k: v for k, v in nxt.items() if k >= 2}
+    return pr
+
+
+C10_1, C10_2, C20_2 = cadeia(10, 1), cadeia(10, 2), cadeia(20, 2)
+C16_2 = cadeia(16, 2)
+assert abs(sum(C10_1) - 5.61) < 0.02 and abs(sum(C20_2) - 7.09) < 0.02
+R31 = RO['3v1']['exato']
 for k in ['5v5', '20v20', '25v5']: assert abs(B[k] - vence(*map(int, k.split('v')))) < 0.002, k
 r32 = RO['3v2']['exato']
 
@@ -35,6 +62,7 @@ intro = [
     F("In 1957, a French film director invented a board game about conquering the world.", {"tipo": "ano", "ano": "1957", "de": 1940, "txt": "A GAME ABOUT CONQUERING THE WORLD"}),
     F("His name was Albert Lamorisse. The same year, his short film The Red Balloon won an Oscar.", {"tipo": "ficha", "titulo": "CASE FILE · THE INVENTOR", "linhas": [["Name", "Albert Lamorisse"], ["Job", "Film director"], ["1957", "Oscar, The Red Balloon"]]}),
     F("Two years later, Parker Brothers brought his game to America, and called it Risk.", {"tipo": "ano", "ano": "1959", "de": 1957, "txt": "IT BECOMES RISK"}),
+    F("Today, more than sixty years later, people still argue about it at kitchen tables all over the world.", {"tipo": "cartas", "modo": "misterio", "selo": "THE ARGUMENT"}),
     F("And for sixty years, players have repeated the same piece of advice.", {"tipo": "cartas", "modo": "misterio", "selo": "THE OLD ADVICE"}),
     F("The defender has the advantage.", {"tipo": "batalha", "ata": [5, 3, 2], "def": [5, 4], "txt": "TIES GO TO DEFENSE"}),
     F("Ties go to the defense. So never attack unless you clearly outnumber them.", {"tipo": "tropas", "a": 12, "b": 6, "selo": "ATTACK ONLY LIKE THIS?"}),
@@ -46,7 +74,9 @@ intro = [
     F("And the old advice is wrong. Not a little wrong.", {"tipo": "cartas", "modo": "misterio", "selo": "WRONG"}),
     F("By the end of this video, you'll know when a smaller army beats a bigger one,", {"tipo": "tropas", "a": 19, "b": 20, "selo": "WHO WINS?"}),
     F("the one attack you should almost never make,", {"tipo": "batalha", "ata": [4], "def": [4, 2], "txt": "NEVER?"}),
-    F("and exactly how many armies you need to take any territory.", {"tipo": "numero", "txt": "?", "rotulo": "ARMIES YOU REALLY NEED"}),
+    F("exactly how many armies you need to take any territory,", {"tipo": "numero", "txt": "?", "rotulo": "ARMIES YOU REALLY NEED"}),
+    F("and how far one big army can march before it runs out of steam.", {"tipo": "tropas", "a": 20, "b": 2, "selo": "HOW FAR?"}),
+    F("If you play Risk with friends, send them this video before your next game. One of you is about to start winning a lot more.", {"tipo": "cartas", "modo": "misterio", "selo": "SEND IT TO YOUR GROUP"}),
 ]
 
 cap1 = [
@@ -70,6 +100,10 @@ cap1 = [
     F(f"Now the defender wins both pairs {pc(RO['2v2']['exato']['2-0'])} percent of the time.", {"tipo": "numero", "txt": f"{pc(RO['2v2']['exato']['2-0'])}%", "rotulo": "DEFENDER WINS BOTH · 2 VS 2"}),
     F("And one die into two is the worst move in the game.", {"tipo": "batalha", "ata": [4], "def": [4, 2], "txt": "THE WORST MOVE"}),
     F(f"You lose that roll {pc(RO['1v2']['exato']['1-0'])} percent of the time.", {"tipo": "numero", "txt": f"{pc(RO['1v2']['exato']['1-0'])}%", "rotulo": "YOU LOSE · 1 DIE VS 2"}),
+    F("And here's one for the defender. In the classic rules, you can choose to roll one die or two.", {"tipo": "batalha", "ata": [6, 4, 3], "def": [5], "txt": "1 DIE OR 2?"}),
+    F(f"With one die against three, you lose that roll {pc(R31['0-1'])} percent of the time.", {"tipo": "numero", "txt": f"{pc(R31['0-1'])}%", "rotulo": "DEFENDER LOSES · 1 DIE VS 3"}),
+    F(f"For every army the attacker loses, you lose almost two.", {"tipo": "teste", "a": "DEFEND WITH 1", "pa": f"{R31['0-1'] / R31['1-0']:.1f} : 1", "b": "DEFEND WITH 2", "pb": f"{RO['3v2']['perda_defesa'] / RO['3v2']['perda_ataque']:.1f} : 1", "vence": "b"}),
+    F(f"With two dice, it's about {RO['3v2']['perda_defesa'] / RO['3v2']['perda_ataque']:.1f} to one. So if you're defending and you're allowed, always roll two.", {"tipo": "ficha", "titulo": "LAB NOTE · DEFENDING", "linhas": [["1 die", "lose ~2 per kill"], ["2 dice", "lose ~1.2 per kill"]], "selo": "ALWAYS ROLL 2"}),
     F("So the rule isn't that defense is strong. It's that small attacks are weak.", {"tipo": "ficha", "titulo": "LAB NOTE · ROLL BY ROLL", "linhas": [["3 dice vs 2", "attacker favored"], ["2 dice vs 2", "defender favored"], ["1 die vs 2", "almost hopeless"]], "selo": "SMALL = WEAK"}),
 ]
 
@@ -97,6 +131,8 @@ cap2 = [
     F("Why? Because in a long battle, the attacker keeps rolling three dice almost the whole time.", {"tipo": "batalha", "ata": [6, 5, 2], "def": [5, 3], "txt": "3 DICE, EVERY ROLL"}),
     F("And every one of those rolls tilts toward the attacker.", {"tipo": "teste", "a": "ATTACKER LOSES", "pa": f"{RO['3v2']['perda_ataque']:.2f}", "b": "DEFENDER LOSES", "pb": f"{RO['3v2']['perda_defesa']:.2f}", "vence": "a"}),
     F("The defender's tie advantage only matters at the very end, when the attacker is down to one or two dice.", {"tipo": "batalha", "ata": [3], "def": [3, 1], "txt": "ONLY AT THE END"}),
+    F("Quick question before we keep going. Did you know this? Be honest. Drop a yes or a no in the comments. I want to see how many people believed the legend.", {"tipo": "teste", "a": "KNEW IT", "pa": "YES", "b": "BELIEVED THE LEGEND", "pb": "NO", "vence": "b"}),
+    F("And if you're enjoying this, hit subscribe. Every video on this channel is ten thousand games of something, and we check every number.", {"tipo": "contador", "txt": "GAMES PER VIDEO"}),
 ]
 
 cap3 = [
@@ -119,8 +155,23 @@ cap3 = [
     F(f"Twenty five against twenty? You take it {pc(b(25, 20))} percent of the time.", {"tipo": "numero", "txt": f"{pc(b(25, 20))}%", "rotulo": "25 ARMIES VS 20"}),
 ]
 
+cap3b = [
+    F("Part four. The long march.", {"tipo": "capitulo", "n": "PART FOUR", "txt": "THE LONG MARCH"}),
+    F("Taking one territory is nice. But the turns that win games are the ones where you tear through three, four, five territories in a row.", {"tipo": "tropas", "a": 10, "b": 1, "selo": "HOW FAR?"}),
+    F("Every time you win, you have to leave one army behind. So your stack shrinks with every step.", {"tipo": "ficha", "titulo": "THE RULE OF THE MARCH", "linhas": [["Win a territory", "leave 1 behind"], ["Move on", "with the rest"]]}),
+    F("So we started with ten armies and marched through territories with one defender each.", {"tipo": "contador", "txt": "MARCHES SIMULATED"}),
+    F(f"The first three are almost guaranteed. Then it starts to fade.", {"tipo": "fichas", "rotulo": "10 ARMIES VS 1 DEFENDER EACH · CHANCE TO REACH", "itens": [{"cor": "#d64535", "nome": f"TERRITORY {i + 1}", "v": round(C10_1[i] * 100)} for i in range(3)]}),
+    F(f"Territory five, {pc(C10_1[4])} percent. Territory six, about a coin flip. Territory eight, almost never.", {"tipo": "fichas", "rotulo": "10 ARMIES VS 1 DEFENDER EACH · CHANCE TO REACH", "itens": [{"cor": "#d64535", "nome": f"TERRITORY {i + 1}", "v": round(C10_1[i] * 100)} for i in (3, 4, 5, 7)]}),
+    F(f"On average, ten armies take about {sum(C10_1):.1f} territories.", {"tipo": "numero", "txt": f"{sum(C10_1):.1f}", "rotulo": "TERRITORIES · 10 ARMIES VS SINGLE DEFENDERS"}),
+    F(f"Now put two defenders on every territory. Ten armies take just {sum(C10_2):.1f} on average.", {"tipo": "numero", "txt": f"{sum(C10_2):.1f}", "rotulo": "TERRITORIES · 10 ARMIES VS 2 DEFENDERS EACH"}),
+    F("That second defender doesn't just slow you down. It cuts your march almost in half.", {"tipo": "teste", "a": "1 DEFENDER EACH", "pa": f"{sum(C10_1):.1f}", "b": "2 DEFENDERS EACH", "pb": f"{sum(C10_2):.1f}", "vence": "a"}),
+    F(f"Double your stack to twenty armies, and against two defenders each, you take about {sum(C20_2):.1f}.", {"tipo": "tropas", "a": 20, "b": 2, "selo": f"≈ {sum(C20_2):.0f} TERRITORIES"}),
+    F("And here's the defensive lesson. If you know someone is about to march through you, two armies per territory is the cheapest wall in the game.", {"tipo": "ficha", "titulo": "LAB NOTE · THE CHEAP WALL", "linhas": [["1 per territory", "easy to march through"], ["2 per territory", "march cut in half"]], "selo": "THE CHEAP WALL"}),
+    F("Write that one down. And tell me in the comments: are you the player who marches, or the one who builds the wall?", {"tipo": "teste", "a": "THE MARCHER", "pa": "?", "b": "THE WALL", "pb": "?", "vence": "a"}),
+]
+
 cap4 = [
-    F("Part four. What this means for the whole game.", {"tipo": "capitulo", "n": "PART FOUR", "txt": "WHAT IT MEANS FOR THE GAME"}),
+    F("Part five. What this means for the whole game.", {"tipo": "capitulo", "n": "PART FIVE", "txt": "WHAT IT MEANS FOR THE GAME"}),
     F("If big attacks win, then splitting your armies across the map is the real mistake.", {"tipo": "ficha", "titulo": "LAB NOTE · STRATEGY", "linhas": [["Spread thin", "many weak stacks"], ["Stacked", "one big stack"], ["Winner", "the stack"]], "selo": "STACK UP"}),
     F("One stack of twenty beats four stacks of five.", {"tipo": "teste", "a": "1 STACK OF 20", "pa": "WINS", "b": "4 STACKS OF 5", "pb": "LOSES", "vence": "a"}),
     F("Because each stack of five is in the zone where the attacker barely wins half the time.", {"tipo": "numero", "txt": f"{pc(b(6, 5))}%", "rotulo": "6 ARMIES VS 5 DEFENDERS"}),
@@ -130,6 +181,11 @@ cap4 = [
     F("South America works the same way, with two ways in.", {"tipo": "ficha", "titulo": "CASE FILE · SOUTH AMERICA", "linhas": [["Territories", "4"], ["Entry points", "2"], ["Bonus", "+2 armies a turn"]]}),
     F("Asia pays the biggest bonus, seven armies a turn. But it has five borders to hold.", {"tipo": "ficha", "titulo": "CASE FILE · ASIA", "linhas": [["Territories", "12"], ["Entry points", "5"], ["Bonus", "+7 armies a turn"]], "selo": "SPREAD THIN"}),
     F("Five borders means five thin stacks. And thin stacks are exactly what a big attack eats.", {"tipo": "tropas", "a": 25, "b": 5, "selo": f"{b(25, 5) * 100:.2f}% TO WIN"}),
+    F("And then there are the cards.", {"tipo": "cartas", "modo": "misterio", "selo": "THE CARDS"}),
+    F("In classic Risk, every set you trade in is worth more than the last one. Four armies, then six, eight, ten, twelve, fifteen, and then five more every time.", {"tipo": "lista", "titulo": "CARD SET VALUES · CLASSIC RULES", "itens": ["1st set: 4", "2nd: 6 · 3rd: 8", "4th: 10 · 5th: 12", "6th: 15, then +5 each"]}),
+    F("By the sixth set, one trade drops fifteen new armies on the board. Put them on top of a stack, and a whole continent can change hands in one turn.", {"tipo": "numero", "txt": "15", "rotulo": "ARMIES FROM THE 6TH SET"}),
+    F(f"Sixteen armies against a chain of territories with two defenders each? On average, you take about {sum(C16_2):.1f} of them.", {"tipo": "tropas", "a": 16, "b": 2, "selo": f"≈ {sum(C16_2):.0f} TERRITORIES"}),
+    F("That's why late game Risk feels so swingy. The cards turn every turn into a potential long march.", {"tipo": "ficha", "titulo": "LAB NOTE · LATE GAME", "linhas": [["Card sets", "grow every trade"], ["Big stacks", "march farther"], ["Result", "huge swings"]]}),
 ]
 
 fim = [
@@ -137,8 +193,11 @@ fim = [
     F("Only in small fights. In big battles, the attacker wins, even outnumbered.", {"tipo": "teste", "a": "SMALL FIGHTS", "pa": "DEFENSE", "b": "BIG BATTLES", "pb": "ATTACK", "vence": "b"}),
     F(f"Nineteen against twenty, and the attacker still wins {pc(b(20, 20))} percent of the time.", {"tipo": "numero", "txt": f"{pc(b(20, 20))}%", "rotulo": "19 VS 20"}),
     F("Don't poke. Stack up. And when you go, go big.", {"tipo": "tropas", "a": 30, "b": 18, "selo": "GO BIG"}),
-    F("What's the craziest comeback you've ever seen in Risk? Tell us in the comments.", {"tipo": "cartas", "modo": "misterio", "selo": "YOUR CRAZIEST COMEBACK?"}),
-    F("And subscribe. Next, we play ten thousand games of another classic.", {"tipo": "fim"}),
+    F("So here's your Risk cheat sheet. Roll two when you defend. Never poke with small attacks. Stack up, go big, and leave two on every border you care about.", {"tipo": "lista", "titulo": "THE RISK CHEAT SHEET", "itens": ["Defend with 2 dice", "No small attacks", "Stack up, go big", "2 on every border"]}),
+    F("Screenshot this. And send it to the friend who always wins, so the next game is fair.", {"tipo": "lista", "titulo": "THE RISK CHEAT SHEET", "itens": ["Defend with 2 dice", "No small attacks", "Stack up, go big", "2 on every border"]}),
+    F("What's the craziest comeback you've ever seen in Risk? Tell us in the comments. The best story gets pinned.", {"tipo": "cartas", "modo": "misterio", "selo": "YOUR CRAZIEST COMEBACK?"}),
+    F("And which game should we play ten thousand times next? Write it below. We read every comment, and the most requested one is next.", {"tipo": "contador", "txt": "GAMES FOR THE NEXT VIDEO"}),
+    F("Subscribe so you don't miss it. See you in the next ten thousand.", {"tipo": "fim"}),
 ]
 
 spec = {
@@ -147,8 +206,8 @@ spec = {
     "numeros": {"ten thousand": "10,000", "nineteen": "19", "twenty": "20", "thirty": "30", "one die": "1 die", "three dice": "3 dice", "two dice": "2 dice"},
     "blocos": [],
 }
-nomes = {1: 'One roll', 2: 'The whole battle', 3: 'How many you really need', 4: 'What it means for the game'}
-for i, cap in enumerate([intro, cap1, cap2, cap3, cap4, fim]):
+nomes = {1: 'One roll', 2: 'The whole battle', 3: 'How many you really need', 4: 'The long march', 5: 'What it means for the game'}
+for i, cap in enumerate([intro, cap1, cap2, cap3, cap3b, cap4, fim]):
     cena = {"tipo": "capitulo" if i in nomes else "arte", "v": [v for _, v in cap]}
     if i in nomes: cena.update({"n": i, "titulo": nomes[i]})
     spec["blocos"].append({"cena": cena, "falas": [t for t, _ in cap]})

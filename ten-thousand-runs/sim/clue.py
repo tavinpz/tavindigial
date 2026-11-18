@@ -131,3 +131,25 @@ if __name__ == '__main__':
                                   'ate10': round(sum(x <= 10 for x in r) / N, 4), 'max': max(r), 'hist': [sum(x == k for x in r) for k in range(1, 31)]}
             print(np, nivel, R[f'{np}_{nivel}']['media'], R[f'{np}_{nivel}']['mediana'], R[f'{np}_{nivel}']['ate5'], R[f'{np}_{nivel}']['max'], flush=True)
     json.dump(R, open('/home/claude/estudio-longo/ten-thousand-runs/sim/clue.json', 'w'), indent=1)
+
+
+# --- estratégia "isca": usar cartas da própria mão em duas categorias para testar uma só (truque clássico) ---
+def _palpite_isca(s, rng):
+    abertas = [i for i, cat in enumerate(CAT) if not any(s.dono[x] == 'E' for x in cat)]
+    alvo = max(abertas, key=lambda i: len([x for x in CAT[i] if 'E' in s.pos(x)])) if abertas else 0
+    out = []
+    for i, cat in enumerate(CAT):
+        if i == alvo:
+            out.append(rng.choice([x for x in cat if 'E' in s.pos(x)])); continue
+        env = [x for x in cat if s.dono[x] == 'E']
+        prop = [x for x in cat if s.dono[x] == s.eu]
+        out.append(prop[0] if prop else (env[0] if env else rng.choice([x for x in cat if 'E' in s.pos(x)])))
+    return out
+
+
+def jogo_isca(np_, seed):
+    velho_init, velho_palp = Nota.__init__, Nota.palpite
+    def ini(self, np, eu, mao, t, n): velho_init(self, np, eu, mao, t, n); self.eu = eu
+    Nota.__init__, Nota.palpite = ini, _palpite_isca
+    try: return jogo(np_, 'completa', seed)
+    finally: Nota.__init__, Nota.palpite = velho_init, velho_palp

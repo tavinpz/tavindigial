@@ -24,9 +24,14 @@
   "a hundred": "100",
   "one hundred": "100",
   "nineteen fifteen": "1915",
+  "nineteen thirty seven": "1937",
+  "nineteen thirty six": "1936",
+  "a hundred and twenty one": "121",
+  "a hundred and seventeen": "117",
   "twenty two": "22",
   "twenty nineteen": "2019",
-  "ninety five percent": "95%"
+  "ninety five percent": "95%",
+  "a hundred and sixteen": "116"
  },
  "blocos": [
   {
@@ -132,6 +137,11 @@
       "rotulo": "HEAT DEATHS · WASHINGTON · 2021"
      },
      {
+      "tipo": "numero",
+      "txt": "116",
+      "rotulo": "HEAT DEATHS REPORTED · OREGON · 2021"
+     },
+     {
       "tipo": "mapa",
       "grade": true,
       "pergunta": "ONE WEEK · 122°F · EVERYWHERE"
@@ -139,6 +149,17 @@
      {
       "tipo": "mapa",
       "misterio": true
+     },
+     {
+      "tipo": "mapa",
+      "todos": true,
+      "pergunta": "WHERE DOES YOURS LAND?"
+     },
+     {
+      "tipo": "icones2",
+      "a": "familia",
+      "b": "balao",
+      "txt": "SEND IT TO FAMILY"
      }
     ]
    },
@@ -150,8 +171,11 @@
     "And in twenty twenty one, a heat wave pushed Washington State to a hundred and twenty.",
     "A state where a lot of people never needed air conditioning.",
     "Washington's health department counted a hundred and twelve heat deaths.",
+    "Oregon reported a hundred and sixteen more. In a single heat wave.",
     "So here's the experiment. One week. A hundred and twenty two degrees. In every state at once.",
-    "Which state breaks first?"
+    "Which state breaks first?",
+    "Stay to the end, because the answer isn't one of the hot states. And the state with the most people at risk might be yours.",
+    "And if you have family or friends in another state, send them this. They'll want to know where their state lands."
    ]
   },
   {
@@ -306,6 +330,34 @@
       "txt": "HEAT EVERY SUMMER"
      },
      {
+      "tipo": "barras",
+      "titulo": "HOMES WITH AIR CONDITIONING",
+      "max": 100,
+      "unid": "%",
+      "itens": [
+       [
+        "GEORGIA",
+        95,
+        "#7bc47f"
+       ],
+       [
+        "SOUTH CAROLINA",
+        95,
+        "#7bc47f"
+       ],
+       [
+        "OKLAHOMA",
+        96,
+        "#7bc47f"
+       ],
+       [
+        "MISSOURI",
+        95,
+        "#7bc47f"
+       ]
+      ]
+     },
+     {
       "tipo": "mapa",
       "misterio": true
      },
@@ -379,6 +431,7 @@
     "In 13 states, at least ninety five percent of homes have air conditioning.",
     "Florida, 96 percent. Texas, 95.",
     "No surprise there. They live with heat every summer.",
+    "Georgia and South Carolina, 95 percent. Oklahoma, 96. Missouri and Kentucky, 95.",
     "But here's one that is a surprise.",
     "Iowa. 97 percent of homes have air conditioning.",
     "That's more than Arizona, at 94.",
@@ -452,6 +505,121 @@
       "nome": "NEW YORK",
       "uf": "NY",
       "sub": "HOMES WITH CENTRAL AIR"
+     },
+     {
+      "tipo": "icones2",
+      "a": "casa",
+      "b": "neve",
+      "txt": "ONE ROOM VS WHOLE HOUSE"
+     },
+     {
+      "tipo": "barras",
+      "titulo": "HOMES WITH CENTRAL AIR",
+      "max": 100,
+      "unid": "%",
+      "itens": [
+       [
+        "VERMONT",
+        7,
+        "#e5484d"
+       ],
+       [
+        "MAINE",
+        10,
+        "#e5484d"
+       ],
+       [
+        "HAWAII",
+        12,
+        "#e5484d"
+       ],
+       [
+        "FLORIDA",
+        90,
+        "#7bc47f"
+       ]
+      ]
+     },
+     {
+      "tipo": "rank",
+      "pos": "90%",
+      "nome": "FLORIDA",
+      "uf": "FL",
+      "sub": "HOMES WITH CENTRAL AIR"
+     },
+     {
+      "tipo": "mapa",
+      "misterio": true
+     },
+     {
+      "tipo": "rank",
+      "pos": "520K",
+      "nome": "TEXAS",
+      "uf": "TX",
+      "sub": "TEXAS HOMES WITH NO AC"
+     },
+     {
+      "tipo": "barras",
+      "titulo": "THOUSANDS OF HOMES",
+      "max": 600,
+      "unid": "K",
+      "itens": [
+       [
+        "TEXAS · NO AC",
+        520,
+        "#e5484d"
+       ],
+       [
+        "MONTANA · ALL HOMES",
+        430,
+        "#e9c46a"
+       ]
+      ]
+     },
+     {
+      "tipo": "barras",
+      "titulo": "HOMES WITH NO AC · MILLIONS",
+      "max": 4,
+      "unid": "M",
+      "itens": [
+       [
+        "CALIFORNIA",
+        3.64,
+        "#e5484d"
+       ],
+       [
+        "WASHINGTON",
+        1.4,
+        "#e5484d"
+       ],
+       [
+        "NEW YORK",
+        0.92,
+        "#e5484d"
+       ],
+       [
+        "MICHIGAN",
+        0.53,
+        "#e5484d"
+       ],
+       [
+        "TEXAS",
+        0.52,
+        "#e5484d"
+       ]
+      ]
+     },
+     {
+      "tipo": "icones2",
+      "a": "casa",
+      "b": "balao",
+      "txt": "CENTRAL · WINDOW · NONE?"
+     },
+     {
+      "tipo": "icones2",
+      "a": "balao",
+      "b": "alvo",
+      "txt": "WE READ THEM ALL"
      }
     ],
     "n": 2,
@@ -466,7 +634,16 @@
     "More homes than the entire state of Washington has, with or without AC.",
     "Along much of the coast, people never needed it. The ocean did the cooling for free.",
     "New York has about 920 thousand homes with no AC. And of the ones that have it, most are window units.",
-    "Only 29 percent of New York homes have central air."
+    "Only 29 percent of New York homes have central air.",
+    "And that matters. A window unit cools one room. Central air cools the whole house.",
+    "In Vermont, only 7 percent of homes have central air. In Maine, 10. In Hawaii, 12.",
+    "Compare that to Florida, at 90 percent.",
+    "Now here's the number that surprised us the most.",
+    "Texas. Ninety five percent of homes have AC. But Texas is so big that the other five percent is still about 520 thousand homes.",
+    "More homes without air conditioning than the entire state of Montana has.",
+    "Here's the full list of homes with no AC, in raw numbers. California, Washington, New York, Michigan, Texas.",
+    "Quick pause. Does your home have air conditioning? Central, window unit, or nothing at all? Tell us in the comments, and tell us your state.",
+    "We'll read them and pin the most surprising one."
    ]
   },
   {
@@ -477,6 +654,156 @@
       "tipo": "capitulo",
       "n": "TOP 10",
       "txt": "THE STATES THAT BREAK FIRST"
+     },
+     {
+      "tipo": "lista",
+      "itens": [
+       [
+        26,
+        "NEVADA · NO AC",
+        8
+       ],
+       [
+        27,
+        "TENNESSEE · NO AC",
+        7
+       ],
+       [
+        28,
+        "LOUISIANA · NO AC",
+        7
+       ],
+       [
+        29,
+        "MISSISSIPPI · NO AC",
+        7
+       ],
+       [
+        30,
+        "ARKANSAS · NO AC",
+        7
+       ]
+      ]
+     },
+     {
+      "tipo": "lista",
+      "itens": [
+       [
+        26,
+        "NEVADA · NO AC",
+        8
+       ],
+       [
+        27,
+        "TENNESSEE · NO AC",
+        7
+       ],
+       [
+        28,
+        "LOUISIANA · NO AC",
+        7
+       ],
+       [
+        29,
+        "MISSISSIPPI · NO AC",
+        7
+       ],
+       [
+        30,
+        "ARKANSAS · NO AC",
+        7
+       ]
+      ]
+     },
+     {
+      "tipo": "lista",
+      "itens": [
+       [
+        21,
+        "NORTH CAROLINA · NO AC",
+        9
+       ],
+       [
+        22,
+        "PENNSYLVANIA · NO AC",
+        9
+       ],
+       [
+        23,
+        "WISCONSIN · NO AC",
+        8
+       ],
+       [
+        24,
+        "UTAH · NO AC",
+        8
+       ],
+       [
+        25,
+        "SOUTH DAKOTA · NO AC",
+        8
+       ]
+      ]
+     },
+     {
+      "tipo": "lista",
+      "itens": [
+       [
+        16,
+        "NEW YORK · NO AC",
+        12
+       ],
+       [
+        17,
+        "WEST VIRGINIA · NO AC",
+        11
+       ],
+       [
+        18,
+        "RHODE ISLAND · NO AC",
+        10
+       ],
+       [
+        19,
+        "CONNECTICUT · NO AC",
+        10
+       ],
+       [
+        20,
+        "MARYLAND · NO AC",
+        9
+       ]
+      ]
+     },
+     {
+      "tipo": "lista",
+      "itens": [
+       [
+        11,
+        "IDAHO · NO AC",
+        19
+       ],
+       [
+        12,
+        "COLORADO · NO AC",
+        18
+       ],
+       [
+        13,
+        "NEW MEXICO · NO AC",
+        15
+       ],
+       [
+        14,
+        "MASSACHUSETTS · NO AC",
+        13
+       ],
+       [
+        15,
+        "MICHIGAN · NO AC",
+        13
+       ]
+      ]
      },
      {
       "tipo": "rank",
@@ -529,6 +856,13 @@
      },
      {
       "tipo": "rank",
+      "pos": "117°F",
+      "nome": "MONTANA",
+      "uf": "MT",
+      "sub": "RECORD · 1937"
+     },
+     {
+      "tipo": "rank",
       "pos": "#3",
       "nome": "HAWAII",
       "uf": "HI",
@@ -575,13 +909,19 @@
    },
    "falas": [
     "Part three. The top ten. These are the states that break first.",
+    "Before the top ten, let's run through the middle of the list. Fast.",
+    "Thirty, Arkansas. Twenty nine, Mississippi. Twenty eight, Louisiana. Twenty seven, Tennessee. All around 7 percent with no AC.",
+    "Twenty five, South Dakota. Twenty four, Utah. Twenty three, Wisconsin. Twenty two, Pennsylvania. Twenty one, North Carolina.",
+    "Twenty, Maryland. Nineteen, Connecticut. Eighteen, Rhode Island. Seventeen, West Virginia. Sixteen, New York.",
+    "Fifteen, Michigan. Fourteen, Massachusetts. Thirteen, New Mexico. Twelve, Colorado. And eleven, Idaho, with 19 percent of homes and no AC.",
     "Number ten. New Hampshire. 22 percent of homes with no AC.",
     "Number nine. Oregon. 24 percent. And Oregon already got a taste of this, in twenty twenty one.",
     "Number eight. California, with the most homes at risk.",
-    "Number seven. Wyoming. 29 percent.",
+    "Number seven. Wyoming. 29 percent. High, dry, and cool at night, so most people never needed it.",
     "Number six. Maine. 30 percent. Its record high is a hundred and five.",
     "Number five. Vermont. 33 percent. And only 7 percent of homes have central air.",
     "Number four. Montana. 35 percent.",
+    "And Montana's record isn't low at all. A hundred and seventeen degrees, back in nineteen thirty seven. The heat has visited before. The air conditioners never followed.",
     "Number three. Hawaii. 43 percent. The trade winds have done the job for generations. Its record is just a hundred.",
     "Number two. Washington. 47 percent. Almost half the state.",
     "The state that already saw a hundred and twenty, and lost a hundred and twelve people.",
@@ -1282,6 +1622,104 @@
      {
       "tipo": "mapa",
       "destaque": [
+       "MI",
+       "WV",
+       "PA",
+       "WI",
+       "LA",
+       "AR",
+       "KS",
+       "ND",
+       "IN",
+       "NE",
+       "NJ"
+      ],
+      "sticker": {
+       "txt": "SUMMER OF 1936"
+      }
+     },
+     {
+      "tipo": "numero",
+      "txt": "11",
+      "rotulo": "STATE RECORDS STILL FROM 1936"
+     },
+     {
+      "tipo": "barras",
+      "titulo": "ALL-TIME STATE RECORD · °F",
+      "max": 125,
+      "unid": "°",
+      "itens": [
+       [
+        "NORTH DAKOTA · 1936",
+        121,
+        "#e5484d"
+       ],
+       [
+        "TEXAS · 1994",
+        120,
+        "#e9874a"
+       ]
+      ]
+     },
+     {
+      "tipo": "mapa",
+      "calor": {
+       "AK": 100,
+       "WA": 120,
+       "HI": 100,
+       "MT": 117,
+       "VT": 105,
+       "ME": 105,
+       "WY": 115,
+       "CA": 134,
+       "OR": 119,
+       "NH": 106,
+       "ID": 118,
+       "CO": 115,
+       "NM": 122,
+       "MA": 107,
+       "MI": 112,
+       "NY": 108,
+       "WV": 112,
+       "RI": 104,
+       "CT": 106,
+       "MD": 109,
+       "NC": 110,
+       "PA": 111,
+       "WI": 114,
+       "UT": 117,
+       "SD": 120,
+       "NV": 125,
+       "TN": 113,
+       "LA": 114,
+       "MS": 115,
+       "AR": 120,
+       "KS": 121,
+       "ND": 121,
+       "AL": 112,
+       "OH": 113,
+       "MN": 115,
+       "IN": 116,
+       "AZ": 128,
+       "VA": 110,
+       "GA": 112,
+       "SC": 113,
+       "KY": 114,
+       "MO": 118,
+       "NE": 118,
+       "TX": 120,
+       "FL": 109,
+       "NJ": 110,
+       "IL": 117,
+       "OK": 120,
+       "DE": 110,
+       "IA": 118
+      },
+      "pergunta": "ALREADY BEEN THERE"
+     },
+     {
+      "tipo": "mapa",
+      "destaque": [
        "WA",
        "OR",
        "CO",
@@ -1384,6 +1822,10 @@
     "Here's every state. Across the bottom, its hottest day ever. Up the side, the share of homes with AC.",
     "The states that have felt real heat bought air conditioning. The ones that never did, didn't.",
     "That made sense for a hundred years.",
+    "And here's something strange about those records. Eleven states still hold their all-time high from one single summer. Nineteen thirty six.",
+    "Michigan, Pennsylvania, Wisconsin, Indiana, Kansas, North Dakota, Nebraska and more. The Dust Bowl summer, before most homes had air conditioning at all.",
+    "North Dakota hit a hundred and twenty one that year. North Dakota. Hotter than Texas has ever officially been.",
+    "So a hundred and twenty two isn't some alien number. America has already been there, in places nobody expects.",
     "But look at where the new records are being set.",
     "Colorado in twenty nineteen. Oregon, Washington and Utah in twenty twenty one.",
     "The heat is moving to the places that are least ready for it."
@@ -1421,10 +1863,44 @@
       "sub": "3.6M HOMES WITH NO AC"
      },
      {
+      "tipo": "mapa",
+      "destaque": [
+       "AZ",
+       "TX",
+       "FL"
+      ],
+      "sticker": {
+       "txt": "THEY'D KEEP RUNNING"
+      }
+     },
+     {
+      "tipo": "placa",
+      "titulo": "IF IT HAPPENS",
+      "txt": "Cooling center · check on neighbors · water",
+      "fonte": "Basic heat safety"
+     },
+     {
       "tipo": "icones2",
       "a": "casa",
       "b": "balao",
       "txt": "TELL US"
+     },
+     {
+      "tipo": "mapa",
+      "destaque": [
+       "AK",
+       "WA",
+       "HI"
+      ],
+      "sticker": {
+       "txt": "SHARE IT"
+      }
+     },
+     {
+      "tipo": "icones2",
+      "a": "raio",
+      "b": "neve",
+      "txt": "WHAT'S NEXT?"
      },
      {
       "tipo": "fim"
@@ -1434,8 +1910,12 @@
    "falas": [
     "So which state breaks first? Alaska. Then Washington. Then Hawaii.",
     "And the state with the most people at risk is California.",
+    "Meanwhile, the states everyone thinks of as hot, Arizona, Texas and Florida, would be miserable, but they'd keep running. They've been preparing for heat for decades.",
+    "If a heat wave like this hits, the advice is simple. Know where the nearest cooling center is, check on older neighbors and anyone living alone, and keep water close.",
     "Does your home have air conditioning? And where do you live? Tell us in the comments.",
-    "And subscribe. Next week, another stress test for all fifty states."
+    "Share this with someone in Alaska, Washington or Hawaii. They might want to think about it before next summer.",
+    "And what should we stress test next? A blackout, a snowstorm, a water shortage? The most requested idea in the comments is the next video.",
+    "Subscribe so you don't miss it. See you in the next ranking."
    ]
   }
  ]

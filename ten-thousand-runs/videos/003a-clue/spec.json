@@ -59,6 +59,11 @@
       "txt": "CLUE HITS THE SHELVES"
      },
      {
+      "tipo": "cartas",
+      "modo": "misterio",
+      "selo": "70+ YEARS"
+     },
+     {
       "tipo": "lista",
       "titulo": "HOW MOST PEOPLE PLAY",
       "itens": [
@@ -128,6 +133,16 @@
       "tipo": "numero",
       "txt": "2×",
       "rotulo": "FASTER WITH BETTER NOTES"
+     },
+     {
+      "tipo": "cartas",
+      "modo": "misterio",
+      "selo": "THE PRO TRICK"
+     },
+     {
+      "tipo": "cartas",
+      "modo": "misterio",
+      "selo": "SEND IT TO THE GROUP"
      }
     ]
    },
@@ -135,7 +150,8 @@
     "Somebody has been murdered. Six suspects. Six weapons. Nine rooms.",
     "And the answer is sealed in an envelope.",
     "That's three hundred twenty four possible crimes.",
-    "Clue was invented in England in the nineteen forties, and it's been sold since nineteen forty nine.",
+    "Clue was invented in England in the nineteen forties by Anthony Pratt, a musician, with his wife Elva helping design the board. It's been sold since nineteen forty nine.",
+    "More than seventy years later, families still fight over it at the kitchen table.",
     "And almost everyone plays it the same way.",
     "They only cross off the cards someone shows them.",
     "But your notepad can do a lot more than that.",
@@ -143,7 +159,9 @@
     "Then we did it again. And again. One for every way of taking notes.",
     "Same cards, same deals. The only thing that changed was the notepad.",
     "We even removed the board, so dice and luck couldn't help anyone.",
-    "And the difference is huge. The best note taker solves the case more than twice as fast."
+    "And the difference is huge. The best note taker solves the case more than twice as fast.",
+    "We also tested the famous pro trick that everyone recommends online. And it didn't do what you think.",
+    "If you play Clue with family or friends, send this video to the group before your next game night. Whoever watches it wins."
    ]
   },
   {
@@ -188,6 +206,41 @@
      },
      {
       "tipo": "ficha",
+      "titulo": "THE DEAL · 4 PLAYERS",
+      "linhas": [
+       [
+        "Cards",
+        "21"
+       ],
+       [
+        "In the envelope",
+        "3"
+       ],
+       [
+        "Each hand",
+        "4 or 5"
+       ]
+      ]
+     },
+     {
+      "tipo": "cartas",
+      "modo": "misterio",
+      "selo": "ACCUSE"
+     },
+     {
+      "tipo": "teste",
+      "a": "RIGHT",
+      "pa": "YOU WIN",
+      "b": "WRONG",
+      "pb": "YOU'RE OUT",
+      "vence": "a"
+     },
+     {
+      "tipo": "ampulheta",
+      "txt": "HOW FAST?"
+     },
+     {
+      "tipo": "ficha",
       "titulo": "BASIC NOTEPAD",
       "linhas": [
        [
@@ -229,6 +282,10 @@
     "Here's how a turn works. You suggest a suspect, a weapon and a room.",
     "The next player has to show you one of those cards, if they have one.",
     "If they don't, the player after them has to try.",
+    "At the start, all twenty one cards minus the three in the envelope get dealt out. At a four player table, everyone holds four or five.",
+    "Your job is to figure out the three cards nobody holds. And the moment you're sure, you make your accusation.",
+    "Get it wrong, and you're out of the game. So nobody accuses until they're certain.",
+    "Which means the whole game comes down to one thing. How fast can you become certain?",
     "Most people write down that one card, and nothing else.",
     "We gave that player a seat at a four player table.",
     "On average, they needed 10.9 rounds to be sure of the answer.",
@@ -270,6 +327,15 @@
       ]
      },
      {
+      "tipo": "lista",
+      "titulo": "PLAYER 2 DOES NOT HAVE",
+      "itens": [
+       "Plum",
+       "Wrench",
+       "Kitchen"
+      ]
+     },
+     {
       "tipo": "numero",
       "txt": "3",
       "rotulo": "FREE FACTS FROM ONE PASS"
@@ -304,6 +370,14 @@
       "b": "BASIC NOTES",
       "pb": "",
       "vence": "a"
+     },
+     {
+      "tipo": "teste",
+      "a": "I WRITE IT DOWN",
+      "pa": "YES",
+      "b": "I NEVER DID",
+      "pb": "NO",
+      "vence": "a"
      }
     ],
     "n": 2,
@@ -313,10 +387,12 @@
     "Part two. Watch who passes.",
     "Here's the first upgrade. And it costs nothing.",
     "Every time any player can't show a card, write it down.",
+    "Think about it. Player two just told the whole table that they have no Plum, no Wrench and no Kitchen.",
     "That player has none of those three cards. That's three facts, for free.",
     "And it works on other people's turns, too. Not just yours.",
     "With that one habit, the average dropped from 10.9 rounds to 8.1.",
-    "Put a basic player and a pass watcher side by side, with the same cards, and the pass watcher finishes first 72 percent of the time."
+    "Put a basic player and a pass watcher side by side, with the same cards, and the pass watcher finishes first 72 percent of the time.",
+    "Be honest. Did you write down who passed in your last game? Comment yes or no. No judgment. Okay, a little judgment."
    ]
   },
   {
@@ -434,6 +510,59 @@
       "rotulo": "BASIC NOTES WIN THE RACE"
      },
      {
+      "tipo": "numero",
+      "txt": "324",
+      "rotulo": "POSSIBLE CRIMES AT THE START"
+     },
+     {
+      "tipo": "numero",
+      "txt": "140",
+      "rotulo": "POSSIBLE CRIMES · AFTER YOUR OWN HAND"
+     },
+     {
+      "tipo": "teste",
+      "a": "BASIC",
+      "pa": "90",
+      "b": "FULL DEDUCTION",
+      "pb": "72",
+      "vence": "b"
+     },
+     {
+      "tipo": "teste",
+      "a": "BASIC",
+      "pa": "54",
+      "b": "FULL DEDUCTION",
+      "pb": "20",
+      "vence": "b"
+     },
+     {
+      "tipo": "teste",
+      "a": "BASIC",
+      "pa": "30",
+      "b": "FULL DEDUCTION",
+      "pb": "2",
+      "vence": "b"
+     },
+     {
+      "tipo": "ficha",
+      "titulo": "LAB NOTE · THE SHRINKING LIST",
+      "linhas": [
+       [
+        "Round 2",
+        "90 vs 72"
+       ],
+       [
+        "Round 4",
+        "54 vs 20"
+       ],
+       [
+        "Round 6",
+        "30 vs 2"
+       ]
+      ],
+      "selo": "SAME CARDS"
+     },
+     {
       "tipo": "teste",
       "a": "BASIC",
       "pa": "6%",
@@ -457,6 +586,12 @@
     "6.5 rounds.",
     "In a head to head race with the same cards, the full deduction player finished first 88 percent of the time.",
     "The basic player won just 4 percent. The rest were ties.",
+    "Want to see it happen? Remember the three hundred twenty four possible crimes.",
+    "The moment you look at your own hand, that drops to about 140. Same for everyone.",
+    "After two rounds, the basic player still has 90 possibilities. The full deduction player, 72.",
+    "After four rounds, 54 against 20.",
+    "And after six rounds, the full deduction player is usually down to 2. The basic player is still staring at 30.",
+    "Same cards. Same table. Same suggestions going around. The only difference is what got written down.",
     "And the fast games got way more common. Solving in five rounds or less went from 6 percent of games to 24."
    ]
   },
@@ -467,6 +602,220 @@
      {
       "tipo": "capitulo",
       "n": "PART FOUR",
+      "txt": "THE PRO TRICK"
+     },
+     {
+      "tipo": "ficha",
+      "titulo": "THE PRO TRICK",
+      "linhas": [
+       [
+        "Suspect",
+        "one you hold"
+       ],
+       [
+        "Weapon",
+        "one you hold"
+       ],
+       [
+        "Room",
+        "the one you test"
+       ]
+      ]
+     },
+     {
+      "tipo": "lista",
+      "titulo": "HOW THE TRICK WORKS",
+      "itens": [
+       "2 of your own cards",
+       "1 card to test",
+       "Any show = that card"
+      ]
+     },
+     {
+      "tipo": "contador",
+      "txt": "GAMES · THE PRO TRICK"
+     },
+     {
+      "tipo": "fichas",
+      "rotulo": "ROUNDS TO SOLVE · 4 PLAYERS",
+      "itens": [
+       {
+        "cor": "#d64535",
+        "nome": "FULL DEDUCTION",
+        "v": 6.5
+       },
+       {
+        "cor": "#5b8fd6",
+        "nome": "+ PRO TRICK",
+        "v": 7.1
+       }
+      ],
+      "suf": ""
+     },
+     {
+      "tipo": "fichas",
+      "rotulo": "ROUNDS TO SOLVE · 6 PLAYERS",
+      "itens": [
+       {
+        "cor": "#d64535",
+        "nome": "FULL DEDUCTION",
+        "v": 5.4
+       },
+       {
+        "cor": "#5b8fd6",
+        "nome": "+ PRO TRICK",
+        "v": 5.7
+       }
+      ],
+      "suf": ""
+     },
+     {
+      "tipo": "fichas",
+      "rotulo": "ROUNDS TO SOLVE · 3 PLAYERS",
+      "itens": [
+       {
+        "cor": "#d64535",
+        "nome": "FULL DEDUCTION",
+        "v": 7.4
+       },
+       {
+        "cor": "#5b8fd6",
+        "nome": "+ PRO TRICK",
+        "v": 7.6
+       }
+      ],
+      "suf": ""
+     },
+     {
+      "tipo": "teste",
+      "a": "NORMAL SUGGESTION",
+      "pa": "3 CARDS",
+      "b": "PRO TRICK",
+      "pb": "1 CARD",
+      "vence": "a"
+     },
+     {
+      "tipo": "ficha",
+      "titulo": "LAB NOTE · WHY IT'S SLOWER",
+      "linhas": [
+       [
+        "Pro trick",
+        "clean answer, 1 card"
+       ],
+       [
+        "Normal + full notes",
+        "3 cards, solved later"
+       ]
+      ],
+      "selo": "NOTES BEAT TRICKS"
+     },
+     {
+      "tipo": "cartas",
+      "modo": "misterio",
+      "selo": "ASK WHAT YOU DON'T KNOW"
+     }
+    ],
+    "n": 4,
+    "titulo": "The pro trick"
+   },
+   "falas": [
+    "Part four. The pro trick.",
+    "Search for Clue strategy online, and you'll find the same trick everywhere. Use your own cards in your suggestion.",
+    "You suggest two cards you already hold, plus one you want to test. If someone shows you a card, you know exactly which one it is.",
+    "It sounds brilliant. So we gave it to our full deduction player and ran another ten thousand games.",
+    "It got slower. 7.1 rounds instead of 6.5.",
+    "At six players, the same thing. 5.7 rounds instead of 5.4.",
+    "Even at three players, where the trick should shine, it lost. 7.6 against 7.4.",
+    "Here's why. The trick tests one card at a time. A normal suggestion tests three.",
+    "And if you're already tracking hidden shows and hand sizes, your notepad untangles those three cards for you later.",
+    "The trick only helps players who don't take good notes. If your notepad is good, ask about cards you don't know."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "v": [
+     {
+      "tipo": "capitulo",
+      "n": "PART FIVE",
+      "txt": "HOW MUCH IS LUCK?"
+     },
+     {
+      "tipo": "dados",
+      "faces": [
+       2,
+       5
+      ],
+      "txt": "LUCK"
+     },
+     {
+      "tipo": "numero",
+      "txt": "192",
+      "rotulo": "GAMES SOLVED IN 2 ROUNDS OR LESS · OUT OF 10,000"
+     },
+     {
+      "tipo": "numero",
+      "txt": "4–8",
+      "rotulo": "ROUNDS · 8 OUT OF 10 GAMES · FULL DEDUCTION"
+     },
+     {
+      "tipo": "numero",
+      "txt": "68%",
+      "rotulo": "BASIC NOTES · 11+ ROUNDS"
+     },
+     {
+      "tipo": "teste",
+      "a": "NOTES",
+      "pa": "MOST GAMES",
+      "b": "LUCK",
+      "pb": "A FEW",
+      "vence": "a"
+     },
+     {
+      "tipo": "ficha",
+      "titulo": "THE GAME NIGHT CHALLENGE",
+      "linhas": [
+       [
+        "Everyone else",
+        "plays normally"
+       ],
+       [
+        "You",
+        "full deduction"
+       ],
+       [
+        "Goal",
+        "solve first"
+       ]
+      ]
+     },
+     {
+      "tipo": "cartas",
+      "modo": "misterio",
+      "selo": "TELL US WHO WON"
+     }
+    ],
+    "n": 5,
+    "titulo": "How much is luck"
+   },
+   "falas": [
+    "Part five. How much is luck?",
+    "Even with perfect notes, the cards still matter.",
+    "Our full deduction player solved the case within two rounds in 192 of ten thousand games. Pure luck.",
+    "But in most games, it took between 4 and 8 rounds. That's the real range of a good player.",
+    "The basic player? In 68 percent of games, it took eleven rounds or more.",
+    "So luck decides a few games. Notes decide most of them.",
+    "Here's a challenge for your next game night. Everyone plays exactly like they always do. You play full deduction.",
+    "Then come back here and tell us in the comments who won, and by how many rounds. We read every single one."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "v": [
+     {
+      "tipo": "capitulo",
+      "n": "PART SIX",
       "txt": "BIGGER TABLES"
      },
      {
@@ -556,16 +905,24 @@
       "rotulo": "FASTER · 6 PLAYERS"
      },
      {
+      "tipo": "teste",
+      "a": "SMALL TABLE",
+      "pa": "SMALL EDGE",
+      "b": "BIG TABLE",
+      "pb": "BIG EDGE",
+      "vence": "b"
+     },
+     {
       "tipo": "numero",
       "txt": "53%",
       "rotulo": "SOLVED IN 5 ROUNDS OR LESS · 6 PLAYERS"
      }
     ],
-    "n": 4,
+    "n": 6,
     "titulo": "Bigger tables"
    },
    "falas": [
-    "Part four. Bigger tables.",
+    "Part six. Bigger tables.",
     "Now here's the twist. We changed the number of players.",
     "For a basic note taker, more players is bad news.",
     "Three players, 9.9 rounds. Six players, 12.7.",
@@ -574,6 +931,7 @@
     "Three players, 7.4 rounds. Six players, just 5.4.",
     "More players means more suggestions, more passes, and more hidden cards to track. Every one of them is a clue.",
     "At a six player table, the full deduction player is 2.4 times faster than the basic one.",
+    "So if you're the best note taker at your table, invite more people. The bigger the table, the bigger your edge.",
     "And in 53 percent of games, they had the answer in five rounds or less."
    ]
   },
@@ -581,6 +939,37 @@
    "cena": {
     "tipo": "arte",
     "v": [
+     {
+      "tipo": "fichas",
+      "rotulo": "ROUNDS TO SOLVE · 4 PLAYERS · THE RECAP",
+      "itens": [
+       {
+        "cor": "#e8e1cf",
+        "nome": "BASIC",
+        "v": 10.9
+       },
+       {
+        "cor": "#e8c46a",
+        "nome": "+ PASSES",
+        "v": 8.1
+       },
+       {
+        "cor": "#d64535",
+        "nome": "FULL DEDUCTION",
+        "v": 6.5
+       },
+       {
+        "cor": "#5b8fd6",
+        "nome": "+ PRO TRICK",
+        "v": 7.1
+       }
+      ],
+      "suf": ""
+     },
+     {
+      "tipo": "contador",
+      "txt": "GAMES IN THIS VIDEO"
+     },
      {
       "tipo": "cartas",
       "modo": "misterio",
@@ -604,9 +993,33 @@
       "txt": "NOT THE DICE"
      },
      {
+      "tipo": "lista",
+      "titulo": "THE WINNING NOTEPAD",
+      "itens": [
+       "who passed",
+       "who showed to whom",
+       "how many cards each",
+       "ask what you don't know"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "titulo": "THE WINNING NOTEPAD",
+      "itens": [
+       "who passed",
+       "who showed to whom",
+       "how many cards each",
+       "ask what you don't know"
+      ]
+     },
+     {
       "tipo": "cartas",
       "modo": "misterio",
       "selo": "YOUR NOTES?"
+     },
+     {
+      "tipo": "contador",
+      "txt": "GAMES FOR THE NEXT VIDEO"
      },
      {
       "tipo": "fim"
@@ -614,11 +1027,16 @@
     ]
    },
    "falas": [
+    "Let's recap the numbers. Basic notes, 10.9 rounds. Watching passes, 8.1. Full deduction, 6.5. And the famous pro trick made it slower, at 7.1.",
+    "More than a hundred thousand simulated games in this video. And one lesson.",
     "So how do you win at Clue?",
     "Write down who passes. Write down who showed a card to whom. And count every hand.",
     "Your notepad is the real detective. The dice just move you around.",
-    "How do you take notes in Clue? Tell us in the comments.",
-    "And subscribe. Next, we play ten thousand games of another classic."
+    "And forget the pro trick. Ask about the cards you don't know.",
+    "Screenshot this list, and send it to the person who always wins at your house. It's time.",
+    "How do you take notes in Clue? Basic, pass watcher, or full detective? Tell us in the comments.",
+    "And which classic should we play ten thousand times next? The most requested game in the comments is the next video.",
+    "Subscribe so you don't miss it. See you in the next ten thousand."
    ]
   }
  ]
