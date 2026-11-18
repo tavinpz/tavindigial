@@ -147,16 +147,16 @@ const Madeira: React.FC<{ f: number; titulo: string; txt: string }> = ({ f, titu
 };
 
 /** recibo saindo da máquina */
-const Recibo: React.FC<{ f: number; linha: string; txt: string; rotulo: string }> = ({ f, linha, txt, rotulo }) => {
+const Recibo: React.FC<{ f: number; linha: string; txt: string; rotulo: string; cab?: string; quem?: string }> = ({ f, linha, txt, rotulo, cab, quem }) => {
   const p = prog(f, 0, 34, EO);
   return (
     <div style={{ width: 620, height: 720, overflow: 'hidden', position: 'relative' }}>
       <div style={{ position: 'absolute', left: 30, right: 30, top: (1 - p) * 700, background: '#fbf8f1', padding: '40px 40px 60px', fontFamily: FA.maq, color: '#2d2722',
         clipPath: 'polygon(0 0,100% 0,100% 96%,95% 100%,90% 96%,85% 100%,80% 96%,75% 100%,70% 96%,65% 100%,60% 96%,55% 100%,50% 96%,45% 100%,40% 96%,35% 100%,30% 96%,25% 100%,20% 96%,15% 100%,10% 96%,5% 100%,0 96%)' }}>
-        <div style={{ textAlign: 'center', fontSize: 30, letterSpacing: 4 }}>* GAS RECEIPT *</div>
+        <div style={{ textAlign: 'center', fontSize: 30, letterSpacing: 4 }}>{cab || '* GAS RECEIPT *'}</div>
         <div style={{ borderTop: '2px dashed #8a8175', margin: '22px 0' }} />
         <div style={{ fontSize: 40 }}>{linha}</div>
-        <div style={{ fontSize: 28, opacity: 0.7, marginTop: 8 }}>1 person · 1 year</div>
+        <div style={{ fontSize: 28, opacity: 0.7, marginTop: 8 }}>{quem || '1 person · 1 year'}</div>
         <div style={{ borderTop: '2px dashed #8a8175', margin: '26px 0 18px' }} />
         <div style={{ fontSize: 30 }}>TOTAL</div>
         <div style={{ fontFamily: FA.cond, fontSize: 150, lineHeight: 1.05, color: '#1a120c' }}>{conta(txt, prog(f, 20, 50))}</div>
@@ -201,19 +201,20 @@ const Extra: React.FC<VProps> = ({ f, dur, v }) => {
     const cont = React.useContext(Continua);
     const p = cont.ant ? 1 : prog(f, 4, 40, (x) => x);
     const mostra = Math.max(2, Math.round(n * p));
-    const Wg = 1500, Hg = 560, ymax = v.alvo ? 11 : 6.5;
+    const Wg = 1500, Hg = 560, ymax = v.ymax ?? (v.alvo ? 11 : 6.5);
+    const fy = (g: number) => v.fmt === '%' ? `${g}%` : `$${g}`;
     const X = (i: number) => (i / (S.length - 1)) * Wg, Y = (val: number) => Hg - (val / ymax) * Hg;
     const d = S.slice(0, mostra).map((x, i) => `${i ? 'L' : 'M'}${X(i).toFixed(1)},${Y(x[1]).toFixed(1)}`).join('');
     const mk = v.marca ? S.findIndex((x) => x[0] >= v.marca[0]) : -1;
     return (<>
       <Objeto f={f} dur={dur} x={W / 2} y={450} rot={-1} entra="cai" seed={70}>
         <Papel w={1640}>
-          <div style={{ fontFamily: FA.osw, fontWeight: 700, fontSize: 32, letterSpacing: 3, color: '#2b2219' }}>U.S. REGULAR GASOLINE · $ PER GALLON · EIA</div>
+          <div style={{ fontFamily: FA.osw, fontWeight: 700, fontSize: 32, letterSpacing: 3, color: '#2b2219' }}>{v.titulo || 'U.S. REGULAR GASOLINE · $ PER GALLON · EIA'}</div>
           <svg width={Wg + 60} height={Hg + 60} style={{ overflow: 'visible', marginTop: 10 }}>
-            {[0, 2, 4, 6, ...(v.alvo ? [8, 10] : [])].map((g) => <g key={g}><line x1={40} x2={Wg + 40} y1={Y(g)} y2={Y(g)} stroke="rgba(43,34,25,0.25)" /><text x={0} y={Y(g) + 8} fontFamily={FA.osw} fontWeight={700} fontSize={24} fill="#2b2219">${g}</text></g>)}
-            {[1990, 2000, 2010, 2020].map((a) => { const i = S.findIndex((x) => x[0] >= `${a}-01`); return i < 0 ? null : <text key={a} x={40 + X(i)} y={Hg + 40} fontFamily={FA.osw} fontWeight={700} fontSize={26} fill="#2b2219" textAnchor="middle">{a}</text>; })}
+            {(v.yt || [0, 2, 4, 6, ...(v.alvo ? [8, 10] : [])]).map((g: number) => <g key={g}><line x1={40} x2={Wg + 40} y1={Y(g)} y2={Y(g)} stroke="rgba(43,34,25,0.25)" /><text x={0} y={Y(g) + 8} fontFamily={FA.osw} fontWeight={700} fontSize={24} fill="#2b2219">{fy(g)}</text></g>)}
+            {(v.xt || [1990, 2000, 2010, 2020]).map((a: number) => { const i = S.findIndex((x) => x[0] >= `${a}-01`); return i < 0 ? null : <text key={a} x={40 + X(i)} y={Hg + 40} fontFamily={FA.osw} fontWeight={700} fontSize={26} fill="#2b2219" textAnchor="middle">{a}</text>; })}
             <path d={d} transform="translate(40 0)" fill="none" stroke={LAR} strokeWidth={7} strokeLinejoin="round" strokeLinecap="round" style={{ filter: 'url(#tinta-borrada)' }} />
-            {v.alvo && <g opacity={prog(f, 8, 20)}><line x1={40} x2={Wg + 40} y1={Y(v.alvo)} y2={Y(v.alvo)} stroke="#151210" strokeWidth={5} strokeDasharray="18 12" /><text x={Wg - 120} y={Y(v.alvo) - 16} fontFamily={FA.cond} fontSize={54} fill="#151210">$10</text></g>}
+            {v.alvo && <g opacity={prog(f, 8, 20)}><line x1={40} x2={Wg + 40} y1={Y(v.alvo)} y2={Y(v.alvo)} stroke="#151210" strokeWidth={5} strokeDasharray="18 12" /><text x={Wg - 120} y={Y(v.alvo) - 16} fontFamily={FA.cond} fontSize={54} fill="#151210">{v.alvo_txt || '$10'}</text></g>}
             {mk >= 0 && mk < mostra && <g transform={`translate(${40 + X(mk)} ${Y(S[mk][1])})`} opacity={prog(f, 14, 22)}><circle r={16} fill="#151210" /><circle r={8} fill={LAR} /></g>}
           </svg>
         </Papel>
@@ -225,19 +226,23 @@ const Extra: React.FC<VProps> = ({ f, dur, v }) => {
   if (t === 'dispersao') {
     const P: [string, number, number, number][] = v.pts;
     const Wg = 1400, Hg = 640;
-    const gx = (g: number) => ((g - 240) / (660 - 240)) * Wg, ry = (r: number) => Hg - ((r - 50000) / (106000 - 50000)) * Hg;
+    const E = v.eixos || { x: [240, 660], y: [50000, 106000], xt: [300, 400, 500, 600], yt: [60000, 80000, 100000], xl: 'GAS BURNED PER PERSON (→) · INCOME PER PERSON (↑)', xf: '{} gal', yf: '$K' };
+    const gx = (g: number) => ((g - E.x[0]) / (E.x[1] - E.x[0])) * Wg, ry = (r: number) => Hg - ((r - E.y[0]) / (E.y[1] - E.y[0])) * Hg;
+    const fmt = (t: string, n: number) => t === '$K' ? `$${n / 1000}K` : t.replace('{}', String(n));
     const foco: string[] = v.foco || [];
     return (
       <Objeto f={f} dur={dur} x={W / 2} y={460} rot={-0.8} entra="cai" seed={75}>
         <Papel w={1640}>
-          <div style={{ fontFamily: FA.osw, fontWeight: 700, fontSize: 30, letterSpacing: 3, color: '#2b2219' }}>GAS BURNED PER PERSON (→) · INCOME PER PERSON (↑)</div>
+          <div style={{ fontFamily: FA.osw, fontWeight: 700, fontSize: 30, letterSpacing: 3, color: '#2b2219' }}>{E.xl}</div>
           <svg width={Wg + 100} height={Hg + 40} style={{ overflow: 'visible', marginTop: 8 }}>
             <g transform="translate(70 0)">
               {v.zona && <rect x={gx(480)} y={ry(66000)} width={gx(660) - gx(480)} height={Hg - ry(66000)} fill="rgba(255,107,61,0.22)" stroke={LAR} strokeWidth={4} strokeDasharray="14 10" opacity={prog(f, 6, 18)} />}
               {v.zona && <text x={gx(500)} y={Hg - 20} fontFamily={FA.cond} fontSize={44} fill={LAR} opacity={prog(f, 10, 20)}>DANGER ZONE</text>}
               <line x1={0} x2={Wg} y1={Hg} y2={Hg} stroke="#2b2219" strokeWidth={3} /><line x1={0} x2={0} y1={0} y2={Hg} stroke="#2b2219" strokeWidth={3} />
-              {[300, 400, 500, 600].map((g) => <text key={g} x={gx(g)} y={Hg + 32} textAnchor="middle" fontFamily={FA.osw} fontWeight={700} fontSize={24} fill="#2b2219">{g} gal</text>)}
-              {[60000, 80000, 100000].map((r) => <text key={r} x={-14} y={ry(r) + 8} textAnchor="end" fontFamily={FA.osw} fontWeight={700} fontSize={24} fill="#2b2219">${r / 1000}K</text>)}
+              {E.xt.map((g: number) => <text key={g} x={gx(g)} y={Hg + 32} textAnchor="middle" fontFamily={FA.osw} fontWeight={700} fontSize={24} fill="#2b2219">{fmt(E.xf, g)}</text>)}
+              {E.yt.map((r: number) => <text key={r} x={-14} y={ry(r) + 8} textAnchor="end" fontFamily={FA.osw} fontWeight={700} fontSize={24} fill="#2b2219">{fmt(E.yf, r)}</text>)}
+              {E.linha != null && <g opacity={prog(f, 6, 18)}><line x1={0} x2={Wg} y1={ry(E.linha)} y2={ry(E.linha)} stroke={LAR} strokeWidth={4} strokeDasharray="14 10" /><text x={Wg - 10} y={ry(E.linha) - 12} textAnchor="end" fontFamily={FA.cond} fontSize={40} fill={LAR}>{E.linha_txt}</text></g>}
+              {E.diag && <line x1={gx(E.x[0])} y1={ry(E.x[0])} x2={gx(Math.min(E.x[1], E.y[1]))} y2={ry(Math.min(E.x[1], E.y[1]))} stroke="#2b2219" strokeWidth={2} strokeDasharray="6 8" opacity={0.5} />}
               {P.map(([ab, g, r, rk], i) => {
                 const a = clamp((f - 2 - i * 0.5) / 5);
                 const fo = foco.includes(ab);
@@ -248,6 +253,25 @@ const Extra: React.FC<VProps> = ({ f, dur, v }) => {
               })}
             </g>
           </svg>
+        </Papel>
+      </Objeto>
+    );
+  }
+  if (t === 'barras') {
+    const it: [string, number, string?][] = v.itens;
+    const mx = v.max ?? Math.max(...it.map((x) => x[1]));
+    return (
+      <Objeto f={f} dur={dur} x={W / 2} y={450} rot={-1} entra="cai" seed={77}>
+        <Papel w={1500} seed={78}>
+          <div style={{ fontFamily: FA.osw, fontWeight: 700, fontSize: 34, letterSpacing: 3, color: '#2b2219', marginBottom: 18 }}>{v.titulo}</div>
+          {it.map(([rot, val, cor], i) => {
+            const a = prog(f, 4 + i * 6, 22 + i * 6, EO);
+            return <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 24, margin: '14px 0' }}>
+              <div style={{ width: 330, fontFamily: FA.osw, fontWeight: 700, fontSize: 40, color: '#2b2219', textAlign: 'right' }}>{rot}</div>
+              <div style={{ height: 70, width: 900 * (val / mx) * a, background: cor || LAR, clipPath: rasgado(80 + i, 0.6, 12) }} />
+              <div style={{ fontFamily: FA.cond, fontSize: 64, color: '#151210', opacity: a }}>{conta(`${val}${v.unid || ''}`, a)}</div>
+            </div>;
+          })}
         </Papel>
       </Objeto>
     );
@@ -339,8 +363,8 @@ const Cena: React.FC<VProps> = ({ f, dur, v }) => {
     </>);
   }
   if (t === 'conta') return (<>
-    <Objeto f={f} dur={dur} x={W / 2 + 180} y={470} rot={2} entra="baixo" seed={33}><Recibo f={f} linha={v.linha} txt={v.txt} rotulo={v.rotulo} /></Objeto>
-    <Objeto f={f} dur={dur} x={560} y={460} rot={-9} entra="cola" atraso={12} seed={34}><div style={{ background: '#f5ecd6', padding: 20, clipPath: rasgado(18, 3, 14) }}><Emoji n="bomba" tam={170} /></div></Objeto>
+    <Objeto f={f} dur={dur} x={W / 2 + 180} y={470} rot={2} entra="baixo" seed={33}><Recibo f={f} linha={v.linha} txt={v.txt} rotulo={v.rotulo} cab={v.cab} quem={v.quem} /></Objeto>
+    <Objeto f={f} dur={dur} x={560} y={460} rot={-9} entra="cola" atraso={12} seed={34}><div style={{ background: '#f5ecd6', padding: 20, clipPath: rasgado(18, 3, 14) }}><Emoji n={v.emoji || 'bomba'} tam={170} /></div></Objeto>
   </>);
   if (t === 'nota-rasgada') {
     const pr = prog(f, 14, 36, EO);

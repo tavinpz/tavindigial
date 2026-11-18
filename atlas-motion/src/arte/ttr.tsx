@@ -92,11 +92,11 @@ const Ficha: React.FC<{ titulo: string; linhas: [string, string][]; f: number }>
   </div>
 );
 
-const Dado: React.FC<{ n: number; tam?: number }> = ({ n, tam = 170 }) => {
+const Dado: React.FC<{ n: number; tam?: number; cor?: string; pip?: string }> = ({ n, tam = 170, cor, pip = '#1d1a16' }) => {
   const P: Record<number, [number, number][]> = { 1: [[1, 1]], 2: [[0, 0], [2, 2]], 3: [[0, 0], [1, 1], [2, 2]], 4: [[0, 0], [2, 0], [0, 2], [2, 2]], 5: [[0, 0], [2, 0], [1, 1], [0, 2], [2, 2]], 6: [[0, 0], [2, 0], [0, 1], [2, 1], [0, 2], [2, 2]] };
   return (
-    <div style={{ width: tam, height: tam, borderRadius: tam * 0.18, background: 'linear-gradient(145deg,#fffdf6,#e3dccb)', boxShadow: `inset -6px -8px 0 rgba(0,0,0,0.12)`, position: 'relative' }}>
-      {P[n].map(([x, y], i) => <div key={i} style={{ position: 'absolute', left: tam * (0.2 + x * 0.3) - tam * 0.08, top: tam * (0.2 + y * 0.3) - tam * 0.08, width: tam * 0.16, height: tam * 0.16, borderRadius: tam, background: '#1d1a16' }} />)}
+    <div style={{ width: tam, height: tam, borderRadius: tam * 0.18, background: cor ? `linear-gradient(145deg,${cor},${cor}cc)` : 'linear-gradient(145deg,#fffdf6,#e3dccb)', boxShadow: `inset -6px -8px 0 rgba(0,0,0,0.12)`, position: 'relative' }}>
+      {P[n].map(([x, y], i) => <div key={i} style={{ position: 'absolute', left: tam * (0.2 + x * 0.3) - tam * 0.08, top: tam * (0.2 + y * 0.3) - tam * 0.08, width: tam * 0.16, height: tam * 0.16, borderRadius: tam, background: pip }} />)}
     </div>
   );
 };
@@ -348,13 +348,62 @@ const Cena: React.FC<VProps> = ({ f, dur, v }) => {
     return (<>
       <Objeto f={f} dur={dur} x={W / 2} y={420} rot={-1} entra="cai" seed={12}>
         <div style={{ background: '#1d1a16', borderRadius: 22, padding: '34px 46px', border: '10px solid #3a352d', boxShadow: 'inset 0 0 30px #000' }}>
-          <div style={{ fontFamily: FA.osw, fontWeight: 700, fontSize: 30, letterSpacing: 8, color: AM, textAlign: 'center', marginBottom: 16 }}>GAMES PLAYED</div>
+          <div style={{ fontFamily: FA.osw, fontWeight: 700, fontSize: 30, letterSpacing: 8, color: AM, textAlign: 'center', marginBottom: 16 }}>{v.txt || 'GAMES PLAYED'}</div>
           <div style={{ display: 'flex', gap: 10 }}>{s.split('').map((ch, i) => (
             <div key={i} style={{ width: ch === ',' ? 40 : 128, height: 190, background: ch === ',' ? 'transparent' : '#f4efe2', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: FA.cond, fontSize: ch === ',' ? 120 : 170, color: ch === ',' ? '#f4efe2' : TINTA, boxShadow: ch === ',' ? undefined : 'inset 0 -6px 0 #cdbfa5' }}>{ch === ' ' ? '0' : ch}</div>
           ))}</div>
         </div>
       </Objeto>
       <Objeto f={f} dur={dur} x={W / 2 + 420} y={760} rot={6} entra="cola" atraso={14} seed={13}><Etiqueta txt="RUN #10,000" tam={80} seed={14} /></Objeto>
+    </>);
+  }
+  if (t === 'batalha') {
+    // ataque (vermelho) x defesa (marfim): dados rolam, ordenam do maior ao menor e cada par se compara
+    const A: number[] = [...v.ata].sort((x, y) => y - x), D: number[] = [...v.def].sort((x, y) => y - x);
+    const cola = (fs: number[], k: number, atq: boolean) => {
+      const p = sp(f - k * 3 - (atq ? 0 : 6), { damping: 16, stiffness: 70, mass: 1 });
+      return p < 0.92 ? 1 + ((Math.floor(f / 3) + k * 2 + (atq ? 0 : 3)) % 6) : fs[k];
+    };
+    const pares = Math.min(A.length, D.length);
+    const mostra = prog(f, 26, 34);
+    return (<>
+      <div style={{ position: 'absolute', left: 300, top: 150, fontFamily: FA.osw, fontWeight: 700, fontSize: 40, letterSpacing: 6, color: '#ff8a7a' }}>ATTACK</div>
+      <div style={{ position: 'absolute', left: 300, top: 560, fontFamily: FA.osw, fontWeight: 700, fontSize: 40, letterSpacing: 6, color: '#f4efe2' }}>DEFENSE</div>
+      {A.map((_, k) => {
+        const p = sp(f - k * 3, { damping: 16, stiffness: 70, mass: 1 });
+        return <div key={'a' + k} style={{ position: 'absolute', left: 560 + k * 290 + (1 - p) * -900, top: 200, transform: `rotate(${(1 - p) * 540 + (k - 1) * 4}deg)`, filter: 'drop-shadow(8px 14px 10px rgba(0,0,0,0.5))' }}>
+          <Dado n={cola(A, k, true)} tam={210} cor="#c0392b" pip="#fbf6ea" /></div>;
+      })}
+      {D.map((_, k) => {
+        const p = sp(f - k * 3 - 6, { damping: 16, stiffness: 70, mass: 1 });
+        return <div key={'d' + k} style={{ position: 'absolute', left: 560 + k * 290 + (1 - p) * 900, top: 610, transform: `rotate(${(1 - p) * -540 + (k - 1) * 4}deg)`, filter: 'drop-shadow(8px 14px 10px rgba(0,0,0,0.5))' }}>
+          <Dado n={cola(D, k, false)} tam={210} /></div>;
+      })}
+      {Array.from({ length: pares }, (_, k) => {
+        const ganhaA = A[k] > D[k];
+        return <div key={'p' + k} style={{ position: 'absolute', left: 560 + k * 290 + 60, top: 455, opacity: mostra, fontFamily: FA.cond, fontSize: 96, color: ganhaA ? '#ff8a7a' : '#f4efe2', textShadow: '0 4px 12px rgba(0,0,0,0.6)' }}>{ganhaA ? '▲' : '▼'}</div>;
+      })}
+      {v.txt && <Objeto f={f} dur={dur} x={W / 2 + 560} y={470} rot={-4} entra="cola" atraso={34} seed={17}><Etiqueta txt={v.txt} tam={74} seed={18} sub={v.sub} /></Objeto>}
+    </>);
+  }
+  if (t === 'tropas') {
+    // duas pilhas de exércitos (cubos), ataque x defesa, com o número em cima
+    const pilha = (n: number, x: number, cor: string, atraso: number, nome: string) => (
+      <Objeto f={f} dur={dur} x={x} y={470} entra="cai" atraso={atraso} seed={atraso + 40}>
+        <div style={{ textAlign: 'center' }}>
+          <div style={{ fontFamily: FA.cond, fontSize: 150, color: cor, WebkitTextStroke: '6px #111', paintOrder: 'stroke fill', lineHeight: 1 }}>{conta(String(n), prog(f, atraso + 4, atraso + 26))}</div>
+          <div style={{ display: 'flex', flexWrap: 'wrap-reverse', width: 520, gap: 8, justifyContent: 'center', marginTop: 14 }}>
+            {Array.from({ length: Math.min(n, 40) }, (_, i) => <div key={i} style={{ width: 52, height: 52, borderRadius: 8, background: cor, boxShadow: 'inset -5px -6px 0 rgba(0,0,0,0.25)', opacity: prog(f, atraso + 4 + i * 0.6, atraso + 8 + i * 0.6) }} />)}
+          </div>
+          <div style={{ fontFamily: FA.osw, fontWeight: 700, fontSize: 40, letterSpacing: 5, color: '#f4efe2', marginTop: 16 }}>{nome}</div>
+        </div>
+      </Objeto>
+    );
+    return (<>
+      {pilha(v.a, W / 2 - 420, '#d64535', 0, v.na || 'ATTACKER')}
+      {pilha(v.b, W / 2 + 420, '#e8e1cf', 6, v.nb || 'DEFENDER')}
+      <Objeto f={f} dur={dur} x={W / 2} y={380} rot={-4} entra="carimbo" atraso={14} seed={95}><Carimbo txt="VS" tam={120} cor={AM} /></Objeto>
+      {v.selo && <Objeto f={f} dur={dur} x={W / 2} y={820} rot={2} entra="cola" atraso={24} seed={96}><Etiqueta txt={v.selo} tam={80} seed={97} /></Objeto>}
     </>);
   }
   if (t === 'dados') {

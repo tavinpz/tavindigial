@@ -10,6 +10,7 @@ import { Longo } from './longo/Longo';
 import { Capa, MarcaTTR } from './longo/Capa';
 import type { LDados } from './longo/tema';
 import { Arte } from './arte/Arte';
+import { ArteCapa } from './arte/Capa';
 import { B52 } from './b52/B52';
 import { B52v2 } from './b52/B52v2';
 import { Crosswind01 } from './b52/Crosswind01';
@@ -88,6 +89,7 @@ export const Root: React.FC = () => (
         return { durationInFrames: props.n || dados.quadros, props: { ...props, dados } };
       }}
     />
+    <Composition id="ArteCapa" component={ArteCapa as any} durationInFrames={1} fps={30} width={1920} height={1080} defaultProps={{ canal: 'last-state-standing', v: { tipo: 'numero', txt: '$10' }, titulo: ['TESTE'] }} />
     <Composition id="TexArte" component={Tex as any} durationInFrames={1} fps={30} width={1920} height={1080} defaultProps={{ tipo: 'escuro' }} />
     <Composition id="Capa" component={Capa as any} durationInFrames={1} fps={30} width={1280} height={720} defaultProps={{ v: 'a' }} />
     <Composition id="LogoTTR" component={MarcaTTR as any} durationInFrames={1} fps={30} width={800} height={800} defaultProps={{ v: 'logo' }} />

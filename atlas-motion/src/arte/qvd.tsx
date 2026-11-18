@@ -101,9 +101,9 @@ const Medidor: React.FC<{ f: number; nome: string; v: number; cor: string; de?: 
   );
 };
 
-const Ingresso: React.FC<{ txt: string; cor: string }> = ({ txt, cor }) => (
+const Ingresso: React.FC<{ txt: string; cor: string; quando?: string }> = ({ txt, cor, quando = 'NOVEMBRO DE 1904' }) => (
   <div style={{ width: 620, padding: '50px 30px', background: PAPEL, border: `8px double ${cor}`, textAlign: 'center', clipPath: 'polygon(0 0,100% 0,100% 40%,97% 50%,100% 60%,100% 100%,0 100%,0 60%,3% 50%,0 40%)' }}>
-    <div style={{ fontFamily: FA.maq, fontSize: 32, color: '#5b4630', letterSpacing: 4 }}>NOVEMBRO DE 1904</div>
+    <div style={{ fontFamily: FA.maq, fontSize: 32, color: '#5b4630', letterSpacing: 4 }}>{quando}</div>
     <div style={{ fontFamily: FA.serif, fontWeight: 900, fontSize: txt.length > 7 ? 84 : 110, color: cor, lineHeight: 1.05, whiteSpace: 'nowrap' }}>{txt}</div>
   </div>
 );
@@ -129,7 +129,7 @@ const Extra: React.FC<{ f: number; dur: number; v: any }> = ({ f, dur, v }) => {
         <Folha w={1250}>
           <div style={{ fontFamily: FA.maq, fontSize: 36, letterSpacing: 5, marginBottom: 10 }}>FICHA DE SOBREVIVÊNCIA · VOCÊ</div>
           <Medidor f={f} nome="SAÚDE" v={v.s} de={ant.s} cor="#7a2c1e" />
-          <Medidor f={f} nome="DINHEIRO" v={v.d} de={ant.d} cor="#6b5a1e" />
+          <Medidor f={f} nome={v.nome_d || "DINHEIRO"} v={v.d} de={ant.d} cor="#6b5a1e" />
           <Medidor f={f} nome="SEGURANÇA" v={v.g} de={ant.g} cor="#2f4a5c" />
         </Folha>
       </Objeto>
@@ -141,7 +141,7 @@ const Extra: React.FC<{ f: number; dur: number; v: any }> = ({ f, dur, v }) => {
     return (
       <Objeto f={f} dur={dur} x={W / 2} y={430} rot={-1} entra="cai" seed={43}>
         <Folha w={1500}>
-          <div style={{ fontFamily: FA.maq, fontSize: 34, letterSpacing: 5 }}>LINHA DO TEMPO · 1904</div>
+          <div style={{ fontFamily: FA.maq, fontSize: 34, letterSpacing: 5 }}>{v.titulo || 'LINHA DO TEMPO · 1904'}</div>
           <div style={{ position: 'relative', height: 260, marginTop: 20 }}>
             <div style={{ position: 'absolute', left: 0, right: 0, top: 120, height: 6, background: TINTA }} />
             {ds.map(([d, txt], i) => {
@@ -162,8 +162,8 @@ const Extra: React.FC<{ f: number; dur: number; v: any }> = ({ f, dur, v }) => {
     );
   }
   if (t === 'escolha') return (<>
-    <Objeto f={f} dur={dur} x={W / 2 - 400} y={430} rot={-5} entra="esq" seed={44}><Ingresso txt={v.a} cor="#2f4a5c" /></Objeto>
-    <Objeto f={f} dur={dur} x={W / 2 + 400} y={430} rot={5} entra="dir" atraso={6} seed={45}><Ingresso txt={v.b} cor={VERM} /></Objeto>
+    <Objeto f={f} dur={dur} x={W / 2 - 400} y={430} rot={-5} entra="esq" seed={44}><Ingresso txt={v.a} cor="#2f4a5c" quando={v.quando} /></Objeto>
+    <Objeto f={f} dur={dur} x={W / 2 + 400} y={430} rot={5} entra="dir" atraso={6} seed={45}><Ingresso txt={v.b} cor={VERM} quando={v.quando} /></Objeto>
     <Objeto f={f} dur={dur} x={W / 2} y={440} rot={-3} entra="carimbo" atraso={14} seed={46}><Carimbo txt="OU" tam={120} cor={TINTA} /></Objeto>
     {v.txt && <Objeto f={f} dur={dur} x={W / 2} y={790} rot={2} entra="carimbo" atraso={22} seed={47}><Carimbo txt={v.txt} tam={80} /></Objeto>}
   </>);
@@ -264,7 +264,7 @@ const Cena: React.FC<VProps> = ({ f, dur, v }) => {
         <Datilo f={f} txt={v.sub} ini={18} cps={1.6} style={{ fontSize: 68, marginTop: 18 }} />
       </Folha>
     </Objeto>
-    <Objeto f={f} dur={dur} x={W / 2 + 400} y={700} rot={-12} entra="carimbo" atraso={Math.round(dur * 0.55)} seed={2}><Carimbo txt="1904" tam={110} /></Objeto>
+    <Objeto f={f} dur={dur} x={W / 2 + 400} y={700} rot={-12} entra="carimbo" atraso={Math.round(dur * 0.55)} seed={2}><Carimbo txt={v.ano || "1904"} tam={110} /></Objeto>
   </>);
   if (t === 'foto') return (<>
     <Objeto f={f} dur={dur} x={W / 2 + (v.lado || 0)} y={450} rot={v.rot ?? -2.5} entra={v.entra || 'cai'} seed={v.seed || 3}>
