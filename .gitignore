@@ -18,3 +18,5 @@ cw03/*.wav
 */videos/*/voz/
 *.log
 vozes/vozes/
+atlas-motion/public/tc/*/*.wav
+atlas-motion/public/tc/*/mix.m4a
