@@ -15,86 +15,116 @@ export const Defs: React.FC = () => (
   <defs>
     <linearGradient id="cel" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stopColor={K.osso} /><stop offset="0.66" stopColor={K.osso} /><stop offset="0.66" stopColor={K.sombra} /><stop offset="1" stopColor={K.sombra} /></linearGradient>
     <linearGradient id="celG" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stopColor="#77736c" /><stop offset="0.66" stopColor="#77736c" /><stop offset="0.66" stopColor="#57534d" /><stop offset="1" stopColor="#57534d" /></linearGradient>
+    <linearGradient id="celM" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stopColor={K.sombra} /><stop offset="0.34" stopColor={K.sombra} /><stop offset="0.34" stopColor={K.osso} /><stop offset="1" stopColor={K.osso} /></linearGradient>
+    <linearGradient id="celGM" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stopColor="#57534d" /><stop offset="0.34" stopColor="#57534d" /><stop offset="0.34" stopColor="#77736c" /><stop offset="1" stopColor="#77736c" /></linearGradient>
     <filter id="brilho" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="7" /></filter>
   </defs>
 );
 
-// membro afunilado com barriga de músculo, do ponto (0,0) até (0,len)
-const membro = (len: number, w1: number, w2: number, b: number) =>
-  `M ${-w1 / 2},0 C ${-(w1 / 2 + b)},${len * 0.28} ${-(w2 / 2 + b * 0.35)},${len * 0.72} ${-w2 / 2},${len} L ${w2 / 2},${len} C ${w2 / 2 + b * 0.35},${len * 0.72} ${w1 / 2 + b},${len * 0.28} ${w1 / 2},0 Z`;
-
 export type Pose = { ombE: number; ombD: number; cotE?: number; cotD?: number; pernaE?: number; pernaD?: number; pe?: 'chao' | 'solto'; punho?: boolean };
 type FigP = { x: number; y: number; esc?: number; pose: Pose; vol?: number; cinza?: boolean; tendao?: number; resp?: number; op?: number; cabeca?: number };
 
-// Personagem fixo do canal. Origem na linha dos ombros. vol = volume (1 magro definido, 1.6 grandão).
+// Personagem fixo do canal (v2: anatomia desenhada). Origem na linha dos ombros, luz vindo da esquerda.
+// vol = volume (1 magro definido, 1.6 grandão). Os membros são desenhados para o lado direito da tela e espelhados.
 export const Figura: React.FC<FigP> = ({ x, y, esc = 1, pose, vol = 1, cinza, tendao = 0, resp = 0, op = 1, cabeca = 0 }) => {
-  const P = cinza ? 'url(#celG)' : 'url(#cel)';
-  const st = { fill: P, stroke: K.tinta, strokeWidth: 4.5, strokeLinejoin: 'round' as const };
-  const ln = { fill: 'none', stroke: K.tinta, strokeWidth: 3, strokeLinecap: 'round' as const, opacity: cinza ? 0.55 : 0.85 };
-  const oW = 84 * (0.9 + 0.22 * vol), cint = 46 * (0.55 + 0.45 * vol * vol), quad = 58 * (0.75 + 0.25 * vol);
-  const braco = (lado: 1 | -1, omb: number, cot: number) => (
-    <g transform={`translate(${lado * oW},14) rotate(${-lado * omb})`}>
-      <path d={membro(112, 54 * vol, 37 * vol, 7 * vol)} {...st} />
-      <g transform={`translate(0,108) rotate(${-lado * cot})`}>
-        <path d={membro(104, 43 * vol, 25 * vol, 9 * vol)} {...st} />
-        {/* tendões do antebraço: acendem em âmbar */}
-        {[-1, 0, 1].map((k) => <path key={k} d={`M ${k * 9 * vol},18 Q ${k * 7 * vol},60 ${k * 4},98`} fill="none" stroke={tendao > 0.02 ? K.ambar : K.tinta} strokeWidth={tendao > 0.02 ? 4.5 : 2} strokeLinecap="round" opacity={tendao > 0.02 ? tendao : 0.35} />)}
-        {tendao > 0.02 && <path d={membro(104, 43 * vol, 25 * vol, 9 * vol)} fill={K.ambar} opacity={0.35 * tendao} filter="url(#brilho)" />}
-        {pose.punho
-          ? <rect x={-17 * vol} y={96} width={34 * vol} height={30} rx={11} {...st} />
-          : <path d={`M ${-12},100 Q ${-17},122 ${-9},138 L 9,138 Q 17,122 12,100 Z`} {...st} />}
+  const P = cinza ? 'url(#celG)' : 'url(#cel)', PM = cinza ? 'url(#celGM)' : 'url(#celM)';
+  const SH = cinza ? '#4b4843' : K.sombra;
+  const st = (m: boolean) => ({ fill: m ? PM : P, stroke: K.tinta, strokeWidth: 4.5, strokeLinejoin: 'round' as const });
+  const ln = { fill: 'none', stroke: K.tinta, strokeWidth: 2.6, strokeLinecap: 'round' as const, opacity: cinza ? 0.5 : 0.8 };
+  const fino = { fill: 'none', stroke: K.tinta, strokeWidth: 1.6, strokeLinecap: 'round' as const, opacity: cinza ? 0.3 : 0.45 };
+  const v = vol, oW = 86 * (0.88 + 0.22 * v), cint = 44 * (0.5 + 0.5 * v * v), hip = 54 * (0.75 + 0.25 * v);
+  const braco = (lado: 1 | -1, omb: number, cot: number) => {
+    const m = lado === -1;
+    return (
+      <g transform={`translate(${lado * oW},12) rotate(${-lado * omb}) scale(${lado},1)`}>
+        <path d={`M ${-25 * v},6 C ${-33 * v},38 ${-30 * v},72 ${-20 * v},116 L ${20 * v},116 C ${28 * v},84 ${32 * v},48 ${26 * v},4 Z`} {...st(m)} />
+        <path d={`M ${-4 * v},30 C ${-12 * v},56 ${-10 * v},88 ${-3 * v},108`} {...ln} />
+        <path d={`M ${14 * v},52 C ${18 * v},72 ${16 * v},92 ${11 * v},108`} {...fino} />
+        <g transform={`translate(0,112) rotate(${-cot})`}>
+          <path d={`M ${-21 * v},-2 C ${-30 * v},26 ${-22 * v},70 ${-13},108 L ${13},108 C ${20 * v},70 ${33 * v},30 ${21 * v},-4 Z`} {...st(m)} />
+          <path d={`M ${11 * v},8 C ${16 * v},40 ${9 * v},74 5,100`} {...ln} opacity={0.5} />
+          {[-1, 0, 1].map((k) => <path key={k} d={`M ${k * 9 * v - 3},24 Q ${k * 7 * v - 2},64 ${k * 4},102`} fill="none" stroke={tendao > 0.02 ? K.ambar : K.tinta} strokeWidth={tendao > 0.02 ? 4.5 : 1.6} strokeLinecap="round" opacity={tendao > 0.02 ? tendao : 0.35} />)}
+          {tendao > 0.02 && <path d={`M ${-21 * v},-2 C ${-30 * v},26 ${-22 * v},70 -13,108 L 13,108 C ${20 * v},70 ${33 * v},30 ${21 * v},-4 Z`} fill={K.ambar} opacity={0.32 * tendao} filter="url(#brilho)" />}
+          {pose.punho
+            ? <g><rect x={-20} y={96} width={40} height={32} rx={12} {...st(m)} />{[-9, 0, 9].map((k) => <path key={k} d={`M ${k},99 L ${k},122`} {...ln} strokeWidth={2} />)}<path d="M -20,118 Q -27,108 -19,100" {...ln} /></g>
+            : <g><path d="M -13,106 L 13,106 L 15,130 C 15,152 9,164 3,166 L -8,166 C -15,152 -15,130 -13,106 Z" {...st(m)} /><path d="M -13,112 C -24,120 -24,140 -15,148" {...st(m)} strokeWidth={3.5} />{[-5, 1, 7].map((k) => <path key={k} d={`M ${k},140 L ${k},162`} {...fino} opacity={0.6} />)}</g>}
+        </g>
+        {/* deltoide */}
+        <path d={`M ${-24 * v},-10 C ${-6 * v},-27 ${27 * v},-22 ${31 * v},6 C ${33 * v},28 ${25 * v},44 ${13 * v},54 C ${7 * v},36 ${-10 * v},20 ${-24 * v},12 Z`} {...st(m)} />
+        <path d={`M ${4 * v},-14 C ${10 * v},6 ${13 * v},28 ${13 * v},46`} {...fino} /><path d={`M ${17 * v},-10 C ${22 * v},8 ${22 * v},26 ${18 * v},42`} {...fino} />
       </g>
-      <ellipse cx={-lado * 2} cy={4} rx={31 * vol} ry={27 * vol} fill={P} />
-      <path d={`M ${lado * 22 * vol},${-16} Q ${-lado * 38 * vol},${-26 * vol} ${-lado * 33 * vol},${14}`} {...ln} strokeWidth={4.5} opacity={1} />
-      <path d={`M ${-17 * vol},30 Q 0,${44} ${17 * vol},30`} {...ln} />
-      <path d={`M ${-lado * 4},50 Q ${-lado * 12 * vol},78 ${-lado * 3},100`} {...ln} opacity={0.5} />
+    );
+  };
+  const perna = (lado: 1 | -1, ang: number) => {
+    const m = lado === -1; const q = 0.78 + 0.22 * v;
+    return (
+      <g transform={`translate(${lado * 31 * q},208) rotate(${-lado * ang}) scale(${lado},1)`}>
+        <path d={`M ${-30 * q},0 C ${-36 * q},50 ${-28 * q},120 -20,166 L 20,166 C ${30 * q},120 ${41 * q},60 ${34 * q},0 Z`} {...st(m)} />
+        <path d={`M ${5 * q},18 C ${11 * q},70 7,120 3,150`} {...ln} opacity={0.55} />
+        <path d={`M ${23 * q},34 C ${29 * q},80 25,120 18,150`} {...fino} />
+        <path d="M -16,118 C -23,138 -13,158 -4,150" {...ln} opacity={0.6} />
+        <g transform="translate(0,168)">
+          <path d={`M ${-19 * q},0 C ${-29 * q},34 -22,96 -11,156 L 11,156 C 18,104 ${31 * q},40 ${20 * q},0 Z`} {...st(m)} />
+          <path d={`M ${12 * q},22 C ${19 * q},60 12,96 8,118`} {...ln} opacity={0.5} /><path d="M -3,24 L -3,128" {...fino} />
+          {pose.pe === 'solto'
+            ? <path d="M -11,152 C -15,186 -9,208 0,212 C 9,208 13,186 11,152 Z" {...st(m)} />
+            : <g><path d="M -13,152 L 13,152 L 20,170 C 34,176 36,190 26,192 L -14,192 C -20,186 -18,166 -13,152 Z" {...st(m)} />{[8, 15, 22].map((k) => <path key={k} d={`M ${k},184 L ${k + 1},191`} {...fino} opacity={0.6} />)}</g>}
+          <path d="M -11,-6 Q 0,-14 11,-6" {...ln} opacity={0.7} /><path d="M -9,8 Q 0,15 9,8" {...ln} opacity={0.7} />
+        </g>
+      </g>
+    );
+  };
+  const short = cinza ? ['#3a3835', '#2b2927'] : [K.verm, '#B02513'];
+  const tronco = `M ${-oW - 2},2 C ${-oW * 0.72},-16 -30,-18 -18,-14 L 18,-14 C 30,-18 ${oW * 0.72},-16 ${oW + 2},2 C ${oW + 10},40 ${oW + 2},74 ${oW - 8},96 C ${oW - 22},128 ${cint + 6},150 ${cint},176 L ${hip},222 L ${-hip},222 L ${-cint},176 C ${-(cint + 6)},150 ${-(oW - 22)},128 ${-(oW - 8)},96 C ${-(oW + 2)},74 ${-(oW + 10)},40 ${-oW - 2},2 Z`;
+  const peito = (l: 1 | -1) => (
+    <g transform={`scale(${l},1)`}>
+      <path d={`M 3,30 C 22,22 60,22 ${oW - 12},36 C ${oW - 6},58 ${oW - 22},78 50,84 C 30,90 10,84 3,74 Z`} fill={l === 1 ? P : PM} stroke={K.tinta} strokeWidth={3} strokeLinejoin="round" />
+      <path d={`M 6,74 C 26,87 54,85 ${oW - 16},64 C ${oW - 20},80 50,93 30,93 C 16,93 8,85 6,74 Z`} fill={SH} opacity={0.9} />
+      {[0, 1, 2].map((i) => <path key={i} d={`M ${oW - 20 - i * 5},${100 + i * 17} q -10,2 -16,10`} {...ln} />)}
+      <path d={`M ${cint + 13},112 C ${cint + 8},140 ${cint + 2},158 ${cint - 2},176`} {...fino} />
+      <path d={`M ${cint - 2},182 L 13,218`} {...ln} opacity={0.5} />
+      <path d={`M 8,2 C 30,-5 56,-3 ${oW - 10},5`} {...ln} />
     </g>
   );
-  const perna = (lado: 1 | -1, ang: number) => (
-    <g transform={`translate(${lado * 30 * (0.8 + 0.2 * vol)},206) rotate(${-lado * ang})`}>
-      <path d={membro(150, quad * 1.18, 46 * (0.8 + 0.2 * vol), 8 * vol)} {...st} />
-      <path d={`M ${lado * 6},20 Q ${lado * 16},80 ${lado * 6},132`} {...ln} opacity={0.45} />
-      <g transform="translate(0,146)">
-        <path d={membro(140, 46 * (0.8 + 0.2 * vol), 24, 11 * vol)} {...st} />
-        {pose.pe === 'solto'
-          ? <path d="M -11,134 Q -15,170 -3,186 L 6,186 Q 15,168 11,134 Z" {...st} />
-          : <path d={`M -13,132 L 13,132 L ${lado * 34},156 Q ${lado * 36},166 ${lado * 22},166 L -${lado * 14},166 Z`} {...st} />}
-        <path d="M -9,10 Q 0,18 9,10" {...ln} />
-      </g>
-    </g>
-  );
-  const cor = cinza ? '#3a3835' : K.verm;
   return (
     <g transform={`translate(${x},${y}) scale(${esc})`} opacity={op}>
       {perna(-1, pose.pernaE ?? 4)}{perna(1, pose.pernaD ?? 4)}
-      {/* tronco */}
       <g transform={`scale(${1 + resp * 0.012},${1 - resp * 0.004})`}>
-        <path d={`M ${-oW - 6},0 Q ${-oW * 0.7},-15 -17,-12 L 17,-12 Q ${oW * 0.7},-15 ${oW + 6},0 L ${oW * 1.02},64 Q ${cint * 1.45},118 ${cint},170 L ${quad * 1.02},216 L ${-quad * 1.02},216 L ${-cint},170 Q ${-cint * 1.45},118 ${-oW * 1.02},64 Z`} {...st} />
+        <path d="M -44,-8 C -28,-22 -20,-34 -15,-46 L 15,-46 C 20,-34 28,-22 44,-8 Z" {...st(false)} />
+        <path d={tronco} {...st(false)} />
         {cinza
-          ? <path d={`M ${-oW * 0.62},-6 Q 0,34 ${oW * 0.62},-6 L ${oW * 0.86},70 Q ${cint * 1.2},122 ${cint},170 L ${quad},214 L ${-quad},214 L ${-cint},170 Q ${-cint * 1.2},122 ${-oW * 0.86},70 Z`} fill="#2a2927" stroke={K.tinta} strokeWidth={3} />
+          ? <path d={`M ${-oW * 0.6},-8 Q 0,34 ${oW * 0.6},-8 L ${oW - 6},96 C ${oW - 22},128 ${cint + 6},150 ${cint},176 L ${hip},220 L ${-hip},220 L ${-cint},176 C ${-(cint + 6)},150 ${-(oW - 22)},128 ${-(oW - 6)},96 Z`} fill="#2a2927" stroke={K.tinta} strokeWidth={3} />
           : <>
-            <path d={`M ${-oW * 0.82},56 Q ${-oW * 0.42},88 -4,62`} {...ln} /><path d={`M ${oW * 0.82},56 Q ${oW * 0.42},88 4,62`} {...ln} />
-            <path d="M 0,22 L 0,172" {...ln} />
-            {[98, 126, 152].map((yy, i) => <path key={i} d={`M ${-26 + i * 2},${yy} Q 0,${yy + 5} ${26 - i * 2},${yy}`} {...ln} />)}
-            <path d={`M ${-oW * 0.72},6 Q ${-oW * 0.38},15 -8,8`} {...ln} /><path d={`M ${oW * 0.72},6 Q ${oW * 0.38},15 8,8`} {...ln} />
-            {[0, 1, 2].map((i) => <React.Fragment key={i}><path d={`M ${-cint - 14 + i * 3},${92 + i * 20} l 13,6`} {...ln} /><path d={`M ${cint + 14 - i * 3},${92 + i * 20} l -13,6`} {...ln} /></React.Fragment>)}
+            {peito(-1)}{peito(1)}
+            <path d="M 0,26 L 0,94" {...ln} />
+            {[0, 1, 2].map((i) => [-1, 1].map((l) => (
+              <g key={`${i}${l}`}><rect x={l === 1 ? 3 : -27 + i} y={97 + i * 26} width={24 - i} height={23} rx={9} fill={l === 1 ? P : K.osso} stroke={K.tinta} strokeWidth={1.8} opacity={0.95} /></g>
+            )))}
+            <path d="M 0,176 q 0,8 0,12" {...ln} /><ellipse cx={0} cy={184} rx={3} ry={4} fill={K.tinta} opacity={0.7} />
           </>}
       </g>
-      {/* short */}
-      <path d={`M ${-quad * 1.06},186 L ${quad * 1.06},186 L ${quad * 1.3},298 L 9,300 L 0,262 L -9,300 L ${-quad * 1.3},298 Z`} fill={cor} stroke={K.tinta} strokeWidth={4.5} strokeLinejoin="round" />
-      {!cinza && <><path d={`M ${quad * 0.86},190 L ${quad * 1.06},296`} stroke={K.osso} strokeWidth={5} opacity={0.9} /><path d={`M ${-quad * 0.86},190 L ${-quad * 1.06},296`} stroke={K.osso} strokeWidth={5} opacity={0.9} /></>}
-      <path d={`M ${-quad * 1.06},186 L ${quad * 1.06},186`} stroke={K.tinta} strokeWidth={8} />
+      {/* short com cós, listra e dobras */}
+      <path d={`M ${-hip * 1.08},190 L ${hip * 1.08},190 L ${hip * 1.42},318 L 10,322 L 0,268 L -10,322 L ${-hip * 1.42},318 Z`} fill={short[0]} stroke={K.tinta} strokeWidth={4.5} strokeLinejoin="round" />
+      <path d={`M ${hip * 0.5},194 L ${hip * 1.08},190 L ${hip * 1.42},318 L ${hip * 0.72},320 Z`} fill={short[1]} opacity={0.85} />
+      {!cinza && <><path d={`M ${hip * 0.9},198 L ${hip * 1.22},314`} stroke={K.osso} strokeWidth={5} opacity={0.9} /><path d={`M ${-hip * 0.9},198 L ${-hip * 1.22},314`} stroke={K.osso} strokeWidth={5} opacity={0.9} /></>}
+      <path d={`M ${-hip * 1.08},192 L ${hip * 1.08},192`} stroke={K.tinta} strokeWidth={9} /><path d={`M ${-hip * 1.02},192 L ${hip * 1.02},192`} stroke={short[1]} strokeWidth={4} />
+      <path d="M -4,198 q -3,14 -7,20 M 4,198 q 3,14 7,20" {...ln} opacity={0.6} />
+      <path d={`M ${-hip * 0.5},230 q 8,30 2,60 M ${hip * 0.4},236 q -6,30 0,56`} {...fino} opacity={0.5} />
       {braco(-1, pose.ombE, pose.cotE ?? 6)}{braco(1, pose.ombD, pose.cotD ?? 6)}
-      {!cinza && <><path d={`M -19,-10 Q ${-oW * 0.5},-16 ${-oW * 0.8},-4`} {...ln} /><path d={`M 19,-10 Q ${oW * 0.5},-16 ${oW * 0.8},-4`} {...ln} /></>}
-      {/* pescoço e cabeça */}
-      <path d={`M ${-15 * (0.8 + 0.2 * vol)},-44 L ${15 * (0.8 + 0.2 * vol)},-44 L ${19 * vol},-8 L ${-19 * vol},-8 Z`} {...st} />
-      <g transform={`translate(0,-80) rotate(${cabeca})`}>
-        <path d="M -33,-6 Q -35,-44 0,-46 Q 35,-44 33,-6 Q 32,26 14,40 Q 0,48 -14,40 Q -32,26 -33,-6 Z" {...st} />
-        <path d="M -33,-8 Q -36,-47 0,-49 Q 36,-47 33,-8 Q 20,-26 0,-26 Q -20,-26 -33,-8 Z" fill={cinza ? '#2a2927' : '#3b3a3d'} stroke={K.tinta} strokeWidth={3.5} />
-        <path d="M -36,-4 q -7,6 -2,18" {...st} /><path d="M 36,-4 q 7,6 2,18" {...st} />
-        <path d="M -22,-10 L -8,-7" {...ln} strokeWidth={4.5} /><path d="M 22,-10 L 8,-7" {...ln} strokeWidth={4.5} />
-        <ellipse cx={-14} cy={0} rx={4} ry={3.2} fill={K.tinta} /><ellipse cx={14} cy={0} rx={4} ry={3.2} fill={K.tinta} />
-        <path d="M 0,2 L -3,16 L 3,17" {...ln} /><path d="M -9,28 Q 0,31 9,27" {...ln} />
+      {/* pescoço */}
+      <path d="M -20,-56 L 20,-56 L 25,-10 L -25,-10 Z" {...st(false)} /><path d="M -14,-46 L -5,-10 M 14,-46 L 5,-10" {...fino} />
+      <path d="M -20,-46 Q 0,-34 20,-46 L 20,-56 L -20,-56 Z" fill={SH} opacity={0.9} />
+      {/* cabeça */}
+      <g transform={`translate(0,-94) rotate(${cabeca}) scale(1.14)`}>
+        <path d="M -32,-8 q -8,4 -4,20 q 3,8 8,6 Z" {...st(false)} strokeWidth={3.5} /><path d="M 32,-8 q 8,4 4,20 q -3,8 -8,6 Z" {...st(false)} strokeWidth={3.5} />
+        <path d="M -30,-10 C -32,-44 -18,-52 0,-52 C 18,-52 32,-44 30,-10 C 30,8 26,22 16,34 C 8,43 -8,43 -16,34 C -26,22 -30,8 -30,-10 Z" {...st(false)} />
+        <path d="M -33,-10 C -40,-52 -16,-66 2,-63 C 28,-66 40,-44 33,-10 C 29,-28 23,-36 12,-38 C 4,-30 -10,-40 -18,-34 C -26,-30 -30,-22 -33,-10 Z" fill={cinza ? '#262523' : '#3d3b40'} stroke={K.tinta} strokeWidth={3.5} strokeLinejoin="round" />
+        {!cinza && [[-22, -44, -12, -58], [-8, -46, 0, -60], [8, -46, 14, -59], [20, -40, 27, -52]].map((q, i) => <path key={i} d={`M ${q[0]},${q[1]} Q ${(q[0] + q[2]) / 2 - 3},${q[3] + 2} ${q[2]},${q[3]}`} fill="none" stroke="#85828a" strokeWidth={2.2} strokeLinecap="round" />)}
+        <path d="M -24,-14 L -7,-10" stroke={K.tinta} strokeWidth={5} strokeLinecap="round" /><path d="M 24,-14 L 7,-10" stroke={K.tinta} strokeWidth={5} strokeLinecap="round" />
+        <path d="M -21,-2 Q -14,-8 -7,-2 Q -14,2 -21,-2 Z" fill="#fff" stroke={K.tinta} strokeWidth={2} /><path d="M 21,-2 Q 14,-8 7,-2 Q 14,2 21,-2 Z" fill="#fff" stroke={K.tinta} strokeWidth={2} />
+        <circle cx={-14} cy={-2.5} r={3.2} fill={K.tinta} /><circle cx={14} cy={-2.5} r={3.2} fill={K.tinta} />
+        <path d="M -1,-2 L -5,14 Q 0,18 5,14" {...ln} /><path d="M -10,26 Q 0,29 10,25" {...ln} strokeWidth={3} /><path d="M -5,32 Q 0,34 5,32" {...fino} />
+        <path d="M 18,8 C 22,18 18,28 12,34" {...fino} /><path d="M 22,2 C 26,14 22,26 16,33" {...fino} />
       </g>
     </g>
   );
