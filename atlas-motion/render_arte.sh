@@ -10,21 +10,24 @@ for ID in "$@"; do
   [ -s $OUT ] && continue
   Q=$(python3 -c "import json;print(json.load(open('public/l/$ID/data.json'))['quadros'])")
   P=/home/claude/render_tmp/$ID; mkdir -p $P
-  PASSO=2700; i=0; s=0
+  PASSO=${PASSO:-1350}; s=0
+  # partes nomeadas pelo intervalo (q_<ini>_<fim>.mp4): dá para mudar o PASSO no meio sem perder o que já foi feito
+  [ -s $P/parte_00.mp4 ] && [ ! -e $P/q_0_2699.mp4 ] && mv $P/parte_00.mp4 $P/q_0_2699.mp4
   : > $P/lista.txt
   while [ $s -lt $Q ]; do
-    e=$(( s + PASSO - 1 )); [ $e -ge $Q ] && e=$(( Q - 1 ))
-    f=$P/parte_$(printf %02d $i).mp4
-    if [ ! -s $f ]; then
-      # para numa fronteira de parte antes do limite de 2 h da tarefa (relançar continua daqui)
-      [ $(( $(date +%s) - INICIO )) -gt ${LIMITE:-4200} ] && { echo "PAUSA $ID parte $i $(date +%T)"; exit 0; }
+    f=$(ls $P/q_${s}_*.mp4 2>/dev/null | head -1)
+    if [ -z "$f" ]; then
+      e=$(( s + PASSO - 1 )); [ $e -ge $Q ] && e=$(( Q - 1 ))
+      f=$P/q_${s}_${e}.mp4
+      [ $(( $(date +%s) - INICIO )) -gt ${LIMITE:-4200} ] && { echo "PAUSA $ID em $s $(date +%T)"; exit 0; }
       npx remotion render src/index.ts Arte $P/tmp.mp4 --props="{\"id\":\"$ID\",\"semAudio\":true}" --frames=$s-$e --muted --concurrency=2 --crf=19 --log=info --browser-executable=$CHROME > /home/claude/estudio/prog_$ID.log 2>&1 \
         && mv $P/tmp.mp4 $f
+      [ -s $f ] || { echo "ERRO $ID em $s"; exit 1; }
     fi
-    [ -s $f ] || { echo "ERRO $ID parte $i"; exit 1; }
+    e=$(basename $f .mp4 | cut -d_ -f3)
     echo "file '$f'" >> $P/lista.txt
-    echo "PARTE $ID $i ok ($s-$e de $Q) $(date +%T)"
-    i=$(( i + 1 )); s=$(( e + 1 ))
+    echo "PARTE $ID $s-$e de $Q $(date +%T)"
+    s=$(( e + 1 ))
   done
   ffmpeg -y -loglevel error -f concat -safe 0 -i $P/lista.txt -i public/l/$ID/mix.wav -map 0:v -map 1:a -c:v copy -c:a aac -b:a 192k -shortest -movflags +faststart $OUT && echo "OK $ID $(date +%T)"
 done
