@@ -35,6 +35,28 @@ const Pose: React.FC<{ g: number; ini: number; f: V; brilho?: string }> = ({ g, 
   );
 };
 
+// Pictogramas de lado para movimentos que o personagem (só de frente) não mostra: flexão e sentar/levantar do chão.
+const Icone: React.FC<{ g: number; ini: number; tipo: string }> = ({ g, ini, tipo }) => {
+  const { o } = entra(g, ini); const st = { fill: 'none', stroke: K.osso, strokeWidth: 30, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
+  const chao = <rect x={130} y={842} width={760} height={6} fill={K.osso} opacity={0.3} />;
+  let d: React.ReactNode;
+  if (tipo === 'flexao') {
+    const k = (1 - Math.cos(g / 11)) / 2, sy = 640 + 120 * k, hy = sy - 34;     // ombro desce e sobe
+    d = <>{chao}<circle cx={792} cy={hy - 20} r={46} fill={K.osso} />
+      <path d={`M 716,${sy} L 250,812`} {...st} strokeWidth={46} />
+      <path d={`M 716,${sy} L ${716 - 60 * k},${(sy + 820) / 2 + 20 * k} L 716,820`} {...st} stroke={K.ambar} />
+      <path d="M 250,812 L 206,826" {...st} /></>;
+  } else {
+    const k = (1 - Math.cos(g / 26)) / 2, q = 500 + 290 * k, om = q - 250 + 20 * k;   // quadril desce até o chão
+    d = <>{chao}<circle cx={520} cy={om - 76} r={50} fill={K.osso} />
+      <path d={`M 520,${om} L 520,${q}`} {...st} strokeWidth={50} />
+      <path d={`M 520,${q} L ${520 - 150 * k - 34},${q + (812 - q) * 0.5 - 40 * k} L ${520 + 120 * k - 30},812`} {...st} stroke={K.ambar} />
+      <path d={`M 520,${q} L ${520 + 150 * k + 34},${q + (812 - q) * 0.5 - 40 * k} L ${520 - 120 * k + 30},812`} {...st} stroke={K.ambar} />
+      <path d={`M 520,${om + 30} L ${440 - 30 * k},${om + 150} M 520,${om + 30} L ${600 + 30 * k},${om + 150}`} {...st} strokeWidth={24} /></>;
+  }
+  return <svg viewBox={`0 0 ${W} ${H}`} width={W} height={H} style={{ position: 'absolute', left: 0, top: (1 - o) * 26, opacity: o }}>{d}</svg>;
+};
+
 const Cena: React.FC<{ g: number; D: number; b: Bloco; ini: number }> = ({ g, D, b, ini }) => {
   const ts = b.falas.map((x) => Math.round(x.t * 30) - ini);
   const est = React.useMemo(() => { const a: V[] = []; let s: V = {}; for (const f of b.falas) { s = { ...s, ...(f.v || {}) }; for (const k of Object.keys(s)) if (s[k] === null) delete s[k]; a.push(s); } return a; }, [b]);
@@ -43,7 +65,7 @@ const Cena: React.FC<{ g: number; D: number; b: Bloco; ini: number }> = ({ g, D,
   // quadro em que o valor atual da chave apareceu (para animar só o que é novo)
   const desde = (ch: string, sub?: (x: any) => any) => { const pega = (e: V) => J(sub ? sub(e[ch]) : e[ch]); let j = i; while (j > 0 && pega(est[j - 1]) === pega(v)) j--; return Math.max(0, ts[j]); };
   const figs: V[] = v.figs || [];
-  const lado = figs.length > 0 || v.mao; const centro = v.c || !lado;
+  const lado = figs.length > 0 || v.mao || v.icone; const centro = v.c || !lado;
   const tx = centro ? 960 : (figs.length > 1 ? 1180 : COL), anc = centro ? 'middle' : 'start', larg = centro ? 1560 : W - tx - 120;
   const punch = 1 + 0.012 * L(g, [ts[i], ts[i] + 9], [1, 0]);
   const anda = figs.some((f) => f.anda);
@@ -88,7 +110,7 @@ const Cena: React.FC<{ g: number; D: number; b: Bloco; ini: number }> = ({ g, D,
       let j = i; while (j > 0 && est[j - 1].cart && est[j - 1].cart.it[n] && est[j - 1].cart.it[n][2] === c[2]) j--;
       let j1 = i; while (j1 > 0 && est[j1 - 1].cart && est[j1 - 1].cart.it[n] && est[j1 - 1].cart.it[n][1] === c[1]) j1--;
       const r = entra(g, Math.max(0, ts[j])), r1 = entra(g, Math.max(0, ts[j1]));
-      const bom = /SAME|JUST|SIMILAR|NO DROP|MORE/.test(c[2]) && !/DROPPED/.test(c[2]);
+      const bom = /SAME|JUST|SIMILAR|NO DROP|MORE|LOWER|ALL 3/.test(c[2]) && !/DROPPED/.test(c[2]);
       el.push(<g key={'c' + n} opacity={o} transform={`translate(0,${(1 - Math.min(1, s)) * 40})`}>
         <rect x={x} y={y} width={690} height={500} fill={K.painel} stroke="#2c2c31" strokeWidth={3} />
         <rect x={x} y={y} width={690} height={10} fill={n ? K.verm : K.cinza} />
@@ -128,9 +150,9 @@ const Cena: React.FC<{ g: number; D: number; b: Bloco; ini: number }> = ({ g, D,
     if (v.barras.nota) { const tn = desde('barras', (x) => x && x.nota), e = entra(g, Math.max(tn, t0 + 30)); el.push(<text key="bn" x={1700} y={y0 - 40} textAnchor="end" fontFamily={TIT} fontSize={170 * (0.8 + 0.2 * e.s)} fill={K.verm} opacity={e.o} letterSpacing={2}>{v.barras.nota}</text>); }
   }
   if (v.anel) {
-    const t0 = desde('anel'), seg = Math.max(0, Math.floor((g - t0 - 10) / 30));
+    const t0 = desde('anel', (x) => x && x.seg), seg = Math.max(0, Math.floor((g - t0 - 10) / 30));
     el.push(<Anel key="an" cx={1380} cy={480} r={190} p={Math.min(1, (g - t0 - 10) / 30 / v.anel.seg)} rot={`0:${String(seg).padStart(2, '0')}`} sub="and counting" op={L(g, [t0, t0 + 10], [0, 1])} />);
-    el.push(<text key="ant" x={1380} y={790} textAnchor="middle" fontFamily={SANS} fontWeight={800} fontSize={54} fill={K.osso} opacity={L(g, [t0 + 14, t0 + 24], [0, 1])}><Tx txt="stand TALL · hold · time it" /></text>);
+    el.push(<text key="ant" x={1380} y={790} textAnchor="middle" fontFamily={SANS} fontWeight={800} fontSize={54} fill={K.osso} opacity={L(g, [t0 + 14, t0 + 24], [0, 1])}><Tx txt={v.anel.txt || 'stand TALL · hold · time it'} /></text>);
   }
   if (v.aviso) {
     const t0 = desde('aviso');
@@ -142,6 +164,7 @@ const Cena: React.FC<{ g: number; D: number; b: Bloco; ini: number }> = ({ g, D,
       {v.mao && <div style={{ position: 'absolute', left: 90 - (1 - em.o) * 40, top: 170 + Math.sin(g / 15) * 4, width: 800, opacity: em.o }}>
         <Img src={staticFile('snb/poses/mao_close.png')} style={{ width: 800, transform: `rotate(${Math.sin(g / 21) * 0.8}deg)` }} />
       </div>}
+      {v.icone && <Icone g={g} ini={desde('icone')} tipo={v.icone} />}
       {figs.map((f, n) => <Pose key={f.p + f.x} g={g} ini={desde('figs', (x) => x && x[n] && [x[n].p, x[n].x])} f={f} brilho={n === 0 ? v.brilho : undefined} />)}
       <svg viewBox={`0 0 ${W} ${H}`} width={W} height={H} style={{ position: 'absolute', left: 0, top: 0 }}>
         {anda && Array.from({ length: 9 }).map((_, n) => { const x = ((n * 150 - g * 9) % 1350 + 1350) % 1350 + 60; return <rect key={n} x={x} y={BASE + 22} width={70} height={5} fill={K.osso} opacity={0.22 * Math.min(1, x / 200, (1410 - x) / 200) * (lado && !centro ? 1 : 0.6)} />; })}

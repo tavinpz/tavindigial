@@ -1,0 +1,2518 @@
+[
+ {
+  "cena": "gancho",
+  "et": "3 TESTS · AT HOME · NO EQUIPMENT",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "Three tests. No doctor. No lab. About five minutes on your living room floor.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "3 TESTS",
+     "sub": "5 minutes. your LIVING ROOM.",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "And in studies of tens of thousands of people, each one predicted who was still alive years later.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "STILL ALIVE",
+     "sub": "years later. each test PREDICTED it.",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "One of them beat blood pressure.",
+    "p": 0.9,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": {
+      "tit": "WHAT PREDICTED WHO DIED",
+      "it": [
+       "A STRENGTH TEST",
+       "BLOOD PRESSURE"
+      ]
+     },
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   }
+  ]
+ },
+ {
+  "cena": "promessa",
+  "et": null,
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "By the end of this video, you'll have three numbers.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "3 NUMBERS",
+     "sub": "by the END of this video",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "Your grip. Your push-ups. And your score getting off the floor.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": {
+      "it": [
+       "YOUR GRIP",
+       "YOUR PUSH-UPS",
+       "YOUR FLOOR SCORE"
+      ],
+      "auto": 1
+     },
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "I'll show you what each study found, and exactly how to test yourself.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "THE STUDY",
+     "sub": "then HOW to test yourself",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "But first, one honest rule.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "ONE RULE",
+     "sub": "before we start",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "These tests predict. They do not decide.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "PREDICT",
+     "sub": "they do NOT decide",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "A low score is a warning light, not a verdict. And every one of these numbers can be trained.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "A WARNING",
+     "sub": "light. not a VERDICT.",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   }
+  ]
+ },
+ {
+  "cena": "teste1",
+  "et": "TEST 1 · GRIP",
+  "fonte": "Leong et al. 2015 · The Lancet · 139,691 adults   |   Fain & Weatherford 2016 · J Hand Therapy · 237 adults",
+  "falas": [
+   {
+    "txt": "Test one. Your grip.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "GRIP",
+     "sub": "TEST 1",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": 1,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Researchers followed almost a hundred and forty thousand adults, in seventeen countries, for four years.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": {
+      "ate": 139691,
+      "rot": "adults · 17 countries · 4 years"
+     },
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "At the start, each person squeezed a handle as hard as they could.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "SQUEEZE",
+     "sub": "as HARD as you can",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": 1,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "That one number predicted who died better than their blood pressure did.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": {
+      "tit": "WHAT PREDICTED WHO DIED",
+      "it": [
+       "GRIP STRENGTH",
+       "BLOOD PRESSURE"
+      ]
+     },
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "For every eleven pounds of grip a person was missing, the risk of death was sixteen percent higher.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "+16%",
+     "sub": "risk of death per 11 LB less grip",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "Why would your hand know anything about your heart?",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "WHY?",
+     "sub": "what does a HAND know",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": 1,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "It doesn't. Your grip is a window.",
+    "p": 0,
+    "v": {
+     "big": "A WINDOW",
+     "sub": "your grip is just that"
+    }
+   },
+   {
+    "txt": "It shows how much muscle you still have, and how well your nerves still drive it.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": {
+      "it": [
+       "how much MUSCLE you still have",
+       "how well your NERVES drive it"
+      ],
+      "auto": 1
+     },
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "And as a group, we're losing it.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "LOSING IT",
+     "sub": "as a group, we are",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": 1,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "In nineteen eighty five, the average American man in his early twenties squeezed a hundred and twenty one pounds.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": {
+      "ate": 121,
+      "suf": " LB",
+      "rot": "1985 · men 20 to 24 · right hand"
+     },
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "When researchers tested young adults again in twenty sixteen, it was a hundred and one.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": {
+      "un": " lb",
+      "it": [
+       [
+        "1985",
+        121,
+        "cinza"
+       ],
+       [
+        "2016",
+        101,
+        "verm"
+       ]
+      ],
+      "nota": "−20 LB"
+     },
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   }
+  ]
+ },
+ {
+  "cena": "teste1b",
+  "et": "TEST 1 · GRIP · HOW TO DO IT",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "The study used a hand dynamometer. You probably don't own one.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "NO TOOL?",
+     "sub": "the study used a DYNAMOMETER",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": 1,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "So here's the home version. The dead hang.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "DEAD HANG",
+     "sub": "the HOME version",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pendurado",
+       "x": 520,
+       "a": 700
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Grab a pull-up bar, or a sturdy door frame bar. Arms straight. Feet off the floor.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "lista": {
+      "it": [
+       "grab a pull-up BAR",
+       "arms STRAIGHT",
+       "feet OFF the floor"
+      ],
+      "auto": 1,
+      "lado": 1
+     }
+    }
+   },
+   {
+    "txt": "Start a timer, and hang until your hands open.",
+    "p": 4.0,
+    "v": {
+     "lista": null,
+     "anel": {
+      "seg": 60,
+      "txt": "arms STRAIGHT · hang · time it"
+     },
+     "aviso": 1
+    }
+   },
+   {
+    "txt": "I have to be straight with you. No study gives a hang time that predicts anything.",
+    "p": 0,
+    "v": {
+     "anel": null,
+     "big": "HONESTLY",
+     "sub": "no study gives a hang time CUTOFF"
+    }
+   },
+   {
+    "txt": "The research is on squeezing, not hanging.",
+    "p": 0,
+    "v": {
+     "big": "SQUEEZING",
+     "sub": "was studied. not HANGING."
+    }
+   },
+   {
+    "txt": "So use your time as your own baseline. The goal is simple. Beat it next month.",
+    "p": 0,
+    "v": {
+     "big": "BASELINE",
+     "sub": "beat it NEXT month"
+    }
+   },
+   {
+    "txt": "Write your number down. That's number one.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "NUMBER 1",
+     "sub": "write it DOWN",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   }
+  ]
+ },
+ {
+  "cena": "comentario",
+  "et": "YOUR TURN",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "Quick pause.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "PAUSE",
+     "sub": "quick one",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pendurado",
+       "x": 520,
+       "a": 700
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Comment your age, and your hang time.",
+    "p": 0,
+    "v": {
+     "big": "COMMENT",
+     "sub": "your AGE + your HANG time"
+    }
+   },
+   {
+    "txt": "I want to see if the sixty year olds can beat the twenty year olds.",
+    "p": 0,
+    "v": {
+     "big": "60 vs 20",
+     "sub": "who hangs LONGER"
+    }
+   },
+   {
+    "txt": "Two more tests. And only one person in ten aces the last one.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "2 MORE",
+     "sub": "1 in 10 aces the LAST one",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "Stay for that one. It's the test that surprised me the most.",
+    "p": 0,
+    "v": {
+     "icone": "chao",
+     "big": "STAY",
+     "sub": "for the LAST one",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   }
+  ]
+ },
+ {
+  "cena": "teste2",
+  "et": "TEST 2 · PUSH-UPS",
+  "fonte": "Yang et al. 2019 · JAMA Network Open · 1,104 male firefighters · 10 years",
+  "falas": [
+   {
+    "txt": "Test two. Push-ups.",
+    "p": 0,
+    "v": {
+     "icone": "flexao",
+     "big": "PUSH-UPS",
+     "sub": "TEST 2",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Harvard researchers tested eleven hundred firefighters. Average age, thirty nine.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": {
+      "ate": 1104,
+      "rot": "firefighters · average age 39.6"
+     },
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Each man did as many push-ups as he could.",
+    "p": 0,
+    "v": {
+     "icone": "flexao",
+     "big": "MAX REPS",
+     "sub": "as many as he COULD",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Then they were followed for ten years.",
+    "p": 0,
+    "v": {
+     "big": "10 YEARS",
+     "sub": "of follow-up"
+    }
+   },
+   {
+    "txt": "Thirty seven of them developed heart disease.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": {
+      "ate": 37,
+      "rot": "developed cardiovascular disease"
+     },
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "And thirty six of those thirty seven were men who could not get past forty push-ups.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "36 OF 37",
+     "sub": "could not get past 40 PUSH-UPS",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "Now compare two groups. The men who could do fewer than ten. And the men who could do more than forty.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": {
+      "it": [
+       [
+        "UNDER 10",
+        "push-ups",
+        ""
+       ],
+       [
+        "OVER 40",
+        "push-ups",
+        ""
+       ]
+      ]
+     },
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "The over forty group had ninety six percent lower risk.",
+    "p": 0.8,
+    "v": {
+     "cart": {
+      "it": [
+       [
+        "UNDER 10",
+        "push-ups",
+        ""
+       ],
+       [
+        "OVER 40",
+        "push-ups",
+        "96% LOWER RISK"
+       ]
+      ]
+     }
+    }
+   },
+   {
+    "txt": "And push-ups predicted it better than a treadmill test.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": {
+      "tit": "WHAT PREDICTED HEART DISEASE BETTER",
+      "it": [
+       "PUSH-UP COUNT",
+       "TREADMILL TEST"
+      ]
+     },
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   }
+  ]
+ },
+ {
+  "cena": "teste2b",
+  "et": "TEST 2 · PUSH-UPS · HOW TO DO IT",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "Now the fine print.",
+    "p": 0,
+    "v": {
+     "icone": "flexao",
+     "big": "FINE PRINT",
+     "sub": "read this part",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "These were active men, with an average age of thirty nine. No women. No seventy year olds.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "lista": {
+      "it": [
+       "only MEN",
+       "an ACTIVE job",
+       "average age 39"
+      ],
+      "auto": 1,
+      "lado": 1,
+      "x": 1
+     }
+    }
+   },
+   {
+    "txt": "The authors said it themselves. The result may not apply to everyone.",
+    "p": 0,
+    "v": {
+     "lista": null,
+     "big": "MAY NOT",
+     "sub": "apply to EVERYONE, said the authors"
+    }
+   },
+   {
+    "txt": "So forty is not a magic number. It's a direction.",
+    "p": 0,
+    "v": {
+     "big": "A DIRECTION",
+     "sub": "40 is not a MAGIC number"
+    }
+   },
+   {
+    "txt": "Here's the test. Hands under your shoulders. Body in a straight line.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "lista": {
+      "it": [
+       "hands under SHOULDERS",
+       "body in a straight LINE",
+       "chest close to the FLOOR",
+       "no RESTING"
+      ],
+      "n": 2,
+      "lado": 1
+     }
+    }
+   },
+   {
+    "txt": "Lower until your chest is a fist from the floor. Then push up.",
+    "p": 0,
+    "v": {
+     "lista": {
+      "it": [
+       "hands under SHOULDERS",
+       "body in a straight LINE",
+       "chest close to the FLOOR",
+       "no RESTING"
+      ],
+      "n": 3,
+      "lado": 1
+     }
+    }
+   },
+   {
+    "txt": "No resting at the top. No resting on the floor. Count until you can't do a clean one.",
+    "p": 3.0,
+    "v": {
+     "lista": {
+      "it": [
+       "hands under SHOULDERS",
+       "body in a straight LINE",
+       "chest close to the FLOOR",
+       "no RESTING"
+      ],
+      "n": 4,
+      "lado": 1
+     },
+     "aviso": 1
+    }
+   },
+   {
+    "txt": "Three things don't count. Hips sagging. Half reps. And stopping to breathe.",
+    "p": 0,
+    "v": {
+     "lista": {
+      "it": [
+       "hips SAGGING",
+       "HALF reps",
+       "stopping to BREATHE"
+      ],
+      "auto": 1,
+      "lado": 1,
+      "x": 1
+     }
+    }
+   },
+   {
+    "txt": "Be strict. A small honest number beats a big fake one, because you're going to test again.",
+    "p": 0,
+    "v": {
+     "lista": null,
+     "big": "BE STRICT",
+     "sub": "a small HONEST number wins"
+    }
+   },
+   {
+    "txt": "Can't do one yet? Put your hands on a table or a counter, and count those. It's still a number you can beat.",
+    "p": 0,
+    "v": {
+     "lista": null,
+     "big": "HANDS UP",
+     "sub": "on a table still COUNTS"
+    }
+   },
+   {
+    "txt": "That's number two.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "NUMBER 2",
+     "sub": "write it DOWN",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   }
+  ]
+ },
+ {
+  "cena": "teste3",
+  "et": "TEST 3 · THE FLOOR TEST",
+  "fonte": "Araújo et al. 2025 · Eur J Prev Cardiol · 4,282 adults aged 46 to 75 · about 12 years",
+  "falas": [
+   {
+    "txt": "Test three. The floor test.",
+    "p": 0,
+    "v": {
+     "icone": "chao",
+     "big": "THE FLOOR",
+     "sub": "TEST 3",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "It was created by a Brazilian doctor, Claudio Gil Araújo, in the nineteen nineties.",
+    "p": 0,
+    "v": {
+     "big": "BRAZIL",
+     "sub": "Dr. Claudio Gil ARAÚJO · 1990s"
+    }
+   },
+   {
+    "txt": "It looks like nothing. Sit down on the floor. Then stand back up.",
+    "p": 0,
+    "v": {
+     "big": "SIT DOWN",
+     "sub": "then STAND back up"
+    }
+   },
+   {
+    "txt": "The catch? Use as little support as you can.",
+    "p": 0,
+    "v": {
+     "big": "THE CATCH",
+     "sub": "as little SUPPORT as you can"
+    }
+   },
+   {
+    "txt": "His team tested four thousand two hundred people, aged forty six to seventy five, and followed them for about twelve years.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": {
+      "ate": 4282,
+      "rot": "adults aged 46 to 75 · about 12 years"
+     },
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "The score goes from zero to ten.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "0 TO 10",
+     "sub": "the SCORE",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "Among the people with a perfect ten, fewer than four in a hundred died.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": {
+      "un": "%",
+      "it": [
+       [
+        "SCORE 10 · died",
+        3.7,
+        "verde"
+       ]
+      ]
+     },
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Among the people who scored zero to four? Forty two in a hundred.",
+    "p": 0.9,
+    "v": {
+     "barras": {
+      "un": "%",
+      "it": [
+       [
+        "SCORE 10 · died",
+        3.7,
+        "verde"
+       ],
+       [
+        "SCORE 0 TO 4 · died",
+        42.1,
+        "verm"
+       ]
+      ]
+     }
+    }
+   },
+   {
+    "txt": "Even after adjusting for other risk factors, the low scorers had almost four times the risk.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "ALMOST 4X",
+     "sub": "the risk, even after ADJUSTING",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "And only one person in ten got a perfect score.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "1 IN 10",
+     "sub": "got a PERFECT score",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "The standing up half mattered most.",
+    "p": 0,
+    "v": {
+     "icone": "chao",
+     "big": "STANDING UP",
+     "sub": "was the half that mattered MOST",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "A hundred and ninety two people scored zero on getting up. Nearly half of them died during the study.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "NEARLY HALF",
+     "sub": "of the 192 who scored ZERO on rising",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "One caution. Almost all the research on this test comes from one clinic in Rio de Janeiro.",
+    "p": 0,
+    "v": {
+     "icone": "chao",
+     "big": "ONE CLINIC",
+     "sub": "in Rio. most of the research is from THERE.",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "It's a strong signal. It still needs to be repeated in other places.",
+    "p": 0,
+    "v": {
+     "big": "STRONG",
+     "sub": "signal. but it needs REPEATING."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "teste3b",
+  "et": "TEST 3 · THE FLOOR TEST · HOW TO SCORE",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "Here's how to score yourself.",
+    "p": 0,
+    "v": {
+     "icone": "chao",
+     "big": "SCORE IT",
+     "sub": "here is HOW",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "You start with ten points. Five for sitting down. Five for standing up.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "lista": {
+      "it": [
+       "start with 10 POINTS",
+       "hand or knee DOWN: -1",
+       "hand on your LEG: -1",
+       "a WOBBLE: -0.5"
+      ],
+      "n": 1,
+      "lado": 1
+     }
+    }
+   },
+   {
+    "txt": "Every time a hand, a knee, or a forearm touches the floor, you lose one point.",
+    "p": 0,
+    "v": {
+     "lista": {
+      "it": [
+       "start with 10 POINTS",
+       "hand or knee DOWN: -1",
+       "hand on your LEG: -1",
+       "a WOBBLE: -0.5"
+      ],
+      "n": 2,
+      "lado": 1
+     }
+    }
+   },
+   {
+    "txt": "Push a hand on your own leg? That's one point too.",
+    "p": 0,
+    "v": {
+     "lista": {
+      "it": [
+       "start with 10 POINTS",
+       "hand or knee DOWN: -1",
+       "hand on your LEG: -1",
+       "a WOBBLE: -0.5"
+      ],
+      "n": 3,
+      "lado": 1
+     }
+    }
+   },
+   {
+    "txt": "And if you wobble, you lose half a point.",
+    "p": 0,
+    "v": {
+     "lista": {
+      "it": [
+       "start with 10 POINTS",
+       "hand or knee DOWN: -1",
+       "hand on your LEG: -1",
+       "a WOBBLE: -0.5"
+      ],
+      "n": 4,
+      "lado": 1
+     }
+    }
+   },
+   {
+    "txt": "Crossing your legs is allowed. Most people do.",
+    "p": 0,
+    "v": {
+     "lista": null,
+     "big": "ALLOWED",
+     "sub": "crossing your LEGS"
+    }
+   },
+   {
+    "txt": "One warning, straight from the doctor who made the test. Don't do it alone.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "NOT ALONE",
+     "sub": "says the doctor who MADE the test",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": 1,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "Have someone next to you, in case you tip. And if you have a bad hip, knee, or back, skip this one.",
+    "p": 0,
+    "v": {
+     "icone": "chao",
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": {
+      "it": [
+       "someone NEXT to you",
+       "bad hip or knee? SKIP it"
+      ],
+      "auto": 1,
+      "lado": 1
+     },
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": 1,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Barefoot. Clear floor. Go slow.",
+    "p": 3.5,
+    "v": {
+     "lista": {
+      "it": [
+       "BAREFOOT",
+       "CLEAR FLOOR",
+       "GO SLOW"
+      ],
+      "auto": 1,
+      "lado": 1
+     }
+    }
+   },
+   {
+    "txt": "That's number three.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "NUMBER 3",
+     "sub": "write it DOWN",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   }
+  ]
+ },
+ {
+  "cena": "porque",
+  "et": "WHY THESE THREE",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "So why do three simple tests know so much about you?",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "WHY?",
+     "sub": "do 3 simple tests KNOW so much",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Because none of them is really testing one thing.",
+    "p": 0,
+    "v": {
+     "big": "NOT ONE",
+     "sub": "thing. none of them."
+    }
+   },
+   {
+    "txt": "Grip is a sign of your total muscle, and your nervous system.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "GRIP",
+     "sub": "muscle + NERVOUS system",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": 1,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Push-ups need strength, endurance, and a body you can actually lift.",
+    "p": 0,
+    "v": {
+     "icone": "flexao",
+     "big": "PUSH-UPS",
+     "sub": "strength + endurance + BODY weight",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "And the floor test needs leg strength, flexibility, and balance, all at once.",
+    "p": 0,
+    "v": {
+     "icone": "chao",
+     "big": "THE FLOOR",
+     "sub": "legs + flexibility + BALANCE",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "These are the things that quietly disappear when a body stops being used.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "QUIETLY",
+     "sub": "gone, when a body stops being USED",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "The tests don't cause anything. They just notice early.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "THEY NOTICE",
+     "sub": "early. they do not CAUSE anything.",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   }
+  ]
+ },
+ {
+  "cena": "leitura",
+  "et": "READ YOUR RESULTS",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "Now look at your three numbers. Which one was the worst?",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "YOUR WORST",
+     "sub": "number tells you WHERE to start",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "If it was the hang, your hands are your weak link.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "THE HANG?",
+     "sub": "your HANDS are the weak link",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pendurado",
+       "x": 520,
+       "a": 700
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Carry heavy things. Hang more often. We covered the carries in the last video.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "CARRY",
+     "sub": "heavy things, and HANG more often",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "farmer_carry",
+       "x": 520,
+       "a": 800,
+       "anda": 1,
+       "ambar": 1
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "If it was the push-ups, don't grind out ugly reps on the floor.",
+    "p": 0,
+    "v": {
+     "icone": "flexao",
+     "big": "PUSH-UPS?",
+     "sub": "no UGLY reps on the floor",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Raise your hands on a bench or a counter, do clean sets, and lower the height over the weeks.",
+    "p": 0,
+    "v": {
+     "big": "RAISE IT",
+     "sub": "clean sets, then go LOWER each week"
+    }
+   },
+   {
+    "txt": "And if it was the floor test, notice where you lost the points.",
+    "p": 0,
+    "v": {
+     "icone": "chao",
+     "big": "THE FLOOR?",
+     "sub": "notice WHERE you lost points",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Lost them going down? That's control. Practice sitting down slowly.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "lista": {
+      "it": [
+       "lost going DOWN: sit slowly",
+       "lost coming UP: train legs",
+       "WOBBLED: one-leg stands"
+      ],
+      "n": 1,
+      "lado": 1
+     }
+    }
+   },
+   {
+    "txt": "Lost them coming up? That's leg strength. Squats, and standing up from a low chair.",
+    "p": 0,
+    "v": {
+     "lista": {
+      "it": [
+       "lost going DOWN: sit slowly",
+       "lost coming UP: train legs",
+       "WOBBLED: one-leg stands"
+      ],
+      "n": 2,
+      "lado": 1
+     }
+    }
+   },
+   {
+    "txt": "Wobbled? That's balance. Stand on one leg while you brush your teeth.",
+    "p": 0,
+    "v": {
+     "lista": {
+      "it": [
+       "lost going DOWN: sit slowly",
+       "lost coming UP: train legs",
+       "WOBBLED: one-leg stands"
+      ],
+      "n": 3,
+      "lado": 1
+     }
+    }
+   }
+  ]
+ },
+ {
+  "cena": "limite",
+  "et": "THE HONEST PART",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "And here's the part most videos skip.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "SKIPPED",
+     "sub": "by most videos",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "These studies did not prove that raising your score makes you live longer.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "NOT PROVEN",
+     "sub": "that a better score adds YEARS",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "All three watched people over time. None of them trained people to see if it changed the outcome.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": {
+      "it": [
+       [
+        "WATCHED",
+        "people over years",
+        "ALL 3 STUDIES"
+       ],
+       [
+        "TRAINED",
+        "people to change the outcome",
+        "NONE OF THE 3"
+       ]
+      ]
+     },
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Doctor Araújo said it himself. People ask if a low score means they'll be dead in five years. Of course not.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "OF COURSE NOT",
+     "sub": "a low score is not a SENTENCE",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "But the things these tests measure? Strength, muscle, balance. Those respond to training.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "TRAINABLE",
+     "sub": "strength, muscle and BALANCE",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "farmer_carry",
+       "x": 520,
+       "a": 800,
+       "ambar": 1
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   }
+  ]
+ },
+ {
+  "cena": "plano",
+  "et": "THE 4 WEEK RETEST · 3 DAYS A WEEK",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "So here's what to do with your three numbers.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "NOW WHAT",
+     "sub": "with your 3 NUMBERS",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Three days a week. Ten minutes.",
+    "p": 0,
+    "v": {
+     "big": "3 DAYS",
+     "sub": "a week · 10 MINUTES"
+    }
+   },
+   {
+    "txt": "Hang from the bar three times. Stop a few seconds before your hands would slip.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": {
+      "it": [
+       "HANG 3 times",
+       "PUSH-UPS 3 sets",
+       "FLOOR 5 times"
+      ],
+      "n": 1,
+      "lado": 1
+     },
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pendurado",
+       "x": 520,
+       "a": 700
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Do three sets of push-ups. Stop two reps before you'd fail.",
+    "p": 0,
+    "v": {
+     "icone": "flexao",
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": {
+      "it": [
+       "HANG 3 times",
+       "PUSH-UPS 3 sets",
+       "FLOOR 5 times"
+      ],
+      "n": 2,
+      "lado": 1
+     },
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Then sit down on the floor and stand up, five times, using as much support as you need.",
+    "p": 0,
+    "v": {
+     "icone": "chao",
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": {
+      "it": [
+       "HANG 3 times",
+       "PUSH-UPS 3 sets",
+       "FLOOR 5 times"
+      ],
+      "n": 3,
+      "lado": 1
+     },
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Each week, use a little less.",
+    "p": 1.5,
+    "v": {}
+   },
+   {
+    "txt": "Week one, both hands. Week two, one hand. Week three, a hand on your knee. Week four, try it clean.",
+    "p": 0,
+    "v": {
+     "lista": {
+      "it": [
+       "WEEK 1: both hands",
+       "WEEK 2: one hand",
+       "WEEK 3: hand on a knee",
+       "WEEK 4: try it clean"
+      ],
+      "auto": 1,
+      "lado": 1
+     }
+    }
+   },
+   {
+    "txt": "Don't train to failure. You're practicing, not punishing yourself.",
+    "p": 0,
+    "v": {
+     "lista": null,
+     "big": "PRACTICE",
+     "sub": "not PUNISHMENT. stop before failure."
+    }
+   },
+   {
+    "txt": "Take a day off between sessions. Your hands and your tendons adapt slower than your muscles.",
+    "p": 0,
+    "v": {
+     "big": "REST DAYS",
+     "sub": "hands and TENDONS adapt slower"
+    }
+   },
+   {
+    "txt": "And write every session down. Three numbers, three times a week. It takes ten seconds.",
+    "p": 0,
+    "v": {
+     "big": "WRITE IT",
+     "sub": "3 numbers · 3 times a WEEK"
+    }
+   },
+   {
+    "txt": "This is a starting point I put together, not a protocol from a study. Go at your own pace.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "A START",
+     "sub": "not a study PROTOCOL",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": 1,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "In four weeks, run all three tests again.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "4 WEEKS",
+     "sub": "then test AGAIN",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   }
+  ]
+ },
+ {
+  "cena": "cuidado",
+  "et": "BE SAFE",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "One more thing. This is education, not medical advice.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "NOT MEDICAL",
+     "sub": "advice. this is EDUCATION.",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": 1,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "If you have a heart condition, joint problems, or you get dizzy, talk to a professional before you test.",
+    "p": 0,
+    "v": {
+     "big": "TALK FIRST",
+     "sub": "heart, joints or DIZZINESS"
+    }
+   }
+  ]
+ },
+ {
+  "cena": "final",
+  "et": null,
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "So. Three numbers.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "3 NUMBERS",
+     "sub": "that is all",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "Your hang time. Your push-ups. Your floor score.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": {
+      "it": [
+       "GRIP: hang time",
+       "PUSH-UPS: clean reps",
+       "FLOOR: score out of 10"
+      ],
+      "auto": 1
+     },
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "None of them needs a gym. None of them cares how big you are.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "NO GYM",
+     "sub": "and size does NOT matter",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia",
+       "x": 430,
+       "a": 800
+      },
+      {
+       "p": "heroi",
+       "x": 900,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "They only ask one question. Can your body still do what a body is for?",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "ONE QUESTION",
+     "sub": "can your body still do its JOB",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "Hold your own weight. Push yourself off the ground. Get up off the floor.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": {
+      "it": [
+       "HOLD your own weight",
+       "PUSH yourself off the ground",
+       "GET UP off the floor"
+      ],
+      "auto": 1
+     },
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "If the answer today is not really, good. Now you know. And you have four weeks.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "NOW YOU KNOW",
+     "sub": "and you have 4 WEEKS",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Comment your three numbers. Then come back in four weeks and post the new ones.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "COMMENT",
+     "sub": "your 3 NUMBERS",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pendurado",
+       "x": 520,
+       "a": 700
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "And if you want to know how some people get absurdly strong without ever touching a weight,",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "NO WEIGHTS",
+     "sub": "and absurdly STRONG",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "that's the next video.",
+    "p": 4.5,
+    "v": {
+     "icone": null,
+     "big": "NEXT VIDEO",
+     "sub": "strong WITHOUT lifting weights",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   }
+  ]
+ }
+]

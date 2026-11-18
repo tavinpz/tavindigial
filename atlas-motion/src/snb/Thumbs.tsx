@@ -33,6 +33,18 @@ export const SNBThumb: React.FC<{ v: string }> = ({ v }) => (
       <P p="fazendeiro_saco_ambar" x={390} a={1180} base={1262} />
       <Svg><T x={930} y={250} t="*zero* days" s={112} /><T x={930} y={370} t="in the gym" s={112} /><Seta x1={900} y1={430} x2={610} y2={648} c={-0.25} /></Svg>
     </>}
+    {v === 'a2' && <>
+      <P p="pendurado" x={300} a={797} base={944} />
+      <Svg><T x={900} y={330} t="can you" s={124} /><T x={900} y={465} t="*hang?*" s={124} /><Seta x1={690} y1={250} x2={450} y2={132} c={-0.22} /></Svg>
+    </>}
+    {v === 'b2' && <>
+      <P p="farmer_carry_ambar" x={360} a={900} base={930} />
+      <Svg><T x={920} y={270} t="only *3*" s={124} /><T x={920} y={400} t="tests" s={124} /><Seta x1={880} y1={450} x2={540} y2={545} c={-0.25} /></Svg>
+    </>}
+    {v === 'c2' && <>
+      <Img src={staticFile('snb/poses/mao_close.png')} style={{ position: 'absolute', left: -150, top: 110, width: 1000 }} />
+      <Svg><T x={880} y={130} t="beats" s={96} /><T x={880} y={235} t="*blood pressure*" s={96} /><Seta x1={1000} y1={275} x2={760} y2={470} c={-0.3} /></Svg>
+    </>}
     {v === 'c' && <>
       <Img src={staticFile('snb/poses/mao_close.png')} style={{ position: 'absolute', left: -150, top: 110, width: 1000 }} />
       <Svg><T x={900} y={170} t="it's the *hands*" s={100} /><Seta x1={1000} y1={215} x2={760} y2={470} c={-0.3} /></Svg>
