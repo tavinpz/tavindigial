@@ -1,0 +1,222 @@
+[
+ {
+  "cena": "gancho",
+  "falas": [
+   "This guy trains five days a week.",
+   "This guy has never touched a barbell.",
+   "Now hand them both a hundred pound sack, and tell them to walk.",
+   "You already know who puts it down first."
+  ]
+ },
+ {
+  "cena": "prova",
+  "fonte": "Josty et al. 1997 · J Hand Surg Br  |  Rostamzadeh et al. 2020 · Work · 1,740 men",
+  "falas": [
+   "People call it farmer strength. And it's not just a story.",
+   "In nineteen ninety seven, British hand surgeons tested the grip of three kinds of workers.",
+   "Office workers. Light manual workers. Heavy manual workers.",
+   "The heavy workers had the strongest grip. The office workers had the weakest.",
+   "A later study of seventeen hundred and forty men found the same thing.",
+   "Even light manual workers out-gripped office workers by about twelve percent.",
+   "And their forearms were measurably thicker."
+  ]
+ },
+ {
+  "cena": "promessa",
+  "falas": [
+   "But here's what nobody tells you.",
+   "Farmers are not stronger at everything.",
+   "And one study found that a lifetime of hard labor made men no stronger at all.",
+   "So today: four things farm work does that your gym routine doesn't.",
+   "The one thing it gets wrong.",
+   "And a ten minute routine that steals the good part."
+  ]
+ },
+ {
+  "cena": "tarefa",
+  "falas": [
+   "First, a quick test.",
+   "Grab the two heaviest things in your house that have handles.",
+   "Water jugs. Loaded bags. Buckets.",
+   "Stand tall, hold them at your sides, and time it.",
+   "Comment your time, and the weight.",
+   "At the end, I'll show you how to make that number climb."
+  ]
+ },
+ {
+  "cena": "justo",
+  "falas": [
+   "Now, let's be fair to the gym guy.",
+   "Put them both on a bench press, and he wins. Easily.",
+   "He has practiced that exact lift for years. The farmer never has.",
+   "Same story for the squat, the curl, anything with a barbell.",
+   "And that is the first clue.",
+   "Because the farmer wins a different list.",
+   "Carrying. Holding. Lifting things with no handle. And doing it again, eight hours later."
+  ]
+ },
+ {
+  "cena": "regra1",
+  "fonte": "Mattocks et al. 2017 · 38 untrained adults · 8 weeks",
+  "falas": [
+   "Reason one. Strength is a skill.",
+   "In twenty seventeen, researchers split thirty eight beginners into two groups.",
+   "Group one trained like bodybuilders. Four hard sets, to failure.",
+   "Group two did almost nothing. They just tried to lift their max, a few single reps per visit.",
+   "After eight weeks, group one had built more muscle.",
+   "But their max strength? No different.",
+   "The group that only practiced the test got just as strong at it.",
+   "Muscle helps. But strength is also your nervous system learning one specific job.",
+   "And the farmer has been practicing his job since he was a kid."
+  ]
+ },
+ {
+  "cena": "regra1b",
+  "fonte": "Schoenfeld et al. 2014 · 17 trained men · 8 weeks",
+  "falas": [
+   "It holds for experienced lifters too.",
+   "Seventeen trained men. Same total work. Eight weeks.",
+   "Half did sets of ten. Half did heavy sets of three.",
+   "Both groups grew the same amount of muscle.",
+   "But the heavy group gained more on the bench press.",
+   "Same size. Different strength.",
+   "Your body gets strong at exactly what you ask it to do.",
+   "The gym guy asks for a bench press. The farmer asks for something else."
+  ]
+ },
+ {
+  "cena": "regra2",
+  "falas": [
+   "Reason two. The hands never rest.",
+   "A lifter grips a bar for a few seconds, then racks it.",
+   "And when the grip gets hard, he puts on straps.",
+   "A farmer's hands are loaded for hours.",
+   "Buckets. Tools. Wire. Feed sacks. Gates.",
+   "And your hands are the bottleneck.",
+   "You can only carry what you can hold.",
+   "Your legs and back can move far more than your fingers can hang on to.",
+   "So the farmer trains the one link that fails first. Every single day."
+  ]
+ },
+ {
+  "cena": "regra2b",
+  "fonte": "Fain & Weatherford 2016 · J Hand Therapy · 237 adults",
+  "falas": [
+   "Here's how much that matters.",
+   "In nineteen eighty five, the average man in his early twenties had a right hand grip of a hundred and twenty one pounds.",
+   "In twenty sixteen, researchers tested young adults again.",
+   "A hundred and one pounds.",
+   "Twenty pounds, gone in one generation.",
+   "It was a small study, two hundred and thirty seven people.",
+   "But the authors pointed to one cause. We stopped working with our hands."
+  ]
+ },
+ {
+  "cena": "regra3",
+  "fonte": "McGill et al. 2009 · J Strength Cond Res · 3 strongman athletes",
+  "falas": [
+   "Reason three. Nothing on a farm has a handle in the right place.",
+   "A barbell is balanced. It's built to be lifted.",
+   "A calf, a hay bale, a sack of feed? They fight back.",
+   "A spine researcher named Stuart McGill wired up strongman athletes while they carried heavy things.",
+   "It was a tiny study. Three men.",
+   "But the pattern was clear.",
+   "When you walk with a load, the muscles all around your torso fire together, and lock the spine stiff.",
+   "That stiffness even helps the hips do a job they aren't strong enough to do alone.",
+   "That's the farmer's real core workout. And he does it every day."
+  ]
+ },
+ {
+  "cena": "regra4",
+  "fonte": "Uonuma Cohort Study, Japan · 4,774 adults aged 40+  |  Akiyama et al. 2026 · J Rural Med · 126 adults",
+  "falas": [
+   "Reason four. He never stops.",
+   "The gym guy trains for one hour. Then he sits for ten.",
+   "The farmer lifts something light, or something heavy, all day long.",
+   "And it adds up.",
+   "In a Japanese study of almost five thousand adults over forty,",
+   "the ones who did farm work had about a third lower odds of a weak grip.",
+   "Not athletes. Regular people, getting older, who just kept using their bodies.",
+   "A smaller Japanese study saw the same pattern.",
+   "In people who didn't farm, grip dropped with age.",
+   "In the ones who farmed, it didn't. Even though they were about ten years older."
+  ]
+ },
+ {
+  "cena": "virada",
+  "fonte": "Walker-Bone et al. 2016 · Occup Environ Med · 1,418 men",
+  "falas": [
+   "So, should you quit the gym and buy a farm?",
+   "No. And here's the study I promised.",
+   "British researchers measured the grip of fourteen hundred men at retirement age.",
+   "Then they looked at their whole working lives.",
+   "Decades of heavy lifting. Decades on their feet.",
+   "The result? No evidence that it made them stronger.",
+   "The researchers said other factors, like money and health, may have hidden a benefit.",
+   "But the lesson stands.",
+   "Hard work is not a training program.",
+   "The load never goes up on purpose. And nobody plans the recovery.",
+   "That's why a man can do heavy work for forty years, and still not end up stronger for it."
+  ]
+ },
+ {
+  "cena": "juntar",
+  "fonte": "Winwood et al. 2015 · 30 trained rugby players · 7 weeks",
+  "falas": [
+   "The farmer has the right movements. The gym has the right plan.",
+   "So put them together.",
+   "In twenty fifteen, thirty trained rugby players were split in two.",
+   "Half lifted the normal way. Half trained like strongmen. Carries, logs, sleds.",
+   "Twice a week, for seven weeks.",
+   "Both groups improved about the same.",
+   "Carrying heavy things works as well as the barbell. You don't have to choose."
+  ]
+ },
+ {
+  "cena": "rotina",
+  "falas": [
+   "Here's the farmer finisher. Ten minutes, twice a week, after your normal workout.",
+   "One. The farmer's carry.",
+   "A heavy weight in each hand. Stand tall. Walk.",
+   "Dumbbells, kettlebells, or the same jugs from your test.",
+   "Two. The suitcase carry.",
+   "One weight, one side. Don't lean. Then switch hands.",
+   "Your trunk has to fight to keep you straight. That's the point.",
+   "Three. The bear hug carry.",
+   "Hug a sandbag, or a loaded backpack, tight to your chest. And walk.",
+   "No handle. Just like the farm.",
+   "Three rounds of each.",
+   "Walk about twenty steps out, and twenty back.",
+   "Put the weight down while you could still hold it for a few more seconds.",
+   "Next week, go a little farther, or a little heavier.",
+   "That one rule is what the farm is missing."
+  ]
+ },
+ {
+  "cena": "cuidado",
+  "falas": [
+   "Keep your normal workouts. This is an add on, not a replacement.",
+   "Start lighter than you think. Your hands will catch up fast. Your back needs longer.",
+   "And if you have a back or shoulder injury, check with a professional first."
+  ]
+ },
+ {
+  "cena": "final",
+  "fonte": "Leong et al. 2015 · The Lancet · 139,691 adults · 17 countries",
+  "falas": [
+   "So, back to the two guys and the sack.",
+   "The farmer doesn't win because he's bigger. He isn't.",
+   "He wins because he has practiced that exact job, with his hands, his trunk, and his whole day.",
+   "And that kind of strength may matter more than you think.",
+   "In a study of almost a hundred and forty thousand adults, grip strength predicted who died better than blood pressure did.",
+   "Every eleven pounds of grip a person was missing came with a sixteen percent higher risk of death.",
+   "That doesn't mean squeezing harder makes you live longer.",
+   "It means a strong grip is a sign of a body that still gets used.",
+   "Which raises a question.",
+   "What other simple tests can tell you how you're aging?",
+   "There are three. And you can do all of them at home.",
+   "That's the next video.",
+   "Now go repeat the test from the start, and comment your new time."
+  ]
+ }
+]
