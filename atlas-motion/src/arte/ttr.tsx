@@ -226,7 +226,7 @@ const Extra: React.FC<VProps> = ({ f, dur, v }) => {
                 <div key={x.nome} style={{ display: 'flex', alignItems: 'center', height: it.length > 5 ? 74 : 110, opacity: on ? 1 : 0.18 }}>
                   <div style={{ width: 250, fontFamily: FA.osw, fontWeight: 700, fontSize: 34, color: '#f4efe2', letterSpacing: 2 }}>{x.nome}</div>
                   <div style={{ width: larg + 30, overflow: 'hidden' }}><div style={{ width: `${pr * 100}%`, overflow: 'hidden' }}><Pilha n={n} cor={corDe(x.cor)} /></div></div>
-                  <div style={{ fontFamily: FA.cond, fontSize: 52, color: on ? AM : '#f4efe2', marginLeft: 14 }}>{on ? `${v.pre || ''}${x.v}${v.pre ? '' : '%'}` : ''}</div>
+                  <div style={{ fontFamily: FA.cond, fontSize: 52, color: on ? AM : '#f4efe2', marginLeft: 14 }}>{on ? `${v.pre || ''}${x.v}${v.suf ?? (v.pre ? '' : '%')}` : ''}</div>
                 </div>
               );
             })}

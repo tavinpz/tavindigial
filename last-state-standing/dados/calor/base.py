@@ -1,0 +1,20 @@
+# Fontes: EIA RECS 2020, tabela "State Air Conditioning" (eia.gov/consumption/residential/data/2020/state/pdf/State Air Conditioning.pdf)
+# Recordes de calor: NOAA State Climate Extremes Committee, via en.wikipedia.org/wiki/U.S._state_and_territory_temperature_extremes
+import json
+AC = """AL 1.90 1.78 94 81|AK 0.26 0.02 7 0|AZ 2.68 2.52 94 86|AR 1.14 1.07 93 72|CA 13.18 9.54 72 54|CO 2.26 1.85 82 57|CT 1.38 1.24 90 34|DE 0.38 0.37 97 85|FL 8.06 7.72 96 90|GA 3.88 3.70 95 86|HI 0.47 0.27 57 12|ID 0.66 0.53 81 64|IL 4.90 4.70 96 74|IN 2.60 2.45 94 81|IA 1.28 1.25 97 81|KS 1.13 1.05 93 85|KY 1.74 1.65 95 84|LA 1.73 1.60 93 76|ME 0.56 0.40 70 10|MD 2.28 2.08 91 80|MA 2.71 2.37 87 32|MI 3.92 3.39 87 66|MN 2.23 2.10 94 68|MS 1.08 1.01 93 79|MO 2.43 2.31 95 83|MT 0.43 0.28 65 40|NE 0.77 0.72 95 86|NV 1.14 1.05 92 78|NH 0.54 0.42 78 21|NJ 3.39 3.28 96 61|NM 0.79 0.67 85 53|NY 7.52 6.60 88 29|NC 4.01 3.63 91 84|ND 0.32 0.29 93 58|OH 4.74 4.43 94 74|OK 1.49 1.43 96 83|OR 1.65 1.26 76 49|PA 5.13 4.66 91 54|RI 0.42 0.38 90 31|SC 1.97 1.87 95 86|SD 0.35 0.32 92 76|TN 2.66 2.48 93 86|TX 10.26 9.74 95 83|UT 1.04 0.96 92 79|VT 0.26 0.17 67 7|VA 3.24 3.07 95 83|WA 2.94 1.54 53 30|WV 0.70 0.62 89 64|WI 2.39 2.21 92 67|WY 0.23 0.16 71 40"""
+REC = {'AL':(112,1925),'AK':(100,1915),'AZ':(128,1994),'AR':(120,1936),'CA':(134,1913),'CO':(115,2019),'CT':(106,1995),'DE':(110,1930),'FL':(109,1931),'GA':(112,1983),'HI':(100,1931),'ID':(118,1934),'IL':(117,1954),'IN':(116,1936),'IA':(118,1934),'KS':(121,1936),'KY':(114,1930),'LA':(114,1936),'ME':(105,1911),'MD':(109,1988),'MA':(107,1975),'MI':(112,1936),'MN':(115,1917),'MS':(115,1930),'MO':(118,1954),'MT':(117,1937),'NE':(118,1936),'NV':(125,1994),'NH':(106,1911),'NJ':(110,1936),'NM':(122,1994),'NY':(108,1926),'NC':(110,1983),'ND':(121,1936),'OH':(113,1934),'OK':(120,1994),'OR':(119,2021),'PA':(111,1936),'RI':(104,1975),'SC':(113,2012),'SD':(120,2006),'TN':(113,1930),'TX':(120,1994),'UT':(117,2021),'VT':(105,1911),'VA':(110,1954),'WA':(120,2021),'WV':(112,1936),'WI':(114,1936),'WY':(115,1988)}
+NOME = dict(AL='Alabama',AK='Alaska',AZ='Arizona',AR='Arkansas',CA='California',CO='Colorado',CT='Connecticut',DE='Delaware',FL='Florida',GA='Georgia',HI='Hawaii',ID='Idaho',IL='Illinois',IN='Indiana',IA='Iowa',KS='Kansas',KY='Kentucky',LA='Louisiana',ME='Maine',MD='Maryland',MA='Massachusetts',MI='Michigan',MN='Minnesota',MS='Mississippi',MO='Missouri',MT='Montana',NE='Nebraska',NV='Nevada',NH='New Hampshire',NJ='New Jersey',NM='New Mexico',NY='New York',NC='North Carolina',ND='North Dakota',OH='Ohio',OK='Oklahoma',OR='Oregon',PA='Pennsylvania',RI='Rhode Island',SC='South Carolina',SD='South Dakota',TN='Tennessee',TX='Texas',UT='Utah',VT='Vermont',VA='Virginia',WA='Washington',WV='West Virginia',WI='Wisconsin',WY='Wyoming')
+out = []
+for l in AC.split('|'):
+    uf, tot, ac, pct, cen = l.split(); tot, ac, pct, cen = float(tot), float(ac), int(pct), int(cen)
+    assert (ac - .005) / (tot + .005) * 100 - 1 <= pct <= (ac + .005) / (tot - .005) * 100 + 1, (uf, ac / tot * 100, pct)  # confere a extração
+    out.append({'uf': uf, 'nome': NOME[uf], 'casas_mi': tot, 'ac_mi': ac, 'sem_ac_mi': round(tot - ac, 2), 'pct_ac': pct, 'pct_sem': 100 - pct,
+                'central': cen, 'rec': REC[uf][0], 'rec_ano': REC[uf][1], 'falta_122': 122 - REC[uf][0]})
+assert len(out) == 50
+out.sort(key=lambda o: (-o['pct_sem'], o['rec']))
+for i, o in enumerate(out): o['rank'] = i + 1
+json.dump(out, open('calor.json', 'w'), indent=1)
+for o in out[:12]: print(o['rank'], o['uf'], o['pct_sem'], o['sem_ac_mi'], o['rec'], o['rec_ano'])
+print('nunca passou de 110:', sum(o['rec'] <= 110 for o in out), ' já passou de 122:', [o['uf'] for o in out if o['rec'] >= 122])
+print('sem AC total (mi):', round(sum(o['sem_ac_mi'] for o in out), 2), ' top sem AC absoluto:', sorted(out, key=lambda o: -o['sem_ac_mi'])[:5] and [(o['uf'], o['sem_ac_mi']) for o in sorted(out, key=lambda o: -o['sem_ac_mi'])[:5]])
+print('>=95% AC:', [o['uf'] for o in out if o['pct_ac'] >= 95])
