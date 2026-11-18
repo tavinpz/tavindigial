@@ -31,6 +31,16 @@ mil = lambda v: f"{round(v / 1000):,}"
 NOME = lambda st: POR[st]['nome'].upper()
 SERIE = [[s[0], s[1]] for s in US]
 PRECISA = lambda st: round(POR[st]['parcela'] * 12 / 0.28, -3)
+SUBIU = lambda st: round((POR[st]['preco'] / POR[st]['preco19'] - 1) * 100)
+ANOS = lambda st: f"{POR[st]['anos']:.1f}"
+PG = lambda st: f"{POR[st]['parcela']:,.0f}"
+def grupo(a, b): return [[o['rank'], o['nome'].upper(), o['pct']] for o in C if a <= o['rank'] <= b]
+POR_PRECO = sorted(C, key=lambda o: -SUBIU(o['st']))
+DIAS = lambda st: POR[st]['parcela'] / (POR[st]['renda'][1] / 2080) / 8
+ENT = lambda st: round(POR[st]['preco'] * 0.1, -3)
+TODOS_PIORES = all(o['pct'] > o['pct19'] for o in C)
+DOBROU = sum(o['pct'] >= 2 * o['pct19'] for o in C)
+assert TODOS_PIORES and DOBROU == 31
 
 
 def F(t, v): return (t, v)
@@ -48,6 +58,8 @@ intro = [
     F(f"In Ohio, {p('OH')}.", recibo('OH')),
     F("And the number two state isn't California.", mapa(destaque=["CA"], sticker={"uf": "CA", "txt": "NOT #2"})),
     F("It's a state with about twice as many cattle as people.", {"tipo": "icones2", "a": "trator", "b": "casa", "txt": "MORE CATTLE THAN PEOPLE"}),
+    F("The cheapest home in America isn't in the state you think, and it's not the most affordable one either.", mapa(destaque=["WV", "OH"], sticker={"txt": "NOT THE SAME"})),
+    F(f"And in {DOBROU} states, the share of income a home takes has more than doubled since 2019.", {"tipo": "numero", "txt": f"{DOBROU}", "rotulo": "STATES WHERE IT MORE THAN DOUBLED"}),
     F("We ranked all fifty states with official numbers.", {"tipo": "placa", "titulo": "ALL 50 RANKED", "txt": "Official numbers, every state", "fonte": "Census · Realtor.com · Freddie Mac (via FRED)"}),
     F("Stay to the end, and you'll see exactly where yours lands.", mapa(todos=True, pergunta="WHERE DOES YOURS LAND?")),
 ]
@@ -77,6 +89,10 @@ c1 = [
     F("Part one. Where a house still makes sense.", {"tipo": "capitulo", "n": "PART ONE", "txt": "WHERE A HOUSE STILL MAKES SENSE"}),
     F(f"Only {PASSAM} states still pass the twenty eight percent test.", mapa(destaque=[o['st'] for o in C if o['pct'] <= 28], sticker={"txt": f"ONLY {PASSAM} PASS"})),
     F("Almost all of them are in the Midwest.", mapa(destaque=[o['st'] for o in C if o['pct'] <= 28], pergunta="THE MIDWEST HOLDS")),
+    F(f"Here's the whole bottom ten. Fifty, Ohio. Forty nine, Illinois. Forty eight, Nebraska. Forty seven, Iowa. Forty six, Kansas.", {"tipo": "lista", "itens": grupo(46, 50)}),
+    F(f"Forty five, Missouri. Forty four, Pennsylvania. Forty three, Maryland. Forty two, Michigan, at {p('MI')} percent.", {"tipo": "lista", "itens": grupo(42, 45)}),
+    F(f"Pennsylvania is a quiet winner. Philadelphia and Pittsburgh, and a typical home still around {mil(POR['PA']['preco'])} thousand dollars.", rank('PA', sub=f"${mil(POR['PA']['preco'])}K · {p('PA')}%")),
+    F(f"Michigan too. {p('MI')} percent, with Detroit right there.", rank('MI', sub=f"{p('MI')}% OF INCOME")),
     F("Indiana, at number forty one, misses the line by half a point.", rank('IN', sub=f"{POR['IN']['pct']:.1f}% · JUST OVER")),
     F("Number fifty. The most affordable state for a home in America.", mapa(misterio=True, sticker={"txt": "#50"})),
     F("Ohio.", rank('OH', sub="#50 · MOST AFFORDABLE")),
@@ -99,6 +115,12 @@ c2 = [
     F(f"From forty down to twenty one, the share climbs from {p('OK')} percent to {p('CT')}.", mapa(destaque=[o['st'] for o in C if 21 <= o['rank'] <= 40], sticker={"txt": f"{p('OK')}% → {p('CT')}%"})),
     F("Every one of these states fails the rule today.", mapa(destaque=[o['st'] for o in C if 21 <= o['rank'] <= 40], pergunta="ALL FAIL TODAY")),
     F("In 2019, every one of them passed.", {"tipo": "numero", "txt": "20 / 20", "rotulo": "PASSED IN 2019"}),
+    F("Let's go through them fast.", {"tipo": "lista", "itens": grupo(36, 40)}),
+    F(f"Forty, Oklahoma, {p('OK')} percent. Thirty nine, Minnesota, {p('MN')}. Thirty eight, West Virginia. Thirty seven, Kentucky.", {"tipo": "lista", "itens": grupo(36, 40)}),
+    F(f"Thirty five, North Dakota. Thirty four, Alaska. Thirty three, South Carolina. Thirty two, Wisconsin. Thirty one, Virginia.", {"tipo": "lista", "itens": grupo(31, 35)}),
+    F(f"Thirty, Louisiana. Twenty nine, South Dakota. Twenty eight, Arkansas. Twenty seven, Maine, at {p('ME')} percent.", {"tipo": "lista", "itens": grupo(26, 30)}),
+    F(f"Twenty six, Georgia. Twenty five, Alabama. Twenty four, Delaware. Twenty three, New Jersey. Twenty two, North Carolina. Twenty one, Connecticut, at {p('CT')}.", {"tipo": "lista", "itens": grupo(21, 25)}),
+    F("Now a few of these deserve a closer look.", mapa(destaque=["TX", "MS", "VA", "AK"], pergunta="A CLOSER LOOK")),
     F("Texas lands at thirty six.", rank('TX', sub="#36")),
     F(f"Texas homes are cheaper than people think, around {mil(POR['TX']['preco'])} thousand dollars.", {"tipo": "numero", "txt": f"${mil(POR['TX']['preco'])}K", "rotulo": "TYPICAL LISTED HOME · TEXAS"}),
     F(f"And incomes are around the national typical. {p('TX')} percent.", recibo('TX')),
@@ -108,12 +130,20 @@ c2 = [
     F("But it also has the lowest household income in the country.", {"tipo": "numero", "txt": f"${mil(POR['MS']['renda'][1])}K", "rotulo": "LOWEST HOUSEHOLD INCOME IN THE U.S."}),
     F(f"So even a cheap home takes {p('MS')} percent.", recibo('MS')),
     F("Cheap is relative.", {"tipo": "icones2", "a": "casa", "b": "saco", "txt": "CHEAP IS RELATIVE"}),
+    F(f"Virginia is the mirror image. Number thirty one.", rank('VA', sub="#31")),
+    F(f"Homes there cost {mil(POR['VA']['preco'])} thousand dollars. One and a half times Mississippi.", {"tipo": "numero", "txt": f"${mil(POR['VA']['preco'])}K", "rotulo": "TYPICAL LISTED HOME · VIRGINIA"}),
+    F(f"But the typical Virginia household earns {mil(POR['VA']['renda'][1])} thousand. So the share is lower. {p('VA')} percent.", recibo('VA')),
+    F("A cheap home in a poor state can be harder to buy than an expensive home in a rich one.", {"tipo": "icones2", "a": "casa", "b": "dinheiro", "txt": "PRICE ISN'T EVERYTHING"}),
+    F(f"And Alaska, at thirty four, is one of the few places where the math is milder than people expect. {p('AK')} percent.", rank('AK', sub=f"{p('AK')}% OF INCOME")),
 ]
 
 c3 = [
     F("Part three. The breaking point.", {"tipo": "capitulo", "n": "PART THREE", "txt": "THE BREAKING POINT"}),
     F("From twenty to eleven, a typical home takes around forty percent of income.", mapa(destaque=[o['st'] for o in C if 11 <= o['rank'] <= 20], sticker={"txt": "≈ 40%"})),
     F("Florida, Arizona, Nevada, Colorado, Utah, Washington and Tennessee are all in here.", mapa(destaque=["FL", "AZ", "NV", "CO", "UT", "WA", "TN"])),
+    F(f"Twenty, Mississippi. Nineteen, Vermont. Eighteen, New Hampshire, at {p('NH')} percent.", {"tipo": "lista", "itens": grupo(16, 20)}),
+    F(f"Sixteen, Arizona. Fifteen, Nevada. Fourteen, Colorado. Thirteen, Utah. Twelve, Washington. Eleven, Tennessee, at {p('TN')}.", {"tipo": "lista", "itens": grupo(11, 15)}),
+    F(f"Tennessee is the one that stands out. No state income tax, Nashville booming, and homes up {SUBIU('TN')} percent since 2019.", rank('TN', sub=f"HOMES +{SUBIU('TN')}% SINCE 2019")),
     F("Florida is number seventeen.", rank('FL', sub="#17")),
     F("For years, Florida was where people went to make their money go further.", {"tipo": "icones2", "a": "ilha", "b": "dinheiro", "txt": "MONEY WENT FURTHER"}),
     F("No state income tax, and homes cheaper than the Northeast.", {"tipo": "placa", "titulo": "FLORIDA", "txt": "No state income tax", "fonte": "Homes cheaper than the Northeast"}),
@@ -146,10 +176,40 @@ c3 = [
     F(f"In Ohio? About {mil(PRECISA('OH'))} thousand. Less than the typical Ohio household already earns.", {"tipo": "numero", "txt": f"${mil(PRECISA('OH'))}K", "rotulo": "A YEAR, TO PASS IN OHIO"}),
 ]
 
+c3b = [
+    F("Part four. The real price tag.", {"tipo": "capitulo", "n": "PART FOUR", "txt": "THE REAL PRICE TAG"}),
+    F("Percentages are easy to ignore. So let's put it in dollars.", {"tipo": "icones2", "a": "dinheiro", "b": "calendario", "txt": "IN DOLLARS"}),
+    F(f"The highest monthly mortgage in the country is in Hawaii. About {PG('HI')} dollars a month.", {"tipo": "conta", "cab": "* HAWAII *", "quem": "mortgage only · per month", "linha": f"${mil(POR['HI']['preco'])}K home · {JUROS:.2f}%", "txt": f"${PG('HI')}", "rotulo": "every month", "emoji": "casa"}),
+    F(f"Massachusetts, {PG('MA')}. California, {PG('CA')}.", {"tipo": "barras", "titulo": "MONTHLY MORTGAGE · TYPICAL HOME", "max": 5000, "unid": "", "itens": [["HAWAII", round(POR['HI']['parcela']), "#e5484d"], ["MASSACHUSETTS", round(POR['MA']['parcela']), "#e5484d"], ["CALIFORNIA", round(POR['CA']['parcela']), "#e5484d"]]}),
+    F(f"And the lowest? West Virginia. About {PG('WV')} dollars.", {"tipo": "barras", "titulo": "MONTHLY MORTGAGE · TYPICAL HOME", "max": 5000, "unid": "", "itens": [["HAWAII", round(POR['HI']['parcela']), "#e5484d"], ["MASSACHUSETTS", round(POR['MA']['parcela']), "#e5484d"], ["CALIFORNIA", round(POR['CA']['parcela']), "#e5484d"], ["WEST VIRGINIA", round(POR['WV']['parcela']), "#7bc47f"]]}),
+    F("Less than half of California.", rank('WV', sub=f"${PG('WV')} A MONTH")),
+    F("Now flip the question. How much would you need to earn, for the typical home to pass the twenty eight percent rule?", {"tipo": "icones2", "a": "familia", "b": "dinheiro", "txt": "HOW MUCH WOULD YOU NEED?"}),
+    F(f"In Hawaii, about {mil(PRECISA('HI'))} thousand dollars a year. In Massachusetts and California, more than {mil(min(PRECISA('MA'), PRECISA('CA')))} thousand.", {"tipo": "barras", "titulo": "INCOME NEEDED TO PASS · PER YEAR", "max": 200000, "unid": "", "itens": [["HAWAII", PRECISA('HI'), "#e5484d"], ["MASSACHUSETTS", PRECISA('MA'), "#e5484d"], ["CALIFORNIA", PRECISA('CA'), "#e5484d"]]}),
+    F(f"Washington, {mil(PRECISA('WA'))} thousand. Montana, {mil(PRECISA('MT'))} thousand. In a state where the typical household makes {mil(POR['MT']['renda'][1])}.", {"tipo": "barras", "titulo": "INCOME NEEDED TO PASS · PER YEAR", "max": 200000, "unid": "", "itens": [["WASHINGTON", PRECISA('WA'), "#e9874a"], ["MONTANA · NEEDED", PRECISA('MT'), "#e5484d"], ["MONTANA · TYPICAL", round(POR['MT']['renda'][1], -3), "#7bc47f"]]}),
+    F(f"Florida, {mil(PRECISA('FL'))} thousand. Texas, {mil(PRECISA('TX'))} thousand.", {"tipo": "barras", "titulo": "INCOME NEEDED TO PASS · PER YEAR", "max": 200000, "unid": "", "itens": [["FLORIDA", PRECISA('FL'), "#e9c46a"], ["TEXAS", PRECISA('TX'), "#e9c46a"]]}),
+    F(f"And the lowest bar in the country is West Virginia. About {mil(PRECISA('WV'))} thousand a year.", rank('WV', sub=f"${mil(PRECISA('WV'))}K A YEAR TO PASS")),
+    F("There's one more way to see it. How many years of income does a typical home cost?", {"tipo": "icones2", "a": "ampulheta", "b": "casa", "txt": "YEARS OF INCOME"}),
+    F(f"In Ohio, {ANOS('OH')} years. In Illinois, {ANOS('IL')}.", {"tipo": "barras", "titulo": "TYPICAL HOME · YEARS OF TYPICAL INCOME", "max": 8, "unid": "", "itens": [["OHIO", round(POR['OH']['anos'], 1), "#7bc47f"], ["ILLINOIS", round(POR['IL']['anos'], 1), "#7bc47f"]]}),
+    F(f"In California, {ANOS('CA')}. In Montana, {ANOS('MT')}. And in New York, {ANOS('NY')} years.", {"tipo": "barras", "titulo": "TYPICAL HOME · YEARS OF TYPICAL INCOME", "max": 8, "unid": "", "itens": [["OHIO", round(POR['OH']['anos'], 1), "#7bc47f"], ["ILLINOIS", round(POR['IL']['anos'], 1), "#7bc47f"], ["CALIFORNIA", round(POR['CA']['anos'], 1), "#e5484d"], ["MONTANA", round(POR['MT']['anos'], 1), "#e5484d"], ["NEW YORK", round(POR['NY']['anos'], 1), "#e5484d"]]}),
+    F("Every dollar a New York family earns for seven and a half years. Before taxes. Before food.", {"tipo": "numero", "txt": f"{ANOS('NY')} YRS", "rotulo": "OF INCOME FOR ONE HOME · NEW YORK"}),
+    F("Let's make it even more concrete. A work month has about twenty two working days.", {"tipo": "icones2", "a": "calendario", "b": "pessoa", "txt": "22 WORKING DAYS"}),
+    F(f"In New York, the typical household works about {DIAS('NY'):.0f} of those days just to pay the mortgage.", {"tipo": "numero", "txt": f"{DIAS('NY'):.0f} DAYS", "rotulo": "OF EVERY WORK MONTH · NEW YORK MORTGAGE"}),
+    F(f"In California and Montana, about {DIAS('CA'):.1f}.", {"tipo": "barras", "titulo": "WORK DAYS A MONTH · JUST FOR THE MORTGAGE", "max": 22, "unid": "", "itens": [["NEW YORK", round(DIAS('NY'), 1), "#e5484d"], ["CALIFORNIA", round(DIAS('CA'), 1), "#e5484d"], ["MONTANA", round(DIAS('MT'), 1), "#e5484d"]]}),
+    F(f"In Florida, {DIAS('FL'):.1f}. In Texas, {DIAS('TX'):.1f}.", {"tipo": "barras", "titulo": "WORK DAYS A MONTH · JUST FOR THE MORTGAGE", "max": 22, "unid": "", "itens": [["NEW YORK", round(DIAS('NY'), 1), "#e5484d"], ["FLORIDA", round(DIAS('FL'), 1), "#e9874a"], ["TEXAS", round(DIAS('TX'), 1), "#e9c46a"]]}),
+    F(f"And in Ohio, a little over five. The rest of the month is yours.", {"tipo": "barras", "titulo": "WORK DAYS A MONTH · JUST FOR THE MORTGAGE", "max": 22, "unid": "", "itens": [["NEW YORK", round(DIAS('NY'), 1), "#e5484d"], ["TEXAS", round(DIAS('TX'), 1), "#e9c46a"], ["OHIO", round(DIAS('OH'), 1), "#7bc47f"]]}),
+    F("And before any of that, you need the down payment.", {"tipo": "icones2", "a": "bolso", "b": "chave", "txt": "THE DOWN PAYMENT"}),
+    F(f"Ten percent of a typical home in California is about {mil(ENT('CA'))} thousand dollars. In Hawaii, {mil(ENT('HI'))}.", {"tipo": "barras", "titulo": "10% DOWN PAYMENT · TYPICAL HOME", "max": 80000, "unid": "", "itens": [["HAWAII", ENT('HI'), "#e5484d"], ["CALIFORNIA", ENT('CA'), "#e5484d"], ["NEW YORK", ENT('NY'), "#e5484d"]]}),
+    F(f"If a family saved ten percent of everything it earned, that down payment would take about {POR['CA']['anos']:.0f} years in California.", {"tipo": "numero", "txt": f"{POR['CA']['anos']:.0f} YEARS", "rotulo": "SAVING 10% OF INCOME · CALIFORNIA DOWN PAYMENT"}),
+    F(f"In Ohio, a little over three. In Illinois, the same.", {"tipo": "barras", "titulo": "YEARS TO SAVE 10% DOWN · SAVING 10% OF INCOME", "max": 8, "unid": "", "itens": [["CALIFORNIA", round(POR['CA']['anos'], 1), "#e5484d"], ["OHIO", round(POR['OH']['anos'], 1), "#7bc47f"], ["ILLINOIS", round(POR['IL']['anos'], 1), "#7bc47f"]]}),
+    F("Same family. Same savings habit. The only thing that changes is the state.", mapa(calor=CAL, pergunta="SAME FAMILY · DIFFERENT STATE")),
+]
+
 c4 = [
-    F("Part four. What changed.", {"tipo": "capitulo", "n": "PART FOUR", "txt": "WHAT CHANGED"}),
+    F("Part five. What changed.", {"tipo": "capitulo", "n": "PART FIVE", "txt": "WHAT CHANGED"}),
     F("Here's every state, then and now. Across the bottom, 2019. Up the side, today.", {"tipo": "dispersao", "pts": [[o['st'], o['pct19'], o['pct'], o['rank']] for o in C],
       "eixos": {"x": [10, 35], "y": [20, 58], "xt": [15, 20, 25, 30, 35], "yt": [20, 28, 40, 50], "xl": "SHARE OF INCOME · 2019 (→) · TODAY (↑)", "xf": "{}%", "yf": "{}%", "linha": 28, "linha_txt": "28% RULE"}}),
+    F(f"First, the obvious one. Every single state got worse. All fifty.", {"tipo": "numero", "txt": "50 / 50", "rotulo": "STATES THAT GOT WORSE SINCE 2019"}),
+    F(f"And in {DOBROU} of them, the share of income more than doubled.", {"tipo": "numero", "txt": f"{DOBROU} / 50", "rotulo": "STATES WHERE IT MORE THAN DOUBLED"}),
     F("In 2019, only California and Hawaii were over the line. Everyone else was fine.", {"tipo": "dispersao", "pts": [[o['st'], o['pct19'], o['pct'], o['rank']] for o in C], "foco": ["CA", "HI"],
       "eixos": {"x": [10, 35], "y": [20, 58], "xt": [15, 20, 25, 30, 35], "yt": [20, 28, 40, 50], "xl": "SHARE OF INCOME · 2019 (→) · TODAY (↑)", "xf": "{}%", "yf": "{}%", "linha": 28, "linha_txt": "28% RULE"}}),
     F(f"Since then, Wyoming went from {p19('WY')} percent to {p('WY')}.", {"tipo": "lista", "itens": [[10, "WYOMING · 2019", POR['WY']['pct19']], [10, "WYOMING · TODAY", POR['WY']['pct']]]}),
@@ -158,6 +218,12 @@ c4 = [
       "eixos": {"x": [10, 35], "y": [20, 58], "xt": [15, 20, 25, 30, 35], "yt": [20, 28, 40, 50], "xl": "SHARE OF INCOME · 2019 (→) · TODAY (↑)", "xf": "{}%", "yf": "{}%", "linha": 28, "linha_txt": "28% RULE"}}),
     F("Many were the cheap, quiet states people moved to when they could work from anywhere.", {"tipo": "icones2", "a": "computador", "b": "casa", "txt": "WORK FROM ANYWHERE"}),
     F("Prices went up there. Incomes didn't keep up. And then rates doubled.", {"tipo": "icones2", "a": "grafico", "b": "grafico_baixo", "txt": "PRICES ↑ · INCOMES ⟶"}),
+    F("Here are the biggest jumps in listing prices since 2019.", {"tipo": "placa", "titulo": "BIGGEST PRICE JUMPS", "txt": "Typical listed home, 2019 → today", "fonte": "Realtor.com via FRED"}),
+    F(f"Wyoming, up {SUBIU('WY')} percent. Montana, {SUBIU('MT')}.", {"tipo": "barras", "titulo": "LISTING PRICES SINCE 2019", "max": 100, "unid": "%", "itens": [["WYOMING", SUBIU('WY'), "#e5484d"], ["MONTANA", SUBIU('MT'), "#e5484d"]]}),
+    F(f"New Hampshire, {SUBIU('NH')}. Maine, {SUBIU('ME')}. Vermont, {SUBIU('VT')}.", {"tipo": "barras", "titulo": "LISTING PRICES SINCE 2019", "max": 100, "unid": "%", "itens": [["WYOMING", SUBIU('WY'), "#e5484d"], ["MONTANA", SUBIU('MT'), "#e5484d"], ["NEW HAMPSHIRE", SUBIU('NH'), "#e9874a"], ["MAINE", SUBIU('ME'), "#e9874a"], ["VERMONT", SUBIU('VT'), "#e9874a"]]}),
+    F("Quiet, rural, beautiful states. Exactly the kind of place people dreamed about during the pandemic.", mapa(destaque=["WY", "MT", "NH", "ME", "VT"], sticker={"txt": "+75% OR MORE"})),
+    F(f"Meanwhile California went up {SUBIU('CA')} percent. Texas, {SUBIU('TX')}. Colorado, {SUBIU('CO')}.", {"tipo": "barras", "titulo": "LISTING PRICES SINCE 2019", "max": 100, "unid": "%", "itens": [["CALIFORNIA", SUBIU('CA'), "#e9c46a"], ["TEXAS", SUBIU('TX'), "#e9c46a"], ["COLORADO", SUBIU('CO'), "#e9c46a"]]}),
+    F("The expensive places didn't get cheaper. The cheap places caught up.", {"tipo": "icones2", "a": "casa", "b": "grafico", "txt": "THE CHEAP PLACES CAUGHT UP"}),
     F("So what would fix it? We reran every state at lower rates.", {"tipo": "placa", "titulo": "WHAT IF RATES FELL?", "txt": "Same homes, same incomes", "fonte": "Rerun at 6%, 5%, 4%, 3%"}),
     F(f"At today's rate, {ESC[0]} states pass. At six percent, {ESC[1]}.", {"tipo": "barras", "titulo": "STATES THAT PASS THE 28% RULE", "max": 50, "itens": [[f"{JUROS:.2f}% · today", ESC[0], "#e5484d"], ["6%", ESC[1], "#e9874a"]]}),
     F(f"At five, {ESC[2]}. At four percent, {ESC[3]}.", {"tipo": "barras", "titulo": "STATES THAT PASS THE 28% RULE", "max": 50, "itens": [[f"{JUROS:.2f}% · today", ESC[0], "#e5484d"], ["6%", ESC[1], "#e9874a"], ["5%", ESC[2], "#e9c46a"], ["4%", ESC[3], "#9cc46a"]]}),
@@ -171,6 +237,13 @@ c4 = [
 
 fim = [
     F(f"So in 2019, {PASSAM19} states passed the test. Today, {PASSAM} do.", {"tipo": "numero", "txt": f"{PASSAM19} → {PASSAM}", "rotulo": "STATES THAT PASS · 2019 → TODAY"}),
+    F("So what actually decides your number? Three things. The price of the home. Your income. And the rate.", {"tipo": "placa", "titulo": "THREE NUMBERS", "txt": "Price · Income · Rate", "fonte": "That's the whole test"}),
+    F("You can't control the rate. And your income doesn't change overnight.", {"tipo": "icones2", "a": "grafico", "b": "familia", "txt": "HARD TO CHANGE"}),
+    F("But the price depends almost entirely on where you buy.", mapa(calor=CAL, pergunta="WHERE YOU BUY")),
+    F(f"The same household income that fails in New York passes easily in Ohio. Same family, {p('NY')} percent versus {p('OH')}.", {"tipo": "barras", "titulo": "SAME TEST · SHARE OF INCOME", "max": 60, "unid": "%", "itens": [["NEW YORK", round(POR['NY']['pct']), "#e5484d"], ["OHIO", round(POR['OH']['pct']), "#7bc47f"]]}),
+    F(f"And if rates ever fall back to six percent, the number of passing states almost doubles, from {ESC[0]} to {ESC[1]}.", {"tipo": "barras", "titulo": "STATES THAT PASS THE 28% RULE", "max": 50, "itens": [[f"{JUROS:.2f}% · today", ESC[0], "#e5484d"], ["6%", ESC[1], "#e9874a"]]}),
+    F(f"The top three hardest states today: New York, Montana and California.", {"tipo": "lista", "itens": grupo(1, 3)}),
+    F(f"The three easiest: Ohio, Illinois, and Iowa and Nebraska tied for third.", {"tipo": "lista", "itens": grupo(47, 50)}),
     F("And the last state standing?", mapa(misterio=True, sticker={"txt": "LAST STATE STANDING"})),
     F("Ohio. Where a typical home still costs less than a quarter of a paycheck.", rank('OH', sub="UNDER A QUARTER OF A PAYCHECK")),
     F("Could you afford a typical home in your state? Tell us in the comments.", mapa(calor=CAL, pergunta="COULD YOU AFFORD YOURS?")),
@@ -184,8 +257,8 @@ spec = {
                 "twenty five percent": "25%", "forty percent": "40%", "six percent": "6%", "zero percent": "0%", "one point one million": "1.1 million"},
     "blocos": [],
 }
-nomes = {2: 'Where a house still makes sense', 3: 'Over the line', 4: 'The breaking point', 5: 'What changed'}
-for i, cap in enumerate([intro, regras, c1, c2, c3, c4, fim]):
+nomes = {2: 'Where a house still makes sense', 3: 'Over the line', 4: 'The breaking point', 5: 'The real price tag', 6: 'What changed'}
+for i, cap in enumerate([intro, regras, c1, c2, c3, c3b, c4, fim]):
     cena = {"tipo": "capitulo" if i in nomes else "arte", "v": [v for _, v in cap]}
     if i in nomes: cena.update({"n": i - 1, "titulo": nomes[i]})
     spec["blocos"].append({"cena": cena, "falas": [t for t, _ in cap]})

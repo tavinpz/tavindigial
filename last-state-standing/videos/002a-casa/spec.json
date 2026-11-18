@@ -78,6 +78,21 @@
       "txt": "MORE CATTLE THAN PEOPLE"
      },
      {
+      "tipo": "mapa",
+      "destaque": [
+       "WV",
+       "OH"
+      ],
+      "sticker": {
+       "txt": "NOT THE SAME"
+      }
+     },
+     {
+      "tipo": "numero",
+      "txt": "31",
+      "rotulo": "STATES WHERE IT MORE THAN DOUBLED"
+     },
+     {
       "tipo": "placa",
       "titulo": "ALL 50 RANKED",
       "txt": "Official numbers, every state",
@@ -98,6 +113,8 @@
     "In Ohio, 24.",
     "And the number two state isn't California.",
     "It's a state with about twice as many cattle as people.",
+    "The cheapest home in America isn't in the state you think, and it's not the most affordable one either.",
+    "And in 31 states, the share of income a home takes has more than doubled since 2019.",
     "We ranked all fifty states with official numbers.",
     "Stay to the end, and you'll see exactly where yours lands."
    ]
@@ -2946,6 +2963,75 @@
       "pergunta": "THE MIDWEST HOLDS"
      },
      {
+      "tipo": "lista",
+      "itens": [
+       [
+        46,
+        "KANSAS",
+        25.20685941550802
+       ],
+       [
+        47,
+        "IOWA",
+        25.044617180486306
+       ],
+       [
+        48,
+        "NEBRASKA",
+        24.984189184928958
+       ],
+       [
+        49,
+        "ILLINOIS",
+        24.3852944920609
+       ],
+       [
+        50,
+        "OHIO",
+        24.253010087639442
+       ]
+      ]
+     },
+     {
+      "tipo": "lista",
+      "itens": [
+       [
+        42,
+        "MICHIGAN",
+        27.783161706642556
+       ],
+       [
+        43,
+        "MARYLAND",
+        26.816648795063525
+       ],
+       [
+        44,
+        "PENNSYLVANIA",
+        26.672574605928144
+       ],
+       [
+        45,
+        "MISSOURI",
+        26.20959771067426
+       ]
+      ]
+     },
+     {
+      "tipo": "rank",
+      "pos": "#44",
+      "nome": "PENNSYLVANIA",
+      "uf": "PA",
+      "sub": "$311K · 27%"
+     },
+     {
+      "tipo": "rank",
+      "pos": "#42",
+      "nome": "MICHIGAN",
+      "uf": "MI",
+      "sub": "28% OF INCOME"
+     },
+     {
       "tipo": "rank",
       "pos": "#41",
       "nome": "INDIANA",
@@ -3060,6 +3146,10 @@
     "Part one. Where a house still makes sense.",
     "Only 9 states still pass the twenty eight percent test.",
     "Almost all of them are in the Midwest.",
+    "Here's the whole bottom ten. Fifty, Ohio. Forty nine, Illinois. Forty eight, Nebraska. Forty seven, Iowa. Forty six, Kansas.",
+    "Forty five, Missouri. Forty four, Pennsylvania. Forty three, Maryland. Forty two, Michigan, at 28 percent.",
+    "Pennsylvania is a quiet winner. Philadelphia and Pittsburgh, and a typical home still around 311 thousand dollars.",
+    "Michigan too. 28 percent, with Detroit right there.",
     "Indiana, at number forty one, misses the line by half a point.",
     "Number fifty. The most affordable state for a home in America.",
     "Ohio.",
@@ -3146,6 +3236,166 @@
       "rotulo": "PASSED IN 2019"
      },
      {
+      "tipo": "lista",
+      "itens": [
+       [
+        36,
+        "TEXAS",
+        30.919504843586836
+       ],
+       [
+        37,
+        "KENTUCKY",
+        30.469481449143604
+       ],
+       [
+        38,
+        "WEST VIRGINIA",
+        30.17810784876834
+       ],
+       [
+        39,
+        "MINNESOTA",
+        29.73289794302608
+       ],
+       [
+        40,
+        "OKLAHOMA",
+        28.896402435009023
+       ]
+      ]
+     },
+     {
+      "tipo": "lista",
+      "itens": [
+       [
+        36,
+        "TEXAS",
+        30.919504843586836
+       ],
+       [
+        37,
+        "KENTUCKY",
+        30.469481449143604
+       ],
+       [
+        38,
+        "WEST VIRGINIA",
+        30.17810784876834
+       ],
+       [
+        39,
+        "MINNESOTA",
+        29.73289794302608
+       ],
+       [
+        40,
+        "OKLAHOMA",
+        28.896402435009023
+       ]
+      ]
+     },
+     {
+      "tipo": "lista",
+      "itens": [
+       [
+        31,
+        "VIRGINIA",
+        33.144748514059614
+       ],
+       [
+        32,
+        "WISCONSIN",
+        32.46244609212696
+       ],
+       [
+        33,
+        "SOUTH CAROLINA",
+        32.28663494529232
+       ],
+       [
+        34,
+        "ALASKA",
+        31.436943982166603
+       ],
+       [
+        35,
+        "NORTH DAKOTA",
+        31.25469761186222
+       ]
+      ]
+     },
+     {
+      "tipo": "lista",
+      "itens": [
+       [
+        26,
+        "GEORGIA",
+        35.113437038491206
+       ],
+       [
+        27,
+        "MAINE",
+        34.430983433070104
+       ],
+       [
+        28,
+        "ARKANSAS",
+        33.73950189641207
+       ],
+       [
+        29,
+        "SOUTH DAKOTA",
+        33.48144733538623
+       ],
+       [
+        30,
+        "LOUISIANA",
+        33.18180063563169
+       ]
+      ]
+     },
+     {
+      "tipo": "lista",
+      "itens": [
+       [
+        21,
+        "CONNECTICUT",
+        37.62595580281267
+       ],
+       [
+        22,
+        "NORTH CAROLINA",
+        37.400352882166665
+       ],
+       [
+        23,
+        "NEW JERSEY",
+        36.447948898970836
+       ],
+       [
+        24,
+        "DELAWARE",
+        36.224302885279265
+       ],
+       [
+        25,
+        "ALABAMA",
+        35.74205997303258
+       ]
+      ]
+     },
+     {
+      "tipo": "mapa",
+      "destaque": [
+       "TX",
+       "MS",
+       "VA",
+       "AK"
+      ],
+      "pergunta": "A CLOSER LOOK"
+     },
+     {
       "tipo": "rank",
       "pos": "#36",
       "nome": "TEXAS",
@@ -3202,6 +3452,40 @@
       "a": "casa",
       "b": "saco",
       "txt": "CHEAP IS RELATIVE"
+     },
+     {
+      "tipo": "rank",
+      "pos": "#31",
+      "nome": "VIRGINIA",
+      "uf": "VA",
+      "sub": "#31"
+     },
+     {
+      "tipo": "numero",
+      "txt": "$450K",
+      "rotulo": "TYPICAL LISTED HOME · VIRGINIA"
+     },
+     {
+      "tipo": "conta",
+      "cab": "* VIRGINIA *",
+      "quem": "typical home · 10% down · 30 years",
+      "linha": "$450K home",
+      "txt": "33%",
+      "rotulo": "of household income, every month",
+      "emoji": "casa"
+     },
+     {
+      "tipo": "icones2",
+      "a": "casa",
+      "b": "dinheiro",
+      "txt": "PRICE ISN'T EVERYTHING"
+     },
+     {
+      "tipo": "rank",
+      "pos": "#34",
+      "nome": "ALASKA",
+      "uf": "AK",
+      "sub": "31% OF INCOME"
      }
     ],
     "n": 2,
@@ -3212,6 +3496,12 @@
     "From forty down to twenty one, the share climbs from 29 percent to 38.",
     "Every one of these states fails the rule today.",
     "In 2019, every one of them passed.",
+    "Let's go through them fast.",
+    "Forty, Oklahoma, 29 percent. Thirty nine, Minnesota, 30. Thirty eight, West Virginia. Thirty seven, Kentucky.",
+    "Thirty five, North Dakota. Thirty four, Alaska. Thirty three, South Carolina. Thirty two, Wisconsin. Thirty one, Virginia.",
+    "Thirty, Louisiana. Twenty nine, South Dakota. Twenty eight, Arkansas. Twenty seven, Maine, at 34 percent.",
+    "Twenty six, Georgia. Twenty five, Alabama. Twenty four, Delaware. Twenty three, New Jersey. Twenty two, North Carolina. Twenty one, Connecticut, at 38.",
+    "Now a few of these deserve a closer look.",
     "Texas lands at thirty six.",
     "Texas homes are cheaper than people think, around 357 thousand dollars.",
     "And incomes are around the national typical. 31 percent.",
@@ -3220,7 +3510,12 @@
     "It has some of the cheapest homes in the country, around 296 thousand dollars.",
     "But it also has the lowest household income in the country.",
     "So even a cheap home takes 38 percent.",
-    "Cheap is relative."
+    "Cheap is relative.",
+    "Virginia is the mirror image. Number thirty one.",
+    "Homes there cost 450 thousand dollars. One and a half times Mississippi.",
+    "But the typical Virginia household earns 100 thousand. So the share is lower. 33 percent.",
+    "A cheap home in a poor state can be harder to buy than an expensive home in a rich one.",
+    "And Alaska, at thirty four, is one of the few places where the math is milder than people expect. 31 percent."
    ]
   },
   {
@@ -3261,6 +3556,73 @@
        "WA",
        "TN"
       ]
+     },
+     {
+      "tipo": "lista",
+      "itens": [
+       [
+        16,
+        "ARIZONA",
+        39.989432224763775
+       ],
+       [
+        17,
+        "FLORIDA",
+        39.89873357761658
+       ],
+       [
+        18,
+        "NEW HAMPSHIRE",
+        38.733439128653494
+       ],
+       [
+        19,
+        "VERMONT",
+        38.47877306794041
+       ],
+       [
+        20,
+        "MISSISSIPPI",
+        37.6579858932194
+       ]
+      ]
+     },
+     {
+      "tipo": "lista",
+      "itens": [
+       [
+        11,
+        "TENNESSEE",
+        41.95432953266484
+       ],
+       [
+        12,
+        "WASHINGTON",
+        41.49645130723996
+       ],
+       [
+        13,
+        "UTAH",
+        41.343927004435486
+       ],
+       [
+        14,
+        "COLORADO",
+        40.634440199260645
+       ],
+       [
+        15,
+        "NEVADA",
+        40.265123662097125
+       ]
+      ]
+     },
+     {
+      "tipo": "rank",
+      "pos": "#11",
+      "nome": "TENNESSEE",
+      "uf": "TN",
+      "sub": "HOMES +50% SINCE 2019"
      },
      {
       "tipo": "rank",
@@ -3467,6 +3829,9 @@
     "Part three. The breaking point.",
     "From twenty to eleven, a typical home takes around forty percent of income.",
     "Florida, Arizona, Nevada, Colorado, Utah, Washington and Tennessee are all in here.",
+    "Twenty, Mississippi. Nineteen, Vermont. Eighteen, New Hampshire, at 39 percent.",
+    "Sixteen, Arizona. Fifteen, Nevada. Fourteen, Colorado. Thirteen, Utah. Twelve, Washington. Eleven, Tennessee, at 42.",
+    "Tennessee is the one that stands out. No state income tax, Nashville booming, and homes up 50 percent since 2019.",
     "Florida is number seventeen.",
     "For years, Florida was where people went to make their money go further.",
     "No state income tax, and homes cheaper than the Northeast.",
@@ -3506,6 +3871,452 @@
      {
       "tipo": "capitulo",
       "n": "PART FOUR",
+      "txt": "THE REAL PRICE TAG"
+     },
+     {
+      "tipo": "icones2",
+      "a": "dinheiro",
+      "b": "calendario",
+      "txt": "IN DOLLARS"
+     },
+     {
+      "tipo": "conta",
+      "cab": "* HAWAII *",
+      "quem": "mortgage only · per month",
+      "linha": "$744K home · 7.24%",
+      "txt": "$4,561",
+      "rotulo": "every month",
+      "emoji": "casa"
+     },
+     {
+      "tipo": "barras",
+      "titulo": "MONTHLY MORTGAGE · TYPICAL HOME",
+      "max": 5000,
+      "unid": "",
+      "itens": [
+       [
+        "HAWAII",
+        4561,
+        "#e5484d"
+       ],
+       [
+        "MASSACHUSETTS",
+        4504,
+        "#e5484d"
+       ],
+       [
+        "CALIFORNIA",
+        4474,
+        "#e5484d"
+       ]
+      ]
+     },
+     {
+      "tipo": "barras",
+      "titulo": "MONTHLY MORTGAGE · TYPICAL HOME",
+      "max": 5000,
+      "unid": "",
+      "itens": [
+       [
+        "HAWAII",
+        4561,
+        "#e5484d"
+       ],
+       [
+        "MASSACHUSETTS",
+        4504,
+        "#e5484d"
+       ],
+       [
+        "CALIFORNIA",
+        4474,
+        "#e5484d"
+       ],
+       [
+        "WEST VIRGINIA",
+        1553,
+        "#7bc47f"
+       ]
+      ]
+     },
+     {
+      "tipo": "rank",
+      "pos": "#38",
+      "nome": "WEST VIRGINIA",
+      "uf": "WV",
+      "sub": "$1,553 A MONTH"
+     },
+     {
+      "tipo": "icones2",
+      "a": "familia",
+      "b": "dinheiro",
+      "txt": "HOW MUCH WOULD YOU NEED?"
+     },
+     {
+      "tipo": "barras",
+      "titulo": "INCOME NEEDED TO PASS · PER YEAR",
+      "max": 200000,
+      "unid": "",
+      "itens": [
+       [
+        "HAWAII",
+        195000.0,
+        "#e5484d"
+       ],
+       [
+        "MASSACHUSETTS",
+        193000.0,
+        "#e5484d"
+       ],
+       [
+        "CALIFORNIA",
+        192000.0,
+        "#e5484d"
+       ]
+      ]
+     },
+     {
+      "tipo": "barras",
+      "titulo": "INCOME NEEDED TO PASS · PER YEAR",
+      "max": 200000,
+      "unid": "",
+      "itens": [
+       [
+        "WASHINGTON",
+        167000.0,
+        "#e9874a"
+       ],
+       [
+        "MONTANA · NEEDED",
+        165000.0,
+        "#e5484d"
+       ],
+       [
+        "MONTANA · TYPICAL",
+        87000.0,
+        "#7bc47f"
+       ]
+      ]
+     },
+     {
+      "tipo": "barras",
+      "titulo": "INCOME NEEDED TO PASS · PER YEAR",
+      "max": 200000,
+      "unid": "",
+      "itens": [
+       [
+        "FLORIDA",
+        111000.0,
+        "#e9c46a"
+       ],
+       [
+        "TEXAS",
+        94000.0,
+        "#e9c46a"
+       ]
+      ]
+     },
+     {
+      "tipo": "rank",
+      "pos": "#38",
+      "nome": "WEST VIRGINIA",
+      "uf": "WV",
+      "sub": "$67K A YEAR TO PASS"
+     },
+     {
+      "tipo": "icones2",
+      "a": "ampulheta",
+      "b": "casa",
+      "txt": "YEARS OF INCOME"
+     },
+     {
+      "tipo": "barras",
+      "titulo": "TYPICAL HOME · YEARS OF TYPICAL INCOME",
+      "max": 8,
+      "unid": "",
+      "itens": [
+       [
+        "OHIO",
+        3.3,
+        "#7bc47f"
+       ],
+       [
+        "ILLINOIS",
+        3.3,
+        "#7bc47f"
+       ]
+      ]
+     },
+     {
+      "tipo": "barras",
+      "titulo": "TYPICAL HOME · YEARS OF TYPICAL INCOME",
+      "max": 8,
+      "unid": "",
+      "itens": [
+       [
+        "OHIO",
+        3.3,
+        "#7bc47f"
+       ],
+       [
+        "ILLINOIS",
+        3.3,
+        "#7bc47f"
+       ],
+       [
+        "CALIFORNIA",
+        7.2,
+        "#e5484d"
+       ],
+       [
+        "MONTANA",
+        7.3,
+        "#e5484d"
+       ],
+       [
+        "NEW YORK",
+        7.5,
+        "#e5484d"
+       ]
+      ]
+     },
+     {
+      "tipo": "numero",
+      "txt": "7.5 YRS",
+      "rotulo": "OF INCOME FOR ONE HOME · NEW YORK"
+     },
+     {
+      "tipo": "icones2",
+      "a": "calendario",
+      "b": "pessoa",
+      "txt": "22 WORKING DAYS"
+     },
+     {
+      "tipo": "numero",
+      "txt": "12 DAYS",
+      "rotulo": "OF EVERY WORK MONTH · NEW YORK MORTGAGE"
+     },
+     {
+      "tipo": "barras",
+      "titulo": "WORK DAYS A MONTH · JUST FOR THE MORTGAGE",
+      "max": 22,
+      "unid": "",
+      "itens": [
+       [
+        "NEW YORK",
+        12.0,
+        "#e5484d"
+       ],
+       [
+        "CALIFORNIA",
+        11.5,
+        "#e5484d"
+       ],
+       [
+        "MONTANA",
+        11.6,
+        "#e5484d"
+       ]
+      ]
+     },
+     {
+      "tipo": "barras",
+      "titulo": "WORK DAYS A MONTH · JUST FOR THE MORTGAGE",
+      "max": 22,
+      "unid": "",
+      "itens": [
+       [
+        "NEW YORK",
+        12.0,
+        "#e5484d"
+       ],
+       [
+        "FLORIDA",
+        8.6,
+        "#e9874a"
+       ],
+       [
+        "TEXAS",
+        6.7,
+        "#e9c46a"
+       ]
+      ]
+     },
+     {
+      "tipo": "barras",
+      "titulo": "WORK DAYS A MONTH · JUST FOR THE MORTGAGE",
+      "max": 22,
+      "unid": "",
+      "itens": [
+       [
+        "NEW YORK",
+        12.0,
+        "#e5484d"
+       ],
+       [
+        "TEXAS",
+        6.7,
+        "#e9c46a"
+       ],
+       [
+        "OHIO",
+        5.3,
+        "#7bc47f"
+       ]
+      ]
+     },
+     {
+      "tipo": "icones2",
+      "a": "bolso",
+      "b": "chave",
+      "txt": "THE DOWN PAYMENT"
+     },
+     {
+      "tipo": "barras",
+      "titulo": "10% DOWN PAYMENT · TYPICAL HOME",
+      "max": 80000,
+      "unid": "",
+      "itens": [
+       [
+        "HAWAII",
+        74000.0,
+        "#e5484d"
+       ],
+       [
+        "CALIFORNIA",
+        73000.0,
+        "#e5484d"
+       ],
+       [
+        "NEW YORK",
+        65000.0,
+        "#e5484d"
+       ]
+      ]
+     },
+     {
+      "tipo": "numero",
+      "txt": "7 YEARS",
+      "rotulo": "SAVING 10% OF INCOME · CALIFORNIA DOWN PAYMENT"
+     },
+     {
+      "tipo": "barras",
+      "titulo": "YEARS TO SAVE 10% DOWN · SAVING 10% OF INCOME",
+      "max": 8,
+      "unid": "",
+      "itens": [
+       [
+        "CALIFORNIA",
+        7.2,
+        "#e5484d"
+       ],
+       [
+        "OHIO",
+        3.3,
+        "#7bc47f"
+       ],
+       [
+        "ILLINOIS",
+        3.3,
+        "#7bc47f"
+       ]
+      ]
+     },
+     {
+      "tipo": "mapa",
+      "calor": {
+       "NY": 55.433009959569915,
+       "MT": 53.376374641317526,
+       "CA": 53.26425160440438,
+       "HI": 52.074498288883134,
+       "ID": 48.948101050056806,
+       "MA": 45.61137642303702,
+       "OR": 44.00360877015462,
+       "NM": 43.26628199135861,
+       "RI": 43.24650155429113,
+       "WY": 42.51390266061143,
+       "TN": 41.95432953266484,
+       "WA": 41.49645130723996,
+       "UT": 41.343927004435486,
+       "CO": 40.634440199260645,
+       "NV": 40.265123662097125,
+       "AZ": 39.989432224763775,
+       "FL": 39.89873357761658,
+       "NH": 38.733439128653494,
+       "VT": 38.47877306794041,
+       "MS": 37.6579858932194,
+       "CT": 37.62595580281267,
+       "NC": 37.400352882166665,
+       "NJ": 36.447948898970836,
+       "DE": 36.224302885279265,
+       "AL": 35.74205997303258,
+       "GA": 35.113437038491206,
+       "ME": 34.430983433070104,
+       "AR": 33.73950189641207,
+       "SD": 33.48144733538623,
+       "LA": 33.18180063563169,
+       "VA": 33.144748514059614,
+       "WI": 32.46244609212696,
+       "SC": 32.28663494529232,
+       "AK": 31.436943982166603,
+       "ND": 31.25469761186222,
+       "TX": 30.919504843586836,
+       "KY": 30.469481449143604,
+       "WV": 30.17810784876834,
+       "MN": 29.73289794302608,
+       "OK": 28.896402435009023,
+       "IN": 28.500109910519285,
+       "MI": 27.783161706642556,
+       "MD": 26.816648795063525,
+       "PA": 26.672574605928144,
+       "MO": 26.20959771067426,
+       "KS": 25.20685941550802,
+       "IA": 25.044617180486306,
+       "NE": 24.984189184928958,
+       "IL": 24.3852944920609,
+       "OH": 24.253010087639442
+      },
+      "pergunta": "SAME FAMILY · DIFFERENT STATE"
+     }
+    ],
+    "n": 4,
+    "titulo": "The real price tag"
+   },
+   "falas": [
+    "Part four. The real price tag.",
+    "Percentages are easy to ignore. So let's put it in dollars.",
+    "The highest monthly mortgage in the country is in Hawaii. About 4,561 dollars a month.",
+    "Massachusetts, 4,504. California, 4,474.",
+    "And the lowest? West Virginia. About 1,553 dollars.",
+    "Less than half of California.",
+    "Now flip the question. How much would you need to earn, for the typical home to pass the twenty eight percent rule?",
+    "In Hawaii, about 195 thousand dollars a year. In Massachusetts and California, more than 192 thousand.",
+    "Washington, 167 thousand. Montana, 165 thousand. In a state where the typical household makes 87.",
+    "Florida, 111 thousand. Texas, 94 thousand.",
+    "And the lowest bar in the country is West Virginia. About 67 thousand a year.",
+    "There's one more way to see it. How many years of income does a typical home cost?",
+    "In Ohio, 3.3 years. In Illinois, 3.3.",
+    "In California, 7.2. In Montana, 7.3. And in New York, 7.5 years.",
+    "Every dollar a New York family earns for seven and a half years. Before taxes. Before food.",
+    "Let's make it even more concrete. A work month has about twenty two working days.",
+    "In New York, the typical household works about 12 of those days just to pay the mortgage.",
+    "In California and Montana, about 11.5.",
+    "In Florida, 8.6. In Texas, 6.7.",
+    "And in Ohio, a little over five. The rest of the month is yours.",
+    "And before any of that, you need the down payment.",
+    "Ten percent of a typical home in California is about 73 thousand dollars. In Hawaii, 74.",
+    "If a family saved ten percent of everything it earned, that down payment would take about 7 years in California.",
+    "In Ohio, a little over three. In Illinois, the same.",
+    "Same family. Same savings habit. The only thing that changes is the state."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "v": [
+     {
+      "tipo": "capitulo",
+      "n": "PART FIVE",
       "txt": "WHAT CHANGED"
      },
      {
@@ -3840,6 +4651,16 @@
        "linha": 28,
        "linha_txt": "28% RULE"
       }
+     },
+     {
+      "tipo": "numero",
+      "txt": "50 / 50",
+      "rotulo": "STATES THAT GOT WORSE SINCE 2019"
+     },
+     {
+      "tipo": "numero",
+      "txt": "31 / 50",
+      "rotulo": "STATES WHERE IT MORE THAN DOUBLED"
      },
      {
       "tipo": "dispersao",
@@ -4571,6 +5392,105 @@
      },
      {
       "tipo": "placa",
+      "titulo": "BIGGEST PRICE JUMPS",
+      "txt": "Typical listed home, 2019 → today",
+      "fonte": "Realtor.com via FRED"
+     },
+     {
+      "tipo": "barras",
+      "titulo": "LISTING PRICES SINCE 2019",
+      "max": 100,
+      "unid": "%",
+      "itens": [
+       [
+        "WYOMING",
+        82,
+        "#e5484d"
+       ],
+       [
+        "MONTANA",
+        80,
+        "#e5484d"
+       ]
+      ]
+     },
+     {
+      "tipo": "barras",
+      "titulo": "LISTING PRICES SINCE 2019",
+      "max": 100,
+      "unid": "%",
+      "itens": [
+       [
+        "WYOMING",
+        82,
+        "#e5484d"
+       ],
+       [
+        "MONTANA",
+        80,
+        "#e5484d"
+       ],
+       [
+        "NEW HAMPSHIRE",
+        77,
+        "#e9874a"
+       ],
+       [
+        "MAINE",
+        76,
+        "#e9874a"
+       ],
+       [
+        "VERMONT",
+        75,
+        "#e9874a"
+       ]
+      ]
+     },
+     {
+      "tipo": "mapa",
+      "destaque": [
+       "WY",
+       "MT",
+       "NH",
+       "ME",
+       "VT"
+      ],
+      "sticker": {
+       "txt": "+75% OR MORE"
+      }
+     },
+     {
+      "tipo": "barras",
+      "titulo": "LISTING PRICES SINCE 2019",
+      "max": 100,
+      "unid": "%",
+      "itens": [
+       [
+        "CALIFORNIA",
+        27,
+        "#e9c46a"
+       ],
+       [
+        "TEXAS",
+        22,
+        "#e9c46a"
+       ],
+       [
+        "COLORADO",
+        20,
+        "#e9c46a"
+       ]
+      ]
+     },
+     {
+      "tipo": "icones2",
+      "a": "casa",
+      "b": "grafico",
+      "txt": "THE CHEAP PLACES CAUGHT UP"
+     },
+     {
+      "tipo": "placa",
       "titulo": "WHAT IF RATES FELL?",
       "txt": "Same homes, same incomes",
       "fonte": "Rerun at 6%, 5%, 4%, 3%"
@@ -4683,18 +5603,26 @@
       "sub": "#1 EITHER WAY"
      }
     ],
-    "n": 4,
+    "n": 5,
     "titulo": "What changed"
    },
    "falas": [
-    "Part four. What changed.",
+    "Part five. What changed.",
     "Here's every state, then and now. Across the bottom, 2019. Up the side, today.",
+    "First, the obvious one. Every single state got worse. All fifty.",
+    "And in 31 of them, the share of income more than doubled.",
     "In 2019, only California and Hawaii were over the line. Everyone else was fine.",
     "Since then, Wyoming went from 16 percent to 43.",
     "Montana, from 24 to 53. Idaho, from 22 to 49.",
     "The states that got hit hardest weren't the expensive coasts.",
     "Many were the cheap, quiet states people moved to when they could work from anywhere.",
     "Prices went up there. Incomes didn't keep up. And then rates doubled.",
+    "Here are the biggest jumps in listing prices since 2019.",
+    "Wyoming, up 82 percent. Montana, 80.",
+    "New Hampshire, 77. Maine, 76. Vermont, 75.",
+    "Quiet, rural, beautiful states. Exactly the kind of place people dreamed about during the pandemic.",
+    "Meanwhile California went up 27 percent. Texas, 22. Colorado, 20.",
+    "The expensive places didn't get cheaper. The cheap places caught up.",
     "So what would fix it? We reran every state at lower rates.",
     "At today's rate, 9 states pass. At six percent, 17.",
     "At five, 25. At four percent, 34.",
@@ -4714,6 +5642,154 @@
       "tipo": "numero",
       "txt": "48 → 9",
       "rotulo": "STATES THAT PASS · 2019 → TODAY"
+     },
+     {
+      "tipo": "placa",
+      "titulo": "THREE NUMBERS",
+      "txt": "Price · Income · Rate",
+      "fonte": "That's the whole test"
+     },
+     {
+      "tipo": "icones2",
+      "a": "grafico",
+      "b": "familia",
+      "txt": "HARD TO CHANGE"
+     },
+     {
+      "tipo": "mapa",
+      "calor": {
+       "NY": 55.433009959569915,
+       "MT": 53.376374641317526,
+       "CA": 53.26425160440438,
+       "HI": 52.074498288883134,
+       "ID": 48.948101050056806,
+       "MA": 45.61137642303702,
+       "OR": 44.00360877015462,
+       "NM": 43.26628199135861,
+       "RI": 43.24650155429113,
+       "WY": 42.51390266061143,
+       "TN": 41.95432953266484,
+       "WA": 41.49645130723996,
+       "UT": 41.343927004435486,
+       "CO": 40.634440199260645,
+       "NV": 40.265123662097125,
+       "AZ": 39.989432224763775,
+       "FL": 39.89873357761658,
+       "NH": 38.733439128653494,
+       "VT": 38.47877306794041,
+       "MS": 37.6579858932194,
+       "CT": 37.62595580281267,
+       "NC": 37.400352882166665,
+       "NJ": 36.447948898970836,
+       "DE": 36.224302885279265,
+       "AL": 35.74205997303258,
+       "GA": 35.113437038491206,
+       "ME": 34.430983433070104,
+       "AR": 33.73950189641207,
+       "SD": 33.48144733538623,
+       "LA": 33.18180063563169,
+       "VA": 33.144748514059614,
+       "WI": 32.46244609212696,
+       "SC": 32.28663494529232,
+       "AK": 31.436943982166603,
+       "ND": 31.25469761186222,
+       "TX": 30.919504843586836,
+       "KY": 30.469481449143604,
+       "WV": 30.17810784876834,
+       "MN": 29.73289794302608,
+       "OK": 28.896402435009023,
+       "IN": 28.500109910519285,
+       "MI": 27.783161706642556,
+       "MD": 26.816648795063525,
+       "PA": 26.672574605928144,
+       "MO": 26.20959771067426,
+       "KS": 25.20685941550802,
+       "IA": 25.044617180486306,
+       "NE": 24.984189184928958,
+       "IL": 24.3852944920609,
+       "OH": 24.253010087639442
+      },
+      "pergunta": "WHERE YOU BUY"
+     },
+     {
+      "tipo": "barras",
+      "titulo": "SAME TEST · SHARE OF INCOME",
+      "max": 60,
+      "unid": "%",
+      "itens": [
+       [
+        "NEW YORK",
+        55,
+        "#e5484d"
+       ],
+       [
+        "OHIO",
+        24,
+        "#7bc47f"
+       ]
+      ]
+     },
+     {
+      "tipo": "barras",
+      "titulo": "STATES THAT PASS THE 28% RULE",
+      "max": 50,
+      "itens": [
+       [
+        "7.24% · today",
+        9,
+        "#e5484d"
+       ],
+       [
+        "6%",
+        17,
+        "#e9874a"
+       ]
+      ]
+     },
+     {
+      "tipo": "lista",
+      "itens": [
+       [
+        1,
+        "NEW YORK",
+        55.433009959569915
+       ],
+       [
+        2,
+        "MONTANA",
+        53.376374641317526
+       ],
+       [
+        3,
+        "CALIFORNIA",
+        53.26425160440438
+       ]
+      ]
+     },
+     {
+      "tipo": "lista",
+      "itens": [
+       [
+        47,
+        "IOWA",
+        25.044617180486306
+       ],
+       [
+        48,
+        "NEBRASKA",
+        24.984189184928958
+       ],
+       [
+        49,
+        "ILLINOIS",
+        24.3852944920609
+       ],
+       [
+        50,
+        "OHIO",
+        24.253010087639442
+       ]
+      ]
      },
      {
       "tipo": "mapa",
@@ -4792,6 +5868,13 @@
    },
    "falas": [
     "So in 2019, 48 states passed the test. Today, 9 do.",
+    "So what actually decides your number? Three things. The price of the home. Your income. And the rate.",
+    "You can't control the rate. And your income doesn't change overnight.",
+    "But the price depends almost entirely on where you buy.",
+    "The same household income that fails in New York passes easily in Ohio. Same family, 55 percent versus 24.",
+    "And if rates ever fall back to six percent, the number of passing states almost doubles, from 9 to 17.",
+    "The top three hardest states today: New York, Montana and California.",
+    "The three easiest: Ohio, Illinois, and Iowa and Nebraska tied for third.",
     "And the last state standing?",
     "Ohio. Where a typical home still costs less than a quarter of a paycheck.",
     "Could you afford a typical home in your state? Tell us in the comments.",
