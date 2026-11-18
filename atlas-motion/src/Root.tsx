@@ -16,6 +16,8 @@ import { B52v2 } from './b52/B52v2';
 import { Crosswind01 } from './b52/Crosswind01';
 import { SNBTeste } from './snb/Teste';
 import { SNBFicha } from './snb/Ficha';
+import { SNBVideo } from './snb/Video';
+import { SNBThumb } from './snb/Thumbs';
 import temposSNB from '../public/snb/teste/tempos.json';
 import { Thumb } from './b52/Thumbs';
 import temposCW01 from '../public/b52/tempos.json';
@@ -45,6 +47,9 @@ const S3: React.FC<{ dur: number }> = ({ dur }) => <Salao3D f={useCurrentFrame()
 
 export const Root: React.FC = () => (
   <>
+    <Composition id="SNBVideo" component={SNBVideo as any} width={1920} height={1080} fps={30} durationInFrames={300} defaultProps={{ pasta: 'snb/v01' }}
+      calculateMetadata={async ({ props }: any) => { const tempos = await fetch(staticFile(`${props.pasta}/tempos.json`)).then((x) => x.json()); return { durationInFrames: props.n || Math.ceil(tempos.total * 30), props: { ...props, tempos } }; }} />
+    <Composition id="SNBThumb" component={SNBThumb as any} width={1280} height={720} fps={30} durationInFrames={1} defaultProps={{ v: 'a' }} />
     <Composition id="SNBFicha" component={SNBFicha} width={1920} height={1080} fps={30} durationInFrames={1} />
       <Composition id="SNBTeste" component={SNBTeste as any} width={1920} height={1080} fps={30} durationInFrames={Math.ceil(temposSNB.total * 30)} defaultProps={{ tempos: temposSNB as any }} />
       <Composition id="CWThumb" component={Thumb as any} durationInFrames={1} fps={30} width={1280} height={720} defaultProps={{ v: 'a' }} />

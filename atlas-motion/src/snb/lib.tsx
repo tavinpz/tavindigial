@@ -1,5 +1,10 @@
 import React from 'react';
 import { Easing, interpolate, spring } from 'remotion';
+import '@fontsource/anton/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/700.css';
+import '@fontsource/inter/800.css';
+import '@fontsource/inter/900.css';
 
 // Strong Not Big: identidade e personagem do canal (tudo em SVG, sem imagem gerada).
 export const K = { fundo: '#0B0B0C', osso: '#F1ECE2', sombra: '#C9C1B1', tinta: '#0B0B0C', verm: '#E3311D', ambar: '#FFB020', verde: '#3DDC84', cinza: '#8B8780', painel: '#17171A' };

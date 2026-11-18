@@ -1,11 +1,12 @@
-# Narração do canal Crosswind (voz aprovada pelo Tavin no #01).
-# Uso: python3 narrar_cw.py public/sr71   -> lê roteiro.json, gera voz_longo.wav (48k, tratada) e tempos.json
+# Narração do Strong Not Big (voz Puck, escolhida pelo Tavin).
+# Uso: python3 narrar_snb.py public/snb/v01 [velocidade]  -> lê roteiro.json, gera voz_longo.wav (48k, tratada) e tempos.json
+# Cada fala pode ser texto puro ou {txt, p (pausa extra em s), v (o que aparece na tela, copiado para o tempos.json)}.
 # Requisitos: pip install --break-system-packages kokoro-onnx ; modelo em /home/claude/tts (ver CROSSWIND.md)
 import json, subprocess, sys, wave
 import numpy as np
 from kokoro_onnx import Kokoro
 
-pasta = sys.argv[1].rstrip('/')
+pasta = sys.argv[1].rstrip('/'); VEL = float(sys.argv[2]) if len(sys.argv) > 2 else 0.92
 TTS = '/home/claude/tts'
 k = Kokoro(f'{TTS}/kokoro-v1.0.onnx', f'{TTS}/voices-v1.0.bin')
 voz = k.get_voice_style('am_puck')  # voz do Strong Not Big, escolhida pelo Tavin em 18/11 (antes: 70% am_michael + 30% am_onyx)
@@ -14,16 +15,17 @@ rot = json.load(open(f'{pasta}/roteiro.json'))
 sr = 24000; t = 0.6; partes = [np.zeros(int(sr * 0.6))]; blocos = []
 for bi, b in enumerate(rot):
     falas = []; ini = t
-    for txt in b['falas']:
-        a, sr = k.create(txt, voice=voz, speed=1.0, lang='en-us')
+    for fl in b['falas']:
+        fl = fl if isinstance(fl, dict) else {'txt': fl}; txt = fl['txt']
+        a, sr = k.create(txt, voice=voz, speed=VEL, lang='en-us')
         idx = np.where(np.abs(a) > 0.01)[0]; a = a[max(0, idx[0] - 240):idx[-1] + 600]
-        falas.append({'t': round(t, 3), 'd': round(len(a) / sr, 3), 'txt': txt}); partes.append(a); t += len(a) / sr
-        pausa = 0.42 if txt.endswith(('.', '?')) else 0.25
+        falas.append({'t': round(t, 3), 'd': round(len(a) / sr, 3), 'txt': txt, 'v': fl.get('v', {})}); partes.append(a); t += len(a) / sr
+        pausa = (0.42 if txt.endswith(('.', '?')) else 0.25) + fl.get('p', 0)
         partes.append(np.zeros(int(sr * pausa))); t += pausa
-    extra = 0.9 if bi == 0 else 0.35  # respiro maior depois do gancho
+    extra = 0.5  # respiro entre blocos
     partes.append(np.zeros(int(sr * extra))); t += extra
-    blocos.append({'cena': b['cena'], 'ini': round(ini, 3), 'fim': round(t, 3), 'falas': falas})
-partes.append(np.zeros(int(sr * 1.6))); t += 1.6  # cauda para o cartão final
+    blocos.append({'cena': b['cena'], 'et': b.get('et'), 'fonte': b.get('fonte'), 'ini': round(ini, 3), 'fim': round(t, 3), 'falas': falas})
+partes.append(np.zeros(int(sr * 4.0))); t += 4.0  # cauda para o cartão final
 
 cru = f'{pasta}/voz_cru.wav'
 w = wave.open(cru, 'wb'); w.setnchannels(1); w.setsampwidth(2); w.setframerate(sr)

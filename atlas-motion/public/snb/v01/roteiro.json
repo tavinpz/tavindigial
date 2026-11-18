@@ -1,222 +1,3192 @@
 [
  {
   "cena": "gancho",
+  "et": "FARMER STRENGTH · REAL STUDIES · AT HOME",
+  "fonte": null,
   "falas": [
-   "This guy trains five days a week.",
-   "This guy has never touched a barbell.",
-   "Now hand them both a hundred pound sack, and tell them to walk.",
-   "You already know who puts it down first."
+   {
+    "txt": "This guy trains five days a week.",
+    "p": 0,
+    "v": {
+     "big": "5 DAYS",
+     "sub": "a week in the gym",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "This guy has never touched a barbell.",
+    "p": 0,
+    "v": {
+     "big": "ZERO",
+     "sub": "barbells. ever.",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia",
+       "x": 430,
+       "a": 800
+      },
+      {
+       "p": "fazendeiro",
+       "x": 900,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Now hand them both a hundred pound sack, and tell them to walk.",
+    "p": 0,
+    "v": {
+     "big": "100 LB",
+     "sub": "now WALK",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia_saco",
+       "x": 430,
+       "a": 800,
+       "anda": 1
+      },
+      {
+       "p": "fazendeiro_saco",
+       "x": 900,
+       "a": 800,
+       "anda": 1
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "You already know who puts it down first.",
+    "p": 1.0,
+    "v": {
+     "big": "FIRST?",
+     "sub": "you already know",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia_largou",
+       "x": 430,
+       "a": 800,
+       "treme": 1
+      },
+      {
+       "p": "fazendeiro_saco",
+       "x": 900,
+       "a": 800,
+       "anda": 1
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   }
   ]
  },
  {
   "cena": "prova",
-  "fonte": "Josty et al. 1997 · J Hand Surg Br  |  Rostamzadeh et al. 2020 · Work · 1,740 men",
+  "et": null,
+  "fonte": "Josty et al. 1997 · J Hand Surg Br   |   Rostamzadeh et al. 2020 · Work · 1,740 men",
   "falas": [
-   "People call it farmer strength. And it's not just a story.",
-   "In nineteen ninety seven, British hand surgeons tested the grip of three kinds of workers.",
-   "Office workers. Light manual workers. Heavy manual workers.",
-   "The heavy workers had the strongest grip. The office workers had the weakest.",
-   "A later study of seventeen hundred and forty men found the same thing.",
-   "Even light manual workers out-gripped office workers by about twelve percent.",
-   "And their forearms were measurably thicker."
+   {
+    "txt": "People call it farmer strength. And it's not just a story.",
+    "p": 0,
+    "v": {
+     "big": "FARMER STRENGTH",
+     "sub": "not just a STORY",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "fazendeiro",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "In nineteen ninety seven, British hand surgeons tested the grip of three kinds of workers.",
+    "p": 0,
+    "v": {
+     "big": "1997",
+     "sub": "grip test · 3 kinds of workers",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": 1,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Office workers. Light manual workers. Heavy manual workers.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": {
+      "it": [
+       "OFFICE WORKERS",
+       "LIGHT MANUAL WORKERS",
+       "HEAVY MANUAL WORKERS"
+      ],
+      "auto": 1
+     },
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "The heavy workers had the strongest grip. The office workers had the weakest.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": {
+      "tit": "GRIP STRENGTH",
+      "it": [
+       "HEAVY MANUAL",
+       "LIGHT MANUAL",
+       "OFFICE"
+      ]
+     },
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "A later study of seventeen hundred and forty men found the same thing.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "num": {
+      "ate": 1740,
+      "rot": "men · manual vs office workers"
+     },
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Even light manual workers out-gripped office workers by about twelve percent.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": {
+      "un": " kg",
+      "it": [
+       [
+        "OFFICE",
+        47.3,
+        "cinza"
+       ],
+       [
+        "LIGHT MANUAL",
+        52.7,
+        "verm"
+       ]
+      ],
+      "nota": "+12%"
+     },
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "And their forearms were measurably thicker.",
+    "p": 0,
+    "v": {
+     "big": "THICKER",
+     "sub": "forearms, measured",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": 1,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   }
   ]
  },
  {
   "cena": "promessa",
+  "et": null,
+  "fonte": null,
   "falas": [
-   "But here's what nobody tells you.",
-   "Farmers are not stronger at everything.",
-   "And one study found that a lifetime of hard labor made men no stronger at all.",
-   "So today: four things farm work does that your gym routine doesn't.",
-   "The one thing it gets wrong.",
-   "And a ten minute routine that steals the good part."
+   {
+    "txt": "But here's what nobody tells you.",
+    "p": 0,
+    "v": {
+     "big": "BUT",
+     "sub": "nobody tells you this",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "fazendeiro",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Farmers are not stronger at everything.",
+    "p": 0,
+    "v": {
+     "big": "NOT",
+     "sub": "stronger at EVERYTHING"
+    }
+   },
+   {
+    "txt": "And one study found that a lifetime of hard labor made men no stronger at all.",
+    "p": 0,
+    "v": {
+     "big": "NO STRONGER",
+     "sub": "after a lifetime of hard labor",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "So today: four things farm work does that your gym routine doesn't.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": {
+      "it": [
+       "4 THINGS the farm does right",
+       "1 THING it gets wrong",
+       "A 10 MINUTE routine"
+      ],
+      "n": 1
+     },
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "The one thing it gets wrong.",
+    "p": 0,
+    "v": {
+     "lista": {
+      "it": [
+       "4 THINGS the farm does right",
+       "1 THING it gets wrong",
+       "A 10 MINUTE routine"
+      ],
+      "n": 2
+     }
+    }
+   },
+   {
+    "txt": "And a ten minute routine that steals the good part.",
+    "p": 0,
+    "v": {
+     "lista": {
+      "it": [
+       "4 THINGS the farm does right",
+       "1 THING it gets wrong",
+       "A 10 MINUTE routine"
+      ],
+      "n": 3
+     }
+    }
+   }
   ]
  },
  {
   "cena": "tarefa",
+  "et": "QUICK TEST · DO IT NOW",
+  "fonte": null,
   "falas": [
-   "First, a quick test.",
-   "Grab the two heaviest things in your house that have handles.",
-   "Water jugs. Loaded bags. Buckets.",
-   "Stand tall, hold them at your sides, and time it.",
-   "Comment your time, and the weight.",
-   "At the end, I'll show you how to make that number climb."
+   {
+    "txt": "First, a quick test.",
+    "p": 0,
+    "v": {
+     "big": "QUICK TEST",
+     "sub": "do it right now",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Grab the two heaviest things in your house that have handles.",
+    "p": 0,
+    "v": {
+     "big": "2 HEAVY",
+     "sub": "things with HANDLES",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "farmer_carry",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Water jugs. Loaded bags. Buckets.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "lista": {
+      "it": [
+       "WATER JUGS",
+       "LOADED BAGS",
+       "BUCKETS"
+      ],
+      "auto": 1,
+      "lado": 1
+     }
+    }
+   },
+   {
+    "txt": "Stand tall, hold them at your sides, and time it.",
+    "p": 4.5,
+    "v": {
+     "lista": null,
+     "anel": {
+      "seg": 60
+     },
+     "aviso": 1,
+     "figs": [
+      {
+       "p": "farmer_carry",
+       "x": 520,
+       "a": 800,
+       "ambar": 1
+      }
+     ]
+    }
+   },
+   {
+    "txt": "Comment your time, and the weight.",
+    "p": 0,
+    "v": {
+     "anel": null,
+     "big": "COMMENT",
+     "sub": "your TIME + the WEIGHT"
+    }
+   },
+   {
+    "txt": "At the end, I'll show you how to make that number climb.",
+    "p": 0,
+    "v": {
+     "big": "AT THE END",
+     "sub": "how to make that number CLIMB"
+    }
+   }
   ]
  },
  {
   "cena": "justo",
+  "et": null,
+  "fonte": null,
   "falas": [
-   "Now, let's be fair to the gym guy.",
-   "Put them both on a bench press, and he wins. Easily.",
-   "He has practiced that exact lift for years. The farmer never has.",
-   "Same story for the squat, the curl, anything with a barbell.",
-   "And that is the first clue.",
-   "Because the farmer wins a different list.",
-   "Carrying. Holding. Lifting things with no handle. And doing it again, eight hours later."
+   {
+    "txt": "Now, let's be fair to the gym guy.",
+    "p": 0,
+    "v": {
+     "big": "BE FAIR",
+     "sub": "to the gym guy",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Put them both on a bench press, and he wins. Easily.",
+    "p": 0,
+    "v": {
+     "big": "HE WINS",
+     "sub": "the bench press. EASILY.",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia_barra",
+       "x": 520,
+       "a": 640
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "He has practiced that exact lift for years. The farmer never has.",
+    "p": 0,
+    "v": {
+     "big": "YEARS",
+     "sub": "of practicing that EXACT lift"
+    }
+   },
+   {
+    "txt": "Same story for the squat, the curl, anything with a barbell.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "lista": {
+      "it": [
+       "BENCH PRESS",
+       "SQUAT",
+       "CURL",
+       "ANYTHING WITH A BARBELL"
+      ],
+      "auto": 1,
+      "lado": 1,
+      "ok": 1
+     }
+    }
+   },
+   {
+    "txt": "And that is the first clue.",
+    "p": 0,
+    "v": {
+     "lista": null,
+     "big": "CLUE #1",
+     "sub": "he wins what he PRACTICED"
+    }
+   },
+   {
+    "txt": "Because the farmer wins a different list.",
+    "p": 0,
+    "v": {
+     "big": "HIS LIST",
+     "sub": "is DIFFERENT",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "fazendeiro",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Carrying. Holding. Lifting things with no handle. And doing it again, eight hours later.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "lista": {
+      "it": [
+       "CARRYING",
+       "HOLDING",
+       "NO HANDLE",
+       "AGAIN, 8 HOURS LATER"
+      ],
+      "auto": 1,
+      "lado": 1,
+      "ok": 1
+     }
+    }
+   }
   ]
  },
  {
   "cena": "regra1",
-  "fonte": "Mattocks et al. 2017 · 38 untrained adults · 8 weeks",
+  "et": "REASON 1 · STRENGTH IS A SKILL",
+  "fonte": "Mattocks et al. 2017 · Med Sci Sports Exerc · 38 untrained adults · 8 weeks",
   "falas": [
-   "Reason one. Strength is a skill.",
-   "In twenty seventeen, researchers split thirty eight beginners into two groups.",
-   "Group one trained like bodybuilders. Four hard sets, to failure.",
-   "Group two did almost nothing. They just tried to lift their max, a few single reps per visit.",
-   "After eight weeks, group one had built more muscle.",
-   "But their max strength? No different.",
-   "The group that only practiced the test got just as strong at it.",
-   "Muscle helps. But strength is also your nervous system learning one specific job.",
-   "And the farmer has been practicing his job since he was a kid."
+   {
+    "txt": "Reason one. Strength is a skill.",
+    "p": 0,
+    "v": {
+     "big": "SKILL",
+     "sub": "REASON 1 · strength is one",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "In twenty seventeen, researchers split thirty eight beginners into two groups.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "num": {
+      "ate": 38,
+      "rot": "beginners · 2 groups · 8 weeks"
+     },
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Group one trained like bodybuilders. Four hard sets, to failure.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": {
+      "it": [
+       [
+        "GROUP 1",
+        "4 hard sets, to failure",
+        ""
+       ],
+       [
+        "GROUP 2",
+        "",
+        ""
+       ]
+      ]
+     },
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Group two did almost nothing. They just tried to lift their max, a few single reps per visit.",
+    "p": 0,
+    "v": {
+     "cart": {
+      "it": [
+       [
+        "GROUP 1",
+        "4 hard sets, to failure",
+        ""
+       ],
+       [
+        "GROUP 2",
+        "just tested their max",
+        ""
+       ]
+      ]
+     }
+    }
+   },
+   {
+    "txt": "After eight weeks, group one had built more muscle.",
+    "p": 0,
+    "v": {
+     "cart": {
+      "it": [
+       [
+        "GROUP 1",
+        "4 hard sets, to failure",
+        "MORE MUSCLE"
+       ],
+       [
+        "GROUP 2",
+        "just tested their max",
+        ""
+       ]
+      ]
+     }
+    }
+   },
+   {
+    "txt": "But their max strength?",
+    "p": 0.8,
+    "v": {
+     "big": "MAX STRENGTH?",
+     "bigy": 1
+    }
+   },
+   {
+    "txt": "No different.",
+    "p": 0,
+    "v": {
+     "big": "NO DIFFERENCE",
+     "bigy": 1
+    }
+   },
+   {
+    "txt": "The group that only practiced the test got just as strong at it.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "cart": {
+      "it": [
+       [
+        "GROUP 1",
+        "4 hard sets, to failure",
+        "MORE MUSCLE"
+       ],
+       [
+        "GROUP 2",
+        "just tested their max",
+        "JUST AS STRONG"
+       ]
+      ]
+     }
+    }
+   },
+   {
+    "txt": "Muscle helps. But strength is also your nervous system learning one specific job.",
+    "p": 0,
+    "v": {
+     "big": "ONE JOB",
+     "sub": "your nervous system LEARNS it",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "And the farmer has been practicing his job since he was a kid.",
+    "p": 0,
+    "v": {
+     "big": "HIS JOB",
+     "sub": "practiced since he was a KID",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "fazendeiro_saco",
+       "x": 520,
+       "a": 800,
+       "anda": 1
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   }
   ]
  },
  {
   "cena": "regra1b",
-  "fonte": "Schoenfeld et al. 2014 · 17 trained men · 8 weeks",
+  "et": "REASON 1 · STRENGTH IS A SKILL",
+  "fonte": "Schoenfeld et al. 2014 · J Strength Cond Res · 17 trained men · 8 weeks",
   "falas": [
-   "It holds for experienced lifters too.",
-   "Seventeen trained men. Same total work. Eight weeks.",
-   "Half did sets of ten. Half did heavy sets of three.",
-   "Both groups grew the same amount of muscle.",
-   "But the heavy group gained more on the bench press.",
-   "Same size. Different strength.",
-   "Your body gets strong at exactly what you ask it to do.",
-   "The gym guy asks for a bench press. The farmer asks for something else."
+   {
+    "txt": "It holds for experienced lifters too.",
+    "p": 0,
+    "v": {
+     "big": "TRAINED",
+     "sub": "lifters TOO",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Seventeen trained men. Same total work. Eight weeks.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "num": {
+      "ate": 17,
+      "rot": "trained men · same total work · 8 weeks"
+     },
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Half did sets of ten. Half did heavy sets of three.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": {
+      "it": [
+       [
+        "3 × 10",
+        "bodybuilder style",
+        ""
+       ],
+       [
+        "7 × 3",
+        "heavy, powerlifter style",
+        ""
+       ]
+      ]
+     },
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Both groups grew the same amount of muscle.",
+    "p": 0,
+    "v": {
+     "cart": {
+      "it": [
+       [
+        "3 × 10",
+        "bodybuilder style",
+        "SAME MUSCLE"
+       ],
+       [
+        "7 × 3",
+        "heavy, powerlifter style",
+        "SAME MUSCLE"
+       ]
+      ]
+     }
+    }
+   },
+   {
+    "txt": "But the heavy group gained more on the bench press.",
+    "p": 0,
+    "v": {
+     "cart": {
+      "it": [
+       [
+        "3 × 10",
+        "bodybuilder style",
+        "SAME MUSCLE"
+       ],
+       [
+        "7 × 3",
+        "heavy, powerlifter style",
+        "MORE BENCH PRESS"
+       ]
+      ]
+     }
+    }
+   },
+   {
+    "txt": "Same size. Different strength.",
+    "p": 0,
+    "v": {
+     "big": "SAME SIZE",
+     "sub": "different STRENGTH",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "Your body gets strong at exactly what you ask it to do.",
+    "p": 0,
+    "v": {
+     "big": "EXACTLY",
+     "sub": "what you ASK it to do",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "The gym guy asks for a bench press. The farmer asks for something else.",
+    "p": 0,
+    "v": {
+     "big": "2 ASKS",
+     "sub": "2 kinds of STRONG",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia_barra",
+       "x": 430,
+       "a": 600
+      },
+      {
+       "p": "fazendeiro_saco",
+       "x": 960,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   }
   ]
  },
  {
   "cena": "regra2",
+  "et": "REASON 2 · THE HANDS NEVER REST",
+  "fonte": null,
   "falas": [
-   "Reason two. The hands never rest.",
-   "A lifter grips a bar for a few seconds, then racks it.",
-   "And when the grip gets hard, he puts on straps.",
-   "A farmer's hands are loaded for hours.",
-   "Buckets. Tools. Wire. Feed sacks. Gates.",
-   "And your hands are the bottleneck.",
-   "You can only carry what you can hold.",
-   "Your legs and back can move far more than your fingers can hang on to.",
-   "So the farmer trains the one link that fails first. Every single day."
+   {
+    "txt": "Reason two. The hands never rest.",
+    "p": 0,
+    "v": {
+     "big": "HANDS",
+     "sub": "REASON 2 · they never rest",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": 1,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "A lifter grips a bar for a few seconds, then racks it.",
+    "p": 0,
+    "v": {
+     "big": "SECONDS",
+     "sub": "then he RACKS it",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia_barra",
+       "x": 520,
+       "a": 640
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "And when the grip gets hard, he puts on straps.",
+    "p": 0,
+    "v": {
+     "big": "STRAPS",
+     "sub": "when the grip gets HARD"
+    }
+   },
+   {
+    "txt": "A farmer's hands are loaded for hours.",
+    "p": 0,
+    "v": {
+     "big": "HOURS",
+     "sub": "a farmer's hands stay LOADED",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": 1,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Buckets. Tools. Wire. Feed sacks. Gates.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": {
+      "it": [
+       "BUCKETS",
+       "TOOLS",
+       "WIRE",
+       "FEED SACKS",
+       "GATES"
+      ],
+      "auto": 1,
+      "lado": 1
+     },
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "fazendeiro",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "And your hands are the bottleneck.",
+    "p": 0,
+    "v": {
+     "big": "BOTTLENECK",
+     "sub": "your HANDS give out first",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": 1,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "You can only carry what you can hold.",
+    "p": 0,
+    "v": {
+     "big": "CARRY",
+     "sub": "only what you can HOLD",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "farmer_carry",
+       "x": 520,
+       "a": 800,
+       "ambar": 1
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Your legs and back can move far more than your fingers can hang on to.",
+    "p": 0,
+    "v": {
+     "big": "FINGERS",
+     "sub": "give up before legs and back"
+    }
+   },
+   {
+    "txt": "So the farmer trains the one link that fails first. Every single day.",
+    "p": 0,
+    "v": {
+     "big": "EVERY DAY",
+     "sub": "the link that FAILS first",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "fazendeiro_saco",
+       "x": 520,
+       "a": 800,
+       "anda": 1
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   }
   ]
  },
  {
   "cena": "regra2b",
-  "fonte": "Fain & Weatherford 2016 · J Hand Therapy · 237 adults",
+  "et": "REASON 2 · THE HANDS NEVER REST",
+  "fonte": "Fain & Weatherford 2016 · J Hand Therapy · 237 adults · vs 1985 norms",
   "falas": [
-   "Here's how much that matters.",
-   "In nineteen eighty five, the average man in his early twenties had a right hand grip of a hundred and twenty one pounds.",
-   "In twenty sixteen, researchers tested young adults again.",
-   "A hundred and one pounds.",
-   "Twenty pounds, gone in one generation.",
-   "It was a small study, two hundred and thirty seven people.",
-   "But the authors pointed to one cause. We stopped working with our hands."
+   {
+    "txt": "Here's how much that matters.",
+    "p": 0,
+    "v": {
+     "big": "HOW MUCH?",
+     "sub": "does that matter",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": 1,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "In nineteen eighty five, the average man in his early twenties had a right hand grip of a hundred and twenty one pounds.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "num": {
+      "ate": 121,
+      "suf": " LB",
+      "rot": "1985 · men 20 to 24 · right hand grip"
+     },
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "In twenty sixteen, researchers tested young adults again.",
+    "p": 0,
+    "v": {
+     "big": "2016",
+     "sub": "tested AGAIN",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "A hundred and one pounds.",
+    "p": 0.8,
+    "v": {
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": {
+      "un": " lb",
+      "it": [
+       [
+        "1985",
+        121,
+        "cinza"
+       ],
+       [
+        "2016",
+        101,
+        "verm"
+       ]
+      ]
+     },
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Twenty pounds, gone in one generation.",
+    "p": 0,
+    "v": {
+     "barras": {
+      "un": " lb",
+      "it": [
+       [
+        "1985",
+        121,
+        "cinza"
+       ],
+       [
+        "2016",
+        101,
+        "verm"
+       ]
+      ],
+      "nota": "−20 LB"
+     }
+    }
+   },
+   {
+    "txt": "It was a small study, two hundred and thirty seven people.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "num": {
+      "ate": 237,
+      "rot": "people · a small study"
+     },
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "But the authors pointed to one cause. We stopped working with our hands.",
+    "p": 0,
+    "v": {
+     "big": "WE STOPPED",
+     "sub": "working with our HANDS",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": 1,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   }
   ]
  },
  {
   "cena": "regra3",
+  "et": "REASON 3 · NOTHING HAS A HANDLE",
   "fonte": "McGill et al. 2009 · J Strength Cond Res · 3 strongman athletes",
   "falas": [
-   "Reason three. Nothing on a farm has a handle in the right place.",
-   "A barbell is balanced. It's built to be lifted.",
-   "A calf, a hay bale, a sack of feed? They fight back.",
-   "A spine researcher named Stuart McGill wired up strongman athletes while they carried heavy things.",
-   "It was a tiny study. Three men.",
-   "But the pattern was clear.",
-   "When you walk with a load, the muscles all around your torso fire together, and lock the spine stiff.",
-   "That stiffness even helps the hips do a job they aren't strong enough to do alone.",
-   "That's the farmer's real core workout. And he does it every day."
+   {
+    "txt": "Reason three. Nothing on a farm has a handle in the right place.",
+    "p": 0,
+    "v": {
+     "big": "NO HANDLE",
+     "sub": "REASON 3 · in the right place",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "fazendeiro_saco",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "A barbell is balanced. It's built to be lifted.",
+    "p": 0,
+    "v": {
+     "big": "BALANCED",
+     "sub": "built to be LIFTED",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia_barra",
+       "x": 520,
+       "a": 640
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "A calf, a hay bale, a sack of feed? They fight back.",
+    "p": 0,
+    "v": {
+     "big": "FIGHT BACK",
+     "sub": "calf · hay bale · feed sack",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "fazendeiro_saco",
+       "x": 520,
+       "a": 800,
+       "treme": 1
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "A spine researcher named Stuart McGill wired up strongman athletes while they carried heavy things.",
+    "p": 0,
+    "v": {
+     "big": "WIRED UP",
+     "sub": "strongmen, carrying HEAVY things",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "farmer_carry",
+       "x": 520,
+       "a": 800,
+       "anda": 1
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "It was a tiny study. Three men.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "num": {
+      "ate": 3,
+      "rot": "men · a tiny study"
+     },
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "But the pattern was clear.",
+    "p": 0,
+    "v": {
+     "big": "CLEAR PATTERN",
+     "sub": "even in 3 men",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "When you walk with a load, the muscles all around your torso fire together, and lock the spine stiff.",
+    "p": 0,
+    "v": {
+     "big": "LOCKED",
+     "sub": "the whole torso fires TOGETHER",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": "tronco",
+     "figs": [
+      {
+       "p": "suitcase_carry",
+       "x": 520,
+       "a": 800,
+       "anda": 1
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "That stiffness even helps the hips do a job they aren't strong enough to do alone.",
+    "p": 0,
+    "v": {
+     "brilho": "quadril",
+     "big": "HIPS",
+     "sub": "get help from a STIFF torso"
+    }
+   },
+   {
+    "txt": "That's the farmer's real core workout. And he does it every day.",
+    "p": 0,
+    "v": {
+     "big": "CORE",
+     "sub": "workout. EVERY day.",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": "tronco",
+     "figs": [
+      {
+       "p": "fazendeiro_saco",
+       "x": 520,
+       "a": 800,
+       "anda": 1
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   }
   ]
  },
  {
   "cena": "regra4",
-  "fonte": "Uonuma Cohort Study, Japan · 4,774 adults aged 40+  |  Akiyama et al. 2026 · J Rural Med · 126 adults",
+  "et": "REASON 4 · HE NEVER STOPS",
+  "fonte": "Uonuma Cohort Study, Japan · 4,774 adults aged 40+   |   Akiyama et al. 2026 · J Rural Med · 126 adults",
   "falas": [
-   "Reason four. He never stops.",
-   "The gym guy trains for one hour. Then he sits for ten.",
-   "The farmer lifts something light, or something heavy, all day long.",
-   "And it adds up.",
-   "In a Japanese study of almost five thousand adults over forty,",
-   "the ones who did farm work had about a third lower odds of a weak grip.",
-   "Not athletes. Regular people, getting older, who just kept using their bodies.",
-   "A smaller Japanese study saw the same pattern.",
-   "In people who didn't farm, grip dropped with age.",
-   "In the ones who farmed, it didn't. Even though they were about ten years older."
+   {
+    "txt": "Reason four. He never stops.",
+    "p": 0,
+    "v": {
+     "big": "NEVER STOPS",
+     "sub": "REASON 4",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "fazendeiro",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "The gym guy trains for one hour. Then he sits for ten.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": {
+      "un": " h",
+      "lado": 1,
+      "it": [
+       [
+        "TRAINING",
+        1,
+        "verm"
+       ],
+       [
+        "SITTING",
+        10,
+        "cinza"
+       ]
+      ]
+     },
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia",
+       "x": 380,
+       "a": 760
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "The farmer lifts something light, or something heavy, all day long.",
+    "p": 0,
+    "v": {
+     "big": "ALL DAY",
+     "sub": "light or heavy, he keeps LIFTING",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "fazendeiro_saco",
+       "x": 520,
+       "a": 800,
+       "anda": 1
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "And it adds up.",
+    "p": 0,
+    "v": {
+     "big": "IT ADDS UP",
+     "sub": null
+    }
+   },
+   {
+    "txt": "In a Japanese study of almost five thousand adults over forty,",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "num": {
+      "ate": 4774,
+      "rot": "adults over 40 · Japan"
+     },
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "the ones who did farm work had about a third lower odds of a weak grip.",
+    "p": 0,
+    "v": {
+     "big": "−37%",
+     "sub": "odds of a WEAK grip · odds ratio 0.63",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "Not athletes. Regular people, getting older, who just kept using their bodies.",
+    "p": 0,
+    "v": {
+     "big": "REGULAR",
+     "sub": "people who kept USING their bodies",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "fazendeiro",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "A smaller Japanese study saw the same pattern.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "num": {
+      "ate": 126,
+      "rot": "adults · Japan · a smaller study"
+     },
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "In people who didn't farm, grip dropped with age.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": {
+      "it": [
+       [
+        "NO FARMING",
+        "as they got older",
+        "GRIP DROPPED"
+       ],
+       [
+        "FARMING",
+        "",
+        ""
+       ]
+      ]
+     },
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "In the ones who farmed, it didn't. Even though they were about ten years older.",
+    "p": 0,
+    "v": {
+     "cart": {
+      "it": [
+       [
+        "NO FARMING",
+        "as they got older",
+        "GRIP DROPPED"
+       ],
+       [
+        "FARMING",
+        "about 10 years older",
+        "NO DROP"
+       ]
+      ]
+     }
+    }
+   }
   ]
  },
  {
   "cena": "virada",
-  "fonte": "Walker-Bone et al. 2016 · Occup Environ Med · 1,418 men",
+  "et": "THE CATCH",
+  "fonte": "Walker-Bone et al. 2016 · Occup Environ Med · 1,418 men, mean age 65.8",
   "falas": [
-   "So, should you quit the gym and buy a farm?",
-   "No. And here's the study I promised.",
-   "British researchers measured the grip of fourteen hundred men at retirement age.",
-   "Then they looked at their whole working lives.",
-   "Decades of heavy lifting. Decades on their feet.",
-   "The result? No evidence that it made them stronger.",
-   "The researchers said other factors, like money and health, may have hidden a benefit.",
-   "But the lesson stands.",
-   "Hard work is not a training program.",
-   "The load never goes up on purpose. And nobody plans the recovery.",
-   "That's why a man can do heavy work for forty years, and still not end up stronger for it."
+   {
+    "txt": "So, should you quit the gym and buy a farm?",
+    "p": 0,
+    "v": {
+     "big": "QUIT?",
+     "sub": "the gym, and buy a FARM",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia",
+       "x": 430,
+       "a": 800
+      },
+      {
+       "p": "fazendeiro",
+       "x": 900,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "No. And here's the study I promised.",
+    "p": 0,
+    "v": {
+     "big": "NO",
+     "sub": "here's the study I promised",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "British researchers measured the grip of fourteen hundred men at retirement age.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "num": {
+      "ate": 1418,
+      "rot": "men · retirement age · UK"
+     },
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Then they looked at their whole working lives.",
+    "p": 0,
+    "v": {
+     "big": "WHOLE",
+     "sub": "working LIVES",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "Decades of heavy lifting. Decades on their feet.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": {
+      "it": [
+       "DECADES of heavy lifting",
+       "DECADES on their feet"
+      ],
+      "auto": 1
+     },
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "The result?",
+    "p": 0.8,
+    "v": {
+     "big": "THE RESULT?",
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "No evidence that it made them stronger.",
+    "p": 0,
+    "v": {
+     "big": "NO EVIDENCE",
+     "sub": "that it made them STRONGER",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "The researchers said other factors, like money and health, may have hidden a benefit.",
+    "p": 0,
+    "v": {
+     "big": "MAYBE",
+     "sub": "money and health hid a benefit",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "But the lesson stands.",
+    "p": 0,
+    "v": {
+     "big": "THE LESSON",
+     "sub": "still stands",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "Hard work is not a training program.",
+    "p": 0,
+    "v": {
+     "big": "HARD WORK",
+     "sub": "is NOT a training program",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "The load never goes up on purpose. And nobody plans the recovery.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": {
+      "it": [
+       "NO planned progression",
+       "NO planned recovery"
+      ],
+      "auto": 1,
+      "x": 1
+     },
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "That's why a man can do heavy work for forty years, and still not end up stronger for it.",
+    "p": 0,
+    "v": {
+     "big": "40 YEARS",
+     "sub": "and still not STRONGER for it",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "fazendeiro",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   }
   ]
  },
  {
   "cena": "juntar",
-  "fonte": "Winwood et al. 2015 · 30 trained rugby players · 7 weeks",
+  "et": "THE FIX",
+  "fonte": "Winwood et al. 2015 · J Strength Cond Res · 30 trained rugby players · 7 weeks",
   "falas": [
-   "The farmer has the right movements. The gym has the right plan.",
-   "So put them together.",
-   "In twenty fifteen, thirty trained rugby players were split in two.",
-   "Half lifted the normal way. Half trained like strongmen. Carries, logs, sleds.",
-   "Twice a week, for seven weeks.",
-   "Both groups improved about the same.",
-   "Carrying heavy things works as well as the barbell. You don't have to choose."
+   {
+    "txt": "The farmer has the right movements. The gym has the right plan.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": {
+      "it": [
+       [
+        "THE FARM",
+        "the right movements",
+        ""
+       ],
+       [
+        "THE GYM",
+        "the right plan",
+        ""
+       ]
+      ]
+     },
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "So put them together.",
+    "p": 0,
+    "v": {
+     "big": "TOGETHER",
+     "sub": "farm MOVEMENTS + gym PLAN",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "In twenty fifteen, thirty trained rugby players were split in two.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "num": {
+      "ate": 30,
+      "rot": "trained rugby players · 2 groups"
+     },
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Half lifted the normal way. Half trained like strongmen. Carries, logs, sleds.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": {
+      "it": [
+       [
+        "BARBELL",
+        "normal lifting",
+        ""
+       ],
+       [
+        "STRONGMAN",
+        "carries · logs · sleds",
+        ""
+       ]
+      ]
+     },
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Twice a week, for seven weeks.",
+    "p": 0,
+    "v": {
+     "cart": {
+      "it": [
+       [
+        "BARBELL",
+        "2× a week · 7 weeks",
+        ""
+       ],
+       [
+        "STRONGMAN",
+        "2× a week · 7 weeks",
+        ""
+       ]
+      ]
+     }
+    }
+   },
+   {
+    "txt": "Both groups improved about the same.",
+    "p": 0,
+    "v": {
+     "cart": {
+      "it": [
+       [
+        "BARBELL",
+        "2× a week · 7 weeks",
+        "SIMILAR GAINS"
+       ],
+       [
+        "STRONGMAN",
+        "2× a week · 7 weeks",
+        "SIMILAR GAINS"
+       ]
+      ]
+     }
+    }
+   },
+   {
+    "txt": "Carrying heavy things works as well as the barbell. You don't have to choose.",
+    "p": 0,
+    "v": {
+     "big": "DON'T CHOOSE",
+     "sub": "CARRY and lift",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "farmer_carry",
+       "x": 520,
+       "a": 800,
+       "anda": 1
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   }
   ]
  },
  {
   "cena": "rotina",
+  "et": "THE FARMER FINISHER · 10 MIN · 2× A WEEK",
+  "fonte": null,
   "falas": [
-   "Here's the farmer finisher. Ten minutes, twice a week, after your normal workout.",
-   "One. The farmer's carry.",
-   "A heavy weight in each hand. Stand tall. Walk.",
-   "Dumbbells, kettlebells, or the same jugs from your test.",
-   "Two. The suitcase carry.",
-   "One weight, one side. Don't lean. Then switch hands.",
-   "Your trunk has to fight to keep you straight. That's the point.",
-   "Three. The bear hug carry.",
-   "Hug a sandbag, or a loaded backpack, tight to your chest. And walk.",
-   "No handle. Just like the farm.",
-   "Three rounds of each.",
-   "Walk about twenty steps out, and twenty back.",
-   "Put the weight down while you could still hold it for a few more seconds.",
-   "Next week, go a little farther, or a little heavier.",
-   "That one rule is what the farm is missing."
+   {
+    "txt": "Here's the farmer finisher. Ten minutes, twice a week, after your normal workout.",
+    "p": 0,
+    "v": {
+     "big": "10 MIN",
+     "sub": "twice a week, AFTER your workout",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "One. The farmer's carry.",
+    "p": 0,
+    "v": {
+     "big": "1",
+     "sub": "FARMER'S CARRY",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "farmer_carry",
+       "x": 520,
+       "a": 800,
+       "anda": 1,
+       "ambar": 1
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "A heavy weight in each hand. Stand tall. Walk.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "lista": {
+      "it": [
+       "1 · FARMER'S CARRY",
+       "a heavy weight in each hand",
+       "stand tall",
+       "walk"
+      ],
+      "auto": 1,
+      "lado": 1,
+      "tit": 1
+     }
+    }
+   },
+   {
+    "txt": "Dumbbells, kettlebells, or the same jugs from your test.",
+    "p": 2.0,
+    "v": {}
+   },
+   {
+    "txt": "Two. The suitcase carry.",
+    "p": 0,
+    "v": {
+     "big": "2",
+     "sub": "SUITCASE CARRY",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "suitcase_carry",
+       "x": 520,
+       "a": 800,
+       "anda": 1
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "One weight, one side. Don't lean. Then switch hands.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "lista": {
+      "it": [
+       "2 · SUITCASE CARRY",
+       "one weight, one side",
+       "don't lean",
+       "then switch hands"
+      ],
+      "auto": 1,
+      "lado": 1,
+      "tit": 1
+     }
+    }
+   },
+   {
+    "txt": "Your trunk has to fight to keep you straight. That's the point.",
+    "p": 2.0,
+    "v": {
+     "brilho": "tronco"
+    }
+   },
+   {
+    "txt": "Three. The bear hug carry.",
+    "p": 0,
+    "v": {
+     "big": "3",
+     "sub": "BEAR HUG CARRY",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "bear_hug",
+       "x": 520,
+       "a": 800,
+       "anda": 1
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Hug a sandbag, or a loaded backpack, tight to your chest. And walk.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "lista": {
+      "it": [
+       "3 · BEAR HUG CARRY",
+       "sandbag or loaded backpack",
+       "tight to your chest",
+       "walk"
+      ],
+      "auto": 1,
+      "lado": 1,
+      "tit": 1
+     }
+    }
+   },
+   {
+    "txt": "No handle. Just like the farm.",
+    "p": 2.0,
+    "v": {}
+   },
+   {
+    "txt": "Three rounds of each.",
+    "p": 0,
+    "v": {
+     "big": "3 ROUNDS",
+     "sub": "of EACH carry",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Walk about twenty steps out, and twenty back.",
+    "p": 0,
+    "v": {
+     "big": "20 STEPS",
+     "sub": "out, and 20 BACK"
+    }
+   },
+   {
+    "txt": "Put the weight down while you could still hold it for a few more seconds.",
+    "p": 0,
+    "v": {
+     "big": "STOP EARLY",
+     "sub": "a few seconds BEFORE your grip opens"
+    }
+   },
+   {
+    "txt": "Next week, go a little farther, or a little heavier.",
+    "p": 0,
+    "v": {
+     "big": "NEXT WEEK",
+     "sub": "a little FARTHER or HEAVIER"
+    }
+   },
+   {
+    "txt": "That one rule is what the farm is missing.",
+    "p": 0,
+    "v": {
+     "big": "ONE RULE",
+     "sub": "the farm is missing: PROGRESS",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "fazendeiro",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   }
   ]
  },
  {
   "cena": "cuidado",
+  "et": "BE SAFE",
+  "fonte": null,
   "falas": [
-   "Keep your normal workouts. This is an add on, not a replacement.",
-   "Start lighter than you think. Your hands will catch up fast. Your back needs longer.",
-   "And if you have a back or shoulder injury, check with a professional first."
+   {
+    "txt": "Keep your normal workouts. This is an add on, not a replacement.",
+    "p": 0,
+    "v": {
+     "big": "ADD ON",
+     "sub": "KEEP your normal workouts",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": 1,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Start lighter than you think. Your hands will catch up fast. Your back needs longer.",
+    "p": 0,
+    "v": {
+     "big": "START LIGHT",
+     "sub": "hands adapt fast · your BACK needs longer"
+    }
+   },
+   {
+    "txt": "And if you have a back or shoulder injury, check with a professional first.",
+    "p": 0,
+    "v": {
+     "big": "INJURED?",
+     "sub": "check with a PROFESSIONAL first"
+    }
+   }
+  ]
+ },
+ {
+  "cena": "recap",
+  "et": "RECAP",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "So. Four things the farmer does right.",
+    "p": 0,
+    "v": {
+     "big": "4 THINGS",
+     "sub": "he does RIGHT",
+     "num": null,
+     "lista": {
+      "it": [
+       "He PRACTICES the exact job",
+       "He loads his HANDS for hours",
+       "He carries AWKWARD things",
+       "He does it ALL DAY",
+       "His one mistake: NO PLAN"
+      ],
+      "n": 0,
+      "lado": 1
+     },
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "fazendeiro",
+       "x": 380,
+       "a": 760
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "He practices the exact job.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "lista": {
+      "it": [
+       "He PRACTICES the exact job",
+       "He loads his HANDS for hours",
+       "He carries AWKWARD things",
+       "He does it ALL DAY",
+       "His one mistake: NO PLAN"
+      ],
+      "n": 1,
+      "lado": 1
+     }
+    }
+   },
+   {
+    "txt": "He loads his hands for hours.",
+    "p": 0,
+    "v": {
+     "lista": {
+      "it": [
+       "He PRACTICES the exact job",
+       "He loads his HANDS for hours",
+       "He carries AWKWARD things",
+       "He does it ALL DAY",
+       "His one mistake: NO PLAN"
+      ],
+      "n": 2,
+      "lado": 1
+     }
+    }
+   },
+   {
+    "txt": "He carries awkward things.",
+    "p": 0,
+    "v": {
+     "lista": {
+      "it": [
+       "He PRACTICES the exact job",
+       "He loads his HANDS for hours",
+       "He carries AWKWARD things",
+       "He does it ALL DAY",
+       "His one mistake: NO PLAN"
+      ],
+      "n": 3,
+      "lado": 1
+     }
+    }
+   },
+   {
+    "txt": "And he does it all day.",
+    "p": 0,
+    "v": {
+     "lista": {
+      "it": [
+       "He PRACTICES the exact job",
+       "He loads his HANDS for hours",
+       "He carries AWKWARD things",
+       "He does it ALL DAY",
+       "His one mistake: NO PLAN"
+      ],
+      "n": 4,
+      "lado": 1
+     }
+    }
+   },
+   {
+    "txt": "And the one thing he gets wrong? There's no plan.",
+    "p": 0,
+    "v": {
+     "lista": {
+      "it": [
+       "He PRACTICES the exact job",
+       "He loads his HANDS for hours",
+       "He carries AWKWARD things",
+       "He does it ALL DAY",
+       "His one mistake: NO PLAN"
+      ],
+      "n": 5,
+      "lado": 1
+     }
+    }
+   },
+   {
+    "txt": "You can have both.",
+    "p": 0,
+    "v": {
+     "big": "BOTH",
+     "sub": "the MOVEMENTS and the PLAN",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "farmer_carry",
+       "x": 520,
+       "a": 800,
+       "anda": 1,
+       "ambar": 1
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   }
   ]
  },
  {
   "cena": "final",
-  "fonte": "Leong et al. 2015 · The Lancet · 139,691 adults · 17 countries",
+  "et": null,
+  "fonte": "Leong et al. 2015 · The Lancet · PURE study · 139,691 adults · 17 countries",
   "falas": [
-   "So, back to the two guys and the sack.",
-   "The farmer doesn't win because he's bigger. He isn't.",
-   "He wins because he has practiced that exact job, with his hands, his trunk, and his whole day.",
-   "And that kind of strength may matter more than you think.",
-   "In a study of almost a hundred and forty thousand adults, grip strength predicted who died better than blood pressure did.",
-   "Every eleven pounds of grip a person was missing came with a sixteen percent higher risk of death.",
-   "That doesn't mean squeezing harder makes you live longer.",
-   "It means a strong grip is a sign of a body that still gets used.",
-   "Which raises a question.",
-   "What other simple tests can tell you how you're aging?",
-   "There are three. And you can do all of them at home.",
-   "That's the next video.",
-   "Now go repeat the test from the start, and comment your new time."
+   {
+    "txt": "So, back to the two guys and the sack.",
+    "p": 0,
+    "v": {
+     "big": "BACK",
+     "sub": "to the two guys and the SACK",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "academia_largou",
+       "x": 430,
+       "a": 800
+      },
+      {
+       "p": "fazendeiro_saco",
+       "x": 900,
+       "a": 800,
+       "anda": 1
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "The farmer doesn't win because he's bigger. He isn't.",
+    "p": 0,
+    "v": {
+     "big": "NOT BIGGER",
+     "sub": "that's not why he WINS"
+    }
+   },
+   {
+    "txt": "He wins because he has practiced that exact job, with his hands, his trunk, and his whole day.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": {
+      "it": [
+       "HIS HANDS",
+       "HIS TRUNK",
+       "HIS WHOLE DAY"
+      ],
+      "auto": 1,
+      "lado": 1,
+      "ok": 1
+     },
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "fazendeiro_saco",
+       "x": 520,
+       "a": 800,
+       "anda": 1
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "And that kind of strength may matter more than you think.",
+    "p": 0,
+    "v": {
+     "big": "IT MATTERS",
+     "sub": "more than you THINK",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": 1,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "In a study of almost a hundred and forty thousand adults, grip strength predicted who died better than blood pressure did.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": {
+      "tit": "139,691 ADULTS · WHAT PREDICTED WHO DIED",
+      "it": [
+       "GRIP STRENGTH",
+       "BLOOD PRESSURE"
+      ]
+     },
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Every eleven pounds of grip a person was missing came with a sixteen percent higher risk of death.",
+    "p": 0,
+    "v": {
+     "big": "+16%",
+     "sub": "risk of death per 11 LB less grip",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "That doesn't mean squeezing harder makes you live longer.",
+    "p": 0,
+    "v": {
+     "big": "NOT A CURE",
+     "sub": "squeezing harder won't add years",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "It means a strong grip is a sign of a body that still gets used.",
+    "p": 0,
+    "v": {
+     "big": "A SIGN",
+     "sub": "of a body that still gets USED",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "Which raises a question.",
+    "p": 0,
+    "v": {
+     "big": "?",
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "What other simple tests can tell you how you're aging?",
+    "p": 0,
+    "v": {
+     "big": "WHAT ELSE?",
+     "sub": "simple tests of how you're AGING",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "There are three. And you can do all of them at home.",
+    "p": 0,
+    "v": {
+     "big": null,
+     "sub": null,
+     "num": {
+      "ate": 3,
+      "rot": "tests · all at home"
+     },
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   },
+   {
+    "txt": "That's the next video.",
+    "p": 0,
+    "v": {
+     "big": "NEXT VIDEO",
+     "sub": "3 STRENGTH TESTS you can do at home",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1
+    }
+   },
+   {
+    "txt": "Now go repeat the test from the start, and comment your new time.",
+    "p": 4.5,
+    "v": {
+     "big": "COMMENT",
+     "sub": "your NEW time",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "farmer_carry",
+       "x": 520,
+       "a": 800,
+       "ambar": 1
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null
+    }
+   }
   ]
  }
 ]

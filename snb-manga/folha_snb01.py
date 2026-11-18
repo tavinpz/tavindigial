@@ -94,7 +94,9 @@ def pose(nome):
     if nome == 'academia_saco':   return f'<g transform="scale(1.24,1)">' + '</g>' + figura('abraco', larg=1.24, cor=CINZA, reto=True) + saco(0, 470, 420, 330) + f'<g transform="scale(1.24,1)">{antebracos_abraco()}</g>'
     if nome == 'academia_largou': return figura('frente', larg=1.24, cor=CINZA, reto=True) + saco(0, 1440, 440, 300, rot=-7)
     if nome == 'academia_barra':  return halter_barra(-452) + figura('pendurado', larg=1.24, cor=CINZA, reto=True, pe='chao')
-    if nome == 'farmer_carry':    return figura('frente', True) + kettlebell(-262, 912, 84) + kettlebell(262, 912, 84) + punho(1) + punho(-1)
+    if nome == 'heroi':           return figura('frente')
+    if nome == 'farmer_carry_ambar': return figura('frente', True) + kettlebell(-262, 912, 84) + kettlebell(262, 912, 84) + punho(1) + punho(-1)
+    if nome == 'farmer_carry':    return figura('frente') + kettlebell(-262, 912, 84) + kettlebell(262, 912, 84) + punho(1) + punho(-1)
     if nome == 'suitcase_carry':  return figura('frente') + kettlebell(262, 912, 96) + punho(1)
     if nome == 'bear_hug':        return figura('abraco') + saco(0, 470, 400, 330, txt='') + antebracos_abraco()
     raise SystemExit(nome)
@@ -103,17 +105,19 @@ FOLHA = [('fazendeiro', 'THE FARMER'), ('academia', 'THE GYM GUY'), ('fazendeiro
          ('academia_largou', 'PUTS IT DOWN'), ('academia_barra', 'GYM GUY WINS THE BARBELL'), ('farmer_carry', "1 · FARMER'S CARRY"),
          ('suitcase_carry', '2 · SUITCASE CARRY'), ('bear_hug', '3 · BEAR HUG CARRY')]
 
-def svg_pose(nome, w=1100, h=2100, e=1.0):
+def svg_pose(nome, w=1300, h=2260):
+    # tela fixa para todas as poses: origem (meio dos ombros) em (650,650), pés em y=2218
     return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="{w}" height="{h}">{DEFS}'
-            f'<g transform="translate({w/2},{560 if nome != "academia_barra" else 640}) scale({e})">{pose(nome)}</g></svg>')
+            f'<g transform="translate({w/2},650)">{pose(nome)}</g></svg>')
 
 if __name__ == '__main__':
     if len(sys.argv) > 2 and sys.argv[1] == 'poses':
         d = sys.argv[2]
-        for n, _ in FOLHA:
-            open(f'{d}/{n}.svg', 'w').write(svg_pose(n)); subprocess.run(['rsvg-convert', '-h', '1400', f'{d}/{n}.svg', '-o', f'{d}/{n}.png'], check=True)
+        import os
+        for n in [x for x, _ in FOLHA] + ['heroi', 'farmer_carry_ambar']:
+            open(f'{d}/{n}.svg', 'w').write(svg_pose(n)); subprocess.run(['rsvg-convert', '-h', '1500', f'{d}/{n}.svg', '-o', f'{d}/{n}.png'], check=True); os.remove(f'{d}/{n}.svg')
         open(f'{d}/mao_close.svg', 'w').write(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="-60 -140 1000 900" width="1000" height="900">{DEFS}{mao_close()}</svg>')
-        subprocess.run(['rsvg-convert', '-w', '1400', f'{d}/mao_close.svg', '-o', f'{d}/mao_close.png'], check=True); print('poses ok'); sys.exit()
+        subprocess.run(['rsvg-convert', '-w', '1400', f'{d}/mao_close.svg', '-o', f'{d}/mao_close.png'], check=True); os.remove(f'{d}/mao_close.svg'); print('poses ok'); sys.exit()
     W, Hh, cw, ch, e = 3000, 2560, 600, 1160, 0.5
     o = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {Hh}" width="{W}" height="{Hh}">{DEFS}<rect width="{W}" height="{Hh}" fill="{FUNDO}"/>']
     for i, (n, rot) in enumerate(FOLHA):
