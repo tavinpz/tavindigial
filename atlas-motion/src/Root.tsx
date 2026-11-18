@@ -18,6 +18,7 @@ import { SNBTeste } from './snb/Teste';
 import { SNBFicha } from './snb/Ficha';
 import { SNBVideo } from './snb/Video';
 import { SNBThumb } from './snb/Thumbs';
+import { TCStill } from './tc/Stills';
 import temposSNB from '../public/snb/teste/tempos.json';
 import { Thumb } from './b52/Thumbs';
 import temposCW01 from '../public/b52/tempos.json';
@@ -136,5 +137,7 @@ export const Root: React.FC = () => (
       }} />
     <Composition id="PPLogo2" component={PPBrand as any} durationInFrames={1} fps={30} width={800} height={800} defaultProps={{ v: 'logo' }} />
     <Composition id="PPBanner" component={PPBrand as any} durationInFrames={1} fps={30} width={2560} height={1440} defaultProps={{ v: 'banner' }} />
+    {/* Two Childhoods: imagens paradas do padrão visual */}
+    <Composition id="TCStill" component={TCStill as any} width={1920} height={1080} fps={30} durationInFrames={1} defaultProps={{ k: 'a' }} />
   </>
 );
