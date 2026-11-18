@@ -23,11 +23,11 @@ export const tema = (l: Lado) => l === 'a'
   : { fundo: P.mar, tinta: P.amb, sombra: P.marMed, claro: P.marCla };
 
 // Altura do peão por idade (a criança cresce de verdade na tela)
-export const ALTURA: Record<number, number> = { 6: 190, 8: 215, 11: 245, 16: 300, 22: 325, 30: 330, 45: 328, 60: 318 };
+export const ALTURA: Record<number, number> = { 6: 190, 8: 215, 10: 235, 11: 245, 16: 300, 22: 325, 30: 330, 45: 328, 60: 318 };
 
 // Peão: cabeça redonda + corpo trapezoidal, como na logo. `olhar` desloca os olhos (-1..1), `incl` inclina o corpo em graus.
-export const Peao: React.FC<{ x: number; base?: number; h: number; cor: string; olho?: string; olhar?: [number, number]; incl?: number; contorno?: string; oculos?: boolean; op?: number }> =
-  ({ x, base = CHAO, h, cor, olho, olhar = [0, 0], incl = 0, contorno, oculos, op = 1 }) => {
+export const Peao: React.FC<{ x: number; base?: number; h: number; cor: string; olho?: string; olhar?: [number, number]; incl?: number; contorno?: string; oculos?: boolean; op?: number; pisca?: number }> =
+  ({ x, base = CHAO, h, cor, olho, olhar = [0, 0], incl = 0, contorno, oculos, op = 1, pisca = 0 }) => {
     const rh = h * 0.2, topo = rh * 1.72, hb = h - topo, wn = h * 0.2, wb = h * 0.44, r = h * 0.035;
     const corpo = `M ${-wn / 2} ${topo} Q 0 ${topo - wn * 0.42} ${wn / 2} ${topo} L ${wb / 2} ${h - r} Q ${wb / 2} ${h} ${wb / 2 - r} ${h} L ${-wb / 2 + r} ${h} Q ${-wb / 2} ${h} ${-wb / 2} ${h - r} Z`;
     const ex = olhar[0] * rh * 0.32, ey = olhar[1] * rh * 0.3, eo = rh * 0.34, er = rh * 0.13;
@@ -36,7 +36,7 @@ export const Peao: React.FC<{ x: number; base?: number; h: number; cor: string; 
       <g transform={`translate(${x} ${base - h}) rotate(${incl} 0 ${h})`} opacity={op}>
         <path d={corpo} fill={cor} {...st} />
         <circle cx={0} cy={rh} r={rh} fill={cor} {...st} />
-        {olho && <><circle cx={-eo + ex} cy={rh + ey} r={er} fill={olho} /><circle cx={eo + ex} cy={rh + ey} r={er} fill={olho} /></>}
+        {olho && <><ellipse cx={-eo + ex} cy={rh + ey} rx={er} ry={er * (1 - 0.85 * pisca)} fill={olho} /><ellipse cx={eo + ex} cy={rh + ey} rx={er} ry={er * (1 - 0.85 * pisca)} fill={olho} /></>}
         {olho && oculos && <g fill="none" stroke={olho} strokeWidth={rh * 0.09}><circle cx={-eo + ex} cy={rh + ey} r={er * 2.3} /><circle cx={eo + ex} cy={rh + ey} r={er * 2.3} /><path d={`M ${-eo + ex + er * 2.3} ${rh + ey} L ${eo + ex - er * 2.3} ${rh + ey}`} /></g>}
       </g>
     );
@@ -96,10 +96,10 @@ export const Trocado: React.FC<{ txt: string; y: number; tam: number; fam?: stri
 );
 
 // Título partido na emenda, como na logo: esquerda termina na emenda, direita começa nela
-export const Partido: React.FC<{ esq: string; dir: string; y: number; tam: number; fam?: string; peso?: number; esp?: number; folga?: number }> = ({ esq, dir, y, tam, fam = SLAB, peso = 400, esp = 0, folga = 0.09 }) => (
+export const Partido: React.FC<{ esq: string; dir: string; y: number; tam: number; fam?: string; peso?: number; esp?: number; folga?: number; corE?: string; corD?: string }> = ({ esq, dir, y, tam, fam = SLAB, peso = 400, esp = 0, folga = 0.09, corE = P.mar, corD = P.amb }) => (
   <g>
-    <text x={MEIO - tam * folga} y={y} textAnchor="end" fontFamily={fam} fontWeight={peso} fontSize={tam} fill={P.mar} letterSpacing={esp}>{esq}</text>
-    <text x={MEIO + tam * folga} y={y} textAnchor="start" fontFamily={fam} fontWeight={peso} fontSize={tam} fill={P.amb} letterSpacing={esp}>{dir}</text>
+    <text x={MEIO - tam * folga} y={y} textAnchor="end" fontFamily={fam} fontWeight={peso} fontSize={tam} fill={corE} letterSpacing={esp}>{esq}</text>
+    <text x={MEIO + tam * folga} y={y} textAnchor="start" fontFamily={fam} fontWeight={peso} fontSize={tam} fill={corD} letterSpacing={esp}>{dir}</text>
   </g>
 );
 
@@ -113,14 +113,14 @@ export const Fundo: React.FC<{ chao?: boolean }> = ({ chao = true }) => (
 );
 
 // Faixa do alto de cada lado: o que a criança ouviu + a contagem em risquinhos
-export const Topo: React.FC<{ lado: Lado; titulo: string; conta?: { rot: string; n: number } }> = ({ lado, titulo, conta }) => {
+export const Topo: React.FC<{ lado: Lado; titulo: string; conta?: { rot: string; n: number; prog?: number } }> = ({ lado, titulo, conta }) => {
   const t = tema(lado), x0 = lado === 'a' ? 70 : MEIO + 150;
   const riscos: React.ReactNode[] = [];
   if (conta) for (let i = 0; i < conta.n; i++) {
     const g = Math.floor(i / 5), k = i % 5, bx = x0 + g * 92;
     riscos.push(k < 4
-      ? <path key={i} d={`M ${bx + k * 15} 150 l 0 44`} stroke={t.tinta} strokeWidth={6} strokeLinecap="round" />
-      : <path key={i} d={`M ${bx - 9} 188 L ${bx + 54} 156`} stroke={t.tinta} strokeWidth={6} strokeLinecap="round" />);
+      ? <path key={i} d={`M ${bx + k * 15} 150 l 0 44`} stroke={t.tinta} strokeWidth={6} strokeLinecap="round" strokeDasharray={80} strokeDashoffset={i === conta.n - 1 ? 80 * (1 - (conta.prog ?? 1)) : 0} />
+      : <path key={i} d={`M ${bx - 9} 188 L ${bx + 54} 156`} stroke={t.tinta} strokeWidth={6} strokeLinecap="round" strokeDasharray={80} strokeDashoffset={i === conta.n - 1 ? 80 * (1 - (conta.prog ?? 1)) : 0} />);
   }
   return (
     <g>

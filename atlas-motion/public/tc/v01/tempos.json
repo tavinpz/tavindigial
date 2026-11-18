@@ -1,0 +1,1955 @@
+{
+ "total": 517.488,
+ "blocos": [
+  {
+   "id": "gancho1",
+   "cena": "duo",
+   "idade": 6,
+   "et": "Same kid, two homes",
+   "gap": 0.1,
+   "ini": 0.5,
+   "fim": 11.856,
+   "falas": [
+    {
+     "t": 0.5,
+     "d": 2.308,
+     "txt": "Two kids bring home the same perfect score.",
+     "v": {
+      "oa": [
+       "nota:10"
+      ],
+      "ob": [
+       "nota:10"
+      ]
+     },
+     "dest": [
+      "perfect"
+     ]
+    },
+    {
+     "t": 3.308,
+     "d": 1.718,
+     "txt": "One hears, \"You're so smart.\"",
+     "v": {
+      "ba": {
+       "t": [
+        "YOU'RE SO",
+        "SMART!"
+       ],
+       "q": "p",
+       "d": [
+        "SMART"
+       ]
+      },
+      "foco": "a"
+     },
+     "dest": [
+      "smart"
+     ]
+    },
+    {
+     "t": 5.526,
+     "d": 2.189,
+     "txt": "The other hears, \"You worked hard on this.\"",
+     "v": {
+      "bb": {
+       "t": [
+        "YOU WORKED",
+        "HARD ON THIS!"
+       ],
+       "q": "p",
+       "d": [
+        "WORKED",
+        "HARD"
+       ]
+      },
+      "foco": "b"
+     },
+     "dest": [
+      "worked",
+      "hard"
+     ]
+    },
+    {
+     "t": 8.214,
+     "d": 3.042,
+     "txt": "Same kid. Same score. One different sentence.",
+     "v": {
+      "foco": null
+     },
+     "dest": [
+      "sentence"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gancho2",
+   "cena": "duo",
+   "idade": 60,
+   "gap": 0.1,
+   "ini": 11.856,
+   "fim": 18.559,
+   "falas": [
+    {
+     "t": 11.856,
+     "d": 3.272,
+     "txt": "Fifty years later, one of them is still learning new things.",
+     "v": {
+      "foco": "b",
+      "ob": [
+       "violao"
+      ],
+      "cb": 10,
+      "ca": 2
+     },
+     "dest": [
+      "learning"
+     ]
+    },
+    {
+     "t": 15.628,
+     "d": 2.331,
+     "txt": "And the other is still afraid of being found out.",
+     "v": {
+      "foco": "a",
+      "ba": {
+       "t": [
+        "WHAT IF THEY",
+        "FIND OUT?"
+       ],
+       "q": "k",
+       "pensa": 1,
+       "d": [
+        "FIND",
+        "OUT"
+       ]
+      }
+     },
+     "dest": [
+      "afraid"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gancho3",
+   "cena": "texto",
+   "ini": 18.559,
+   "fim": 28.161,
+   "falas": [
+    {
+     "t": 18.559,
+     "d": 2.325,
+     "txt": "This is the whole life, side by side.",
+     "v": {
+      "big": {
+       "e": "THE WHOLE LIFE,",
+       "d": "SIDE BY SIDE",
+       "tam": 78
+      },
+      "linha": 0
+     },
+     "dest": [
+      "whole",
+      "life"
+     ]
+    },
+    {
+     "t": 21.384,
+     "d": 5.828,
+     "txt": "And somewhere in the middle, there's a real experiment that shows the exact moment the two paths split.",
+     "v": {
+      "linha": 10,
+      "sub": "ONE REAL EXPERIMENT \u00b7 128 KIDS"
+     },
+     "dest": [
+      "real",
+      "experiment"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c1",
+   "cena": "duo",
+   "idade": 6,
+   "et": "Age 6: The sentence",
+   "cap": {
+    "n": "ONE",
+    "tit": "THE SENTENCE"
+   },
+   "pre": 2.3,
+   "ini": 28.161,
+   "fim": 78.052,
+   "falas": [
+    {
+     "t": 30.461,
+     "d": 1.643,
+     "txt": "Meet Sam. Sam is six.",
+     "v": {
+      "oa": [
+       "nota:10"
+      ],
+      "ob": [
+       "nota:10"
+      ],
+      "fa": {
+       "pula": 1
+      },
+      "fb": {
+       "pula": 1
+      }
+     },
+     "dest": [
+      "sam"
+     ]
+    },
+    {
+     "t": 32.605,
+     "d": 4.603,
+     "txt": "In the first home, every good grade gets the same answer. \"You're so smart.\"",
+     "v": {
+      "foco": "a",
+      "ba": {
+       "t": [
+        "YOU'RE SO",
+        "SMART!"
+       ],
+       "q": "p",
+       "d": [
+        "SMART"
+       ]
+      },
+      "fa": null,
+      "fb": null
+     },
+     "dest": [
+      "smart"
+     ]
+    },
+    {
+     "t": 37.708,
+     "d": 1.852,
+     "txt": "It feels great. Sam glows.",
+     "v": {
+      "fa": {
+       "pula": 1,
+       "brilho": 1
+      }
+     },
+     "dest": [
+      "glows"
+     ]
+    },
+    {
+     "t": 40.059,
+     "d": 5.994,
+     "txt": "In the second home, Sam hears something slightly different. \"You worked hard on this. Show me how you did it.\"",
+     "v": {
+      "foco": "b",
+      "bb": {
+       "t": [
+        "YOU WORKED HARD.",
+        "SHOW ME HOW!"
+       ],
+       "q": "p",
+       "d": [
+        "WORKED",
+        "HARD"
+       ]
+      },
+      "fa": null
+     },
+     "dest": [
+      "worked",
+      "hard"
+     ]
+    },
+    {
+     "t": 46.554,
+     "d": 1.354,
+     "txt": "That also feels great.",
+     "v": {
+      "fb": {
+       "pula": 1,
+       "brilho": 1
+      }
+     },
+     "dest": [
+      "great"
+     ]
+    },
+    {
+     "t": 48.407,
+     "d": 2.554,
+     "txt": "Right now, you can't tell these two kids apart.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null,
+      "fb": null
+     },
+     "dest": [
+      "apart"
+     ]
+    },
+    {
+     "t": 51.461,
+     "d": 3.026,
+     "txt": "But each of them just learned what a good grade means.",
+     "v": {},
+     "dest": [
+      "means"
+     ]
+    },
+    {
+     "t": 54.987,
+     "d": 2.362,
+     "txt": "In the first home, it means: I am smart.",
+     "v": {
+      "foco": "a",
+      "ba": {
+       "t": [
+        "I AM SMART."
+       ],
+       "q": "k",
+       "pensa": 1,
+       "d": [
+        "SMART"
+       ]
+      }
+     },
+     "dest": [
+      "smart"
+     ]
+    },
+    {
+     "t": 57.85,
+     "d": 3.136,
+     "txt": "In the second home, it means: I did something that worked.",
+     "v": {
+      "foco": "b",
+      "bb": {
+       "t": [
+        "I DID SOMETHING",
+        "THAT WORKED."
+       ],
+       "q": "k",
+       "pensa": 1,
+       "d": [
+        "WORKED"
+       ]
+      }
+     },
+     "dest": [
+      "worked"
+     ]
+    },
+    {
+     "t": 61.486,
+     "d": 2.971,
+     "txt": "One of those is a label. The other is a recipe.",
+     "v": {
+      "foco": null,
+      "big": {
+       "e": "A LABEL",
+       "d": "A RECIPE",
+       "tam": 120
+      }
+     },
+     "dest": [
+      "label",
+      "recipe"
+     ]
+    },
+    {
+     "t": 64.956,
+     "d": 1.84,
+     "txt": "And labels have to be protected.",
+     "v": {
+      "big": {
+       "e": "A LABEL",
+       "d": "A RECIPE",
+       "tam": 120,
+       "al": 1
+      }
+     },
+     "dest": [
+      "protected"
+     ]
+    },
+    {
+     "t": 67.297,
+     "d": 4.371,
+     "txt": "A week later, there are two puzzles on the table. An easy one, and a hard one.",
+     "v": {
+      "big": null,
+      "oa": [
+       "puzzles"
+      ],
+      "ob": [
+       "puzzles"
+      ]
+     },
+     "dest": [
+      "two",
+      "puzzles"
+     ]
+    },
+    {
+     "t": 72.167,
+     "d": 4.935,
+     "txt": "One Sam reaches for the hard one. The other reaches for the one that's already solved.",
+     "v": {
+      "oa": [
+       "puzzles",
+       "pega:facil"
+      ],
+      "ob": [
+       "puzzles",
+       "pega:dificil"
+      ],
+      "ba": {
+       "t": [
+        "THE EASY ONE."
+       ],
+       "q": "k",
+       "pensa": 1
+      },
+      "bb": {
+       "t": [
+        "THE HARD ONE!"
+       ],
+       "q": "k",
+       "pensa": 1
+      }
+     },
+     "dest": [
+      "already",
+      "solved"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c2",
+   "cena": "estudo",
+   "idade": 10,
+   "et": "Age 10: The experiment",
+   "cap": {
+    "n": "TWO",
+    "tit": "THE EXPERIMENT"
+   },
+   "pre": 2.3,
+   "est": {
+    "tag": "THE STUDY",
+    "titulo": [
+     "Praise for Intelligence",
+     "Can Undermine",
+     "Children's Motivation",
+     "and Performance"
+    ],
+    "meta": [
+     "Mueller & Dweck \u00b7 1998",
+     "Journal of Personality and Social Psychology",
+     "128 fifth graders \u00b7 Study 1 of 6"
+    ]
+   },
+   "ini": 78.052,
+   "fim": 166.208,
+   "falas": [
+    {
+     "t": 80.352,
+     "d": 3.339,
+     "txt": "Now Sam is ten. And this next part is not a story.",
+     "v": {
+      "dir": {
+       "k": "selo",
+       "t": [
+        "NOT A STORY.",
+        "A REAL",
+        "EXPERIMENT."
+       ]
+      }
+     },
+     "dest": [
+      "not",
+      "story"
+     ]
+    },
+    {
+     "t": 84.191,
+     "d": 8.59,
+     "txt": "In nineteen ninety-eight, two psychologists at Columbia University, Claudia Mueller and Carol Dweck, ran this moment on real kids.",
+     "v": {
+      "dir": {
+       "k": "nomes",
+       "t": [
+        "Claudia Mueller",
+        "Carol Dweck"
+       ],
+       "s": "COLUMBIA UNIVERSITY \u00b7 1998"
+      }
+     },
+     "dest": [
+      "real",
+      "kids"
+     ]
+    },
+    {
+     "t": 93.281,
+     "d": 5.968,
+     "txt": "One hundred and twenty-eight fifth graders. Each one got a set of puzzles, easy enough to do well.",
+     "v": {
+      "dir": {
+       "k": "num",
+       "n": 128,
+       "rot": "FIFTH GRADERS"
+      }
+     },
+     "dest": [
+      "fifth",
+      "graders"
+     ]
+    },
+    {
+     "t": 99.749,
+     "d": 1.784,
+     "txt": "Then each kid heard one sentence.",
+     "v": {
+      "dir": {
+       "k": "frases",
+       "n": 0
+      }
+     },
+     "dest": [
+      "one",
+      "sentence"
+     ]
+    },
+    {
+     "t": 102.033,
+     "d": 2.707,
+     "txt": "Some heard, \"You must be smart at these problems.\"",
+     "v": {
+      "dir": {
+       "k": "frases",
+       "n": 1
+      }
+     },
+     "dest": [
+      "smart"
+     ]
+    },
+    {
+     "t": 105.24,
+     "d": 3.013,
+     "txt": "Others heard, \"You must have worked hard at these problems.\"",
+     "v": {
+      "dir": {
+       "k": "frases",
+       "n": 2
+      }
+     },
+     "dest": [
+      "worked",
+      "hard"
+     ]
+    },
+    {
+     "t": 108.753,
+     "d": 6.141,
+     "txt": "Then came a choice. An easy task that would make them look smart. Or a harder one they could learn from.",
+     "v": {
+      "dir": {
+       "k": "escolha"
+      }
+     },
+     "dest": [
+      "choice"
+     ]
+    },
+    {
+     "t": 115.393,
+     "d": 4.938,
+     "txt": "Of the kids called smart, sixty-seven percent picked the task that made them look smart.",
+     "v": {
+      "dir": {
+       "k": "rows",
+       "cab": [
+        "What they picked next:"
+       ],
+       "n": 1,
+       "rows": [
+        [
+         "TOLD \u201cSMART\u201d \u00b7 PICKED LOOKING SMART",
+         8,
+         12,
+         "67%",
+         "coral"
+        ],
+        [
+         "TOLD \u201cWORKED HARD\u201d \u00b7 PICKED LEARNING",
+         11,
+         12,
+         "92%",
+         "mar"
+        ]
+       ]
+      }
+     },
+     "dest": [
+      "sixty-seven",
+      "percent"
+     ]
+    },
+    {
+     "t": 120.831,
+     "d": 5.291,
+     "txt": "Of the kids praised for working hard, ninety-two percent picked the one they could learn from.",
+     "v": {
+      "dir": {
+       "k": "rows",
+       "cab": [
+        "What they picked next:"
+       ],
+       "n": 2,
+       "rows": [
+        [
+         "TOLD \u201cSMART\u201d \u00b7 PICKED LOOKING SMART",
+         8,
+         12,
+         "67%",
+         "coral"
+        ],
+        [
+         "TOLD \u201cWORKED HARD\u201d \u00b7 PICKED LEARNING",
+         11,
+         12,
+         "92%",
+         "mar"
+        ]
+       ]
+      }
+     },
+     "dest": [
+      "ninety-two",
+      "percent"
+     ]
+    },
+    {
+     "t": 126.622,
+     "d": 2.495,
+     "txt": "One sentence. That was the only difference.",
+     "v": {
+      "rod": "ONE SENTENCE. THE ONLY DIFFERENCE."
+     },
+     "dest": [
+      "only",
+      "difference"
+     ]
+    },
+    {
+     "t": 129.618,
+     "d": 5.133,
+     "txt": "Then the researchers gave everyone problems that were much too hard. Everybody struggled.",
+     "v": {
+      "rod": null,
+      "dir": {
+       "k": "itens",
+       "cab": [
+        "Then: problems much too hard."
+       ],
+       "n": 0,
+       "it": [
+        "Enjoyed it less",
+        "Gave up sooner",
+        "\u201cI'm just not good at this.\u201d"
+       ]
+      }
+     },
+     "dest": [
+      "too",
+      "hard"
+     ]
+    },
+    {
+     "t": 135.251,
+     "d": 5.488,
+     "txt": "The \"smart\" kids enjoyed it less, gave up sooner, and decided they just weren't good at this.",
+     "v": {
+      "dir": {
+       "k": "itens",
+       "cab": [
+        "Then: problems much too hard.",
+        "The kids called \u201csmart\u201d:"
+       ],
+       "n": 3,
+       "auto": 1,
+       "it": [
+        "Enjoyed it less",
+        "Gave up sooner",
+        "\u201cI'm just not good at this.\u201d"
+       ]
+      }
+     },
+     "dest": [
+      "gave",
+      "up"
+     ]
+    },
+    {
+     "t": 141.239,
+     "d": 5.609,
+     "txt": "And when they went back to easy problems, they did worse than before. The hard-work group did better.",
+     "v": {
+      "dir": {
+       "k": "setas",
+       "cab": [
+        "Back to easy problems:"
+       ]
+      }
+     },
+     "dest": [
+      "worse",
+      "better"
+     ]
+    },
+    {
+     "t": 147.348,
+     "d": 1.627,
+     "txt": "Then came the strangest part.",
+     "v": {
+      "dir": {
+       "k": "selo",
+       "t": [
+        "THE STRANGEST",
+        "PART."
+       ]
+      }
+     },
+     "dest": [
+      "strangest"
+     ]
+    },
+    {
+     "t": 149.475,
+     "d": 5.392,
+     "txt": "The kids were asked to write down their score for students at another school. No one would ever check.",
+     "v": {
+      "dir": {
+       "k": "rows",
+       "cab": [
+        "Report your own score.",
+        "No one will check."
+       ],
+       "n": 0,
+       "rows": [
+        [
+         "TOLD \u201cWORKED HARD\u201d \u00b7 LIED ABOUT THE SCORE",
+         3,
+         24,
+         "13%",
+         "mar"
+        ],
+        [
+         "TOLD \u201cSMART\u201d \u00b7 LIED ABOUT THE SCORE",
+         9,
+         24,
+         "38%",
+         "coral"
+        ]
+       ]
+      }
+     },
+     "dest": [
+      "no",
+      "one",
+      "check"
+     ]
+    },
+    {
+     "t": 155.367,
+     "d": 3.592,
+     "txt": "Thirteen percent of the hard-work group lied about their score.",
+     "v": {
+      "dir": {
+       "k": "rows",
+       "cab": [
+        "Report your own score.",
+        "No one will check."
+       ],
+       "n": 1,
+       "rows": [
+        [
+         "TOLD \u201cWORKED HARD\u201d \u00b7 LIED ABOUT THE SCORE",
+         3,
+         24,
+         "13%",
+         "mar"
+        ],
+        [
+         "TOLD \u201cSMART\u201d \u00b7 LIED ABOUT THE SCORE",
+         9,
+         24,
+         "38%",
+         "coral"
+        ]
+       ]
+      }
+     },
+     "dest": [
+      "thirteen",
+      "percent"
+     ]
+    },
+    {
+     "t": 159.46,
+     "d": 2.576,
+     "txt": "In the \"smart\" group, it was thirty-eight percent.",
+     "v": {
+      "dir": {
+       "k": "rows",
+       "cab": [
+        "Report your own score.",
+        "No one will check."
+       ],
+       "n": 2,
+       "rows": [
+        [
+         "TOLD \u201cWORKED HARD\u201d \u00b7 LIED ABOUT THE SCORE",
+         3,
+         24,
+         "13%",
+         "mar"
+        ],
+        [
+         "TOLD \u201cSMART\u201d \u00b7 LIED ABOUT THE SCORE",
+         9,
+         24,
+         "38%",
+         "coral"
+        ]
+       ]
+      }
+     },
+     "dest": [
+      "thirty-eight",
+      "percent"
+     ]
+    },
+    {
+     "t": 162.535,
+     "d": 2.722,
+     "txt": "They weren't bad kids. They were protecting a label.",
+     "v": {
+      "rod": "NOT BAD KIDS. PROTECTING A LABEL."
+     },
+     "dest": [
+      "protecting",
+      "label"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c3",
+   "cena": "duo",
+   "idade": 16,
+   "et": "Age 16: The first hard class",
+   "cap": {
+    "n": "THREE",
+    "tit": "THE FIRST HARD CLASS"
+   },
+   "pre": 2.3,
+   "ini": 166.208,
+   "fim": 211.568,
+   "falas": [
+    {
+     "t": 168.508,
+     "d": 2.498,
+     "txt": "Sixteen. From here on, we're back to the story.",
+     "v": {
+      "ca": 0,
+      "cb": 0
+     },
+     "dest": [
+      "story"
+     ]
+    },
+    {
+     "t": 171.506,
+     "d": 5.907,
+     "txt": "No study has followed two kids like this for fifty years. But watch how the same pattern plays out.",
+     "v": {
+      "nota": "STORY FROM HERE \u00b7 NOT DATA"
+     },
+     "dest": [
+      "pattern"
+     ]
+    },
+    {
+     "t": 177.913,
+     "d": 6.572,
+     "txt": "Both Sams sign up for the hardest math class in school. And for the first time, both of them fail a test.",
+     "v": {
+      "nota": null,
+      "oa": [
+       "nota:F"
+      ],
+      "ob": [
+       "nota:F"
+      ],
+      "ca": 1,
+      "cb": 1,
+      "fa": {
+       "triste": 1
+      },
+      "fb": {
+       "triste": 1
+      }
+     },
+     "dest": [
+      "fail"
+     ]
+    },
+    {
+     "t": 184.985,
+     "d": 8.061,
+     "txt": "In the first home, Sam does the math nobody taught. If I were smart, this would be easy. It's not easy. So maybe I'm not.",
+     "v": {
+      "foco": "a",
+      "ba": {
+       "t": [
+        "IF I WERE SMART,",
+        "THIS WOULD BE EASY."
+       ],
+       "q": "k",
+       "pensa": 1,
+       "d": [
+        "SMART"
+       ]
+      }
+     },
+     "dest": [
+      "maybe",
+      "i'm",
+      "not"
+     ]
+    },
+    {
+     "t": 193.546,
+     "d": 3.332,
+     "txt": "Sam drops the class. And tells everyone it was boring.",
+     "v": {
+      "ba": {
+       "t": [
+        "IT WAS BORING."
+       ],
+       "q": "k"
+      },
+      "oa": [
+       "nota:F",
+       "carimbo:DROPPED"
+      ]
+     },
+     "dest": [
+      "drops"
+     ]
+    },
+    {
+     "t": 197.378,
+     "d": 5.779,
+     "txt": "In the second home, Sam is just as upset. But the question is different. What did I do wrong?",
+     "v": {
+      "foco": "b",
+      "bb": {
+       "t": [
+        "WHAT DID I",
+        "DO WRONG?"
+       ],
+       "q": "k",
+       "pensa": 1,
+       "d": [
+        "WRONG"
+       ]
+      }
+     },
+     "dest": [
+      "wrong"
+     ]
+    },
+    {
+     "t": 203.657,
+     "d": 2.492,
+     "txt": "Sam stays. Gets a C. Then a B.",
+     "v": {
+      "ob": [
+       "nota:B",
+       "carimbo2:STAYED"
+      ],
+      "cb": 2,
+      "bb": null,
+      "fb": null
+     },
+     "dest": [
+      "stays"
+     ]
+    },
+    {
+     "t": 206.649,
+     "d": 3.968,
+     "txt": "By the way, the pressure to protect that label starts earlier than you'd think.",
+     "v": {
+      "foco": null,
+      "ba": null
+     },
+     "dest": [
+      "earlier"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c3b",
+   "cena": "estudo",
+   "idade": 16,
+   "est": {
+    "tag": "THE STUDY",
+    "titulo": [
+     "Praising Young Children",
+     "for Being Smart",
+     "Promotes Cheating"
+    ],
+    "meta": [
+     "Zhao, Heyman, Chen & Lee \u00b7 2017",
+     "Psychological Science",
+     "300 preschoolers, ages 3 and 5"
+    ]
+   },
+   "ini": 211.568,
+   "fim": 230.488,
+   "falas": [
+    {
+     "t": 211.568,
+     "d": 9.302,
+     "txt": "In twenty seventeen, researchers played a guessing game with three hundred preschoolers. Some were told, \"You are so smart.\" Then the adult left the room.",
+     "v": {
+      "dir": {
+       "k": "num",
+       "n": 300,
+       "rot": "PRESCHOOLERS \u00b7 A GUESSING GAME"
+      }
+     },
+     "dest": [
+      "left",
+      "room"
+     ]
+    },
+    {
+     "t": 221.369,
+     "d": 6.006,
+     "txt": "About sixty percent of the \"smart\" kids peeked at the answer. In the other groups, it was about forty.",
+     "v": {
+      "dir": {
+       "k": "rows",
+       "cab": [
+        "Peeked at the answer:"
+       ],
+       "n": 2,
+       "rows": [
+        [
+         "TOLD \u201cYOU ARE SO SMART\u201d",
+         7,
+         12,
+         "~60%",
+         "coral"
+        ],
+        [
+         "OTHER GROUPS",
+         5,
+         12,
+         "~40%",
+         "mar"
+        ]
+       ]
+      }
+     },
+     "dest": [
+      "sixty",
+      "percent"
+     ]
+    },
+    {
+     "t": 227.876,
+     "d": 1.662,
+     "txt": "Some of them were three years old.",
+     "v": {
+      "rod": "SOME OF THEM WERE THREE YEARS OLD."
+     },
+     "dest": [
+      "three",
+      "years",
+      "old"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cta1",
+   "cena": "texto",
+   "ini": 230.488,
+   "fim": 241.872,
+   "falas": [
+    {
+     "t": 230.488,
+     "d": 4.237,
+     "txt": "Quick question before we keep going. Which sentence did you hear growing up?",
+     "v": {
+      "big": {
+       "e": "WHICH ONE",
+       "d": "DID YOU HEAR?",
+       "tam": 96
+      }
+     },
+     "dest": [
+      "which",
+      "sentence"
+     ]
+    },
+    {
+     "t": 235.225,
+     "d": 5.697,
+     "txt": "Comment \"smart\" or \"worked hard\". I read these, and I want to know which home you grew up in.",
+     "v": {
+      "chips": [
+       "\u201csmart\u201d",
+       "\u201cworked hard\u201d"
+      ],
+      "sub": "COMMENT BELOW"
+     },
+     "dest": [
+      "comment"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c35",
+   "cena": "duo",
+   "idade": 22,
+   "et": "Age 22: The first rejection",
+   "cap": {
+    "n": "FOUR",
+    "tit": "THE FIRST REJECTION"
+   },
+   "pre": 2.3,
+   "ini": 241.872,
+   "fim": 281.398,
+   "falas": [
+    {
+     "t": 244.172,
+     "d": 7.822,
+     "txt": "Twenty-two. Both Sams apply for the job they actually want. And both get the same email. We regret to inform you.",
+     "v": {
+      "ca": 2,
+      "cb": 3,
+      "oa": [
+       "email",
+       "carimbo:REJECTED"
+      ],
+      "ob": [
+       "email",
+       "carimbo:REJECTED"
+      ],
+      "fa": {
+       "triste": 1
+      },
+      "fb": {
+       "triste": 1
+      }
+     },
+     "dest": [
+      "regret"
+     ]
+    },
+    {
+     "t": 252.493,
+     "d": 4.511,
+     "txt": "For the first Sam, that email isn't about one application. It's a verdict.",
+     "v": {
+      "foco": "a",
+      "ba": {
+       "t": [
+        "THEY SAW I'M",
+        "NOT THAT GOOD."
+       ],
+       "q": "k",
+       "pensa": 1,
+       "d": [
+        "NOT"
+       ]
+      }
+     },
+     "dest": [
+      "verdict"
+     ]
+    },
+    {
+     "t": 257.504,
+     "d": 6.612,
+     "txt": "So Sam stops applying for things that could say no. And takes the job that was always going to say yes.",
+     "v": {
+      "ba": null,
+      "oa": [
+       "email",
+       "carimbo:SAFE CHOICE"
+      ]
+     },
+     "dest": [
+      "say",
+      "yes"
+     ]
+    },
+    {
+     "t": 264.616,
+     "d": 6.47,
+     "txt": "The second Sam hates that email just as much. Then writes back. Is there anything I could have done better?",
+     "v": {
+      "foco": "b",
+      "bb": {
+       "t": [
+        "WHAT COULD I",
+        "DO BETTER?"
+       ],
+       "q": "k",
+       "d": [
+        "BETTER"
+       ]
+      }
+     },
+     "dest": [
+      "better"
+     ]
+    },
+    {
+     "t": 271.585,
+     "d": 3.127,
+     "txt": "Six months later, Sam applies again. And gets in.",
+     "v": {
+      "bb": null,
+      "ob": [
+       "email",
+       "carimbo2:HIRED"
+      ],
+      "cb": 4,
+      "fb": null
+     },
+     "dest": [
+      "gets",
+      "in"
+     ]
+    },
+    {
+     "t": 275.213,
+     "d": 5.235,
+     "txt": "Same rejection. One Sam read it as who I am. The other read it as what I did.",
+     "v": {
+      "foco": null,
+      "big": {
+       "e": "WHO I AM",
+       "d": "WHAT I DID",
+       "tam": 110
+      }
+     },
+     "dest": [
+      "who",
+      "what"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c4",
+   "cena": "duo",
+   "idade": 30,
+   "et": "Age 30: The safe job",
+   "cap": {
+    "n": "FIVE",
+    "tit": "THE SAFE JOB"
+   },
+   "pre": 2.3,
+   "ini": 281.398,
+   "fim": 331.207,
+   "falas": [
+    {
+     "t": 283.698,
+     "d": 7.349,
+     "txt": "Thirty. Both Sams are good at their jobs. Honestly, the first Sam might be better. Careful. Never makes a mistake.",
+     "v": {
+      "ca": 2,
+      "cb": 5
+     },
+     "dest": [
+      "careful"
+     ]
+    },
+    {
+     "t": 291.546,
+     "d": 6.061,
+     "txt": "Then a bigger role opens up. New team, new skills, a real chance of failing in front of people.",
+     "v": {
+      "oa": [
+       "oferta"
+      ],
+      "ob": [
+       "oferta"
+      ]
+     },
+     "dest": [
+      "bigger",
+      "role"
+     ]
+    },
+    {
+     "t": 298.107,
+     "d": 6.069,
+     "txt": "In the first Sam, an old voice wakes up. What if this is the one that proves I was never that smart?",
+     "v": {
+      "foco": "a",
+      "ba": {
+       "t": [
+        "WHAT IF I'M NOT",
+        "SMART ENOUGH?"
+       ],
+       "q": "k",
+       "pensa": 1,
+       "d": [
+        "NOT"
+       ]
+      },
+      "fa": {
+       "triste": 1
+      }
+     },
+     "dest": [
+      "never",
+      "smart"
+     ]
+    },
+    {
+     "t": 304.676,
+     "d": 2.963,
+     "txt": "Sam turns it down. Says the timing isn't right.",
+     "v": {
+      "oa": [
+       "oferta",
+       "carimbo:TURNED DOWN"
+      ]
+     },
+     "dest": [
+      "turns",
+      "down"
+     ]
+    },
+    {
+     "t": 308.139,
+     "d": 5.948,
+     "txt": "The second Sam is scared too. But scared sounds different in this head. I don't know how to do this yet.",
+     "v": {
+      "foco": "b",
+      "bb": {
+       "t": [
+        "I DON'T KNOW HOW",
+        "TO DO THIS. YET."
+       ],
+       "q": "k",
+       "pensa": 1,
+       "d": [
+        "YET"
+       ]
+      }
+     },
+     "dest": [
+      "yet"
+     ]
+    },
+    {
+     "t": 314.587,
+     "d": 1.363,
+     "txt": "Yet. One small word.",
+     "v": {
+      "big": {
+       "e": "",
+       "d": "YET.",
+       "tam": 200
+      }
+     },
+     "dest": [
+      "yet"
+     ]
+    },
+    {
+     "t": 316.451,
+     "d": 4.11,
+     "txt": "Sam takes the job. The first year is rough. The second year is not.",
+     "v": {
+      "big": null,
+      "ob": [
+       "oferta",
+       "carimbo2:ACCEPTED"
+      ],
+      "cb": 6,
+      "bb": null
+     },
+     "dest": [
+      "takes"
+     ]
+    },
+    {
+     "t": 321.061,
+     "d": 3.292,
+     "txt": "Look at the count at the top of the screen. Hard things tried.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "cb": 8,
+      "conta": 1
+     },
+     "dest": [
+      "hard",
+      "things",
+      "tried"
+     ]
+    },
+    {
+     "t": 324.853,
+     "d": 5.404,
+     "txt": "It's not that one Sam is braver. One of them just never had anything to lose by trying.",
+     "v": {
+      "conta": null
+     },
+     "dest": [
+      "nothing",
+      "lose",
+      "trying"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c5",
+   "cena": "duo",
+   "idade": 45,
+   "et": "Age 45: The sentence comes back",
+   "cap": {
+    "n": "SIX",
+    "tit": "THE SENTENCE COMES BACK"
+   },
+   "pre": 2.3,
+   "ini": 331.207,
+   "fim": 358.676,
+   "falas": [
+    {
+     "t": 333.507,
+     "d": 6.798,
+     "txt": "Forty-five. Now both Sams have a kid of their own. And one evening, that kid walks in with a perfect score.",
+     "v": {
+      "oa": [
+       "nota:10"
+      ],
+      "ob": [
+       "nota:10"
+      ],
+      "ca": 2,
+      "cb": 9
+     },
+     "dest": [
+      "perfect",
+      "score"
+     ]
+    },
+    {
+     "t": 340.805,
+     "d": 4.569,
+     "txt": "The first Sam smiles and says the most loving thing they know. \"You're so smart.\"",
+     "v": {
+      "foco": "a",
+      "ba": {
+       "t": [
+        "YOU'RE SO",
+        "SMART!"
+       ],
+       "q": "p",
+       "d": [
+        "SMART"
+       ]
+      }
+     },
+     "dest": [
+      "smart"
+     ]
+    },
+    {
+     "t": 345.874,
+     "d": 4.492,
+     "txt": "It's not a mistake. It's a gift. It's the exact gift Sam was given.",
+     "v": {},
+     "dest": [
+      "gift"
+     ]
+    },
+    {
+     "t": 350.866,
+     "d": 3.919,
+     "txt": "The second Sam says, \"You worked hard on this. Show me how you did it.\"",
+     "v": {
+      "foco": "b",
+      "bb": {
+       "t": [
+        "YOU WORKED HARD.",
+        "SHOW ME HOW!"
+       ],
+       "q": "p",
+       "d": [
+        "WORKED",
+        "HARD"
+       ]
+      }
+     },
+     "dest": [
+      "worked",
+      "hard"
+     ]
+    },
+    {
+     "t": 355.285,
+     "d": 2.44,
+     "txt": "And the sentence starts its second lifetime.",
+     "v": {
+      "foco": null,
+      "big": {
+       "e": "SECOND",
+       "d": "LIFETIME",
+       "tam": 120
+      }
+     },
+     "dest": [
+      "second",
+      "lifetime"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cta2",
+   "cena": "texto",
+   "ini": 358.676,
+   "fim": 368.814,
+   "falas": [
+    {
+     "t": 358.676,
+     "d": 9.188,
+     "txt": "If someone raised you on one of these sentences, or you're raising someone right now, send them this video. It's an easier conversation with pictures.",
+     "v": {
+      "big": {
+       "e": "SEND THIS",
+       "d": "TO THEM",
+       "tam": 110
+      },
+      "sub": "AN EASIER CONVERSATION WITH PICTURES",
+      "icone": "share"
+     },
+     "dest": [
+      "send"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c6",
+   "cena": "duo",
+   "idade": 60,
+   "et": "Age 60: Who's still learning",
+   "cap": {
+    "n": "SEVEN",
+    "tit": "WHO'S STILL LEARNING"
+   },
+   "pre": 2.3,
+   "ini": 368.814,
+   "fim": 398.794,
+   "falas": [
+    {
+     "t": 371.114,
+     "d": 6.773,
+     "txt": "Sixty. The second Sam is taking guitar lessons. And is terrible at it. And goes back every Tuesday.",
+     "v": {
+      "foco": "b",
+      "ob": [
+       "violao",
+       "notas"
+      ],
+      "ca": 2,
+      "cb": 10
+     },
+     "dest": [
+      "guitar"
+     ]
+    },
+    {
+     "t": 378.387,
+     "d": 9.652,
+     "txt": "The first Sam has had a good life. A real one. But there's a short list of things Sam never tried. A language. A business. A hard conversation.",
+     "v": {
+      "foco": "a",
+      "oa": [
+       "lista"
+      ]
+     },
+     "dest": [
+      "never",
+      "tried"
+     ]
+    },
+    {
+     "t": 388.54,
+     "d": 6.523,
+     "txt": "Not because Sam couldn't. Because Sam might not have been great at it. And being great was the whole identity.",
+     "v": {
+      "fa": {
+       "triste": 1
+      }
+     },
+     "dest": [
+      "identity"
+     ]
+    },
+    {
+     "t": 395.563,
+     "d": 2.281,
+     "txt": "Fifty years of protecting a compliment.",
+     "v": {
+      "foco": null,
+      "big": {
+       "e": "50 YEARS.",
+       "d": "ONE COMPLIMENT.",
+       "tam": 74
+      }
+     },
+     "dest": [
+      "compliment"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vida",
+   "cena": "vida",
+   "et": "The whole life, side by side",
+   "ini": 398.794,
+   "fim": 415.61,
+   "falas": [
+    {
+     "t": 398.794,
+     "d": 2.161,
+     "txt": "Here's the whole life, side by side.",
+     "v": {
+      "n": 0
+     },
+     "dest": [
+      "side"
+     ]
+    },
+    {
+     "t": 401.456,
+     "d": 2.5,
+     "txt": "Six. \"You're so smart.\" \"You worked hard.\"",
+     "v": {
+      "n": 1
+     },
+     "dest": []
+    },
+    {
+     "t": 404.456,
+     "d": 3.889,
+     "txt": "Sixteen. Drops the hard class. Fails, and signs up again.",
+     "v": {
+      "n": 2
+     },
+     "dest": []
+    },
+    {
+     "t": 408.844,
+     "d": 2.978,
+     "txt": "Thirty. Stays where it's safe. Takes the harder job.",
+     "v": {
+      "n": 3
+     },
+     "dest": []
+    },
+    {
+     "t": 412.323,
+     "d": 2.337,
+     "txt": "Sixty. Still wonders. Still learning.",
+     "v": {
+      "n": 4
+     },
+     "dest": [
+      "learning"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "honesto",
+   "cena": "honesto",
+   "et": "The honest part",
+   "ini": 415.61,
+   "fim": 470.348,
+   "falas": [
+    {
+     "t": 415.61,
+     "d": 3.346,
+     "txt": "Now, the honest part. Because a sentence is not a spell.",
+     "v": {
+      "n": 0
+     },
+     "dest": [
+      "not",
+      "spell"
+     ]
+    },
+    {
+     "t": 419.455,
+     "d": 11.578,
+     "txt": "When researchers filmed fifty-three families at home, the toddlers who heard more praise for effort were, five years later, more likely to believe they could get better at things. That's real.",
+     "v": {
+      "n": 1
+     },
+     "dest": [
+      "real"
+     ]
+    },
+    {
+     "t": 431.533,
+     "d": 6.586,
+     "txt": "But in that same study, being praised as a person didn't predict the opposite. The damage wasn't automatic.",
+     "v": {
+      "n": 1,
+      "x": 1
+     },
+     "dest": [
+      "automatic"
+     ]
+    },
+    {
+     "t": 438.619,
+     "d": 8.349,
+     "txt": "And in twenty nineteen, a team in Edinburgh repeated the original experiment with over six hundred children. They didn't find the effect.",
+     "v": {
+      "n": 2,
+      "x": 1
+     },
+     "dest": [
+      "didn't",
+      "find"
+     ]
+    },
+    {
+     "t": 447.468,
+     "d": 10.69,
+     "txt": "Even Carol Dweck has said they may have put too much emphasis on sheer effort. Telling a kid \"good try\" when nothing is being learned is just a nicer empty sentence.",
+     "v": {
+      "n": 3,
+      "x": 1
+     },
+     "dest": [
+      "empty"
+     ]
+    },
+    {
+     "t": 458.658,
+     "d": 4.625,
+     "txt": "So this isn't about banning a word. Saying \"you're smart\" once won't break anyone.",
+     "v": {
+      "rod": "ONE \u201cYOU'RE SMART\u201d WON'T BREAK ANYONE."
+     },
+     "dest": [
+      "once"
+     ]
+    },
+    {
+     "t": 463.783,
+     "d": 5.615,
+     "txt": "It's about what a kid hears a thousand times, and what they come to believe a failure says about them.",
+     "v": {
+      "rod": "IT IS WHAT A KID HEARS A THOUSAND TIMES."
+     },
+     "dest": [
+      "thousand",
+      "times"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "trocas",
+   "cena": "trocas",
+   "et": "It's never too late",
+   "ini": 470.348,
+   "fim": 497.745,
+   "falas": [
+    {
+     "t": 470.348,
+     "d": 4.845,
+     "txt": "And here's the good news. That belief is not locked in at six. Or at sixty.",
+     "v": {
+      "n": 0,
+      "tit": 1
+     },
+     "dest": [
+      "good",
+      "news"
+     ]
+    },
+    {
+     "t": 475.693,
+     "d": 2.305,
+     "txt": "If you're raising a kid, try three swaps.",
+     "v": {
+      "n": 0,
+      "tit": null
+     },
+     "dest": [
+      "three",
+      "swaps"
+     ]
+    },
+    {
+     "t": 478.498,
+     "d": 3.187,
+     "txt": "Instead of \"you're so smart,\" try \"show me how you did that.\"",
+     "v": {
+      "n": 1
+     },
+     "dest": [
+      "show"
+     ]
+    },
+    {
+     "t": 482.185,
+     "d": 2.907,
+     "txt": "Instead of \"you're a natural,\" try \"that took practice.\"",
+     "v": {
+      "n": 2
+     },
+     "dest": [
+      "practice"
+     ]
+    },
+    {
+     "t": 485.593,
+     "d": 5.275,
+     "txt": "And when they fail, instead of \"it's okay, you're still smart,\" try \"what would you try differently?\"",
+     "v": {
+      "n": 3
+     },
+     "dest": [
+      "differently"
+     ]
+    },
+    {
+     "t": 491.368,
+     "d": 5.427,
+     "txt": "And if you were the \"smart\" kid, you can say it to yourself. I don't know how to do this. Yet.",
+     "v": {
+      "n": 3,
+      "yet": 1
+     },
+     "dest": [
+      "yet"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fim1",
+   "cena": "duo",
+   "idade": 6,
+   "gap": 0.2,
+   "ini": 497.745,
+   "fim": 501.487,
+   "falas": [
+    {
+     "t": 497.745,
+     "d": 3.042,
+     "txt": "Same kid. Same score. One different sentence.",
+     "v": {
+      "oa": [
+       "nota:10"
+      ],
+      "ob": [
+       "nota:10"
+      ],
+      "ba": {
+       "t": [
+        "YOU'RE SO",
+        "SMART!"
+       ],
+       "q": "p",
+       "d": [
+        "SMART"
+       ]
+      },
+      "bb": {
+       "t": [
+        "YOU WORKED",
+        "HARD ON THIS!"
+       ],
+       "q": "p",
+       "d": [
+        "WORKED",
+        "HARD"
+       ]
+      }
+     },
+     "dest": [
+      "sentence"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fim2",
+   "cena": "fim",
+   "ini": 501.487,
+   "fim": 512.488,
+   "falas": [
+    {
+     "t": 501.487,
+     "d": 6.049,
+     "txt": "Next time, same kid again, two new homes. One raised by fear. One raised by respect.",
+     "v": {
+      "n": 1
+     },
+     "dest": [
+      "fear",
+      "respect"
+     ]
+    },
+    {
+     "t": 508.036,
+     "d": 3.503,
+     "txt": "Subscribe so you don't miss it. I'll see you in the next childhood.",
+     "v": {
+      "n": 2
+     },
+     "dest": [
+      "subscribe"
+     ]
+    }
+   ]
+  }
+ ]
+}
