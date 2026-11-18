@@ -23,7 +23,8 @@
   "quinhentos e vinte e oito mil": "528 mil",
   "cento e dezesseis mil": "116 mil",
   "cinco mil trezentos e trinta e um": "5.331",
-  "um por cento": "1%"
+  "um por cento": "1%",
+  "quinze mil": "15 mil"
  },
  "blocos": [
   {
@@ -53,10 +54,20 @@
      },
      {
       "tipo": "foto",
-      "arq": "movimento_em_frente_ao_mercado_municipal.jpg",
-      "leg": "Em frente ao Mercado, São Paulo, c. 1910 · Foto: Vincenzo Pastore",
+      "arq": "rua_direita_vincenzo_pastore_jpg.jpg",
+      "leg": "Rua Direita, São Paulo, 1909 · Foto: Vincenzo Pastore",
       "rot": -1.2,
       "entra": "esq",
+      "zoom": null,
+      "w": 620,
+      "ar": 1.3
+     },
+     {
+      "tipo": "foto",
+      "arq": "movimento_em_frente_ao_mercado_municipal.jpg",
+      "leg": "Em frente ao Mercado, São Paulo, c. 1910 · Foto: Vincenzo Pastore",
+      "rot": 2.4,
+      "entra": "cai",
       "zoom": null
      },
      {
@@ -82,6 +93,17 @@
        "d": 35,
        "g": 70
       }
+     },
+     {
+      "tipo": "foto",
+      "arq": "largo_da_s_vincenzo_pastore_jpg.jpg",
+      "leg": "Largo da Sé, São Paulo, c. 1912 · Foto: Vincenzo Pastore",
+      "rot": -2.0,
+      "entra": "cai",
+      "zoom": [
+       0.5,
+       0.6
+      ]
      }
     ]
    },
@@ -90,10 +112,12 @@
     "A cidade tem pouco mais de meio milhão de habitantes, e não para de crescer.",
     "E você acabou de acordar aqui. Sem dinheiro, e sem conhecer ninguém.",
     "Quanto tempo você dura?",
+    "É uma cidade de imigrantes. Italianos, portugueses, espanhóis, gente de todo o interior. Bondes, fábricas, mercados lotados.",
     "Funciona assim. Você é um operário, e trabalha numa fábrica da cidade.",
     "Tudo o que vai acontecer com você aconteceu de verdade, com datas e números de verdade.",
     "E você acompanha três coisas. Sua saúde. Seu dinheiro. E sua segurança.",
-    "Se qualquer uma delas zerar, acabou."
+    "Se qualquer uma delas zerar, acabou.",
+    "E se você mora em São Paulo, presta atenção nas ruas. Muitas delas ainda existem, e você provavelmente já passou por elas."
    ]
   },
   {
@@ -109,17 +133,33 @@
       "tipo": "foto",
       "arq": "homem_lendo_jornal_na_porta_de_estabelec.jpg",
       "leg": "Homem lendo jornal, São Paulo, c. 1910 · Foto: Vincenzo Pastore",
-      "rot": 2.4,
-      "entra": "cai",
+      "rot": -2.5,
+      "entra": "dir",
       "zoom": null
      },
      {
       "tipo": "foto",
-      "arq": "1918_flu_outbreak_redcrosslittercarriers.jpg",
-      "leg": "Cruz Vermelha carregando doente, Washington (EUA), 1918",
-      "rot": -2.0,
-      "entra": "cai",
-      "zoom": null
+      "arq": "1918_flu_in_oakland_jpg.jpg",
+      "leg": "Hospital de emergência num auditório, Oakland (EUA), 1918",
+      "rot": 1.8,
+      "entra": "esq",
+      "zoom": [
+       0.5,
+       0.35
+      ],
+      "w": 1150,
+      "ar": 0.66
+     },
+     {
+      "tipo": "carimbo_doc",
+      "titulo": "POR QUE ESPANHOLA?",
+      "txt": "IMPRENSA LIVRE"
+     },
+     {
+      "tipo": "documento",
+      "titulo": "NAVIO DEMERARA · SETEMBRO DE 1918",
+      "txt": "Vindo da Europa, com doentes a bordo. Escalas: Recife, Salvador, Rio de Janeiro.",
+      "carimbo": "A BORDO"
      },
      {
       "tipo": "documento",
@@ -247,6 +287,19 @@
        "d": 35,
        "g": 70
       }
+     },
+     {
+      "tipo": "escolha",
+      "a": "TRABALHAR",
+      "b": "FICAR EM CASA",
+      "quando": "OUTUBRO DE 1918"
+     },
+     {
+      "tipo": "escolha",
+      "a": "TRABALHAR",
+      "b": "FICAR EM CASA",
+      "txt": "COMENTE AGORA",
+      "quando": "OUTUBRO DE 1918"
      }
     ],
     "n": 1,
@@ -256,6 +309,8 @@
     "Parte um. A notícia que vem de longe.",
     "Desde junho, os jornais de São Paulo falam de uma gripe que está matando gente na Europa.",
     "O mundo está no fim de uma guerra. E a doença viaja nos navios, junto com os soldados.",
+    "Ela ganhou o nome de gripe espanhola. Não porque começou na Espanha, mas porque a Espanha, fora da guerra, era um dos poucos países onde os jornais podiam falar livremente da doença.",
+    "Em setembro, um navio chamado Demerara chega ao Brasil vindo da Europa, com doentes a bordo. Passa por Recife, Salvador e Rio de Janeiro.",
     "Em setembro, as notícias ficam mais frequentes. Mas a gripe ainda parece um problema dos outros.",
     "No Rio de Janeiro, ela já chegou.",
     "E no dia nove de outubro, os jornais contam que jogadores de futebol amador vindos do Rio caíram doentes.",
@@ -266,7 +321,9 @@
     "Evitar aglomerações. Não fazer visitas.",
     "E tomar todos os dias uma dose de quinino.",
     "O problema é que o quinino é remédio de malária. Contra a gripe, não adiantava.",
-    "Mas você não sabe disso. E você trabalha numa fábrica cheia de gente."
+    "Mas você não sabe disso. E você trabalha numa fábrica cheia de gente.",
+    "Então aqui vai a sua primeira escolha. A gripe chegou. Você continua indo trabalhar, ou fica em casa sem salário?",
+    "Escreve a sua escolha nos comentários agora. No final do vídeo, você descobre o que teria acontecido com você."
    ]
   },
   {
@@ -332,8 +389,8 @@
       "tipo": "foto",
       "arq": "prociss_o_na_rua_direita_vincenzo_pastor.jpg",
       "leg": "Procissão na Rua Direita, c. 1910 · Foto: Vincenzo Pastore",
-      "rot": -2.5,
-      "entra": "dir",
+      "rot": -1.2,
+      "entra": "cai",
       "zoom": null,
       "w": 620,
       "ar": 1.3
@@ -362,8 +419,8 @@
       "tipo": "foto",
       "arq": "1918_flu_in_oakland_jpg.jpg",
       "leg": "Hospital de emergência num auditório, Oakland (EUA), 1918",
-      "rot": 1.8,
-      "entra": "esq",
+      "rot": 2.4,
+      "entra": "cai",
       "zoom": null,
       "w": 1150,
       "ar": 0.66
@@ -379,6 +436,18 @@
        "d": 35,
        "g": 55
       }
+     },
+     {
+      "tipo": "bolso"
+     },
+     {
+      "tipo": "mesa",
+      "fotos": [
+       "largo_da_s_vincenzo_pastore_jpg.jpg",
+       "prociss_o_na_rua_direita_vincenzo_pastor.jpg",
+       "1918_flu_in_oakland_jpg.jpg"
+      ],
+      "txt": "INSCREVA-SE"
      }
     ],
     "n": 2,
@@ -395,7 +464,9 @@
     "Nada de aperto de mão. Nada de abraço. Nada de beijo.",
     "As escolas vazias viram postos médicos, com médicos, remédio e comida.",
     "Em outras cidades do mundo, auditórios inteiros viraram hospital.",
-    "E se a fábrica fecha, ou se você fica doente, você não recebe."
+    "E se a fábrica fecha, ou se você fica doente, você não recebe.",
+    "Não existe auxílio, não existe seguro, não existe carteira assinada. Quem não trabalha, não come.",
+    "Se você está gostando de viver a história por dentro, se inscreve no canal. Cada vídeo aqui é uma época diferente do Brasil."
    ]
   },
   {
@@ -409,11 +480,16 @@
      },
      {
       "tipo": "foto",
-      "arq": "1918_flu_outbreak_jpg.jpg",
-      "leg": "Enfermaria da gripe, Washington (EUA), 1918",
-      "rot": -1.2,
-      "entra": "cai",
-      "zoom": null
+      "arq": "1918_flu_in_oakland_jpg.jpg",
+      "leg": "Hospital de emergência num auditório, Oakland (EUA), 1918",
+      "rot": -2.0,
+      "entra": "dir",
+      "zoom": [
+       0.35,
+       0.55
+      ],
+      "w": 1150,
+      "ar": 0.66
      },
      {
       "tipo": "barras",
@@ -431,8 +507,8 @@
       "tipo": "foto",
       "arq": "garotos_engraxates_vincenzo_pastore_jpg.jpg",
       "leg": "Garotos engraxates, São Paulo, c. 1910 · Foto: Vincenzo Pastore",
-      "rot": 2.4,
-      "entra": "cai",
+      "rot": -2.5,
+      "entra": "esq",
       "zoom": null,
       "w": 620,
       "ar": 1.3
@@ -483,9 +559,22 @@
       "tipo": "foto",
       "arq": "vista_do_bairro_da_bela_vista_a_partir_d.jpg",
       "leg": "Bela Vista vista do Viaduto do Chá, c. 1911 · Foto: Vincenzo Pastore",
-      "rot": -2.0,
-      "entra": "dir",
+      "rot": 1.8,
+      "entra": "cai",
       "zoom": null
+     },
+     {
+      "tipo": "foto",
+      "arq": "rua_direita_vincenzo_pastore_jpg.jpg",
+      "leg": "Rua Direita, São Paulo, 1909 · Foto: Vincenzo Pastore",
+      "rot": -1.2,
+      "entra": "cai",
+      "zoom": [
+       0.4,
+       0.5
+      ],
+      "w": 620,
+      "ar": 1.3
      },
      {
       "tipo": "barras",
@@ -545,6 +634,7 @@
     "Num único dia, são sete mil setecentos e oitenta e seis doentes.",
     "E cento e setenta e dois mortos.",
     "Em quase toda casa tem alguém de cama. Muita gente não consegue trabalhar.",
+    "Escolas, teatros, cinemas, concertos: quase tudo que reunia gente está fechado. A cidade que não parava de crescer, de repente, para.",
     "Se você ficou doente no começo de novembro, o seu painel está assim.",
     "Em meados de novembro, a curva finalmente vira.",
     "E no fim do mês, as mortes começam a cair."
@@ -588,11 +678,19 @@
       "ate": "b"
      },
      {
+      "tipo": "comparacao",
+      "a": "SÃO PAULO",
+      "va": 5331,
+      "b": "RIO DE JANEIRO",
+      "vb": 15000,
+      "ate": "b"
+     },
+     {
       "tipo": "foto",
       "arq": "rodrigues_alves_jpg.jpg",
       "leg": "Rodrigues Alves, presidente eleito em 1918",
-      "rot": -2.5,
-      "entra": "esq",
+      "rot": 2.4,
+      "entra": "dir",
       "zoom": null,
       "w": 620,
       "ar": 1.3
@@ -601,6 +699,25 @@
       "tipo": "carimbo_doc",
       "titulo": "PRESIDENTE ELEITO · RODRIGUES ALVES",
       "txt": "NÃO TOMOU POSSE"
+     },
+     {
+      "tipo": "ficha",
+      "titulo": "FICHA · 1919",
+      "linhas": [
+       [
+        "ELEITO",
+        "Rodrigues Alves"
+       ],
+       [
+        "MORREU",
+        "janeiro de 1919"
+       ],
+       [
+        "ASSUMIU",
+        "Delfim Moreira"
+       ]
+      ],
+      "rodape": "Uma nova eleição foi convocada"
      },
      {
       "tipo": "titulo",
@@ -624,15 +741,33 @@
       "rotulo": "dos doentes morreram"
      },
      {
+      "tipo": "escolha",
+      "a": "TRABALHAR",
+      "b": "FICAR EM CASA",
+      "quando": "OUTUBRO DE 1918"
+     },
+     {
       "tipo": "barras",
       "s": 60,
       "d": 10,
       "g": 60,
-      "txt": "VIVO",
+      "txt": "FICOU EM CASA: VIVO",
       "_de": {
        "s": 30,
        "d": 10,
        "g": 40
+      }
+     },
+     {
+      "tipo": "barras",
+      "s": 30,
+      "d": 25,
+      "g": 30,
+      "txt": "FOI TRABALHAR: RISCO ALTO",
+      "_de": {
+       "s": 60,
+       "d": 10,
+       "g": 60
       }
      },
      {
@@ -642,18 +777,20 @@
       "g": 20,
       "txt": "O PIOR MOMENTO",
       "_de": {
-       "s": 60,
-       "d": 10,
-       "g": 60
+       "s": 30,
+       "d": 25,
+       "g": 30
       }
      },
      {
       "tipo": "foto",
-      "arq": "165_ww_269b_25_police_l_restored_jpg.jpg",
-      "leg": "Policiais de máscara, Seattle (EUA), dezembro de 1918",
-      "rot": 1.8,
-      "entra": "cai",
-      "zoom": null
+      "arq": "1918_flu_in_oakland_jpg.jpg",
+      "leg": "Hospital de emergência num auditório, Oakland (EUA), 1918",
+      "rot": -2.0,
+      "entra": "esq",
+      "zoom": null,
+      "w": 1150,
+      "ar": 0.66
      },
      {
       "tipo": "mesa",
@@ -661,17 +798,40 @@
        "largo_da_s_vincenzo_pastore_jpg.jpg",
        "1918_flu_in_oakland_jpg.jpg",
        "movimento_em_frente_ao_mercado_municipal.jpg",
-       "1918_flu_outbreak_jpg.jpg",
+       "prociss_o_na_rua_direita_vincenzo_pastor.jpg",
        "vista_do_bairro_da_bela_vista_a_partir_d.jpg"
       ],
       "txt": "FOTOS E DOCUMENTOS REAIS"
      },
      {
+      "tipo": "documento",
+      "titulo": "CONSELHOS AO POVO · 1918",
+      "txt": "Evite aglomerações. Não faça visitas. Nada de aperto de mão, abraço ou beijo."
+     },
+     {
       "tipo": "escolha",
-      "a": "FICAR EM CASA",
-      "b": "TRABALHAR",
+      "a": "JÁ CONHECIA",
+      "b": "PRIMEIRA VEZ",
       "txt": "COMENTE A SUA",
-      "quando": "OUTUBRO DE 1918"
+      "quando": "1918"
+     },
+     {
+      "tipo": "mesa",
+      "fotos": [
+       "largo_da_s_vincenzo_pastore_jpg.jpg",
+       "rua_direita_vincenzo_pastore_jpg.jpg",
+       "prociss_o_na_rua_direita_vincenzo_pastor.jpg"
+      ],
+      "txt": "COMPARTILHE"
+     },
+     {
+      "tipo": "mesa",
+      "fotos": [
+       "garotos_engraxates_vincenzo_pastore_jpg.jpg",
+       "homem_lendo_jornal_na_porta_de_estabelec.jpg",
+       "movimento_em_frente_ao_mercado_municipal.jpg"
+      ],
+      "txt": "DEIXA O LIKE"
      },
      {
       "tipo": "fim"
@@ -687,17 +847,24 @@
     "Pelo menos cento e dezesseis mil ficaram doentes. Mais de um em cada cinco.",
     "E os mortos oficiais foram cinco mil trezentos e trinta e um.",
     "Cerca de um por cento da cidade. Em menos de dois meses.",
+    "E no Rio de Janeiro, a capital do país, foi ainda pior. As estimativas falam em cerca de quinze mil mortos.",
     "E a gripe não escolheu classe. Rodrigues Alves tinha sido eleito presidente do Brasil em mil novecentos e dezoito.",
     "Pegou a gripe, e morreu em janeiro de mil novecentos e dezenove, antes de tomar posse.",
+    "Quem assumiu foi o vice, Delfim Moreira. E o Brasil precisou fazer uma nova eleição.",
     "Então, quanto você dura?",
     "A chance de pegar a gripe era alta. Mais de uma em cada cinco pessoas.",
     "Mas, entre os doentes registrados, morreram cerca de quatro ou cinco em cada cem.",
-    "Então, se você ficou longe das aglomerações e teve sorte, provavelmente atravessou novembro. Fraco, sem dinheiro, mas vivo.",
+    "Lembra da sua escolha lá no começo? Trabalhar ou ficar em casa?",
+    "Se você ficou em casa, longe das aglomerações, e teve sorte, provavelmente atravessou novembro. Fraco, sem dinheiro, mas vivo.",
+    "Se você foi trabalhar na fábrica lotada, a chance de pegar a gripe era muito maior. E aí tudo dependia da sorte, e de um lugar para se tratar.",
     "E se ficou doente no pior momento, sem cama e sem médico, as suas chances caíam muito.",
     "No mundo, a gripe de mil novecentos e dezoito matou dezenas de milhões de pessoas.",
     "Com fotos e documentos reais da época, essa foi a sua chance.",
-    "E você? Ficaria em casa, ou iria trabalhar mesmo assim? Me conta nos comentários.",
-    "E se inscreve, porque no próximo, você acorda em outra época do Brasil."
+    "Cem anos depois, o mundo passou por outra pandemia. E muita coisa daqueles Conselhos ao Povo, evitar aglomeração, não visitar, nada de abraço, voltou igualzinho.",
+    "Me conta nos comentários: você conhecia essa história da gripe espanhola em São Paulo? Alguém da sua família contava sobre ela?",
+    "E manda esse vídeo para alguém de São Paulo. Tenho certeza que vai querer ver a cidade em mil novecentos e dezoito.",
+    "E se esse vídeo te fez pensar, deixa o seu like. Isso ajuda a história a chegar em mais gente.",
+    "Se inscreve e ativa o sininho, porque no próximo, você acorda em outra época do Brasil. Escreve aqui embaixo qual época você quer viver."
    ]
   }
  ]

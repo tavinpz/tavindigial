@@ -47,16 +47,20 @@ intro = [
     F("A cidade tem pouco mais de meio milhão de habitantes, e não para de crescer.", foto('se')),
     F("E você acabou de acordar aqui. Sem dinheiro, e sem conhecer ninguém.", {"tipo": "bolso"}),
     F("Quanto tempo você dura?", {"tipo": "titulo", "txt": "QUANTO TEMPO\nVOCÊ DURA?"}),
+    F("É uma cidade de imigrantes. Italianos, portugueses, espanhóis, gente de todo o interior. Bondes, fábricas, mercados lotados.", foto('direita')),
     F("Funciona assim. Você é um operário, e trabalha numa fábrica da cidade.", foto('mercado')),
     F("Tudo o que vai acontecer com você aconteceu de verdade, com datas e números de verdade.", {"tipo": "documento", "titulo": "FONTES DESTE VÍDEO", "txt": "Registros do Serviço Sanitário, jornais de 1918 e pesquisa histórica publicada."}),
     F("E você acompanha três coisas. Sua saúde. Seu dinheiro. E sua segurança.", barras(85, 35, 70)),
     F("Se qualquer uma delas zerar, acabou.", barras(85, 35, 70, "SE ZERAR, ACABOU")),
+    F("E se você mora em São Paulo, presta atenção nas ruas. Muitas delas ainda existem, e você provavelmente já passou por elas.", foto('se', zoom=[0.5, 0.6])),
 ]
 
 cap1 = [
     F("Parte um. A notícia que vem de longe.", {"tipo": "capitulo", "n": "PARTE UM", "txt": "A NOTÍCIA QUE VEM DE LONGE"}),
     F("Desde junho, os jornais de São Paulo falam de uma gripe que está matando gente na Europa.", foto('jornal')),
-    F("O mundo está no fim de uma guerra. E a doença viaja nos navios, junto com os soldados.", foto('maca')),
+    F("O mundo está no fim de uma guerra. E a doença viaja nos navios, junto com os soldados.", foto('oakland', zoom=[0.5, 0.35], w=1150, ar=0.66)),
+    F("Ela ganhou o nome de gripe espanhola. Não porque começou na Espanha, mas porque a Espanha, fora da guerra, era um dos poucos países onde os jornais podiam falar livremente da doença.", {"tipo": "carimbo_doc", "titulo": "POR QUE ESPANHOLA?", "txt": "IMPRENSA LIVRE"}),
+    F("Em setembro, um navio chamado Demerara chega ao Brasil vindo da Europa, com doentes a bordo. Passa por Recife, Salvador e Rio de Janeiro.", {"tipo": "documento", "titulo": "NAVIO DEMERARA · SETEMBRO DE 1918", "txt": "Vindo da Europa, com doentes a bordo. Escalas: Recife, Salvador, Rio de Janeiro.", "carimbo": "A BORDO"}),
     F("Em setembro, as notícias ficam mais frequentes. Mas a gripe ainda parece um problema dos outros.", {"tipo": "documento", "titulo": "JORNAIS DE SÃO PAULO · SETEMBRO DE 1918", "txt": "A gripe se espalha pela Europa. No Brasil, ainda se fala dela como coisa distante."}),
     F("No Rio de Janeiro, ela já chegou.", {"tipo": "carimbo_doc", "titulo": "RIO DE JANEIRO · OUTUBRO DE 1918", "txt": "A GRIPE CHEGOU"}),
     F("E no dia nove de outubro, os jornais contam que jogadores de futebol amador vindos do Rio caíram doentes.", {"tipo": "documento", "titulo": "JORNAIS · 9 DE OUTUBRO", "txt": "Jogadores amadores vindos do Rio estão doentes."}),
@@ -68,6 +72,8 @@ cap1 = [
     F("E tomar todos os dias uma dose de quinino.", {"tipo": "lista", "titulo": "CONSELHOS AO POVO", "itens": ["Evitar aglomerações", "Não fazer visitas", "Quinino todo dia"]}),
     F("O problema é que o quinino é remédio de malária. Contra a gripe, não adiantava.", {"tipo": "carimbo_doc", "titulo": "QUININO", "txt": "NÃO FUNCIONA"}),
     F("Mas você não sabe disso. E você trabalha numa fábrica cheia de gente.", barras(80, 35, 55, "FÁBRICA CHEIA")),
+    F("Então aqui vai a sua primeira escolha. A gripe chegou. Você continua indo trabalhar, ou fica em casa sem salário?", {"tipo": "escolha", "a": "TRABALHAR", "b": "FICAR EM CASA", "quando": "OUTUBRO DE 1918"}),
+    F("Escreve a sua escolha nos comentários agora. No final do vídeo, você descobre o que teria acontecido com você.", {"tipo": "escolha", "a": "TRABALHAR", "b": "FICAR EM CASA", "txt": "COMENTE AGORA", "quando": "OUTUBRO DE 1918"}),
 ]
 
 cap2 = [
@@ -82,11 +88,13 @@ cap2 = [
     F("As escolas vazias viram postos médicos, com médicos, remédio e comida.", {"tipo": "documento", "titulo": "POSTO DE SOCORRO", "txt": "Escola transformada em posto médico. Atendimento, remédios e comida.", "carimbo": "POSTO"}),
     F("Em outras cidades do mundo, auditórios inteiros viraram hospital.", foto('oakland', w=1150, ar=0.66)),
     F("E se a fábrica fecha, ou se você fica doente, você não recebe.", barras(70, 15, 50, "SEM SALÁRIO")),
+    F("Não existe auxílio, não existe seguro, não existe carteira assinada. Quem não trabalha, não come.", {"tipo": "bolso"}),
+    F("Se você está gostando de viver a história por dentro, se inscreve no canal. Cada vídeo aqui é uma época diferente do Brasil.", {"tipo": "mesa", "fotos": [A['se'], A['procissao'], A['oakland']], "txt": "INSCREVA-SE"}),
 ]
 
 cap3 = [
     F("Parte três. O pior dia.", {"tipo": "capitulo", "n": "PARTE TRÊS", "txt": "O PIOR DIA"}),
-    F("A gripe de mil novecentos e dezoito não é uma gripe comum.", foto('enfermaria')),
+    F("A gripe de mil novecentos e dezoito não é uma gripe comum.", foto('oakland', zoom=[0.35, 0.55], w=1150, ar=0.66)),
     F("Febre alta, dor no corpo inteiro. E, em muitos casos, pneumonia.", barras(40, 15, 40, "FEBRE")),
     F("E ela mata muita gente jovem. Gente da sua idade.", foto('engraxates')),
     F("No fim de outubro, as mortes disparam.", {"tipo": "carimbo_doc", "titulo": "SÃO PAULO · FIM DE OUTUBRO", "txt": "AS MORTES DISPARAM"}),
@@ -94,6 +102,7 @@ cap3 = [
     F("Num único dia, são sete mil setecentos e oitenta e seis doentes.", {"tipo": "numero", "txt": "7.786", "rotulo": "doentes em 4 de novembro"}),
     F("E cento e setenta e dois mortos.", {"tipo": "numero", "txt": "172", "rotulo": "mortos em 4 de novembro"}),
     F("Em quase toda casa tem alguém de cama. Muita gente não consegue trabalhar.", foto('belavista')),
+    F("Escolas, teatros, cinemas, concertos: quase tudo que reunia gente está fechado. A cidade que não parava de crescer, de repente, para.", foto('direita', zoom=[0.4, 0.5])),
     F("Se você ficou doente no começo de novembro, o seu painel está assim.", barras(25, 10, 35, "4 DE NOVEMBRO")),
     F("Em meados de novembro, a curva finalmente vira.", linha(4)),
     F("E no fim do mês, as mortes começam a cair.", {"tipo": "carimbo_doc", "titulo": "SÃO PAULO · FIM DE NOVEMBRO", "txt": "A CURVA CAI"}),
@@ -106,17 +115,24 @@ cap4 = [
     F("Pelo menos cento e dezesseis mil ficaram doentes. Mais de um em cada cinco.", {"tipo": "numero", "txt": "116 mil", "rotulo": "doentes, pelo menos"}),
     F("E os mortos oficiais foram cinco mil trezentos e trinta e um.", {"tipo": "numero", "txt": "5.331", "rotulo": "mortos oficiais"}),
     F("Cerca de um por cento da cidade. Em menos de dois meses.", {"tipo": "comparacao", "a": "DOENTES", "va": DOENTES, "b": "MORTOS", "vb": MORTOS, "ate": "b"}),
+    F("E no Rio de Janeiro, a capital do país, foi ainda pior. As estimativas falam em cerca de quinze mil mortos.", {"tipo": "comparacao", "a": "SÃO PAULO", "va": 5331, "b": "RIO DE JANEIRO", "vb": 15000, "ate": "b"}),
     F("E a gripe não escolheu classe. Rodrigues Alves tinha sido eleito presidente do Brasil em mil novecentos e dezoito.", foto('ra')),
     F("Pegou a gripe, e morreu em janeiro de mil novecentos e dezenove, antes de tomar posse.", {"tipo": "carimbo_doc", "titulo": "PRESIDENTE ELEITO · RODRIGUES ALVES", "txt": "NÃO TOMOU POSSE"}),
+    F("Quem assumiu foi o vice, Delfim Moreira. E o Brasil precisou fazer uma nova eleição.", {"tipo": "ficha", "titulo": "FICHA · 1919", "linhas": [["ELEITO", "Rodrigues Alves"], ["MORREU", "janeiro de 1919"], ["ASSUMIU", "Delfim Moreira"]], "rodape": "Uma nova eleição foi convocada"}),
     F("Então, quanto você dura?", {"tipo": "titulo", "txt": "QUANTO\nVOCÊ DUROU?"}),
     F(f"A chance de pegar a gripe era alta. Mais de uma em cada cinco pessoas.", barras(30, 10, 40, "1 EM CADA 5 ADOECEU")),
     F(f"Mas, entre os doentes registrados, morreram cerca de quatro ou cinco em cada cem.", {"tipo": "numero", "txt": "4,6%", "rotulo": "dos doentes morreram"}),
-    F("Então, se você ficou longe das aglomerações e teve sorte, provavelmente atravessou novembro. Fraco, sem dinheiro, mas vivo.", barras(60, 10, 60, "VIVO")),
+    F("Lembra da sua escolha lá no começo? Trabalhar ou ficar em casa?", {"tipo": "escolha", "a": "TRABALHAR", "b": "FICAR EM CASA", "quando": "OUTUBRO DE 1918"}),
+    F("Se você ficou em casa, longe das aglomerações, e teve sorte, provavelmente atravessou novembro. Fraco, sem dinheiro, mas vivo.", barras(60, 10, 60, "FICOU EM CASA: VIVO")),
+    F("Se você foi trabalhar na fábrica lotada, a chance de pegar a gripe era muito maior. E aí tudo dependia da sorte, e de um lugar para se tratar.", barras(30, 25, 30, "FOI TRABALHAR: RISCO ALTO")),
     F("E se ficou doente no pior momento, sem cama e sem médico, as suas chances caíam muito.", barras(10, 5, 20, "O PIOR MOMENTO")),
-    F("No mundo, a gripe de mil novecentos e dezoito matou dezenas de milhões de pessoas.", foto('policia')),
-    F("Com fotos e documentos reais da época, essa foi a sua chance.", {"tipo": "mesa", "fotos": [A['se'], A['oakland'], A['mercado'], A['enfermaria'], A['belavista']], "txt": "FOTOS E DOCUMENTOS REAIS"}),
-    F("E você? Ficaria em casa, ou iria trabalhar mesmo assim? Me conta nos comentários.", {"tipo": "escolha", "a": "FICAR EM CASA", "b": "TRABALHAR", "txt": "COMENTE A SUA", "quando": "OUTUBRO DE 1918"}),
-    F("E se inscreve, porque no próximo, você acorda em outra época do Brasil.", {"tipo": "fim"}),
+    F("No mundo, a gripe de mil novecentos e dezoito matou dezenas de milhões de pessoas.", foto('oakland', w=1150, ar=0.66)),
+    F("Com fotos e documentos reais da época, essa foi a sua chance.", {"tipo": "mesa", "fotos": [A['se'], A['oakland'], A['mercado'], A['procissao'], A['belavista']], "txt": "FOTOS E DOCUMENTOS REAIS"}),
+    F("Cem anos depois, o mundo passou por outra pandemia. E muita coisa daqueles Conselhos ao Povo, evitar aglomeração, não visitar, nada de abraço, voltou igualzinho.", {"tipo": "documento", "titulo": "CONSELHOS AO POVO · 1918", "txt": "Evite aglomerações. Não faça visitas. Nada de aperto de mão, abraço ou beijo."}),
+    F("Me conta nos comentários: você conhecia essa história da gripe espanhola em São Paulo? Alguém da sua família contava sobre ela?", {"tipo": "escolha", "a": "JÁ CONHECIA", "b": "PRIMEIRA VEZ", "txt": "COMENTE A SUA", "quando": "1918"}),
+    F("E manda esse vídeo para alguém de São Paulo. Tenho certeza que vai querer ver a cidade em mil novecentos e dezoito.", {"tipo": "mesa", "fotos": [A['se'], A['direita'], A['procissao']], "txt": "COMPARTILHE"}),
+    F("E se esse vídeo te fez pensar, deixa o seu like. Isso ajuda a história a chegar em mais gente.", {"tipo": "mesa", "fotos": [A['engraxates'], A['jornal'], A['mercado']], "txt": "DEIXA O LIKE"}),
+    F("Se inscreve e ativa o sininho, porque no próximo, você acorda em outra época do Brasil. Escreve aqui embaixo qual época você quer viver.", {"tipo": "fim"}),
 ]
 
 spec = {
@@ -124,7 +140,7 @@ spec = {
     "motor": "piper", "voz": "cadu", "velocidade": 0.95, "lang": "pt-br", "legenda": True, "acento": "#e9c46a", "marca": "QUANTO VOCÊ DURA?", "trilha": 0.13, "cauda": 4.0,
     "numeros": {"mil novecentos e dezoito": "1918", "mil novecentos e dezenove": "1919", "nove de outubro": "9 de outubro", "treze": "13", "vinte e dois de outubro": "22 de outubro",
                 "quatro de novembro": "4 de novembro", "sete mil setecentos e oitenta e seis": "7.786", "cento e setenta e dois": "172",
-                "quinhentos e vinte e oito mil": "528 mil", "cento e dezesseis mil": "116 mil", "cinco mil trezentos e trinta e um": "5.331", "um por cento": "1%"},
+                "quinhentos e vinte e oito mil": "528 mil", "cento e dezesseis mil": "116 mil", "cinco mil trezentos e trinta e um": "5.331", "um por cento": "1%", "quinze mil": "15 mil"},
     "blocos": [],
 }
 nomes = {1: 'A notícia que vem de longe', 2: 'A cidade fecha', 3: 'O pior dia', 4: 'O veredito'}
