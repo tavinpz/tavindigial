@@ -49,6 +49,9 @@ export const Figura: React.FC<FigP> = ({ x, y, esc = 1, pose, vol = 1, cinza, te
             ? <g><rect x={-20} y={96} width={40} height={32} rx={12} {...st(m)} />{[-9, 0, 9].map((k) => <path key={k} d={`M ${k},99 L ${k},122`} {...ln} strokeWidth={2} />)}<path d="M -20,118 Q -27,108 -19,100" {...ln} /></g>
             : <g><path d="M -13,106 L 13,106 L 15,130 C 15,152 9,164 3,166 L -8,166 C -15,152 -15,130 -13,106 Z" {...st(m)} /><path d="M -13,112 C -24,120 -24,140 -15,148" {...st(m)} strokeWidth={3.5} />{[-5, 1, 7].map((k) => <path key={k} d={`M ${k},140 L ${k},162`} {...fino} opacity={0.6} />)}</g>}
         </g>
+        <ellipse cx={0} cy={113} rx={17 * v} ry={9} fill={m ? PM : P} />
+        <path d={`M ${12 * v},56 C ${22 * v},46 ${30 * v},32 ${31 * v},12 C ${25 * v},34 ${16 * v},44 ${8 * v},50 Z`} fill={K.tinta} opacity={0.85} />
+        {[0, 1, 2, 3].map((i) => <path key={i} d={`M ${16 * v - i * 5},${70 + i * 9} l ${7 * v},-9`} {...fino} opacity={0.7} />)}
         {/* deltoide */}
         <path d={`M ${-24 * v},-10 C ${-6 * v},-27 ${27 * v},-22 ${31 * v},6 C ${33 * v},28 ${25 * v},44 ${13 * v},54 C ${7 * v},36 ${-10 * v},20 ${-24 * v},12 Z`} {...st(m)} />
         <path d={`M ${4 * v},-14 C ${10 * v},6 ${13 * v},28 ${13 * v},46`} {...fino} /><path d={`M ${17 * v},-10 C ${22 * v},8 ${22 * v},26 ${18 * v},42`} {...fino} />
@@ -69,7 +72,7 @@ export const Figura: React.FC<FigP> = ({ x, y, esc = 1, pose, vol = 1, cinza, te
           {pose.pe === 'solto'
             ? <path d="M -11,152 C -15,186 -9,208 0,212 C 9,208 13,186 11,152 Z" {...st(m)} />
             : <g><path d="M -13,152 L 13,152 L 20,170 C 34,176 36,190 26,192 L -14,192 C -20,186 -18,166 -13,152 Z" {...st(m)} />{[8, 15, 22].map((k) => <path key={k} d={`M ${k},184 L ${k + 1},191`} {...fino} opacity={0.6} />)}</g>}
-          <path d="M -11,-6 Q 0,-14 11,-6" {...ln} opacity={0.7} /><path d="M -9,8 Q 0,15 9,8" {...ln} opacity={0.7} />
+          <ellipse cx={0} cy={0} rx={17 * q} ry={8} fill={m ? PM : P} /><path d="M -11,-6 Q 0,-14 11,-6" {...ln} opacity={0.7} /><path d="M -9,8 Q 0,15 9,8" {...ln} opacity={0.7} />
         </g>
       </g>
     );
@@ -79,7 +82,9 @@ export const Figura: React.FC<FigP> = ({ x, y, esc = 1, pose, vol = 1, cinza, te
   const peito = (l: 1 | -1) => (
     <g transform={`scale(${l},1)`}>
       <path d={`M 3,30 C 22,22 60,22 ${oW - 12},36 C ${oW - 6},58 ${oW - 22},78 50,84 C 30,90 10,84 3,74 Z`} fill={l === 1 ? P : PM} stroke={K.tinta} strokeWidth={3} strokeLinejoin="round" />
-      <path d={`M 6,74 C 26,87 54,85 ${oW - 16},64 C ${oW - 20},80 50,93 30,93 C 16,93 8,85 6,74 Z`} fill={SH} opacity={0.9} />
+      <path d={`M 6,76 C 26,88 54,86 ${oW - 16},66 C ${oW - 20},80 50,92 30,92 C 16,92 8,85 6,76 Z`} fill={cinza ? SH : K.tinta} opacity={0.88} />
+      {l === 1 && !cinza && <path d={`M ${oW - 10},98 C ${oW - 22},128 ${cint + 6},150 ${cint},176 L ${cint - 9},176 C ${cint - 4},150 ${oW - 34},128 ${oW - 24},100 Z`} fill={K.tinta} opacity={0.8} />}
+      {l === 1 && !cinza && [0, 1, 2, 3, 4].map((i) => <path key={i} d={`M ${cint - 12 + i * 2},${168 - i * 14} l -12,9`} {...fino} opacity={0.75} />)}
       {[0, 1, 2].map((i) => <path key={i} d={`M ${oW - 20 - i * 5},${100 + i * 17} q -10,2 -16,10`} {...ln} />)}
       <path d={`M ${cint + 13},112 C ${cint + 8},140 ${cint + 2},158 ${cint - 2},176`} {...fino} />
       <path d={`M ${cint - 2},182 L 13,218`} {...ln} opacity={0.5} />
@@ -113,18 +118,24 @@ export const Figura: React.FC<FigP> = ({ x, y, esc = 1, pose, vol = 1, cinza, te
       {braco(-1, pose.ombE, pose.cotE ?? 6)}{braco(1, pose.ombD, pose.cotD ?? 6)}
       {/* pescoço */}
       <path d="M -20,-56 L 20,-56 L 25,-10 L -25,-10 Z" {...st(false)} /><path d="M -14,-46 L -5,-10 M 14,-46 L 5,-10" {...fino} />
-      <path d="M -20,-46 Q 0,-34 20,-46 L 20,-56 L -20,-56 Z" fill={SH} opacity={0.9} />
+      <path d="M -20,-44 Q 0,-28 20,-44 L 20,-56 L -20,-56 Z" fill={cinza ? SH : K.tinta} opacity={0.88} />
       {/* cabeça */}
       <g transform={`translate(0,-94) rotate(${cabeca}) scale(1.14)`}>
-        <path d="M -32,-8 q -8,4 -4,20 q 3,8 8,6 Z" {...st(false)} strokeWidth={3.5} /><path d="M 32,-8 q 8,4 4,20 q -3,8 -8,6 Z" {...st(false)} strokeWidth={3.5} />
-        <path d="M -30,-10 C -32,-44 -18,-52 0,-52 C 18,-52 32,-44 30,-10 C 30,8 26,22 16,34 C 8,43 -8,43 -16,34 C -26,22 -30,8 -30,-10 Z" {...st(false)} />
-        <path d="M -33,-10 C -40,-52 -16,-66 2,-63 C 28,-66 40,-44 33,-10 C 29,-28 23,-36 12,-38 C 4,-30 -10,-40 -18,-34 C -26,-30 -30,-22 -33,-10 Z" fill={cinza ? '#262523' : '#3d3b40'} stroke={K.tinta} strokeWidth={3.5} strokeLinejoin="round" />
-        {!cinza && [[-22, -44, -12, -58], [-8, -46, 0, -60], [8, -46, 14, -59], [20, -40, 27, -52]].map((q, i) => <path key={i} d={`M ${q[0]},${q[1]} Q ${(q[0] + q[2]) / 2 - 3},${q[3] + 2} ${q[2]},${q[3]}`} fill="none" stroke="#85828a" strokeWidth={2.2} strokeLinecap="round" />)}
-        <path d="M -24,-14 L -7,-10" stroke={K.tinta} strokeWidth={5} strokeLinecap="round" /><path d="M 24,-14 L 7,-10" stroke={K.tinta} strokeWidth={5} strokeLinecap="round" />
-        <path d="M -21,-2 Q -14,-8 -7,-2 Q -14,2 -21,-2 Z" fill="#fff" stroke={K.tinta} strokeWidth={2} /><path d="M 21,-2 Q 14,-8 7,-2 Q 14,2 21,-2 Z" fill="#fff" stroke={K.tinta} strokeWidth={2} />
-        <circle cx={-14} cy={-2.5} r={3.2} fill={K.tinta} /><circle cx={14} cy={-2.5} r={3.2} fill={K.tinta} />
-        <path d="M -1,-2 L -5,14 Q 0,18 5,14" {...ln} /><path d="M -10,26 Q 0,29 10,25" {...ln} strokeWidth={3} /><path d="M -5,32 Q 0,34 5,32" {...fino} />
-        <path d="M 18,8 C 22,18 18,28 12,34" {...fino} /><path d="M 22,2 C 26,14 22,26 16,33" {...fino} />
+        <path d="M -31,-8 q -8,4 -4,20 q 3,8 8,6 Z" {...st(false)} strokeWidth={3.5} /><path d="M 31,-8 q 8,4 4,20 q -3,8 -8,6 Z" {...st(false)} strokeWidth={3.5} />
+        <path d="M -29,-12 C -31,-40 -18,-50 0,-50 C 18,-50 31,-40 29,-12 C 29,6 24,20 13,34 L 4,44 Q 0,46 -4,44 L -13,34 C -24,20 -29,6 -29,-12 Z" {...st(false)} />
+        {cinza
+          ? <path d="M -33,-10 C -40,-52 -16,-66 2,-63 C 28,-66 40,-44 33,-10 C 29,-28 23,-36 12,-38 C 4,-30 -10,-40 -18,-34 C -26,-30 -30,-22 -33,-10 Z" fill="#262523" stroke={K.tinta} strokeWidth={3.5} strokeLinejoin="round" />
+          : <>
+            <path d="M -34,-6 L -41,-30 L -34,-28 L -44,-54 L -31,-47 L -31,-74 L -17,-57 L -10,-84 L -1,-59 L 10,-86 L 16,-59 L 32,-76 L 30,-49 L 45,-56 L 35,-30 L 42,-28 L 34,-6 L 28,-26 L 20,-13 L 12,-30 L 4,-11 L -6,-30 L -14,-13 L -22,-28 Z" fill="#141416" stroke={K.osso} strokeWidth={2.6} strokeLinejoin="round" />
+            {[[-36, -50, -26, -34], [-25, -66, -18, -44], [-8, -74, -4, -48], [11, -76, 12, -48], [28, -66, 24, -42], [38, -48, 31, -32]].map((q, i) => <path key={i} d={`M ${q[0]},${q[1]} L ${q[2]},${q[3]}`} stroke={K.osso} strokeWidth={1.8} strokeLinecap="round" opacity={0.55} />)}
+          </>}
+        <path d="M -26,-17 L -7,-9" stroke={K.tinta} strokeWidth={5.5} strokeLinecap="round" /><path d="M 26,-17 L 7,-9" stroke={K.tinta} strokeWidth={5.5} strokeLinecap="round" />
+        <path d="M -23,-4 L -8,-2 L -10,5 Q -16,7 -21,3 Z" fill="#fff" stroke={K.tinta} strokeWidth={1.6} /><path d="M 23,-4 L 8,-2 L 10,5 Q 16,7 21,3 Z" fill="#fff" stroke={K.tinta} strokeWidth={1.6} />
+        <path d="M -24,-5 L -7,-2.5" stroke={K.tinta} strokeWidth={4} strokeLinecap="round" /><path d="M 24,-5 L 7,-2.5" stroke={K.tinta} strokeWidth={4} strokeLinecap="round" />
+        <circle cx={-14} cy={0.5} r={3.6} fill={K.tinta} /><circle cx={14} cy={0.5} r={3.6} fill={K.tinta} /><circle cx={-13} cy={-0.5} r={1} fill="#fff" /><circle cx={15} cy={-0.5} r={1} fill="#fff" />
+        <path d="M -1,8 L 2,15 L -2,16" {...ln} strokeWidth={2.2} /><path d="M -8,27 L 5,27 L 9,25" {...ln} strokeWidth={2.8} /><path d="M -3,33 L 3,33" {...fino} />
+        {!cinza && <path d="M 29,-12 C 29,6 24,20 13,34 L 9,38 C 18,22 21,6 20,-14 Z" fill={K.tinta} opacity={0.82} />}
+        {!cinza && [0, 1, 2].map((i) => <path key={i} d={`M ${-22 + i * 3},${12 + i * 5} l 7,5`} {...fino} opacity={0.6} />)}
       </g>
     </g>
   );
