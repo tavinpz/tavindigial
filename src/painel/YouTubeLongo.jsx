@@ -56,6 +56,9 @@ function Bloco({ titulo, texto, linhas = 3 }) {
 export function PerfilCanal({ c, fechar }) {
   const p = c.perfil || {}
   const abs = (u) => (u && u.startsWith('/') ? `${window.location.origin}${u}` : u)
+  // Arquivo no Storage (outro domínio): o navegador ignora o atributo download e abre a imagem. O ?download= força baixar.
+  const ext = (u, padrao) => ((u || '').split('?')[0].match(/\.(png|jpe?g|webp|svg)$/i) || [])[1] || padrao
+  const baixarArq = (u, nome) => (/\/storage\/v1\/object\//.test(u || '') ? comDownload(u, nome) : abs(u))
   return (
     <Janela titulo={`Perfil do canal · ${c.nome}`} sub="Tudo do canal: copie cada campo para o YouTube, Instagram e TikTok" fechar={fechar} larga>
       <div className="yl-perfil">
@@ -66,8 +69,8 @@ export function PerfilCanal({ c, fechar }) {
             <h3>{c.nome}</h3>
             <p className="p-sub">{[p.handle, p.idioma, p.pais, p.categoria].filter(Boolean).join(' · ')}</p>
             <div className="p-acoes">
-              {c.logo && <a className="p-btn p-btn--mini" href={abs(c.logo)} download={`${c.id}-logo.png`}>Baixar logo (800×800)</a>}
-              {c.banner && <a className="p-btn p-btn--mini" href={abs(c.banner)} download={`${c.id}-banner.jpg`}>Baixar banner (2560×1440)</a>}
+              {c.logo && <a className="p-btn p-btn--mini" href={baixarArq(c.logo, `${c.id}-logo.${ext(c.logo, 'png')}`)} download={`${c.id}-logo.${ext(c.logo, 'png')}`}>Baixar logo (800×800)</a>}
+              {c.banner && <a className="p-btn p-btn--mini" href={baixarArq(c.banner, `${c.id}-banner.${ext(c.banner, 'jpg')}`)} download={`${c.id}-banner.${ext(c.banner, 'jpg')}`}>Baixar banner (2560×1440)</a>}
             </div>
           </div>
         </div>
