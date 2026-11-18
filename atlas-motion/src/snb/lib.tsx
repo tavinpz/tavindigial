@@ -58,7 +58,7 @@ export const Figura: React.FC<FigP> = ({ x, y, esc = 1, pose, vol = 1, cinza, te
         <path d={membro(140, 46 * (0.8 + 0.2 * vol), 24, 11 * vol)} {...st} />
         {pose.pe === 'solto'
           ? <path d="M -11,134 Q -15,170 -3,186 L 6,186 Q 15,168 11,134 Z" {...st} />
-          : <path d={`M -13,132 L 13,132 L ${lado * 34},156 Q ${lado * 36},166 ${lado * 22},166 L ${-lado * 14},166 Z`} {...st} />}
+          : <path d={`M ${-lado * 13},132 L ${lado * 13},132 L ${lado * 34},156 Q ${lado * 36},166 ${lado * 22},166 L ${-lado * 14},166 Z`} {...st} />}
         <path d="M -9,10 Q 0,18 9,10" {...ln} />
       </g>
     </g>
