@@ -15,13 +15,13 @@ const Barra: React.FC<{ x1: number; x2: number; y: number; op?: number }> = ({ x
 // 1. Gancho: metade do tamanho, mas aguenta 3 minutos pendurado
 const CenaGancho: React.FC<CenaProps> = ({ g, D, ts }) => {
   const t2 = ts[1]; const k = L(g, [t2 - 4, t2 + 14], [0, 1]);
-  const esc = 1.18 - 0.2 * k, x = 560 + 60 * k, y = 296 + 112 * k, barY = y - 208 * esc;
+  const esc = 1.25 - 0.25 * k, x = 560 + 60 * k, y = 300 + 100 * k, barY = y - 200 * esc;
   const omb = 8 + 160 * k, bal = k * Math.sin(g / 13) * 1.5;
   const seg = Math.round(L(g, [t2 + 16, t2 + 100], [0, 180]));
   return (
     <Palco g={g} D={D}>
       <Etiqueta g={g} ini={6} txt="GRIP STRENGTH · AT HOME · NO GYM" />
-      <Figura x={1130} y={250} esc={1.3} vol={1.6} cinza pose={{ ombE: 16, ombD: 16, cotE: 10, cotD: 10, pernaE: 7, pernaD: 7, pe: 'chao' }} op={L(g, [0, 10], [0, 1]) * (1 - L(g, [t2 - 4, t2 + 8], [0, 1]))} resp={Math.sin(g / 16)} />
+      <Figura x={1130} y={262} esc={1.42} vol={1.6} cinza pose={{ ombE: 16, ombD: 16, cotE: 10, cotD: 10, pernaE: 7, pernaD: 7, pe: 'chao' }} op={L(g, [0, 10], [0, 1]) * (1 - L(g, [t2 - 4, t2 + 8], [0, 1]))} resp={Math.sin(g / 16)} />
       <Barra x1={390} x2={850} y={barY} op={k} />
       <g transform={`rotate(${bal} ${x} ${barY})`}>
         <Figura x={x} y={y} esc={esc} pose={{ ombE: omb, ombD: omb, cotE: 6 - 4 * k, cotD: 6 - 4 * k, pernaE: 4 - 2 * k, pernaD: 4 - 2 * k, pe: k > 0.5 ? 'solto' : 'chao', punho: k > 0.6 }} resp={Math.sin(g / 15)} tendao={k * (0.55 + 0.35 * Math.sin(g / 6))} op={L(g, [0, 10], [0, 1])} />
@@ -64,7 +64,7 @@ const CenaEstudo: React.FC<CenaProps> = ({ g, D, ts }) => {
 
 // 3. Promessa: dá para treinar em casa
 const CenaPromessa: React.FC<CenaProps> = ({ g, D, ts }) => {
-  const t2 = ts[1]; const barY = 235, esc = 0.95, x = 660, y = barY + 208 * esc;
+  const t2 = ts[1]; const barY = 235, esc = 0.95, x = 660, y = barY + 200 * esc;
   const s = pop(g, t2, 9); const trem = g > t2 && g < t2 + 8 ? Math.sin(g * 2.4) * (8 - (g - t2)) : 0;
   return (
     <Palco g={g} D={D}>
