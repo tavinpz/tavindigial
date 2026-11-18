@@ -10,6 +10,7 @@ import '@fontsource/playfair-display/900.css';
 import '@fontsource/inter/600.css';
 import React from 'react';
 import { AbsoluteFill, Img, staticFile, spring, getInputProps } from 'remotion';
+import { GRAO } from './grao';
 const TESTE = ((getInputProps() as any).teste || '') as string;
 import { clamp, rnd, EO, prog } from '../lib/anim';
 
@@ -38,12 +39,18 @@ export const rasgado = (seed: number, dente = 1.6, n = 26) => {
   return `polygon(${pts.join(',')})`;
 };
 
-/** filtros SVG reutilizáveis (definidos uma vez por quadro) */
+/** filtros SVG reutilizáveis (definidos uma vez por quadro).
+ * Padrão: ruído pré-gerado em ladrilho (feImage + feTile), mesmo visual e cerca de 2× mais rápido de renderizar.
+ * teste='lento' volta ao feTurbulence original. */
+const RAPIDO = !TESTE.includes('lento');
+const Ruido: React.FC<{ r: string }> = ({ r }) => RAPIDO
+  ? <><feImage href={GRAO} x={0} y={0} width={256} height={256} result={r + '0'} /><feTile in={r + '0'} result={r} /></>
+  : null;
 export const Filtros: React.FC = () => TESTE.includes('filtro') ? null : (
   <svg width={0} height={0} style={{ position: 'absolute' }}>
     <defs>
       <filter id="grao-papel" x="0" y="0" width="100%" height="100%">
-        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves={2} seed={3} result="n" />
+        {RAPIDO ? <Ruido r="n" /> : <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves={2} seed={3} result="n" />}
         <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.10 0" />
         <feComposite in2="SourceGraphic" operator="in" />
         <feBlend in="SourceGraphic" mode="multiply" />
@@ -53,8 +60,8 @@ export const Filtros: React.FC = () => TESTE.includes('filtro') ? null : (
         <feDiffuseLighting in="n" surfaceScale={3.2} lightingColor="#fff" result="luz"><feDistantLight azimuth={225} elevation={52} /></feDiffuseLighting>
         <feComposite in="luz" in2="SourceGraphic" operator="arithmetic" k1={1.05} k2={0} k3={0} k4={0} />
       </filter>
-      <filter id="tinta-borrada"><feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves={2} seed={5} /><feDisplacementMap in="SourceGraphic" scale={3} /></filter>
-      <filter id="carimbo"><feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves={2} seed={8} result="n" />
+      <filter id="tinta-borrada">{RAPIDO ? <Ruido r="n" /> : <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves={2} seed={5} result="n" />}<feDisplacementMap in="SourceGraphic" in2="n" scale={3} /></filter>
+      <filter id="carimbo">{RAPIDO ? <Ruido r="n" /> : <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves={2} seed={8} result="n" />}
         <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.25 1.32" result="m" />
         <feComposite in="SourceGraphic" in2="m" operator="in" /></filter>
     </defs>
