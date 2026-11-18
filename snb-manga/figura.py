@@ -30,7 +30,7 @@ PERNA_S = ["M 176,930 C 180,1040 170,1140 150,1212 C 162,1282 142,1382 118,1500 
 PERNA_X = ["M 176,930 C 180,1040 170,1140 150,1212 C 158,1140 166,1040 164,940 Z", "M 118,1500 C 142,1382 162,1282 150,1212 C 152,1290 136,1390 110,1500 Z"]
 SHORT = "M 0,726 C 60,746 112,744 150,722 L 184,800 C 210,860 224,920 226,968 L 36,978 L 0,884 Z"
 def parte(pose):
-    if pose == 'frente':
+    if pose in ('frente', 'abraco'):
         sil = ("M 0,30 L 58,30 L 66,104 C 96,128 140,140 190,160 C 250,152 306,196 312,262 C 320,322 314,384 304,444 C 300,504 296,560 290,620 "
                "C 298,690 282,780 254,852 L 216,852 C 208,790 200,712 206,650 C 208,590 208,530 200,462 C 196,430 196,408 194,392 "
                "C 190,440 176,504 150,566 C 138,624 140,684 148,742 L 150,860 L 0,860 Z")
@@ -48,7 +48,11 @@ def parte(pose):
         X = ["M 312,262 C 310,296 294,322 268,330 C 286,312 298,290 298,256 Z", "M 194,392 C 191,430 182,482 168,524 C 174,480 178,440 182,404 Z",
              "M 254,852 C 282,780 298,690 290,620 C 284,700 268,790 244,852 Z", "M 120,742 C 114,682 118,612 130,562 C 128,622 128,690 134,742 Z"]
         ante = "M 206,650 C 230,668 262,664 290,620 C 298,690 282,780 254,852 L 216,852 C 208,790 200,712 206,650 Z"
-    else:  # pendurado na barra
+    if pose == 'abraco':  # braços abraçando uma carga na frente do peito: corta o antebraço pendente (ele é desenhado por cima da carga)
+        sil = sil.replace("C 298,690 282,780 254,852 L 216,852 C 208,790 200,712 206,650", "C 294,672 236,690 206,650")
+        mao = None; G = G[:5]; F = F[:3]; ante = "M 0,0 Z"
+    if pose in ('frente', 'abraco'): return sil, mao, G, F, S, X, ante
+    if True:  # pendurado na barra
         sil = ("M 0,30 L 58,30 L 66,104 C 96,126 128,130 148,122 C 162,50 174,-50 186,-150 C 194,-250 204,-340 210,-420 L 262,-420 "
                "C 268,-340 280,-250 276,-150 C 290,-50 296,60 290,150 C 280,224 244,334 204,424 C 180,504 160,560 150,604 C 138,652 140,692 148,742 L 150,860 L 0,860 Z")
         mao = "M 204,-486 C 204,-498 214,-504 236,-504 C 258,-504 268,-498 268,-486 L 268,-424 C 268,-414 258,-410 236,-410 C 214,-410 204,-414 204,-424 Z"
@@ -63,7 +67,7 @@ def parte(pose):
         X = ["M 290,150 C 280,224 244,334 204,424 C 230,340 262,240 276,160 Z", "M 276,-150 C 290,-50 296,60 290,150 C 282,60 280,-50 266,-150 Z", "M 120,742 C 114,690 118,640 130,596 C 128,646 128,700 134,742 Z"]
         ante = "M 210,-420 L 262,-420 C 268,-340 280,-250 276,-150 C 250,-134 214,-132 186,-150 C 194,-250 204,-340 210,-420 Z"
     return sil, mao, G, F, S, X, ante
-def meio(pose, esp, destaque, pe):
+def meio(pose, esp, destaque, pe, calca=None, bota=None):
     t = 'transform="scale(-1,1)"' if esp else ''
     sil, mao, G, F, S, X, ante = parte(pose); cid = f'c{pose}'
     foot = "M 58,1500 L 122,1500 C 142,1520 162,1540 166,1556 C 150,1568 80,1568 54,1562 C 50,1540 52,1520 58,1500 Z" if pe == 'chao' else "M 58,1500 L 122,1500 C 126,1560 110,1612 90,1622 C 70,1612 54,1560 58,1500 Z"
@@ -72,7 +76,7 @@ def meio(pose, esp, destaque, pe):
     H = lambda d, h='hD': f'<path d="{d}" fill="url(#{h})"/>'
     Lg = lambda d, w=4.4, op=1: f'<path d="{d}" fill="none" stroke="{TINTA}" stroke-width="{w}" stroke-linecap="round" opacity="{op}"/>'
     o.append('<g transform="translate(0,900) scale(1.24,0.93) translate(0,-900)">')
-    o += [P(foot), P(PERNA)] + [H(d) for d in PERNA_S] + [H(d, 'hX') for d in PERNA_X] + [Lg(d) for d in PERNA_G] + [Lg(d, 2, .75) for d in PERNA_F]
+    o += [P(foot, 8.5, bota or OSSO), P(PERNA, 8.5, calca or OSSO)] + [H(d) for d in PERNA_S] + [H(d, 'hX') for d in PERNA_X] + [Lg(d) for d in PERNA_G] + [Lg(d, 2, .75) for d in PERNA_F]
     o.append('</g>')
     o.append(f'<path d="{sil}" fill="{OSSO}"/>')
     o.append(f'<clipPath id="{cid}{int(esp)}"><path d="{sil}"/></clipPath><g clip-path="url(#{cid}{int(esp)})">')
@@ -83,7 +87,7 @@ def meio(pose, esp, destaque, pe):
     for s in SERR: o += [P(serr(*s), 3.4), H(serr(*s, True))]
     o += [Lg(d) for d in TRONCO_G + G] + [Lg(d, 2, .75) for d in TRONCO_F + F]
     o.append(f'<path d="{sil.replace("M 0,30 L 58,30", "M 58,30").replace(" L 0,860 Z", "")}" fill="none" stroke="{TINTA}" stroke-width="8.5" stroke-linejoin="round" stroke-linecap="round"/>')
-    o.append(P(mao))
+    if mao: o.append(P(mao))
     o.append('</g>'); return '\n'.join(o)
 def cabeca():
     meia = "M 0,-150 C 42,-152 68,-124 68,-80 C 69,-50 64,-22 52,2 C 42,20 22,34 0,38 Z"
@@ -102,17 +106,37 @@ def cabeca():
     o.append(f'<path d="M 2,-30 L -5,-10 L 4,-8" fill="none" stroke="{TINTA}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>'
              f'<path d="M -18,12 L 16,12" fill="none" stroke="{TINTA}" stroke-width="4.4" stroke-linecap="round"/><path d="M -8,22 L 8,22" stroke="{TINTA}" stroke-width="2.4" opacity=".7"/>')
     return '<g transform="translate(0,34) scale(1.42) translate(0,-34)">' + '\n'.join(o) + '</g>'
-def figura(pose, destaque=False):
-    pe = 'chao' if pose == 'frente' else 'solto'
-    o = [f'<path d="M -58,30 L 58,30 L 62,60 L -62,60 Z" fill="{OSSO}"/>', meio(pose, False, destaque, pe), meio(pose, True, destaque, pe)]
+CINZA, CINZA_E = '#4A4A52', '#2E2E34'
+def chapeu():
+    return (f'<ellipse cx="0" cy="-196" rx="212" ry="40" fill="{OSSO}" stroke="{TINTA}" stroke-width="8"/>'
+            f'<path d="M -212,-196 C -150,-150 150,-150 212,-196 C 150,-166 -150,-166 -212,-196 Z" fill="url(#hD)"/>'
+            f'<path d="M -112,-206 C -116,-290 -84,-340 0,-342 C 84,-340 116,-290 112,-206 C 60,-190 -60,-190 -112,-206 Z" fill="{OSSO}" stroke="{TINTA}" stroke-width="8" stroke-linejoin="round"/>'
+            f'<path d="M -112,-232 C -60,-214 60,-214 112,-232 L 112,-206 C 60,-190 -60,-190 -112,-206 Z" fill="{VERM}" stroke="{TINTA}" stroke-width="5"/>'
+            f'<path d="M 40,-336 C 92,-320 112,-270 110,-236 C 86,-226 70,-224 56,-222 C 70,-262 64,-306 40,-336 Z" fill="url(#hD)"/>'
+            f'<path d="M -70,-330 C -40,-300 -30,-262 -34,-226 M -20,-338 C 4,-304 10,-262 6,-222" fill="none" stroke="{TINTA}" stroke-width="2" opacity=".6"/>')
+def figura(pose, destaque=False, larg=1.0, roupa='short', cor=None, chap=False, pe=None, reto=False):
+    """roupa: 'short' (cor = VERM por padrão) ou 'macacao' (calça comprida + peitilho + alças). larg alarga o corpo sem mexer na cabeça."""
+    cor = cor or VERM; esc = {VERM: '#9E1F10', CINZA: CINZA_E}.get(cor, '#9E1F10')
+    pe = pe or ('solto' if pose == 'pendurado' else 'chao'); mac = roupa == 'macacao'
+    calca, bota = (cor, '#2A2A2E') if mac else (None, None)
+    SH = SHORT.replace('C 210,860 224,920 226,968', 'C 204,860 218,920 220,968') if reto else SHORT  # barra do short sem abrir (corpo largo)
+    o = [f'<g transform="scale({larg},1)">', f'<path d="M -58,30 L 58,30 L 62,60 L -62,60 Z" fill="{OSSO}"/>', meio(pose, False, destaque, pe, calca, bota), meio(pose, True, destaque, pe, calca, bota)]
     o.append(f'<path d="M 0,180 L 0,334 M 0,344 L 0,640" stroke="{TINTA}" stroke-width="4.4" stroke-linecap="round"/><path d="M -5,566 q 5,8 10,0" fill="none" stroke="{TINTA}" stroke-width="3"/>')
     for e in (False, True):
         t = 'transform="scale(-1,1)"' if e else ''
-        o.append(f'<g {t}><path d="{SHORT}" fill="{VERM}"/><path d="M 108,762 C 126,830 130,900 124,972" fill="none" stroke="#9E1F10" stroke-width="5"/>'
-                 f'<path d="M 150,722 L 184,800 C 210,860 224,920 226,968 L 186,971 C 188,900 178,820 136,740 Z" fill="#9E1F10" opacity=".8"/>'
-                 f'<path d="{SHORT.replace("M 0,726 C", "M 2,726 C").replace(" L 0,884 Z", " L 0,884")}" fill="none" stroke="{TINTA}" stroke-width="8" stroke-linejoin="round"/>'
-                 f'<path d="M 0,752 C 60,772 112,770 156,748" fill="none" stroke="{TINTA}" stroke-width="4"/></g>')
-    o.append(cabeca())
+        o.append(f'<g {t}><path d="{SH}" fill="{cor}"/><path d="M 108,762 C 126,830 130,900 124,972" fill="none" stroke="{esc}" stroke-width="5"/>'
+                 f'<path d="M 150,722 L 184,800 C 210,860 {"218,920 220,968 L 182,971" if reto else "224,920 226,968 L 186,971"} C 188,900 178,820 136,740 Z" fill="{esc}" opacity=".8"/>'
+                 f'<path d="{SH.replace("M 0,726 C", "M 2,726 C").replace(" L 0,884 Z", " L 0,884")}" fill="none" stroke="{TINTA}" stroke-width="8" stroke-linejoin="round"/>'
+                 f'<path d="M 0,752 C 60,772 112,770 156,748" fill="none" stroke="{TINTA}" stroke-width="4"/>')
+        if mac:  # peitilho e alça do macacão
+            o.append(f'<path d="M 0,404 L 96,404 C 104,500 118,620 150,724 C 112,744 60,746 0,728 Z" fill="{cor}" stroke="{TINTA}" stroke-width="7" stroke-linejoin="round"/>'
+                     f'<path d="M 96,404 C 104,500 118,620 150,724 L 122,734 C 96,620 84,500 78,404 Z" fill="{esc}" opacity=".8"/>'
+                     f'<path d="M 62,410 C 74,320 96,230 128,150 L 164,162 C 132,240 108,330 96,410 Z" fill="{cor}" stroke="{TINTA}" stroke-width="7" stroke-linejoin="round"/>'
+                     f'<circle cx="78" cy="428" r="11" fill="{OSSO}" stroke="{TINTA}" stroke-width="4"/>'
+                     f'<path d="M 0,520 L 52,520 L 52,590 C 36,604 16,606 0,606" fill="none" stroke="{TINTA}" stroke-width="4"/>')
+        o.append('</g>')
+    o.append('</g>'); o.append(cabeca())
+    if chap: o.append(chapeu())
     return '\n'.join(o)
 DEFS = f'''<defs>
 <pattern id="hD" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(-52)"><line x1="0" y1="0" x2="0" y2="7" stroke="{TINTA}" stroke-width="2.3"/></pattern>

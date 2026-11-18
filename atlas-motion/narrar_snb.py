@@ -8,7 +8,7 @@ from kokoro_onnx import Kokoro
 pasta = sys.argv[1].rstrip('/')
 TTS = '/home/claude/tts'
 k = Kokoro(f'{TTS}/kokoro-v1.0.onnx', f'{TTS}/voices-v1.0.bin')
-voz = k.get_voice_style('am_michael') * 0.7 + k.get_voice_style('am_onyx') * 0.3  # voz do Strong Not Big (teste)
+voz = k.get_voice_style('am_puck')  # voz do Strong Not Big, escolhida pelo Tavin em 18/11 (antes: 70% am_michael + 30% am_onyx)
 
 rot = json.load(open(f'{pasta}/roteiro.json'))
 sr = 24000; t = 0.6; partes = [np.zeros(int(sr * 0.6))]; blocos = []
