@@ -1,0 +1,56 @@
+{
+ "total": 21.516,
+ "blocos": [
+  {
+   "cena": "gancho",
+   "ini": 0.6,
+   "fim": 7.034,
+   "falas": [
+    {
+     "t": 0.6,
+     "d": 2.386,
+     "txt": "He's half the size of everyone in the gym."
+    },
+    {
+     "t": 3.406,
+     "d": 2.308,
+     "txt": "But he can hang from a bar for three minutes."
+    }
+   ]
+  },
+  {
+   "cena": "estudo",
+   "ini": 7.034,
+   "fim": 14.858,
+   "falas": [
+    {
+     "t": 7.034,
+     "d": 2.945,
+     "txt": "In a study of a hundred and forty thousand people,"
+    },
+    {
+     "t": 10.229,
+     "d": 3.859,
+     "txt": "grip strength predicted how long they lived, better than blood pressure."
+    }
+   ]
+  },
+  {
+   "cena": "promessa",
+   "ini": 14.858,
+   "fim": 19.916,
+   "falas": [
+    {
+     "t": 14.858,
+     "d": 3.02,
+     "txt": "And you can train it at home, with one bar in a doorway."
+    },
+    {
+     "t": 18.297,
+     "d": 0.849,
+     "txt": "Here's how."
+    }
+   ]
+  }
+ ]
+}

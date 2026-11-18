@@ -14,6 +14,8 @@ import { ArteCapa } from './arte/Capa';
 import { B52 } from './b52/B52';
 import { B52v2 } from './b52/B52v2';
 import { Crosswind01 } from './b52/Crosswind01';
+import { SNBTeste } from './snb/Teste';
+import temposSNB from '../public/snb/teste/tempos.json';
 import { Thumb } from './b52/Thumbs';
 import temposCW01 from '../public/b52/tempos.json';
 import { Crosswind02 } from './sr71/Crosswind02';
@@ -42,7 +44,8 @@ const S3: React.FC<{ dur: number }> = ({ dur }) => <Salao3D f={useCurrentFrame()
 
 export const Root: React.FC = () => (
   <>
-    <Composition id="CWThumb" component={Thumb as any} durationInFrames={1} fps={30} width={1280} height={720} defaultProps={{ v: 'a' }} />
+    <Composition id="SNBTeste" component={SNBTeste as any} width={1920} height={1080} fps={30} durationInFrames={Math.ceil(temposSNB.total * 30)} defaultProps={{ tempos: temposSNB as any }} />
+      <Composition id="CWThumb" component={Thumb as any} durationInFrames={1} fps={30} width={1280} height={720} defaultProps={{ v: 'a' }} />
     <Composition id="Crosswind03" component={Crosswind03 as any} durationInFrames={Math.ceil(temposCW03.total * 30)} fps={30} width={1920} height={1080} defaultProps={{ tempos: temposCW03 }} />
     <Composition id="CWThumb03" component={Thumb03 as any} durationInFrames={1} fps={30} width={1280} height={720} defaultProps={{ v: 'a' }} />
     <Composition id="CWThumb02" component={Thumb02 as any} durationInFrames={1} fps={30} width={1280} height={720} defaultProps={{ v: 'a' }} />
