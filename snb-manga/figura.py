@@ -30,7 +30,7 @@ PERNA_S = ["M 176,930 C 180,1040 170,1140 150,1212 C 162,1282 142,1382 118,1500 
 PERNA_X = ["M 176,930 C 180,1040 170,1140 150,1212 C 158,1140 166,1040 164,940 Z", "M 118,1500 C 142,1382 162,1282 150,1212 C 152,1290 136,1390 110,1500 Z"]
 SHORT = "M 0,726 C 60,746 112,744 150,722 L 184,800 C 210,860 224,920 226,968 L 36,978 L 0,884 Z"
 def parte(pose):
-    if pose in ('frente', 'abraco'):
+    if pose in ('frente', 'abraco', 'semb'):
         sil = ("M 0,30 L 58,30 L 66,104 C 96,128 140,140 190,160 C 250,152 306,196 312,262 C 320,322 314,384 304,444 C 300,504 296,560 290,620 "
                "C 298,690 282,780 254,852 L 216,852 C 208,790 200,712 206,650 C 208,590 208,530 200,462 C 196,430 196,408 194,392 "
                "C 190,440 176,504 150,566 C 138,624 140,684 148,742 L 150,860 L 0,860 Z")
@@ -51,7 +51,10 @@ def parte(pose):
     if pose == 'abraco':  # braços abraçando uma carga na frente do peito: corta o antebraço pendente (ele é desenhado por cima da carga)
         sil = sil.replace("C 298,690 282,780 254,852 L 216,852 C 208,790 200,712 206,650", "C 294,672 236,690 206,650")
         mao = None; G = G[:5]; F = F[:3]; ante = "M 0,0 Z"
-    if pose in ('frente', 'abraco'): return sil, mao, G, F, S, X, ante
+    if pose == 'semb':  # tronco sem braços (os braços são desenhados por fora, ex.: cruz de ferro)
+        sil = ("M 0,30 L 58,30 L 66,104 C 96,128 140,140 190,160 C 212,200 208,300 194,392 C 190,440 176,504 150,566 C 138,624 140,684 148,742 L 150,860 L 0,860 Z")
+        mao = None; G = G[:1]; F = []; S = [S[3], S[5]]; X = [X[1], X[3]]; ante = "M 0,0 Z"
+    if pose in ('frente', 'abraco', 'semb'): return sil, mao, G, F, S, X, ante
     if True:  # pendurado na barra
         sil = ("M 0,30 L 58,30 L 66,104 C 96,126 128,130 148,122 C 162,50 174,-50 186,-150 C 194,-250 204,-340 210,-420 L 262,-420 "
                "C 268,-340 280,-250 276,-150 C 290,-50 296,60 290,150 C 280,224 244,334 204,424 C 180,504 160,560 150,604 C 138,652 140,692 148,742 L 150,860 L 0,860 Z")

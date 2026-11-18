@@ -38,6 +38,22 @@ def punho(lado):
     return (f'<g transform="scale({lado},1)">' + P("M 222,850 L 302,850 C 314,880 314,930 300,956 C 284,972 240,972 224,956 C 212,930 212,880 222,850 Z", 7)
             + L("M 222,896 C 250,902 276,902 304,896", 3) + L("M 240,900 L 240,962", 2.5, .8) + L("M 262,902 L 262,966", 2.5, .8) + L("M 284,900 L 284,962", 2.5, .8) + '</g>')
 
+def bracos_cruz(destaque=True):
+    """Braços esticados para os lados (cruz de ferro), com argola e fita. Desenha um lado e espelha."""
+    o = []
+    for e in (False, True):
+        t = 'transform="scale(-1,1)"' if e else ''
+        tubo = "M 168,112 C 214,74 286,82 338,112 C 420,100 520,112 612,126 L 616,198 C 520,210 420,226 338,216 C 286,244 222,246 176,214 C 160,180 158,140 168,112 Z"
+        o.append(f'<g {t}><path d="M 664,-1400 L 664,96" stroke="{OSSO}" stroke-width="12" opacity=".7"/><circle cx="664" cy="162" r="66" fill="none" stroke="{OSSO}" stroke-width="20"/>'
+                 + P(tubo) + (f'<path d="{tubo}" fill="{AMBAR}" opacity=".8" style="mix-blend-mode:multiply"/>' if destaque else '')
+                 + H("M 616,198 C 520,210 420,226 338,216 C 286,244 222,246 176,214 C 230,222 290,214 338,190 C 420,198 520,186 614,170 Z")
+                 + H("M 338,216 C 286,244 222,246 176,214 C 220,232 286,232 338,204 Z", 'hX')
+                 + L("M 338,112 C 326,146 326,184 338,216", 4.4) + L("M 200,112 C 250,104 300,112 336,132", 2, .7) + L("M 360,136 C 440,128 530,136 606,146", 2, .7)
+                 + L("M 214,170 C 256,180 300,180 334,170", 2, .7)
+                 + P("M 612,118 C 650,108 700,116 712,150 C 720,186 700,214 664,214 C 640,214 622,208 614,200 Z", 7)
+                 + L("M 640,122 L 638,208", 3) + L("M 664,118 L 664,212", 3) + L("M 688,124 L 688,206", 3) + '</g>')
+    return '\n'.join(o)
+
 def antebracos_abraco(destaque=False):
     """Antebraços por cima da carga, mãos travadas no meio (desenha um lado e espelha)."""
     o = []
@@ -96,6 +112,8 @@ def pose(nome):
     if nome == 'academia_largou': return figura('frente', larg=1.24, cor=CINZA, reto=True) + saco(0, 1440, 440, 300, rot=-7)
     if nome == 'academia_barra':  return halter_barra(-452) + figura('pendurado', larg=1.24, cor=CINZA, reto=True, pe='chao')
     if nome == 'heroi':           return figura('frente')
+    if nome == 'cruz':            return bracos_cruz() + figura('semb', pe='solto')
+    if nome == 'pai_ambar':       return figura('frente', True, larg=1.12, roupa='macacao', cor=CINZA).replace('#2A2A2E', '#CFC8B8')
     if nome == 'argolas':         return ''.join(f'<path d="M {s*236},-1200 L {s*236},-520" stroke="{OSSO}" stroke-width="12" opacity=".7"/><circle cx="{s*236}" cy="-457" r="62" fill="none" stroke="{OSSO}" stroke-width="20"/>' for s in (-1, 1)) + figura('pendurado', True)
     if nome == 'pai':             return figura('frente', larg=1.12, roupa='macacao', cor=CINZA).replace('#2A2A2E', '#CFC8B8')
     if nome == 'pai_saco':        return figura('abraco', larg=1.12, roupa='macacao', cor=CINZA).replace('#2A2A2E', '#CFC8B8') + saco(0, 470, 420, 330) + f'<g transform="scale(1.12,1)">{antebracos_abraco(True)}</g>'
@@ -119,8 +137,10 @@ if __name__ == '__main__':
     if len(sys.argv) > 2 and sys.argv[1] == 'poses':
         d = sys.argv[2]
         import os
-        for n in [x for x, _ in FOLHA] + ['heroi', 'farmer_carry_ambar', 'fazendeiro_saco_ambar', 'pendurado', 'argolas', 'pai', 'pai_saco']:
+        for n in [x for x, _ in FOLHA] + ['heroi', 'farmer_carry_ambar', 'fazendeiro_saco_ambar', 'pendurado', 'argolas', 'pai', 'pai_saco', 'pai_ambar']:
             open(f'{d}/{n}.svg', 'w').write(svg_pose(n)); subprocess.run(['rsvg-convert', '-h', '1500', f'{d}/{n}.svg', '-o', f'{d}/{n}.png'], check=True); os.remove(f'{d}/{n}.svg')
+        open(f'{d}/cruz.svg', 'w').write(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 2260" width="1700" height="2260">{DEFS}<g transform="translate(850,650)">{pose("cruz")}</g></svg>')
+        subprocess.run(['rsvg-convert', '-h', '1500', f'{d}/cruz.svg', '-o', f'{d}/cruz.png'], check=True); os.remove(f'{d}/cruz.svg')
         open(f'{d}/mao_close.svg', 'w').write(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="-60 -140 1000 900" width="1000" height="900">{DEFS}{mao_close()}</svg>')
         subprocess.run(['rsvg-convert', '-w', '1400', f'{d}/mao_close.svg', '-o', f'{d}/mao_close.png'], check=True); os.remove(f'{d}/mao_close.svg'); print('poses ok'); sys.exit()
     W, Hh, cw, ch, e = 3000, 2560, 600, 1160, 0.5
