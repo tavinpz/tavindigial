@@ -1,0 +1,1003 @@
+{
+ "id": "ttr002a",
+ "canal": "ten-thousand-runs",
+ "titulo": "We Simulated 10,000 Risk Battles. The Defender's Advantage Is a Myth",
+ "voz": "cw",
+ "velocidade": 1.0,
+ "lang": "en-us",
+ "legenda": true,
+ "acento": "#ffd23f",
+ "marca": "TEN THOUSAND RUNS",
+ "trilha": 0.14,
+ "cauda": 4.0,
+ "numeros": {
+  "ten thousand": "10,000",
+  "nineteen": "19",
+  "twenty": "20",
+  "thirty": "30",
+  "one die": "1 die",
+  "three dice": "3 dice",
+  "two dice": "2 dice"
+ },
+ "blocos": [
+  {
+   "cena": {
+    "tipo": "arte",
+    "v": [
+     {
+      "tipo": "ano",
+      "ano": "1957",
+      "de": 1940,
+      "txt": "A GAME ABOUT CONQUERING THE WORLD"
+     },
+     {
+      "tipo": "ficha",
+      "titulo": "CASE FILE · THE INVENTOR",
+      "linhas": [
+       [
+        "Name",
+        "Albert Lamorisse"
+       ],
+       [
+        "Job",
+        "Film director"
+       ],
+       [
+        "1957",
+        "Oscar, The Red Balloon"
+       ]
+      ]
+     },
+     {
+      "tipo": "ano",
+      "ano": "1959",
+      "de": 1957,
+      "txt": "IT BECOMES RISK"
+     },
+     {
+      "tipo": "cartas",
+      "modo": "misterio",
+      "selo": "THE OLD ADVICE"
+     },
+     {
+      "tipo": "batalha",
+      "ata": [
+       5,
+       3,
+       2
+      ],
+      "def": [
+       5,
+       4
+      ],
+      "txt": "TIES GO TO DEFENSE"
+     },
+     {
+      "tipo": "tropas",
+      "a": 12,
+      "b": 6,
+      "selo": "ATTACK ONLY LIKE THIS?"
+     },
+     {
+      "tipo": "ficha",
+      "titulo": "SIMULATION LAB · RUN ORDER",
+      "linhas": [
+       [
+        "Attack",
+        "up to 3 dice"
+       ],
+       [
+        "Defense",
+        "up to 2 dice"
+       ],
+       [
+        "Ties",
+        "defender wins"
+       ]
+      ]
+     },
+     {
+      "tipo": "contador",
+      "txt": "BATTLES PER MATCHUP"
+     },
+     {
+      "tipo": "batalha",
+      "ata": [
+       6,
+       4,
+       1
+      ],
+      "def": [
+       3,
+       3
+      ]
+     },
+     {
+      "tipo": "tropas",
+      "a": 8,
+      "b": 7
+     },
+     {
+      "tipo": "conta",
+      "linha": "10,000 battles vs. exact odds",
+      "txt": "MATCH",
+      "rotulo": "every number in this video was checked twice"
+     },
+     {
+      "tipo": "cartas",
+      "modo": "misterio",
+      "selo": "WRONG"
+     },
+     {
+      "tipo": "tropas",
+      "a": 19,
+      "b": 20,
+      "selo": "WHO WINS?"
+     },
+     {
+      "tipo": "batalha",
+      "ata": [
+       4
+      ],
+      "def": [
+       4,
+       2
+      ],
+      "txt": "NEVER?"
+     },
+     {
+      "tipo": "numero",
+      "txt": "?",
+      "rotulo": "ARMIES YOU REALLY NEED"
+     }
+    ]
+   },
+   "falas": [
+    "In 1957, a French film director invented a board game about conquering the world.",
+    "His name was Albert Lamorisse. The same year, his short film The Red Balloon won an Oscar.",
+    "Two years later, Parker Brothers brought his game to America, and called it Risk.",
+    "And for sixty years, players have repeated the same piece of advice.",
+    "The defender has the advantage.",
+    "Ties go to the defense. So never attack unless you clearly outnumber them.",
+    "So we built Risk in code, with the official dice rules.",
+    "And we fought every battle ten thousand times.",
+    "Every roll.",
+    "Every casualty.",
+    "Then we checked every result against the exact math.",
+    "And the old advice is wrong. Not a little wrong.",
+    "By the end of this video, you'll know when a smaller army beats a bigger one,",
+    "the one attack you should almost never make,",
+    "and exactly how many armies you need to take any territory."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "v": [
+     {
+      "tipo": "capitulo",
+      "n": "PART ONE",
+      "txt": "ONE ROLL"
+     },
+     {
+      "tipo": "batalha",
+      "ata": [
+       6,
+       3,
+       2
+      ],
+      "def": [
+       4,
+       3
+      ]
+     },
+     {
+      "tipo": "batalha",
+      "ata": [
+       5,
+       4,
+       1
+      ],
+      "def": [
+       6,
+       2
+      ]
+     },
+     {
+      "tipo": "batalha",
+      "ata": [
+       6,
+       4,
+       1
+      ],
+      "def": [
+       5,
+       4
+      ],
+      "txt": "HIGH VS HIGH"
+     },
+     {
+      "tipo": "batalha",
+      "ata": [
+       5,
+       4,
+       2
+      ],
+      "def": [
+       5,
+       2
+      ],
+      "txt": "TIE = DEFENSE"
+     },
+     {
+      "tipo": "dados",
+      "faces": [
+       4,
+       4
+      ],
+      "txt": "THE LEGEND"
+     },
+     {
+      "tipo": "batalha",
+      "ata": [
+       6,
+       5,
+       1
+      ],
+      "def": [
+       3,
+       2
+      ],
+      "txt": "THE 3RD DIE"
+     },
+     {
+      "tipo": "batalha",
+      "ata": [
+       6,
+       5,
+       1
+      ],
+      "def": [
+       5,
+       2
+      ],
+      "txt": "DROP THE LOWEST"
+     },
+     {
+      "tipo": "batalha",
+      "ata": [
+       6,
+       5,
+       3
+      ],
+      "def": [
+       4,
+       3
+      ],
+      "txt": "BEST TWO OF THREE"
+     },
+     {
+      "tipo": "contador",
+      "txt": "ROLLS · 3 DICE VS 2"
+     },
+     {
+      "tipo": "numero",
+      "txt": "37%",
+      "rotulo": "ATTACKER WINS BOTH"
+     },
+     {
+      "tipo": "numero",
+      "txt": "29%",
+      "rotulo": "DEFENDER WINS BOTH"
+     },
+     {
+      "tipo": "fichas",
+      "rotulo": "ONE ROLL · 3 DICE VS 2",
+      "itens": [
+       {
+        "cor": "#d64535",
+        "nome": "ATTACK WINS 2",
+        "v": 37.2
+       },
+       {
+        "cor": "#e8c46a",
+        "nome": "SPLIT",
+        "v": 33.6
+       },
+       {
+        "cor": "#e8e1cf",
+        "nome": "DEFENSE WINS 2",
+        "v": 29.3
+       }
+      ]
+     },
+     {
+      "tipo": "teste",
+      "a": "ATTACKER LOSES",
+      "pa": "0.92",
+      "b": "DEFENDER LOSES",
+      "pb": "1.08",
+      "vence": "a"
+     },
+     {
+      "tipo": "tropas",
+      "a": 12,
+      "b": 10,
+      "selo": "EDGE: ATTACKER"
+     },
+     {
+      "tipo": "ampulheta",
+      "txt": "IT DISAPPEARS"
+     },
+     {
+      "tipo": "batalha",
+      "ata": [
+       5,
+       3
+      ],
+      "def": [
+       5,
+       4
+      ],
+      "txt": "2 DICE VS 2"
+     },
+     {
+      "tipo": "numero",
+      "txt": "45%",
+      "rotulo": "DEFENDER WINS BOTH · 2 VS 2"
+     },
+     {
+      "tipo": "batalha",
+      "ata": [
+       4
+      ],
+      "def": [
+       4,
+       2
+      ],
+      "txt": "THE WORST MOVE"
+     },
+     {
+      "tipo": "numero",
+      "txt": "75%",
+      "rotulo": "YOU LOSE · 1 DIE VS 2"
+     },
+     {
+      "tipo": "ficha",
+      "titulo": "LAB NOTE · ROLL BY ROLL",
+      "linhas": [
+       [
+        "3 dice vs 2",
+        "attacker favored"
+       ],
+       [
+        "2 dice vs 2",
+        "defender favored"
+       ],
+       [
+        "1 die vs 2",
+        "almost hopeless"
+       ]
+      ],
+      "selo": "SMALL = WEAK"
+     }
+    ],
+    "n": 1,
+    "titulo": "One roll"
+   },
+   "falas": [
+    "Part one. One roll.",
+    "Here's how a fight works.",
+    "The attacker rolls up to three red dice. The defender rolls up to two.",
+    "You line them up, highest against highest, second against second.",
+    "Whoever rolls higher wins that pair. And if it's a tie, the defender wins.",
+    "So the defender wins every tie. That's where the legend comes from.",
+    "But the attacker has something better. A third die.",
+    "With three dice, the attacker gets to throw away the lowest one.",
+    "So their two best dice are usually higher than the defender's two.",
+    "We rolled three against two, ten thousand times.",
+    "The attacker won both pairs 37 percent of the time.",
+    "The defender won both only 29 percent.",
+    "And they split one each 34 percent.",
+    "On average, every roll costs the attacker 0.92 armies, and the defender 1.08.",
+    "In a full-size fight, the attacker is the one with the edge.",
+    "But that edge disappears the moment the attacker runs low.",
+    "Attack with two dice into two, and the math flips.",
+    "Now the defender wins both pairs 45 percent of the time.",
+    "And one die into two is the worst move in the game.",
+    "You lose that roll 75 percent of the time.",
+    "So the rule isn't that defense is strong. It's that small attacks are weak."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "v": [
+     {
+      "tipo": "capitulo",
+      "n": "PART TWO",
+      "txt": "THE WHOLE BATTLE"
+     },
+     {
+      "tipo": "tropas",
+      "a": 10,
+      "b": 10
+     },
+     {
+      "tipo": "ficha",
+      "titulo": "EXPERIMENT 2 · FULL BATTLES",
+      "linhas": [
+       [
+        "Battles",
+        "10,000 per matchup"
+       ],
+       [
+        "Attacker",
+        "keeps 1 army home"
+       ],
+       [
+        "Ends",
+        "when one side is gone"
+       ]
+      ]
+     },
+     {
+      "tipo": "tropas",
+      "a": 2,
+      "b": 1
+     },
+     {
+      "tipo": "batalha",
+      "ata": [
+       3
+      ],
+      "def": [
+       3
+      ],
+      "txt": "1 VS 1"
+     },
+     {
+      "tipo": "numero",
+      "txt": "42%",
+      "rotulo": "2 ARMIES VS 1"
+     },
+     {
+      "tipo": "tropas",
+      "a": 3,
+      "b": 2
+     },
+     {
+      "tipo": "numero",
+      "txt": "36%",
+      "rotulo": "3 ARMIES VS 2"
+     },
+     {
+      "tipo": "tropas",
+      "a": 5,
+      "b": 5
+     },
+     {
+      "tipo": "numero",
+      "txt": "36%",
+      "rotulo": "5 VS 5 · THE LEGEND LOOKS RIGHT"
+     },
+     {
+      "tipo": "fichas",
+      "rotulo": "ATTACKER WINS · EQUAL ARMIES",
+      "itens": [
+       {
+        "cor": "#d64535",
+        "nome": "5 VS 5",
+        "v": 35.9
+       }
+      ],
+      "ate": 1
+     },
+     {
+      "tipo": "fichas",
+      "rotulo": "ATTACKER WINS · EQUAL ARMIES",
+      "itens": [
+       {
+        "cor": "#d64535",
+        "nome": "5 VS 5",
+        "v": 35.9
+       },
+       {
+        "cor": "#d64535",
+        "nome": "10 VS 10",
+        "v": 48.0
+       }
+      ],
+      "de": 1
+     },
+     {
+      "tipo": "fichas",
+      "rotulo": "ATTACKER WINS · EQUAL ARMIES",
+      "itens": [
+       {
+        "cor": "#d64535",
+        "nome": "5 VS 5",
+        "v": 35.9
+       },
+       {
+        "cor": "#d64535",
+        "nome": "10 VS 10",
+        "v": 48.0
+       },
+       {
+        "cor": "#d64535",
+        "nome": "20 VS 20",
+        "v": 57.8
+       }
+      ],
+      "de": 2
+     },
+     {
+      "tipo": "fichas",
+      "rotulo": "ATTACKER WINS · EQUAL ARMIES",
+      "itens": [
+       {
+        "cor": "#d64535",
+        "nome": "5 VS 5",
+        "v": 35.9
+       },
+       {
+        "cor": "#d64535",
+        "nome": "10 VS 10",
+        "v": 48.0
+       },
+       {
+        "cor": "#d64535",
+        "nome": "20 VS 20",
+        "v": 57.8
+       },
+       {
+        "cor": "#d64535",
+        "nome": "30 VS 30",
+        "v": 63.5
+       }
+      ],
+      "de": 3
+     },
+     {
+      "tipo": "tropas",
+      "a": 30,
+      "b": 30,
+      "selo": "BIGGER = BETTER FOR ATTACK"
+     },
+     {
+      "tipo": "cartas",
+      "modo": "misterio",
+      "selo": "NOBODY BELIEVES THIS"
+     },
+     {
+      "tipo": "tropas",
+      "a": 20,
+      "b": 20
+     },
+     {
+      "tipo": "tropas",
+      "a": 19,
+      "b": 20,
+      "selo": "OUTNUMBERED"
+     },
+     {
+      "tipo": "numero",
+      "txt": "58%",
+      "rotulo": "19 ATTACKING VS 20 DEFENDING"
+     },
+     {
+      "tipo": "teste",
+      "a": "19 ATTACKERS",
+      "pa": "58%",
+      "b": "20 DEFENDERS",
+      "pb": "42%",
+      "vence": "a"
+     },
+     {
+      "tipo": "batalha",
+      "ata": [
+       6,
+       5,
+       2
+      ],
+      "def": [
+       5,
+       3
+      ],
+      "txt": "3 DICE, EVERY ROLL"
+     },
+     {
+      "tipo": "teste",
+      "a": "ATTACKER LOSES",
+      "pa": "0.92",
+      "b": "DEFENDER LOSES",
+      "pb": "1.08",
+      "vence": "a"
+     },
+     {
+      "tipo": "batalha",
+      "ata": [
+       3
+      ],
+      "def": [
+       3,
+       1
+      ],
+      "txt": "ONLY AT THE END"
+     }
+    ],
+    "n": 2,
+    "titulo": "The whole battle"
+   },
+   "falas": [
+    "Part two. The whole battle.",
+    "One roll is just a moment. Real battles go on until somebody runs out.",
+    "So we simulated complete battles. Every attack keeps rolling until the defender is wiped out, or the attacker is down to the one army that has to stay home.",
+    "Start small. Two armies attacking one defender.",
+    "Only one of them can fight, so it's one die against one.",
+    "The attacker wins 42 percent of the time. Worse than a coin flip.",
+    "Three against two?",
+    "Just 36 percent.",
+    "Five against five?",
+    "36 percent. So far, the legend looks right.",
+    "But watch what happens as the armies get bigger.",
+    "Ten against ten, 48 percent.",
+    "Twenty against twenty, 58.",
+    "Thirty against thirty, 63.",
+    "The bigger the battle, the more the attacker wins.",
+    "And here's the part nobody believes.",
+    "Twenty armies in your territory. Twenty defenders on the other side.",
+    "One of yours has to stay behind. So you're really attacking with nineteen against twenty.",
+    "And you still win 58 percent of the time.",
+    "A smaller army, beating a bigger one, more often than not.",
+    "Why? Because in a long battle, the attacker keeps rolling three dice almost the whole time.",
+    "And every one of those rolls tilts toward the attacker.",
+    "The defender's tie advantage only matters at the very end, when the attacker is down to one or two dice."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "v": [
+     {
+      "tipo": "capitulo",
+      "n": "PART THREE",
+      "txt": "HOW MANY YOU REALLY NEED"
+     },
+     {
+      "tipo": "tropas",
+      "a": 0,
+      "b": 5,
+      "selo": "HOW MANY?"
+     },
+     {
+      "tipo": "numero",
+      "txt": "?",
+      "rotulo": "TO BE SAFE"
+     },
+     {
+      "tipo": "numero",
+      "txt": "80%",
+      "rotulo": "OUR DEFINITION OF SAFE"
+     },
+     {
+      "tipo": "tropas",
+      "a": 4,
+      "b": 1,
+      "selo": "80% SAFE"
+     },
+     {
+      "tipo": "tropas",
+      "a": 6,
+      "b": 2,
+      "selo": "80% SAFE"
+     },
+     {
+      "tipo": "tropas",
+      "a": 7,
+      "b": 3,
+      "selo": "80% SAFE"
+     },
+     {
+      "tipo": "tropas",
+      "a": 9,
+      "b": 5,
+      "selo": "80% SAFE"
+     },
+     {
+      "tipo": "tropas",
+      "a": 15,
+      "b": 10,
+      "selo": "80% SAFE"
+     },
+     {
+      "tipo": "tropas",
+      "a": 25,
+      "b": 20,
+      "selo": "80% SAFE"
+     },
+     {
+      "tipo": "ficha",
+      "titulo": "LAB NOTE · ARMIES FOR 80%",
+      "linhas": [
+       [
+        "vs 1",
+        "4 armies"
+       ],
+       [
+        "vs 5",
+        "9 armies"
+       ],
+       [
+        "vs 10",
+        "15 armies"
+       ],
+       [
+        "vs 20",
+        "25 armies"
+       ]
+      ]
+     },
+     {
+      "tipo": "ficha",
+      "titulo": "LAB NOTE · THE PATTERN",
+      "linhas": [
+       [
+        "Small fights",
+        "need 2× to 4×"
+       ],
+       [
+        "Big fights",
+        "need about +25%"
+       ]
+      ],
+      "selo": "SIZE CHANGES EVERYTHING"
+     },
+     {
+      "tipo": "batalha",
+      "ata": [
+       2
+      ],
+      "def": [
+       5,
+       1
+      ],
+      "txt": "LITTLE ATTACKS LOSE"
+     },
+     {
+      "tipo": "tropas",
+      "a": 3,
+      "b": 2,
+      "selo": "36% TO WIN"
+     },
+     {
+      "tipo": "numero",
+      "txt": "64%",
+      "rotulo": "OF 3-VS-2 ATTACKS FAIL"
+     },
+     {
+      "tipo": "tropas",
+      "a": 25,
+      "b": 20,
+      "selo": "GO BIG"
+     },
+     {
+      "tipo": "numero",
+      "txt": "82%",
+      "rotulo": "25 ARMIES VS 20"
+     }
+    ],
+    "n": 3,
+    "titulo": "How many you really need"
+   },
+   "falas": [
+    "Part three. How many armies you really need.",
+    "So let's answer the question every player asks before they attack.",
+    "How many armies do I need to be safe?",
+    "We'll call safe a four in five chance of taking the territory.",
+    "One defender? You need 4 armies in your territory.",
+    "Two defenders? 6.",
+    "Three defenders? 7.",
+    "Five defenders? 9.",
+    "Ten defenders? 15.",
+    "And twenty defenders? 25.",
+    "Look at the pattern.",
+    "Against small stacks, you need two or three times their number. Against big stacks, you only need about a quarter more.",
+    "That's why the worst attacks in Risk are the little ones.",
+    "Two armies poking at one. Three poking at two.",
+    "They feel cheap. But they burn armies and usually fail.",
+    "A real attack is big, and it goes all the way.",
+    "Twenty five against twenty? You take it 82 percent of the time."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "v": [
+     {
+      "tipo": "capitulo",
+      "n": "PART FOUR",
+      "txt": "WHAT IT MEANS FOR THE GAME"
+     },
+     {
+      "tipo": "ficha",
+      "titulo": "LAB NOTE · STRATEGY",
+      "linhas": [
+       [
+        "Spread thin",
+        "many weak stacks"
+       ],
+       [
+        "Stacked",
+        "one big stack"
+       ],
+       [
+        "Winner",
+        "the stack"
+       ]
+      ],
+      "selo": "STACK UP"
+     },
+     {
+      "tipo": "teste",
+      "a": "1 STACK OF 20",
+      "pa": "WINS",
+      "b": "4 STACKS OF 5",
+      "pb": "LOSES",
+      "vence": "a"
+     },
+     {
+      "tipo": "numero",
+      "txt": "51%",
+      "rotulo": "6 ARMIES VS 5 DEFENDERS"
+     },
+     {
+      "tipo": "ficha",
+      "titulo": "CASE FILE · AUSTRALIA",
+      "linhas": [
+       [
+        "Territories",
+        "4"
+       ],
+       [
+        "Entry points",
+        "1"
+       ],
+       [
+        "Bonus",
+        "+2 armies a turn"
+       ]
+      ]
+     },
+     {
+      "tipo": "tropas",
+      "a": 30,
+      "b": 3,
+      "na": "YOUR BORDER",
+      "nb": "THEM",
+      "selo": "ONE WAY IN"
+     },
+     {
+      "tipo": "tropas",
+      "a": 30,
+      "b": 20,
+      "selo": "94% TO WIN"
+     },
+     {
+      "tipo": "ficha",
+      "titulo": "CASE FILE · SOUTH AMERICA",
+      "linhas": [
+       [
+        "Territories",
+        "4"
+       ],
+       [
+        "Entry points",
+        "2"
+       ],
+       [
+        "Bonus",
+        "+2 armies a turn"
+       ]
+      ]
+     },
+     {
+      "tipo": "ficha",
+      "titulo": "CASE FILE · ASIA",
+      "linhas": [
+       [
+        "Territories",
+        "12"
+       ],
+       [
+        "Entry points",
+        "5"
+       ],
+       [
+        "Bonus",
+        "+7 armies a turn"
+       ]
+      ],
+      "selo": "SPREAD THIN"
+     },
+     {
+      "tipo": "tropas",
+      "a": 25,
+      "b": 5,
+      "selo": "99.99% TO WIN"
+     }
+    ],
+    "n": 4,
+    "titulo": "What it means for the game"
+   },
+   "falas": [
+    "Part four. What this means for the whole game.",
+    "If big attacks win, then splitting your armies across the map is the real mistake.",
+    "One stack of twenty beats four stacks of five.",
+    "Because each stack of five is in the zone where the attacker barely wins half the time.",
+    "And it explains why the classic advice to grab Australia works.",
+    "Australia has only one way in. So you can pile every army on one border.",
+    "You become the giant stack. And giant stacks win.",
+    "South America works the same way, with two ways in.",
+    "Asia pays the biggest bonus, seven armies a turn. But it has five borders to hold.",
+    "Five borders means five thin stacks. And thin stacks are exactly what a big attack eats."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "arte",
+    "v": [
+     {
+      "tipo": "batalha",
+      "ata": [
+       5,
+       5,
+       2
+      ],
+      "def": [
+       5,
+       1
+      ],
+      "txt": "REAL?"
+     },
+     {
+      "tipo": "teste",
+      "a": "SMALL FIGHTS",
+      "pa": "DEFENSE",
+      "b": "BIG BATTLES",
+      "pb": "ATTACK",
+      "vence": "b"
+     },
+     {
+      "tipo": "numero",
+      "txt": "58%",
+      "rotulo": "19 VS 20"
+     },
+     {
+      "tipo": "tropas",
+      "a": 30,
+      "b": 18,
+      "selo": "GO BIG"
+     },
+     {
+      "tipo": "cartas",
+      "modo": "misterio",
+      "selo": "YOUR CRAZIEST COMEBACK?"
+     },
+     {
+      "tipo": "fim"
+     }
+    ]
+   },
+   "falas": [
+    "So is the defender's advantage real?",
+    "Only in small fights. In big battles, the attacker wins, even outnumbered.",
+    "Nineteen against twenty, and the attacker still wins 58 percent of the time.",
+    "Don't poke. Stack up. And when you go, go big.",
+    "What's the craziest comeback you've ever seen in Risk? Tell us in the comments.",
+    "And subscribe. Next, we play ten thousand games of another classic."
+   ]
+  }
+ ]
+}

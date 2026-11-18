@@ -1,0 +1,704 @@
+{
+ "id": "qvd003a",
+ "canal": "quanto-voce-dura",
+ "titulo": "Você acorda em São Paulo, 1918, na gripe espanhola. Quanto tempo você dura?",
+ "motor": "piper",
+ "voz": "cadu",
+ "velocidade": 0.95,
+ "lang": "pt-br",
+ "legenda": true,
+ "acento": "#e9c46a",
+ "marca": "QUANTO VOCÊ DURA?",
+ "trilha": 0.13,
+ "cauda": 4.0,
+ "numeros": {
+  "mil novecentos e dezoito": "1918",
+  "mil novecentos e dezenove": "1919",
+  "nove de outubro": "9 de outubro",
+  "treze": "13",
+  "vinte e dois de outubro": "22 de outubro",
+  "quatro de novembro": "4 de novembro",
+  "sete mil setecentos e oitenta e seis": "7.786",
+  "cento e setenta e dois": "172",
+  "quinhentos e vinte e oito mil": "528 mil",
+  "cento e dezesseis mil": "116 mil",
+  "cinco mil trezentos e trinta e um": "5.331",
+  "um por cento": "1%"
+ },
+ "blocos": [
+  {
+   "cena": {
+    "tipo": "arte",
+    "v": [
+     {
+      "tipo": "data",
+      "txt": "SÃO PAULO",
+      "sub": "outubro de 1918",
+      "ano": "1918"
+     },
+     {
+      "tipo": "foto",
+      "arq": "largo_da_s_vincenzo_pastore_jpg.jpg",
+      "leg": "Largo da Sé, São Paulo, c. 1912 · Foto: Vincenzo Pastore",
+      "rot": 1.8,
+      "entra": "dir",
+      "zoom": null
+     },
+     {
+      "tipo": "bolso"
+     },
+     {
+      "tipo": "titulo",
+      "txt": "QUANTO TEMPO\nVOCÊ DURA?"
+     },
+     {
+      "tipo": "foto",
+      "arq": "movimento_em_frente_ao_mercado_municipal.jpg",
+      "leg": "Em frente ao Mercado, São Paulo, c. 1910 · Foto: Vincenzo Pastore",
+      "rot": -1.2,
+      "entra": "esq",
+      "zoom": null
+     },
+     {
+      "tipo": "documento",
+      "titulo": "FONTES DESTE VÍDEO",
+      "txt": "Registros do Serviço Sanitário, jornais de 1918 e pesquisa histórica publicada."
+     },
+     {
+      "tipo": "barras",
+      "s": 85,
+      "d": 35,
+      "g": 70,
+      "txt": null
+     },
+     {
+      "tipo": "barras",
+      "s": 85,
+      "d": 35,
+      "g": 70,
+      "txt": "SE ZERAR, ACABOU",
+      "_de": {
+       "s": 85,
+       "d": 35,
+       "g": 70
+      }
+     }
+    ]
+   },
+   "falas": [
+    "São Paulo. Outubro de mil novecentos e dezoito.",
+    "A cidade tem pouco mais de meio milhão de habitantes, e não para de crescer.",
+    "E você acabou de acordar aqui. Sem dinheiro, e sem conhecer ninguém.",
+    "Quanto tempo você dura?",
+    "Funciona assim. Você é um operário, e trabalha numa fábrica da cidade.",
+    "Tudo o que vai acontecer com você aconteceu de verdade, com datas e números de verdade.",
+    "E você acompanha três coisas. Sua saúde. Seu dinheiro. E sua segurança.",
+    "Se qualquer uma delas zerar, acabou."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "v": [
+     {
+      "tipo": "capitulo",
+      "n": "PARTE UM",
+      "txt": "A NOTÍCIA QUE VEM DE LONGE"
+     },
+     {
+      "tipo": "foto",
+      "arq": "homem_lendo_jornal_na_porta_de_estabelec.jpg",
+      "leg": "Homem lendo jornal, São Paulo, c. 1910 · Foto: Vincenzo Pastore",
+      "rot": 2.4,
+      "entra": "cai",
+      "zoom": null
+     },
+     {
+      "tipo": "foto",
+      "arq": "1918_flu_outbreak_redcrosslittercarriers.jpg",
+      "leg": "Cruz Vermelha carregando doente, Washington (EUA), 1918",
+      "rot": -2.0,
+      "entra": "cai",
+      "zoom": null
+     },
+     {
+      "tipo": "documento",
+      "titulo": "JORNAIS DE SÃO PAULO · SETEMBRO DE 1918",
+      "txt": "A gripe se espalha pela Europa. No Brasil, ainda se fala dela como coisa distante."
+     },
+     {
+      "tipo": "carimbo_doc",
+      "titulo": "RIO DE JANEIRO · OUTUBRO DE 1918",
+      "txt": "A GRIPE CHEGOU"
+     },
+     {
+      "tipo": "documento",
+      "titulo": "JORNAIS · 9 DE OUTUBRO",
+      "txt": "Jogadores amadores vindos do Rio estão doentes."
+     },
+     {
+      "tipo": "linha",
+      "titulo": "LINHA DO TEMPO · SÃO PAULO, 1918",
+      "datas": [
+       [
+        "13/out",
+        "1º caso"
+       ],
+       [
+        "15/out",
+        "confirmado"
+       ],
+       [
+        "22/out",
+        "1ª morte"
+       ],
+       [
+        "4/nov",
+        "o pior dia"
+       ],
+       [
+        "fim/nov",
+        "a queda"
+       ]
+      ],
+      "ativo": 0
+     },
+     {
+      "tipo": "linha",
+      "titulo": "LINHA DO TEMPO · SÃO PAULO, 1918",
+      "datas": [
+       [
+        "13/out",
+        "1º caso"
+       ],
+       [
+        "15/out",
+        "confirmado"
+       ],
+       [
+        "22/out",
+        "1ª morte"
+       ],
+       [
+        "4/nov",
+        "o pior dia"
+       ],
+       [
+        "fim/nov",
+        "a queda"
+       ]
+      ],
+      "ativo": 1
+     },
+     {
+      "tipo": "ficha",
+      "titulo": "FICHA · SERVIÇO SANITÁRIO",
+      "linhas": [
+       [
+        "DIRETOR",
+        "Arthur Neiva"
+       ],
+       [
+        "ÓRGÃO",
+        "Serviço Sanitário"
+       ],
+       [
+        "DATA",
+        "15/10/1918"
+       ]
+      ],
+      "rodape": "Confirmou a gripe na cidade"
+     },
+     {
+      "tipo": "documento",
+      "titulo": "CONSELHOS AO POVO",
+      "txt": "Evite aglomerações. Não faça visitas. Tome quinino todos os dias."
+     },
+     {
+      "tipo": "lista",
+      "titulo": "CONSELHOS AO POVO",
+      "itens": [
+       "Evitar aglomerações",
+       "Não fazer visitas"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "titulo": "CONSELHOS AO POVO",
+      "itens": [
+       "Evitar aglomerações",
+       "Não fazer visitas",
+       "Quinino todo dia"
+      ]
+     },
+     {
+      "tipo": "carimbo_doc",
+      "titulo": "QUININO",
+      "txt": "NÃO FUNCIONA"
+     },
+     {
+      "tipo": "barras",
+      "s": 80,
+      "d": 35,
+      "g": 55,
+      "txt": "FÁBRICA CHEIA",
+      "_de": {
+       "s": 85,
+       "d": 35,
+       "g": 70
+      }
+     }
+    ],
+    "n": 1,
+    "titulo": "A notícia que vem de longe"
+   },
+   "falas": [
+    "Parte um. A notícia que vem de longe.",
+    "Desde junho, os jornais de São Paulo falam de uma gripe que está matando gente na Europa.",
+    "O mundo está no fim de uma guerra. E a doença viaja nos navios, junto com os soldados.",
+    "Em setembro, as notícias ficam mais frequentes. Mas a gripe ainda parece um problema dos outros.",
+    "No Rio de Janeiro, ela já chegou.",
+    "E no dia nove de outubro, os jornais contam que jogadores de futebol amador vindos do Rio caíram doentes.",
+    "No dia treze, o primeiro caso registrado da cidade entra no Hospital de Isolamento. Um estudante que chegou do Rio.",
+    "Dois dias depois, o Serviço Sanitário do Estado confirma. A gripe está em São Paulo.",
+    "Quem comanda o Serviço Sanitário é o médico Arthur Neiva.",
+    "E ele publica nos jornais os Conselhos ao Povo.",
+    "Evitar aglomerações. Não fazer visitas.",
+    "E tomar todos os dias uma dose de quinino.",
+    "O problema é que o quinino é remédio de malária. Contra a gripe, não adiantava.",
+    "Mas você não sabe disso. E você trabalha numa fábrica cheia de gente."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "v": [
+     {
+      "tipo": "capitulo",
+      "n": "PARTE DOIS",
+      "txt": "A CIDADE FECHA"
+     },
+     {
+      "tipo": "linha",
+      "titulo": "LINHA DO TEMPO · SÃO PAULO, 1918",
+      "datas": [
+       [
+        "13/out",
+        "1º caso"
+       ],
+       [
+        "15/out",
+        "confirmado"
+       ],
+       [
+        "22/out",
+        "1ª morte"
+       ],
+       [
+        "4/nov",
+        "o pior dia"
+       ],
+       [
+        "fim/nov",
+        "a queda"
+       ]
+      ],
+      "ativo": 2
+     },
+     {
+      "tipo": "carimbo_doc",
+      "titulo": "SÃO PAULO · OUTUBRO DE 1918",
+      "txt": "FECHADO"
+     },
+     {
+      "tipo": "lista",
+      "titulo": "FECHADOS",
+      "itens": [
+       "Escolas",
+       "Faculdades"
+      ]
+     },
+     {
+      "tipo": "lista",
+      "titulo": "FECHADOS",
+      "itens": [
+       "Escolas",
+       "Faculdades",
+       "Teatros e cinemas",
+       "Concertos e jardins"
+      ]
+     },
+     {
+      "tipo": "foto",
+      "arq": "prociss_o_na_rua_direita_vincenzo_pastor.jpg",
+      "leg": "Procissão na Rua Direita, c. 1910 · Foto: Vincenzo Pastore",
+      "rot": -2.5,
+      "entra": "dir",
+      "zoom": null,
+      "w": 620,
+      "ar": 1.3
+     },
+     {
+      "tipo": "carimbo_doc",
+      "titulo": "AVISO À POPULAÇÃO",
+      "txt": "SEM APERTO DE MÃO"
+     },
+     {
+      "tipo": "lista",
+      "titulo": "EVITE",
+      "itens": [
+       "Aperto de mão",
+       "Abraço",
+       "Beijo"
+      ]
+     },
+     {
+      "tipo": "documento",
+      "titulo": "POSTO DE SOCORRO",
+      "txt": "Escola transformada em posto médico. Atendimento, remédios e comida.",
+      "carimbo": "POSTO"
+     },
+     {
+      "tipo": "foto",
+      "arq": "1918_flu_in_oakland_jpg.jpg",
+      "leg": "Hospital de emergência num auditório, Oakland (EUA), 1918",
+      "rot": 1.8,
+      "entra": "esq",
+      "zoom": null,
+      "w": 1150,
+      "ar": 0.66
+     },
+     {
+      "tipo": "barras",
+      "s": 70,
+      "d": 15,
+      "g": 50,
+      "txt": "SEM SALÁRIO",
+      "_de": {
+       "s": 80,
+       "d": 35,
+       "g": 55
+      }
+     }
+    ],
+    "n": 2,
+    "titulo": "A cidade fecha"
+   },
+   "falas": [
+    "Parte dois. A cidade fecha.",
+    "No dia vinte e dois de outubro, os jornais anunciam as primeiras mortes.",
+    "E São Paulo começa a fechar.",
+    "Escolas fechadas. Depois, as faculdades.",
+    "Teatros e cinemas. Concertos de banda. Os jardins públicos.",
+    "Até as missas e as reuniões religiosas diminuem.",
+    "E as autoridades pedem uma coisa que parece estranha para mil novecentos e dezoito.",
+    "Nada de aperto de mão. Nada de abraço. Nada de beijo.",
+    "As escolas vazias viram postos médicos, com médicos, remédio e comida.",
+    "Em outras cidades do mundo, auditórios inteiros viraram hospital.",
+    "E se a fábrica fecha, ou se você fica doente, você não recebe."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "v": [
+     {
+      "tipo": "capitulo",
+      "n": "PARTE TRÊS",
+      "txt": "O PIOR DIA"
+     },
+     {
+      "tipo": "foto",
+      "arq": "1918_flu_outbreak_jpg.jpg",
+      "leg": "Enfermaria da gripe, Washington (EUA), 1918",
+      "rot": -1.2,
+      "entra": "cai",
+      "zoom": null
+     },
+     {
+      "tipo": "barras",
+      "s": 40,
+      "d": 15,
+      "g": 40,
+      "txt": "FEBRE",
+      "_de": {
+       "s": 70,
+       "d": 15,
+       "g": 50
+      }
+     },
+     {
+      "tipo": "foto",
+      "arq": "garotos_engraxates_vincenzo_pastore_jpg.jpg",
+      "leg": "Garotos engraxates, São Paulo, c. 1910 · Foto: Vincenzo Pastore",
+      "rot": 2.4,
+      "entra": "cai",
+      "zoom": null,
+      "w": 620,
+      "ar": 1.3
+     },
+     {
+      "tipo": "carimbo_doc",
+      "titulo": "SÃO PAULO · FIM DE OUTUBRO",
+      "txt": "AS MORTES DISPARAM"
+     },
+     {
+      "tipo": "linha",
+      "titulo": "LINHA DO TEMPO · SÃO PAULO, 1918",
+      "datas": [
+       [
+        "13/out",
+        "1º caso"
+       ],
+       [
+        "15/out",
+        "confirmado"
+       ],
+       [
+        "22/out",
+        "1ª morte"
+       ],
+       [
+        "4/nov",
+        "o pior dia"
+       ],
+       [
+        "fim/nov",
+        "a queda"
+       ]
+      ],
+      "ativo": 3
+     },
+     {
+      "tipo": "numero",
+      "txt": "7.786",
+      "rotulo": "doentes em 4 de novembro"
+     },
+     {
+      "tipo": "numero",
+      "txt": "172",
+      "rotulo": "mortos em 4 de novembro"
+     },
+     {
+      "tipo": "foto",
+      "arq": "vista_do_bairro_da_bela_vista_a_partir_d.jpg",
+      "leg": "Bela Vista vista do Viaduto do Chá, c. 1911 · Foto: Vincenzo Pastore",
+      "rot": -2.0,
+      "entra": "dir",
+      "zoom": null
+     },
+     {
+      "tipo": "barras",
+      "s": 25,
+      "d": 10,
+      "g": 35,
+      "txt": "4 DE NOVEMBRO",
+      "_de": {
+       "s": 40,
+       "d": 15,
+       "g": 40
+      }
+     },
+     {
+      "tipo": "linha",
+      "titulo": "LINHA DO TEMPO · SÃO PAULO, 1918",
+      "datas": [
+       [
+        "13/out",
+        "1º caso"
+       ],
+       [
+        "15/out",
+        "confirmado"
+       ],
+       [
+        "22/out",
+        "1ª morte"
+       ],
+       [
+        "4/nov",
+        "o pior dia"
+       ],
+       [
+        "fim/nov",
+        "a queda"
+       ]
+      ],
+      "ativo": 4
+     },
+     {
+      "tipo": "carimbo_doc",
+      "titulo": "SÃO PAULO · FIM DE NOVEMBRO",
+      "txt": "A CURVA CAI"
+     }
+    ],
+    "n": 3,
+    "titulo": "O pior dia"
+   },
+   "falas": [
+    "Parte três. O pior dia.",
+    "A gripe de mil novecentos e dezoito não é uma gripe comum.",
+    "Febre alta, dor no corpo inteiro. E, em muitos casos, pneumonia.",
+    "E ela mata muita gente jovem. Gente da sua idade.",
+    "No fim de outubro, as mortes disparam.",
+    "E então chega o quatro de novembro.",
+    "Num único dia, são sete mil setecentos e oitenta e seis doentes.",
+    "E cento e setenta e dois mortos.",
+    "Em quase toda casa tem alguém de cama. Muita gente não consegue trabalhar.",
+    "Se você ficou doente no começo de novembro, o seu painel está assim.",
+    "Em meados de novembro, a curva finalmente vira.",
+    "E no fim do mês, as mortes começam a cair."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "v": [
+     {
+      "tipo": "capitulo",
+      "n": "PARTE QUATRO",
+      "txt": "O VEREDITO"
+     },
+     {
+      "tipo": "documento",
+      "titulo": "SERVIÇO SANITÁRIO · BALANÇO",
+      "txt": "Doentes, mortos e população da cidade em 1918."
+     },
+     {
+      "tipo": "numero",
+      "txt": "528 mil",
+      "rotulo": "habitantes de São Paulo"
+     },
+     {
+      "tipo": "numero",
+      "txt": "116 mil",
+      "rotulo": "doentes, pelo menos"
+     },
+     {
+      "tipo": "numero",
+      "txt": "5.331",
+      "rotulo": "mortos oficiais"
+     },
+     {
+      "tipo": "comparacao",
+      "a": "DOENTES",
+      "va": 116777,
+      "b": "MORTOS",
+      "vb": 5331,
+      "ate": "b"
+     },
+     {
+      "tipo": "foto",
+      "arq": "rodrigues_alves_jpg.jpg",
+      "leg": "Rodrigues Alves, presidente eleito em 1918",
+      "rot": -2.5,
+      "entra": "esq",
+      "zoom": null,
+      "w": 620,
+      "ar": 1.3
+     },
+     {
+      "tipo": "carimbo_doc",
+      "titulo": "PRESIDENTE ELEITO · RODRIGUES ALVES",
+      "txt": "NÃO TOMOU POSSE"
+     },
+     {
+      "tipo": "titulo",
+      "txt": "QUANTO\nVOCÊ DUROU?"
+     },
+     {
+      "tipo": "barras",
+      "s": 30,
+      "d": 10,
+      "g": 40,
+      "txt": "1 EM CADA 5 ADOECEU",
+      "_de": {
+       "s": 25,
+       "d": 10,
+       "g": 35
+      }
+     },
+     {
+      "tipo": "numero",
+      "txt": "4,6%",
+      "rotulo": "dos doentes morreram"
+     },
+     {
+      "tipo": "barras",
+      "s": 60,
+      "d": 10,
+      "g": 60,
+      "txt": "VIVO",
+      "_de": {
+       "s": 30,
+       "d": 10,
+       "g": 40
+      }
+     },
+     {
+      "tipo": "barras",
+      "s": 10,
+      "d": 5,
+      "g": 20,
+      "txt": "O PIOR MOMENTO",
+      "_de": {
+       "s": 60,
+       "d": 10,
+       "g": 60
+      }
+     },
+     {
+      "tipo": "foto",
+      "arq": "165_ww_269b_25_police_l_restored_jpg.jpg",
+      "leg": "Policiais de máscara, Seattle (EUA), dezembro de 1918",
+      "rot": 1.8,
+      "entra": "cai",
+      "zoom": null
+     },
+     {
+      "tipo": "mesa",
+      "fotos": [
+       "largo_da_s_vincenzo_pastore_jpg.jpg",
+       "1918_flu_in_oakland_jpg.jpg",
+       "movimento_em_frente_ao_mercado_municipal.jpg",
+       "1918_flu_outbreak_jpg.jpg",
+       "vista_do_bairro_da_bela_vista_a_partir_d.jpg"
+      ],
+      "txt": "FOTOS E DOCUMENTOS REAIS"
+     },
+     {
+      "tipo": "escolha",
+      "a": "FICAR EM CASA",
+      "b": "TRABALHAR",
+      "txt": "COMENTE A SUA",
+      "quando": "OUTUBRO DE 1918"
+     },
+     {
+      "tipo": "fim"
+     }
+    ],
+    "n": 4,
+    "titulo": "O veredito"
+   },
+   "falas": [
+    "Parte quatro. O veredito.",
+    "Quando a gripe passa, São Paulo faz as contas.",
+    "A cidade tinha quinhentos e vinte e oito mil habitantes.",
+    "Pelo menos cento e dezesseis mil ficaram doentes. Mais de um em cada cinco.",
+    "E os mortos oficiais foram cinco mil trezentos e trinta e um.",
+    "Cerca de um por cento da cidade. Em menos de dois meses.",
+    "E a gripe não escolheu classe. Rodrigues Alves tinha sido eleito presidente do Brasil em mil novecentos e dezoito.",
+    "Pegou a gripe, e morreu em janeiro de mil novecentos e dezenove, antes de tomar posse.",
+    "Então, quanto você dura?",
+    "A chance de pegar a gripe era alta. Mais de uma em cada cinco pessoas.",
+    "Mas, entre os doentes registrados, morreram cerca de quatro ou cinco em cada cem.",
+    "Então, se você ficou longe das aglomerações e teve sorte, provavelmente atravessou novembro. Fraco, sem dinheiro, mas vivo.",
+    "E se ficou doente no pior momento, sem cama e sem médico, as suas chances caíam muito.",
+    "No mundo, a gripe de mil novecentos e dezoito matou dezenas de milhões de pessoas.",
+    "Com fotos e documentos reais da época, essa foi a sua chance.",
+    "E você? Ficaria em casa, ou iria trabalhar mesmo assim? Me conta nos comentários.",
+    "E se inscreve, porque no próximo, você acorda em outra época do Brasil."
+   ]
+  }
+ ]
+}

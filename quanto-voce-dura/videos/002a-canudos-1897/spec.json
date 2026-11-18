@@ -1,0 +1,899 @@
+{
+ "id": "qvd002a",
+ "canal": "quanto-voce-dura",
+ "titulo": "Você acorda em Canudos, 1897. Quanto tempo você dura?",
+ "motor": "piper",
+ "voz": "cadu",
+ "velocidade": 0.95,
+ "lang": "pt-br",
+ "legenda": true,
+ "acento": "#e9c46a",
+ "marca": "QUANTO VOCÊ DURA?",
+ "trilha": 0.13,
+ "cauda": 4.0,
+ "numeros": {
+  "mil oitocentos e noventa e sete": "1897",
+  "mil oitocentos e noventa e seis": "1896",
+  "mil oitocentos e noventa e três": "1893",
+  "cinco mil e duzentas": "5.200",
+  "vinte e cinco mil": "25 mil",
+  "mil e trezentos": "1.300",
+  "cinco mil": "5 mil",
+  "oito mil": "8 mil",
+  "doze mil": "12 mil",
+  "trezentas": "300",
+  "dezessete": "17",
+  "vinte e dois de setembro": "22 de setembro",
+  "cinco de outubro": "5 de outubro",
+  "trinta e dois": "32",
+  "vinte anos": "20 anos",
+  "cem": "100"
+ },
+ "blocos": [
+  {
+   "cena": {
+    "tipo": "arte",
+    "v": [
+     {
+      "tipo": "data",
+      "txt": "SERTÃO DA BAHIA",
+      "sub": "Belo Monte, 1897",
+      "ano": "1897"
+     },
+     {
+      "tipo": "numero",
+      "txt": "4",
+      "rotulo": "expedições do Exército"
+     },
+     {
+      "tipo": "foto",
+      "arq": "40th_infantry_batallion_canudos_1897_jpg.jpg",
+      "leg": "40º Batalhão de Infantaria em Canudos, 1897 · Foto: Flávio de Barros",
+      "rot": 1.8,
+      "entra": "dir",
+      "zoom": [
+       0.5,
+       0.5
+      ]
+     },
+     {
+      "tipo": "foto",
+      "arq": "canudos_jpg.jpg",
+      "leg": "Belo Monte (Canudos) em ilustração de época",
+      "rot": -1.2,
+      "entra": "esq",
+      "zoom": null
+     },
+     {
+      "tipo": "titulo",
+      "txt": "QUANTO TEMPO\nVOCÊ DURA?"
+     },
+     {
+      "tipo": "bolso"
+     },
+     {
+      "tipo": "documento",
+      "titulo": "FONTES DESTE VÍDEO",
+      "txt": "Registros da guerra, Os Sertões de Euclides da Cunha e fotografias de 1897."
+     },
+     {
+      "tipo": "barras",
+      "s": 70,
+      "d": 45,
+      "g": 55,
+      "txt": null,
+      "nome_d": "COMIDA"
+     },
+     {
+      "tipo": "barras",
+      "s": 70,
+      "d": 45,
+      "g": 55,
+      "txt": "SE ZERAR, ACABOU",
+      "nome_d": "COMIDA",
+      "_de": {
+       "s": 70,
+       "d": 45,
+       "g": 55
+      }
+     }
+    ]
+   },
+   "falas": [
+    "Sertão da Bahia. Mil oitocentos e noventa e sete.",
+    "Quatro expedições do Exército vieram até aqui.",
+    "No cerco final, mais de oito mil soldados.",
+    "E você acabou de chegar. Com pouca comida, pouca água, e o Exército a caminho.",
+    "Quanto tempo você dura?",
+    "Funciona assim. Você é um sertanejo pobre, e chegou a Belo Monte fugindo da seca e da fome.",
+    "Tudo o que vai acontecer com você aconteceu de verdade, com datas e números de verdade.",
+    "E você acompanha três coisas. Sua saúde. Sua comida. E sua segurança.",
+    "Se qualquer uma delas zerar, acabou."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "v": [
+     {
+      "tipo": "capitulo",
+      "n": "PARTE UM",
+      "txt": "O HOMEM DO SERTÃO"
+     },
+     {
+      "tipo": "ficha",
+      "titulo": "FICHA · O CONSELHEIRO",
+      "linhas": [
+       [
+        "NOME",
+        "Antônio Vicente Mendes Maciel"
+       ],
+       [
+        "APELIDO",
+        "Antônio Conselheiro"
+       ],
+       [
+        "ROUPA",
+        "Túnica azul"
+       ]
+      ],
+      "rodape": "Pregador no sertão da Bahia"
+     },
+     {
+      "tipo": "carimbo_doc",
+      "titulo": "O LÍDER DE BELO MONTE",
+      "txt": "O CONSELHEIRO"
+     },
+     {
+      "tipo": "numero",
+      "txt": "20",
+      "rotulo": "anos pregando pelo sertão"
+     },
+     {
+      "tipo": "linha",
+      "titulo": "LINHA DO TEMPO · BELO MONTE",
+      "datas": [
+       [
+        "1893",
+        "fundação"
+       ],
+       [
+        "nov 1896",
+        "Uauá"
+       ],
+       [
+        "mar 1897",
+        "3ª expedição"
+       ],
+       [
+        "jun 1897",
+        "o cerco"
+       ],
+       [
+        "out 1897",
+        "o fim"
+       ]
+      ],
+      "ativo": 0
+     },
+     {
+      "tipo": "foto",
+      "arq": "canudos_jpg.jpg",
+      "leg": "Belo Monte (Canudos) em ilustração de época",
+      "rot": 2.4,
+      "entra": "cai",
+      "zoom": [
+       0.4,
+       0.6
+      ]
+     },
+     {
+      "tipo": "foto",
+      "arq": "canudos_village_jpg.jpg",
+      "leg": "O arraial de Canudos, 1897",
+      "rot": -2.0,
+      "entra": "cai",
+      "zoom": null
+     },
+     {
+      "tipo": "numero",
+      "txt": "25 mil",
+      "rotulo": "moradores, segundo as estimativas"
+     },
+     {
+      "tipo": "foto",
+      "arq": "canudos_jpg.jpg",
+      "leg": "Belo Monte (Canudos) em ilustração de época",
+      "rot": -2.5,
+      "entra": "dir",
+      "zoom": [
+       0.7,
+       0.4
+      ]
+     },
+     {
+      "tipo": "documento",
+      "titulo": "AS REGRAS DE BELO MONTE",
+      "txt": "Sem imposto à República. Quem planta, divide. Quem tem gado, ajuda quem não tem."
+     },
+     {
+      "tipo": "barras",
+      "s": 75,
+      "d": 55,
+      "g": 60,
+      "txt": "UM TETO",
+      "nome_d": "COMIDA",
+      "_de": {
+       "s": 70,
+       "d": 45,
+       "g": 55
+      }
+     },
+     {
+      "tipo": "carimbo_doc",
+      "titulo": "AOS OLHOS DOS FAZENDEIROS",
+      "txt": "UM PROBLEMA"
+     },
+     {
+      "tipo": "carimbo_doc",
+      "titulo": "AOS OLHOS DA IGREJA",
+      "txt": "UM PROBLEMA"
+     }
+    ],
+    "n": 1,
+    "titulo": "O homem do sertão"
+   },
+   "falas": [
+    "Parte um. O homem do sertão.",
+    "Quem manda aqui é um homem magro, de barba comprida e túnica azul.",
+    "O povo chama ele de Antônio Conselheiro.",
+    "Por mais de vinte anos, ele andou pelo sertão reconstruindo igrejas e cemitérios, pregando e juntando seguidores.",
+    "Em mil oitocentos e noventa e três, ele parou numa velha fazenda às margens do rio Vaza-Barris. E fundou Belo Monte.",
+    "O resto do Brasil chama o lugar de Canudos.",
+    "E as pessoas vieram. Ex-escravizados, vaqueiros, famílias inteiras expulsas pela seca.",
+    "Em poucos anos, o arraial chegou a cerca de vinte e cinco mil moradores, segundo as estimativas.",
+    "Uma das maiores cidades da Bahia, no meio do nada.",
+    "Aqui ninguém paga imposto à República. Quem planta, divide. Quem tem gado, ajuda quem não tem.",
+    "Para você, que chegou sem nada, isso é muito. Um teto de barro, um pouco de farinha, e um lugar onde ninguém te expulsa.",
+    "Mas para os fazendeiros da região, que estão perdendo trabalhadores, Belo Monte virou um problema.",
+    "E para a Igreja, que perdeu o controle de um pregador, também."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "v": [
+     {
+      "tipo": "capitulo",
+      "n": "PARTE DOIS",
+      "txt": "TRÊS DERROTAS"
+     },
+     {
+      "tipo": "documento",
+      "titulo": "ENCOMENDA",
+      "txt": "Tábuas para a igreja nova de Belo Monte. Pagas. Não entregues.",
+      "carimbo": "NÃO ENTREGUE"
+     },
+     {
+      "tipo": "foto",
+      "arq": "canudos_jpg.jpg",
+      "leg": "Belo Monte (Canudos) em ilustração de época",
+      "rot": 1.8,
+      "entra": "esq",
+      "zoom": [
+       0.62,
+       0.7
+      ]
+     },
+     {
+      "tipo": "carimbo_doc",
+      "titulo": "BOATO",
+      "txt": "VÃO À FORÇA"
+     },
+     {
+      "tipo": "numero",
+      "txt": "100",
+      "rotulo": "soldados na 1ª expedição"
+     },
+     {
+      "tipo": "linha",
+      "titulo": "LINHA DO TEMPO · BELO MONTE",
+      "datas": [
+       [
+        "1893",
+        "fundação"
+       ],
+       [
+        "nov 1896",
+        "Uauá"
+       ],
+       [
+        "mar 1897",
+        "3ª expedição"
+       ],
+       [
+        "jun 1897",
+        "o cerco"
+       ],
+       [
+        "out 1897",
+        "o fim"
+       ]
+      ],
+      "ativo": 1
+     },
+     {
+      "tipo": "carimbo_doc",
+      "titulo": "2ª EXPEDIÇÃO · JANEIRO DE 1897",
+      "txt": "REPELIDA"
+     },
+     {
+      "tipo": "barras",
+      "s": 70,
+      "d": 45,
+      "g": 45,
+      "txt": "2 A 0",
+      "nome_d": "COMIDA",
+      "_de": {
+       "s": 75,
+       "d": 55,
+       "g": 60
+      }
+     },
+     {
+      "tipo": "carimbo_doc",
+      "titulo": "RIO DE JANEIRO · GOVERNO FEDERAL",
+      "txt": "3ª EXPEDIÇÃO"
+     },
+     {
+      "tipo": "numero",
+      "txt": "1.300",
+      "rotulo": "soldados na 3ª expedição"
+     },
+     {
+      "tipo": "ficha",
+      "titulo": "FICHA · O COMANDANTE",
+      "linhas": [
+       [
+        "NOME",
+        "Moreira César"
+       ],
+       [
+        "POSTO",
+        "Coronel"
+       ],
+       [
+        "APELIDO",
+        "Corta-cabeças"
+       ]
+      ],
+      "rodape": "Comandante da 3ª expedição"
+     },
+     {
+      "tipo": "numero",
+      "txt": "100",
+      "rotulo": "executados em Santa Catarina, mais de"
+     },
+     {
+      "tipo": "linha",
+      "titulo": "LINHA DO TEMPO · BELO MONTE",
+      "datas": [
+       [
+        "1893",
+        "fundação"
+       ],
+       [
+        "nov 1896",
+        "Uauá"
+       ],
+       [
+        "mar 1897",
+        "3ª expedição"
+       ],
+       [
+        "jun 1897",
+        "o cerco"
+       ],
+       [
+        "out 1897",
+        "o fim"
+       ]
+      ],
+      "ativo": 2
+     },
+     {
+      "tipo": "carimbo_doc",
+      "titulo": "3ª EXPEDIÇÃO · MARÇO DE 1897",
+      "txt": "DERROTADA"
+     },
+     {
+      "tipo": "barras",
+      "s": 68,
+      "d": 40,
+      "g": 40,
+      "txt": "ARMAS LARGADAS",
+      "nome_d": "COMIDA",
+      "_de": {
+       "s": 70,
+       "d": 45,
+       "g": 45
+      }
+     },
+     {
+      "tipo": "documento",
+      "titulo": "IMPRENSA DO RIO · MARÇO DE 1897",
+      "txt": "Derrota em Canudos. Morto o coronel Moreira César."
+     },
+     {
+      "tipo": "carimbo_doc",
+      "titulo": "O QUE DIZEM OS JORNAIS",
+      "txt": "COMPLÔ?"
+     },
+     {
+      "tipo": "carimbo_doc",
+      "titulo": "DECISÃO DO GOVERNO",
+      "txt": "GUERRA"
+     },
+     {
+      "tipo": "barras",
+      "s": 65,
+      "d": 35,
+      "g": 30,
+      "txt": "A ÚLTIMA BOA NOTÍCIA",
+      "nome_d": "COMIDA",
+      "_de": {
+       "s": 68,
+       "d": 40,
+       "g": 40
+      }
+     }
+    ],
+    "n": 2,
+    "titulo": "Três derrotas"
+   },
+   "falas": [
+    "Parte dois. Três derrotas.",
+    "Tudo começa com uma briga por madeira.",
+    "O Conselheiro encomenda tábuas para a igreja nova, paga, e a madeira não chega.",
+    "Corre o boato de que os conselheiristas vão buscar a madeira à força.",
+    "O governo da Bahia manda cerca de cem soldados.",
+    "Em novembro de mil oitocentos e noventa e seis, no povoado de Uauá, eles são surpreendidos pelos sertanejos. E recuam.",
+    "Em janeiro de mil oitocentos e noventa e sete, vem a segunda expedição, com algumas centenas de soldados.",
+    "Também é repelida.",
+    "Aí a República perde a paciência.",
+    "A terceira expedição tem cerca de mil e trezentos soldados, com canhões.",
+    "Quem comanda é o coronel Moreira César.",
+    "O apelido dele era corta-cabeças. Ele tinha mandado executar mais de cem pessoas numa revolta em Santa Catarina.",
+    "Em março de mil oitocentos e noventa e sete, ele ataca Belo Monte.",
+    "E morre no ataque. O segundo no comando, o coronel Tamarindo, também morre.",
+    "A tropa foge, largando armas e munição pelo caminho.",
+    "No Rio de Janeiro, a notícia cai como uma bomba.",
+    "Os jornais dizem que Canudos é um complô para trazer de volta o imperador.",
+    "E o governo decide que agora não é mais uma expedição. É uma guerra.",
+    "Para você, em Belo Monte, as armas largadas pela tropa viraram motivo de festa. Mas é a última boa notícia."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "v": [
+     {
+      "tipo": "capitulo",
+      "n": "PARTE TRÊS",
+      "txt": "O CERCO"
+     },
+     {
+      "tipo": "linha",
+      "titulo": "LINHA DO TEMPO · BELO MONTE",
+      "datas": [
+       [
+        "1893",
+        "fundação"
+       ],
+       [
+        "nov 1896",
+        "Uauá"
+       ],
+       [
+        "mar 1897",
+        "3ª expedição"
+       ],
+       [
+        "jun 1897",
+        "o cerco"
+       ],
+       [
+        "out 1897",
+        "o fim"
+       ]
+      ],
+      "ativo": 3
+     },
+     {
+      "tipo": "numero",
+      "txt": "8.000",
+      "rotulo": "soldados em volta do arraial, mais de"
+     },
+     {
+      "tipo": "comparacao",
+      "a": "MORADORES",
+      "va": 25000,
+      "b": "SOLDADOS",
+      "vb": 12000,
+      "ate": "b"
+     },
+     {
+      "tipo": "foto",
+      "arq": "40th_infantry_batallion_canudos_1897_jpg.jpg",
+      "leg": "40º Batalhão de Infantaria em Canudos, 1897 · Foto: Flávio de Barros",
+      "rot": -1.2,
+      "entra": "cai",
+      "zoom": null
+     },
+     {
+      "tipo": "foto",
+      "arq": "canudos_24o_batalh_o_de_infantaria_jpg.jpg",
+      "leg": "24º Batalhão de Infantaria, 1897 · Foto: Flávio de Barros",
+      "rot": 2.4,
+      "entra": "cai",
+      "zoom": null,
+      "w": 760,
+      "ar": 0.62
+     },
+     {
+      "tipo": "foto",
+      "arq": "a_matadeira_jpg.jpg",
+      "leg": "O canhão Whitworth 32, apelidado de Matadeira",
+      "rot": -2.0,
+      "entra": "dir",
+      "zoom": null,
+      "w": 760,
+      "ar": 0.62,
+      "selo": "MATADEIRA"
+     },
+     {
+      "tipo": "barras",
+      "s": 50,
+      "d": 25,
+      "g": 12,
+      "txt": "SEM ABRIGO",
+      "nome_d": "COMIDA",
+      "_de": {
+       "s": 65,
+       "d": 35,
+       "g": 30
+      }
+     },
+     {
+      "tipo": "foto",
+      "arq": "canudos_cartogr_fico_plano_de_opera_es_d.jpg",
+      "leg": "Plano de operações do Exército contra Canudos, 1897",
+      "rot": -2.5,
+      "entra": "esq",
+      "zoom": [
+       0.5,
+       0.45
+      ],
+      "ar": 0.75
+     },
+     {
+      "tipo": "carimbo_doc",
+      "titulo": "O NOVO INIMIGO",
+      "txt": "SEDE"
+     },
+     {
+      "tipo": "barras",
+      "s": 42,
+      "d": 10,
+      "g": 8,
+      "txt": "SEM COMIDA",
+      "nome_d": "COMIDA",
+      "_de": {
+       "s": 50,
+       "d": 25,
+       "g": 12
+      }
+     },
+     {
+      "tipo": "bolso"
+     },
+     {
+      "tipo": "barras",
+      "s": 35,
+      "d": 6,
+      "g": 5,
+      "txt": "SETEMBRO",
+      "nome_d": "COMIDA",
+      "_de": {
+       "s": 42,
+       "d": 10,
+       "g": 8
+      }
+     },
+     {
+      "tipo": "data",
+      "txt": "22 DE SETEMBRO",
+      "sub": "morre Antônio Conselheiro",
+      "ano": "1897"
+     },
+     {
+      "tipo": "foto",
+      "arq": "canudos_village_jpg.jpg",
+      "leg": "O arraial de Canudos, 1897",
+      "rot": 1.8,
+      "entra": "cai",
+      "zoom": [
+       0.5,
+       0.6
+      ]
+     },
+     {
+      "tipo": "foto",
+      "arq": "canudos_jpg.jpg",
+      "leg": "Belo Monte (Canudos) em ilustração de época",
+      "rot": -1.2,
+      "entra": "cai",
+      "zoom": [
+       0.65,
+       0.72
+      ],
+      "selo": "RUÍNAS"
+     }
+    ],
+    "n": 3,
+    "titulo": "O cerco"
+   },
+   "falas": [
+    "Parte três. O cerco.",
+    "A quarta expedição sai em junho de mil oitocentos e noventa e sete, comandada pelo general Artur Oscar.",
+    "Ela chega a reunir mais de oito mil soldados em volta do arraial.",
+    "Ao todo, cerca de doze mil homens, de dezessete estados, foram mobilizados.",
+    "Com eles vem um fotógrafo, Flávio de Barros.",
+    "Boa parte das fotos deste vídeo foi feita por ele, durante a guerra.",
+    "E vem a Matadeira. Um canhão Whitworth de calibre trinta e dois, arrastado por centenas de quilômetros de caatinga.",
+    "Os tiros caem no meio das casas de barro. Não existe abrigo que aguente.",
+    "O Exército fecha o cerco e corta o caminho até o rio.",
+    "Agora o inimigo não é só a bala. É a sede.",
+    "A comida acaba. As pessoas comem o pouco que encontram.",
+    "Os feridos e os doentes morrem dentro das casas.",
+    "Se você ainda está aqui em setembro, o seu painel está assim. E ainda vai piorar.",
+    "No dia vinte e dois de setembro, Antônio Conselheiro morre dentro do arraial, provavelmente de disenteria.",
+    "Os sertanejos enterram o corpo e continuam lutando.",
+    "As duas igrejas viram trincheiras. E depois, ruínas."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "v": [
+     {
+      "tipo": "capitulo",
+      "n": "PARTE QUATRO",
+      "txt": "O VEREDITO"
+     },
+     {
+      "tipo": "linha",
+      "titulo": "LINHA DO TEMPO · BELO MONTE",
+      "datas": [
+       [
+        "1893",
+        "fundação"
+       ],
+       [
+        "nov 1896",
+        "Uauá"
+       ],
+       [
+        "mar 1897",
+        "3ª expedição"
+       ],
+       [
+        "jun 1897",
+        "o cerco"
+       ],
+       [
+        "out 1897",
+        "o fim"
+       ]
+      ],
+      "ativo": 4
+     },
+     {
+      "tipo": "numero",
+      "txt": "300",
+      "rotulo": "pessoas se rendem, cerca de"
+     },
+     {
+      "tipo": "foto",
+      "arq": "canudos_rebels_jpg.jpg",
+      "leg": "Sobreviventes de Belo Monte presos pelo Exército, outubro de 1897 · Foto: Flávio de Barros",
+      "rot": 2.4,
+      "entra": "dir",
+      "zoom": null,
+      "w": 1300,
+      "ar": 0.62
+     },
+     {
+      "tipo": "carimbo_doc",
+      "titulo": "O QUE OS SOLDADOS CHAMAVAM",
+      "txt": "GRAVATA VERMELHA"
+     },
+     {
+      "tipo": "foto",
+      "arq": "pris_o_de_jagun_os_pela_cavalaria_jpg.jpg",
+      "leg": "Prisão de sertanejos pela cavalaria, 1897 · Foto: Flávio de Barros",
+      "rot": -2.0,
+      "entra": "esq",
+      "zoom": null
+     },
+     {
+      "tipo": "data",
+      "txt": "5 DE OUTUBRO",
+      "sub": "Belo Monte cai",
+      "ano": "1897"
+     },
+     {
+      "tipo": "numero",
+      "txt": "5.200",
+      "rotulo": "casas queimadas"
+     },
+     {
+      "tipo": "numero",
+      "txt": "25 mil",
+      "rotulo": "mortos em Belo Monte, estimativa mais alta"
+     },
+     {
+      "tipo": "comparacao",
+      "a": "BELO MONTE",
+      "va": 25000,
+      "b": "EXÉRCITO",
+      "vb": 5000,
+      "ate": "b"
+     },
+     {
+      "tipo": "documento",
+      "titulo": "OS SERTÕES · EUCLIDES DA CUNHA, 1902",
+      "txt": "Canudos não se rendeu."
+     },
+     {
+      "tipo": "numero",
+      "txt": "4",
+      "rotulo": "últimos defensores"
+     },
+     {
+      "tipo": "titulo",
+      "txt": "QUANTO\nVOCÊ DUROU?"
+     },
+     {
+      "tipo": "barras",
+      "s": 55,
+      "d": 20,
+      "g": 40,
+      "txt": "FUGIU: VIVO",
+      "nome_d": "COMIDA",
+      "_de": {
+       "s": 35,
+       "d": 6,
+       "g": 5
+      }
+     },
+     {
+      "tipo": "barras",
+      "s": 0,
+      "d": 0,
+      "g": 0,
+      "txt": "FICOU: FIM",
+      "nome_d": "COMIDA",
+      "_de": {
+       "s": 55,
+       "d": 20,
+       "g": 40
+      }
+     },
+     {
+      "tipo": "escolha",
+      "a": "MULHER OU CRIANÇA",
+      "b": "HOMEM",
+      "quando": "OUTUBRO DE 1897"
+     },
+     {
+      "tipo": "foto",
+      "arq": "canudos_rebels_jpg.jpg",
+      "leg": "Sobreviventes de Belo Monte presos pelo Exército, outubro de 1897 · Foto: Flávio de Barros",
+      "rot": -2.5,
+      "entra": "cai",
+      "zoom": [
+       0.5,
+       0.6
+      ]
+     },
+     {
+      "tipo": "carimbo_doc",
+      "titulo": "RENDIÇÃO · HOMENS",
+      "txt": "DEGOLA"
+     },
+     {
+      "tipo": "documento",
+      "titulo": "OS SERTÕES · 1902",
+      "txt": "Euclides da Cunha. Sobre a guerra de Canudos."
+     },
+     {
+      "tipo": "carimbo_doc",
+      "titulo": "RIO VAZA-BARRIS · ANOS 1960",
+      "txt": "AÇUDE DE COCOROBÓ"
+     },
+     {
+      "tipo": "foto",
+      "arq": "canudos_jpg.jpg",
+      "leg": "Belo Monte (Canudos) em ilustração de época",
+      "rot": 1.8,
+      "entra": "cai",
+      "zoom": null,
+      "selo": "SUBMERSO"
+     },
+     {
+      "tipo": "foto",
+      "arq": "canudos_village_jpg.jpg",
+      "leg": "O arraial de Canudos, 1897",
+      "rot": -1.2,
+      "entra": "dir",
+      "zoom": [
+       0.5,
+       0.45
+      ]
+     },
+     {
+      "tipo": "mesa",
+      "fotos": [
+       "canudos_rebels_jpg.jpg",
+       "canudos_jpg.jpg",
+       "40th_infantry_batallion_canudos_1897_jpg.jpg",
+       "canudos_village_jpg.jpg",
+       "pris_o_de_jagun_os_pela_cavalaria_jpg.jpg"
+      ],
+      "txt": "FOTOS E DOCUMENTOS REAIS"
+     },
+     {
+      "tipo": "escolha",
+      "a": "FICAR",
+      "b": "FUGIR",
+      "txt": "COMENTE A SUA",
+      "quando": "JUNHO DE 1897"
+     },
+     {
+      "tipo": "fim"
+     }
+    ],
+    "n": 4,
+    "titulo": "O veredito"
+   },
+   "falas": [
+    "Parte quatro. O veredito.",
+    "No começo de outubro, o Exército oferece rendição.",
+    "Cerca de trezentas pessoas saem. Quase todas mulheres, crianças e velhos, magros até o osso.",
+    "Esta é uma das fotos mais famosas da história do Brasil. São eles.",
+    "Os homens que se rendem, em muitos casos, são degolados. Os soldados chamavam aquilo de gravata vermelha.",
+    "E quem não se rende, luta até o fim.",
+    "Belo Monte cai em cinco de outubro de mil oitocentos e noventa e sete.",
+    "O Exército contou cinco mil e duzentas casas. E queimou todas.",
+    "Os mortos de Belo Monte são estimados em até vinte e cinco mil.",
+    "Do lado do Exército, as estimativas falam em cerca de cinco mil mortos.",
+    "Euclides da Cunha, que estava lá como jornalista, escreveu que Canudos não se rendeu.",
+    "Os últimos defensores eram quatro. Um velho, dois homens feitos e uma criança.",
+    "Então, quanto você dura?",
+    "Se você saiu de Belo Monte antes do cerco de junho, provavelmente sobreviveu. Pobre, sem casa, mas vivo.",
+    "Se ficou até o fim, as chances são quase nulas. Fome, sede, bala ou degola.",
+    "E se você se rendeu em outubro, tudo dependia de quem você era.",
+    "Muitas mulheres e crianças sobreviveram, algumas levadas como criadas para outras cidades.",
+    "Para os homens, render-se muitas vezes era só outra forma de morrer.",
+    "Cinco anos depois, Euclides publicou Os Sertões, um dos livros mais importantes da literatura brasileira.",
+    "E nos anos sessenta, o governo construiu uma barragem no rio Vaza-Barris, o açude de Cocorobó.",
+    "A água cobriu o lugar onde ficava Belo Monte.",
+    "Até hoje, quando a seca é forte e a água baixa, as ruínas da velha igreja aparecem de novo.",
+    "Com fotos e documentos reais da época, essa foi a sua chance.",
+    "E você? Ficaria em Belo Monte, ou fugiria antes do cerco? Me conta nos comentários.",
+    "E se inscreve, porque no próximo, você acorda em outra época do Brasil."
+   ]
+  }
+ ]
+}

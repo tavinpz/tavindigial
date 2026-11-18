@@ -1,0 +1,1442 @@
+{
+ "id": "lss003a",
+ "canal": "last-state-standing",
+ "titulo": "A Week of 122°F in Every State. Which One Breaks First?",
+ "voz": "cw",
+ "velocidade": 1.0,
+ "lang": "en-us",
+ "legenda": true,
+ "acento": "#ff6b3d",
+ "marca": "LAST STATE STANDING",
+ "trilha": 0.14,
+ "cauda": 4.0,
+ "numeros": {
+  "a hundred and twenty two degrees Fahrenheit": "122°F",
+  "fifty degrees Celsius": "50°C",
+  "a hundred and thirty four": "134",
+  "nineteen thirteen": "1913",
+  "twenty twenty one": "2021",
+  "a hundred and twenty two": "122",
+  "a hundred and twenty": "120",
+  "a hundred and twelve": "112",
+  "a hundred and ten": "110",
+  "a hundred and five": "105",
+  "a hundred": "100",
+  "one hundred": "100",
+  "nineteen fifteen": "1915",
+  "twenty two": "22",
+  "twenty nineteen": "2019",
+  "ninety five percent": "95%"
+ },
+ "blocos": [
+  {
+   "cena": {
+    "tipo": "arte",
+    "v": [
+     {
+      "tipo": "numero",
+      "txt": "122°F",
+      "rotulo": "50°C"
+     },
+     {
+      "tipo": "mapa",
+      "calor": {
+       "AK": 100,
+       "WA": 120,
+       "HI": 100,
+       "MT": 117,
+       "VT": 105,
+       "ME": 105,
+       "WY": 115,
+       "CA": 134,
+       "OR": 119,
+       "NH": 106,
+       "ID": 118,
+       "CO": 115,
+       "NM": 122,
+       "MA": 107,
+       "MI": 112,
+       "NY": 108,
+       "WV": 112,
+       "RI": 104,
+       "CT": 106,
+       "MD": 109,
+       "NC": 110,
+       "PA": 111,
+       "WI": 114,
+       "UT": 117,
+       "SD": 120,
+       "NV": 125,
+       "TN": 113,
+       "LA": 114,
+       "MS": 115,
+       "AR": 120,
+       "KS": 121,
+       "ND": 121,
+       "AL": 112,
+       "OH": 113,
+       "MN": 115,
+       "IN": 116,
+       "AZ": 128,
+       "VA": 110,
+       "GA": 112,
+       "SC": 113,
+       "KY": 114,
+       "MO": 118,
+       "NE": 118,
+       "TX": 120,
+       "FL": 109,
+       "NJ": 110,
+       "IL": 117,
+       "OK": 120,
+       "DE": 110,
+       "IA": 118
+      },
+      "pergunta": "RECORD HIGHS"
+     },
+     {
+      "tipo": "mapa",
+      "destaque": [
+       "CA",
+       "NM",
+       "NV",
+       "AZ"
+      ],
+      "sticker": {
+       "txt": "122°F+"
+      }
+     },
+     {
+      "tipo": "rank",
+      "pos": "134°F",
+      "nome": "CALIFORNIA",
+      "uf": "CA",
+      "sub": "DEATH VALLEY · 1913"
+     },
+     {
+      "tipo": "rank",
+      "pos": "120°F",
+      "nome": "WASHINGTON",
+      "uf": "WA",
+      "sub": "HANFORD · JUNE 2021"
+     },
+     {
+      "tipo": "icones2",
+      "a": "casa",
+      "b": "fogo",
+      "txt": "NO AC"
+     },
+     {
+      "tipo": "numero",
+      "txt": "112",
+      "rotulo": "HEAT DEATHS · WASHINGTON · 2021"
+     },
+     {
+      "tipo": "mapa",
+      "grade": true,
+      "pergunta": "ONE WEEK · 122°F · EVERYWHERE"
+     },
+     {
+      "tipo": "mapa",
+      "misterio": true
+     }
+    ]
+   },
+   "falas": [
+    "A hundred and twenty two degrees Fahrenheit. Fifty degrees Celsius.",
+    "It sounds impossible. It isn't.",
+    "Four states have already gone past it. California, Arizona, Nevada and New Mexico.",
+    "Death Valley hit a hundred and thirty four, back in nineteen thirteen.",
+    "And in twenty twenty one, a heat wave pushed Washington State to a hundred and twenty.",
+    "A state where a lot of people never needed air conditioning.",
+    "Washington's health department counted a hundred and twelve heat deaths.",
+    "So here's the experiment. One week. A hundred and twenty two degrees. In every state at once.",
+    "Which state breaks first?"
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "arte",
+    "v": [
+     {
+      "tipo": "placa",
+      "titulo": "ALL 50 RANKED",
+      "txt": "Official numbers, every state",
+      "fonte": "EIA Residential Energy Survey · NOAA"
+     },
+     {
+      "tipo": "icones2",
+      "a": "casa",
+      "b": "neve",
+      "txt": "CAN YOU COOL DOWN?"
+     },
+     {
+      "tipo": "placa",
+      "titulo": "THE RULE",
+      "txt": "Share of homes with no AC at all",
+      "fonte": "EIA RECS 2020"
+     },
+     {
+      "tipo": "mapa",
+      "calor": {
+       "AK": 100,
+       "WA": 120,
+       "HI": 100,
+       "MT": 117,
+       "VT": 105,
+       "ME": 105,
+       "WY": 115,
+       "CA": 134,
+       "OR": 119,
+       "NH": 106,
+       "ID": 118,
+       "CO": 115,
+       "NM": 122,
+       "MA": 107,
+       "MI": 112,
+       "NY": 108,
+       "WV": 112,
+       "RI": 104,
+       "CT": 106,
+       "MD": 109,
+       "NC": 110,
+       "PA": 111,
+       "WI": 114,
+       "UT": 117,
+       "SD": 120,
+       "NV": 125,
+       "TN": 113,
+       "LA": 114,
+       "MS": 115,
+       "AR": 120,
+       "KS": 121,
+       "ND": 121,
+       "AL": 112,
+       "OH": 113,
+       "MN": 115,
+       "IN": 116,
+       "AZ": 128,
+       "VA": 110,
+       "GA": 112,
+       "SC": 113,
+       "KY": 114,
+       "MO": 118,
+       "NE": 118,
+       "TX": 120,
+       "FL": 109,
+       "NJ": 110,
+       "IL": 117,
+       "OK": 120,
+       "DE": 110,
+       "IA": 118
+      },
+      "pergunta": "HOTTEST EVER"
+     },
+     {
+      "tipo": "numero",
+      "txt": "11",
+      "rotulo": "STATES THAT NEVER HIT 110°F"
+     },
+     {
+      "tipo": "icones2",
+      "a": "predio",
+      "b": "raio",
+      "txt": "NOT BUILT FOR THIS"
+     }
+    ]
+   },
+   "falas": [
+    "We used official numbers for all fifty states.",
+    "In heat like that, one thing decides who's in danger. Can you cool your home?",
+    "So we ranked every state by the share of homes with no air conditioning at all. Not even a window unit.",
+    "And we looked at one more thing. How hot each state has ever been.",
+    "Because 11 states have never even reached a hundred and ten.",
+    "Their houses, their roads and their power lines were never built for this."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "v": [
+     {
+      "tipo": "capitulo",
+      "n": "PART ONE",
+      "txt": "THE STATES THAT STAY COOL"
+     },
+     {
+      "tipo": "mapa",
+      "destaque": [
+       "VA",
+       "GA",
+       "SC",
+       "KY",
+       "MO",
+       "NE",
+       "TX",
+       "FL",
+       "NJ",
+       "IL",
+       "OK",
+       "DE",
+       "IA"
+      ],
+      "sticker": {
+       "txt": "95%+ AC"
+      }
+     },
+     {
+      "tipo": "lista",
+      "itens": [
+       [
+        45,
+        "FLORIDA · HOMES WITH AC",
+        96
+       ],
+       [
+        44,
+        "TEXAS · HOMES WITH AC",
+        95
+       ]
+      ]
+     },
+     {
+      "tipo": "icones2",
+      "a": "ilha",
+      "b": "fogo",
+      "txt": "HEAT EVERY SUMMER"
+     },
+     {
+      "tipo": "mapa",
+      "misterio": true
+     },
+     {
+      "tipo": "rank",
+      "pos": "97%",
+      "nome": "IOWA",
+      "uf": "IA",
+      "sub": "HOMES WITH AC"
+     },
+     {
+      "tipo": "barras",
+      "titulo": "HOMES WITH AIR CONDITIONING",
+      "max": 100,
+      "unid": "%",
+      "itens": [
+       [
+        "IOWA",
+        97,
+        "#7bc47f"
+       ],
+       [
+        "ARIZONA",
+        94,
+        "#e9874a"
+       ]
+      ]
+     },
+     {
+      "tipo": "rank",
+      "pos": "118°F",
+      "nome": "IOWA",
+      "uf": "IA",
+      "sub": "RECORD HIGH · 1934"
+     },
+     {
+      "tipo": "barras",
+      "titulo": "HOMES WITH AIR CONDITIONING",
+      "max": 100,
+      "unid": "%",
+      "itens": [
+       [
+        "ILLINOIS",
+        96,
+        "#7bc47f"
+       ],
+       [
+        "NEW JERSEY",
+        96,
+        "#7bc47f"
+       ],
+       [
+        "DELAWARE",
+        97,
+        "#7bc47f"
+       ]
+      ]
+     },
+     {
+      "tipo": "icones2",
+      "a": "casa",
+      "b": "neve",
+      "txt": "CLOSE THE DOOR"
+     }
+    ],
+    "n": 1,
+    "titulo": "The states that stay cool"
+   },
+   "falas": [
+    "Part one. The states that stay cool.",
+    "In 13 states, at least ninety five percent of homes have air conditioning.",
+    "Florida, 96 percent. Texas, 95.",
+    "No surprise there. They live with heat every summer.",
+    "But here's one that is a surprise.",
+    "Iowa. 97 percent of homes have air conditioning.",
+    "That's more than Arizona, at 94.",
+    "Iowa's record high is 118 degrees. Midwest summers are humid and brutal, and people there learned that a long time ago.",
+    "Illinois and New Jersey are at 96 percent. Delaware, 97.",
+    "In these states, a week at a hundred and twenty two would be miserable. But most people could close the door and turn on the AC."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "v": [
+     {
+      "tipo": "capitulo",
+      "n": "PART TWO",
+      "txt": "THE BIGGEST NUMBER"
+     },
+     {
+      "tipo": "numero",
+      "txt": "14M",
+      "rotulo": "U.S. HOMES WITH NO AC"
+     },
+     {
+      "tipo": "mapa",
+      "misterio": true
+     },
+     {
+      "tipo": "rank",
+      "pos": "28%",
+      "nome": "CALIFORNIA",
+      "uf": "CA",
+      "sub": "HOMES WITH NO AC"
+     },
+     {
+      "tipo": "numero",
+      "txt": "3.64M",
+      "rotulo": "CALIFORNIA HOMES WITH NO AC"
+     },
+     {
+      "tipo": "barras",
+      "titulo": "MILLIONS OF HOMES",
+      "max": 4,
+      "unid": "M",
+      "itens": [
+       [
+        "CALIFORNIA · NO AC",
+        3.64,
+        "#e5484d"
+       ],
+       [
+        "WASHINGTON · ALL HOMES",
+        2.94,
+        "#e9c46a"
+       ]
+      ]
+     },
+     {
+      "tipo": "icones2",
+      "a": "ilha",
+      "b": "casa",
+      "txt": "THE OCEAN WAS THE AC"
+     },
+     {
+      "tipo": "numero",
+      "txt": "0.92M",
+      "rotulo": "NEW YORK HOMES WITH NO AC"
+     },
+     {
+      "tipo": "rank",
+      "pos": "29%",
+      "nome": "NEW YORK",
+      "uf": "NY",
+      "sub": "HOMES WITH CENTRAL AIR"
+     }
+    ],
+    "n": 2,
+    "titulo": "The biggest number"
+   },
+   "falas": [
+    "Part two. The biggest number.",
+    "Across the whole country, about 14 million homes have no air conditioning.",
+    "And one state has more of them than anywhere else. By far.",
+    "California. Only 28 percent of homes have no AC. That doesn't sound like much.",
+    "But California is huge. That's 3.64 million homes.",
+    "More homes than the entire state of Washington has, with or without AC.",
+    "Along much of the coast, people never needed it. The ocean did the cooling for free.",
+    "New York has about 920 thousand homes with no AC. And of the ones that have it, most are window units.",
+    "Only 29 percent of New York homes have central air."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "v": [
+     {
+      "tipo": "capitulo",
+      "n": "TOP 10",
+      "txt": "THE STATES THAT BREAK FIRST"
+     },
+     {
+      "tipo": "rank",
+      "pos": "#10",
+      "nome": "NEW HAMPSHIRE",
+      "uf": "NH",
+      "sub": "22% NO AC"
+     },
+     {
+      "tipo": "rank",
+      "pos": "#9",
+      "nome": "OREGON",
+      "uf": "OR",
+      "sub": "24% NO AC · 119°F IN 2021"
+     },
+     {
+      "tipo": "rank",
+      "pos": "#8",
+      "nome": "CALIFORNIA",
+      "uf": "CA",
+      "sub": "28% NO AC · 3.6M HOMES"
+     },
+     {
+      "tipo": "rank",
+      "pos": "#7",
+      "nome": "WYOMING",
+      "uf": "WY",
+      "sub": "29% NO AC"
+     },
+     {
+      "tipo": "rank",
+      "pos": "#6",
+      "nome": "MAINE",
+      "uf": "ME",
+      "sub": "30% NO AC · RECORD 105°F"
+     },
+     {
+      "tipo": "rank",
+      "pos": "#5",
+      "nome": "VERMONT",
+      "uf": "VT",
+      "sub": "33% NO AC · 7% CENTRAL"
+     },
+     {
+      "tipo": "rank",
+      "pos": "#4",
+      "nome": "MONTANA",
+      "uf": "MT",
+      "sub": "35% NO AC"
+     },
+     {
+      "tipo": "rank",
+      "pos": "#3",
+      "nome": "HAWAII",
+      "uf": "HI",
+      "sub": "43% NO AC · RECORD 100°F"
+     },
+     {
+      "tipo": "rank",
+      "pos": "#2",
+      "nome": "WASHINGTON",
+      "uf": "WA",
+      "sub": "47% NO AC"
+     },
+     {
+      "tipo": "numero",
+      "txt": "112",
+      "rotulo": "HEAT DEATHS · WASHINGTON · 2021"
+     },
+     {
+      "tipo": "mapa",
+      "misterio": true
+     },
+     {
+      "tipo": "rank",
+      "pos": "#1",
+      "nome": "ALASKA",
+      "uf": "AK",
+      "sub": "93% NO AC"
+     },
+     {
+      "tipo": "rank",
+      "pos": "100°F",
+      "nome": "ALASKA",
+      "uf": "AK",
+      "sub": "FORT YUKON · 1915"
+     },
+     {
+      "tipo": "numero",
+      "txt": "+22°F",
+      "rotulo": "ABOVE ALASKA'S ALL-TIME RECORD"
+     }
+    ],
+    "n": 3,
+    "titulo": "The states that break first"
+   },
+   "falas": [
+    "Part three. The top ten. These are the states that break first.",
+    "Number ten. New Hampshire. 22 percent of homes with no AC.",
+    "Number nine. Oregon. 24 percent. And Oregon already got a taste of this, in twenty twenty one.",
+    "Number eight. California, with the most homes at risk.",
+    "Number seven. Wyoming. 29 percent.",
+    "Number six. Maine. 30 percent. Its record high is a hundred and five.",
+    "Number five. Vermont. 33 percent. And only 7 percent of homes have central air.",
+    "Number four. Montana. 35 percent.",
+    "Number three. Hawaii. 43 percent. The trade winds have done the job for generations. Its record is just a hundred.",
+    "Number two. Washington. 47 percent. Almost half the state.",
+    "The state that already saw a hundred and twenty, and lost a hundred and twelve people.",
+    "And the state that breaks first.",
+    "Alaska. 93 percent of homes have no air conditioning.",
+    "Alaska's record high is exactly one hundred degrees, set at Fort Yukon in nineteen fifteen.",
+    "A hundred and twenty two would beat that record by twenty two degrees. In a state built to keep heat in, not out."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "capitulo",
+    "v": [
+     {
+      "tipo": "capitulo",
+      "n": "PART FOUR",
+      "txt": "THE PATTERN"
+     },
+     {
+      "tipo": "dispersao",
+      "pts": [
+       [
+        "AK",
+        100,
+        7,
+        1
+       ],
+       [
+        "WA",
+        120,
+        53,
+        2
+       ],
+       [
+        "HI",
+        100,
+        57,
+        3
+       ],
+       [
+        "MT",
+        117,
+        65,
+        4
+       ],
+       [
+        "VT",
+        105,
+        67,
+        5
+       ],
+       [
+        "ME",
+        105,
+        70,
+        6
+       ],
+       [
+        "WY",
+        115,
+        71,
+        7
+       ],
+       [
+        "CA",
+        134,
+        72,
+        8
+       ],
+       [
+        "OR",
+        119,
+        76,
+        9
+       ],
+       [
+        "NH",
+        106,
+        78,
+        10
+       ],
+       [
+        "ID",
+        118,
+        81,
+        11
+       ],
+       [
+        "CO",
+        115,
+        82,
+        12
+       ],
+       [
+        "NM",
+        122,
+        85,
+        13
+       ],
+       [
+        "MA",
+        107,
+        87,
+        14
+       ],
+       [
+        "MI",
+        112,
+        87,
+        15
+       ],
+       [
+        "NY",
+        108,
+        88,
+        16
+       ],
+       [
+        "WV",
+        112,
+        89,
+        17
+       ],
+       [
+        "RI",
+        104,
+        90,
+        18
+       ],
+       [
+        "CT",
+        106,
+        90,
+        19
+       ],
+       [
+        "MD",
+        109,
+        91,
+        20
+       ],
+       [
+        "NC",
+        110,
+        91,
+        21
+       ],
+       [
+        "PA",
+        111,
+        91,
+        22
+       ],
+       [
+        "WI",
+        114,
+        92,
+        23
+       ],
+       [
+        "UT",
+        117,
+        92,
+        24
+       ],
+       [
+        "SD",
+        120,
+        92,
+        25
+       ],
+       [
+        "NV",
+        125,
+        92,
+        26
+       ],
+       [
+        "TN",
+        113,
+        93,
+        27
+       ],
+       [
+        "LA",
+        114,
+        93,
+        28
+       ],
+       [
+        "MS",
+        115,
+        93,
+        29
+       ],
+       [
+        "AR",
+        120,
+        93,
+        30
+       ],
+       [
+        "KS",
+        121,
+        93,
+        31
+       ],
+       [
+        "ND",
+        121,
+        93,
+        32
+       ],
+       [
+        "AL",
+        112,
+        94,
+        33
+       ],
+       [
+        "OH",
+        113,
+        94,
+        34
+       ],
+       [
+        "MN",
+        115,
+        94,
+        35
+       ],
+       [
+        "IN",
+        116,
+        94,
+        36
+       ],
+       [
+        "AZ",
+        128,
+        94,
+        37
+       ],
+       [
+        "VA",
+        110,
+        95,
+        38
+       ],
+       [
+        "GA",
+        112,
+        95,
+        39
+       ],
+       [
+        "SC",
+        113,
+        95,
+        40
+       ],
+       [
+        "KY",
+        114,
+        95,
+        41
+       ],
+       [
+        "MO",
+        118,
+        95,
+        42
+       ],
+       [
+        "NE",
+        118,
+        95,
+        43
+       ],
+       [
+        "TX",
+        120,
+        95,
+        44
+       ],
+       [
+        "FL",
+        109,
+        96,
+        45
+       ],
+       [
+        "NJ",
+        110,
+        96,
+        46
+       ],
+       [
+        "IL",
+        117,
+        96,
+        47
+       ],
+       [
+        "OK",
+        120,
+        96,
+        48
+       ],
+       [
+        "DE",
+        110,
+        97,
+        49
+       ],
+       [
+        "IA",
+        118,
+        97,
+        50
+       ]
+      ],
+      "eixos": {
+       "x": [
+        98,
+        136
+       ],
+       "y": [
+        0,
+        100
+       ],
+       "xt": [
+        100,
+        110,
+        120,
+        130
+       ],
+       "yt": [
+        0,
+        25,
+        50,
+        75,
+        100
+       ],
+       "xl": "STATE RECORD HIGH °F (→) · HOMES WITH AC (↑)",
+       "xf": "{}°",
+       "yf": "{}%",
+       "linha": 122,
+       "linha_txt": "122°F"
+      }
+     },
+     {
+      "tipo": "dispersao",
+      "pts": [
+       [
+        "AK",
+        100,
+        7,
+        1
+       ],
+       [
+        "WA",
+        120,
+        53,
+        2
+       ],
+       [
+        "HI",
+        100,
+        57,
+        3
+       ],
+       [
+        "MT",
+        117,
+        65,
+        4
+       ],
+       [
+        "VT",
+        105,
+        67,
+        5
+       ],
+       [
+        "ME",
+        105,
+        70,
+        6
+       ],
+       [
+        "WY",
+        115,
+        71,
+        7
+       ],
+       [
+        "CA",
+        134,
+        72,
+        8
+       ],
+       [
+        "OR",
+        119,
+        76,
+        9
+       ],
+       [
+        "NH",
+        106,
+        78,
+        10
+       ],
+       [
+        "ID",
+        118,
+        81,
+        11
+       ],
+       [
+        "CO",
+        115,
+        82,
+        12
+       ],
+       [
+        "NM",
+        122,
+        85,
+        13
+       ],
+       [
+        "MA",
+        107,
+        87,
+        14
+       ],
+       [
+        "MI",
+        112,
+        87,
+        15
+       ],
+       [
+        "NY",
+        108,
+        88,
+        16
+       ],
+       [
+        "WV",
+        112,
+        89,
+        17
+       ],
+       [
+        "RI",
+        104,
+        90,
+        18
+       ],
+       [
+        "CT",
+        106,
+        90,
+        19
+       ],
+       [
+        "MD",
+        109,
+        91,
+        20
+       ],
+       [
+        "NC",
+        110,
+        91,
+        21
+       ],
+       [
+        "PA",
+        111,
+        91,
+        22
+       ],
+       [
+        "WI",
+        114,
+        92,
+        23
+       ],
+       [
+        "UT",
+        117,
+        92,
+        24
+       ],
+       [
+        "SD",
+        120,
+        92,
+        25
+       ],
+       [
+        "NV",
+        125,
+        92,
+        26
+       ],
+       [
+        "TN",
+        113,
+        93,
+        27
+       ],
+       [
+        "LA",
+        114,
+        93,
+        28
+       ],
+       [
+        "MS",
+        115,
+        93,
+        29
+       ],
+       [
+        "AR",
+        120,
+        93,
+        30
+       ],
+       [
+        "KS",
+        121,
+        93,
+        31
+       ],
+       [
+        "ND",
+        121,
+        93,
+        32
+       ],
+       [
+        "AL",
+        112,
+        94,
+        33
+       ],
+       [
+        "OH",
+        113,
+        94,
+        34
+       ],
+       [
+        "MN",
+        115,
+        94,
+        35
+       ],
+       [
+        "IN",
+        116,
+        94,
+        36
+       ],
+       [
+        "AZ",
+        128,
+        94,
+        37
+       ],
+       [
+        "VA",
+        110,
+        95,
+        38
+       ],
+       [
+        "GA",
+        112,
+        95,
+        39
+       ],
+       [
+        "SC",
+        113,
+        95,
+        40
+       ],
+       [
+        "KY",
+        114,
+        95,
+        41
+       ],
+       [
+        "MO",
+        118,
+        95,
+        42
+       ],
+       [
+        "NE",
+        118,
+        95,
+        43
+       ],
+       [
+        "TX",
+        120,
+        95,
+        44
+       ],
+       [
+        "FL",
+        109,
+        96,
+        45
+       ],
+       [
+        "NJ",
+        110,
+        96,
+        46
+       ],
+       [
+        "IL",
+        117,
+        96,
+        47
+       ],
+       [
+        "OK",
+        120,
+        96,
+        48
+       ],
+       [
+        "DE",
+        110,
+        97,
+        49
+       ],
+       [
+        "IA",
+        118,
+        97,
+        50
+       ]
+      ],
+      "eixos": {
+       "x": [
+        98,
+        136
+       ],
+       "y": [
+        0,
+        100
+       ],
+       "xt": [
+        100,
+        110,
+        120,
+        130
+       ],
+       "yt": [
+        0,
+        25,
+        50,
+        75,
+        100
+       ],
+       "xl": "STATE RECORD HIGH °F (→) · HOMES WITH AC (↑)",
+       "xf": "{}°",
+       "yf": "{}%",
+       "linha": 122,
+       "linha_txt": "122°F"
+      },
+      "foco": [
+       "AK",
+       "HI",
+       "WA",
+       "VT",
+       "ME"
+      ]
+     },
+     {
+      "tipo": "icones2",
+      "a": "calendario",
+      "b": "casa",
+      "txt": "IT MADE SENSE"
+     },
+     {
+      "tipo": "mapa",
+      "destaque": [
+       "WA",
+       "OR",
+       "CO",
+       "UT"
+      ],
+      "sticker": {
+       "txt": "RECORDS SINCE 2019"
+      }
+     },
+     {
+      "tipo": "barras",
+      "titulo": "NEW STATE RECORD HIGHS · °F",
+      "max": 125,
+      "unid": "°",
+      "itens": [
+       [
+        "COLORADO · 2019",
+        115,
+        "#e9874a"
+       ],
+       [
+        "OREGON · 2021",
+        119,
+        "#e5484d"
+       ],
+       [
+        "WASHINGTON · 2021",
+        120,
+        "#e5484d"
+       ],
+       [
+        "UTAH · 2021",
+        117,
+        "#e5484d"
+       ]
+      ]
+     },
+     {
+      "tipo": "mapa",
+      "calor": {
+       "AK": 93,
+       "WA": 47,
+       "HI": 43,
+       "MT": 35,
+       "VT": 33,
+       "ME": 30,
+       "WY": 29,
+       "CA": 28,
+       "OR": 24,
+       "NH": 22,
+       "ID": 19,
+       "CO": 18,
+       "NM": 15,
+       "MA": 13,
+       "MI": 13,
+       "NY": 12,
+       "WV": 11,
+       "RI": 10,
+       "CT": 10,
+       "MD": 9,
+       "NC": 9,
+       "PA": 9,
+       "WI": 8,
+       "UT": 8,
+       "SD": 8,
+       "NV": 8,
+       "TN": 7,
+       "LA": 7,
+       "MS": 7,
+       "AR": 7,
+       "KS": 7,
+       "ND": 7,
+       "AL": 6,
+       "OH": 6,
+       "MN": 6,
+       "IN": 6,
+       "AZ": 6,
+       "VA": 5,
+       "GA": 5,
+       "SC": 5,
+       "KY": 5,
+       "MO": 5,
+       "NE": 5,
+       "TX": 5,
+       "FL": 4,
+       "NJ": 4,
+       "IL": 4,
+       "OK": 4,
+       "DE": 3,
+       "IA": 3
+      },
+      "pergunta": "HOMES WITH NO AC"
+     }
+    ],
+    "n": 4,
+    "titulo": "The pattern"
+   },
+   "falas": [
+    "Part four. The pattern.",
+    "Here's every state. Across the bottom, its hottest day ever. Up the side, the share of homes with AC.",
+    "The states that have felt real heat bought air conditioning. The ones that never did, didn't.",
+    "That made sense for a hundred years.",
+    "But look at where the new records are being set.",
+    "Colorado in twenty nineteen. Oregon, Washington and Utah in twenty twenty one.",
+    "The heat is moving to the places that are least ready for it."
+   ]
+  },
+  {
+   "cena": {
+    "tipo": "arte",
+    "v": [
+     {
+      "tipo": "lista",
+      "itens": [
+       [
+        1,
+        "ALASKA · NO AC",
+        93
+       ],
+       [
+        2,
+        "WASHINGTON · NO AC",
+        47
+       ],
+       [
+        3,
+        "HAWAII · NO AC",
+        43
+       ]
+      ]
+     },
+     {
+      "tipo": "rank",
+      "pos": "#8",
+      "nome": "CALIFORNIA",
+      "uf": "CA",
+      "sub": "3.6M HOMES WITH NO AC"
+     },
+     {
+      "tipo": "icones2",
+      "a": "casa",
+      "b": "balao",
+      "txt": "TELL US"
+     },
+     {
+      "tipo": "fim"
+     }
+    ]
+   },
+   "falas": [
+    "So which state breaks first? Alaska. Then Washington. Then Hawaii.",
+    "And the state with the most people at risk is California.",
+    "Does your home have air conditioning? And where do you live? Tell us in the comments.",
+    "And subscribe. Next week, another stress test for all fifty states."
+   ]
+  }
+ ]
+}
