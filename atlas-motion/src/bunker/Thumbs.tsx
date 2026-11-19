@@ -4,6 +4,7 @@ import '@fontsource/anton/400.css';
 import './fontes';
 import { Ben, Sala, Defs } from './Teste';
 import { Visor, Duto, GradeSolta } from './Objetos';
+import { Obj } from './Serie';
 
 // Capas do Bunker (1280x720). Mesmo molde dos canais-modelo do formato: personagem grande e assustado de um lado,
 // 2 a 3 palavras gigantes do outro (uma linha em amarelo) e a etiqueta "TEIL N". Desenho e texto próprios.
@@ -28,8 +29,28 @@ const Porta: React.FC = () => (
   </g>
 );
 
-export const BunkerThumb: React.FC<{ v?: string }> = ({ v = 'a' }) => {
+export const BunkerThumb: React.FC<{ v?: string; g?: any }> = ({ v = 'a', g }) => {
   const S = 1280 / 1920;
+  if (g) {
+    // capa genérica dos episódios: Ben assustado à esquerda, objeto do episódio à direita, duas linhas de texto e TEIL N
+    const [luz, frio] = g.n === 2 ? [0.25, 0.6] : g.n === 1 ? [0.5, 0.4] : [0.85, 0.2];
+    return (
+      <AbsoluteFill style={{ background: '#050808' }}>
+        <svg viewBox="0 0 1280 720" width={1280} height={720}>
+          <Defs />
+          <g transform={`scale(${S})`}>
+            <Sala luz={luz} frio={frio} frente={<g>
+              <g transform={`translate(${g.o === 'filhotes' ? 1180 : g.o === 'cabo' ? 1240 : 1340} ${['relogio', 'diario', 'sol', 'visor', 'marderf', 'coracao'].includes(g.o) ? 880 : 640}) scale(1.3) translate(-1320 -640)`}><Obj o={g.o} f={40} t0={-99} p={g.p || {}} /></g>
+              <Ben x={470} y={1640} k={2.75} humor={g.h || 'medo'} olhar={0.8} olharY={-0.2} fala={0.7} inclina={-4} />
+            </g>} />
+          </g>
+          <TXT x={1230} y={140} t={g.t1} fs={g.t1.length > 10 ? 104 : 124} anchor="end" />
+          <TXT x={1230} y={286} t={g.t2} fs={g.t2.length > 11 ? 112 : g.t2.length > 8 ? 132 : 150} cor="#ffd21f" anchor="end" />
+          <Teil x={130} y={70} n={g.teil} />
+        </svg>
+      </AbsoluteFill>
+    );
+  }
   return (
     <AbsoluteFill style={{ background: '#050808' }}>
       <svg viewBox="0 0 1280 720" width={1280} height={720}>

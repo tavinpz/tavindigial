@@ -1,0 +1,932 @@
+{
+ "n": 3,
+ "id": "bunker003-wasser-weg",
+ "pasta": "v03",
+ "titulos": [
+  "1 Jahr im Bunker: Die Hälfte meines Wassers ist weg (Teil 3)",
+  "365 Tage im Bunker: 1.000 Liter Wasser verloren (Teil 3)",
+  "1 Jahr eingesperrt: Mit 2,6 Litern am Tag überleben (Teil 3)"
+ ],
+ "capas": [
+  {
+   "o": "vazio",
+   "t1": "1.000 LITER",
+   "t2": "WEG",
+   "nome": "Opção A · 1.000 LITER WEG (barril vazando)"
+  },
+  {
+   "o": "garrafa",
+   "t1": "NUR NOCH",
+   "t2": "2,6 LITER",
+   "nome": "Opção B · NUR NOCH 2,6 LITER (garrafa)"
+  },
+  {
+   "o": "gota",
+   "t1": "ICH TRINKE",
+   "t2": "DAS?!",
+   "nome": "Opção C · ICH TRINKE DAS?! (gotas do cano)"
+  }
+ ],
+ "gancho_desc": "Tag 15: Ben steht in einer Pfütze. Eines der beiden Wasserfässer hat einen Riss, 1.000 Liter sind weg. Mit dem Rest muss er 350 Tage überleben. Das sind 2,6 Liter am Tag, für alles.",
+ "coment": "Worauf würdest du zuerst verzichten: Waschen, Zähneputzen oder Kaffee?",
+ "tags": "Bunker, 1 Jahr im Bunker, 365 Tage im Bunker, Bunker überleben, Wasser, Trinkwasser, Wasservorrat, Kondenswasser, eingesperrt, Überlebensgeschichte, Survival Animation, was wäre wenn, Prepper, Marder, Teil 3",
+ "fatos": [
+  "Trinkmenge: rund 1,5 Liter am Tag für Erwachsene (Richtwert der Deutschen Gesellschaft für Ernährung, DGE).",
+  "Ohne Wasser überlebt ein Mensch nur wenige Tage.",
+  "Ein Mensch gibt am Tag etwa 1,0 bis 1,5 Liter Wasser an die Raumluft ab (Stadt Münster, Gesundheitsamt; Stadt Bielefeld).",
+  "Rechnung im Video: 920 Liter geteilt durch 350 Tage = rund 2,6 Liter am Tag."
+ ],
+ "fontes": [
+  "https://www.verbraucherzentrale.de/wissen/lebensmittel/gesund-ernaehren/wie-viel-sollte-man-am-tag-trinken-24202",
+  "https://www.stadt-muenster.de/gesundheit/hygiene-und-umweltmedizin/schimmelpilze"
+ ],
+ "blocos": [
+  {
+   "id": "gancho",
+   "cap": "Tag 15: Die Pfütze",
+   "tenso": 1,
+   "falas": [
+    [
+     "Tag fünfzehn.",
+     {
+      "c": "ben",
+      "h": "p",
+      "ol": 0.2,
+      "d": 15
+     }
+    ],
+    [
+     "Ich stehe in einer Pfütze."
+    ],
+    [
+     "Mitten im Bunker. Auf dem Betonboden. Wasser."
+    ],
+    [
+     "Mein erster Gedanke: ein Rohrbruch. Aber hier unten gibt es kein Wasserrohr.",
+     {
+      "c": "ben",
+      "h": "c",
+      "g": 0.7
+     }
+    ],
+    [
+     "Mein zweiter Gedanke ist schlimmer.",
+     {
+      "c": "ben",
+      "h": "m"
+     }
+    ],
+    [
+     "Die Fässer.",
+     {
+      "c": "agua",
+      "vz": 1,
+      "h": "m"
+     }
+    ],
+    [
+     "In diesem Teil verliere ich die Hälfte meines Wassers. Und muss lernen, mit dem Rest ein Jahr zu überleben."
+    ]
+   ]
+  },
+  {
+   "id": "riss",
+   "cap": "Der Riss im Fass",
+   "falas": [
+    [
+     "Zur Erinnerung: Ich habe zweitausend Liter. Zwei Fässer. Je tausend Liter.",
+     {
+      "c": "agua",
+      "t": "2 x 1.000 L",
+      "h": "n"
+     }
+    ],
+    [
+     "Vor drei Tagen bin ich im Dunkeln über eine Kiste gestolpert. Und gegen das rechte Fass gefallen.",
+     {
+      "c": "escuro",
+      "h": "m",
+      "t": "RUMMS"
+     }
+    ],
+    [
+     "Ich habe mir nichts dabei gedacht."
+    ],
+    [
+     "Jetzt sehe ich den Riss. Ganz unten. Dünn wie ein Haar.",
+     {
+      "c": "agua",
+      "vz": 1,
+      "t": "RISS",
+      "tc": "r",
+      "h": "p"
+     }
+    ],
+    [
+     "Drei Tage lang ist das Wasser herausgelaufen. Tropfen für Tropfen. In den Abfluss im Boden."
+    ],
+    [
+     "Ich klopfe gegen das Fass. Es klingt hohl."
+    ],
+    [
+     "Tausend Liter. Weg.",
+     {
+      "c": "agua",
+      "vz": 1,
+      "t": "– 1.000 L",
+      "tc": "r",
+      "h": "m"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "schock",
+   "cap": "Warum Wasser anders ist",
+   "tenso": 1,
+   "falas": [
+    [
+     "Ich muss kurz erklären, warum mir in diesem Moment schlecht wird.",
+     {
+      "c": "ben",
+      "h": "m"
+     }
+    ],
+    [
+     "Essen kann man strecken. Man isst weniger, man wird dünner, man hält trotzdem monatelang durch.",
+     {
+      "c": "estoque",
+      "h": "n"
+     }
+    ],
+    [
+     "Strom kann man ersetzen. Dafür habe ich das Fahrrad und meine Beine.",
+     {
+      "c": "obj",
+      "o": "gisela",
+      "h": "n"
+     }
+    ],
+    [
+     "Wasser kann man nicht strecken und nicht ersetzen. Hier unten gibt es keinen Brunnen, keinen Regen und keinen Hahn.",
+     {
+      "c": "agua",
+      "vz": 1,
+      "h": "p"
+     }
+    ],
+    [
+     "Jeder Liter, den ich in diesem Jahr trinke, steht schon in diesem Raum. Und gerade ist die Hälfte davon im Boden verschwunden."
+    ],
+    [
+     "Ich setze mich auf die Kiste und schaue zehn Minuten lang das leere Fass an.",
+     {
+      "c": "ben",
+      "h": "p",
+      "n": 1
+     }
+    ],
+    [
+     "Dann hole ich die Kreide."
+    ]
+   ]
+  },
+  {
+   "id": "rechnung",
+   "cap": "Die neue Rechnung",
+   "falas": [
+    [
+     "Jetzt wird gerechnet.",
+     {
+      "c": "lousa",
+      "it": [],
+      "h": "n"
+     }
+    ],
+    [
+     "Im linken Fass sind noch gut neunhundert Liter. Den Rest habe ich in den ersten zwei Wochen verbraucht.",
+     {
+      "c": "lousa",
+      "it": [
+       "920 Liter"
+      ],
+      "h": "n"
+     }
+    ],
+    [
+     "Ich habe noch dreihundertfünfzig Tage vor mir.",
+     {
+      "c": "lousa",
+      "it": [
+       "920 Liter",
+       "÷ 350 Tage"
+      ],
+      "q": [
+       -1,
+       0.2
+      ],
+      "h": "n"
+     }
+    ],
+    [
+     "Zwei Komma sechs Liter am Tag. Vorher waren es fünfeinhalb.",
+     {
+      "c": "lousa",
+      "it": [
+       "920 Liter",
+       "÷ 350 Tage",
+       "≈ 2,6 L pro Tag"
+      ],
+      "q": [
+       -1,
+       -1,
+       0.05
+      ],
+      "h": "p"
+     }
+    ],
+    [
+     "Reicht das?",
+     {
+      "c": "ben",
+      "h": "p",
+      "g": 0.7
+     }
+    ]
+   ]
+  },
+  {
+   "id": "bedarf",
+   "cap": "Wie viel Wasser ein Mensch braucht",
+   "falas": [
+    [
+     "Die Deutsche Gesellschaft für Ernährung sagt: Ein Erwachsener sollte rund anderthalb Liter am Tag trinken.",
+     {
+      "c": "obj",
+      "o": "garrafa",
+      "t": "1,5 L",
+      "tc": "b",
+      "h": "n"
+     }
+    ],
+    [
+     "Dazu kommt das Wasser im Essen."
+    ],
+    [
+     "Und ohne Wasser überlebt ein Mensch nur wenige Tage.",
+     {
+      "c": "ben",
+      "h": "p"
+     }
+    ],
+    [
+     "Zum Trinken reicht es also. Knapp.",
+     {
+      "c": "ben",
+      "h": "c",
+      "g": 0.5
+     }
+    ],
+    [
+     "Aber dann bleibt nur noch ein guter Liter für alles andere.",
+     {
+      "c": "obj",
+      "o": "garrafa",
+      "t": "1 L Rest",
+      "tc": "r",
+      "h": "p"
+     }
+    ],
+    [
+     "Reis kochen. Haferflocken. Waschen. Zähne putzen.",
+     {
+      "c": "lista",
+      "tt": "1 LITER FÜR",
+      "it": [
+       "Reis kochen",
+       "Haferflocken",
+       "Waschen",
+       "Zähne putzen"
+      ],
+      "q": [
+       0.02,
+       0.3,
+       0.6,
+       0.8
+      ]
+     }
+    ],
+    [
+     "Und Herr Müller trinkt auch.",
+     {
+      "c": "obj",
+      "o": "marder",
+      "t": "Herr Müller",
+      "tc": "y",
+      "h": "c"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "bisher",
+   "cap": "Wohin die 5,5 Liter gingen",
+   "falas": [
+    [
+     "Wo sind eigentlich die fünfeinhalb Liter geblieben, die ich bisher jeden Tag verbraucht habe?",
+     {
+      "c": "ben",
+      "h": "c",
+      "g": 0.7
+     }
+    ],
+    [
+     "Getrunken habe ich davon nur gut zwei.",
+     {
+      "c": "lista",
+      "tt": "BISHER PRO TAG",
+      "it": [
+       "Trinken|2,2 L"
+      ]
+     }
+    ],
+    [
+     "Ein Liter ging ins Kochen. Reis und Haferflocken saugen Wasser auf wie ein Schwamm.",
+     {
+      "c": "lista",
+      "tt": "BISHER PRO TAG",
+      "it": [
+       "Trinken|2,2 L",
+       "Kochen|1,0 L"
+      ],
+      "q": [
+       -1,
+       0.05
+      ]
+     }
+    ],
+    [
+     "Und der Rest? Hände waschen. Geschirr spülen. Zähne putzen. Einmal am Tag der Lappen.",
+     {
+      "c": "lista",
+      "tt": "BISHER PRO TAG",
+      "it": [
+       "Trinken|2,2 L",
+       "Kochen|1,0 L",
+       "Waschen, Spülen|2,3 L"
+      ],
+      "q": [
+       -1,
+       -1,
+       0.1
+      ]
+     }
+    ],
+    [
+     "Über zwei Liter am Tag sind einfach im Abfluss gelandet."
+    ],
+    [
+     "Das war kein Verbrauch. Das war Gewohnheit.",
+     {
+      "c": "ben",
+      "h": "c",
+      "inc": 4
+     }
+    ]
+   ]
+  },
+  {
+   "id": "plan",
+   "cap": "Tag 16: Fünf Maßnahmen",
+   "falas": [
+    [
+     "Tag sechzehn. Neuer Plan.",
+     {
+      "c": "ben",
+      "h": "n",
+      "g": 0.6,
+      "d": 16
+     }
+    ],
+    [
+     "Erstens: Der Rest wird umgefüllt. In jede Flasche, jeden Topf und jeden Eimer, den ich habe.",
+     {
+      "c": "obj",
+      "o": "garrafa",
+      "t": "UMFÜLLEN",
+      "tc": "y",
+      "h": "n"
+     }
+    ],
+    [
+     "Ein Fass ist ein Risiko. Zwanzig Gefäße sind eine Versicherung."
+    ],
+    [
+     "Zweitens: Waschen nur noch mit einem feuchten Lappen. Ein Glas Wasser am Tag.",
+     {
+      "c": "ben",
+      "h": "c"
+     }
+    ],
+    [
+     "Drittens: Das Kochwasser vom Reis schütte ich nicht mehr weg. Ich trinke es.",
+     {
+      "c": "obj",
+      "o": "prato",
+      "t": "REISWASSER",
+      "h": "p"
+     }
+    ],
+    [
+     "Schmeckt wie warmer Kleister. Aber es ist Wasser."
+    ],
+    [
+     "Viertens: die Dosen. In jeder Dose Pfirsiche oder Bohnen steckt Flüssigkeit. Die zählt jetzt mit.",
+     {
+      "c": "obj",
+      "o": "lata",
+      "cor2": "#f29a45",
+      "h": "n"
+     }
+    ],
+    [
+     "Und fünftens fällt mir etwas an der Decke auf.",
+     {
+      "c": "ben",
+      "h": "c",
+      "ol": 0.5,
+      "inc": 4
+     }
+    ]
+   ]
+  },
+  {
+   "id": "tropfen",
+   "cap": "Tag 17: Wasser aus der Luft",
+   "falas": [
+    [
+     "Tag siebzehn. Am Kupferrohr unter der Decke hängen Tropfen.",
+     {
+      "c": "obj",
+      "o": "gota",
+      "h": "c",
+      "d": 17
+     }
+    ],
+    [
+     "Das Rohr ist kalt. Die Luft im Bunker ist warm und feucht."
+    ],
+    [
+     "Und woher kommt die Feuchtigkeit? Von mir.",
+     {
+      "c": "ben",
+      "h": "c",
+      "g": 0.8
+     }
+    ],
+    [
+     "Ein Mensch gibt am Tag einen bis anderthalb Liter Wasser an die Luft ab. Durch Atmen und Schwitzen.",
+     {
+      "c": "obj",
+      "o": "gota",
+      "t": "1–1,5 L",
+      "tc": "b",
+      "h": "n"
+     }
+    ],
+    [
+     "Ein Teil davon landet an diesem Rohr."
+    ],
+    [
+     "Also stelle ich eine Schüssel darunter. Und spanne ein Stück Folie, das die Tropfen sammelt."
+    ],
+    [
+     "Am ersten Tag: ein halbes Glas.",
+     {
+      "c": "obj",
+      "o": "gota",
+      "t": "½ Glas",
+      "h": "p"
+     }
+    ],
+    [
+     "Tag zwanzig. Ich habe die Folie vergrößert. Ein volles Glas am Tag.",
+     {
+      "c": "obj",
+      "o": "gota",
+      "t": "1 Glas",
+      "tc": "g",
+      "h": "s",
+      "d": 20
+     }
+    ],
+    [
+     "Das ist nicht viel. Aber in einem Jahr sind das über siebzig Liter.",
+     {
+      "c": "obj",
+      "o": "gota",
+      "t": "70 L",
+      "tc": "g",
+      "h": "s"
+     }
+    ],
+    [
+     "Ich trinke mein eigenes Schwitzwasser. So weit ist es gekommen.",
+     {
+      "c": "ben",
+      "h": "c",
+      "inc": 5
+     }
+    ],
+    [
+     "Ich koche es vorher ab. Sicher ist sicher."
+    ]
+   ]
+  },
+  {
+   "id": "durst",
+   "cap": "Tag 21: Der Körper meldet sich",
+   "falas": [
+    [
+     "Tag einundzwanzig. Mein Körper merkt die Umstellung.",
+     {
+      "c": "ben",
+      "h": "p",
+      "m": 1,
+      "d": 21
+     }
+    ],
+    [
+     "Seit ich weniger trinke, habe ich Kopfschmerzen. Diesmal weiß ich sofort, woran es liegt. Und es ist nicht die Luft."
+    ],
+    [
+     "Das einfachste Messgerät hat jeder Mensch dabei: die Farbe beim Pinkeln. Je dunkler, desto weniger Wasser ist im Körper.",
+     {
+      "c": "obj",
+      "o": "nada",
+      "t": "dunkel = Durst",
+      "ty": 430,
+      "tc": "y",
+      "h": "c"
+     }
+    ],
+    [
+     "Also ändere ich nicht die Menge, sondern den Rhythmus. Ich trinke nicht mehr drei große Becher, sondern jede Stunde zwei kleine Schlucke.",
+     {
+      "c": "obj",
+      "o": "garrafa",
+      "t": "2 Schlucke",
+      "h": "n"
+     }
+    ],
+    [
+     "Und ich fahre das Fahrrad langsamer. Wer schwitzt, verliert Wasser, das er nicht hat.",
+     {
+      "c": "bici",
+      "lento": 1,
+      "gis": 1,
+      "nv0": 0.4,
+      "nv1": 0.8,
+      "h": "n"
+     }
+    ],
+    [
+     "Eine Stunde gemütlich treten statt vierzig Minuten Vollgas. Gisela ist es egal. Meinem Körper nicht."
+    ]
+   ]
+  },
+  {
+   "id": "frage",
+   "cap": "Frage an dich",
+   "falas": [
+    [
+     "Frage an dich: Worauf würdest du zuerst verzichten? Waschen, Zähneputzen oder Kaffee?",
+     {
+      "c": "pergunta"
+     }
+    ],
+    [
+     "Schreib es in die Kommentare."
+    ],
+    [
+     "Kaffee habe ich übrigens keinen. Das war der zweite Fehler bei der Planung."
+    ]
+   ]
+  },
+  {
+   "id": "alltag",
+   "cap": "Tag 24: Leben mit 2,6 Litern",
+   "falas": [
+    [
+     "Tag vierundzwanzig. Die neue Rechnung.",
+     {
+      "c": "ben",
+      "h": "n",
+      "d": 24
+     }
+    ],
+    [
+     "Trinken. Kochen. Waschen. Und Herr Müller.",
+     {
+      "c": "lista",
+      "tt": "WASSER PRO TAG",
+      "it": [
+       "Trinken|1,5 L",
+       "Kochen|0,8 L",
+       "Waschen|0,2 L",
+       "Herr Müller|0,1 L"
+      ],
+      "q": [
+       0.02,
+       0.25,
+       0.48,
+       0.7
+      ]
+     }
+    ],
+    [
+     "Zwei Komma sechs Liter. Es geht genau auf."
+    ],
+    [
+     "Es darf nur nichts mehr schiefgehen.",
+     {
+      "c": "ben",
+      "h": "p"
+     }
+    ],
+    [
+     "Mein Mund ist ständig trocken. Meine Lippen sind rissig."
+    ],
+    [
+     "Und ich denke den ganzen Tag an eine Dusche.",
+     {
+      "c": "ben",
+      "h": "c",
+      "m": 1
+     }
+    ],
+    [
+     "Nicht an Pizza. Nicht an Sonne. An eine Dusche."
+    ]
+   ]
+  },
+  {
+   "id": "kochen",
+   "cap": "Kochen fast ohne Wasser",
+   "falas": [
+    [
+     "Kochen ist das größte Problem. Reis braucht doppelt so viel Wasser, wie er selbst wiegt. Und beim Kochen verdampft ein Teil davon einfach in die Luft.",
+     {
+      "c": "obj",
+      "o": "prato",
+      "t": "Reis : Wasser 1 : 2",
+      "h": "p"
+     }
+    ],
+    [
+     "Also koche ich anders. Deckel drauf. Topf vom Kocher, sobald es brodelt. Der Reis zieht im heißen Wasser von allein gar."
+    ],
+    [
+     "Das dauert länger. Aber es verdampft fast nichts.",
+     {
+      "c": "ben",
+      "h": "s",
+      "g": 0.6
+     }
+    ],
+    [
+     "Haferflocken koche ich gar nicht mehr. Ich weiche sie über Nacht in einem halben Becher Wasser ein.",
+     {
+      "c": "obj",
+      "o": "balde",
+      "t": "über Nacht",
+      "tc": "y",
+      "h": "n"
+     }
+    ],
+    [
+     "Morgens ist daraus ein kalter, grauer Brei geworden. Er schmeckt nach nichts. Aber er kostet mich keinen Tropfen mehr als nötig."
+    ],
+    [
+     "Und das Wasser aus den Bohnendosen kippe ich direkt in den Reis. Salz ist schon drin.",
+     {
+      "c": "obj",
+      "o": "lata",
+      "cor2": "#3f9b5a",
+      "h": "s"
+     }
+    ],
+    [
+     "So spare ich jeden Tag etwa ein Glas. Ein Glas klingt lächerlich.",
+     {
+      "c": "obj",
+      "o": "garrafa",
+      "t": "1 Glas",
+      "h": "c"
+     }
+    ],
+    [
+     "In dreihundertfünfzig Tagen sind das siebzig Liter. Mehr als ein Monat Trinken.",
+     {
+      "c": "obj",
+      "o": "garrafa",
+      "t": "70 L",
+      "tc": "g",
+      "h": "s"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "dieb",
+   "cap": "Tag 27: Der Wasserdieb",
+   "falas": [
+    [
+     "Tag siebenundzwanzig. Herr Müller hat meine Schüssel entdeckt.",
+     {
+      "c": "obj",
+      "o": "marder",
+      "come": 1,
+      "h": "p",
+      "d": 27
+     }
+    ],
+    [
+     "Die unter dem Rohr."
+    ],
+    [
+     "Ich komme vom Fahrrad. Die Schüssel ist leer. Und er sitzt daneben und leckt sich die Pfoten.",
+     {
+      "c": "obj",
+      "o": "gota",
+      "t": "LEER",
+      "tc": "r",
+      "h": "m"
+     }
+    ],
+    [
+     "Das war die Ernte von einem ganzen Tag."
+    ],
+    [
+     "Ich hänge die Schüssel höher. Er klettert.",
+     {
+      "c": "obj",
+      "o": "marder",
+      "flip": 1,
+      "h": "c"
+     }
+    ],
+    [
+     "Ich lege einen Deckel darauf. Er schiebt ihn herunter."
+    ],
+    [
+     "Am Ende stelle ich ihm ein eigenes Schälchen hin.",
+     {
+      "c": "obj",
+      "o": "prato",
+      "cor2": "#9fd0ef",
+      "t": "FÜR IHN",
+      "tc": "y",
+      "h": "c"
+     }
+    ],
+    [
+     "Stand: Marder drei, Ben eins.",
+     {
+      "c": "placar",
+      "sa": 3,
+      "sb": 1
+     }
+    ]
+   ]
+  },
+  {
+   "id": "sauber",
+   "cap": "Sauber bleiben mit einem Glas",
+   "falas": [
+    [
+     "Bleibt die Frage, die du dir bestimmt schon gestellt hast: Wie bleibt man sauber, mit einem Glas Wasser am Tag?",
+     {
+      "c": "ben",
+      "h": "c",
+      "g": 0.7
+     }
+    ],
+    [
+     "Antwort: gar nicht richtig. Aber es gibt eine Reihenfolge."
+    ],
+    [
+     "Mit dem feuchten Lappen zuerst das Gesicht. Dann die Hände. Dann unter den Armen. Und ganz zum Schluss die Füße. Niemals andersherum.",
+     {
+      "c": "lista",
+      "tt": "REIHENFOLGE",
+      "it": [
+       "1. Gesicht",
+       "2. Hände",
+       "3. Achseln",
+       "4. Füße"
+      ],
+      "q": [
+       0.22,
+       0.4,
+       0.52,
+       0.72
+      ]
+     }
+    ],
+    [
+     "Die Hände sind das Wichtigste. Mit den Händen fasse ich mein Essen an."
+    ],
+    [
+     "Wenn ich hier unten krank werde, gibt es keinen Arzt und keine Apotheke.",
+     {
+      "c": "ben",
+      "h": "p"
+     }
+    ],
+    [
+     "Nach dreißig Tagen rieche ich wie ein Raubtierkäfig. Herr Müller stört das nicht. Er riecht genauso.",
+     {
+      "c": "obj",
+      "o": "marder",
+      "h": "c"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "ende",
+   "cap": "Tag 30: Ein Monat",
+   "tenso": 1,
+   "falas": [
+    [
+     "Tag dreißig. Ein Monat.",
+     {
+      "c": "obj",
+      "o": "riscos",
+      "nn": 14,
+      "t": "30 Tage",
+      "h": "s",
+      "d": 30
+     }
+    ],
+    [
+     "Ich habe halb so viel Wasser wie geplant. Und ich lebe.",
+     {
+      "c": "ben",
+      "h": "s",
+      "g": 0.8
+     }
+    ],
+    [
+     "Was ich gelernt habe: Lagere nie alles an einem Ort.",
+     {
+      "c": "agua",
+      "vz": 1,
+      "h": "n"
+     }
+    ],
+    [
+     "Und: Der Körper gewöhnt sich an fast alles. Der Kopf nicht.",
+     {
+      "c": "ben",
+      "h": "p",
+      "n": 1
+     }
+    ],
+    [
+     "Denn seit ein paar Tagen stimmt etwas nicht mit meinen Strichen an der Wand.",
+     {
+      "c": "obj",
+      "o": "riscos",
+      "nn": 14,
+      "n": 1,
+      "h": "p"
+     }
+    ],
+    [
+     "Ich zähle dreißig. Aber mein Tagebuch sagt: siebenundzwanzig.",
+     {
+      "c": "obj",
+      "o": "diario",
+      "t": "27 ?",
+      "tc": "r",
+      "n": 1,
+      "claro": 1,
+      "h": "m"
+     }
+    ],
+    [
+     "In Teil vier siehst du, wie ich hier unten drei Tage verloren habe."
+    ],
+    [
+     "Abonniere den Kanal, damit du keinen Tag verpasst. Ich verpasse ja schon genug.",
+     {
+      "c": "fim",
+      "teil": 4
+     }
+    ]
+   ]
+  }
+ ]
+}

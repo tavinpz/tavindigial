@@ -1,0 +1,944 @@
+{
+ "n": 4,
+ "id": "bunker004-drei-tage",
+ "pasta": "v04",
+ "titulos": [
+  "1 Jahr im Bunker: Ich habe 3 Tage verloren (Teil 4)",
+  "365 Tage im Bunker: Ohne Uhr verliert man die Zeit (Teil 4)",
+  "1 Jahr eingesperrt: Welcher Tag ist heute? (Teil 4)"
+ ],
+ "capas": [
+  {
+   "o": "relogio",
+   "t1": "3 TAGE",
+   "t2": "VERLOREN",
+   "p": {
+    "vel": 0
+   },
+   "nome": "Opção A · 3 TAGE VERLOREN (relógio)"
+  },
+  {
+   "o": "diario",
+   "t1": "TAG 31",
+   "t2": "ODER 28?",
+   "n": 1,
+   "nome": "Opção B · TAG 31 ODER 28? (diário)"
+  },
+  {
+   "o": "sol",
+   "t1": "60 TAGE",
+   "t2": "OHNE SONNE",
+   "nome": "Opção C · 60 TAGE OHNE SONNE"
+  }
+ ],
+ "gancho_desc": "An der Wand stehen 31 Striche, im Tagebuch nur 28 Einträge. Ohne Fenster und ohne Uhr verliert Ben das Wichtigste: die Zeit. Ein Franzose hat das 1962 in einer Höhle ausprobiert und sich um 25 Tage verzählt.",
+ "coment": "Wie lange würdest du es ohne Uhr und ohne Handy aushalten?",
+ "tags": "Bunker, 1 Jahr im Bunker, 365 Tage im Bunker, Bunker überleben, Zeitgefühl, innere Uhr, Michel Siffre, Höhlenexperiment, Isolation, Einsamkeit, eingesperrt, Überlebensgeschichte, Survival Animation, was wäre wenn, Teil 4",
+ "fatos": [
+  "Michel Siffre, 1962: 63 Tage allein in der Gletscherhöhle Scarasson, ohne Uhr und Tageslicht. Am 14. September hielt er es für den 20. August, also 25 Tage Unterschied (New Scientist; Cabinet Magazine, Interview 2008).",
+  "Sein Schlaf-Wach-Rhythmus lag bei etwa 24,5 Stunden.",
+  "Hochrechnung im Video: 25 von 63 Tagen entsprechen auf ein Jahr fast fünf Monaten."
+ ],
+ "fontes": [
+  "https://www.newscientist.com/article/mg23931900-400-this-man-spent-months-alone-underground-and-it-warped-his-mind/"
+ ],
+ "blocos": [
+  {
+   "id": "gancho",
+   "cap": "Tag 31 oder Tag 28?",
+   "tenso": 1,
+   "falas": [
+    [
+     "Tag einunddreißig. Oder Tag achtundzwanzig.",
+     {
+      "c": "ben",
+      "h": "p",
+      "n": 1,
+      "d": 31
+     }
+    ],
+    [
+     "Ich weiß es nicht mehr."
+    ],
+    [
+     "An der Wand stehen einunddreißig Striche.",
+     {
+      "c": "obj",
+      "o": "riscos",
+      "nn": 14,
+      "t": "31",
+      "h": "p"
+     }
+    ],
+    [
+     "In meinem Tagebuch stehen achtundzwanzig Einträge.",
+     {
+      "c": "obj",
+      "o": "diario",
+      "t": "28",
+      "tc": "r",
+      "h": "p"
+     }
+    ],
+    [
+     "Eines von beiden lügt.",
+     {
+      "c": "ben",
+      "h": "c",
+      "inc": 4
+     }
+    ],
+    [
+     "In diesem Teil verliere ich etwas, das man nicht nachfüllen kann. Die Zeit.",
+     {
+      "c": "obj",
+      "o": "relogio",
+      "h": "m"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "warum",
+   "cap": "Wie man Tage verliert",
+   "falas": [
+    [
+     "Wie kann man Tage verlieren? Ganz einfach.",
+     {
+      "c": "ben",
+      "h": "n",
+      "g": 0.7
+     }
+    ],
+    [
+     "Hier unten gibt es keinen Morgen. Es gibt nur: Licht an. Und Licht aus.",
+     {
+      "c": "obj",
+      "o": "sol",
+      "h": "p"
+     }
+    ],
+    [
+     "Und das Licht mache ich selbst an."
+    ],
+    [
+     "Am Anfang hatte ich Regeln. Licht an um sieben. Licht aus um zehn.",
+     {
+      "c": "lista",
+      "tt": "REGELN",
+      "it": [
+       "LICHT AN|7:00",
+       "LICHT AUS|22:00"
+      ],
+      "q": [
+       0.4,
+       0.7
+      ]
+     }
+    ],
+    [
+     "Aber meine einzige Uhr hing an Gisela. Seit dem Stromausfall an Tag zwölf blinkt sie nur noch: null null, null null.",
+     {
+      "c": "obj",
+      "o": "visor",
+      "r": "UHR",
+      "val": "00:00",
+      "h": "p"
+     }
+    ],
+    [
+     "Seitdem schätze ich."
+    ],
+    [
+     "Ich stehe auf, wenn ich wach bin. Ich schlafe, wenn ich müde bin.",
+     {
+      "c": "cama",
+      "de": 1,
+      "zz": 1,
+      "n": 1
+     }
+    ],
+    [
+     "Das klingt gesund. Ist es aber nicht.",
+     {
+      "c": "ben",
+      "h": "c"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "tag",
+   "cap": "Ein Tag ohne Uhr",
+   "falas": [
+    [
+     "Ich beschreibe dir einen ganz normalen Tag ohne Uhr.",
+     {
+      "c": "ben",
+      "h": "n",
+      "g": 0.6
+     }
+    ],
+    [
+     "Ich wache auf. Es ist dunkel, wie immer. Ist es sechs Uhr morgens oder drei Uhr nachts? Mein Körper sagt: Steh auf. Also stehe ich auf.",
+     {
+      "c": "cama",
+      "de": 1,
+      "n": 2,
+      "h": "c"
+     }
+    ],
+    [
+     "Ich esse Haferflocken, fahre Fahrrad und lese zwei Kapitel. Dann werde ich müde und lege mich kurz hin.",
+     {
+      "c": "bici",
+      "gis": 1,
+      "nv0": 0.5,
+      "nv1": 0.8,
+      "h": "n"
+     }
+    ],
+    [
+     "Als ich aufwache, fühle ich mich ausgeruht. War das ein Mittagsschlaf von zwanzig Minuten? Oder eine ganze Nacht?",
+     {
+      "c": "cama",
+      "de": 1,
+      "n": 1,
+      "h": "c"
+     }
+    ],
+    [
+     "Ich habe keine Ahnung. Und es gibt niemanden, den ich fragen kann."
+    ],
+    [
+     "Also mache ich einen Strich. Sicher ist sicher.",
+     {
+      "c": "obj",
+      "o": "riscos",
+      "nn": 12,
+      "h": "c"
+     }
+    ],
+    [
+     "Genau so entstehen Tage, die es nie gegeben hat."
+    ]
+   ]
+  },
+  {
+   "id": "siffre",
+   "cap": "Das Höhlenexperiment von 1962",
+   "falas": [
+    [
+     "Im Jahr neunzehnhundertzweiundsechzig hat ein Franzose genau das ausprobiert.",
+     {
+      "c": "lousa",
+      "it": [
+       "1962"
+      ],
+      "h": "n"
+     }
+    ],
+    [
+     "Michel Siffre. Dreiundzwanzig Jahre alt. Höhlenforscher.",
+     {
+      "c": "lousa",
+      "it": [
+       "1962",
+       "Michel Siffre"
+      ],
+      "q": [
+       -1,
+       0.05
+      ],
+      "h": "n"
+     }
+    ],
+    [
+     "Er stieg in eine Gletscherhöhle. Ohne Uhr. Ohne Kalender. Ohne Tageslicht.",
+     {
+      "c": "lista",
+      "tt": "IN DER HÖHLE",
+      "it": [
+       "-Uhr",
+       "-Kalender",
+       "-Tageslicht"
+      ],
+      "q": [
+       0.4,
+       0.6,
+       0.8
+      ]
+     }
+    ],
+    [
+     "Er blieb dreiundsechzig Tage.",
+     {
+      "c": "obj",
+      "o": "nada",
+      "t": "63 Tage",
+      "ty": 430,
+      "h": "n"
+     }
+    ],
+    [
+     "Als sein Team ihn holte, war es der vierzehnte September.",
+     {
+      "c": "obj",
+      "o": "nada",
+      "t": "14. September",
+      "ty": 430,
+      "tc": "g",
+      "h": "n"
+     }
+    ],
+    [
+     "Siffre war sicher: Es ist erst der zwanzigste August.",
+     {
+      "c": "obj",
+      "o": "nada",
+      "t": "20. August ?",
+      "ty": 430,
+      "tc": "r",
+      "h": "c"
+     }
+    ],
+    [
+     "Er hatte fünfundzwanzig Tage verloren.",
+     {
+      "c": "obj",
+      "o": "relogio",
+      "t": "– 25 Tage",
+      "tc": "r",
+      "h": "m"
+     }
+    ],
+    [
+     "Nicht, weil er dumm war. Sondern weil jeder Tag gleich aussah.",
+     {
+      "c": "ben",
+      "h": "p"
+     }
+    ],
+    [
+     "Genau wie bei mir."
+    ]
+   ]
+  },
+  {
+   "id": "telefon",
+   "cap": "Zwei Minuten, die fünf dauerten",
+   "falas": [
+    [
+     "Siffre hatte ein Telefon. Jedes Mal, wenn er aufwachte, aß oder schlafen ging, rief er sein Team an der Oberfläche an.",
+     {
+      "c": "ben",
+      "h": "n",
+      "g": 0.5
+     }
+    ],
+    [
+     "Das Team schrieb die echte Uhrzeit auf. Aber es sagte sie ihm nie."
+    ],
+    [
+     "Bei manchen Anrufen sollte er zwei Minuten abzählen. Er brauchte dafür fünf. Und merkte nichts davon.",
+     {
+      "c": "obj",
+      "o": "relogio",
+      "t": "2 min = 5 min",
+      "tc": "r",
+      "h": "c"
+     }
+    ],
+    [
+     "Sein Körper lief dabei fast normal weiter. Nur sein Kopf hatte den Faden verloren.",
+     {
+      "c": "ben",
+      "h": "c",
+      "m": 1
+     }
+    ],
+    [
+     "Das ist der Unterschied, den fast niemand kennt: Die innere Uhr tickt weiter. Aber niemand liest sie mehr ab."
+    ]
+   ]
+  },
+  {
+   "id": "test",
+   "cap": "Ich prüfe mich selbst",
+   "falas": [
+    [
+     "Ich prüfe mich selbst.",
+     {
+      "c": "obj",
+      "o": "diario",
+      "h": "n"
+     }
+    ],
+    [
+     "Neulich habe ich mich hingelegt, als ich satt war. Als ich aufwachte, hatte ich Hunger wie nach zwei Tagen.",
+     {
+      "c": "cama",
+      "de": 1,
+      "zz": 1,
+      "n": 1
+     }
+    ],
+    [
+     "Ich glaube, ich schlafe manchmal vierzehn Stunden. Und manchmal vier.",
+     {
+      "c": "obj",
+      "o": "relogio",
+      "t": "14 Std ?",
+      "h": "p"
+     }
+    ],
+    [
+     "Ich esse zwei Mal Frühstück. Oder gar keins.",
+     {
+      "c": "obj",
+      "o": "prato",
+      "h": "c"
+     }
+    ],
+    [
+     "Und die Striche? Manchmal mache ich einen nach einem Mittagsschlaf.",
+     {
+      "c": "obj",
+      "o": "riscos",
+      "nn": 14,
+      "h": "p"
+     }
+    ],
+    [
+     "So kommen drei Striche zu viel an die Wand."
+    ],
+    [
+     "Oder drei Einträge zu wenig ins Tagebuch. Das ist das Schlimme. Ich kann es nicht prüfen.",
+     {
+      "c": "ben",
+      "h": "m",
+      "m": 1
+     }
+    ]
+   ]
+  },
+  {
+   "id": "folgen",
+   "cap": "Warum das gefährlich ist",
+   "tenso": 1,
+   "falas": [
+    [
+     "Du denkst vielleicht: Ist doch egal, welcher Tag ist.",
+     {
+      "c": "ben",
+      "h": "n",
+      "g": 0.6
+     }
+    ],
+    [
+     "Ist es nicht."
+    ],
+    [
+     "Mein Essen ist auf dreihundertfünfundsechzig Tage gerechnet. Mein Wasser auch.",
+     {
+      "c": "estoque",
+      "t": "365 Tage",
+      "h": "p"
+     }
+    ],
+    [
+     "Wenn ich mich um drei Tage verzähle, ist das nicht schlimm."
+    ],
+    [
+     "Aber Siffre hat sich in zwei Monaten um fünfundzwanzig Tage verzählt.",
+     {
+      "c": "lousa",
+      "it": [
+       "63 Tage:",
+       "– 25 Tage"
+      ],
+      "q": [
+       0.1,
+       0.5
+      ],
+      "h": "p"
+     }
+    ],
+    [
+     "Auf ein Jahr gerechnet wären das fast fünf Monate.",
+     {
+      "c": "lousa",
+      "it": [
+       "63 Tage:",
+       "– 25 Tage",
+       "1 Jahr:",
+       "≈ – 5 Monate"
+      ],
+      "q": [
+       -1,
+       -1,
+       0.05,
+       0.5
+      ],
+      "h": "m"
+     }
+    ],
+    [
+     "Und es gibt noch ein Problem. Die Tür.",
+     {
+      "c": "ben",
+      "h": "p",
+      "n": 1
+     }
+    ],
+    [
+     "Sie geht nach dreihundertfünfundsechzig Tagen auf. Echten Tagen. Nicht meinen."
+    ]
+   ]
+  },
+  {
+   "id": "loesung",
+   "cap": "Eine Uhr aus kalter Luft",
+   "falas": [
+    [
+     "Ich brauche eine Uhr, die nicht von meinem Kopf abhängt.",
+     {
+      "c": "obj",
+      "o": "relogio",
+      "h": "n"
+     }
+    ],
+    [
+     "Erste Idee: mein Bart. Zu ungenau.",
+     {
+      "c": "ben",
+      "h": "c",
+      "m": 1
+     }
+    ],
+    [
+     "Zweite Idee: Herr Müller. Zu launisch.",
+     {
+      "c": "obj",
+      "o": "marder",
+      "flip": 1,
+      "h": "c"
+     }
+    ],
+    [
+     "Dritte Idee: das Lüftungsrohr.",
+     {
+      "c": "duto",
+      "ar": 1,
+      "h": "s",
+      "a": 0.8
+     }
+    ],
+    [
+     "Die Luft kommt von draußen. Und draußen ist es nachts kälter als am Tag."
+    ],
+    [
+     "Im Werkzeugkasten liegt ein altes Thermometer. Ich hänge es direkt vor das Gitter.",
+     {
+      "c": "obj",
+      "o": "visor",
+      "r": "ZULUFT",
+      "val": "9 °C",
+      "cor": "y",
+      "h": "n"
+     }
+    ],
+    [
+     "Mittags zeigt es die höchste Zahl. Am frühen Morgen die niedrigste.",
+     {
+      "c": "obj",
+      "o": "visor",
+      "r": "ZULUFT",
+      "val": "3 °C",
+      "cor": "g",
+      "h": "s"
+     }
+    ],
+    [
+     "Wenn die Luft am kältesten ist, kommt der Strich an die Wand."
+    ],
+    [
+     "Ein Strich pro Kältewelle. Nicht pro Schlaf.",
+     {
+      "c": "obj",
+      "o": "riscos",
+      "nn": 9,
+      "t": "1 x pro Kälte",
+      "tc": "y",
+      "h": "s"
+     }
+    ],
+    [
+     "Die Natur zählt jetzt für mich."
+    ],
+    [
+     "Nach einer Woche weiß ich: Mein Tag hier unten ist länger als vierundzwanzig Stunden.",
+     {
+      "c": "obj",
+      "o": "relogio",
+      "t": "24 Std +",
+      "tc": "r",
+      "h": "p"
+     }
+    ],
+    [
+     "Bei Siffre waren es etwa vierundzwanzigeinhalb.",
+     {
+      "c": "obj",
+      "o": "relogio",
+      "t": "24,5 Std",
+      "h": "n"
+     }
+    ],
+    [
+     "Jeden Tag ein bisschen später ins Bett. Bis Tag und Nacht vertauscht sind."
+    ]
+   ]
+  },
+  {
+   "id": "licht",
+   "cap": "Ich spiele die Sonne",
+   "falas": [
+    [
+     "Die Kälte sagt mir, wann Morgen ist. Jetzt muss ich meinem Körper beibringen, das auch zu glauben.",
+     {
+      "c": "ben",
+      "h": "n",
+      "g": 0.6
+     }
+    ],
+    [
+     "Der stärkste Taktgeber für die innere Uhr ist Licht. Draußen erledigt das die Sonne. Hier unten muss ich die Sonne spielen.",
+     {
+      "c": "obj",
+      "o": "kurbel",
+      "h": "n"
+     }
+    ],
+    [
+     "Morgens nach dem Strich schalte ich alles an, was leuchtet. Die Deckenlampe und die Kurbellampe direkt vor meinem Gesicht."
+    ],
+    [
+     "Abends mache ich es umgekehrt. Zwei Stunden vor dem Schlafen brennt nur noch die kleine Lampe.",
+     {
+      "c": "escuro",
+      "k": 1,
+      "h": "n"
+     }
+    ],
+    [
+     "Die ersten Tage sind eine Qual. Mein Körper will mitten in der Nacht frühstücken."
+    ],
+    [
+     "Nach einer Woche werde ich von allein müde, wenn die Zahl am Thermometer fällt.",
+     {
+      "c": "cama",
+      "de": 1,
+      "zz": 1,
+      "n": 1
+     }
+    ],
+    [
+     "Ich habe mir aus einer Lampe, einem Rohr und einem Thermometer einen Sonnenaufgang gebaut.",
+     {
+      "c": "ben",
+      "h": "s",
+      "g": 0.9
+     }
+    ]
+   ]
+  },
+  {
+   "id": "regeln",
+   "cap": "Tag 40: Neue Regeln",
+   "falas": [
+    [
+     "Tag vierzig. Diesmal sicher.",
+     {
+      "c": "ben",
+      "h": "s",
+      "g": 0.7,
+      "d": 40
+     }
+    ],
+    [
+     "Strich nur bei Kälte. Licht an nach dem Strich. Tagebuch vor dem Schlafen. Und kein Mittagsschlaf.",
+     {
+      "c": "lista",
+      "tt": "NEUE REGELN",
+      "it": [
+       "Strich nur bei Kälte",
+       "Licht an nach dem Strich",
+       "Tagebuch vor dem Schlaf",
+       "Kein Mittagsschlaf"
+      ],
+      "q": [
+       0.02,
+       0.25,
+       0.52,
+       0.8
+      ]
+     }
+    ],
+    [
+     "Kein Mittagsschlaf. Das ist die härteste Regel."
+    ],
+    [
+     "Und die drei Tage? Ich habe mich entschieden: Die Wand hat recht.",
+     {
+      "c": "obj",
+      "o": "riscos",
+      "nn": 14,
+      "h": "n"
+     }
+    ],
+    [
+     "Im Tagebuch fehlen drei Tage. An die kann ich mich einfach nicht erinnern.",
+     {
+      "c": "obj",
+      "o": "diario",
+      "t": "3 Tage fehlen",
+      "tc": "r",
+      "n": 1,
+      "claro": 1,
+      "h": "m"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "doppelt",
+   "cap": "Die Vorräte als Kalender",
+   "falas": [
+    [
+     "Zur Sicherheit führe ich ab jetzt doppelt Buch. Jeder Strich an der Wand bekommt am selben Tag eine Zeile im Tagebuch. Mit dem, was ich gegessen habe.",
+     {
+      "c": "obj",
+      "o": "diario",
+      "h": "n"
+     }
+    ],
+    [
+     "Denn Essen lügt nicht. Wenn sieben Striche an der Wand stehen, müssen sieben Dosen fehlen.",
+     {
+      "c": "estoque",
+      "t": "7 Striche = 7 Dosen",
+      "tc": "y",
+      "h": "n"
+     }
+    ],
+    [
+     "Fehlen neun, habe ich zwei Tage verschlafen."
+    ],
+    [
+     "Meine Vorräte sind jetzt auch mein Kalender.",
+     {
+      "c": "ben",
+      "h": "s",
+      "g": 0.7
+     }
+    ]
+   ]
+  },
+  {
+   "id": "allein",
+   "cap": "Tag 45: Sechs Wochen ohne Menschen",
+   "falas": [
+    [
+     "Tag fünfundvierzig. Die Zeit habe ich wieder. Aber etwas anderes wird schwer.",
+     {
+      "c": "ben",
+      "h": "p",
+      "d": 45
+     }
+    ],
+    [
+     "Ich habe seit sechs Wochen mit keinem Menschen gesprochen."
+    ],
+    [
+     "Ich rede mit einer Batterie. Und mit einem Marder.",
+     {
+      "c": "obj",
+      "o": "gisela",
+      "h": "c"
+     }
+    ],
+    [
+     "Gisela ist eine gute Zuhörerin. Herr Müller geht einfach weg, wenn ich rede.",
+     {
+      "c": "obj",
+      "o": "marder",
+      "flip": 1,
+      "h": "c"
+     }
+    ],
+    [
+     "Neulich habe ich mich bei ihm entschuldigt. Ich weiß nicht mehr, wofür."
+    ],
+    [
+     "Also gebe ich dem Tag wieder Aufgaben.",
+     {
+      "c": "lista",
+      "tt": "MEIN TAG",
+      "it": [
+       "Fahrrad|1 Std",
+       "Lesen|2 Std",
+       "Tagebuch",
+       "30 Liegestütze",
+       "Laut vorlesen"
+      ],
+      "q": [
+       0.1,
+       0.3,
+       0.5,
+       0.7,
+       0.9
+      ]
+     }
+    ],
+    [
+     "Fahrrad. Lesen. Tagebuch. Dreißig Liegestütze. Und laut vorlesen."
+    ],
+    [
+     "Ich lese laut vor. Herr Müller bleibt jetzt manchmal sitzen.",
+     {
+      "c": "obj",
+      "o": "livros",
+      "t": "4 / 12",
+      "h": "s"
+     }
+    ],
+    [
+     "Ich glaube, er mag Krimis.",
+     {
+      "c": "obj",
+      "o": "marder",
+      "h": "s"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "stimmen",
+   "cap": "Zwei Stimmen",
+   "falas": [
+    [
+     "Das Schlimmste an der Einsamkeit sind nicht die langen Abende. Es sind die Kleinigkeiten.",
+     {
+      "c": "ben",
+      "h": "p",
+      "n": 1
+     }
+    ],
+    [
+     "Niemand sagt Guten Morgen. Niemand lacht über einen Witz. Niemand widerspricht."
+    ],
+    [
+     "Ich habe angefangen, mir selbst zu widersprechen. Laut. Mit zwei verschiedenen Stimmen.",
+     {
+      "c": "ben",
+      "h": "c",
+      "g": 0.8,
+      "inc": 5
+     }
+    ],
+    [
+     "Die tiefe Stimme ist der vernünftige Ben. Die hohe Stimme will Pfirsiche.",
+     {
+      "c": "obj",
+      "o": "lata",
+      "cor2": "#f29a45",
+      "t": "Pfirsiche",
+      "h": "s"
+     }
+    ],
+    [
+     "Die hohe Stimme gewinnt erstaunlich oft."
+    ]
+   ]
+  },
+  {
+   "id": "frage",
+   "cap": "Frage an dich",
+   "falas": [
+    [
+     "Frage an dich: Wie lange würdest du es ohne Uhr und ohne Handy aushalten? Einen Tag? Eine Woche?",
+     {
+      "c": "pergunta"
+     }
+    ],
+    [
+     "Schreib es in die Kommentare."
+    ]
+   ]
+  },
+  {
+   "id": "ende",
+   "cap": "Tag 60: Ein neuer Geruch",
+   "tenso": 1,
+   "falas": [
+    [
+     "Tag sechzig. Zwei Monate.",
+     {
+      "c": "ben",
+      "h": "s",
+      "d": 60
+     }
+    ],
+    [
+     "Mein Bart ist lang. Meine Striche stimmen. Mein Kopf ist halbwegs klar."
+    ],
+    [
+     "Was ich gelernt habe: Zeit ist hier unten kein Gefühl. Zeit ist Buchhaltung.",
+     {
+      "c": "obj",
+      "o": "diario",
+      "h": "n"
+     }
+    ],
+    [
+     "Aber heute Morgen habe ich etwas gerochen.",
+     {
+      "c": "ben",
+      "h": "c",
+      "n": 1,
+      "inc": 4
+     }
+    ],
+    [
+     "Süßlich. Muffig. Wie ein alter Keller."
+    ],
+    [
+     "Es kommt aus der Ecke mit den Reissäcken.",
+     {
+      "c": "obj",
+      "o": "saco",
+      "n": 1,
+      "h": "p"
+     }
+    ],
+    [
+     "In Teil fünf siehst du, was hier unten wächst. Und warum Herr Müller plötzlich nicht mehr allein ist.",
+     {
+      "c": "cama",
+      "olhos": 1,
+      "n": 1,
+      "h": "p"
+     }
+    ],
+    [
+     "Abonniere den Kanal, damit du Tag einundsechzig nicht verpasst.",
+     {
+      "c": "fim",
+      "teil": 5
+     }
+    ]
+   ]
+  }
+ ]
+}

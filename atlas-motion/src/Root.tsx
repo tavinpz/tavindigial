@@ -22,6 +22,7 @@ import { TCVideo } from './tc/Video';
 import { BunkerTeste, BUNKER_FRAMES } from './bunker/Teste';
 import { Bunker01, BUNKER01_FRAMES } from './bunker/Video01';
 import { BunkerThumb, BunkerMarca } from './bunker/Thumbs';
+import { BunkerEp } from './bunker/Serie';
 import { TCThumb } from './tc/Thumbs';
 import temposSNB from '../public/snb/teste/tempos.json';
 import { Thumb } from './b52/Thumbs';
@@ -147,6 +148,8 @@ export const Root: React.FC = () => (
     <Composition id="BunkerLogo" component={BunkerMarca as any} width={800} height={800} fps={30} durationInFrames={1} defaultProps={{ tipo: 'logo' }} />
     <Composition id="BunkerBanner" component={BunkerMarca as any} width={2560} height={1440} fps={30} durationInFrames={1} defaultProps={{ tipo: 'banner' }} />
     <Composition id="BunkerThumb" component={BunkerThumb as any} width={1280} height={720} fps={30} durationInFrames={1} defaultProps={{ v: 'a' }} />
+    <Composition id="BunkerEp" component={BunkerEp as any} width={1920} height={1080} fps={30} durationInFrames={300} defaultProps={{ pasta: 'bunker/v02' }}
+      calculateMetadata={async ({ props }: any) => { const tempos = await fetch(staticFile(`${props.pasta}/tempos.json`)).then((x) => x.json()); return { durationInFrames: props.n || Math.ceil(tempos.total * 30), props: { ...props, tempos } }; }} />
     <Composition id="Bunker01" component={Bunker01 as any} width={1920} height={1080} fps={30} durationInFrames={BUNKER01_FRAMES} />
     <Composition id="TCThumb" component={TCThumb as any} width={1280} height={720} fps={30} durationInFrames={1} defaultProps={{ v: 'a' }} />
   </>

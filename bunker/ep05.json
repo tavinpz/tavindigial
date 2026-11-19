@@ -1,0 +1,1016 @@
+{
+ "n": 5,
+ "id": "bunker005-schimmel",
+ "pasta": "v05",
+ "titulos": [
+  "1 Jahr im Bunker: Es schimmelt, und wir sind nicht mehr zu zweit (Teil 5)",
+  "365 Tage im Bunker: Schimmel frisst meine Vorräte (Teil 5)",
+  "1 Jahr eingesperrt: Tag 100 und vier neue Mitbewohner (Teil 5)"
+ ],
+ "capas": [
+  {
+   "o": "mofo",
+   "t1": "TAG 61",
+   "t2": "SCHIMMEL",
+   "nome": "Opção A · TAG 61 SCHIMMEL (sacos mofados)"
+  },
+  {
+   "o": "filhotes",
+   "t1": "WIR SIND",
+   "t2": "ZU FÜNFT",
+   "nome": "Opção B · WIR SIND ZU FÜNFT (filhotes)"
+  },
+  {
+   "o": "visor",
+   "t1": "FEUCHTE",
+   "t2": "86 PROZENT",
+   "p": {
+    "r": "FEUCHTE",
+    "val": "86 %"
+   },
+   "nome": "Opção C · FEUCHTE 86 PROZENT (medidor)"
+  }
+ ],
+ "gancho_desc": "Tag 61: Die Unterseite des Reissacks ist grün. Schimmel. Ben hat ihn selbst gemacht, mit jedem Atemzug. Und an Tag 91 fiept etwas unter dem Bett.",
+ "coment": "Hättest du an die Luftfeuchtigkeit gedacht? Ehrlich?",
+ "tags": "Bunker, 1 Jahr im Bunker, 365 Tage im Bunker, Bunker überleben, Schimmel, Luftfeuchtigkeit, Vorräte, Marder, Marderjunge, eingesperrt, Überlebensgeschichte, Survival Animation, was wäre wenn, Prepper, Teil 5",
+ "fatos": [
+  "Ein Mensch gibt am Tag etwa 1,0 bis 1,5 Liter Wasser an die Raumluft ab (Stadt Münster, Gesundheitsamt).",
+  "Empfohlen sind 40 bis 60 Prozent relative Luftfeuchte; ab etwa 70 bis 80 Prozent kann Schimmel wachsen (Umweltbundesamt; Verbraucherzentrale).",
+  "Steinmarder: Paarung im Sommer, Geburt im folgenden Frühjahr, meist zwei bis vier Junge, die nach etwa fünf Wochen die Augen öffnen (NABU Berlin; Naturschutzbund Österreich)."
+ ],
+ "fontes": [
+  "https://www.stadt-muenster.de/gesundheit/hygiene-und-umweltmedizin/schimmelpilze",
+  "https://www.stuttgarter-zeitung.de/wissen/ab-welcher-luftfeuchtigkeit-entsteht-schimmel-mhsd-78874345.html",
+  "https://berlin.nabu.de/imperia/md/content/berlin/tiere_pflanzen/steinmarder___nabu_berlin_2020_web.pdf"
+ ],
+ "blocos": [
+  {
+   "id": "gancho",
+   "cap": "Tag 61: Grün",
+   "tenso": 1,
+   "falas": [
+    [
+     "Tag einundsechzig.",
+     {
+      "c": "ben",
+      "h": "p",
+      "d": 61
+     }
+    ],
+    [
+     "Ich hebe den Reissack an. Die Unterseite ist grün.",
+     {
+      "c": "obj",
+      "o": "mofo",
+      "h": "m"
+     }
+    ],
+    [
+     "Nicht ein bisschen grün. Pelzig grün."
+    ],
+    [
+     "Schimmel.",
+     {
+      "c": "obj",
+      "o": "mofo",
+      "t": "SCHIMMEL",
+      "tc": "r",
+      "h": "m"
+     }
+    ],
+    [
+     "In diesem Teil kämpfe ich gegen etwas, das ich selbst gemacht habe. Mit jedem Atemzug.",
+     {
+      "c": "ben",
+      "h": "p",
+      "n": 1
+     }
+    ]
+   ]
+  },
+  {
+   "id": "zeichen",
+   "cap": "Die Zeichen davor",
+   "falas": [
+    [
+     "Angefangen hat es mit dem Geruch. Vor ein paar Tagen roch es in der Ecke hinter dem Regal süßlich und muffig, wie in einem alten Keller.",
+     {
+      "c": "estoque",
+      "h": "c"
+     }
+    ],
+    [
+     "Ich habe gedacht: Das bin ich. Sechzig Tage ohne Dusche riechen eben nicht nach Frühling.",
+     {
+      "c": "ben",
+      "h": "c",
+      "inc": 5
+     }
+    ],
+    [
+     "Dann habe ich bemerkt, dass meine Bettdecke morgens klamm ist. Und dass die Seiten meines Tagebuchs sich wellen.",
+     {
+      "c": "obj",
+      "o": "diario",
+      "t": "feucht",
+      "tc": "b",
+      "h": "p"
+     }
+    ],
+    [
+     "Die Streichhölzer zünden nicht mehr beim ersten Versuch. Das Salz im Glas ist ein einziger Klumpen."
+    ],
+    [
+     "Lauter kleine Zeichen. Jedes einzelne harmlos. Zusammen eine Ansage.",
+     {
+      "c": "ben",
+      "h": "p"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "schaden",
+   "cap": "Was noch zu retten ist",
+   "falas": [
+    [
+     "Ich räume das ganze Regal aus.",
+     {
+      "c": "estoque",
+      "h": "p"
+     }
+    ],
+    [
+     "Sack eins: unten verschimmelt. Sack zwei: feucht, aber noch gut.",
+     {
+      "c": "lista",
+      "tt": "BESTANDSAUFNAHME",
+      "it": [
+       "-Reis, Sack 1",
+       "+Reis, Sack 2",
+       "+Haferflocken",
+       "+Dosen",
+       "-Wand"
+      ],
+      "q": [
+       0.05,
+       0.5,
+       2,
+       2,
+       2
+      ]
+     }
+    ],
+    [
+     "Die Haferflocken im Eimer: trocken. Der Deckel hat sie gerettet.",
+     {
+      "c": "lista",
+      "tt": "BESTANDSAUFNAHME",
+      "it": [
+       "-Reis, Sack 1",
+       "+Reis, Sack 2",
+       "+Haferflocken",
+       "+Dosen",
+       "-Wand"
+      ],
+      "q": [
+       -1,
+       -1,
+       0.1,
+       2,
+       2
+      ]
+     }
+    ],
+    [
+     "Die Dosen: außen Rostflecken. Innen in Ordnung.",
+     {
+      "c": "lista",
+      "tt": "BESTANDSAUFNAHME",
+      "it": [
+       "-Reis, Sack 1",
+       "+Reis, Sack 2",
+       "+Haferflocken",
+       "+Dosen",
+       "-Wand"
+      ],
+      "q": [
+       -1,
+       -1,
+       -1,
+       0.1,
+       2
+      ]
+     }
+    ],
+    [
+     "Und die Wand hinter dem Regal: schwarze Punkte. Bis unter die Decke.",
+     {
+      "c": "lista",
+      "tt": "BESTANDSAUFNAHME",
+      "it": [
+       "-Reis, Sack 1",
+       "+Reis, Sack 2",
+       "+Haferflocken",
+       "+Dosen",
+       "-Wand"
+      ],
+      "q": [
+       -1,
+       -1,
+       -1,
+       -1,
+       0.1
+      ]
+     }
+    ],
+    [
+     "Ich verliere einen halben Sack Reis. Das sind Wochen an Mittagessen.",
+     {
+      "c": "obj",
+      "o": "mofo",
+      "t": "– ½ Sack",
+      "tc": "r",
+      "h": "p"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "ursache",
+   "cap": "Woher das Wasser kommt",
+   "falas": [
+    [
+     "Woher kommt das?",
+     {
+      "c": "ben",
+      "h": "c",
+      "g": 0.7
+     }
+    ],
+    [
+     "Erinnerst du dich an die Tropfen am Kupferrohr? Die ich getrunken habe?",
+     {
+      "c": "obj",
+      "o": "gota",
+      "h": "c"
+     }
+    ],
+    [
+     "Das war die Warnung. Ich habe sie als Geschenk gesehen."
+    ],
+    [
+     "Ein Mensch gibt am Tag einen bis anderthalb Liter Wasser an die Luft ab.",
+     {
+      "c": "obj",
+      "o": "gota",
+      "t": "1–1,5 L",
+      "tc": "b",
+      "h": "n"
+     }
+    ],
+    [
+     "Dazu kommt das Kochen. Und ein Marder, der auch atmet.",
+     {
+      "c": "obj",
+      "o": "marder",
+      "h": "c"
+     }
+    ],
+    [
+     "In einer Wohnung lüftet man das einfach weg. Fenster auf, fertig."
+    ],
+    [
+     "Ich habe kein Fenster. Ich habe ein Rohr mit einem kleinen Ventilator.",
+     {
+      "c": "duto",
+      "ar": 1,
+      "h": "p",
+      "a": 0.6
+     }
+    ],
+    [
+     "Ich schaue zum ersten Mal auf die zweite Zahl am Messgerät.",
+     {
+      "c": "obj",
+      "o": "visor",
+      "r": "FEUCHTE",
+      "val": "-- %",
+      "h": "p"
+     }
+    ],
+    [
+     "Luftfeuchtigkeit: sechsundachtzig Prozent.",
+     {
+      "c": "obj",
+      "o": "visor",
+      "r": "FEUCHTE",
+      "val": "86 %",
+      "h": "m"
+     }
+    ],
+    [
+     "Gesund wären vierzig bis sechzig.",
+     {
+      "c": "obj",
+      "o": "visor",
+      "r": "GESUND",
+      "val": "40–60",
+      "cor": "g",
+      "h": "n"
+     }
+    ],
+    [
+     "Ab etwa siebzig bis achtzig Prozent kann Schimmel wachsen.",
+     {
+      "c": "obj",
+      "o": "visor",
+      "r": "SCHIMMEL AB",
+      "val": "70–80",
+      "cor": "y",
+      "h": "p"
+     }
+    ],
+    [
+     "Ich lebe seit Wochen in einem Gewächshaus für Pilze.",
+     {
+      "c": "ben",
+      "h": "c",
+      "inc": 5
+     }
+    ]
+   ]
+  },
+  {
+   "id": "wand",
+   "cap": "Warum hinter dem Regal",
+   "falas": [
+    [
+     "Warum ausgerechnet hinter dem Regal? Weil dort die Wand am kältesten ist. Dahinter liegen drei Meter Erde.",
+     {
+      "c": "estoque",
+      "t": "kalte Wand",
+      "tc": "b",
+      "h": "n"
+     }
+    ],
+    [
+     "Warme, feuchte Luft trifft auf kalten Beton. Die Luft kühlt ab und kann das Wasser nicht mehr halten."
+    ],
+    [
+     "Es ist dasselbe wie bei einer kalten Flasche im Sommer. Außen bilden sich Tropfen. Nur dass meine Flasche eine ganze Wand ist.",
+     {
+      "c": "obj",
+      "o": "garrafa",
+      "h": "c"
+     }
+    ],
+    [
+     "Und davor standen meine Reissäcke. Direkt an der nassen Wand. Ohne Luft dazwischen. Seit sechzig Tagen.",
+     {
+      "c": "obj",
+      "o": "mofo",
+      "h": "p"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "gefahr",
+   "cap": "Warum Schimmel gefährlich ist",
+   "tenso": 1,
+   "falas": [
+    [
+     "Schimmel ist nicht nur eklig.",
+     {
+      "c": "obj",
+      "o": "mofo",
+      "h": "p"
+     }
+    ],
+    [
+     "Verschimmelten Reis darf man nicht essen. Auch nicht, wenn man den Schimmel abkratzt."
+    ],
+    [
+     "Und die Sporen in der Luft atme ich ein. Jeden Tag. In einem Raum ohne Fenster.",
+     {
+      "c": "ben",
+      "h": "m",
+      "n": 1
+     }
+    ],
+    [
+     "Ich huste seit einer Woche. Ich dachte, das ist der Staub."
+    ]
+   ]
+  },
+  {
+   "id": "plan",
+   "cap": "Tag 62: Vier Regeln gegen Feuchte",
+   "falas": [
+    [
+     "Tag zweiundsechzig. Der Plan.",
+     {
+      "c": "ben",
+      "h": "n",
+      "g": 0.6,
+      "d": 62
+     }
+    ],
+    [
+     "Länger lüften. Mit Deckel kochen. Nichts im Raum trocknen. Und die Vorräte weg von der Wand.",
+     {
+      "c": "lista",
+      "tt": "GEGEN FEUCHTE",
+      "it": [
+       "Länger lüften",
+       "Mit Deckel kochen",
+       "Nichts im Raum trocknen",
+       "Vorräte weg von der Wand"
+      ],
+      "q": [
+       0.02,
+       0.22,
+       0.45,
+       0.72
+      ]
+     }
+    ],
+    [
+     "Erstens: Der Ventilator läuft jetzt doppelt so lange. Das heißt: doppelt so lange Fahrrad fahren.",
+     {
+      "c": "bici",
+      "gis": 1,
+      "nv0": 0.3,
+      "nv1": 0.9,
+      "h": "p",
+      "t": "2 Std",
+      "tc": "r"
+     }
+    ],
+    [
+     "Zwei Stunden am Tag. Meine Beine hassen mich."
+    ],
+    [
+     "Zweitens: Ich koche nur noch mit Deckel. Und nur einmal am Tag.",
+     {
+      "c": "obj",
+      "o": "prato",
+      "t": "1 x am Tag",
+      "h": "n"
+     }
+    ],
+    [
+     "Drittens: Alles kommt weg von der kalten Wand. Zehn Zentimeter Abstand. Auf Holzlatten.",
+     {
+      "c": "obj",
+      "o": "saco",
+      "t": "10 cm",
+      "tc": "y",
+      "h": "n"
+     }
+    ],
+    [
+     "Viertens: Die schwarzen Punkte wische ich ab. Mit einem Lappen und dem letzten Rest Spülmittel.",
+     {
+      "c": "ben",
+      "h": "n",
+      "a": 0.8
+     }
+    ],
+    [
+     "Der verschimmelte Reis kommt in einen Müllsack. Fest zugeknotet."
+    ],
+    [
+     "Und das Kondenswasser vom Rohr sammle ich weiter. Jeder Tropfen in der Schüssel ist ein Tropfen weniger in der Luft.",
+     {
+      "c": "obj",
+      "o": "gota",
+      "h": "s"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "preis",
+   "cap": "Alles hängt zusammen",
+   "falas": [
+    [
+     "Zwei Stunden Fahrrad am Tag haben einen Preis. Wer mehr tritt, schwitzt mehr. Und wer schwitzt, braucht Wasser, das ich nicht habe.",
+     {
+      "c": "bici",
+      "gis": 1,
+      "nv0": 0.5,
+      "nv1": 0.9,
+      "h": "p"
+     }
+    ],
+    [
+     "Also teile ich die Zeit auf. Vier Mal eine halbe Stunde, ganz langsam, über den Tag verteilt.",
+     {
+      "c": "bici",
+      "lento": 1,
+      "gis": 1,
+      "nv0": 0.6,
+      "nv1": 0.9,
+      "h": "n",
+      "t": "4 x 30 min",
+      "tc": "y"
+     }
+    ],
+    [
+     "Gisela bekommt ihren Strom. Der Ventilator bekommt seine Stunden. Und ich bleibe trocken. Meistens."
+    ],
+    [
+     "Hier unten hängt alles mit allem zusammen. Dreht man an einer Schraube, wackelt eine andere.",
+     {
+      "c": "ben",
+      "h": "c",
+      "g": 0.7
+     }
+    ]
+   ]
+  },
+  {
+   "id": "ergebnis",
+   "cap": "Tag 70: Die Zahl fällt",
+   "falas": [
+    [
+     "Tag siebzig. Das Messgerät zeigt achtundsechzig Prozent.",
+     {
+      "c": "obj",
+      "o": "visor",
+      "r": "FEUCHTE",
+      "val": "68 %",
+      "cor": "y",
+      "h": "n",
+      "d": 70
+     }
+    ],
+    [
+     "Tag achtzig. Einundsechzig Prozent.",
+     {
+      "c": "obj",
+      "o": "visor",
+      "r": "FEUCHTE",
+      "val": "61 %",
+      "cor": "g",
+      "h": "s",
+      "d": 80
+     }
+    ],
+    [
+     "Der Husten ist weg. Der Geruch auch.",
+     {
+      "c": "ben",
+      "h": "s",
+      "g": 0.8
+     }
+    ],
+    [
+     "Aber die Rechnung für das Essen ist neu.",
+     {
+      "c": "estoque",
+      "h": "p"
+     }
+    ],
+    [
+     "Reis gibt es nur noch jeden zweiten Tag. An den anderen Tagen: Haferflocken. Zum zweiten Mal am Tag.",
+     {
+      "c": "obj",
+      "o": "balde",
+      "t": "2 x am Tag",
+      "tc": "r",
+      "h": "c"
+     }
+    ],
+    [
+     "Ich träume von Brot.",
+     {
+      "c": "cama",
+      "de": 1,
+      "zz": 1,
+      "n": 1
+     }
+    ]
+   ]
+  },
+  {
+   "id": "hunger",
+   "cap": "50 Mittagessen weniger",
+   "falas": [
+    [
+     "Weniger Reis heißt: weniger Kalorien. Ich rechne nach.",
+     {
+      "c": "lousa",
+      "it": [],
+      "h": "n"
+     }
+    ],
+    [
+     "Der Sack hatte zehn Kilo. Fünf davon sind im Müll.",
+     {
+      "c": "lousa",
+      "it": [
+       "10 kg Reis",
+       "– 5 kg Schimmel"
+      ],
+      "q": [
+       0.05,
+       0.5
+      ],
+      "h": "p"
+     }
+    ],
+    [
+     "Bei hundert Gramm pro Mahlzeit sind das fünfzig Mittagessen, die es nicht mehr gibt.",
+     {
+      "c": "lousa",
+      "it": [
+       "10 kg Reis",
+       "– 5 kg Schimmel",
+       "= – 50 Mittagessen"
+      ],
+      "q": [
+       -1,
+       -1,
+       0.4
+      ],
+      "h": "p"
+     }
+    ],
+    [
+     "Ich könnte an fünfzig Tagen einfach nichts zu Mittag essen. Oder ich verteile den Verlust auf alle Tage, die noch kommen.",
+     {
+      "c": "ben",
+      "h": "c",
+      "g": 0.7
+     }
+    ],
+    [
+     "Ich entscheide mich für das Verteilen. Jede Portion Reis wird ab heute ein bisschen kleiner. Achtzig Gramm statt hundert.",
+     {
+      "c": "obj",
+      "o": "prato",
+      "t": "80 g",
+      "tc": "r",
+      "h": "n"
+     }
+    ],
+    [
+     "Zwanzig Gramm merkt man am ersten Tag nicht. Nach zwei Wochen merkt man sie sehr."
+    ],
+    [
+     "Mein Gürtel sitzt inzwischen zwei Löcher enger als an Tag eins.",
+     {
+      "c": "ben",
+      "h": "p"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "frage",
+   "cap": "Frage an dich",
+   "falas": [
+    [
+     "Frage an dich: Hättest du an die Luftfeuchtigkeit gedacht? Ehrlich?",
+     {
+      "c": "pergunta"
+     }
+    ],
+    [
+     "Schreib es in die Kommentare."
+    ]
+   ]
+  },
+  {
+   "id": "socke",
+   "cap": "Der fehlende Socken",
+   "falas": [
+    [
+     "Bevor ich dir das Ende erzähle, muss ich dir von meinem Socken erzählen.",
+     {
+      "c": "ben",
+      "h": "c",
+      "g": 0.6,
+      "inc": 4
+     }
+    ],
+    [
+     "Seit Tag achtzig fehlt mein linker Socken. Ich habe nur drei Paar."
+    ],
+    [
+     "Ich habe den ganzen Bunker abgesucht. Sechs mal vier Meter. Und ihn nicht gefunden.",
+     {
+      "c": "cama",
+      "olhos": 1,
+      "h": "c"
+     }
+    ],
+    [
+     "Ich habe Gisela verdächtigt. Das sagt viel über meinen Zustand.",
+     {
+      "c": "obj",
+      "o": "gisela",
+      "h": "c"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "seltsam",
+   "cap": "Tag 85: Herr Müller ist anders",
+   "tenso": 1,
+   "falas": [
+    [
+     "Tag fünfundachtzig. Herr Müller benimmt sich seltsam.",
+     {
+      "c": "obj",
+      "o": "marder",
+      "come": 1,
+      "h": "c",
+      "d": 85
+     }
+    ],
+    [
+     "Er frisst doppelt so viel. Er schleppt Stofffetzen unter das Bett. Und er faucht, wenn ich zu nah komme."
+    ],
+    [
+     "Ich denke: Er wird krank. Oder er hat genug von mir.",
+     {
+      "c": "cama",
+      "olhos": 1,
+      "h": "p"
+     }
+    ],
+    [
+     "Tag einundneunzig. Unter dem Bett fiept etwas.",
+     {
+      "c": "cama",
+      "olhos": 1,
+      "h": "m",
+      "n": 1,
+      "d": 91
+     }
+    ],
+    [
+     "Ganz leise. Ganz hoch."
+    ],
+    [
+     "Ich lege mich auf den Boden und leuchte mit der Kurbellampe unter das Bett.",
+     {
+      "c": "escuro",
+      "k": 1,
+      "olhos": 1,
+      "h": "p"
+     }
+    ],
+    [
+     "Herr Müller liegt in einem Nest aus Dämmwolle und meinem linken Socken.",
+     {
+      "c": "obj",
+      "o": "marder",
+      "n": 1,
+      "claro": 1,
+      "h": "c"
+     }
+    ],
+    [
+     "Und an seinem Bauch liegen drei winzige, nackte Marder.",
+     {
+      "c": "obj",
+      "o": "filhotes",
+      "n": 1,
+      "claro": 1,
+      "t": "3",
+      "tc": "y",
+      "h": "m"
+     }
+    ],
+    [
+     "Herr Müller ist eine Frau Müller.",
+     {
+      "c": "obj",
+      "o": "filhotes",
+      "t": "Frau Müller",
+      "tc": "y",
+      "h": "s",
+      "g": 0.8
+     }
+    ]
+   ]
+  },
+  {
+   "id": "junge",
+   "cap": "Warum jetzt?",
+   "falas": [
+    [
+     "Steinmarder paaren sich im Sommer. Die Jungen kommen erst im Frühjahr darauf zur Welt. Meist zwei bis vier.",
+     {
+      "c": "lista",
+      "tt": "STEINMARDER",
+      "it": [
+       "Paarung|Sommer",
+       "Geburt|Frühjahr",
+       "Junge|2 bis 4"
+      ],
+      "q": [
+       0.05,
+       0.4,
+       0.8
+      ]
+     }
+    ],
+    [
+     "Sie war also schon trächtig, als sie in mein Lüftungsrohr gezogen ist.",
+     {
+      "c": "duto",
+      "aberto": 1,
+      "cara": 1,
+      "ninho": 1,
+      "h": "c"
+     }
+    ],
+    [
+     "Die Kleinen sind blind. Sie öffnen die Augen erst nach etwa fünf Wochen.",
+     {
+      "c": "obj",
+      "o": "filhotes",
+      "t": "5 Wochen",
+      "h": "n"
+     }
+    ],
+    [
+     "Und noch etwas weiß ich jetzt: Draußen ist Frühling.",
+     {
+      "c": "ben",
+      "h": "s",
+      "g": 0.9
+     }
+    ],
+    [
+     "Das ist die erste Nachricht von der Oberfläche seit einundneunzig Tagen."
+    ]
+   ]
+  },
+  {
+   "id": "entscheidung",
+   "cap": "Fünf Mäuler",
+   "falas": [
+    [
+     "Was jetzt? Fünf Marder fressen mehr als einer. Und ich habe gerade einen halben Sack Reis verloren.",
+     {
+      "c": "ben",
+      "h": "p",
+      "g": 0.7
+     }
+    ],
+    [
+     "Vernünftig wäre es, das Nest in das Lüftungsrohr zurückzusetzen. Dorthin, wo sie hergekommen ist.",
+     {
+      "c": "duto",
+      "h": "p",
+      "a": 0.6
+     }
+    ],
+    [
+     "Ich schaue mir die drei Kleinen an. Jedes ist kürzer als meine Hand und leichter als eine Scheibe Brot.",
+     {
+      "c": "obj",
+      "o": "filhotes",
+      "h": "s"
+     }
+    ],
+    [
+     "Frau Müller bekommt ab heute zwei Löffel.",
+     {
+      "c": "obj",
+      "o": "prato",
+      "t": "2 Löffel",
+      "tc": "y",
+      "h": "s"
+     }
+    ],
+    [
+     "Gisela sagt nichts dazu. Aber ich glaube, sie ist einverstanden.",
+     {
+      "c": "obj",
+      "o": "gisela",
+      "h": "s"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "ende",
+   "cap": "Tag 100",
+   "tenso": 1,
+   "falas": [
+    [
+     "Tag hundert.",
+     {
+      "c": "obj",
+      "o": "riscos",
+      "nn": 14,
+      "t": "100",
+      "tc": "y",
+      "h": "s",
+      "d": 100
+     }
+    ],
+    [
+     "Ich bin nicht mehr zu zweit. Wir sind zu fünft. Sechs mit Gisela.",
+     {
+      "c": "obj",
+      "o": "filhotes",
+      "h": "s"
+     }
+    ],
+    [
+     "Ich habe weniger Reis, weniger Wasser und vier Mitbewohner mehr.",
+     {
+      "c": "ben",
+      "h": "c",
+      "g": 0.7
+     }
+    ],
+    [
+     "Stand: Marder vier, Ben eins. Und ich habe aufgehört zu zählen.",
+     {
+      "c": "placar",
+      "sa": 4,
+      "sb": 1
+     }
+    ],
+    [
+     "Was ich gelernt habe: Das Gefährlichste hier unten war nie der Marder.",
+     {
+      "c": "ben",
+      "h": "n"
+     }
+    ],
+    [
+     "Es war immer das, was ich nicht gemessen habe. Erst die Luft. Dann das Wasser. Dann die Zeit. Dann die Feuchtigkeit.",
+     {
+      "c": "lista",
+      "tt": "NICHT GEMESSEN",
+      "it": [
+       "Luft",
+       "Wasser",
+       "Zeit",
+       "Feuchtigkeit"
+      ],
+      "q": [
+       0.42,
+       0.58,
+       0.74,
+       0.88
+      ]
+     }
+    ],
+    [
+     "Zweihundertfünfundsechzig Tage liegen noch vor mir.",
+     {
+      "c": "obj",
+      "o": "nada",
+      "t": "265 Tage",
+      "ty": 430,
+      "h": "p"
+     }
+    ],
+    [
+     "Und heute Nacht ist etwas passiert, das alles ändert.",
+     {
+      "c": "ben",
+      "h": "m",
+      "n": 1
+     }
+    ],
+    [
+     "Das Messgerät an der Tür hat gepiept. Ein Ton, den ich noch nie gehört habe.",
+     {
+      "c": "obj",
+      "o": "visor",
+      "r": "???",
+      "val": "!!!",
+      "n": 1,
+      "claro": 1,
+      "h": "m"
+     }
+    ],
+    [
+     "In Teil sechs siehst du, was das war."
+    ],
+    [
+     "Abonniere den Kanal, damit du den nächsten Tag nicht verpasst.",
+     {
+      "c": "fim",
+      "teil": 6
+     }
+    ]
+   ]
+  }
+ ]
+}

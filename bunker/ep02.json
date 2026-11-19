@@ -1,0 +1,1110 @@
+{
+ "n": 2,
+ "id": "bunker002-licht-aus",
+ "pasta": "v02",
+ "titulos": [
+  "1 Jahr im Bunker: An Tag 12 ging das Licht aus (Teil 2)",
+  "365 Tage im Bunker: Ein Marder schaltet mir den Strom ab (Teil 2)",
+  "1 Jahr eingesperrt: Stromausfall im Bunker (Teil 2)"
+ ],
+ "capas": [
+  {
+   "o": "cabo",
+   "t1": "TAG 12",
+   "t2": "LICHT AUS",
+   "n": 2,
+   "nome": "Opção A · TAG 12 LICHT AUS (cabo roído)"
+  },
+  {
+   "o": "marder",
+   "t1": "ER FRISST",
+   "t2": "MEINE VORRÄTE",
+   "p": {
+    "come": 1
+   },
+   "nome": "Opção B · ER FRISST MEINE VORRÄTE (marta)"
+  },
+  {
+   "o": "gisela",
+   "t1": "BATTERIE",
+   "t2": "0 PROZENT",
+   "p": {
+    "nv": 0.03
+   },
+   "n": 1,
+   "nome": "Opção C · BATTERIE 0 PROZENT (Gisela)"
+  }
+ ],
+ "gancho_desc": "Die Luft ist wieder gut. Aber unter Bens Bett wohnt jetzt ein Marder, und der hat Hunger. In der zweiten Woche verliert Ben einen Teil seiner Vorräte. Und an Tag 12 wacht er in völliger Dunkelheit auf.",
+ "coment": "Würdest du den Marder füttern oder bekämpfen?",
+ "tags": "Bunker, 1 Jahr im Bunker, 365 Tage im Bunker, Bunker überleben, Stromausfall, Marder, Marderschaden, Kabel zerbissen, eingesperrt, Überlebensgeschichte, Survival Animation, was wäre wenn, Prepper, Vorräte, Teil 2",
+ "fatos": [
+  "Steinmarder sind Allesfresser und wiegen etwa 1,2 bis 2,1 Kilo (Naturschutzbund Österreich; Bezirksamt Lichtenberg von Berlin).",
+  "Marderschäden an Autos: rund 235.000 Fälle im Jahr 2023 (GDV).",
+  "CO2-Anstieg ohne Lüftung: Rechnung aus Teil 1 (rund 0,8 Prozent pro Tag in 60 Kubikmetern)."
+ ],
+ "fontes": [
+  "https://www.berlin.de/ba-lichtenberg/auf-einen-blick/freizeit/gruen/wildtiere/artikel.1305327.php",
+  "https://www.cash-online.de/a/gdv-gesamtschaeden-durch-marderbisse-steigen-um-23-prozent-auf-128-millionen-euro-688356/"
+ ],
+ "blocos": [
+  {
+   "id": "gancho",
+   "cap": "Tag 8: Der Mitbewohner",
+   "tenso": 1,
+   "falas": [
+    [
+     "Tag acht.",
+     {
+      "c": "cama",
+      "olhos": 1,
+      "h": "p",
+      "d": 8
+     }
+    ],
+    [
+     "Ich bin seit einer Woche in diesem Bunker eingesperrt."
+    ],
+    [
+     "In der ersten Woche wäre ich fast erstickt. Schuld war ein Marder im Lüftungsrohr.",
+     {
+      "c": "duto",
+      "aberto": 1,
+      "cara": 1,
+      "ninho": 1,
+      "h": "m"
+     }
+    ],
+    [
+     "Die Luft ist wieder gut. Aber der Marder ist noch da.",
+     {
+      "c": "duto",
+      "ar": 1,
+      "h": "p",
+      "a": 0.4
+     }
+    ],
+    [
+     "Er wohnt unter meinem Bett. Und er hat Hunger.",
+     {
+      "c": "cama",
+      "olhos": 1,
+      "h": "p"
+     }
+    ],
+    [
+     "In dieser Woche verliere ich zwei Dinge. Einen Teil meiner Vorräte.",
+     {
+      "c": "estoque",
+      "md": 1,
+      "cai": 1,
+      "h": "p"
+     }
+    ],
+    [
+     "Und das Licht.",
+     {
+      "c": "escuro",
+      "h": "m"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "vorrat",
+   "cap": "Etwas fehlt im Regal",
+   "falas": [
+    [
+     "Jeden Morgen prüfe ich drei Dinge. Luft. Wasser. Vorräte.",
+     {
+      "c": "lista",
+      "tt": "JEDEN MORGEN",
+      "it": [
+       "LUFT",
+       "WASSER",
+       "VORRÄTE"
+      ],
+      "q": [
+       0.45,
+       0.62,
+       0.8
+      ]
+     }
+    ],
+    [
+     "Luft: null Komma sechs Prozent. Gut.",
+     {
+      "c": "obj",
+      "o": "visor",
+      "val": "0,6 %",
+      "cor": "g",
+      "h": "s"
+     }
+    ],
+    [
+     "Wasser: beide Fässer voll. Gut.",
+     {
+      "c": "agua",
+      "t": "2 x voll",
+      "h": "s"
+     }
+    ],
+    [
+     "Vorräte: Da fehlt etwas.",
+     {
+      "c": "estoque",
+      "cai": 1,
+      "h": "p"
+     }
+    ],
+    [
+     "Im untersten Regal liegt eine Dose auf der Seite. Daneben: ein Loch im Reissack."
+    ],
+    [
+     "Reis rieselt auf den Boden. Körner überall.",
+     {
+      "c": "obj",
+      "o": "saco",
+      "t": "LOCH",
+      "tc": "r",
+      "h": "p"
+     }
+    ],
+    [
+     "Und mittendrin: kleine Pfotenabdrücke.",
+     {
+      "c": "ben",
+      "h": "c",
+      "g": 0.7,
+      "inc": 4
+     }
+    ]
+   ]
+  },
+  {
+   "id": "wissen",
+   "cap": "Was ein Marder frisst",
+   "falas": [
+    [
+     "Ich dachte, ein Marder frisst nur Fleisch.",
+     {
+      "c": "obj",
+      "o": "marder",
+      "h": "c"
+     }
+    ],
+    [
+     "Falsch. Marder sind Allesfresser."
+    ],
+    [
+     "Mäuse. Vögel und Eier. Obst und Beeren. Und Abfall.",
+     {
+      "c": "lista",
+      "tt": "EIN MARDER FRISST",
+      "it": [
+       "Mäuse",
+       "Vögel und Eier",
+       "Obst und Beeren",
+       "Abfall"
+      ],
+      "q": [
+       0.02,
+       0.2,
+       0.52,
+       0.85
+      ]
+     }
+    ],
+    [
+     "Und offenbar: meinen Reis.",
+     {
+      "c": "obj",
+      "o": "marder",
+      "come": 1,
+      "t": "REIS",
+      "tc": "r",
+      "h": "p"
+     }
+    ],
+    [
+     "Ein Steinmarder wiegt nur ein bis zwei Kilo.",
+     {
+      "c": "obj",
+      "o": "marder",
+      "t": "1–2 kg",
+      "h": "n"
+     }
+    ],
+    [
+     "Aber er ist nachtaktiv. Wenn ich schlafe, geht er einkaufen.",
+     {
+      "c": "cama",
+      "de": 1,
+      "zz": 1,
+      "n": 2,
+      "md": 1
+     }
+    ]
+   ]
+  },
+  {
+   "id": "nacht",
+   "cap": "Nachtwache",
+   "tenso": 1,
+   "falas": [
+    [
+     "In der Nacht will ich es genau wissen. Ich lösche das Licht, lege mich ins Bett und bleibe wach.",
+     {
+      "c": "cama",
+      "de": 1,
+      "n": 2,
+      "h": "p"
+     }
+    ],
+    [
+     "Eine Stunde lang passiert nichts. Ich höre nur den Ventilator und mein eigenes Atmen."
+    ],
+    [
+     "Dann: ein leises Tapsen auf dem Beton. Krallen. Ganz nah an meinem Kopf vorbei.",
+     {
+      "c": "cama",
+      "de": 1,
+      "n": 2,
+      "md": 1,
+      "h": "m"
+     }
+    ],
+    [
+     "Ich halte die Luft an. Das Tapsen wandert zum Regal."
+    ],
+    [
+     "Ein Rascheln. Ein Reißen. Und dann ein Geräusch, das ich nicht vergesse: zufriedenes Schmatzen.",
+     {
+      "c": "escuro",
+      "h": "m",
+      "olhos": 1
+     }
+    ],
+    [
+     "Ich schalte das Licht an. Er sitzt auf dem zweiten Regalbrett und schaut mich an, als wäre ich der Einbrecher.",
+     {
+      "c": "estoque",
+      "md": 1,
+      "h": "m"
+     }
+    ],
+    [
+     "Dann springt er herunter, läuft in aller Ruhe an mir vorbei und verschwindet wieder unter dem Bett.",
+     {
+      "c": "cama",
+      "olhos": 1,
+      "h": "c"
+     }
+    ],
+    [
+     "Er hat keine Angst vor mir. Das ist das eigentliche Problem.",
+     {
+      "c": "ben",
+      "h": "p"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "kosten",
+   "cap": "Was eine Handvoll Reis kostet",
+   "falas": [
+    [
+     "Am Morgen zähle ich nach, was die erste Woche gekostet hat.",
+     {
+      "c": "obj",
+      "o": "saco",
+      "h": "n"
+     }
+    ],
+    [
+     "Aus dem Reissack fehlen etwa zwei Hände voll. Das klingt nach wenig."
+    ],
+    [
+     "Aber der Sack hat jetzt ein Loch. Und durch ein Loch kommt Feuchtigkeit. Und Dreck. Und beim nächsten Mal ein größeres Loch.",
+     {
+      "c": "obj",
+      "o": "saco",
+      "t": "LOCH",
+      "tc": "r",
+      "h": "p"
+     }
+    ],
+    [
+     "Ein Kilo Reis sind für mich ungefähr zehn Mittagessen.",
+     {
+      "c": "obj",
+      "o": "prato",
+      "t": "1 kg = 10 x",
+      "h": "n"
+     }
+    ],
+    [
+     "Wenn er jede Nacht nur eine Handvoll nimmt, fehlen mir am Ende des Jahres ganze Wochen."
+    ],
+    [
+     "Hier unten gibt es keinen Supermarkt. Was weg ist, ist weg.",
+     {
+      "c": "ben",
+      "h": "p",
+      "g": 0.6
+     }
+    ]
+   ]
+  },
+  {
+   "id": "plan",
+   "cap": "Tag 9: Ich füttere ihn",
+   "falas": [
+    [
+     "Tag neun. Ich brauche einen Plan.",
+     {
+      "c": "ben",
+      "h": "n",
+      "g": 0.5,
+      "d": 9
+     }
+    ],
+    [
+     "Fangen kann ich ihn nicht. Das habe ich versucht. Marder eins, Ben null.",
+     {
+      "c": "placar",
+      "sa": 1,
+      "sb": 0
+     }
+    ],
+    [
+     "Also sichere ich das Essen.",
+     {
+      "c": "estoque",
+      "h": "n"
+     }
+    ],
+    [
+     "Reis und Haferflocken kommen in den Eimer mit Deckel.",
+     {
+      "c": "obj",
+      "o": "balde",
+      "t": "MIT DECKEL",
+      "tc": "y",
+      "h": "n"
+     }
+    ],
+    [
+     "Die Säcke hänge ich an einen Haken unter die Decke."
+    ],
+    [
+     "Und die Dosen? Die kriegt er nicht auf. Hoffe ich.",
+     {
+      "c": "obj",
+      "o": "lata",
+      "h": "c"
+     }
+    ],
+    [
+     "Dann mache ich etwas, das ich nie gedacht hätte.",
+     {
+      "c": "ben",
+      "h": "c",
+      "inc": 4
+     }
+    ],
+    [
+     "Ich stelle ihm jeden Abend einen Löffel Haferflocken hin.",
+     {
+      "c": "obj",
+      "o": "prato",
+      "t": "1 Löffel",
+      "h": "n"
+     }
+    ],
+    [
+     "Nicht aus Liebe. Aus Berechnung."
+    ],
+    [
+     "Ein satter Marder sucht nicht.",
+     {
+      "c": "obj",
+      "o": "marder",
+      "come": 1,
+      "h": "s"
+     }
+    ],
+    [
+     "Das kostet mich einen Löffel am Tag. Aber es rettet den Sack."
+    ],
+    [
+     "Ich nenne ihn Herr Müller.",
+     {
+      "c": "obj",
+      "o": "marder",
+      "t": "Herr Müller",
+      "tc": "y",
+      "h": "s",
+      "g": 0.6
+     }
+    ],
+    [
+     "Gisela war nicht begeistert.",
+     {
+      "c": "obj",
+      "o": "gisela",
+      "h": "c"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "ruhe",
+   "cap": "Tag 10 und 11: Es läuft",
+   "falas": [
+    [
+     "Tag zehn. Es funktioniert.",
+     {
+      "c": "ben",
+      "h": "s",
+      "g": 0.8,
+      "d": 10
+     }
+    ],
+    [
+     "Der Löffel ist jeden Morgen leer. Der Sack ist ganz.",
+     {
+      "c": "obj",
+      "o": "prato",
+      "cheio": 0,
+      "t": "LEER",
+      "tc": "g",
+      "h": "s"
+     }
+    ],
+    [
+     "Tag elf. Ich fahre meine Stunde auf dem Fahrrad.",
+     {
+      "c": "bici",
+      "gis": 1,
+      "nv0": 0.4,
+      "nv1": 1,
+      "h": "s",
+      "d": 11
+     }
+    ],
+    [
+     "Gisela ist voll. Das Licht brennt."
+    ],
+    [
+     "Ich lese mein zweites Buch. Ich mache meine Liegestütze.",
+     {
+      "c": "obj",
+      "o": "livros",
+      "t": "2 / 12",
+      "h": "s"
+     }
+    ],
+    [
+     "Zum ersten Mal denke ich: Das schaffe ich.",
+     {
+      "c": "ben",
+      "h": "s",
+      "g": 0.9
+     }
+    ],
+    [
+     "Das hätte ich nicht denken sollen.",
+     {
+      "c": "ben",
+      "h": "p",
+      "n": 1
+     }
+    ]
+   ]
+  },
+  {
+   "id": "frage",
+   "cap": "Frage an dich",
+   "falas": [
+    [
+     "Kurze Frage an dich.",
+     {
+      "c": "pergunta"
+     }
+    ],
+    [
+     "Würdest du den Marder füttern oder bekämpfen?"
+    ],
+    [
+     "Schreib es in die Kommentare. Ich lese mit. Ich habe ja Zeit."
+    ]
+   ]
+  },
+  {
+   "id": "dunkel",
+   "cap": "Tag 12: Kein Licht",
+   "tenso": 1,
+   "falas": [
+    [
+     "Tag zwölf.",
+     {
+      "c": "escuro",
+      "h": "m",
+      "d": 12
+     }
+    ],
+    [
+     "Ich wache auf. Und sehe nichts."
+    ],
+    [
+     "Kein Licht. Kein rotes Lämpchen am Messgerät. Gar nichts."
+    ],
+    [
+     "Ich drücke den Schalter. Nichts.",
+     {
+      "c": "escuro",
+      "h": "m",
+      "t": "KLICK"
+     }
+    ],
+    [
+     "So dunkel ist es an der Oberfläche nie. Nicht einmal nachts.",
+     {
+      "c": "escuro",
+      "h": "p"
+     }
+    ],
+    [
+     "Hier unten gibt es keinen Mond. Keine Straßenlaterne. Kein Display."
+    ],
+    [
+     "Ich taste nach der Kurbellampe. Sie steht auf der Kiste. Drei Schritte vom Bett."
+    ],
+    [
+     "Ein Schritt. Zwei Schritte. Mein Schienbein findet die Kiste zuerst.",
+     {
+      "c": "escuro",
+      "h": "m",
+      "t": "AUA"
+     }
+    ],
+    [
+     "Ich kurble. Dreißig Sekunden. Eine Minute.",
+     {
+      "c": "escuro",
+      "h": "p"
+     }
+    ],
+    [
+     "Ein schwaches, gelbes Licht.",
+     {
+      "c": "escuro",
+      "k": 1,
+      "h": "p"
+     }
+    ],
+    [
+     "Und in diesem Licht sehe ich zwei Dinge."
+    ],
+    [
+     "Erstens: Gisela zeigt null Prozent.",
+     {
+      "c": "obj",
+      "o": "gisela",
+      "nv": 0.02,
+      "t": "0 %",
+      "tc": "r",
+      "n": 1,
+      "claro": 1,
+      "h": "m"
+     }
+    ],
+    [
+     "Zweitens: Das Kabel vom Fahrrad zur Batterie ist durch.",
+     {
+      "c": "obj",
+      "o": "cabo",
+      "n": 1,
+      "claro": 1,
+      "h": "m"
+     }
+    ],
+    [
+     "Durchgebissen."
+    ]
+   ]
+  },
+  {
+   "id": "folge",
+   "cap": "Ohne Strom keine Luft",
+   "tenso": 1,
+   "falas": [
+    [
+     "Du erinnerst dich: Marder und Autokabel.",
+     {
+      "c": "obj",
+      "o": "marder",
+      "n": 1,
+      "claro": 1,
+      "h": "c"
+     }
+    ],
+    [
+     "In Deutschland zerbeißen sie jedes Jahr die Kabel von über zweihunderttausend Autos.",
+     {
+      "c": "obj",
+      "o": "marder",
+      "t": "200.000+",
+      "tc": "r",
+      "n": 1,
+      "claro": 1,
+      "h": "p"
+     }
+    ],
+    [
+     "Herr Müller hat es mit meinem Fahrrad genauso gemacht.",
+     {
+      "c": "obj",
+      "o": "cabo",
+      "n": 1,
+      "claro": 1,
+      "h": "p"
+     }
+    ],
+    [
+     "Und jetzt wird es ernst.",
+     {
+      "c": "ben",
+      "h": "p",
+      "n": 1
+     }
+    ],
+    [
+     "Der Ventilator in der Lüftung läuft über die Batterie.",
+     {
+      "c": "duto",
+      "n": 1,
+      "fita": 0,
+      "h": "p",
+      "a": 0.6
+     }
+    ],
+    [
+     "Kein Strom heißt: kein Ventilator. Und ohne Ventilator steigt das Kohlendioxid wieder."
+    ],
+    [
+     "Das Messgerät läuft auch nicht mehr. Ich weiß also nicht einmal, wie schlecht die Luft ist.",
+     {
+      "c": "obj",
+      "o": "visor",
+      "val": "-- %",
+      "n": 1,
+      "h": "m"
+     }
+    ],
+    [
+     "Ich weiß nur: Ohne Lüftung steigt der Wert um fast ein Prozent am Tag.",
+     {
+      "c": "lousa",
+      "it": [
+       "ohne Lüftung:",
+       "≈ +0,8 % pro Tag"
+      ],
+      "q": [
+       0.1,
+       0.5
+      ],
+      "h": "p"
+     }
+    ],
+    [
+     "Ich habe also wieder ein paar Tage. Nicht mehr."
+    ]
+   ]
+  },
+  {
+   "id": "frist",
+   "cap": "Wie viel Zeit bleibt",
+   "tenso": 1,
+   "falas": [
+    [
+     "Wie viel Zeit habe ich? Ich rechne im Kopf, weil ich die Tafel nicht sehe.",
+     {
+      "c": "ben",
+      "h": "p",
+      "n": 1,
+      "m": 1
+     }
+    ],
+    [
+     "Gestern Abend zeigte das Messgerät null Komma sechs Prozent.",
+     {
+      "c": "obj",
+      "o": "visor",
+      "val": "0,6 %",
+      "cor": "g",
+      "n": 1,
+      "h": "p"
+     }
+    ],
+    [
+     "Bei einem Prozent wird man schläfrig. Bei zwei bis drei kommt die Atemnot. Das habe ich in der ersten Woche gelernt.",
+     {
+      "c": "lista",
+      "tt": "KOHLENDIOXID",
+      "it": [
+       "1 %|schläfrig",
+       "2–3 %|Atemnot"
+      ],
+      "q": [
+       0.05,
+       0.4
+      ]
+     }
+    ],
+    [
+     "Ich weiß nicht, wann genau das Kabel gerissen ist. Vielleicht vor zwei Stunden. Vielleicht vor zehn.",
+     {
+      "c": "ben",
+      "h": "p",
+      "n": 1
+     }
+    ],
+    [
+     "Im besten Fall habe ich zwei Tage, bis es unangenehm wird. Im schlechtesten Fall schlafe ich einfach ein und merke nichts."
+    ],
+    [
+     "Das ist das Gemeine an Kohlendioxid: Müdigkeit fühlt sich nicht wie Gefahr an."
+    ]
+   ]
+  },
+  {
+   "id": "reparatur",
+   "cap": "Reparatur im Dunkeln",
+   "tenso": 1,
+   "falas": [
+    [
+     "Ich brauche das Kabel. Sofort.",
+     {
+      "c": "ben",
+      "h": "p",
+      "n": 1,
+      "g": 0.6
+     }
+    ],
+    [
+     "Problem eins: Ich habe kein Ersatzkabel.",
+     {
+      "c": "obj",
+      "o": "cabo",
+      "n": 1,
+      "claro": 1,
+      "t": "KEIN ERSATZ",
+      "tc": "r",
+      "h": "p"
+     }
+    ],
+    [
+     "Problem zwei: Ich habe kaum Licht. Die Kurbellampe hält ein paar Minuten. Dann kurble ich wieder.",
+     {
+      "c": "escuro",
+      "k": 1,
+      "h": "p"
+     }
+    ],
+    [
+     "Also arbeite ich in Etappen. Kurbeln. Arbeiten. Kurbeln. Arbeiten."
+    ],
+    [
+     "Ich schneide die zerbissenen Enden ab. Mit dem Dosenöffner. Etwas Besseres habe ich nicht.",
+     {
+      "c": "obj",
+      "o": "cabo",
+      "n": 1,
+      "claro": 1,
+      "h": "n",
+      "a": 0.8
+     }
+    ],
+    [
+     "Ich lege die Kupferdrähte frei. Und verdrehe sie miteinander."
+    ],
+    [
+     "Im Werkzeugkasten liegt eine Rolle Isolierband. Ich wickle sie fast ganz darum."
+    ],
+    [
+     "Das Kabel ist jetzt zehn Zentimeter kürzer. Also rücke ich das Fahrrad näher an Gisela.",
+     {
+      "c": "obj",
+      "o": "gisela",
+      "nv": 0.02,
+      "n": 1,
+      "claro": 1,
+      "h": "n"
+     }
+    ],
+    [
+     "Dann steige ich auf. Im Dunkeln. Und trete.",
+     {
+      "c": "bici",
+      "n": 1,
+      "gis": 1,
+      "nv0": 0.02,
+      "nv1": 0.5,
+      "h": "p"
+     }
+    ],
+    [
+     "Nach zwanzig Minuten: ein grünes Lämpchen."
+    ],
+    [
+     "Nach einer Stunde: Licht.",
+     {
+      "c": "bici",
+      "gis": 1,
+      "nv0": 0.5,
+      "nv1": 0.9,
+      "h": "s"
+     }
+    ],
+    [
+     "Und in der Wand höre ich ein Geräusch, das ich noch nie so schön fand.",
+     {
+      "c": "duto",
+      "ar": 1,
+      "h": "s",
+      "a": 0.5
+     }
+    ],
+    [
+     "Den Ventilator."
+    ],
+    [
+     "Das Messgerät springt an. Eins Komma vier Prozent.",
+     {
+      "c": "obj",
+      "o": "visor",
+      "val": "1,4 %",
+      "cor": "y",
+      "h": "p"
+     }
+    ],
+    [
+     "Am nächsten Morgen: null Komma sieben.",
+     {
+      "c": "obj",
+      "o": "visor",
+      "val": "0,7 %",
+      "cor": "g",
+      "h": "s",
+      "d": 13
+     }
+    ]
+   ]
+  },
+  {
+   "id": "schutz",
+   "cap": "Tag 13: Nie wieder",
+   "falas": [
+    [
+     "Tag dreizehn. Das darf nicht noch einmal passieren.",
+     {
+      "c": "ben",
+      "h": "n",
+      "g": 0.6
+     }
+    ],
+    [
+     "Ich stecke das Kabel in ein Stück alten Wasserschlauch.",
+     {
+      "c": "bici",
+      "gis": 1,
+      "nv0": 0.9,
+      "nv1": 0.9,
+      "para": 1,
+      "t": "IM SCHLAUCH",
+      "tc": "y",
+      "h": "n"
+     }
+    ],
+    [
+     "Und hänge es hoch. Weg vom Boden."
+    ],
+    [
+     "Die Kurbellampe hängt ab jetzt an einem Nagel direkt über meinem Kopfkissen.",
+     {
+      "c": "obj",
+      "o": "kurbel",
+      "h": "n"
+     }
+    ],
+    [
+     "Regel Nummer vier: Licht muss man im Dunkeln finden."
+    ],
+    [
+     "Und morgens prüfe ich ab heute vier Dinge.",
+     {
+      "c": "lista",
+      "tt": "JEDEN MORGEN",
+      "it": [
+       "+LUFT",
+       "+WASSER",
+       "+VORRÄTE",
+       "+KABEL"
+      ],
+      "q": [
+       0.2,
+       0.4,
+       0.6,
+       0.8
+      ]
+     }
+    ],
+    [
+     "Tag vierzehn. Zwei Wochen.",
+     {
+      "c": "obj",
+      "o": "riscos",
+      "nn": 14,
+      "h": "s",
+      "d": 14
+     }
+    ],
+    [
+     "Herr Müller bekommt weiter seinen Löffel. Aber wir reden nicht mehr miteinander.",
+     {
+      "c": "obj",
+      "o": "marder",
+      "flip": 1,
+      "h": "c"
+     }
+    ],
+    [
+     "Stand: Marder zwei, Ben eins.",
+     {
+      "c": "placar",
+      "sa": 2,
+      "sb": 1
+     }
+    ]
+   ]
+  },
+  {
+   "id": "lehren",
+   "cap": "Drei Lehren",
+   "falas": [
+    [
+     "Drei Dinge nehme ich aus dieser Woche mit.",
+     {
+      "c": "ben",
+      "h": "n",
+      "g": 0.6
+     }
+    ],
+    [
+     "Erstens: Was wichtig ist, braucht einen Ersatz. Ein zweites Kabel. Eine zweite Lampe.",
+     {
+      "c": "lista",
+      "tt": "GELERNT",
+      "it": [
+       "Wichtiges doppelt haben"
+      ]
+     }
+    ],
+    [
+     "Zweitens: Was man im Dunkeln braucht, muss man blind finden.",
+     {
+      "c": "lista",
+      "tt": "GELERNT",
+      "it": [
+       "Wichtiges doppelt haben",
+       "Blind auffindbar"
+      ],
+      "q": [
+       -1,
+       0.1
+      ]
+     }
+    ],
+    [
+     "Drittens: Mit einem Gegner, den man nicht loswird, schließt man besser einen Vertrag.",
+     {
+      "c": "lista",
+      "tt": "GELERNT",
+      "it": [
+       "Wichtiges doppelt haben",
+       "Blind auffindbar",
+       "Vertrag mit dem Gegner"
+      ],
+      "q": [
+       -1,
+       -1,
+       0.1
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "id": "ende",
+   "cap": "Was ich übersehen habe",
+   "tenso": 1,
+   "falas": [
+    [
+     "Ich habe etwas gelernt.",
+     {
+      "c": "ben",
+      "h": "n"
+     }
+    ],
+    [
+     "Hier unten hängt alles an einem einzigen Kabel. Licht. Luft. Sogar meine Laune."
+    ],
+    [
+     "Und ein Tier von anderthalb Kilo kann das alles ausschalten.",
+     {
+      "c": "obj",
+      "o": "marder",
+      "t": "1,5 kg",
+      "h": "c"
+     }
+    ],
+    [
+     "Eines habe ich in der Dunkelheit aber nicht bemerkt.",
+     {
+      "c": "ben",
+      "h": "p",
+      "n": 1
+     }
+    ],
+    [
+     "Als ich über die Kiste gestolpert bin, habe ich etwas angestoßen.",
+     {
+      "c": "escuro",
+      "h": "m"
+     }
+    ],
+    [
+     "Eines der Wasserfässer.",
+     {
+      "c": "agua",
+      "vz": 1,
+      "h": "m"
+     }
+    ],
+    [
+     "In Teil drei siehst du, warum plötzlich die Hälfte meines Wassers fehlt."
+    ],
+    [
+     "Abonniere den Kanal, damit du Tag fünfzehn nicht verpasst.",
+     {
+      "c": "fim",
+      "teil": 3
+     }
+    ]
+   ]
+  }
+ ]
+}
