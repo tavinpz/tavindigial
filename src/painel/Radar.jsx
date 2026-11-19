@@ -18,6 +18,12 @@ const IDIOMA = { en: 'Inglês', es: 'Espanhol', de: 'Alemão', fr: 'Francês', p
 const capaUrl = (id) => `https://i.ytimg.com/vi/${encodeURIComponent(id)}/mqdefault.jpg`
 const minutos = (s) => (s ? `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}` : '')
 
+// Selo de complexidade de produção (fácil, média, difícil, não dá). Usa as classes .rd-chip do painel.css.
+function Chip({ c }) {
+  const k = !c ? 'sem' : c.startsWith('f') ? 'facil' : c.startsWith('m') ? 'media' : c.startsWith('d') ? 'dificil' : 'nao'
+  return <span className={`rd-chip rd-chip--${k}`}>{c || 'sem nota'}</span>
+}
+
 // Capas dos vídeos mais vistos do canal (vêm prontas do radar_painel, sem chamada nova ao YouTube).
 function Capas({ videos }) {
   const ref = useRef(null)
