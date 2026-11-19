@@ -8,14 +8,14 @@ type V = Record<string, any>;
 type Fala = { t: number; d: number; txt: string; v?: V; dest?: string[] };
 type Bloco = { id: string; cena: string; idade?: number; cap?: { n: string; tit: string }; pre?: number; est?: any; ini: number; fim: number; falas: Fala[] };
 export type TemposTC = { total: number; blocos: Bloco[] };
-const IDADES = [6, 10, 16, 22, 30, 45, 60];
+const Cfg = React.createContext<any>({});
 const J = (x: any) => JSON.stringify(x ?? null);
 const pop = (g: number, t0: number, d = 10) => { const x = Math.min(1, Math.max(0, (g - t0) / d)); return x <= 0 ? 0 : 1 - Math.pow(1 - x, 3) + 0.14 * Math.sin(Math.PI * x); };
 const Pop: React.FC<{ g: number; t0: number; cx: number; cy: number; children: React.ReactNode; d?: number }> = ({ g, t0, cx, cy, children, d }) => {
   const s = pop(g, t0, d); if (s <= 0) return null;
   return <g transform={`translate(${cx} ${cy}) scale(${s}) translate(${-cx} ${-cy})`} opacity={Math.min(1, (g - t0) / 4)}>{children}</g>;
 };
-const COR: Record<string, string> = { coral: P.coral, mar: P.mar, amb: P.amb };
+const COR: Record<string, string> = { coral: P.coral, mar: P.mar, amb: P.amb, ouro: '#B7791F', verde: P.verdeEsc, azul: P.azulEsc };
 
 // ---------- objetos de cena ----------
 const Violao: React.FC<{ x: number; cor: string; fundo: string }> = ({ x }) => (
@@ -53,7 +53,8 @@ const Brilho: React.FC<{ x: number; y: number; r: number; cor: string; g: number
 
 // ---------- uma casa (metade da tela) ----------
 const Casa: React.FC<{ l: Lado; idade: number; v: V; g: number; desde: (k: string) => number; fala: Fala; gi: number }> = ({ l, idade, v, g, desde, fala, gi }) => {
-  const t = tema(l), a = l === 'a', obj: string[] = v['o' + l] || [], f: V = v['f' + l] || {}, noite = idade >= 22, familia = idade === 6 || idade === 45;
+  const cfg = React.useContext(Cfg);
+  const t = tema(l), a = l === 'a', obj: string[] = v['o' + l] || [], f: V = v['f' + l] || {}, noite = idade >= 22, familia = idade <= 8 || idade === 45;
   const tem = (k: string) => obj.find((o) => o === k || o.startsWith(k + ':'));
   const val = (k: string) => (tem(k) || '').split(':')[1];
   const pisca = (g + (a ? 0 : 37)) % 104 < 5 ? 1 : 0, bob = Math.sin(g / 17 + (a ? 0 : 1.3)) * 2.2;
@@ -61,7 +62,7 @@ const Casa: React.FC<{ l: Lado; idade: number; v: V; g: number; desde: (k: strin
   const foco = v.foco, olharFoco: [number, number] = f.triste ? [0.2, 0.9] : foco === l ? [0.6, -0.3] : [0.5, 0.1];
   const el: React.ReactNode[] = [];
   if (familia) {
-    const samGrande = idade === 45, hS = samGrande ? ALTURA[45] : ALTURA[6];
+    const samGrande = idade === 45, hS = samGrande ? ALTURA[45] : ALTURA[6], hK = samGrande ? 190 : (ALTURA[idade] || 190);
     el.push(<Janela key="j" x={640} y={300} lado={l} noite={noite} />);
     el.push(<Prateleira key="p" x={90} y={470} lado={l} larg={230}><Livros x={20} lado={l} n={samGrande ? 5 : 4} />{samGrande && !a && <Trofeu x={180} lado={l} />}{samGrande && a && <><Trofeu x={160} lado={l} /><Trofeu x={206} lado={l} /></>}</Prateleira>);
     el.push(<Mesa key="m" x={80} lado={l} larg={250} />);
@@ -75,7 +76,7 @@ const Casa: React.FC<{ l: Lado; idade: number; v: V; g: number; desde: (k: strin
     el.push(<Tapete key="tp" x={510} larg={470} lado={l} />); el.push(<Planta key="pl" x={905} g={g} />);
     el.push(<g key="g" transform={`translate(0 ${bob * 0.6 + gy})`}><Peao x={610} h={samGrande ? hS : 350} tipo={samGrande ? 'sam' : 'pai'} coque={!samGrande && a} cor={samGrande ? P.coral : t.roupaPai} humor={falaP ? 'feliz' : 'neutro'} olhar={[-0.9, 0.5]} incl={-3} pisca={pisca} /></g>);
     el.push(<g key="k" transform={`translate(0 ${-bob + py})`}>
-      <Peao x={410} h={190} tipo={samGrande ? 'filho' : 'sam'} cor={samGrande ? P.verde : P.coral} humor={f.triste && !samGrande ? 'triste' : f.pula || falaP || tem('nota') ? 'feliz' : 'neutro'} olhar={f.triste && !samGrande ? [0.2, 0.9] : [0.8, -0.7]} incl={a ? 0 : 2} pisca={(g + 50) % 120 < 5 ? 1 : 0} />
+      <Peao x={410} h={hK} tipo={samGrande ? 'filho' : 'sam'} cor={samGrande ? P.verde : P.coral} humor={f.triste && !samGrande ? 'triste' : f.pula || falaP || tem('nota') ? 'feliz' : 'neutro'} olhar={f.triste && !samGrande ? [0.2, 0.9] : [0.8, -0.7]} incl={a ? 0 : 2} pisca={(g + 50) % 120 < 5 ? 1 : 0} />
       {tem('nota') && <Pop g={g} t0={desde('o' + l)} cx={500} cy={CHAO - 186}><Braco de={[430, CHAO - 108]} ate={[478, CHAO - 150]} cor={samGrande ? P.verde : P.coral} /><Papel x={500} y={CHAO - 186} nota={val('nota')} rot={8 + Math.sin(g / 9) * 3} larg={84} /></Pop>}
     </g>);
     if (f.brilho) el.push(<Brilho key="br" x={samGrande ? 610 : 410} y={CHAO - (samGrande ? hS : 190) + 38 + py} r={samGrande ? 86 : 54} cor="#FFFFFF" g={g} />);
@@ -95,10 +96,10 @@ const Casa: React.FC<{ l: Lado; idade: number; v: V; g: number; desde: (k: strin
     if (tem('violao')) el.push(<Pop key="vi" g={g} t0={desde('o' + l)} cx={800} cy={CHAO - 150}><Violao x={800} cor={t.tinta} fundo={t.fundo} /></Pop>);
     if (tem('notas')) el.push(<g key="nt">{[0, 1, 2].map((i) => { const p = ((g + i * 30) % 90) / 90; return <text key={i} x={800 + i * 34 - 30 + Math.sin(g / 8 + i) * 10} y={CHAO - 380 - p * 130} fontSize={54} fontFamily={SANS} fontWeight={900} fill={t.tinta} opacity={Math.sin(p * Math.PI)}>♪</text>; })}</g>);
     if (tem('lista')) {
-      const t0 = desde('o' + l), its = ['A language', 'A business', 'A hard conversation'], dur = Math.round(fala.d * 30);
+      const t0 = desde('o' + l), its: string[] = cfg.lista.it, dur = Math.round(fala.d * 30);
       el.push(<Pop key="ls" g={g} t0={t0} cx={770} cy={640}><g transform="rotate(4 770 640)">
         <rect x={610} y={560} width={320} height={200} rx={12} fill={P.creme} stroke={P.mar} strokeWidth={5} />
-        <text x={632} y={602} fontFamily={SANS} fontWeight={900} fontSize={24} fill={P.coral} letterSpacing={3}>NEVER TRIED</text>
+        <text x={632} y={602} fontFamily={SANS} fontWeight={900} fontSize={24} fill={P.coral} letterSpacing={3}>{cfg.lista.tit}</text>
         {its.map((s, i) => g >= t0 + dur * (0.5 + i * 0.16) && <text key={i} x={632} y={646 + i * 40} fontFamily={SANS} fontWeight={800} fontSize={28} fill={P.mar}>{'☐ ' + s}</text>)}
       </g></Pop>);
     }
@@ -119,8 +120,9 @@ const Casa: React.FC<{ l: Lado; idade: number; v: V; g: number; desde: (k: strin
 };
 
 const Duo: React.FC<{ b: Bloco; v: V; g: number; desde: (k: string) => number; fala: Fala; D: number }> = ({ b, v, g, desde, fala, D }) => {
+  const cfg = React.useContext(Cfg);
   const idade = b.idade || 6, z = 1 + 0.03 * Math.min(1, g / Math.max(60, D));
-  const conta = (l: Lado) => (v['c' + l] === undefined || v['c' + l] === null ? undefined : { rot: 'HARD THINGS TRIED', n: v['c' + l], prog: L(g, [desde('c' + l), desde('c' + l) + 10], [0, 1]) });
+  const conta = (l: Lado) => (v['c' + l] === undefined || v['c' + l] === null ? undefined : { rot: cfg.conta, n: v['c' + l], prog: L(g, [desde('c' + l), desde('c' + l) + 10], [0, 1]) });
   const big = v.big, tb = big ? desde('big') : 0;
   return (
     <g>
@@ -129,8 +131,8 @@ const Duo: React.FC<{ b: Bloco; v: V; g: number; desde: (k: string) => number; f
         <Casa l="a" idade={idade} v={v} g={g} desde={desde} fala={fala} gi={0} />
         <Casa l="b" idade={idade} v={v} g={g} desde={desde} fala={fala} gi={0} />
       </g>
-      <Topo lado="a" titulo="“You're so smart.”" conta={conta('a')} />
-      <Topo lado="b" titulo="“You worked hard.”" conta={conta('b')} />
+      <Topo lado="a" titulo={cfg.titA} conta={conta('a')} />
+      <Topo lado="b" titulo={cfg.titB} conta={conta('b')} />
       {v.conta && <g opacity={0.5 + 0.5 * Math.sin(g / 4)}><rect x={54} y={138} width={470} height={70} rx={14} fill="none" stroke={P.coral} strokeWidth={6} /><rect x={MEIO + 134} y={138} width={520} height={70} rx={14} fill="none" stroke={P.coral} strokeWidth={6} /></g>}
       <Idade n={idade} />
       {v.nota && <Pop g={g} t0={desde('nota')} cx={MEIO} cy={300}><rect x={MEIO - 290} y={266} width={580} height={68} rx={18} fill={P.creme} /><text x={MEIO} y={312} textAnchor="middle" fontFamily={MONO} fontWeight={700} fontSize={28} fill={P.mar} letterSpacing={3}>{v.nota}</text></Pop>}
@@ -148,10 +150,10 @@ const Duo: React.FC<{ b: Bloco; v: V; g: number; desde: (k: string) => number; f
 };
 
 // ---------- linha da vida ----------
-const Linha: React.FC<{ atual?: number; y: number; g: number; marca?: number }> = ({ atual, y, g, marca }) => (
+const Linha: React.FC<{ atual?: number; y: number; g: number; marca?: number }> = ({ atual, y, g, marca }) => { const IDADES: number[] = React.useContext(Cfg).idades; return (
   <g>
     {IDADES.map((n, i) => (['a', 'b'] as Lado[]).map((l) => {
-      const t = { tinta: l === 'a' ? P.mar : '#FFFFFF' }, x = (l === 'a' ? 150 : MEIO + 150) + i * 110, h = ALTURA[n] * 0.4, on = n === atual, s = pop(g, 4 + i * 3);
+      const t = { tinta: l === 'a' ? P.mar : '#FFFFFF' }, x = (l === 'a' ? 150 : MEIO + 150) + i * (660 / Math.max(6, IDADES.length - 1)), h = ALTURA[n] * 0.4, on = n === atual, s = pop(g, 4 + i * 3);
       return (
         <g key={l + n} opacity={(atual === undefined || on ? 1 : 0.36) * Math.min(1, s)}>
           <Peao x={x} base={y - (on ? Math.abs(Math.sin(g / 6)) * 8 : 0)} h={h * Math.min(1.05, s)} tipo="sam" cor={P.coral} velho={n >= 60} humor={on ? 'feliz' : 'neutro'} />
@@ -162,7 +164,7 @@ const Linha: React.FC<{ atual?: number; y: number; g: number; marca?: number }> 
       );
     }))}
   </g>
-);
+); };
 
 const Capitulo: React.FC<{ b: Bloco; g: number }> = ({ b, g }) => (
   <g>
@@ -191,26 +193,26 @@ const Fila: React.FC<{ y: number; n: number; de: number; cor: string; rot: strin
 const Estudo: React.FC<{ b: Bloco; v: V; g: number; desde: (k: string) => number; fala: Fala }> = ({ b, v, g, desde, fala }) => {
   const e = b.est, d: V = v.dir || {}, t0 = desde('dir'), el: React.ReactNode[] = [];
   const cab = (ls: string[] = []) => ls.map((s, i) => <text key={'cab' + i} x={1010} y={196 + i * 50} fontFamily={SANS} fontWeight={900} fontSize={38} fill={P.mar} opacity={L(g, [t0, t0 + 6], [0, 1])}>{s}</text>);
-  if (d.k === 'selo') el.push(<Pop key="selo" g={g} t0={t0} cx={1420} cy={470}>{d.t.map((s: string, i: number) => <text key={i} x={1010} y={(d.t.length > 2 ? 380 : 440) + i * 104} fontFamily={SLAB} fontSize={82} fill={i ? P.coral : P.mar}>{s}</text>)}</Pop>);
-  if (d.k === 'nomes') el.push(<g key="nomes">{d.t.map((s: string, i: number) => <Pop key={i} g={g} t0={t0 + i * 16 + 40} cx={1300} cy={400 + i * 120}><Peao x={1060} base={440 + i * 120} h={110} cor={i ? P.amb : P.mar} olho={i ? P.mar : P.amb} /><text x={1140} y={420 + i * 120} fontFamily={SLAB} fontSize={66} fill={P.mar}>{s}</text></Pop>)}
-    <text x={1010} y={660} fontFamily={MONO} fontWeight={700} fontSize={26} fill={P.mar} letterSpacing={3} opacity={L(g, [t0 + 20, t0 + 30], [0, 0.7])}>{d.s}</text></g>);
+  if (d.k === 'selo') el.push(<Pop key="selo" g={g} t0={t0} cx={1420} cy={470}>{d.t.map((s: string, i: number) => <text key={i} x={1010} y={(d.t.length > 2 ? 380 : 440) + i * 104} fontFamily={SLAB} fontSize={Math.min(82, 1040 / s.length)} fill={i ? P.coral : P.mar}>{s}</text>)}</Pop>);
+  if (d.k === 'nomes') el.push(<g key="nomes">{d.t.map((s: string, i: number) => <Pop key={i} g={g} t0={t0 + i * 16 + 40} cx={1300} cy={400 + i * 120}><Peao x={1060} base={440 + i * 120} h={110} cor={i ? P.amb : P.mar} olho={i ? P.mar : P.amb} /><text x={1140} y={420 + i * 120} fontFamily={SLAB} fontSize={Math.min(66, 1150 / s.length)} fill={P.mar}>{s}</text></Pop>)}
+    <text x={1010} y={420 + d.t.length * 120} fontFamily={MONO} fontWeight={700} fontSize={26} fill={P.mar} letterSpacing={3} opacity={L(g, [t0 + 20, t0 + 30], [0, 0.7])}>{d.s}</text></g>);
   if (d.k === 'num') {
     const n = Math.round(d.n * L(g, [t0, t0 + 26], [0, 1])), col = d.n > 200 ? 25 : 16, px = d.n > 200 ? 33 : 51, py = d.n > 200 ? 36 : 54, hh = d.n > 200 ? 28 : 42;
-    el.push(<g key="num"><text x={1010} y={300} fontFamily={SLAB} fontSize={170} fill={P.mar}>{n}</text><text x={1010} y={356} fontFamily={SANS} fontWeight={900} fontSize={30} fill={P.mar} letterSpacing={5}>{d.rot}</text>
-      {Array.from({ length: d.n }).map((_, i) => i < n && <Peao key={i} x={1026 + (i % col) * px} base={430 + Math.floor(i / col) * py + hh} h={hh} cor={[P.coral, P.azul, P.ouro, P.verde, P.roxo, P.mar][(i * 7 + Math.floor(i / col)) % 6]} />)}</g>);
+    el.push(<g key="num"><text x={1010} y={300} fontFamily={SLAB} fontSize={d.n > 9999 ? 140 : 170} fill={P.mar}>{n.toLocaleString('en-US')}</text><text x={1010} y={356} fontFamily={SANS} fontWeight={900} fontSize={30} fill={P.mar} letterSpacing={5}>{d.rot}</text>
+      {Array.from({ length: Math.min(d.n, d.n > 200 ? 300 : 128) }).map((_, i) => i < n && <Peao key={i} x={1026 + (i % col) * px} base={430 + Math.floor(i / col) * py + hh} h={hh} cor={[P.coral, P.azul, P.ouro, P.verde, P.roxo, P.mar][(i * 7 + Math.floor(i / col)) % 6]} />)}</g>);
   }
   if (d.k === 'frases') {
-    const fr = [['“You must be smart', 'at these problems.”', P.coral], ['“You must have worked hard', 'at these problems.”', P.mar]];
-    el.push(<g key="fr">{cab(['Then each kid heard', 'one sentence.'])}{fr.map((f, i) => d.n > i && <Pop key={i} g={g} t0={t0} cx={1420} cy={420 + i * 230}>
-      <rect x={1010} y={330 + i * 230} width={830} height={190} rx={22} fill="#FFFFFF" /><text x={1050} y={410 + i * 230} fontFamily={SLAB} fontSize={50} fill={f[2]}>{f[0]}</text><text x={1050} y={474 + i * 230} fontFamily={SLAB} fontSize={50} fill={f[2]}>{f[1]}</text></Pop>)}</g>);
+    const fr: any[] = d.fr || [['“You must be smart', 'at these problems.”', P.coral], ['“You must have worked hard', 'at these problems.”', P.mar]];
+    el.push(<g key="fr">{cab(d.cab || ['Then each kid heard', 'one sentence.'])}{fr.map((f, i) => d.n > i && <Pop key={i} g={g} t0={t0} cx={1420} cy={420 + i * 230}>
+      <rect x={1010} y={330 + i * 230} width={830} height={190} rx={22} fill="#FFFFFF" /><text x={1050} y={410 + i * 230} fontFamily={SLAB} fontSize={50} fill={COR[f[2]] || f[2]}>{f[0]}</text><text x={1050} y={474 + i * 230} fontFamily={SLAB} fontSize={50} fill={COR[f[2]] || f[2]}>{f[1]}</text></Pop>)}</g>);
   }
   if (d.k === 'escolha') el.push(<g key="esc">{cab(['Then came a choice.'])}{[['EASY TASK', '“You\'ll look smart.”', P.coral, 3], ['HARD TASK', '“You\'ll learn something.”', P.mar, 9]].map((c: any, i) => <Pop key={i} g={g} t0={t0 + 40 + i * 70} cx={1210 + i * 420} cy={480}>
     <rect x={1010 + i * 425} y={280} width={400} height={400} rx={26} fill="#FFFFFF" /><text x={1210 + i * 425} y={350} textAnchor="middle" fontFamily={SANS} fontWeight={900} fontSize={34} fill={c[2]} letterSpacing={4}>{c[0]}</text>
     {Array.from({ length: c[3] }).map((_, k) => <rect key={k} x={1120 + i * 425 + (k % 3) * 62} y={390 + Math.floor(k / 3) * 56} width={52} height={46} rx={10} fill={c[2]} opacity={0.85} />)}
     <text x={1210 + i * 425} y={640} textAnchor="middle" fontFamily={SANS} fontWeight={800} fontSize={30} fill={P.mar}>{c[1]}</text></Pop>)}</g>);
-  if (d.k === 'rows') el.push(<g key={'rows' + J(d.rows[0])}>{cab(d.cab)}{d.rows.map((r: any, i: number) => d.n > i && <Fila key={i} y={470 + i * 250} n={r[1]} de={r[2]} rot={r[0]} pct={r[3]} cor={COR[r[4]]} g={g} t0={i + 1 === d.n ? t0 : 0} />)}</g>);
-  if (d.k === 'itens') { const dur = Math.round(fala.d * 30); el.push(<g key="it">{cab(d.cab)}{d.it.map((s: string, i: number) => { const ti = d.auto ? t0 + dur * (0.12 + i * 0.27) : 1e9; return d.n > i && g >= ti && <Pop key={i} g={g} t0={ti} cx={1300} cy={400 + i * 120}>
-    <rect x={1010} y={350 + i * 120} width={830} height={96} rx={18} fill="#FFFFFF" /><text x={1044} y={414 + i * 120} fontFamily={SANS} fontWeight={900} fontSize={44} fill={P.coral}>✕</text><text x={1104} y={412 + i * 120} fontFamily={SANS} fontWeight={800} fontSize={40} fill={P.mar}>{s}</text></Pop>; })}</g>); }
+  if (d.k === 'rows') el.push(<g key={'rows' + J(d.rows[0])}>{cab(d.cab)}{d.rows.map((r: any, i: number) => d.n > i && <Fila key={i} y={d.rows.length > 2 ? 395 + i * 165 : 470 + i * 250} n={r[1]} de={r[2]} rot={r[0]} pct={r[3]} cor={COR[r[4]]} g={g} t0={i + 1 === d.n ? t0 : 0} />)}</g>);
+  if (d.k === 'itens') { const dur = Math.round(fala.d * 30); el.push(<g key="it">{cab(d.cab)}{d.it.map((s: string, i: number) => { const ti = d.auto ? t0 + dur * (0.12 + i * 0.27) : (i + 1 === d.n ? t0 : 0); return d.n > i && g >= ti && <Pop key={i} g={g} t0={ti} cx={1300} cy={400 + i * 120}>
+    <rect x={1010} y={350 + i * 120} width={830} height={96} rx={18} fill="#FFFFFF" /><text x={1044} y={414 + i * 120} fontFamily={SANS} fontWeight={900} fontSize={44} fill={d.marca ? P.azul : P.coral}>{d.marca || '✕'}</text><text x={1104} y={412 + i * 120} fontFamily={SANS} fontWeight={800} fontSize={Math.min(40, 1180 / s.length)} fill={P.mar}>{s}</text></Pop>; })}</g>); }
   if (d.k === 'setas') { const dur = Math.round(fala.d * 30); el.push(<g key="set">{cab(d.cab)}{[['TOLD “SMART”', 'WORSE THAN BEFORE', P.coral, 1, 0.3], ['TOLD “WORKED HARD”', 'BETTER THAN BEFORE', P.mar, -1, 0.72]].map((c: any, i) => <Pop key={i} g={g} t0={t0 + dur * c[4]} cx={1210 + i * 425} cy={480}>
     <rect x={1010 + i * 425} y={280} width={400} height={420} rx={26} fill="#FFFFFF" /><text x={1210 + i * 425} y={346} textAnchor="middle" fontFamily={SANS} fontWeight={900} fontSize={28} fill={P.mar} letterSpacing={2}>{c[0]}</text>
     <g transform={`translate(${1210 + i * 425} ${490 + Math.sin(g / 6) * 8 * c[3]}) scale(1 ${c[3]})`}><path d="M -26 -90 L 26 -90 L 26 20 L 70 20 L 0 100 L -70 20 L -26 20 Z" fill={c[2]} /></g>
@@ -232,28 +234,29 @@ const Estudo: React.FC<{ b: Bloco; v: V; g: number; desde: (k: string) => number
 };
 
 // ---------- a parte honesta ----------
-const CARDS = [
+const CARDS0 = [
   { ano: '2013', quem: 'Gunderson et al.', onde: 'Child Development', n: '53 families, filmed at home', t: ['More praise for effort', 'at ages 1 to 3', '= more “I can improve”', 'at ages 7 to 8.'], x: ['Praise for the person did', 'NOT predict the opposite.'], chip: 'SUPPORTS IT', cor: P.mar },
   { ano: '2019', quem: 'Li & Bates', onde: 'J. Exp. Psychology: General', n: '624 children', t: ['Repeated the original', 'experiment.', 'Did not find', 'the effect.'], x: [], chip: 'DID NOT REPLICATE', cor: P.coral },
   { ano: '2015', quem: 'Carol Dweck', onde: 'Education Week', n: 'her own correction', t: ['“...too much emphasis', 'on sheer effort.”', 'Empty “good try”', 'is not the point.'], x: [], chip: 'A WARNING', cor: '#B7791F' },
 ];
 const Honesto: React.FC<{ v: V; g: number; desde: (k: string) => number }> = ({ v, g, desde }) => {
+  const cfg = React.useContext(Cfg), CARDS: any[] = cfg.cards;
   const rod = v.rod, tr = rod ? desde('rod') : 0;
   return (
     <g>
       <rect x={0} y={0} width={W} height={H} fill={P.creme} />
       <rect x={110} y={90} width={420} height={62} rx={12} fill={P.mar} /><text x={320} y={133} textAnchor="middle" fontFamily={SANS} fontWeight={900} fontSize={30} fill={P.amb} letterSpacing={6}>THE HONEST PART</text>
-      {(v.n || 0) > 0 && <text x={570} y={138} fontFamily={SLAB} fontSize={50} fill={P.mar}>A sentence is not a spell.</text>}
-      {!(v.n > 0) && <Pop g={g} t0={8} cx={MEIO} cy={500}><text x={MEIO} y={470} textAnchor="middle" fontFamily={SLAB} fontSize={120} fill={P.mar}>A sentence</text><text x={MEIO} y={610} textAnchor="middle" fontFamily={SLAB} fontSize={120} fill={P.coral}>is not a spell.</text></Pop>}
+      {(v.n || 0) > 0 && <text x={570} y={138} fontFamily={SLAB} fontSize={50} fill={P.mar}>{cfg.honesto.join(' ')}</text>}
+      {!(v.n > 0) && <Pop g={g} t0={8} cx={MEIO} cy={500}><text x={MEIO} y={470} textAnchor="middle" fontFamily={SLAB} fontSize={120} fill={P.mar}>{cfg.honesto[0]}</text><text x={MEIO} y={610} textAnchor="middle" fontFamily={SLAB} fontSize={120} fill={P.coral}>{cfg.honesto[1]}</text></Pop>}
       {CARDS.map((c, i) => (v.n || 0) > i && <Pop key={i} g={g} t0={i + 1 === v.n ? desde('n') : 0} cx={380 + i * 580} cy={500}>
         <rect x={110 + i * 580} y={210} width={540} height={600} rx={26} fill="#FFFFFF" />
-        <text x={150 + i * 580} y={310} fontFamily={SLAB} fontSize={88} fill={c.cor}>{c.ano}</text>
+        <text x={150 + i * 580} y={310} fontFamily={SLAB} fontSize={88} fill={COR[c.cor] || c.cor}>{c.ano}</text>
         <text x={150 + i * 580} y={366} fontFamily={SANS} fontWeight={900} fontSize={32} fill={P.mar}>{c.quem}</text>
         <text x={150 + i * 580} y={402} fontFamily={SANS} fontWeight={500} fontSize={24} fill={P.mar} opacity={0.75}>{c.onde}</text>
         <text x={150 + i * 580} y={434} fontFamily={SANS} fontWeight={500} fontSize={24} fill={P.mar} opacity={0.75}>{c.n}</text>
-        {c.t.map((s, k) => <text key={k} x={150 + i * 580} y={500 + k * 44} fontFamily={SANS} fontWeight={800} fontSize={34} fill={P.mar}>{s}</text>)}
-        {i === 0 && v.x && c.x.map((s, k) => <text key={'x' + k} x={150 + i * 580} y={684 + k * 34} fontFamily={SANS} fontWeight={800} fontSize={26} fill={P.coral} opacity={L(g, [desde('x'), desde('x') + 8], [0, 1])}>{s}</text>)}
-        <rect x={150 + i * 580} y={742} width={c.chip.length * 17 + 44} height={46} rx={23} fill={c.cor} /><text x={172 + i * 580} y={774} fontFamily={SANS} fontWeight={900} fontSize={22} fill="#FFFFFF" letterSpacing={2}>{c.chip}</text>
+        {c.t.map((s: string, k: number) => <text key={k} x={150 + i * 580} y={500 + k * 44} fontFamily={SANS} fontWeight={800} fontSize={34} fill={P.mar}>{s}</text>)}
+        {i === 0 && v.x && (c.x || []).map((s: string, k: number) => <text key={'x' + k} x={150 + i * 580} y={684 + k * 34} fontFamily={SANS} fontWeight={800} fontSize={26} fill={P.coral} opacity={L(g, [desde('x'), desde('x') + 8], [0, 1])}>{s}</text>)}
+        <rect x={150 + i * 580} y={742} width={c.chip.length * 17 + 44} height={46} rx={23} fill={COR[c.cor] || c.cor} /><text x={172 + i * 580} y={774} fontFamily={SANS} fontWeight={900} fontSize={22} fill="#FFFFFF" letterSpacing={2}>{c.chip}</text>
       </Pop>)}
       {rod && <Pop g={g} t0={tr} cx={MEIO} cy={862}><rect x={MEIO - (rod.length * 23 + 70) / 2} y={824} width={rod.length * 23 + 70} height={78} rx={16} fill={P.mar} /><text x={MEIO} y={877} textAnchor="middle" fontFamily={SANS} fontWeight={900} fontSize={34} fill={P.amb} letterSpacing={2}>{rod}</text></Pop>}
     </g>
@@ -267,20 +270,20 @@ const Texto: React.FC<{ v: V; g: number; desde: (k: string) => number }> = ({ v,
     {v.icone === 'share' && <Pop g={g} t0={2} cx={MEIO} cy={250}><circle cx={MEIO} cy={250} r={70} fill={P.creme} /><path d={`M ${MEIO - 26} 262 q 6 -40 44 -40 l 0 -22 l 36 36 l -36 36 l 0 -22 q -26 0 -44 12 Z`} fill={P.mar} /></Pop>}
     {v.big && <Pop g={g} t0={desde('big')} cx={MEIO} cy={440}><Partido esq={v.big.e} dir={v.big.d} y={v.linha !== undefined ? 400 : 480} tam={v.big.tam || 100} folga={0.24} /></Pop>}
     {v.chips && <g>{v.chips.map((c: string, i: number) => <Pop key={i} g={g} t0={desde('chips') + i * 22} cx={i ? MEIO + 330 : MEIO - 330} cy={650}>
-      <rect x={(i ? MEIO + 330 : MEIO - 330) - 250} y={596} width={500} height={110} rx={55} fill={P.creme} /><text x={i ? MEIO + 330 : MEIO - 330} y={670} textAnchor="middle" fontFamily={SLAB} fontSize={54} fill={i ? P.mar : P.coral}>{c}</text></Pop>)}</g>}
+      <rect x={(i ? MEIO + 330 : MEIO - 330) - 250} y={596} width={500} height={110} rx={55} fill={P.creme} /><text x={i ? MEIO + 330 : MEIO - 330} y={670} textAnchor="middle" fontFamily={SLAB} fontSize={Math.min(54, 780 / c.length)} fill={i ? P.mar : P.coral}>{c}</text></Pop>)}</g>}
     {v.sub && <Pop g={g} t0={desde('sub')} cx={MEIO} cy={v.chips ? 800 : v.linha !== undefined ? 530 : 620}>
       <rect x={MEIO - (v.sub.length * 24 + 80) / 2} y={(v.chips ? 800 : v.linha !== undefined ? 530 : 620) - 42} width={v.sub.length * 24 + 80} height={84} rx={20} fill={P.creme} />
       <text x={MEIO} y={(v.chips ? 800 : v.linha !== undefined ? 530 : 620) + 14} textAnchor="middle" fontFamily={SANS} fontWeight={900} fontSize={36} fill={P.mar} letterSpacing={4}>{v.sub}</text></Pop>}
     {v.linha !== undefined && <Linha y={820} g={g} marca={v.linha || undefined} />}
   </g>
 );
-const VIDA: [number, string, string][] = [[6, '“You\'re so smart.”', '“You worked hard.”'], [16, 'Drops the hard class.', 'Fails. Signs up again.'], [30, 'Stays where it\'s safe.', 'Takes the harder job.'], [60, 'Still wonders.', 'Still learning.']];
-const Vida: React.FC<{ v: V; g: number; desde: (k: string) => number }> = ({ v, g, desde }) => (
+const VIDA0: [number, string, string][] = [[6, '“You\'re so smart.”', '“You worked hard.”'], [16, 'Drops the hard class.', 'Fails. Signs up again.'], [30, 'Stays where it\'s safe.', 'Takes the harder job.'], [60, 'Still wonders.', 'Still learning.']];
+const Vida: React.FC<{ v: V; g: number; desde: (k: string) => number }> = ({ v, g, desde }) => { const VIDA: [number, string, string][] = React.useContext(Cfg).vida; return (
   <g>
     <Fundo chao={false} />
     <Partido esq="THE WHOLE LIFE," dir="SIDE BY SIDE" y={130} tam={64} folga={0.3} />
     {VIDA.map(([n, ea, eb], i) => {
-      const y = 330 + i * 180, on = (v.n || 0) > i, t0 = i + 1 === v.n ? desde('n') : 0;
+      const y = (VIDA.length > 4 ? 300 : 330) + i * (VIDA.length > 4 ? 150 : 180), on = (v.n || 0) > i, t0 = i + 1 === v.n ? desde('n') : 0;
       return on && (
         <g key={n}>
           <Pop g={g} t0={t0} cx={MEIO} cy={y - 34}><circle cx={MEIO} cy={y - 34} r={46} fill={P.creme} /><text x={MEIO} y={y - 17} textAnchor="middle" fontFamily={SLAB} fontSize={44} fill={P.mar}>{n}</text>
@@ -291,10 +294,10 @@ const Vida: React.FC<{ v: V; g: number; desde: (k: string) => number }> = ({ v, 
       );
     })}
   </g>
-);
-const TROCAS = [['“You\'re so smart.”', '“Show me how you did that.”'], ['“You\'re a natural.”', '“That took practice.”'], ['“You\'re still smart.”', '“What would you try differently?”']];
+); };
+const TROCAS0 = [['“You\'re so smart.”', '“Show me how you did that.”'], ['“You\'re a natural.”', '“That took practice.”'], ['“You\'re still smart.”', '“What would you try differently?”']];
 const Trocas: React.FC<{ v: V; g: number; desde: (k: string) => number; fala: Fala }> = ({ v, g, desde, fala }) => {
-  const dur = Math.round(fala.d * 30);
+  const dur = Math.round(fala.d * 30), cfg = React.useContext(Cfg), TROCAS: string[][] = cfg.trocas;
   return (
     <g>
       <Fundo chao={false} />
@@ -314,20 +317,20 @@ const Trocas: React.FC<{ v: V; g: number; desde: (k: string) => number; fala: Fa
           );
         })}
       </>}
-      {v.yet && (() => { const t0 = desde('yet') + Math.round(dur * 0.78); return g >= t0 && <g><rect x={0} y={0} width={MEIO} height={H} fill="#F5BE45" opacity={0.95} /><rect x={MEIO} y={0} width={MEIO} height={H} fill={P.azulEsc} opacity={0.95} /><Pop g={g} t0={t0} cx={MEIO} cy={520}><Partido esq="NOT" dir="YET." y={600} tam={230} folga={0.16} /></Pop></g>; })()}
+      {v.yet && (() => { const t0 = desde('yet') + Math.round(dur * 0.78); return g >= t0 && <g><rect x={0} y={0} width={MEIO} height={H} fill="#F5BE45" opacity={0.95} /><rect x={MEIO} y={0} width={MEIO} height={H} fill={P.azulEsc} opacity={0.95} /><Pop g={g} t0={t0} cx={MEIO} cy={520}><Partido esq={cfg.yet.e} dir={cfg.yet.d} y={600} tam={cfg.yet.tam || 230} folga={0.16} /></Pop></g>; })()}
     </g>
   );
 };
-const Fim: React.FC<{ v: V; g: number; desde: (k: string) => number }> = ({ v, g, desde }) => (
+const Fim: React.FC<{ v: V; g: number; desde: (k: string) => number }> = ({ v, g, desde }) => { const px = React.useContext(Cfg).prox; return (
   <g>
     <Fundo chao={false} />
     <g opacity={L(g, [0, 8], [0, 1])}><Partido esq="NEXT" dir="CHILDHOOD" y={170} tam={44} fam={SANS} peso={900} esp={14} folga={0.5} /></g>
-    <Pop g={g} t0={6} cx={MEIO} cy={420}><Partido esq="RAISED BY" dir="RAISED BY" y={330} tam={70} folga={0.5} /><Partido esq="FEAR" dir="RESPECT" y={500} tam={170} folga={0.2} /></Pop>
+    <Pop g={g} t0={6} cx={MEIO} cy={420}><Partido esq={px.e1} dir={px.d1} y={330} tam={px.tam1 || 70} folga={0.5} /><Partido esq={px.e2} dir={px.d2} y={500} tam={px.tam2 || 170} folga={0.2} /></Pop>
     {(['a', 'b'] as Lado[]).map((l) => { const t = tema(l), x0 = l === 'a' ? 210 : MEIO + 520; return <g key={l} opacity={L(g, [16, 26], [0, 1])}><Peao x={x0 + 60} base={790 + Math.sin(g / 15) * 2} h={210} tipo="pai" coque={l === 'a'} cor={t.roupaPai} humor={l === 'a' ? 'triste' : 'feliz'} olhar={[-0.8, 0.5]} /><Peao x={x0 - 70} base={790 - Math.sin(g / 15) * 2} h={120} tipo="sam" cor={P.coral} humor={l === 'a' ? 'triste' : 'feliz'} olhar={[0.8, -0.6]} /></g>; })}
     {(v.n || 0) > 1 && <Pop g={g} t0={desde('n')} cx={MEIO} cy={690}><g transform={`translate(${MEIO} 690) scale(${1 + 0.04 * Math.sin(g / 5)}) translate(${-MEIO} -690)`}>
       <rect x={MEIO - 250} y={640} width={500} height={100} rx={50} fill={P.coral} /><text x={MEIO} y={706} textAnchor="middle" fontFamily={SANS} fontWeight={900} fontSize={46} fill="#FFFFFF" letterSpacing={6}>SUBSCRIBE</text></g></Pop>}
   </g>
-);
+); };
 
 // ---------- legenda (palavra por palavra) ----------
 const Legenda: React.FC<{ f: Fala; q: number }> = ({ f, q }) => {
@@ -362,7 +365,10 @@ export const TCVideo: React.FC<{ tempos: TemposTC }> = ({ tempos }) => {
   const desde = (ch: string) => { let j = i; while (j > 0 && J(est[j - 1][ch]) === J(v[ch])) j--; return Math.max(0, ts[j]); };
   const falando = !emCap && q >= Math.round(fala.t * 30) - 2 && q <= Math.round((fala.t + fala.d) * 30) + 8;
   const entra = Math.min(1, (emCap ? g0 : g) / 7 + 0.001);
+  const DEF = { titA: '“You\'re so smart.”', titB: '“You worked hard.”', conta: 'HARD THINGS TRIED', idades: [6, 10, 16, 22, 30, 45, 60], vida: VIDA0, cards: CARDS0, honesto: ['A sentence', 'is not a spell.'], trocas: TROCAS0,
+    prox: { e1: 'RAISED BY', e2: 'FEAR', d1: 'RAISED BY', d2: 'RESPECT' }, lista: { tit: 'NEVER TRIED', it: ['A language', 'A business', 'A hard conversation'] }, yet: { e: 'NOT', d: 'YET.' } };
   return (
+    <Cfg.Provider value={{ ...DEF, ...((tempos as any).cfg || {}) }}>
     <AbsoluteFill style={{ background: P.mar }}>
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
         <Fundo chao={false} />
@@ -380,5 +386,6 @@ export const TCVideo: React.FC<{ tempos: TemposTC }> = ({ tempos }) => {
       {falando && <Legenda f={fala} q={q - Math.round(fala.t * 30)} />}
       <AbsoluteFill style={{ background: '#000', opacity: Math.max(0, 1 - q / 10) }} />
     </AbsoluteFill>
+    </Cfg.Provider>
   );
 };

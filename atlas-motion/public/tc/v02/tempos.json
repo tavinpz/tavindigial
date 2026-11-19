@@ -1,0 +1,2098 @@
+{
+ "total": 508.052,
+ "cfg": {
+  "id": "tc002",
+  "titA": "\u201cBecause I said so.\u201d",
+  "titB": "\u201cHere's why.\u201d",
+  "conta": "TOLD THE TRUTH",
+  "idades": [
+   5,
+   10,
+   16,
+   22,
+   30,
+   45,
+   60
+  ],
+  "vida": [
+   [
+    5,
+    "\u201cBecause I said so.\u201d",
+    "\u201cHere's why.\u201d"
+   ],
+   [
+    16,
+    "Doesn't call home.",
+    "Calls at midnight."
+   ],
+   [
+    30,
+    "Says nothing.",
+    "Speaks up."
+   ],
+   [
+    60,
+    "Polite visits.",
+    "A loud Sunday table."
+   ]
+  ],
+  "honesto": [
+   "Strict is not",
+   "the problem."
+  ],
+  "cards": [
+   {
+    "ano": "1991",
+    "quem": "Lamborn et al.",
+    "onde": "Child Development",
+    "n": "about 4,100 teenagers",
+    "t": [
+     "Warm AND firm homes:",
+     "highest confidence,",
+     "school and behavior."
+    ],
+    "x": [
+     "Strict and cold: obedient,",
+     "but less sure of themselves."
+    ],
+    "chip": "SUPPORTS IT",
+    "cor": "mar"
+   },
+   {
+    "ano": "2016",
+    "quem": "Gershoff & Grogan-Kaylor",
+    "onde": "Journal of Family Psychology",
+    "n": "160,927 children",
+    "t": [
+     "13 of 17 outcomes",
+     "linked spanking to",
+     "more problems.",
+     "None showed a benefit."
+    ],
+    "chip": "SUPPORTS IT",
+    "cor": "mar"
+   },
+   {
+    "ano": "BUT",
+    "quem": "The honest limit",
+    "onde": "What these studies cannot do",
+    "n": "",
+    "t": [
+     "They compare families.",
+     "Nobody can randomly",
+     "assign a childhood.",
+     "Kids differ too."
+    ],
+    "chip": "THE LIMIT",
+    "cor": "ouro"
+   }
+  ],
+  "trocas": [
+   [
+    "\u201cBecause I said so.\u201d",
+    "\u201cHere's why.\u201d"
+   ],
+   [
+    "\u201cWhat's wrong with you?\u201d",
+    "\u201cWhat happened?\u201d"
+   ],
+   [
+    "\u201cGo to your room.\u201d",
+    "\u201cLet's fix it together.\u201d"
+   ]
+  ],
+  "yet": {
+   "e": "GIVE",
+   "d": "REASONS.",
+   "tam": 170
+  },
+  "lista": {
+   "tit": "NEVER TOLD SAM",
+   "it": [
+    "The lost job",
+    "The breakup",
+    "The hard year"
+   ]
+  },
+  "prox": {
+   "e1": "ALWAYS",
+   "e2": "RESCUED",
+   "d1": "ALLOWED TO",
+   "d2": "FAIL",
+   "tam2": 150
+  },
+  "fontes": [
+   "https://europepmc.org/search?query=TITLE%3A%22Punitive%20environment%20fosters%20children%27s%20dishonesty%22",
+   "https://pubmed.ncbi.nlm.nih.gov/1756655/",
+   "https://pubmed.ncbi.nlm.nih.gov/27055181/"
+  ],
+  "thumbs": {
+   "a": {
+    "tagE": "AGE 5",
+    "tagD": "AGE 60",
+    "falaE": [
+     "BECAUSE I",
+     "SAID SO!"
+    ],
+    "pensaD": [
+     "THEY NEVER",
+     "TELL ME."
+    ],
+    "dest": [
+     "SAID",
+     "SO",
+     "NEVER"
+    ],
+    "txE": "RAISED BY FEAR",
+    "txD": "LAST TO KNOW",
+    "pE": {
+     "humor": "choque",
+     "lagrima": 1,
+     "olhar": [
+      0.4,
+      -0.4
+     ]
+    },
+    "pD": {
+     "velho": 1,
+     "humor": "triste",
+     "lagrima": 1,
+     "olhar": [
+      -0.2,
+      0.4
+     ]
+    }
+   },
+   "b": {
+    "palE": "FEAR",
+    "palD": "RESPECT",
+    "txE": "OBEYS. HIDES.",
+    "txD": "TELLS THE TRUTH",
+    "pE": {
+     "humor": "choque",
+     "lagrima": 1,
+     "olhar": [
+      0.2,
+      0.3
+     ]
+    },
+    "pD": {
+     "humor": "riso",
+     "olhar": [
+      -0.2,
+      -0.2
+     ],
+     "incl": 3
+    }
+   },
+   "c": {
+    "perg": "WHO TELLS THE TRUTH?",
+    "placar": [
+     "0",
+     "6"
+    ],
+    "rot": "TIMES THEY TOLD THE TRUTH",
+    "txE": "\u201cI SAID SO\u201d",
+    "txD": "\u201cHERE'S WHY\u201d",
+    "pE": {
+     "velho": 1,
+     "humor": "triste",
+     "lagrima": 1,
+     "olhar": [
+      0.3,
+      0.5
+     ]
+    },
+    "pD": {
+     "velho": 1,
+     "humor": "riso",
+     "olhar": [
+      -0.3,
+      -0.2
+     ]
+    }
+   }
+  }
+ },
+ "blocos": [
+  {
+   "id": "gancho1",
+   "cena": "duo",
+   "idade": 5,
+   "et": "Same kid, two homes",
+   "gap": 0.1,
+   "ini": 0.5,
+   "fim": 12.62,
+   "falas": [
+    {
+     "t": 0.5,
+     "d": 1.622,
+     "txt": "Two kids break the same rule.",
+     "v": {},
+     "dest": [
+      "same",
+      "rule"
+     ]
+    },
+    {
+     "t": 2.622,
+     "d": 2.867,
+     "txt": "In one home, the answer is, \"Because I said so.\"",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "BECAUSE I",
+        "SAID SO!"
+       ],
+       "q": "p",
+       "d": [
+        "SAID",
+        "SO"
+       ]
+      },
+      "fa": {
+       "triste": 1
+      }
+     },
+     "dest": [
+      "said",
+      "so"
+     ]
+    },
+    {
+     "t": 5.988,
+     "d": 2.288,
+     "txt": "In the other, the answer is, \"Here's why.\"",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "HERE'S WHY.",
+        "HELP ME CLEAN."
+       ],
+       "q": "p",
+       "d": [
+        "WHY"
+       ]
+      }
+     },
+     "dest": [
+      "why"
+     ]
+    },
+    {
+     "t": 8.777,
+     "d": 3.244,
+     "txt": "Same kid. Same broken rule. Two different homes.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null
+     },
+     "dest": [
+      "homes"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gancho2",
+   "cena": "duo",
+   "idade": 30,
+   "gap": 0.1,
+   "ini": 12.62,
+   "fim": 19.078,
+   "falas": [
+    {
+     "t": 12.62,
+     "d": 2.766,
+     "txt": "By thirty, one of them calls home every Sunday.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "HI, MOM!"
+       ],
+       "q": "k",
+       "d": []
+      },
+      "ca": 0,
+      "cb": 4
+     },
+     "dest": [
+      "sunday"
+     ]
+    },
+    {
+     "t": 15.887,
+     "d": 2.591,
+     "txt": "The other one calls on holidays. If at all.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "fa": {
+       "triste": 1
+      }
+     },
+     "dest": [
+      "holidays"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gancho3",
+   "cena": "texto",
+   "ini": 19.078,
+   "fim": 28.012,
+   "falas": [
+    {
+     "t": 19.078,
+     "d": 2.325,
+     "txt": "This is the whole life, side by side.",
+     "v": {
+      "big": {
+       "e": "THE WHOLE LIFE,",
+       "d": "SIDE BY SIDE",
+       "tam": 78
+      },
+      "linha": 0
+     },
+     "dest": [
+      "whole",
+      "life"
+     ]
+    },
+    {
+     "t": 21.902,
+     "d": 5.16,
+     "txt": "And along the way, three real studies. One of them followed four thousand teenagers.",
+     "v": {
+      "linha": 16,
+      "sub": "THREE REAL STUDIES"
+     },
+     "dest": [
+      "three",
+      "studies"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c1",
+   "cena": "duo",
+   "idade": 5,
+   "et": "Age 5: The wall",
+   "cap": {
+    "n": "ONE",
+    "tit": "THE WALL"
+   },
+   "pre": 2.3,
+   "ini": 28.012,
+   "fim": 79.014,
+   "falas": [
+    {
+     "t": 30.312,
+     "d": 4.226,
+     "txt": "Meet Sam. Sam is five. And Sam just drew on the living room wall.",
+     "v": {
+      "fa": {
+       "pula": 1
+      },
+      "fb": {
+       "pula": 1
+      }
+     },
+     "dest": [
+      "wall"
+     ]
+    },
+    {
+     "t": 35.038,
+     "d": 3.017,
+     "txt": "In the first home, the reaction is fast. And loud.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "WHAT DID",
+        "YOU DO?!"
+       ],
+       "q": "p",
+       "d": [
+        "DO"
+       ]
+      },
+      "fa": {
+       "triste": 1
+      },
+      "fb": null
+     },
+     "dest": [
+      "loud"
+     ]
+    },
+    {
+     "t": 38.555,
+     "d": 4.8,
+     "txt": "Sam asks why it's so bad. The answer never changes. \"Because I said so.\"",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "BECAUSE I",
+        "SAID SO!"
+       ],
+       "q": "p",
+       "d": [
+        "SAID",
+        "SO"
+       ]
+      }
+     },
+     "dest": [
+      "said",
+      "so"
+     ]
+    },
+    {
+     "t": 43.855,
+     "d": 2.905,
+     "txt": "Sam stops drawing on the wall. That part works.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": null
+     },
+     "dest": [
+      "works"
+     ]
+    },
+    {
+     "t": 47.26,
+     "d": 4.637,
+     "txt": "In the second home, the rule is exactly the same. No drawing on walls.",
+     "v": {
+      "foco": "b",
+      "ba": null
+     },
+     "dest": [
+      "same"
+     ]
+    },
+    {
+     "t": 52.397,
+     "d": 5.725,
+     "txt": "But it comes with a reason. \"Walls are hard to clean. Paper is for drawing. Help me wipe this.\"",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "HERE'S WHY.",
+        "HELP ME CLEAN."
+       ],
+       "q": "p",
+       "d": [
+        "WHY"
+       ]
+      }
+     },
+     "dest": [
+      "reason"
+     ]
+    },
+    {
+     "t": 58.621,
+     "d": 3.513,
+     "txt": "Sam also stops drawing on the wall. That part works too.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": null
+     },
+     "dest": [
+      "too"
+     ]
+    },
+    {
+     "t": 62.634,
+     "d": 3.151,
+     "txt": "So far, same result. Both kids follow the rule.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null
+     },
+     "dest": [
+      "same",
+      "result"
+     ]
+    },
+    {
+     "t": 66.285,
+     "d": 1.668,
+     "txt": "But they learned two different things.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null
+     },
+     "dest": [
+      "different"
+     ]
+    },
+    {
+     "t": 68.454,
+     "d": 1.692,
+     "txt": "One learned: don't get caught.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "DON'T GET",
+        "CAUGHT."
+       ],
+       "q": "k",
+       "d": [
+        "CAUGHT"
+       ],
+       "pensa": 1
+      }
+     },
+     "dest": [
+      "caught"
+     ]
+    },
+    {
+     "t": 70.646,
+     "d": 2.543,
+     "txt": "The other learned: this is how the world works.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "THAT'S HOW",
+        "IT WORKS."
+       ],
+       "q": "k",
+       "d": [],
+       "pensa": 1
+      }
+     },
+     "dest": [
+      "works"
+     ]
+    },
+    {
+     "t": 73.689,
+     "d": 4.375,
+     "txt": "One home is raising obedience. The other is raising understanding.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null,
+      "big": {
+       "e": "OBEY",
+       "d": "UNDERSTAND",
+       "tam": 130
+      }
+     },
+     "dest": [
+      "obedience",
+      "understanding"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c2",
+   "cena": "duo",
+   "idade": 10,
+   "et": "Age 10: The bad grade",
+   "cap": {
+    "n": "TWO",
+    "tit": "THE BAD GRADE"
+   },
+   "pre": 2.3,
+   "ini": 79.014,
+   "fim": 102.593,
+   "falas": [
+    {
+     "t": 81.314,
+     "d": 3.158,
+     "txt": "Ten. Sam brings home a bad grade. A real one.",
+     "v": {
+      "oa": [
+       "nota:D"
+      ],
+      "ob": [
+       "nota:D"
+      ],
+      "ca": 0,
+      "cb": 0,
+      "fa": {
+       "triste": 1
+      },
+      "fb": {
+       "triste": 1
+      }
+     },
+     "dest": [
+      "bad",
+      "grade"
+     ]
+    },
+    {
+     "t": 84.972,
+     "d": 7.043,
+     "txt": "In the first home, Sam does the math. A bad grade means yelling. So the grade goes to the bottom of the backpack.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "HIDE IT."
+       ],
+       "q": "k",
+       "d": [
+        "HIDE"
+       ],
+       "pensa": 1
+      },
+      "oa": [
+       "nota:D",
+       "carimbo:HIDDEN"
+      ]
+     },
+     "dest": [
+      "backpack"
+     ]
+    },
+    {
+     "t": 92.515,
+     "d": 6.45,
+     "txt": "In the second home, a bad grade means an uncomfortable talk. And then help. So Sam puts it on the table.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "I GOT A D."
+       ],
+       "q": "k",
+       "d": []
+      },
+      "ob": [
+       "nota:D",
+       "carimbo2:SHOWN"
+      ],
+      "cb": 1,
+      "fb": null
+     },
+     "dest": [
+      "table"
+     ]
+    },
+    {
+     "t": 99.465,
+     "d": 2.177,
+     "txt": "Now, this next part is not a story.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null
+     },
+     "dest": [
+      "not",
+      "story"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c2b",
+   "cena": "estudo",
+   "idade": 10,
+   "est": {
+    "tag": "THE STUDY",
+    "titulo": [
+     "Punitive Environment",
+     "Fosters Children's",
+     "Dishonesty"
+    ],
+    "meta": [
+     "Talwar & Lee \u00b7 2011",
+     "Child Development",
+     "84 children, ages 3 and 4, two schools"
+    ]
+   },
+   "ini": 102.593,
+   "fim": 148.792,
+   "falas": [
+    {
+     "t": 102.593,
+     "d": 7.177,
+     "txt": "In two thousand eleven, two researchers, Victoria Talwar and Kang Lee, visited two schools in West Africa.",
+     "v": {
+      "dir": {
+       "k": "nomes",
+       "t": [
+        "Victoria Talwar",
+        "Kang Lee"
+       ],
+       "s": "TWO SCHOOLS \u00b7 WEST AFRICA \u00b7 2011"
+      }
+     },
+     "dest": [
+      "two",
+      "schools"
+     ]
+    },
+    {
+     "t": 110.269,
+     "d": 3.299,
+     "txt": "One school relied on harsh punishment. The other didn't.",
+     "v": {
+      "dir": {
+       "k": "frases",
+       "n": 2,
+       "cab": [
+        "Two schools."
+       ],
+       "fr": [
+        [
+         "School one:",
+         "harsh punishment",
+         "coral"
+        ],
+        [
+         "School two:",
+         "no harsh punishment",
+         "mar"
+        ]
+       ]
+      }
+     },
+     "dest": [
+      "harsh",
+      "punishment"
+     ]
+    },
+    {
+     "t": 114.069,
+     "d": 6.007,
+     "txt": "Eighty-four children, three and four years old, were each left alone with a toy and told not to peek.",
+     "v": {
+      "dir": {
+       "k": "num",
+       "n": 84,
+       "rot": "CHILDREN \u00b7 AGES 3 AND 4"
+      }
+     },
+     "dest": [
+      "not",
+      "peek"
+     ]
+    },
+    {
+     "t": 120.576,
+     "d": 3.364,
+     "txt": "Most of them peeked. In both schools. Kids are kids.",
+     "v": {
+      "dir": {
+       "k": "selo",
+       "t": [
+        "MOST PEEKED.",
+        "IN BOTH SCHOOLS."
+       ]
+      }
+     },
+     "dest": [
+      "both",
+      "schools"
+     ]
+    },
+    {
+     "t": 124.439,
+     "d": 3.682,
+     "txt": "Then the adult came back and asked one question. Did you peek?",
+     "v": {
+      "dir": {
+       "k": "selo",
+       "t": [
+        "\u201cDID YOU",
+        "PEEK?\u201d"
+       ]
+      }
+     },
+     "dest": [
+      "did",
+      "you",
+      "peek"
+     ]
+    },
+    {
+     "t": 128.621,
+     "d": 5.871,
+     "txt": "In the punishing school, most of the kids who peeked lied about it. In the other school, far fewer did.",
+     "v": {
+      "dir": {
+       "k": "itens",
+       "cab": [
+        "Who lied about peeking?"
+       ],
+       "n": 2,
+       "auto": 1,
+       "it": [
+        "Punishing school: most of them",
+        "Other school: far fewer"
+       ],
+       "marca": "\u2022"
+      }
+     },
+     "dest": [
+      "lied"
+     ]
+    },
+    {
+     "t": 134.993,
+     "d": 8.887,
+     "txt": "And here's the part that stays with you. The kids from the punishing school were better at it. They kept their story straight through the follow-up questions.",
+     "v": {
+      "rod": "PUNISHMENT TRAINED BETTER LIARS."
+     },
+     "dest": [
+      "better"
+     ]
+    },
+    {
+     "t": 144.38,
+     "d": 3.462,
+     "txt": "Harsh punishment didn't make them honest. It made them skilled.",
+     "v": {
+      "rod": "NOT MORE HONEST. MORE SKILLED."
+     },
+     "dest": [
+      "skilled"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c3",
+   "cena": "duo",
+   "idade": 16,
+   "et": "Age 16: The ride home",
+   "cap": {
+    "n": "THREE",
+    "tit": "THE RIDE HOME"
+   },
+   "pre": 2.3,
+   "ini": 148.792,
+   "fim": 189.679,
+   "falas": [
+    {
+     "t": 151.092,
+     "d": 1.69,
+     "txt": "Sixteen. Back to the story.",
+     "v": {
+      "ca": 0,
+      "cb": 1
+     },
+     "dest": [
+      "story"
+     ]
+    },
+    {
+     "t": 153.282,
+     "d": 6.35,
+     "txt": "Both Sams go to a party they weren't supposed to go to. And at midnight, both rides home fall through.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null,
+      "fa": {
+       "triste": 1
+      },
+      "fb": {
+       "triste": 1
+      }
+     },
+     "dest": [
+      "midnight"
+     ]
+    },
+    {
+     "t": 160.132,
+     "d": 9.266,
+     "txt": "In the first home, calling a parent means a punishment that lasts a month. So Sam doesn't call. Sam gets in a car with a driver who's been drinking.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "I CAN'T",
+        "CALL HOME."
+       ],
+       "q": "k",
+       "d": [
+        "CAN'T"
+       ],
+       "pensa": 1
+      },
+      "oa": [
+       "carimbo:DIDN'T CALL"
+      ]
+     },
+     "dest": [
+      "doesn't",
+      "call"
+     ]
+    },
+    {
+     "t": 169.899,
+     "d": 1.752,
+     "txt": "Nothing happens. This time.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": null
+     },
+     "dest": [
+      "this",
+      "time"
+     ]
+    },
+    {
+     "t": 172.151,
+     "d": 5.384,
+     "txt": "In the second home, there's a deal. Call me from anywhere, at any hour. We'll talk about it tomorrow.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "CAN YOU",
+        "COME GET ME?"
+       ],
+       "q": "k",
+       "d": []
+      },
+      "fb": null
+     },
+     "dest": [
+      "deal"
+     ]
+    },
+    {
+     "t": 178.035,
+     "d": 4.081,
+     "txt": "Sam calls. Gets picked up. And yes, gets grounded. Fairly.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": null,
+      "ob": [
+       "carimbo2:CALLED HOME"
+      ],
+      "cb": 2
+     },
+     "dest": [
+      "calls"
+     ]
+    },
+    {
+     "t": 182.616,
+     "d": 6.113,
+     "txt": "Notice something. The second home is not the easy home. It has rules. It has consequences.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null,
+      "big": {
+       "e": "RULES",
+       "d": "RULES + REASONS",
+       "tam": 88
+      }
+     },
+     "dest": [
+      "rules"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c3b",
+   "cena": "estudo",
+   "idade": 16,
+   "est": {
+    "tag": "THE STUDY",
+    "titulo": [
+     "Patterns of Competence",
+     "and Adjustment",
+     "Among Adolescents"
+    ],
+    "meta": [
+     "Lamborn, Mounts, Steinberg & Dornbusch \u00b7 1991",
+     "Child Development",
+     "About 4,100 teenagers, ages 14 to 18"
+    ]
+   },
+   "ini": 189.679,
+   "fim": 222.054,
+   "falas": [
+    {
+     "t": 189.679,
+     "d": 5.486,
+     "txt": "Researchers have a name for it. Authoritative parenting. High warmth, and high standards.",
+     "v": {
+      "dir": {
+       "k": "selo",
+       "t": [
+        "HIGH WARMTH.",
+        "HIGH STANDARDS."
+       ]
+      }
+     },
+     "dest": [
+      "warmth",
+      "standards"
+     ]
+    },
+    {
+     "t": 195.665,
+     "d": 8.214,
+     "txt": "In nineteen ninety-one, a team that included Susie Lamborn and Laurence Steinberg studied about four thousand one hundred teenagers.",
+     "v": {
+      "dir": {
+       "k": "num",
+       "n": 4100,
+       "rot": "TEENAGERS \u00b7 AGES 14 TO 18"
+      }
+     },
+     "dest": [
+      "teenagers"
+     ]
+    },
+    {
+     "t": 204.379,
+     "d": 6.455,
+     "txt": "The teens from warm-but-firm homes scored highest on confidence, on school, and on staying out of trouble.",
+     "v": {
+      "dir": {
+       "k": "itens",
+       "cab": [
+        "Warm AND firm homes: highest in"
+       ],
+       "n": 3,
+       "auto": 1,
+       "marca": "\u2713",
+       "it": [
+        "Confidence",
+        "School",
+        "Staying out of trouble"
+       ]
+      }
+     },
+     "dest": [
+      "highest"
+     ]
+    },
+    {
+     "t": 211.334,
+     "d": 5.84,
+     "txt": "And the teens from strict, cold homes? They did fine on obedience. They followed the rules.",
+     "v": {
+      "dir": {
+       "k": "selo",
+       "t": [
+        "STRICT + COLD:",
+        "OBEDIENT."
+       ]
+      }
+     },
+     "dest": [
+      "obedience"
+     ]
+    },
+    {
+     "t": 217.674,
+     "d": 3.43,
+     "txt": "But they paid for it somewhere else. They thought less of themselves.",
+     "v": {
+      "rod": "OBEDIENT. BUT LESS SURE OF THEMSELVES."
+     },
+     "dest": [
+      "less"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cta1",
+   "cena": "texto",
+   "ini": 222.054,
+   "fim": 232.83,
+   "falas": [
+    {
+     "t": 222.054,
+     "d": 3.659,
+     "txt": "Quick question before we keep going. Which sentence ran your house?",
+     "v": {
+      "big": {
+       "e": "WHICH ONE",
+       "d": "RAN YOUR HOUSE?",
+       "tam": 88
+      }
+     },
+     "dest": [
+      "which",
+      "sentence"
+     ]
+    },
+    {
+     "t": 226.214,
+     "d": 5.667,
+     "txt": "Comment \"because I said so\" or \"here's why\". I read these, and I want to see which one wins.",
+     "v": {
+      "chips": [
+       "\u201cbecause I said so\u201d",
+       "\u201chere's why\u201d"
+      ],
+      "sub": "COMMENT BELOW"
+     },
+     "dest": [
+      "comment"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c4",
+   "cena": "duo",
+   "idade": 22,
+   "et": "Age 22: The lost job",
+   "cap": {
+    "n": "FOUR",
+    "tit": "THE LOST JOB"
+   },
+   "pre": 2.3,
+   "ini": 232.83,
+   "fim": 268.255,
+   "falas": [
+    {
+     "t": 235.13,
+     "d": 5.354,
+     "txt": "Twenty-two. Both Sams have moved out. And both of them lose a job in the same month.",
+     "v": {
+      "ca": 0,
+      "cb": 2,
+      "oa": [
+       "email",
+       "carimbo:LAID OFF"
+      ],
+      "ob": [
+       "email",
+       "carimbo:LAID OFF"
+      ],
+      "fa": {
+       "triste": 1
+      },
+      "fb": {
+       "triste": 1
+      }
+     },
+     "dest": [
+      "lose",
+      "job"
+     ]
+    },
+    {
+     "t": 240.984,
+     "d": 4.653,
+     "txt": "The first Sam tells no one at home. What's the point? It would turn into a lecture.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "THEY'LL JUST",
+        "YELL."
+       ],
+       "q": "k",
+       "d": [
+        "YELL"
+       ],
+       "pensa": 1
+      }
+     },
+     "dest": [
+      "no",
+      "one"
+     ]
+    },
+    {
+     "t": 246.137,
+     "d": 5.876,
+     "txt": "So Sam handles it alone. Borrows money from a friend. And says everything's fine on the phone.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "EVERYTHING'S",
+        "FINE."
+       ],
+       "q": "k",
+       "d": [
+        "FINE"
+       ]
+      }
+     },
+     "dest": [
+      "alone"
+     ]
+    },
+    {
+     "t": 252.513,
+     "d": 4.875,
+     "txt": "The second Sam calls home that night. Not for money. Just to say it out loud.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "I LOST",
+        "MY JOB."
+       ],
+       "q": "k",
+       "d": []
+      },
+      "cb": 3
+     },
+     "dest": [
+      "calls",
+      "home"
+     ]
+    },
+    {
+     "t": 257.888,
+     "d": 4.55,
+     "txt": "And hears the sentence that home was built on. Okay. Here's what we can do.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "OKAY. HERE'S",
+        "WHAT WE CAN DO."
+       ],
+       "q": "k",
+       "d": [],
+       "pensa": 1
+      },
+      "fb": null
+     },
+     "dest": [
+      "okay"
+     ]
+    },
+    {
+     "t": 262.937,
+     "d": 4.368,
+     "txt": "Same bad news. One home hears it first. The other hears it last.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null,
+      "big": {
+       "e": "LAST TO KNOW",
+       "d": "FIRST TO KNOW",
+       "tam": 84
+      }
+     },
+     "dest": [
+      "first",
+      "last"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c5",
+   "cena": "duo",
+   "idade": 30,
+   "et": "Age 30: The boss",
+   "cap": {
+    "n": "FIVE",
+    "tit": "THE BOSS"
+   },
+   "pre": 2.3,
+   "ini": 268.255,
+   "fim": 308.657,
+   "falas": [
+    {
+     "t": 270.555,
+     "d": 3.738,
+     "txt": "Thirty. Both Sams have a boss who is wrong about something important.",
+     "v": {
+      "ca": 0,
+      "cb": 3,
+      "oa": [
+       "oferta"
+      ],
+      "ob": [
+       "oferta"
+      ]
+     },
+     "dest": [
+      "wrong"
+     ]
+    },
+    {
+     "t": 274.794,
+     "d": 7.3,
+     "txt": "The first Sam learned long ago what happens when you question authority. So Sam says nothing. And quietly resents it.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "JUST DO WHAT",
+        "YOU'RE TOLD."
+       ],
+       "q": "k",
+       "d": [
+        "TOLD"
+       ],
+       "pensa": 1
+      },
+      "oa": [
+       "oferta",
+       "carimbo:SAID NOTHING"
+      ],
+      "fa": {
+       "triste": 1
+      }
+     },
+     "dest": [
+      "nothing"
+     ]
+    },
+    {
+     "t": 282.594,
+     "d": 7.181,
+     "txt": "Or the opposite happens. Some kids raised on fear don't go quiet. They go to war with every boss they ever have.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "NOBODY TELLS",
+        "ME WHAT TO DO!"
+       ],
+       "q": "k",
+       "d": [
+        "NOBODY"
+       ]
+      }
+     },
+     "dest": [
+      "war"
+     ]
+    },
+    {
+     "t": 290.275,
+     "d": 9.539,
+     "txt": "The second Sam grew up in a house where you could disagree and still be loved. So Sam knocks on the door and says, I see it differently. Can I show you why?",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "CAN I SHOW",
+        "YOU WHY?"
+       ],
+       "q": "k",
+       "d": [
+        "WHY"
+       ]
+      },
+      "ob": [
+       "oferta",
+       "carimbo2:SPOKE UP"
+      ],
+      "cb": 4
+     },
+     "dest": [
+      "disagree"
+     ]
+    },
+    {
+     "t": 300.314,
+     "d": 3.79,
+     "txt": "It doesn't always work. But Sam isn't afraid of the conversation.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": null
+     },
+     "dest": [
+      "afraid"
+     ]
+    },
+    {
+     "t": 304.604,
+     "d": 3.103,
+     "txt": "Look at the count at the top. Times they told the truth.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null,
+      "conta": 1
+     },
+     "dest": [
+      "truth"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c5b",
+   "cena": "estudo",
+   "idade": 30,
+   "est": {
+    "tag": "THE STUDY",
+    "titulo": [
+     "Spanking and",
+     "Child Outcomes"
+    ],
+    "meta": [
+     "Gershoff & Grogan-Kaylor \u00b7 2016",
+     "Journal of Family Psychology",
+     "160,927 children across five decades"
+    ]
+   },
+   "ini": 308.657,
+   "fim": 331.591,
+   "falas": [
+    {
+     "t": 308.657,
+     "d": 9.126,
+     "txt": "Here's the biggest study of all. In twenty sixteen, Elizabeth Gershoff and Andrew Grogan-Kaylor pooled five decades of research on spanking.",
+     "v": {
+      "dir": {
+       "k": "nomes",
+       "t": [
+        "Elizabeth Gershoff",
+        "Andrew Grogan-Kaylor"
+       ],
+       "s": "FIVE DECADES OF RESEARCH \u00b7 2016"
+      }
+     },
+     "dest": [
+      "biggest"
+     ]
+    },
+    {
+     "t": 318.283,
+     "d": 2.651,
+     "txt": "More than a hundred and sixty thousand children.",
+     "v": {
+      "dir": {
+       "k": "num",
+       "n": 160927,
+       "rot": "CHILDREN"
+      }
+     },
+     "dest": [
+      "children"
+     ]
+    },
+    {
+     "t": 321.434,
+     "d": 6.45,
+     "txt": "They looked at seventeen different outcomes. Thirteen pointed the same way. More spanking, more problems.",
+     "v": {
+      "dir": {
+       "k": "rows",
+       "cab": [
+        "17 outcomes measured."
+       ],
+       "n": 1,
+       "rows": [
+        [
+         "LINKED SPANKING TO MORE PROBLEMS",
+         13,
+         17,
+         "13/17",
+         "coral"
+        ]
+       ]
+      }
+     },
+     "dest": [
+      "thirteen"
+     ]
+    },
+    {
+     "t": 328.384,
+     "d": 2.258,
+     "txt": "And none of the seventeen showed a benefit.",
+     "v": {
+      "rod": "NONE OF THE 17 SHOWED A BENEFIT."
+     },
+     "dest": [
+      "none"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c6",
+   "cena": "duo",
+   "idade": 45,
+   "et": "Age 45: The same wall",
+   "cap": {
+    "n": "SIX",
+    "tit": "THE SAME WALL"
+   },
+   "pre": 2.3,
+   "ini": 331.591,
+   "fim": 363.254,
+   "falas": [
+    {
+     "t": 333.891,
+     "d": 6.362,
+     "txt": "Forty-five. Both Sams have a five-year-old. And one afternoon, there's crayon on the living room wall.",
+     "v": {
+      "ca": 0,
+      "cb": 5
+     },
+     "dest": [
+      "crayon"
+     ]
+    },
+    {
+     "t": 340.754,
+     "d": 7.021,
+     "txt": "The first Sam feels something rise up. Fast. And loud. And out comes a sentence Sam swore never to say.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "BECAUSE I",
+        "SAID SO!"
+       ],
+       "q": "p",
+       "d": [
+        "SAID",
+        "SO"
+       ]
+      }
+     },
+     "dest": [
+      "swore"
+     ]
+    },
+    {
+     "t": 348.275,
+     "d": 5.398,
+     "txt": "Not because Sam is a bad parent. Because under stress, we reach for the script we were handed.",
+     "v": {
+      "foco": "a",
+      "bb": null
+     },
+     "dest": [
+      "script"
+     ]
+    },
+    {
+     "t": 354.173,
+     "d": 5.025,
+     "txt": "The second Sam is just as annoyed. Takes a breath. And reaches for a different script.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "HERE'S WHY.",
+        "HELP ME CLEAN."
+       ],
+       "q": "p",
+       "d": [
+        "WHY"
+       ]
+      }
+     },
+     "dest": [
+      "breath"
+     ]
+    },
+    {
+     "t": 359.698,
+     "d": 2.606,
+     "txt": "Two walls. Two scripts. Both inherited.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null,
+      "big": {
+       "e": "TWO SCRIPTS.",
+       "d": "BOTH INHERITED.",
+       "tam": 84
+      }
+     },
+     "dest": [
+      "inherited"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cta2",
+   "cena": "texto",
+   "ini": 363.254,
+   "fim": 371.548,
+   "falas": [
+    {
+     "t": 363.254,
+     "d": 7.344,
+     "txt": "If one of these homes sounds like yours, send this to someone who grew up in it with you. A brother. A sister. They'll know.",
+     "v": {
+      "big": {
+       "e": "SEND THIS",
+       "d": "TO THEM",
+       "tam": 110
+      },
+      "sub": "THEY'LL KNOW",
+      "icone": "share"
+     },
+     "dest": [
+      "send"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c7",
+   "cena": "duo",
+   "idade": 60,
+   "et": "Age 60: The Sunday table",
+   "cap": {
+    "n": "SEVEN",
+    "tit": "THE SUNDAY TABLE"
+   },
+   "pre": 2.3,
+   "ini": 371.548,
+   "fim": 401.422,
+   "falas": [
+    {
+     "t": 373.848,
+     "d": 8.533,
+     "txt": "Sixty. The second Sam's house is loud on Sundays. Grown kids, an argument about politics, somebody laughing in the kitchen.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "YOU'RE WRONG, DAD.",
+        "PASS THE SALT."
+       ],
+       "q": "p",
+       "d": [
+        "WRONG"
+       ]
+      },
+      "ca": 0,
+      "cb": 6
+     },
+     "dest": [
+      "loud"
+     ]
+    },
+    {
+     "t": 382.881,
+     "d": 3.555,
+     "txt": "They disagree with Sam all the time. And they keep coming back.",
+     "v": {
+      "foco": "b",
+      "ba": null
+     },
+     "dest": [
+      "coming",
+      "back"
+     ]
+    },
+    {
+     "t": 386.936,
+     "d": 4.899,
+     "txt": "The first Sam's kids are polite. They visit on holidays. They say everything's fine.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "EVERYTHING'S",
+        "FINE."
+       ],
+       "q": "p",
+       "d": [
+        "FINE"
+       ]
+      },
+      "oa": [
+       "lista"
+      ]
+     },
+     "dest": [
+      "polite"
+     ]
+    },
+    {
+     "t": 392.336,
+     "d": 4.424,
+     "txt": "Sam finally has the obedient children that house was built to produce.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": null,
+      "fa": {
+       "triste": 1
+      }
+     },
+     "dest": [
+      "obedient"
+     ]
+    },
+    {
+     "t": 397.259,
+     "d": 3.213,
+     "txt": "Fear buys obedience. Respect buys the truth.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null,
+      "big": {
+       "e": "OBEDIENCE",
+       "d": "THE TRUTH",
+       "tam": 110
+      }
+     },
+     "dest": [
+      "obedience",
+      "truth"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vida",
+   "cena": "vida",
+   "et": "The whole life, side by side",
+   "ini": 401.422,
+   "fim": 416.971,
+   "falas": [
+    {
+     "t": 401.422,
+     "d": 2.161,
+     "txt": "Here's the whole life, side by side.",
+     "v": {
+      "n": 0
+     },
+     "dest": [
+      "side"
+     ]
+    },
+    {
+     "t": 404.083,
+     "d": 2.637,
+     "txt": "Five. \"Because I said so.\" \"Here's why.\"",
+     "v": {
+      "n": 1
+     },
+     "dest": []
+    },
+    {
+     "t": 407.22,
+     "d": 2.839,
+     "txt": "Sixteen. Doesn't call home. Calls at midnight.",
+     "v": {
+      "n": 2
+     },
+     "dest": []
+    },
+    {
+     "t": 410.559,
+     "d": 1.868,
+     "txt": "Thirty. Says nothing. Speaks up.",
+     "v": {
+      "n": 3
+     },
+     "dest": []
+    },
+    {
+     "t": 412.927,
+     "d": 3.094,
+     "txt": "Sixty. Polite visits. A loud Sunday table.",
+     "v": {
+      "n": 4
+     },
+     "dest": [
+      "loud"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "honesto",
+   "cena": "honesto",
+   "et": "The honest part",
+   "ini": 416.971,
+   "fim": 463.765,
+   "falas": [
+    {
+     "t": 416.971,
+     "d": 3.272,
+     "txt": "Now, the honest part. Because strict is not the problem.",
+     "v": {
+      "n": 0
+     },
+     "dest": [
+      "strict"
+     ]
+    },
+    {
+     "t": 420.742,
+     "d": 7.55,
+     "txt": "The teens who did best in that study of four thousand had parents with firm rules. What they also had was warmth, and reasons.",
+     "v": {
+      "n": 1
+     },
+     "dest": [
+      "warmth"
+     ]
+    },
+    {
+     "t": 428.793,
+     "d": 6.597,
+     "txt": "The kids from strict, cold homes weren't disasters. They were obedient. They just trusted themselves less.",
+     "v": {
+      "n": 1,
+      "x": 1
+     },
+     "dest": [
+      "less"
+     ]
+    },
+    {
+     "t": 435.89,
+     "d": 6.833,
+     "txt": "The spanking research is huge, and it points one way. But it compares families. It can't run the experiment.",
+     "v": {
+      "n": 2,
+      "x": 1
+     },
+     "dest": [
+      "compares"
+     ]
+    },
+    {
+     "t": 443.223,
+     "d": 9.444,
+     "txt": "Nobody can randomly assign a childhood. So scientists still argue about how much is the parenting, and how much is the kid, the stress, the money.",
+     "v": {
+      "n": 3,
+      "x": 1
+     },
+     "dest": [
+      "argue"
+     ]
+    },
+    {
+     "t": 453.166,
+     "d": 4.2,
+     "txt": "And Sam's life here is a story. One illustration, not a prophecy.",
+     "v": {
+      "rod": "A STORY. NOT A PROPHECY."
+     },
+     "dest": [
+      "story"
+     ]
+    },
+    {
+     "t": 457.866,
+     "d": 4.948,
+     "txt": "What the research keeps finding is simpler. Rules land better with a reason attached.",
+     "v": {
+      "rod": "RULES LAND BETTER WITH A REASON."
+     },
+     "dest": [
+      "reason"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "trocas",
+   "cena": "trocas",
+   "et": "It's never too late",
+   "ini": 463.765,
+   "fim": 487.742,
+   "falas": [
+    {
+     "t": 463.765,
+     "d": 3.654,
+     "txt": "And the script can be rewritten. At five. Or at forty-five.",
+     "v": {
+      "n": 0,
+      "tit": 1
+     },
+     "dest": [
+      "rewritten"
+     ]
+    },
+    {
+     "t": 467.918,
+     "d": 2.881,
+     "txt": "Three swaps, for the next time a rule gets broken.",
+     "v": {
+      "n": 0,
+      "tit": null
+     },
+     "dest": [
+      "three",
+      "swaps"
+     ]
+    },
+    {
+     "t": 471.299,
+     "d": 2.89,
+     "txt": "Instead of \"because I said so,\" try \"here's why.\"",
+     "v": {
+      "n": 1
+     },
+     "dest": [
+      "why"
+     ]
+    },
+    {
+     "t": 474.689,
+     "d": 2.61,
+     "txt": "Instead of \"what's wrong with you,\" try \"what happened?\"",
+     "v": {
+      "n": 2
+     },
+     "dest": [
+      "happened"
+     ]
+    },
+    {
+     "t": 477.799,
+     "d": 3.116,
+     "txt": "And instead of \"go to your room,\" try \"let's fix it together.\"",
+     "v": {
+      "n": 3
+     },
+     "dest": [
+      "together"
+     ]
+    },
+    {
+     "t": 481.415,
+     "d": 5.377,
+     "txt": "And if you were raised on fear, you can still give yourself the thing you didn't get. A reason.",
+     "v": {
+      "n": 3,
+      "yet": 1
+     },
+     "dest": [
+      "reason"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fim1",
+   "cena": "duo",
+   "idade": 5,
+   "gap": 0.2,
+   "ini": 487.742,
+   "fim": 491.686,
+   "falas": [
+    {
+     "t": 487.742,
+     "d": 3.244,
+     "txt": "Same kid. Same broken rule. Two different homes.",
+     "v": {
+      "ba": {
+       "t": [
+        "BECAUSE I",
+        "SAID SO!"
+       ],
+       "q": "p",
+       "d": [
+        "SAID",
+        "SO"
+       ]
+      },
+      "bb": {
+       "t": [
+        "HERE'S WHY.",
+        "HELP ME CLEAN."
+       ],
+       "q": "p",
+       "d": [
+        "WHY"
+       ]
+      }
+     },
+     "dest": [
+      "homes"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fim2",
+   "cena": "fim",
+   "ini": 491.686,
+   "fim": 503.052,
+   "falas": [
+    {
+     "t": 491.686,
+     "d": 6.414,
+     "txt": "Next time, same kid again, two new homes. One who was always rescued. And one who was allowed to fail.",
+     "v": {
+      "n": 1
+     },
+     "dest": [
+      "rescued",
+      "fail"
+     ]
+    },
+    {
+     "t": 498.599,
+     "d": 3.503,
+     "txt": "Subscribe so you don't miss it. I'll see you in the next childhood.",
+     "v": {
+      "n": 2
+     },
+     "dest": [
+      "subscribe"
+     ]
+    }
+   ]
+  }
+ ]
+}

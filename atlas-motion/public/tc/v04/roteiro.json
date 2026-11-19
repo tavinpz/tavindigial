@@ -1,0 +1,1954 @@
+{
+ "cfg": {
+  "id": "tc004",
+  "titA": "“I'll pay you for it.”",
+  "titB": "“Tell me about it.”",
+  "conta": "DONE JUST FOR FUN",
+  "idades": [
+   6,
+   10,
+   16,
+   22,
+   30,
+   45,
+   60
+  ],
+  "vida": [
+   [
+    6,
+    "A dollar per drawing.",
+    "“Tell me about it.”"
+   ],
+   [
+    16,
+    "Easy A's for cash.",
+    "A radio in the garage."
+   ],
+   [
+    30,
+    "Chasing the bonus.",
+    "Building for fun."
+   ],
+   [
+    60,
+    "“What do I even like?”",
+    "A garage full of projects."
+   ]
+  ],
+  "honesto": [
+   "Rewards are not",
+   "always poison."
+  ],
+  "cards": [
+   {
+    "ano": "1973",
+    "quem": "Lepper, Greene & Nisbett",
+    "onde": "J. of Personality and Social Psychology",
+    "n": "51 preschoolers",
+    "t": [
+     "Promised a prize:",
+     "about half the",
+     "drawing time later."
+    ],
+    "x": [
+     "Surprise prize:",
+     "no drop at all."
+    ],
+    "chip": "SUPPORTS IT",
+    "cor": "mar"
+   },
+   {
+    "ano": "1999",
+    "quem": "Deci, Koestner & Ryan",
+    "onde": "Psychological Bulletin",
+    "n": "128 experiments",
+    "t": [
+     "Expected rewards",
+     "lowered interest.",
+     "Positive feedback",
+     "raised it."
+    ],
+    "chip": "SUPPORTS IT",
+    "cor": "mar"
+   },
+   {
+    "ano": "BUT",
+    "quem": "The honest limit",
+    "onde": "What these studies cannot do",
+    "n": "",
+    "t": [
+     "It is about things",
+     "kids already love.",
+     "Chores are",
+     "a different story."
+    ],
+    "chip": "THE LIMIT",
+    "cor": "ouro"
+   }
+  ],
+  "trocas": [
+   [
+    "“I'll pay you for it.”",
+    "“Tell me about it.”"
+   ],
+   [
+    "“What did you get?”",
+    "“What did you learn?”"
+   ],
+   [
+    "“Good job. Here's $5.”",
+    "“You looked like you loved that.”"
+   ]
+  ],
+  "yet": {
+   "e": "FOR",
+   "d": "FREE.",
+   "tam": 210
+  },
+  "lista": {
+   "tit": "THINGS I LIKE",
+   "it": [
+    "?",
+    "?",
+    "?"
+   ]
+  },
+  "prox": {
+   "e1": "LOVED FOR",
+   "e2": "WINNING",
+   "d1": "LOVED",
+   "d2": "ANYWAY",
+   "tam2": 140
+  },
+  "fontes": [
+   "https://psycnet.apa.org/doi/10.1037/h0035519",
+   "https://pubmed.ncbi.nlm.nih.gov/10589297/"
+  ],
+  "thumbs": {
+   "a": {
+    "tagE": "AGE 6",
+    "tagD": "AGE 60",
+    "falaE": [
+     "$1 PER",
+     "DRAWING!"
+    ],
+    "pensaD": [
+     "WHAT DO I",
+     "EVEN LIKE?"
+    ],
+    "dest": [
+     "$1",
+     "LIKE"
+    ],
+    "txE": "PAID TO DRAW",
+    "txD": "NEVER DREW AGAIN",
+    "pE": {
+     "humor": "riso",
+     "olhar": [
+      0.3,
+      -0.3
+     ]
+    },
+    "pD": {
+     "velho": 1,
+     "humor": "triste",
+     "lagrima": 1,
+     "olhar": [
+      -0.2,
+      0.3
+     ]
+    }
+   },
+   "b": {
+    "palE": "PAID",
+    "palD": "TRUSTED",
+    "txE": "QUIT AT 16",
+    "txD": "STILL CREATING",
+    "pE": {
+     "humor": "triste",
+     "lagrima": 1,
+     "olhar": [
+      0.2,
+      0.5
+     ],
+     "incl": -3
+    },
+    "pD": {
+     "humor": "riso",
+     "olhar": [
+      -0.2,
+      -0.2
+     ],
+     "incl": 3
+    }
+   },
+   "c": {
+    "perg": "WHO STILL LOVES IT?",
+    "placar": [
+     "0",
+     "7"
+    ],
+    "rot": "THINGS DONE JUST FOR FUN",
+    "txE": "“I'LL PAY YOU”",
+    "txD": "“TELL ME MORE”",
+    "pE": {
+     "velho": 1,
+     "humor": "triste",
+     "lagrima": 1,
+     "olhar": [
+      0.3,
+      0.5
+     ]
+    },
+    "pD": {
+     "velho": 1,
+     "humor": "riso",
+     "olhar": [
+      -0.3,
+      -0.2
+     ]
+    }
+   }
+  }
+ },
+ "blocos": [
+  {
+   "id": "gancho1",
+   "cena": "duo",
+   "idade": 6,
+   "et": "Same kid, two homes",
+   "gap": 0.1,
+   "falas": [
+    {
+     "txt": "Two kids love to draw. They would do it for hours. For free.",
+     "v": {
+      "oa": [
+       "nota:★"
+      ],
+      "ob": [
+       "nota:★"
+      ],
+      "fa": {
+       "pula": 1
+      },
+      "fb": {
+       "pula": 1
+      }
+     },
+     "dest": [
+      "free"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "In one home, every drawing earns a dollar.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "ONE DOLLAR",
+        "PER DRAWING!"
+       ],
+       "q": "p",
+       "d": [
+        "DOLLAR"
+       ]
+      },
+      "fa": null,
+      "fb": null
+     },
+     "dest": [
+      "dollar"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "In the other, every drawing earns a question. \"Tell me about this one.\"",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "TELL ME",
+        "ABOUT THIS ONE."
+       ],
+       "q": "p",
+       "d": [
+        "TELL"
+       ]
+      }
+     },
+     "dest": [
+      "question"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Same kid. Same crayons.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null
+     },
+     "dest": [
+      "same"
+     ],
+     "p": 0
+    }
+   ]
+  },
+  {
+   "id": "gancho2",
+   "cena": "duo",
+   "idade": 30,
+   "gap": 0.1,
+   "falas": [
+    {
+     "txt": "By thirty, one of them still draws on weekends.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "ca": 0,
+      "cb": 6,
+      "bb": {
+       "t": [
+        "JUST FOR FUN."
+       ],
+       "q": "k",
+       "d": [],
+       "pensa": 1
+      }
+     },
+     "dest": [
+      "still",
+      "draws"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "The other one hasn't picked up a pencil since the payments stopped.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "WHAT'S IT",
+        "WORTH?"
+       ],
+       "q": "k",
+       "d": [
+        "WORTH"
+       ],
+       "pensa": 1
+      },
+      "fa": {
+       "triste": 1
+      }
+     },
+     "dest": [
+      "stopped"
+     ],
+     "p": 0
+    }
+   ]
+  },
+  {
+   "id": "gancho3",
+   "cena": "texto",
+   "falas": [
+    {
+     "txt": "This is the whole life, side by side.",
+     "v": {
+      "big": {
+       "e": "THE WHOLE LIFE,",
+       "d": "SIDE BY SIDE",
+       "tam": 78
+      },
+      "linha": 0
+     },
+     "dest": [
+      "whole",
+      "life"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Built around an experiment from nineteen seventy-three that psychologists still argue about.",
+     "v": {
+      "linha": 10,
+      "sub": "ONE EXPERIMENT · 1973"
+     },
+     "dest": [
+      "experiment"
+     ],
+     "p": 0
+    }
+   ]
+  },
+  {
+   "id": "c1",
+   "cena": "duo",
+   "idade": 6,
+   "et": "Age 6: The deal",
+   "cap": {
+    "n": "ONE",
+    "tit": "THE DEAL"
+   },
+   "falas": [
+    {
+     "txt": "Meet Sam. Sam is six, and Sam draws constantly. Dogs. Rockets. A purple dog on a rocket.",
+     "v": {
+      "oa": [
+       "nota:★"
+      ],
+      "ob": [
+       "nota:★"
+      ],
+      "fa": {
+       "pula": 1
+      },
+      "fb": {
+       "pula": 1
+      }
+     },
+     "dest": [
+      "draws"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "In the first home, a proud parent wants to encourage it. So there's a deal. One dollar per drawing.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "ONE DOLLAR",
+        "PER DRAWING!"
+       ],
+       "q": "p",
+       "d": [
+        "DOLLAR"
+       ]
+      },
+      "fa": null,
+      "fb": null
+     },
+     "dest": [
+      "deal"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "And it works. Sam draws more than ever. Ten a day.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "fa": {
+       "pula": 1,
+       "brilho": 1
+      }
+     },
+     "dest": [
+      "works"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "That's the trap. It works.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": null,
+      "fa": null
+     },
+     "dest": [
+      "trap"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "And notice, this parent isn't being cold. This is generosity. That's what makes it so easy to miss.",
+     "v": {
+      "foco": "a",
+      "bb": null
+     },
+     "dest": [
+      "generosity"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "In the second home, there's no money. Just a parent who looks at the page and asks, \"Why is the dog purple?\"",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "WHY IS THE",
+        "DOG PURPLE?"
+       ],
+       "q": "p",
+       "d": [
+        "PURPLE"
+       ]
+      }
+     },
+     "dest": [
+      "purple"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "And Sam explains for twenty minutes.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "fb": {
+       "pula": 1,
+       "brilho": 1
+      }
+     },
+     "dest": [
+      "explains"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Right now, both kids are drawing. Both are happy.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null,
+      "fb": null
+     },
+     "dest": [
+      "happy"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "But in the first home, drawing just became something else. It's how you get paid.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "DRAWING",
+        "= MONEY."
+       ],
+       "q": "k",
+       "d": [
+        "MONEY"
+       ],
+       "pensa": 1
+      }
+     },
+     "dest": [
+      "paid"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "In the second home, drawing is still what it always was. It's mine.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "IT'S MINE."
+       ],
+       "q": "k",
+       "d": [
+        "MINE"
+       ],
+       "pensa": 1
+      }
+     },
+     "dest": [
+      "mine"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "One kid has a hobby. The other one has a job.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null,
+      "big": {
+       "e": "A JOB",
+       "d": "A HOBBY",
+       "tam": 140
+      }
+     },
+     "dest": [
+      "hobby",
+      "job"
+     ],
+     "p": 0
+    }
+   ],
+   "pre": 2.3
+  },
+  {
+   "id": "c2",
+   "cena": "estudo",
+   "idade": 10,
+   "et": "Age 10: The experiment",
+   "cap": {
+    "n": "TWO",
+    "tit": "THE EXPERIMENT"
+   },
+   "est": {
+    "tag": "THE STUDY",
+    "titulo": [
+     "Undermining Children's",
+     "Intrinsic Interest with",
+     "Extrinsic Reward"
+    ],
+    "meta": [
+     "Lepper, Greene & Nisbett · 1973",
+     "Journal of Personality and Social Psychology",
+     "51 preschoolers who loved to draw"
+    ]
+   },
+   "falas": [
+    {
+     "txt": "Ten. And this next part is not a story.",
+     "v": {
+      "dir": {
+       "k": "selo",
+       "t": [
+        "NOT A STORY.",
+        "A REAL",
+        "EXPERIMENT."
+       ]
+      }
+     },
+     "dest": [
+      "not",
+      "story"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "In nineteen seventy-three, three psychologists walked into a nursery school at Stanford.",
+     "v": {
+      "dir": {
+       "k": "nomes",
+       "t": [
+        "Mark Lepper",
+        "David Greene",
+        "Richard Nisbett"
+       ],
+       "s": "STANFORD · 1973"
+      }
+     },
+     "dest": [
+      "stanford"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "They watched through a one-way mirror, and picked out fifty-one children who already loved to draw.",
+     "v": {
+      "dir": {
+       "k": "num",
+       "n": 51,
+       "rot": "PRESCHOOLERS WHO LOVED TO DRAW"
+      }
+     },
+     "dest": [
+      "loved"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Then they split them into three groups.",
+     "v": {
+      "dir": {
+       "k": "itens",
+       "cab": [
+        "Three groups."
+       ],
+       "n": 0,
+       "marca": "•",
+       "it": [
+        "Promised a prize for drawing",
+        "Got the same prize as a surprise",
+        "Got no prize at all"
+       ]
+      }
+     },
+     "dest": [
+      "three",
+      "groups"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "The first group was promised a prize for drawing. A certificate with a gold star and a ribbon.",
+     "v": {
+      "dir": {
+       "k": "itens",
+       "cab": [
+        "Three groups."
+       ],
+       "n": 1,
+       "marca": "•",
+       "it": [
+        "Promised a prize for drawing",
+        "Got the same prize as a surprise",
+        "Got no prize at all"
+       ]
+      }
+     },
+     "dest": [
+      "promised"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "The second group got the same prize as a surprise. No promise. The third group got nothing.",
+     "v": {
+      "dir": {
+       "k": "itens",
+       "cab": [
+        "Three groups."
+       ],
+       "n": 3,
+       "marca": "•",
+       "it": [
+        "Promised a prize for drawing",
+        "Got the same prize as a surprise",
+        "Got no prize at all"
+       ]
+      }
+     },
+     "dest": [
+      "surprise"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Everybody drew. Everybody had fun. Then the researchers waited.",
+     "v": {
+      "dir": {
+       "k": "selo",
+       "t": [
+        "THEN THEY",
+        "WAITED."
+       ]
+      }
+     },
+     "dest": [
+      "waited"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "One to two weeks later, the markers went back on the table during free play. No prizes. No adults asking. Just kids and markers.",
+     "v": {
+      "dir": {
+       "k": "rows",
+       "cab": [
+        "Free time spent drawing,",
+        "one to two weeks later:"
+       ],
+       "n": 0,
+       "rows": [
+        [
+         "PROMISED A PRIZE",
+         6,
+         12,
+         "half",
+         "coral"
+        ],
+        [
+         "SURPRISE PRIZE",
+         12,
+         12,
+         "same",
+         "mar"
+        ],
+        [
+         "NO PRIZE",
+         12,
+         12,
+         "same",
+         "mar"
+        ]
+       ]
+      }
+     },
+     "dest": [
+      "free",
+      "play"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "The surprise group and the no-prize group kept drawing about as much as before.",
+     "v": {
+      "dir": {
+       "k": "rows",
+       "cab": [
+        "Free time spent drawing,",
+        "one to two weeks later:"
+       ],
+       "n": 3,
+       "rows": [
+        [
+         "PROMISED A PRIZE",
+         0,
+         12,
+         "",
+         "coral"
+        ],
+        [
+         "SURPRISE PRIZE",
+         12,
+         12,
+         "same",
+         "mar"
+        ],
+        [
+         "NO PRIZE",
+         12,
+         12,
+         "same",
+         "mar"
+        ]
+       ]
+      }
+     },
+     "dest": [
+      "before"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "The kids who had been promised the prize spent about half as much time drawing.",
+     "v": {
+      "dir": {
+       "k": "rows",
+       "cab": [
+        "Free time spent drawing,",
+        "one to two weeks later:"
+       ],
+       "n": 3,
+       "rows": [
+        [
+         "PROMISED A PRIZE",
+         6,
+         12,
+         "half",
+         "coral"
+        ],
+        [
+         "SURPRISE PRIZE",
+         12,
+         12,
+         "same",
+         "mar"
+        ],
+        [
+         "NO PRIZE",
+         12,
+         12,
+         "same",
+         "mar"
+        ]
+       ]
+      }
+     },
+     "dest": [
+      "half"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "The drawing hadn't changed. The reason had.",
+     "v": {
+      "rod": "THE REASON HAD CHANGED."
+     },
+     "dest": [
+      "reason"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "They called it the overjustification effect. Pay someone for what they love, and you can turn play into work.",
+     "v": {
+      "rod": "PLAY CAN BECOME WORK."
+     },
+     "dest": [
+      "play",
+      "work"
+     ],
+     "p": 0
+    }
+   ],
+   "pre": 2.3
+  },
+  {
+   "id": "c3",
+   "cena": "duo",
+   "idade": 16,
+   "et": "Age 16: The report card",
+   "cap": {
+    "n": "THREE",
+    "tit": "THE REPORT CARD"
+   },
+   "falas": [
+    {
+     "txt": "Sixteen. Back to the story.",
+     "v": {
+      "ca": 0,
+      "cb": 2
+     },
+     "dest": [
+      "story"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "In the first home, the deal grew up too. Twenty dollars for every A.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "$20 FOR",
+        "EVERY A!"
+       ],
+       "q": "p",
+       "d": [
+        "$20"
+       ]
+      },
+      "oa": [
+       "nota:A"
+      ]
+     },
+     "dest": [
+      "twenty",
+      "dollars"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "And Sam gets A's. By picking the easiest classes. And learning exactly what's on the test. Nothing more.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "IS THIS ON",
+        "THE TEST?"
+       ],
+       "q": "k",
+       "d": [
+        "TEST"
+       ],
+       "pensa": 1
+      }
+     },
+     "dest": [
+      "easiest"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Why would you take the hard class? The hard class pays the same twenty dollars. With more risk.",
+     "v": {
+      "foco": "a",
+      "bb": null
+     },
+     "dest": [
+      "hard",
+      "class"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "In the second home, nobody pays for grades. The question at dinner is, \"What's the best thing you learned this week?\"",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "WHAT DID",
+        "YOU LEARN?"
+       ],
+       "q": "p",
+       "d": [
+        "LEARN"
+       ]
+      }
+     },
+     "dest": [
+      "learned"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Sam takes physics. Gets a B. And builds a radio in the garage, for no reason at all.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "LOOK WHAT",
+        "I BUILT!"
+       ],
+       "q": "k",
+       "d": [
+        "BUILT"
+       ]
+      },
+      "ob": [
+       "nota:B",
+       "carimbo2:BUILT A RADIO"
+      ],
+      "cb": 3
+     },
+     "dest": [
+      "radio"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "On paper, the first Sam is winning.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null,
+      "big": {
+       "e": "STRAIGHT A'S",
+       "d": "A B AND A RADIO",
+       "tam": 80
+      }
+     },
+     "dest": [
+      "winning"
+     ],
+     "p": 0
+    }
+   ],
+   "pre": 2.3
+  },
+  {
+   "id": "c3b",
+   "cena": "estudo",
+   "idade": 16,
+   "est": {
+    "tag": "THE STUDY",
+    "titulo": [
+     "Extrinsic Rewards",
+     "and Intrinsic",
+     "Motivation"
+    ],
+    "meta": [
+     "Deci, Koestner & Ryan · 1999",
+     "Psychological Bulletin",
+     "A review of 128 experiments"
+    ]
+   },
+   "falas": [
+    {
+     "txt": "And this isn't one quirky study. In nineteen ninety-nine, researchers combined a hundred and twenty-eight experiments.",
+     "v": {
+      "dir": {
+       "k": "num",
+       "n": 128,
+       "rot": "EXPERIMENTS, COMBINED"
+      }
+     },
+     "dest": [
+      "experiments"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Rewards that people expected for doing a task reliably lowered their interest in doing it for free. And the effect was stronger in children than in college students.",
+     "v": {
+      "dir": {
+       "k": "itens",
+       "cab": [
+        "Expected rewards:"
+       ],
+       "n": 2,
+       "auto": 1,
+       "it": [
+        "Lowered interest in the task",
+        "Hit children harder than adults"
+       ]
+      }
+     },
+     "dest": [
+      "lowered"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "But one kind of reward did the opposite. Honest, positive feedback. That raised interest.",
+     "v": {
+      "rod": "POSITIVE FEEDBACK RAISED INTEREST."
+     },
+     "dest": [
+      "feedback"
+     ],
+     "p": 0
+    }
+   ]
+  },
+  {
+   "id": "cta1",
+   "cena": "texto",
+   "falas": [
+    {
+     "txt": "Quick question before we keep going. Were you paid for your grades?",
+     "v": {
+      "big": {
+       "e": "WERE YOU",
+       "d": "PAID FOR A'S?",
+       "tam": 96
+      }
+     },
+     "dest": [
+      "paid"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Comment \"paid\" or \"not paid\". And tell me honestly if it worked.",
+     "v": {
+      "chips": [
+       "“paid”",
+       "“not paid”"
+      ],
+      "sub": "COMMENT BELOW"
+     },
+     "dest": [
+      "comment"
+     ],
+     "p": 0
+    }
+   ]
+  },
+  {
+   "id": "c4",
+   "cena": "duo",
+   "idade": 22,
+   "et": "Age 22: The first job",
+   "cap": {
+    "n": "FOUR",
+    "tit": "THE FIRST JOB"
+   },
+   "falas": [
+    {
+     "txt": "Twenty-two. Two job offers land in each inbox. One pays more. One is more interesting.",
+     "v": {
+      "ca": 0,
+      "cb": 4,
+      "oa": [
+       "email"
+      ],
+      "ob": [
+       "email"
+      ]
+     },
+     "dest": [
+      "two",
+      "offers"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "The first Sam doesn't even read the second one. There's only ever been one question.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "WHAT DOES",
+        "IT PAY?"
+       ],
+       "q": "k",
+       "d": [
+        "PAY"
+       ],
+       "pensa": 1
+      },
+      "oa": [
+       "email",
+       "carimbo:TOOK THE MONEY"
+      ]
+     },
+     "dest": [
+      "one",
+      "question"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "The second Sam asks a different question. And takes the smaller paycheck.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "WHAT WILL",
+        "I LEARN?"
+       ],
+       "q": "k",
+       "d": [
+        "LEARN"
+       ],
+       "pensa": 1
+      },
+      "ob": [
+       "email",
+       "carimbo2:TOOK THE CRAFT"
+      ],
+      "cb": 5
+     },
+     "dest": [
+      "smaller"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "The first Sam's job pays well. And feels like a very long hallway.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "fa": {
+       "triste": 1
+      }
+     },
+     "dest": [
+      "hallway"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "The second Sam's job barely pays the bills. And Sam comes home talking about it.",
+     "v": {
+      "foco": "b",
+      "ba": null
+     },
+     "dest": [
+      "talking"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Neither one is wrong. Rent is real.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null
+     },
+     "dest": [
+      "rent"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "But watch what happens when the money stops being enough.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null,
+      "big": {
+       "e": "WHAT DOES IT PAY?",
+       "d": "WHAT WILL I LEARN?",
+       "tam": 66
+      }
+     },
+     "dest": [
+      "enough"
+     ],
+     "p": 0
+    }
+   ],
+   "pre": 2.3
+  },
+  {
+   "id": "c5",
+   "cena": "duo",
+   "idade": 30,
+   "et": "Age 30: The raise",
+   "cap": {
+    "n": "FIVE",
+    "tit": "THE RAISE"
+   },
+   "falas": [
+    {
+     "txt": "Thirty. The first Sam has had raise after raise. And each one feels great. For about a month.",
+     "v": {
+      "ca": 0,
+      "cb": 5,
+      "oa": [
+       "oferta"
+      ],
+      "ob": [
+       "oferta"
+      ]
+     },
+     "dest": [
+      "month"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Then the feeling fades, and Sam needs the next one. Because Sam has never once asked: what would I do if nobody paid me?",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "WHAT'S THE",
+        "NEXT BONUS?"
+       ],
+       "q": "k",
+       "d": [
+        "BONUS"
+       ],
+       "pensa": 1
+      },
+      "oa": [
+       "oferta",
+       "carimbo:BORED"
+      ],
+      "fa": {
+       "triste": 1
+      }
+     },
+     "dest": [
+      "nobody"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "The second Sam earns less. Let's be honest about that.",
+     "v": {
+      "foco": "b",
+      "ba": null
+     },
+     "dest": [
+      "less"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "But on Saturday mornings, Sam is in the garage, building something nobody asked for.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "ONE MORE",
+        "HOUR."
+       ],
+       "q": "k",
+       "d": [
+        "MORE"
+       ],
+       "pensa": 1
+      },
+      "ob": [
+       "oferta",
+       "carimbo2:STILL CURIOUS"
+      ],
+      "cb": 6
+     },
+     "dest": [
+      "garage"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "And here's the strange part. The first Sam is good at the job. Skill was never the problem. Wanting was.",
+     "v": {
+      "foco": "a",
+      "bb": null
+     },
+     "dest": [
+      "wanting"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Look at the count at the top. Things done just for fun.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null,
+      "conta": 1,
+      "cb": 7
+     },
+     "dest": [
+      "fun"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "One Sam asks, what do I get? The other asks, what do I love?",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null,
+      "conta": null,
+      "big": {
+       "e": "WHAT DO I GET?",
+       "d": "WHAT DO I LOVE?",
+       "tam": 76
+      }
+     },
+     "dest": [
+      "get",
+      "love"
+     ],
+     "p": 0
+    }
+   ],
+   "pre": 2.3
+  },
+  {
+   "id": "c6",
+   "cena": "duo",
+   "idade": 45,
+   "et": "Age 45: The reading chart",
+   "cap": {
+    "n": "SIX",
+    "tit": "THE READING CHART"
+   },
+   "falas": [
+    {
+     "txt": "Forty-five. Both Sams have a kid who won't pick up a book.",
+     "v": {
+      "ca": 0,
+      "cb": 7
+     },
+     "dest": [
+      "book"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "The first Sam does the most natural thing in the world. Builds a chart. One dollar per book.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "A DOLLAR",
+        "PER BOOK!"
+       ],
+       "q": "p",
+       "d": [
+        "DOLLAR"
+       ]
+      }
+     },
+     "dest": [
+      "chart"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "And it works. For exactly as long as the dollars last.",
+     "v": {
+      "foco": "a",
+      "bb": null
+     },
+     "dest": [
+      "dollars"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "The kid reads eleven books in a month. And then asks how much for twelve.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "HOW MUCH",
+        "FOR TWELVE?"
+       ],
+       "q": "k",
+       "d": [
+        "MUCH"
+       ]
+      }
+     },
+     "dest": [
+      "how",
+      "much"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "The second Sam sits down on the couch with a book of their own. And later asks one thing.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "WHAT HAPPENS",
+        "NEXT?"
+       ],
+       "q": "p",
+       "d": [
+        "NEXT"
+       ]
+      }
+     },
+     "dest": [
+      "couch"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "One kid is reading for the dollar. The other is reading for the story.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null,
+      "big": {
+       "e": "FOR THE DOLLAR",
+       "d": "FOR THE STORY",
+       "tam": 86
+      }
+     },
+     "dest": [
+      "dollar",
+      "story"
+     ],
+     "p": 0
+    }
+   ],
+   "pre": 2.3
+  },
+  {
+   "id": "cta2",
+   "cena": "texto",
+   "falas": [
+    {
+     "txt": "If you know a parent who's about to build a reward chart, send them this first.",
+     "v": {
+      "big": {
+       "e": "SEND THIS",
+       "d": "TO THEM",
+       "tam": 110
+      },
+      "sub": "BEFORE THE REWARD CHART",
+      "icone": "share"
+     },
+     "dest": [
+      "send"
+     ],
+     "p": 0
+    }
+   ]
+  },
+  {
+   "id": "c7",
+   "cena": "duo",
+   "idade": 60,
+   "et": "Age 60: The last paycheck",
+   "cap": {
+    "n": "SEVEN",
+    "tit": "THE LAST PAYCHECK"
+   },
+   "falas": [
+    {
+     "txt": "Sixty. The paychecks are about to stop. For both of them.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null,
+      "ca": 0,
+      "cb": 7
+     },
+     "dest": [
+      "stop"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "The second Sam can't wait. There's a garage full of half-built things, and a guitar that still sounds terrible.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "ob": [
+       "violao",
+       "notas"
+      ],
+      "bb": {
+       "t": [
+        "FINALLY."
+       ],
+       "q": "k",
+       "d": [
+        "FINALLY"
+       ],
+       "pensa": 1
+      }
+     },
+     "dest": [
+      "wait"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "The first Sam is standing in a quiet house. For fifty years there was always a reason to do things. A dollar. A grade. A bonus.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "oa": [
+       "lista"
+      ],
+      "fa": {
+       "triste": 1
+      }
+     },
+     "dest": [
+      "reason"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Now the reasons are gone. And Sam is trying to answer a question for the very first time. What do I actually like?",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "WHAT DO I",
+        "ACTUALLY LIKE?"
+       ],
+       "q": "k",
+       "d": [
+        "LIKE"
+       ],
+       "pensa": 1
+      }
+     },
+     "dest": [
+      "like"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "It's not that the first Sam did anything wrong. Sam did everything right. Every single thing that was paid for.",
+     "v": {
+      "foco": "a",
+      "bb": null
+     },
+     "dest": [
+      "paid"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "One Sam was paid for fifty years. The other one was interested.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null,
+      "big": {
+       "e": "PAID",
+       "d": "INTERESTED",
+       "tam": 130
+      }
+     },
+     "dest": [
+      "paid",
+      "interested"
+     ],
+     "p": 0
+    }
+   ],
+   "pre": 2.3
+  },
+  {
+   "id": "vida",
+   "cena": "vida",
+   "et": "The whole life, side by side",
+   "falas": [
+    {
+     "txt": "Here's the whole life, side by side.",
+     "v": {
+      "n": 0
+     },
+     "dest": [
+      "side"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Six. A dollar per drawing. \"Tell me about it.\"",
+     "v": {
+      "n": 1
+     },
+     "dest": [],
+     "p": 0
+    },
+    {
+     "txt": "Sixteen. Easy A's for cash. A radio in the garage.",
+     "v": {
+      "n": 2
+     },
+     "dest": [],
+     "p": 0
+    },
+    {
+     "txt": "Thirty. Chasing the bonus. Building for fun.",
+     "v": {
+      "n": 3
+     },
+     "dest": [],
+     "p": 0
+    },
+    {
+     "txt": "Sixty. \"What do I even like?\" A garage full of projects.",
+     "v": {
+      "n": 4
+     },
+     "dest": [
+      "projects"
+     ],
+     "p": 0
+    }
+   ]
+  },
+  {
+   "id": "honesto",
+   "cena": "honesto",
+   "et": "The honest part",
+   "falas": [
+    {
+     "txt": "Now, the honest part. Because rewards are not always poison.",
+     "v": {
+      "n": 0
+     },
+     "dest": [
+      "rewards"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "In that nursery school, the surprise prize did no harm at all. It was the deal, do this and you get that, that changed things.",
+     "v": {
+      "n": 1,
+      "x": 1
+     },
+     "dest": [
+      "deal"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "The bigger review backed it up. But other researchers have argued for decades that the effect gets oversold.",
+     "v": {
+      "n": 2,
+      "x": 1
+     },
+     "dest": [
+      "oversold"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "And it's about things kids already love. Paying a kid to take out the trash will not destroy a passion for garbage.",
+     "v": {
+      "n": 3,
+      "x": 1
+     },
+     "dest": [
+      "already",
+      "love"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Paying for grades isn't evil. Plenty of loving parents do it.",
+     "v": {},
+     "dest": [
+      "loving"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "And a reward is not the same as recognition. Telling a kid, I noticed how hard you worked on that, costs nothing. And in that review, it helped.",
+     "v": {
+      "rod": "RECOGNITION IS NOT A PAYMENT."
+     },
+     "dest": [
+      "recognition"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "The question is just what you want your kid to notice. The dollar. Or the drawing.",
+     "v": {
+      "rod": "THE DOLLAR, OR THE DRAWING?"
+     },
+     "dest": [
+      "dollar",
+      "drawing"
+     ],
+     "p": 0
+    }
+   ]
+  },
+  {
+   "id": "trocas",
+   "cena": "trocas",
+   "et": "It's never too late",
+   "falas": [
+    {
+     "txt": "And interest can be rebuilt. At six. Or at sixty.",
+     "v": {
+      "n": 0,
+      "tit": 1
+     },
+     "dest": [
+      "rebuilt"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Three swaps, for the next time you reach for your wallet.",
+     "v": {
+      "n": 0,
+      "tit": null
+     },
+     "dest": [
+      "three",
+      "swaps"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Instead of \"I'll pay you for it,\" try \"tell me about it.\"",
+     "v": {
+      "n": 1
+     },
+     "dest": [
+      "tell"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Instead of \"what did you get,\" try \"what did you learn?\"",
+     "v": {
+      "n": 2
+     },
+     "dest": [
+      "learn"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "And instead of \"good job, here's five dollars,\" try \"you looked like you loved that.\"",
+     "v": {
+      "n": 3
+     },
+     "dest": [
+      "loved"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "And if you were the paid kid, try one thing this week that nobody will ever pay you for.",
+     "v": {
+      "n": 3,
+      "yet": 1
+     },
+     "dest": [
+      "nobody"
+     ],
+     "p": 0
+    }
+   ]
+  },
+  {
+   "id": "fim1",
+   "cena": "duo",
+   "idade": 6,
+   "gap": 0.2,
+   "falas": [
+    {
+     "txt": "Same kid. Same crayons. Two different homes.",
+     "v": {
+      "oa": [
+       "nota:★"
+      ],
+      "ob": [
+       "nota:★"
+      ],
+      "ba": {
+       "t": [
+        "ONE DOLLAR",
+        "PER DRAWING!"
+       ],
+       "q": "p",
+       "d": [
+        "DOLLAR"
+       ]
+      },
+      "bb": {
+       "t": [
+        "TELL ME",
+        "ABOUT THIS ONE."
+       ],
+       "q": "p",
+       "d": [
+        "TELL"
+       ]
+      }
+     },
+     "dest": [
+      "homes"
+     ],
+     "p": 0
+    }
+   ]
+  },
+  {
+   "id": "fim2",
+   "cena": "fim",
+   "falas": [
+    {
+     "txt": "Next time, same kid again, two new homes. One who was loved for winning. And one who was loved anyway.",
+     "v": {
+      "n": 1
+     },
+     "dest": [
+      "winning",
+      "anyway"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Subscribe so you don't miss it. I'll see you in the next childhood.",
+     "v": {
+      "n": 2
+     },
+     "dest": [
+      "subscribe"
+     ],
+     "p": 0
+    }
+   ]
+  }
+ ]
+}

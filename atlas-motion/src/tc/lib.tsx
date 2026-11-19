@@ -27,13 +27,13 @@ export const tema = (l: Lado) => l === 'a'
   : { fundo: '#A9CCEC', tinta: P.mar, sombra: '#86B3DE', claro: '#D3E6F7', acento: P.azulEsc, chao: '#A47B58', chao2: '#8A6444', tapete: '#3E9A8F', roupaPai: P.roxo };
 
 // Altura do peão por idade (a criança cresce de verdade na tela)
-export const ALTURA: Record<number, number> = { 6: 190, 8: 215, 10: 235, 11: 245, 16: 300, 22: 325, 30: 330, 45: 328, 60: 318 };
+export const ALTURA: Record<number, number> = { 5: 184, 6: 190, 8: 215, 10: 235, 11: 245, 12: 255, 14: 282, 18: 312, 25: 328, 35: 330, 40: 330, 50: 326, 70: 310, 16: 300, 22: 325, 30: 330, 45: 328, 60: 318 };
 
 // Peão. tipo 'icone' = pictograma de uma cor só (gráficos). 'sam' | 'pai' | 'filho' = personagem com pele, cabelo, roupa, boca e sombra.
 // `olhar` desloca os olhos (-1..1), `incl` inclina, `humor` = feliz | triste | neutro, `velho` = cabelo grisalho.
 export type TipoPeao = 'icone' | 'sam' | 'pai' | 'filho';
-export const Peao: React.FC<{ x: number; base?: number; h: number; cor: string; olho?: string; olhar?: [number, number]; incl?: number; contorno?: string; oculos?: boolean; op?: number; pisca?: number; tipo?: TipoPeao; humor?: string; velho?: boolean; coque?: boolean }> =
-  ({ x, base = CHAO, h, cor, olho, olhar = [0, 0], incl = 0, contorno, oculos, op = 1, pisca = 0, tipo = 'icone', humor = 'neutro', velho, coque }) => {
+export const Peao: React.FC<{ x: number; base?: number; h: number; cor: string; olho?: string; olhar?: [number, number]; incl?: number; contorno?: string; oculos?: boolean; op?: number; pisca?: number; tipo?: TipoPeao; humor?: string; velho?: boolean; coque?: boolean; olhao?: boolean; lagrima?: boolean }> =
+  ({ x, base = CHAO, h, cor, olho, olhar = [0, 0], incl = 0, contorno, oculos, op = 1, pisca = 0, tipo = 'icone', humor = 'neutro', velho, coque, olhao, lagrima }) => {
     const rh = h * 0.2, topo = rh * 1.72, wn = h * 0.2, wb = h * 0.44, r = h * 0.035;
     const corpo = `M ${-wn / 2} ${topo} Q 0 ${topo - wn * 0.42} ${wn / 2} ${topo} L ${wb / 2} ${h - r} Q ${wb / 2} ${h} ${wb / 2 - r} ${h} L ${-wb / 2 + r} ${h} Q ${-wb / 2} ${h} ${-wb / 2} ${h - r} Z`;
     const meio = `M 0 ${topo - wn * 0.2} L ${wn / 2} ${topo} L ${wb / 2} ${h - r} Q ${wb / 2} ${h} ${wb / 2 - r} ${h} L 0 ${h} Z`;
@@ -59,9 +59,13 @@ export const Peao: React.FC<{ x: number; base?: number; h: number; cor: string; 
           <path d={`M 0 0 A ${rh} ${rh} 0 0 1 0 ${rh * 2} A ${rh * 1.25} ${rh} 0 0 0 0 0 Z`} fill="#000" opacity={0.07} />
           <path d={`M ${-rh * 0.99} ${rh * 0.88} A ${rh} ${rh} 0 0 1 ${rh * 0.99} ${rh * 0.88} Q ${rh * 0.55} ${rh * 0.3} ${-rh * 0.1} ${rh * 0.5} Q ${-rh * 0.65} ${rh * 0.62} ${-rh * 0.99} ${rh * 0.88} Z`} fill={cab} />
           <circle cx={-eo * 1.55} cy={rh * 1.3} r={rh * 0.15} fill="#F08A7A" opacity={0.5} /><circle cx={eo * 1.55} cy={rh * 1.3} r={rh * 0.15} fill="#F08A7A" opacity={0.5} />
-          <ellipse cx={-eo + ex} cy={rh * 1.05 + ey} rx={er} ry={er * 1.15 * (1 - 0.85 * pisca)} fill={tinta} /><ellipse cx={eo + ex} cy={rh * 1.05 + ey} rx={er} ry={er * 1.15 * (1 - 0.85 * pisca)} fill={tinta} />
+          {olhao && <><ellipse cx={-eo * 1.1} cy={rh * 1.02} rx={er * 2.3} ry={er * (humor === 'choque' ? 3 : 2.6)} fill="#fff" stroke={tinta} strokeWidth={rh * 0.035} /><ellipse cx={eo * 1.1} cy={rh * 1.02} rx={er * 2.3} ry={er * (humor === 'choque' ? 3 : 2.6)} fill="#fff" stroke={tinta} strokeWidth={rh * 0.035} /></>}
+          <ellipse cx={(olhao ? -eo * 1.1 : -eo) + ex} cy={rh * 1.05 + ey} rx={er * (olhao ? 1.15 : 1)} ry={er * (olhao ? 1.3 : 1.15) * (1 - 0.85 * pisca)} fill={tinta} /><ellipse cx={(olhao ? eo * 1.1 : eo) + ex} cy={rh * 1.05 + ey} rx={er * (olhao ? 1.15 : 1)} ry={er * (olhao ? 1.3 : 1.15) * (1 - 0.85 * pisca)} fill={tinta} />
+          {olhao && <><circle cx={-eo * 1.1 + ex + er * 0.4} cy={rh * 1.05 + ey - er * 0.5} r={er * 0.38} fill="#fff" /><circle cx={eo * 1.1 + ex + er * 0.4} cy={rh * 1.05 + ey - er * 0.5} r={er * 0.38} fill="#fff" /></>}
+          {lagrima && <path d={`M ${eo * 1.1 + er * 1.2} ${rh * 1.3} q ${er * 1.3} ${er * 2.4} 0 ${er * 3.4} q ${-er * 1.3} ${-er * 1} 0 ${-er * 3.4} Z`} fill="#7CC8F5" stroke="#3F82C7" strokeWidth={rh * 0.03} />}
           {humor === 'triste' && <><path d={`M ${-eo - er * 1.6 + ex} ${rh * 0.78 + ey} l ${er * 2.6} ${-er * 0.9}`} stroke={tinta} strokeWidth={rh * 0.07} strokeLinecap="round" /><path d={`M ${eo + er * 1.6 + ex} ${rh * 0.78 + ey} l ${-er * 2.6} ${-er * 0.9}`} stroke={tinta} strokeWidth={rh * 0.07} strokeLinecap="round" /></>}
-          <path d={humor === 'feliz' ? `M ${-m + ex * 0.5} ${my} Q ${ex * 0.5} ${my + m * 0.95} ${m + ex * 0.5} ${my}` : humor === 'triste' ? `M ${-m * 0.8 + ex * 0.5} ${my + m * 0.4} Q ${ex * 0.5} ${my - m * 0.3} ${m * 0.8 + ex * 0.5} ${my + m * 0.4}` : `M ${-m * 0.7 + ex * 0.5} ${my + m * 0.2} Q ${ex * 0.5} ${my + m * 0.45} ${m * 0.7 + ex * 0.5} ${my + m * 0.2}`} fill="none" stroke={tinta} strokeWidth={rh * 0.085} strokeLinecap="round" />
+          {humor === 'choque' ? <ellipse cx={ex * 0.5} cy={my + m * 0.5} rx={m * 0.55} ry={m * 0.8} fill={tinta} /> : humor === 'riso' ? <path d={`M ${-m * 1.2} ${my - m * 0.1} Q 0 ${my + m * 1.7} ${m * 1.2} ${my - m * 0.1} Z`} fill={tinta} /> : null}
+          {humor !== 'choque' && humor !== 'riso' && <path d={humor === 'feliz' ? `M ${-m + ex * 0.5} ${my} Q ${ex * 0.5} ${my + m * 0.95} ${m + ex * 0.5} ${my}` : humor === 'triste' ? `M ${-m * 0.8 + ex * 0.5} ${my + m * 0.4} Q ${ex * 0.5} ${my - m * 0.3} ${m * 0.8 + ex * 0.5} ${my + m * 0.4}` : `M ${-m * 0.7 + ex * 0.5} ${my + m * 0.2} Q ${ex * 0.5} ${my + m * 0.45} ${m * 0.7 + ex * 0.5} ${my + m * 0.2}`} fill="none" stroke={tinta} strokeWidth={rh * 0.085} strokeLinecap="round" />}
           {oculos && <g fill="none" stroke={tinta} strokeWidth={rh * 0.07}><circle cx={-eo + ex} cy={rh * 1.05 + ey} r={er * 2.2} fill="#fff" fillOpacity={0.25} /><circle cx={eo + ex} cy={rh * 1.05 + ey} r={er * 2.2} fill="#fff" fillOpacity={0.25} /><path d={`M ${-eo + ex + er * 2.2} ${rh * 1.05 + ey} L ${eo + ex - er * 2.2} ${rh * 1.05 + ey}`} /></g>}
         </g>
       </g>
@@ -105,7 +109,9 @@ export const Idade: React.FC<{ n: number | string; y?: number; r?: number }> = (
 );
 
 // Título partido na emenda, como na logo: esquerda (marinho sobre amarelo) termina na emenda, direita (branco sobre azul) começa nela
-export const Partido: React.FC<{ esq: string; dir: string; y: number; tam: number; fam?: string; peso?: number; esp?: number; folga?: number; corE?: string; corD?: string }> = ({ esq, dir, y, tam, fam = SLAB, peso = 400, esp = 0, folga = 0.09, corE = P.mar, corD = '#FFFFFF' }) => {
+export const Partido: React.FC<{ esq: string; dir: string; y: number; tam: number; fam?: string; peso?: number; esp?: number; folga?: number; corE?: string; corD?: string }> = ({ esq, dir, y, fam = SLAB, peso = 400, esp = 0, folga = 0.09, corE = P.mar, corD = '#FFFFFF', ...r }) => {
+  // títulos em Alfa Slab encolhem sozinhos para caber em cada metade
+  const tam = fam === SLAB ? Math.min(r.tam, (MEIO - 80) / (0.8 * Math.max(esq.length, dir.length, 1) + folga)) : r.tam;
   const so = Math.max(3, tam * 0.045);
   return (
     <g>
@@ -265,7 +271,7 @@ export const Papel: React.FC<{ x: number; y: number; nota: string; rot?: number;
   <g transform={`translate(${x} ${y}) rotate(${rot})`}>
     <rect x={-larg / 2 + 5} y={-larg * 0.64 + 7} width={larg} height={larg * 1.28} rx={6} fill="#000" opacity={0.18} />
     <rect x={-larg / 2} y={-larg * 0.64} width={larg} height={larg * 1.28} rx={6} fill="#FFFFFF" stroke={P.mar} strokeWidth={4} />
-    <text x={0} y={larg * 0.08} textAnchor="middle" fontFamily={SLAB} fontSize={larg * 0.42} fill={cor}>{nota}</text>
+    <text x={0} y={larg * 0.08} textAnchor="middle" fontFamily={SLAB} fontSize={larg * (nota.length > 2 ? 0.3 : 0.42)} fill={cor}>{nota}</text>
     <path d={`M ${-larg * 0.3} ${larg * 0.3} l ${larg * 0.6} 0 M ${-larg * 0.3} ${larg * 0.44} l ${larg * 0.4} 0`} stroke={P.mar} strokeWidth={4} strokeLinecap="round" opacity={0.35} />
   </g>
 );

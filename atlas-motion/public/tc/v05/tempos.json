@@ -1,0 +1,2056 @@
+{
+ "total": 486.757,
+ "cfg": {
+  "id": "tc005",
+  "titA": "\u201cProud when you win.\u201d",
+  "titB": "\u201cProud of you. Period.\u201d",
+  "conta": "RISKS TAKEN",
+  "idades": [
+   6,
+   10,
+   16,
+   22,
+   30,
+   45,
+   60
+  ],
+  "vida": [
+   [
+    6,
+    "A silent ride home.",
+    "\u201cIce cream?\u201d"
+   ],
+   [
+    16,
+    "Quits what Sam might lose.",
+    "Bombs. Tries again."
+   ],
+   [
+    30,
+    "Winning. Never enough.",
+    "Fails. Keeps going."
+   ],
+   [
+    60,
+    "\u201cAm I enough?\u201d",
+    "Kids call when they lose."
+   ]
+  ],
+  "honesto": [
+   "High standards are",
+   "not the problem."
+  ],
+  "cards": [
+   {
+    "ano": "2004",
+    "quem": "Assor, Roth & Deci",
+    "onde": "Journal of Personality",
+    "n": "three generations",
+    "t": [
+     "Conditional love",
+     "\u201cworked\u201d: kids performed.",
+     "And felt pressure,",
+     "shame and resentment."
+    ],
+    "x": [
+     "Passed from mothers",
+     "to daughters."
+    ],
+    "chip": "SUPPORTS IT",
+    "cor": "mar"
+   },
+   {
+    "ano": "2009",
+    "quem": "Roth et al.",
+    "onde": "Developmental Psychology",
+    "n": "169 ninth graders",
+    "t": [
+     "Love for grades:",
+     "study for the grade.",
+     "Support for choices:",
+     "study from interest."
+    ],
+    "chip": "SUPPORTS IT",
+    "cor": "mar"
+   },
+   {
+    "ano": "BUT",
+    "quem": "The honest limit",
+    "onde": "What these studies cannot do",
+    "n": "",
+    "t": [
+     "These are surveys.",
+     "People describing",
+     "their own childhood.",
+     "Memory is not a lab."
+    ],
+    "chip": "THE LIMIT",
+    "cor": "ouro"
+   }
+  ],
+  "trocas": [
+   [
+    "\u201cSo proud you won.\u201d",
+    "\u201cI love watching you play.\u201d"
+   ],
+   [
+    "\u201cWhat happened?\u201d",
+    "\u201cRough one. I'm here.\u201d"
+   ],
+   [
+    "(silence)",
+    "\u201cIce cream?\u201d"
+   ]
+  ],
+  "yet": {
+   "e": "ENOUGH",
+   "d": "ALREADY.",
+   "tam": 160
+  },
+  "lista": {
+   "tit": "WON",
+   "it": [
+    "Every award",
+    "Every title",
+    "No rest"
+   ]
+  },
+  "prox": {
+   "e1": "SAME KID",
+   "e2": "AGAIN",
+   "d1": "TWO NEW",
+   "d2": "HOMES",
+   "tam2": 150
+  },
+  "fontes": [
+   "https://pubmed.ncbi.nlm.nih.gov/14686884/",
+   "https://pubmed.ncbi.nlm.nih.gov/19586183/",
+   "https://pubmed.ncbi.nlm.nih.gov/29283599/"
+  ],
+  "thumbs": {
+   "a": {
+    "tagE": "AGE 6",
+    "tagD": "AGE 60",
+    "falaE": [
+     "YOU",
+     "LOST?!"
+    ],
+    "pensaD": [
+     "AM I",
+     "ENOUGH?"
+    ],
+    "dest": [
+     "LOST",
+     "ENOUGH"
+    ],
+    "txE": "LOVED FOR WINNING",
+    "txD": "NEVER ENOUGH",
+    "pE": {
+     "humor": "triste",
+     "lagrima": 1,
+     "olhar": [
+      0.3,
+      0.4
+     ]
+    },
+    "pD": {
+     "velho": 1,
+     "humor": "triste",
+     "lagrima": 1,
+     "olhar": [
+      -0.2,
+      0.3
+     ]
+    }
+   },
+   "b": {
+    "palE": "WINNER",
+    "palD": "LOVED",
+    "txE": "CAN'T STOP",
+    "txD": "CAN REST",
+    "pE": {
+     "humor": "choque",
+     "lagrima": 1,
+     "olhar": [
+      0.2,
+      0.3
+     ]
+    },
+    "pD": {
+     "humor": "riso",
+     "olhar": [
+      -0.2,
+      -0.2
+     ],
+     "incl": 3
+    }
+   },
+   "c": {
+    "perg": "WHO FEELS ENOUGH?",
+    "placar": [
+     "1",
+     "7"
+    ],
+    "rot": "RISKS TAKEN",
+    "txE": "\u201cWHEN YOU WIN\u201d",
+    "txD": "\u201cNO MATTER WHAT\u201d",
+    "pE": {
+     "velho": 1,
+     "humor": "triste",
+     "lagrima": 1,
+     "olhar": [
+      0.3,
+      0.5
+     ]
+    },
+    "pD": {
+     "velho": 1,
+     "humor": "riso",
+     "olhar": [
+      -0.3,
+      -0.2
+     ]
+    }
+   }
+  }
+ },
+ "blocos": [
+  {
+   "id": "gancho1",
+   "cena": "duo",
+   "idade": 6,
+   "et": "Same kid, two homes",
+   "gap": 0.1,
+   "ini": 0.5,
+   "fim": 13.317,
+   "falas": [
+    {
+     "t": 0.5,
+     "d": 3.17,
+     "txt": "Two kids lose the same soccer game. Four to nothing.",
+     "v": {
+      "oa": [
+       "nota:0-4"
+      ],
+      "ob": [
+       "nota:0-4"
+      ],
+      "fa": {
+       "triste": 1
+      },
+      "fb": {
+       "triste": 1
+      }
+     },
+     "dest": [
+      "four",
+      "nothing"
+     ]
+    },
+    {
+     "t": 4.17,
+     "d": 2.32,
+     "txt": "In one car, the ride home is silent.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        ". . ."
+       ],
+       "q": "p",
+       "d": []
+      }
+     },
+     "dest": [
+      "silent"
+     ]
+    },
+    {
+     "t": 6.989,
+     "d": 3.586,
+     "txt": "In the other car, a parent says, \"Rough game. Want ice cream?\"",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "ROUGH GAME.",
+        "ICE CREAM?"
+       ],
+       "q": "p",
+       "d": [
+        "ICE",
+        "CREAM"
+       ]
+      },
+      "fb": null
+     },
+     "dest": [
+      "ice",
+      "cream"
+     ]
+    },
+    {
+     "t": 11.075,
+     "d": 1.642,
+     "txt": "Same kid. Same score.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null
+     },
+     "dest": [
+      "same"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gancho2",
+   "cena": "duo",
+   "idade": 30,
+   "gap": 0.1,
+   "ini": 13.317,
+   "fim": 20.073,
+   "falas": [
+    {
+     "t": 13.317,
+     "d": 3.213,
+     "txt": "By thirty, one of them can lose, and still sleep at night.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "ca": 1,
+      "cb": 6,
+      "bb": {
+       "t": [
+        "I TRIED.",
+        "THAT'S OKAY."
+       ],
+       "q": "k",
+       "d": [],
+       "pensa": 1
+      }
+     },
+     "dest": [
+      "sleep"
+     ]
+    },
+    {
+     "t": 17.03,
+     "d": 2.443,
+     "txt": "The other one hasn't rested since the third grade.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "NOT ENOUGH."
+       ],
+       "q": "k",
+       "d": [
+        "NOT"
+       ],
+       "pensa": 1
+      },
+      "fa": {
+       "triste": 1
+      }
+     },
+     "dest": [
+      "rested"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gancho3",
+   "cena": "texto",
+   "ini": 20.073,
+   "fim": 29.719,
+   "falas": [
+    {
+     "t": 20.073,
+     "d": 2.325,
+     "txt": "This is the whole life, side by side.",
+     "v": {
+      "big": {
+       "e": "THE WHOLE LIFE,",
+       "d": "SIDE BY SIDE",
+       "tam": 78
+      },
+      "linha": 0
+     },
+     "dest": [
+      "whole",
+      "life"
+     ]
+    },
+    {
+     "t": 22.898,
+     "d": 5.872,
+     "txt": "Including a study that traced this exact pattern across three generations of the same families.",
+     "v": {
+      "linha": 10,
+      "sub": "ONE STUDY \u00b7 THREE GENERATIONS"
+     },
+     "dest": [
+      "three",
+      "generations"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c1",
+   "cena": "duo",
+   "idade": 6,
+   "et": "Age 6: The ride home",
+   "cap": {
+    "n": "ONE",
+    "tit": "THE RIDE HOME"
+   },
+   "pre": 2.3,
+   "ini": 29.719,
+   "fim": 95.079,
+   "falas": [
+    {
+     "t": 32.019,
+     "d": 3.358,
+     "txt": "Meet Sam. Sam is six, and plays soccer on Saturdays.",
+     "v": {},
+     "dest": [
+      "soccer"
+     ]
+    },
+    {
+     "t": 35.877,
+     "d": 5.311,
+     "txt": "When Sam wins, both homes look exactly the same. Hugs. Noise. That's my kid.",
+     "v": {
+      "foco": null,
+      "ba": {
+       "t": [
+        "THAT'S",
+        "MY KID!"
+       ],
+       "q": "p",
+       "d": [
+        "MY"
+       ]
+      },
+      "bb": {
+       "t": [
+        "THAT'S",
+        "MY KID!"
+       ],
+       "q": "p",
+       "d": [
+        "MY"
+       ]
+      },
+      "fa": {
+       "pula": 1,
+       "brilho": 1
+      },
+      "fb": {
+       "pula": 1,
+       "brilho": 1
+      }
+     },
+     "dest": [
+      "wins"
+     ]
+    },
+    {
+     "t": 41.688,
+     "d": 1.891,
+     "txt": "You can't see the difference on a good day.",
+     "v": {
+      "ba": null,
+      "bb": null,
+      "fa": null,
+      "fb": null
+     },
+     "dest": [
+      "good",
+      "day"
+     ]
+    },
+    {
+     "t": 44.079,
+     "d": 2.922,
+     "txt": "You see it on the day Sam loses. Four to nothing.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null,
+      "oa": [
+       "nota:0-4"
+      ],
+      "ob": [
+       "nota:0-4"
+      ],
+      "fa": {
+       "triste": 1
+      },
+      "fb": {
+       "triste": 1
+      }
+     },
+     "dest": [
+      "loses"
+     ]
+    },
+    {
+     "t": 47.501,
+     "d": 5.466,
+     "txt": "In the first home, nobody yells. Nobody punishes. The warmth just leaves the car.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        ". . ."
+       ],
+       "q": "p",
+       "d": []
+      }
+     },
+     "dest": [
+      "warmth"
+     ]
+    },
+    {
+     "t": 53.468,
+     "d": 4.769,
+     "txt": "No hug. Short answers. A parent who is suddenly very interested in the road.",
+     "v": {
+      "foco": "a",
+      "bb": null
+     },
+     "dest": [
+      "road"
+     ]
+    },
+    {
+     "t": 58.737,
+     "d": 8.321,
+     "txt": "From the outside, it looks like a family driving home. Nobody would call it harsh. Sam wouldn't either. Not for another thirty years.",
+     "v": {
+      "foco": "a",
+      "bb": null
+     },
+     "dest": [
+      "outside"
+     ]
+    },
+    {
+     "t": 67.558,
+     "d": 5.541,
+     "txt": "In the second home, the warmth stays exactly where it was. \"Rough game. Want ice cream?\"",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "ROUGH GAME.",
+        "ICE CREAM?"
+       ],
+       "q": "p",
+       "d": [
+        "ICE",
+        "CREAM"
+       ]
+      },
+      "fb": null
+     },
+     "dest": [
+      "stays"
+     ]
+    },
+    {
+     "t": 73.599,
+     "d": 3.038,
+     "txt": "Both parents love their kid. That's not the question.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null
+     },
+     "dest": [
+      "love"
+     ]
+    },
+    {
+     "t": 77.137,
+     "d": 3.957,
+     "txt": "But in the first home, Sam just learned a rule. Love is a prize.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "LOVE IS",
+        "A PRIZE."
+       ],
+       "q": "k",
+       "d": [
+        "PRIZE"
+       ],
+       "pensa": 1
+      }
+     },
+     "dest": [
+      "prize"
+     ]
+    },
+    {
+     "t": 81.594,
+     "d": 3.901,
+     "txt": "In the second home, Sam learned a different rule. Love is the floor.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "LOVE IS",
+        "THE FLOOR."
+       ],
+       "q": "k",
+       "d": [
+        "FLOOR"
+       ],
+       "pensa": 1
+      }
+     },
+     "dest": [
+      "floor"
+     ]
+    },
+    {
+     "t": 85.995,
+     "d": 8.134,
+     "txt": "Psychologists have a name for the first one. Conditional regard. Affection that rises when you perform, and drops when you don't.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null,
+      "big": {
+       "e": "A PRIZE",
+       "d": "THE FLOOR",
+       "tam": 130
+      }
+     },
+     "dest": [
+      "conditional",
+      "regard"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c2",
+   "cena": "estudo",
+   "idade": 10,
+   "et": "Age 10: The study",
+   "cap": {
+    "n": "TWO",
+    "tit": "THE STUDY"
+   },
+   "est": {
+    "tag": "THE STUDY",
+    "titulo": [
+     "The Emotional Costs",
+     "of Parents'",
+     "Conditional Regard"
+    ],
+    "meta": [
+     "Assor, Roth & Deci \u00b7 2004",
+     "Journal of Personality",
+     "College students, their mothers, three generations"
+    ]
+   },
+   "pre": 2.3,
+   "ini": 95.079,
+   "fim": 148.505,
+   "falas": [
+    {
+     "t": 97.379,
+     "d": 2.431,
+     "txt": "Ten. And this next part is not a story.",
+     "v": {
+      "dir": {
+       "k": "selo",
+       "t": [
+        "NOT A STORY.",
+        "A REAL STUDY."
+       ]
+      }
+     },
+     "dest": [
+      "not",
+      "story"
+     ]
+    },
+    {
+     "t": 100.309,
+     "d": 7.901,
+     "txt": "In two thousand four, three researchers, Avi Assor, Guy Roth and Edward Deci, asked college students about growing up.",
+     "v": {
+      "dir": {
+       "k": "nomes",
+       "t": [
+        "Avi Assor",
+        "Guy Roth",
+        "Edward Deci"
+       ],
+       "s": "JOURNAL OF PERSONALITY \u00b7 2004"
+      }
+     },
+     "dest": [
+      "researchers"
+     ]
+    },
+    {
+     "t": 108.71,
+     "d": 4.13,
+     "txt": "Did your parents give you more affection when you did well? And less when you didn't?",
+     "v": {
+      "dir": {
+       "k": "selo",
+       "t": [
+        "MORE LOVE",
+        "WHEN YOU WIN?"
+       ]
+      }
+     },
+     "dest": [
+      "more",
+      "less"
+     ]
+    },
+    {
+     "t": 113.34,
+     "d": 5.75,
+     "txt": "The students who said yes had something in common. It had worked. They did what their parents wanted.",
+     "v": {
+      "dir": {
+       "k": "selo",
+       "t": [
+        "IT WORKED.",
+        "THEY PERFORMED."
+       ]
+      }
+     },
+     "dest": [
+      "worked"
+     ]
+    },
+    {
+     "t": 119.59,
+     "d": 4.962,
+     "txt": "But they described it as pressure from the inside. Not, I want to. I have to.",
+     "v": {
+      "dir": {
+       "k": "selo",
+       "t": [
+        "NOT \u201cI WANT TO.\u201d",
+        "\u201cI HAVE TO.\u201d"
+       ]
+      }
+     },
+     "dest": [
+      "have",
+      "to"
+     ]
+    },
+    {
+     "t": 125.052,
+     "d": 7.166,
+     "txt": "Their good feelings after a success didn't last. Their shame after a failure did. And they resented their parents for it.",
+     "v": {
+      "dir": {
+       "k": "itens",
+       "cab": [
+        "What it cost them:"
+       ],
+       "n": 3,
+       "auto": 1,
+       "it": [
+        "Pride that faded fast",
+        "Shame after failing",
+        "Resentment toward parents"
+       ]
+      }
+     },
+     "dest": [
+      "shame"
+     ]
+    },
+    {
+     "t": 132.718,
+     "d": 5.524,
+     "txt": "Then the researchers looked at mothers and their grown daughters. And found the pattern handed down.",
+     "v": {
+      "dir": {
+       "k": "selo",
+       "t": [
+        "MOTHERS.",
+        "DAUGHTERS."
+       ]
+      }
+     },
+     "dest": [
+      "handed",
+      "down"
+     ]
+    },
+    {
+     "t": 138.742,
+     "d": 8.813,
+     "txt": "Mothers who had been loved conditionally as girls felt worse about themselves as adults. And their daughters described being raised the very same way.",
+     "v": {
+      "rod": "HANDED DOWN, MOTHER TO DAUGHTER."
+     },
+     "dest": [
+      "same",
+      "way"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c3",
+   "cena": "duo",
+   "idade": 16,
+   "et": "Age 16: The B plus",
+   "cap": {
+    "n": "THREE",
+    "tit": "THE B PLUS"
+   },
+   "pre": 2.3,
+   "ini": 148.505,
+   "fim": 187.73,
+   "falas": [
+    {
+     "t": 150.805,
+     "d": 5.135,
+     "txt": "Sixteen. Back to the story. Sam gets a B plus on the biggest exam of the year.",
+     "v": {
+      "ca": 0,
+      "cb": 1,
+      "oa": [
+       "nota:B+"
+      ],
+      "ob": [
+       "nota:B+"
+      ]
+     },
+     "dest": [
+      "b",
+      "plus"
+     ]
+    },
+    {
+     "t": 156.44,
+     "d": 3.112,
+     "txt": "In the first home, there's one question. \"What happened?\"",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "WHAT",
+        "HAPPENED?"
+       ],
+       "q": "p",
+       "d": [
+        "HAPPENED"
+       ]
+      },
+      "fa": {
+       "triste": 1
+      }
+     },
+     "dest": [
+      "happened"
+     ]
+    },
+    {
+     "t": 160.052,
+     "d": 5.866,
+     "txt": "Sam doesn't sleep that night. And the next week, Sam quits the debate team. Sam might not win.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "A B PLUS IS",
+        "A FAILURE."
+       ],
+       "q": "k",
+       "d": [
+        "FAILURE"
+       ],
+       "pensa": 1
+      },
+      "oa": [
+       "nota:B+",
+       "carimbo:QUIT DEBATE"
+      ]
+     },
+     "dest": [
+      "quits"
+     ]
+    },
+    {
+     "t": 166.418,
+     "d": 7.37,
+     "txt": "The scary part is how good this looks. Sam is the kid every teacher wants. Disciplined. Driven. Exhausted.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": null
+     },
+     "dest": [
+      "exhausted"
+     ]
+    },
+    {
+     "t": 174.288,
+     "d": 3.73,
+     "txt": "In the second home, there's a different question. \"Are you happy with it?\"",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "ARE YOU HAPPY",
+        "WITH IT?"
+       ],
+       "q": "p",
+       "d": [
+        "HAPPY"
+       ]
+      }
+     },
+     "dest": [
+      "happy"
+     ]
+    },
+    {
+     "t": 178.518,
+     "d": 5.268,
+     "txt": "That month, Sam auditions for the school play. Bombs it. And signs up again in the spring.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": null,
+      "ob": [
+       "nota:B+",
+       "carimbo2:TRIED AGAIN"
+      ],
+      "cb": 3
+     },
+     "dest": [
+      "bombs"
+     ]
+    },
+    {
+     "t": 184.286,
+     "d": 2.494,
+     "txt": "One Sam only plays games that can be won.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null,
+      "big": {
+       "e": "ONLY SAFE BETS",
+       "d": "ANY BET",
+       "tam": 96
+      }
+     },
+     "dest": [
+      "won"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c3b",
+   "cena": "estudo",
+   "idade": 16,
+   "est": {
+    "tag": "THE STUDY",
+    "titulo": [
+     "Consequences of",
+     "Parental",
+     "Conditional Regard"
+    ],
+    "meta": [
+     "Roth, Assor, Niemiec, Ryan & Deci \u00b7 2009",
+     "Developmental Psychology",
+     "169 ninth graders"
+    ]
+   },
+   "ini": 187.73,
+   "fim": 206.733,
+   "falas": [
+    {
+     "t": 187.73,
+     "d": 5.408,
+     "txt": "A second study, with a hundred and sixty-nine ninth graders, found the split you'd expect.",
+     "v": {
+      "dir": {
+       "k": "num",
+       "n": 169,
+       "rot": "NINTH GRADERS"
+      }
+     },
+     "dest": [
+      "ninth",
+      "graders"
+     ]
+    },
+    {
+     "t": 193.638,
+     "d": 6.391,
+     "txt": "Kids whose parents gave extra love for good grades did study. But they studied for the grade, under pressure.",
+     "v": {
+      "dir": {
+       "k": "frases",
+       "n": 1,
+       "cab": [
+        "Two reasons to study."
+       ],
+       "fr": [
+        [
+         "Extra love for grades:",
+         "studying for the grade",
+         "coral"
+        ],
+        [
+         "Support for their choices:",
+         "studying out of interest",
+         "mar"
+        ]
+       ]
+      }
+     },
+     "dest": [
+      "grade"
+     ]
+    },
+    {
+     "t": 200.529,
+     "d": 5.254,
+     "txt": "Kids whose parents supported their choices studied because the subject interested them.",
+     "v": {
+      "dir": {
+       "k": "frases",
+       "n": 2,
+       "cab": [
+        "Two reasons to study."
+       ],
+       "fr": [
+        [
+         "Extra love for grades:",
+         "studying for the grade",
+         "coral"
+        ],
+        [
+         "Support for their choices:",
+         "studying out of interest",
+         "mar"
+        ]
+       ]
+      }
+     },
+     "dest": [
+      "interested"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cta1",
+   "cena": "texto",
+   "ini": 206.733,
+   "fim": 217.704,
+   "falas": [
+    {
+     "t": 206.733,
+     "d": 4.224,
+     "txt": "Quick question before we keep going. Did the ride home depend on the score?",
+     "v": {
+      "big": {
+       "e": "DID IT DEPEND",
+       "d": "ON THE SCORE?",
+       "tam": 88
+      }
+     },
+     "dest": [
+      "ride",
+      "home"
+     ]
+    },
+    {
+     "t": 211.457,
+     "d": 5.297,
+     "txt": "Comment \"depended\" or \"didn't\". I read these, and I want to know which car you were in.",
+     "v": {
+      "chips": [
+       "\u201cdepended\u201d",
+       "\u201cdidn't\u201d"
+      ],
+      "sub": "COMMENT BELOW"
+     },
+     "dest": [
+      "comment"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c4",
+   "cena": "duo",
+   "idade": 22,
+   "et": "Age 22: The rejection",
+   "cap": {
+    "n": "FOUR",
+    "tit": "THE REJECTION"
+   },
+   "pre": 2.3,
+   "ini": 217.704,
+   "fim": 251.231,
+   "falas": [
+    {
+     "t": 220.004,
+     "d": 5.932,
+     "txt": "Twenty-two. Both Sams apply to the program they've wanted for years. And neither one gets in.",
+     "v": {
+      "ca": 0,
+      "cb": 3,
+      "oa": [
+       "email",
+       "carimbo:REJECTED"
+      ],
+      "ob": [
+       "email",
+       "carimbo:REJECTED"
+      ],
+      "fa": {
+       "triste": 1
+      },
+      "fb": {
+       "triste": 1
+      }
+     },
+     "dest": [
+      "neither"
+     ]
+    },
+    {
+     "t": 226.436,
+     "d": 3.287,
+     "txt": "The first Sam can't tell anyone at home. For three weeks.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "THEY'LL BE",
+        "DISAPPOINTED."
+       ],
+       "q": "k",
+       "d": [
+        "DISAPPOINTED"
+       ],
+       "pensa": 1
+      }
+     },
+     "dest": [
+      "three",
+      "weeks"
+     ]
+    },
+    {
+     "t": 230.222,
+     "d": 6.805,
+     "txt": "When it finally comes out at dinner, there's a pause. Then, so what are you going to do about it? Not cruel. Just cold.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "SO WHAT ARE YOU",
+        "GOING TO DO?"
+       ],
+       "q": "k",
+       "d": [
+        "DO"
+       ]
+      }
+     },
+     "dest": [
+      "cold"
+     ]
+    },
+    {
+     "t": 237.527,
+     "d": 1.896,
+     "txt": "The second Sam calls the same day.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "I DIDN'T",
+        "GET IN."
+       ],
+       "q": "k",
+       "d": [
+        "DIDN'T"
+       ]
+      }
+     },
+     "dest": [
+      "same",
+      "day"
+     ]
+    },
+    {
+     "t": 239.924,
+     "d": 4.008,
+     "txt": "And hears, come home this weekend. Then applies again the next year.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "COME HOME",
+        "THIS WEEKEND."
+       ],
+       "q": "k",
+       "d": [],
+       "pensa": 1
+      },
+      "ob": [
+       "email",
+       "carimbo2:APPLIED AGAIN"
+      ],
+      "cb": 4,
+      "fb": null
+     },
+     "dest": [
+      "again"
+     ]
+    },
+    {
+     "t": 244.432,
+     "d": 5.849,
+     "txt": "One Sam lost an opportunity. The other lost an opportunity and, for a while, a family.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null,
+      "big": {
+       "e": "ALONE WITH IT",
+       "d": "HELD THROUGH IT",
+       "tam": 84
+      }
+     },
+     "dest": [
+      "family"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c5",
+   "cena": "duo",
+   "idade": 30,
+   "et": "Age 30: The award",
+   "cap": {
+    "n": "FIVE",
+    "tit": "THE AWARD"
+   },
+   "pre": 2.3,
+   "ini": 251.231,
+   "fim": 287.901,
+   "falas": [
+    {
+     "t": 253.531,
+     "d": 7.413,
+     "txt": "Thirty. And let's be honest. The first Sam may be the more successful one. Top of the company. Awards on the shelf.",
+     "v": {
+      "ca": 1,
+      "cb": 5,
+      "oa": [
+       "oferta"
+      ],
+      "ob": [
+       "oferta"
+      ]
+     },
+     "dest": [
+      "successful"
+     ]
+    },
+    {
+     "t": 261.444,
+     "d": 3.618,
+     "txt": "But every win lasts about a day. Then the old fear comes back.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "WHAT IF I",
+        "STOP WINNING?"
+       ],
+       "q": "k",
+       "d": [
+        "STOP"
+       ],
+       "pensa": 1
+      },
+      "oa": [
+       "oferta",
+       "carimbo:NOT ENOUGH"
+      ],
+      "fa": {
+       "triste": 1
+      }
+     },
+     "dest": [
+      "fear"
+     ]
+    },
+    {
+     "t": 265.562,
+     "d": 7.552,
+     "txt": "Sam's coworkers think Sam is fearless. It's the opposite. Sam is running from something. Very fast. In a very nice suit.",
+     "v": {
+      "foco": "a",
+      "bb": null
+     },
+     "dest": [
+      "running"
+     ]
+    },
+    {
+     "t": 273.615,
+     "d": 4.341,
+     "txt": "The second Sam has a good career, and one business that failed completely.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "ob": [
+       "oferta",
+       "carimbo2:TRIED ANYWAY"
+      ],
+      "cb": 6
+     },
+     "dest": [
+      "failed"
+     ]
+    },
+    {
+     "t": 278.456,
+     "d": 2.25,
+     "txt": "It hurt. It did not change who Sam was.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "I FAILED.",
+        "I'M STILL ME."
+       ],
+       "q": "k",
+       "d": [
+        "STILL"
+       ],
+       "pensa": 1
+      }
+     },
+     "dest": [
+      "hurt"
+     ]
+    },
+    {
+     "t": 281.206,
+     "d": 5.744,
+     "txt": "Look at the count at the top. Risks taken. The first Sam only takes bets that can't be lost.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null,
+      "conta": 1,
+      "cb": 7
+     },
+     "dest": [
+      "risks"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c5b",
+   "cena": "estudo",
+   "idade": 30,
+   "est": {
+    "tag": "THE STUDY",
+    "titulo": [
+     "Perfectionism Is",
+     "Increasing",
+     "Over Time"
+    ],
+    "meta": [
+     "Curran & Hill \u00b7 2019",
+     "Psychological Bulletin",
+     "41,641 college students, 1989 to 2016"
+    ]
+   },
+   "ini": 287.901,
+   "fim": 306.132,
+   "falas": [
+    {
+     "t": 287.901,
+     "d": 10.097,
+     "txt": "And the first Sam isn't alone. A study of more than forty-one thousand college students tracked perfectionism from nineteen eighty-nine to twenty sixteen.",
+     "v": {
+      "dir": {
+       "k": "num",
+       "n": 41641,
+       "rot": "COLLEGE STUDENTS \u00b7 1989 TO 2016"
+      }
+     },
+     "dest": [
+      "perfectionism"
+     ]
+    },
+    {
+     "t": 298.497,
+     "d": 6.684,
+     "txt": "All three kinds went up. Including the kind where you believe other people will only accept you if you're perfect.",
+     "v": {
+      "dir": {
+       "k": "itens",
+       "cab": [
+        "Rising for 27 years:"
+       ],
+       "n": 3,
+       "auto": 1,
+       "it": [
+        "Demanding perfection of yourself",
+        "Demanding it of others",
+        "Feeling others demand it of you"
+       ]
+      },
+      "rod": "ALL THREE WENT UP."
+     },
+     "dest": [
+      "perfect"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c6",
+   "cena": "duo",
+   "idade": 45,
+   "et": "Age 45: The same car",
+   "cap": {
+    "n": "SIX",
+    "tit": "THE SAME CAR"
+   },
+   "pre": 2.3,
+   "ini": 306.132,
+   "fim": 340.1,
+   "falas": [
+    {
+     "t": 308.432,
+     "d": 5.824,
+     "txt": "Forty-five. Both Sams are driving a six-year-old home from a soccer game. Four to nothing.",
+     "v": {
+      "ca": 1,
+      "cb": 7,
+      "oa": [
+       "nota:0-4"
+      ],
+      "ob": [
+       "nota:0-4"
+      ]
+     },
+     "dest": [
+      "four",
+      "nothing"
+     ]
+    },
+    {
+     "t": 314.756,
+     "d": 2.308,
+     "txt": "The first Sam grips the wheel and says nothing.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        ". . ."
+       ],
+       "q": "p",
+       "d": []
+      }
+     },
+     "dest": [
+      "nothing"
+     ]
+    },
+    {
+     "t": 317.564,
+     "d": 6.037,
+     "txt": "This is the hardest scene in the video. Because as a kid in that back seat, Sam swore to never do this.",
+     "v": {
+      "foco": "a",
+      "bb": null
+     },
+     "dest": [
+      "swore"
+     ]
+    },
+    {
+     "t": 324.101,
+     "d": 6.43,
+     "txt": "Sam isn't angry at the kid. Sam is scared for the kid. Because in Sam's world, losing costs you love.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "fa": {
+       "triste": 1
+      }
+     },
+     "dest": [
+      "scared"
+     ]
+    },
+    {
+     "t": 331.031,
+     "d": 3.483,
+     "txt": "The second Sam looks in the mirror and says the family sentence.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "ROUGH GAME.",
+        "ICE CREAM?"
+       ],
+       "q": "p",
+       "d": [
+        "ICE",
+        "CREAM"
+       ]
+      }
+     },
+     "dest": [
+      "family",
+      "sentence"
+     ]
+    },
+    {
+     "t": 335.014,
+     "d": 4.136,
+     "txt": "Three generations in, the pattern holds. Unless someone notices it.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null,
+      "big": {
+       "e": "HANDED DOWN",
+       "d": "HANDED DOWN",
+       "tam": 96
+      }
+     },
+     "dest": [
+      "notices"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cta2",
+   "cena": "texto",
+   "ini": 340.1,
+   "fim": 346.442,
+   "falas": [
+    {
+     "t": 340.1,
+     "d": 5.392,
+     "txt": "If you know who sat in that car with you, send them this. A brother. A sister. A teammate.",
+     "v": {
+      "big": {
+       "e": "SEND THIS",
+       "d": "TO THEM",
+       "tam": 110
+      },
+      "sub": "THEY WERE IN THE CAR TOO",
+      "icone": "share"
+     },
+     "dest": [
+      "send"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c7",
+   "cena": "duo",
+   "idade": 60,
+   "et": "Age 60: The shelf",
+   "cap": {
+    "n": "SEVEN",
+    "tit": "THE SHELF"
+   },
+   "pre": 2.3,
+   "ini": 346.442,
+   "fim": 380.256,
+   "falas": [
+    {
+     "t": 348.742,
+     "d": 6.386,
+     "txt": "Sixty. The first Sam has a shelf full of trophies. And a question Sam has never been able to answer.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ca": 1,
+      "cb": 8,
+      "oa": [
+       "lista"
+      ],
+      "ba": {
+       "t": [
+        "WHO WOULD LOVE ME",
+        "IF I STOPPED?"
+       ],
+       "q": "k",
+       "d": [
+        "STOPPED"
+       ],
+       "pensa": 1
+      }
+     },
+     "dest": [
+      "trophies"
+     ]
+    },
+    {
+     "t": 355.628,
+     "d": 3.147,
+     "txt": "So Sam doesn't stop. At sixty. Still earning it.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "fa": {
+       "triste": 1
+      }
+     },
+     "dest": [
+      "earning"
+     ]
+    },
+    {
+     "t": 359.275,
+     "d": 5.402,
+     "txt": "The trophies aren't fake. Sam earned every one. But a trophy can't call you on a Tuesday.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": null
+     },
+     "dest": [
+      "tuesday"
+     ]
+    },
+    {
+     "t": 365.177,
+     "d": 4.083,
+     "txt": "The second Sam has fewer trophies. And kids who call when they win.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "DAD, I",
+        "GOT IT!"
+       ],
+       "q": "p",
+       "d": [
+        "GOT"
+       ]
+      }
+     },
+     "dest": [
+      "call"
+     ]
+    },
+    {
+     "t": 369.759,
+     "d": 5.158,
+     "txt": "And kids who call when they lose. Sam counts that second kind as the real prize.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "DAD, I",
+        "MESSED UP."
+       ],
+       "q": "p",
+       "d": [
+        "MESSED"
+       ]
+      }
+     },
+     "dest": [
+      "lose"
+     ]
+    },
+    {
+     "t": 375.417,
+     "d": 3.889,
+     "txt": "One Sam earned love for sixty years. The other one just had it.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null,
+      "big": {
+       "e": "EARNED",
+       "d": "GIVEN",
+       "tam": 140
+      }
+     },
+     "dest": [
+      "earned",
+      "had"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vida",
+   "cena": "vida",
+   "et": "The whole life, side by side",
+   "ini": 380.256,
+   "fim": 398.503,
+   "falas": [
+    {
+     "t": 380.256,
+     "d": 2.161,
+     "txt": "Here's the whole life, side by side.",
+     "v": {
+      "n": 0
+     },
+     "dest": [
+      "side"
+     ]
+    },
+    {
+     "t": 382.918,
+     "d": 2.737,
+     "txt": "Six. A silent ride home. \"Ice cream?\"",
+     "v": {
+      "n": 1
+     },
+     "dest": []
+    },
+    {
+     "t": 386.155,
+     "d": 3.743,
+     "txt": "Sixteen. Quits what Sam might lose. Bombs, and tries again.",
+     "v": {
+      "n": 2
+     },
+     "dest": []
+    },
+    {
+     "t": 390.398,
+     "d": 3.514,
+     "txt": "Thirty. Winning, and never enough. Fails, and keeps going.",
+     "v": {
+      "n": 3
+     },
+     "dest": []
+    },
+    {
+     "t": 394.412,
+     "d": 3.141,
+     "txt": "Sixty. \"Am I enough?\" Kids who call when they lose.",
+     "v": {
+      "n": 4
+     },
+     "dest": [
+      "lose"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "honesto",
+   "cena": "honesto",
+   "et": "The honest part",
+   "ini": 398.503,
+   "fim": 446.745,
+   "falas": [
+    {
+     "t": 398.503,
+     "d": 3.808,
+     "txt": "Now, the honest part. Because high standards are not the problem.",
+     "v": {
+      "n": 0
+     },
+     "dest": [
+      "standards"
+     ]
+    },
+    {
+     "t": 402.812,
+     "d": 5.546,
+     "txt": "Conditional love did get results. The kids performed. That's exactly why parents do it.",
+     "v": {
+      "n": 1
+     },
+     "dest": [
+      "results"
+     ]
+    },
+    {
+     "t": 408.858,
+     "d": 6.84,
+     "txt": "And it gets passed down. Which means the parent in that silent car was probably a kid in a silent car once.",
+     "v": {
+      "n": 1,
+      "x": 1
+     },
+     "dest": [
+      "passed",
+      "down"
+     ]
+    },
+    {
+     "t": 416.197,
+     "d": 6.114,
+     "txt": "A second study pointed the same way. But both rely on what people report about their own families.",
+     "v": {
+      "n": 2,
+      "x": 1
+     },
+     "dest": [
+      "report"
+     ]
+    },
+    {
+     "t": 422.811,
+     "d": 5.894,
+     "txt": "Nobody measured the love directly. They measured how it felt. Which may be the part that matters.",
+     "v": {
+      "n": 3,
+      "x": 1
+     },
+     "dest": [
+      "felt"
+     ]
+    },
+    {
+     "t": 429.206,
+     "d": 4.229,
+     "txt": "Being proud when your kid wins is not a crime. Every parent lights up.",
+     "v": {},
+     "dest": [
+      "proud"
+     ]
+    },
+    {
+     "t": 433.934,
+     "d": 7.304,
+     "txt": "And love with high standards exists. You can expect a lot from a kid, and still be warm on the day they fall short.",
+     "v": {
+      "rod": "HIGH STANDARDS. WARM ANYWAY."
+     },
+     "dest": [
+      "warm"
+     ]
+    },
+    {
+     "t": 441.738,
+     "d": 4.057,
+     "txt": "The only question is what happens to the warmth on the day they lose.",
+     "v": {
+      "rod": "WHAT HAPPENS ON THE DAY THEY LOSE?"
+     },
+     "dest": [
+      "lose"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "trocas",
+   "cena": "trocas",
+   "et": "It's never too late",
+   "ini": 446.745,
+   "fim": 470.307,
+   "falas": [
+    {
+     "t": 446.745,
+     "d": 2.652,
+     "txt": "And the pattern can stop with you. At any age.",
+     "v": {
+      "n": 0,
+      "tit": 1
+     },
+     "dest": [
+      "stop"
+     ]
+    },
+    {
+     "t": 449.897,
+     "d": 1.903,
+     "txt": "Three swaps, for the next ride home.",
+     "v": {
+      "n": 0,
+      "tit": null
+     },
+     "dest": [
+      "three",
+      "swaps"
+     ]
+    },
+    {
+     "t": 452.3,
+     "d": 3.495,
+     "txt": "Instead of \"so proud you won,\" try \"I love watching you play.\"",
+     "v": {
+      "n": 1
+     },
+     "dest": [
+      "watching"
+     ]
+    },
+    {
+     "t": 456.295,
+     "d": 2.809,
+     "txt": "Instead of \"what happened,\" try \"rough one. I'm here.\"",
+     "v": {
+      "n": 2
+     },
+     "dest": [
+      "here"
+     ]
+    },
+    {
+     "t": 459.604,
+     "d": 3.772,
+     "txt": "And instead of silence, try the two-word version. \"Ice cream?\"",
+     "v": {
+      "n": 3
+     },
+     "dest": [
+      "ice",
+      "cream"
+     ]
+    },
+    {
+     "t": 463.876,
+     "d": 5.48,
+     "txt": "And if you were loved for winning, here's a sentence nobody gave you. You were enough before the score.",
+     "v": {
+      "n": 3,
+      "yet": 1
+     },
+     "dest": [
+      "enough"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fim1",
+   "cena": "duo",
+   "idade": 6,
+   "gap": 0.2,
+   "ini": 470.307,
+   "fim": 474.238,
+   "falas": [
+    {
+     "t": 470.307,
+     "d": 3.232,
+     "txt": "Same kid. Same score. Two different rides home.",
+     "v": {
+      "oa": [
+       "nota:0-4"
+      ],
+      "ob": [
+       "nota:0-4"
+      ],
+      "ba": {
+       "t": [
+        ". . ."
+       ],
+       "q": "p",
+       "d": []
+      },
+      "bb": {
+       "t": [
+        "ROUGH GAME.",
+        "ICE CREAM?"
+       ],
+       "q": "p",
+       "d": [
+        "ICE",
+        "CREAM"
+       ]
+      }
+     },
+     "dest": [
+      "rides"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fim2",
+   "cena": "fim",
+   "ini": 474.238,
+   "fim": 481.757,
+   "falas": [
+    {
+     "t": 474.238,
+     "d": 2.566,
+     "txt": "Next time, same kid again, two new homes.",
+     "v": {
+      "n": 1
+     },
+     "dest": [
+      "new",
+      "homes"
+     ]
+    },
+    {
+     "t": 477.304,
+     "d": 3.503,
+     "txt": "Subscribe so you don't miss it. I'll see you in the next childhood.",
+     "v": {
+      "n": 2
+     },
+     "dest": [
+      "subscribe"
+     ]
+    }
+   ]
+  }
+ ]
+}

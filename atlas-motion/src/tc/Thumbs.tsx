@@ -1,70 +1,85 @@
 import React from 'react';
 import { AbsoluteFill } from 'remotion';
-import { Balao, Braco, Carimbo, CHAO, Fundo, Janela, Livros, MEIO, Mesa, P, Papel, Peao, Planta, Prateleira, SANS, SLAB, Tapete, Trofeu } from './lib';
+import { Balao, MEIO, P, Papel, Peao, SANS, SLAB } from './lib';
 
-// Two Childhoods: thumbnails (1280x720, desenhadas em 1920x1080). v = a | b | c
-// Fórmula do que já deu certo no nicho (capa do vídeo-modelo com 174 mil views): etiqueta AGE 6 → AGE 60, causa à esquerda,
-// consequência à direita, uma frase curta embaixo de cada lado, uma palavra em cor de alerta.
-const Tag: React.FC<{ x: number; y: number; t: string }> = ({ x, y, t }) => (
-  <g><rect x={x + 8} y={y + 10} width={t.length * 62 + 60} height={130} rx={18} fill="#000" opacity={0.3} /><rect x={x} y={y} width={t.length * 62 + 60} height={130} rx={18} fill={P.ouro} stroke={P.mar} strokeWidth={8} /><text x={x + 30} y={y + 98} fontFamily={SLAB} fontSize={96} fill={P.mar}>{t}</text></g>
-);
-const Frase: React.FC<{ x: number; y: number; t: string; cor?: string; tam?: number; anc?: string }> = ({ x, y, t, cor = '#FFFFFF', tam = 118, anc = 'middle' }) => (
-  <text x={x} y={y} textAnchor={anc as any} fontFamily={SANS} fontWeight={900} fontSize={tam} fill={cor} stroke={P.mar} strokeWidth={tam * 0.13} strokeLinejoin="round" paintOrder="stroke" letterSpacing={-1}>{t}</text>
-);
-const Seta: React.FC<{ y: number }> = ({ y }) => (
-  <g><path d={`M ${MEIO - 96} ${y - 34} l 96 0 l 0 -44 l 100 78 l -100 78 l 0 -44 l -96 0 Z`} fill={P.ouro} stroke={P.mar} strokeWidth={10} strokeLinejoin="round" /></g>
-);
-const Casa6: React.FC<{ l: 'a' | 'b'; fala?: string[] }> = ({ l, fala }) => (
-  <g transform={`translate(${l === 'a' ? 0 : MEIO} 0)`}>
-    <Janela x={640} y={250} lado={l} /><Tapete x={500} larg={470} lado={l} />
-    <Peao x={640} h={470} tipo="pai" coque={l === 'a'} cor={l === 'a' ? '#3E9A78' : P.roxo} humor="feliz" olhar={[-0.9, 0.5]} incl={-3} />
-    <Peao x={360} h={270} tipo="sam" cor={P.coral} humor="feliz" olhar={[0.8, -0.7]} />
-    <Braco de={[390, CHAO - 150]} ate={[452, CHAO - 205]} cor={P.coral} l={20} /><Papel x={480} y={CHAO - 250} nota="10" rot={8} larg={110} />
-    {fala && <g transform="translate(-10 30) scale(1.12)"><Balao x={290} y={330} linhas={fala} ponta={[560, 420]} tam={58} dest={['SMART', 'HARD']} /></g>}
+// Two Childhoods: thumbnails v3 (1280x720, desenhadas em 1920x1080). Tudo vem de cfg.thumbs do roteiro.
+// Referências (18/11/2026): Which One Are You ("AGE 6 → AGE 60", causa x consequência, 174 mil views) e o canal de bonecos brancos
+// ("STRICT vs CHILL", "PHONE AT 8?!"): rosto grande e expressivo, 2 a 3 palavras gigantes, fundo saturado com brilho, uma cor de alerta.
+type T = Record<string, any>;
+const Fundo: React.FC = () => (
+  <g>
+    <defs>
+      <radialGradient id="thA" cx="50%" cy="55%" r="75%"><stop offset="0%" stopColor="#FFE07A" /><stop offset="100%" stopColor="#F08C12" /></radialGradient>
+      <radialGradient id="thB" cx="50%" cy="55%" r="75%"><stop offset="0%" stopColor="#57A8F5" /><stop offset="100%" stopColor="#0E2F6E" /></radialGradient>
+      <radialGradient id="thV" cx="50%" cy="50%" r="72%"><stop offset="62%" stopColor="#000" stopOpacity="0" /><stop offset="100%" stopColor="#000" stopOpacity="0.5" /></radialGradient>
+      <linearGradient id="thBase" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#000" stopOpacity="0" /><stop offset="100%" stopColor="#000" stopOpacity="0.72" /></linearGradient>
+    </defs>
+    <rect x={0} y={0} width={MEIO} height={1080} fill="url(#thA)" /><rect x={MEIO} y={0} width={MEIO} height={1080} fill="url(#thB)" />
+    {[480, 1440].map((cx) => <g key={cx} transform={`translate(${cx} 640)`}>{Array.from({ length: 12 }).map((_, i) => <path key={i} d="M 0 0 L -70 -1400 L 70 -1400 Z" transform={`rotate(${i * 30})`} fill="#fff" opacity={0.07} />)}</g>)}
+    <clipPath id="thE"><rect x={0} y={0} width={MEIO} height={1080} /></clipPath><clipPath id="thD"><rect x={MEIO} y={0} width={MEIO} height={1080} /></clipPath>
+    <rect x={0} y={0} width={1920} height={1080} fill="url(#thV)" />
   </g>
 );
-const Casa60: React.FC<{ l: 'a' | 'b'; feliz?: boolean; x?: number }> = ({ l, feliz, x = 470 }) => (
-  <g transform={`translate(${l === 'a' ? 0 : MEIO} 0)`}>
-    <Janela x={650} y={250} lado={l} noite /><Tapete x={x} larg={470} lado={l} />
-    <Prateleira x={60} y={470} lado={l} larg={300}>{feliz ? <><Livros x={20} lado={l} n={5} /><Trofeu x={220} lado={l} /></> : <><Trofeu x={60} lado={l} /><Trofeu x={140} lado={l} /><Trofeu x={220} lado={l} /></>}</Prateleira>
-    <Peao x={x} h={520} tipo="sam" cor={P.coral} velho oculos humor={feliz ? 'feliz' : 'triste'} olhar={feliz ? [0.3, -0.3] : [0.1, 0.9]} incl={feliz ? 3 : -4} />
+const Tag: React.FC<{ x: number; y: number; t: string; dir?: boolean }> = ({ x, y, t, dir }) => {
+  const w = t.length * 66 + 70, x0 = dir ? x - w : x;
+  return <g transform={`rotate(${dir ? 3 : -3} ${x0 + w / 2} ${y + 70})`}><rect x={x0 + 10} y={y + 12} width={w} height={140} rx={20} fill="#000" opacity={0.35} /><rect x={x0} y={y} width={w} height={140} rx={20} fill="#FFE14A" stroke={P.mar} strokeWidth={10} /><text x={x0 + w / 2} y={y + 104} textAnchor="middle" fontFamily={SLAB} fontSize={102} fill={P.mar}>{t}</text></g>;
+};
+const Frase: React.FC<{ x: number; y: number; t: string; cor?: string; tam?: number; larg?: number; uma?: boolean }> = ({ x, y, t, cor = '#FFFFFF', tam = 150, larg = 900, uma }) => {
+  const pal = t.split(' '); let ls = [t];
+  if (!uma && t.length * tam * 0.6 > larg && pal.length > 1) { let best = 1, d = 1e9; for (let i = 1; i < pal.length; i++) { const a = pal.slice(0, i).join(' ').length, b = pal.slice(i).join(' ').length; if (Math.abs(a - b) < d) { d = Math.abs(a - b); best = i; } } ls = [pal.slice(0, best).join(' '), pal.slice(best).join(' ')]; }
+  const m = Math.max(...ls.map((s) => s.length)), f = Math.min(tam, larg / (m * 0.6));
+  return <g>{ls.map((s, i) => <text key={i} x={x} y={y - (ls.length - 1 - i) * f * 1.0} textAnchor="middle" fontFamily={SANS} fontWeight={900} fontSize={f} fill={cor} stroke="#0B1730" strokeWidth={f * 0.16} strokeLinejoin="round" paintOrder="stroke" letterSpacing={-2}>{s}</text>)}</g>;
+};
+const Brilho: React.FC<{ x: number; y: number; r: number }> = ({ x, y, r }) => <><circle cx={x} cy={y} r={r * 1.5} fill="#fff" opacity={0.14} /><circle cx={x} cy={y} r={r} fill="#fff" opacity={0.2} /></>;
+// personagem grande, cortado embaixo: o rosto ocupa a capa
+const Rosto: React.FC<{ lado: 'e' | 'd'; x: number; h: number; p: T }> = ({ lado, x, h, p }) => (
+  <g clipPath={`url(#th${lado.toUpperCase()})`}>
+    <Brilho x={x} y={1210 - h + h * 0.2} r={h * 0.3} />
+    <Peao x={x} base={1210} h={h} tipo={p.tipo || 'sam'} cor={p.cor || P.coral} velho={p.velho} oculos={p.velho} coque={p.coque} humor={p.humor || 'feliz'} olhao lagrima={p.lagrima} olhar={p.olhar || [0, 0]} incl={p.incl || 0} />
+    {p.papel && <g transform={`translate(${x + h * 0.3} ${1210 - h * 0.42})`}><Papel x={0} y={0} nota={p.papel} rot={10} larg={h * 0.22} cor={p.papelCor === 'coral' ? P.coral : P.mar} /></g>}
   </g>
 );
-const A: React.FC = () => (
+const Seta: React.FC<{ y: number; vs?: boolean }> = ({ y, vs }) => vs
+  ? <g><circle cx={MEIO + 6} cy={y + 8} r={112} fill="#000" opacity={0.35} /><circle cx={MEIO} cy={y} r={112} fill="#E5322D" stroke="#fff" strokeWidth={12} /><text x={MEIO} y={y + 40} textAnchor="middle" fontFamily={SLAB} fontSize={112} fill="#fff">VS</text></g>
+  : <g><path d={`M ${MEIO - 110} ${y - 40} l 104 0 l 0 -52 l 122 92 l -122 92 l 0 -52 l -104 0 Z`} fill="#000" opacity={0.35} transform="translate(8 10)" /><path d={`M ${MEIO - 110} ${y - 40} l 104 0 l 0 -52 l 122 92 l -122 92 l 0 -52 l -104 0 Z`} fill="#FFE14A" stroke={P.mar} strokeWidth={12} strokeLinejoin="round" /></g>;
+const Emenda: React.FC = () => <rect x={MEIO - 5} y={0} width={10} height={1080} fill="#fff" />;
+
+// a — antes x depois: AGE 6 → AGE 60, rosto feliz x rosto em choque, uma frase embaixo de cada lado
+const A: React.FC<{ c: T }> = ({ c }) => (
   <>
-    <Fundo /><Casa6 l="a" fala={["YOU'RE SO", 'SMART!']} /><Casa60 l="b" x={700} />
-    <g transform="translate(40 40) scale(1.1)"><Balao x={MEIO + 230} y={300} linhas={["WHAT IF", "I FAIL?"]} ponta={[MEIO + 520, 440]} tam={58} pensa dest={['FAIL']} /></g>
-    <Tag x={40} y={36} t="AGE 6" /><Tag x={MEIO + 44} y={36} t="AGE 60" /><Seta y={520} />
-    <Frase x={480} y={1010} t="CALLED SMART." tam={104} /><Frase x={MEIO + 480} y={1010} t="AFRAID TO TRY." cor="#FF6B55" tam={104} />
+    <Fundo /><Rosto lado="e" x={330} h={c.hE || 760} p={c.pE} /><Rosto lado="d" x={MEIO + 600} h={c.hD || 900} p={c.pD} />
+    {c.falaE && <g transform="translate(60 -40) scale(1.3)"><Balao x={480} y={330} linhas={c.falaE} ponta={[330, 470]} tam={56} dest={c.dest || []} /></g>}
+    {c.pensaD && <g transform={`translate(${MEIO - 140} -30) scale(1.25)`}><Balao x={330} y={330} linhas={c.pensaD} ponta={[520, 430]} tam={56} pensa dest={c.dest || []} /></g>}
+    <rect x={0} y={700} width={1920} height={380} fill="url(#thBase)" /><Emenda />
+    <Tag x={36} y={30} t={c.tagE} /><Tag x={1884} y={30} t={c.tagD} dir /><Seta y={560} />
+    <Frase x={480} y={1030} t={c.txE} tam={c.txE.length > 14 ? 132 : 116} larg={c.txE.length > 14 ? 900 : 940} /><Frase x={MEIO + 480} y={1030} t={c.txD} cor="#FFE14A" tam={c.txD.length > 14 ? 132 : 116} larg={c.txD.length > 14 ? 900 : 940} />
   </>
 );
-const B: React.FC = () => (
+// b — VS: duas palavras gigantes, dois rostos adultos, selo VS
+const B: React.FC<{ c: T }> = ({ c }) => (
   <>
-    <Fundo /><Casa60 l="a" /><Casa60 l="b" feliz />
-    <g transform={`translate(${MEIO + 770} ${CHAO}) rotate(-14)`}><rect x={-9} y={-330} width={18} height={190} rx={6} fill={P.madeiraEsc} /><ellipse cx={0} cy={-150} rx={50} ry={46} fill="#D98A3A" /><ellipse cx={0} cy={-74} rx={68} ry={66} fill="#D98A3A" /><circle cx={0} cy={-96} r={20} fill="#3B2A20" /></g>
-    <Frase x={MEIO} y={150} t="WHO KEPT TRYING?" tam={124} cor={P.ouro} />
-    <circle cx={MEIO + 8} cy={552} r={170} fill="#000" opacity={0.3} /><circle cx={MEIO} cy={540} r={170} fill={P.mar} stroke={P.ouro} strokeWidth={12} />
-    <text x={MEIO - 22} y={580} textAnchor="end" fontFamily={SLAB} fontSize={150} fill="#FF6B55">1</text><text x={MEIO + 14} y={580} fontFamily={SLAB} fontSize={150} fill={P.ouro}>10</text>
-    <text x={MEIO} y={650} textAnchor="middle" fontFamily={SANS} fontWeight={900} fontSize={30} fill="#FFFFFF" letterSpacing={3}>HARD THINGS TRIED</text>
-    <Frase x={480} y={1010} t="“SO SMART”" tam={104} /><Frase x={MEIO + 480} y={1010} t="“WORKED HARD”" tam={98} />
+    <Fundo /><Rosto lado="e" x={470} h={c.hE || 840} p={c.pE} /><Rosto lado="d" x={MEIO + 490} h={c.hD || 840} p={c.pD} />
+    <rect x={0} y={740} width={1920} height={340} fill="url(#thBase)" /><Emenda />
+    <Frase x={480} y={230} t={c.palE} tam={230} larg={880} cor="#FFFFFF" /><Frase x={MEIO + 480} y={230} t={c.palD} tam={230} larg={880} cor="#FFE14A" />
+    <Seta y={540} vs />
+    <Frase x={480} y={1040} t={c.txE} tam={104} larg={900} /><Frase x={MEIO + 480} y={1040} t={c.txD} tam={104} larg={900} cor="#FFE14A" />
   </>
 );
-const C: React.FC = () => (
+// c — pergunta + placar no meio
+const C: React.FC<{ c: T }> = ({ c }) => (
   <>
-    <Fundo /><Casa6 l="a" fala={["YOU'RE SO", 'SMART!']} />
-    <g transform={`translate(${MEIO} 0)`}>
-      <Janela x={650} y={250} lado="b" noite /><Tapete x={380} larg={470} lado="b" /><Planta x={890} />
-      <Mesa x={470} lado="b" larg={360} />
-      <rect x={560} y={CHAO - 290} width={190} height={130} rx={10} fill="#39424F" /><rect x={571} y={CHAO - 279} width={168} height={106} rx={4} fill="#FFFFFF" /><text x={655} y={CHAO - 216} textAnchor="middle" fontFamily={SANS} fontWeight={900} fontSize={26} fill={P.mar}>NEW ROLE</text><rect x={530} y={CHAO - 162} width={250} height={14} rx={7} fill="#8894A3" />
-      <Peao x={300} h={520} tipo="sam" cor={P.coral} humor="triste" olhar={[0.2, 0.9]} incl={-5} />
-      <Carimbo x={640} y={640} txt="TURNED DOWN" tam={60} rot={-8} />
-    </g>
-        <Tag x={40} y={36} t="AGE 6" /><Tag x={MEIO + 44} y={36} t="AGE 30" /><Seta y={520} />
-    <Frase x={480} y={1010} t="“GIFTED” KID." tam={104} /><Frase x={MEIO + 480} y={1010} t="SCARED ADULT." cor="#FF6B55" tam={104} />
+    <Fundo /><Rosto lado="e" x={330} h={c.hE || 800} p={c.pE} /><Rosto lado="d" x={MEIO + 630} h={c.hD || 800} p={c.pD} />
+    <rect x={0} y={760} width={1920} height={320} fill="url(#thBase)" /><Emenda />
+    <Frase x={MEIO} y={190} t={c.perg} tam={170} larg={1800} cor="#FFE14A" uma />
+    <circle cx={MEIO + 8} cy={590} r={236} fill="#000" opacity={0.35} /><circle cx={MEIO} cy={580} r={236} fill="#0B1730" stroke="#FFE14A" strokeWidth={16} />
+    <text x={MEIO - 26} y={640} textAnchor="end" fontFamily={SLAB} fontSize={210} fill="#FF5A47">{c.placar[0]}</text><text x={MEIO + 26} y={640} fontFamily={SLAB} fontSize={c.placar[1].length > 1 ? 150 : 210} fill="#FFE14A">{c.placar[1]}</text>
+    <rect x={MEIO - 5} y={480} width={10} height={170} rx={5} fill="#fff" opacity={0.5} />
+    <text x={MEIO} y={736} textAnchor="middle" fontFamily={SANS} fontWeight={900} fontSize={Math.min(30, 400 / (c.rot.length * 0.66))} fill="#fff" letterSpacing={1}>{c.rot}</text>
+    <Frase x={400} y={1040} t={c.txE} tam={110} larg={760} /><Frase x={MEIO + 560} y={1040} t={c.txD} tam={110} larg={760} cor="#FFE14A" />
   </>
 );
-export const TCThumb: React.FC<{ v?: string }> = ({ v = 'a' }) => (
+export const TCThumb: React.FC<{ v?: string; c?: T }> = ({ v = 'a', c }) => (
   <AbsoluteFill style={{ background: P.mar }}>
-    <svg width={1280} height={720} viewBox="0 0 1920 1080">{v === 'a' ? <A /> : v === 'b' ? <B /> : <C />}</svg>
+    <svg width={1280} height={720} viewBox="0 0 1920 1080">{!c ? null : v === 'a' ? <A c={c} /> : v === 'b' ? <B c={c} /> : <C c={c} />}</svg>
   </AbsoluteFill>
 );

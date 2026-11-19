@@ -1,0 +1,1897 @@
+{
+ "cfg": {
+  "id": "tc003",
+  "titA": "“Let me do it.”",
+  "titB": "“You try first.”",
+  "conta": "SOLVED ALONE",
+  "idades": [
+   6,
+   10,
+   12,
+   16,
+   22,
+   30,
+   45,
+   60
+  ],
+  "vida": [
+   [
+    6,
+    "“Let me do it.”",
+    "“You try first.”"
+   ],
+   [
+    16,
+    "Parent fixes the grade.",
+    "Faces the teacher."
+   ],
+   [
+    30,
+    "Calls in sick.",
+    "Shows up anyway."
+   ],
+   [
+    60,
+    "Still fixing.",
+    "Gets the brag call."
+   ]
+  ],
+  "honesto": [
+   "Helping is not",
+   "the problem."
+  ],
+  "cards": [
+   {
+    "ano": "2018",
+    "quem": "Perry et al.",
+    "onde": "Developmental Psychology",
+    "n": "422 children, 8 years",
+    "t": [
+     "Take-over parenting",
+     "at age 2, then weaker",
+     "self-control at 5 and",
+     "more problems at 10."
+    ],
+    "x": [
+     "A link. Not a law."
+    ],
+    "chip": "SUPPORTS IT",
+    "cor": "mar"
+   },
+   {
+    "ano": "2012",
+    "quem": "Fingerman et al.",
+    "onde": "Journal of Marriage and Family",
+    "n": "592 grown children",
+    "t": [
+     "Grown kids who got",
+     "intense support",
+     "reported BETTER",
+     "adjustment."
+    ],
+    "chip": "COMPLICATES IT",
+    "cor": "coral"
+   },
+   {
+    "ano": "SO",
+    "quem": "The difference",
+    "onde": "Support is not the same as rescue",
+    "n": "",
+    "t": [
+     "Support: “I'm here",
+     "while you do it.”",
+     "Rescue: “Step aside,",
+     "I'll do it.”"
+    ],
+    "chip": "THE DIFFERENCE",
+    "cor": "ouro"
+   }
+  ],
+  "trocas": [
+   [
+    "“Let me do it.”",
+    "“You try first. I'm here.”"
+   ],
+   [
+    "“I'll call them.”",
+    "“What's your plan?”"
+   ],
+   [
+    "“It's okay, I fixed it.”",
+    "“That was hard. You did it.”"
+   ]
+  ],
+  "yet": {
+   "e": "YOU",
+   "d": "FIRST.",
+   "tam": 200
+  },
+  "lista": {
+   "tit": "STILL FIXING",
+   "it": [
+    "His taxes",
+    "His landlord",
+    "His flat tire"
+   ]
+  },
+  "prox": {
+   "e1": "PAID FOR",
+   "e2": "EVERY A",
+   "d1": "TRUSTED",
+   "d2": "TO LEARN",
+   "tam2": 130
+  },
+  "fontes": [
+   "https://pubmed.ncbi.nlm.nih.gov/29911880/",
+   "https://pubmed.ncbi.nlm.nih.gov/26336323/"
+  ],
+  "thumbs": {
+   "a": {
+    "tagE": "AGE 6",
+    "tagD": "AGE 30",
+    "falaE": [
+     "LET ME",
+     "DO IT!"
+    ],
+    "pensaD": [
+     "SOMEONE",
+     "FIX THIS!"
+    ],
+    "dest": [
+     "ME",
+     "FIX"
+    ],
+    "txE": "ALWAYS RESCUED",
+    "txD": "CAN'T COPE",
+    "pE": {
+     "humor": "riso",
+     "olhar": [
+      0.3,
+      -0.3
+     ]
+    },
+    "pD": {
+     "humor": "choque",
+     "lagrima": 1,
+     "olhar": [
+      -0.2,
+      0.2
+     ]
+    }
+   },
+   "b": {
+    "palE": "RESCUED",
+    "palD": "FAILED",
+    "txE": "HELPLESS AT 30",
+    "txD": "UNSHAKABLE AT 30",
+    "pE": {
+     "humor": "choque",
+     "lagrima": 1,
+     "olhar": [
+      0.2,
+      0.3
+     ]
+    },
+    "pD": {
+     "humor": "riso",
+     "olhar": [
+      -0.2,
+      -0.2
+     ],
+     "incl": 3
+    }
+   },
+   "c": {
+    "perg": "WHO CAN HANDLE IT?",
+    "placar": [
+     "0",
+     "8"
+    ],
+    "rot": "PROBLEMS SOLVED ALONE",
+    "txE": "“LET ME DO IT”",
+    "txD": "“YOU TRY FIRST”",
+    "pE": {
+     "humor": "triste",
+     "lagrima": 1,
+     "olhar": [
+      0.3,
+      0.5
+     ]
+    },
+    "pD": {
+     "humor": "riso",
+     "olhar": [
+      -0.3,
+      -0.2
+     ]
+    }
+   }
+  }
+ },
+ "blocos": [
+  {
+   "id": "gancho1",
+   "cena": "duo",
+   "idade": 6,
+   "et": "Same kid, two homes",
+   "gap": 0.1,
+   "falas": [
+    {
+     "txt": "Two kids forget their homework on the kitchen table.",
+     "v": {
+      "fa": {
+       "triste": 1
+      },
+      "fb": {
+       "triste": 1
+      }
+     },
+     "dest": [
+      "homework"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "In one home, a parent drives it to school. Every single time.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "I'LL BRING",
+        "IT TO YOU!"
+       ],
+       "q": "p",
+       "d": [
+        "BRING"
+       ]
+      },
+      "fa": null
+     },
+     "dest": [
+      "every"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "In the other, the parent says, \"That's a tough one. What's your plan?\"",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "WHAT'S",
+        "YOUR PLAN?"
+       ],
+       "q": "p",
+       "d": [
+        "PLAN"
+       ]
+      }
+     },
+     "dest": [
+      "plan"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Same kid. Same forgotten homework.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null,
+      "fb": null
+     },
+     "dest": [
+      "same"
+     ],
+     "p": 0
+    }
+   ]
+  },
+  {
+   "id": "gancho2",
+   "cena": "duo",
+   "idade": 30,
+   "gap": 0.1,
+   "falas": [
+    {
+     "txt": "By thirty, one of them can handle a terrible day.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "ca": 0,
+      "cb": 7,
+      "bb": {
+       "t": [
+        "I'VE GOT",
+        "THIS."
+       ],
+       "q": "k",
+       "d": [],
+       "pensa": 1
+      }
+     },
+     "dest": [
+      "handle"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "The other one is still waiting for someone to come and fix it.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "SOMEONE",
+        "FIX THIS."
+       ],
+       "q": "k",
+       "d": [
+        "SOMEONE"
+       ],
+       "pensa": 1
+      },
+      "fa": {
+       "triste": 1
+      }
+     },
+     "dest": [
+      "waiting"
+     ],
+     "p": 0
+    }
+   ]
+  },
+  {
+   "id": "gancho3",
+   "cena": "texto",
+   "falas": [
+    {
+     "txt": "This is the whole life, side by side.",
+     "v": {
+      "big": {
+       "e": "THE WHOLE LIFE,",
+       "d": "SIDE BY SIDE",
+       "tam": 78
+      },
+      "linha": 0
+     },
+     "dest": [
+      "whole",
+      "life"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Including one study that watched four hundred kids for eight years, starting when they were two.",
+     "v": {
+      "linha": 10,
+      "sub": "ONE STUDY · 422 KIDS · 8 YEARS"
+     },
+     "dest": [
+      "eight",
+      "years"
+     ],
+     "p": 0
+    }
+   ]
+  },
+  {
+   "id": "c1",
+   "cena": "duo",
+   "idade": 6,
+   "et": "Age 6: The shoelace",
+   "cap": {
+    "n": "ONE",
+    "tit": "THE SHOELACE"
+   },
+   "falas": [
+    {
+     "txt": "Meet Sam. Sam is six, can't tie a shoe yet, and is late for school.",
+     "v": {
+      "fa": {
+       "triste": 1
+      },
+      "fb": {
+       "triste": 1
+      }
+     },
+     "dest": [
+      "late"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "In the first home, a parent kneels down and ties it. Fast. Kind. Done.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "LET ME",
+        "DO IT."
+       ],
+       "q": "p",
+       "d": [
+        "ME"
+       ]
+      },
+      "fa": null
+     },
+     "dest": [
+      "ties"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "And Sam is on time.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "fa": {
+       "pula": 1
+      }
+     },
+     "dest": [
+      "on",
+      "time"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "In the second home, the parent waits. \"You try first.\"",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "YOU TRY",
+        "FIRST."
+       ],
+       "q": "p",
+       "d": [
+        "YOU"
+       ]
+      }
+     },
+     "dest": [
+      "waits"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "It takes three minutes. The knot is ugly. Sam is late.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "fb": null
+     },
+     "dest": [
+      "late"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Be honest. The first home is faster. In that moment, it even looks kinder.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null
+     },
+     "dest": [
+      "kinder"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Rescuing isn't neglect. It's love, moving a little too fast.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null
+     },
+     "dest": [
+      "love"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "At six, it looks like nothing. A shoelace. A zipper. A forgotten lunch.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null
+     },
+     "dest": [
+      "nothing"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "But childhood is mostly small problems. Thousands of them. And each one is a practice round for the big ones.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null
+     },
+     "dest": [
+      "practice"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "But Sam is learning something in each home. In the first: when it gets hard, someone comes.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "SOMEONE",
+        "COMES."
+       ],
+       "q": "k",
+       "d": [
+        "SOMEONE"
+       ],
+       "pensa": 1
+      }
+     },
+     "dest": [
+      "someone",
+      "comes"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "In the second: when it gets hard, I try.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "I TRY."
+       ],
+       "q": "k",
+       "d": [
+        "TRY"
+       ],
+       "pensa": 1
+      }
+     },
+     "dest": [
+      "try"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "One of those works great. Until the day nobody comes.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null,
+      "big": {
+       "e": "SOMEONE COMES",
+       "d": "I TRY",
+       "tam": 96
+      }
+     },
+     "dest": [
+      "nobody"
+     ],
+     "p": 0
+    }
+   ],
+   "pre": 2.3
+  },
+  {
+   "id": "c2",
+   "cena": "estudo",
+   "idade": 10,
+   "et": "Age 10: The experiment",
+   "cap": {
+    "n": "TWO",
+    "tit": "THE EXPERIMENT"
+   },
+   "est": {
+    "tag": "THE STUDY",
+    "titulo": [
+     "Childhood Self-Regulation",
+     "and Overcontrolling",
+     "Parenting"
+    ],
+    "meta": [
+     "Perry, Dollar, Calkins, Keane & Shanahan · 2018",
+     "Developmental Psychology",
+     "422 children, followed for 8 years"
+    ]
+   },
+   "falas": [
+    {
+     "txt": "Ten. And this next part is not a story.",
+     "v": {
+      "dir": {
+       "k": "selo",
+       "t": [
+        "NOT A STORY.",
+        "A REAL STUDY."
+       ]
+      }
+     },
+     "dest": [
+      "not",
+      "story"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "In a study published in twenty eighteen, researchers followed four hundred and twenty-two children for eight years.",
+     "v": {
+      "dir": {
+       "k": "num",
+       "n": 422,
+       "rot": "CHILDREN · FOLLOWED FOR 8 YEARS"
+      }
+     },
+     "dest": [
+      "eight",
+      "years"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "It started when the kids were two. Each toddler played with a parent in a lab, while researchers watched one thing.",
+     "v": {
+      "dir": {
+       "k": "selo",
+       "t": [
+        "WHO'S IN",
+        "CHARGE?"
+       ]
+      }
+     },
+     "dest": [
+      "two"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "How much did the parent take over? Choosing the toy. Showing how to play. Stepping in before the child could even struggle.",
+     "v": {
+      "dir": {
+       "k": "itens",
+       "cab": [
+        "Taking over looks like:"
+       ],
+       "n": 3,
+       "auto": 1,
+       "marca": "•",
+       "it": [
+        "Choosing the toy",
+        "Showing how to play",
+        "Stepping in before the struggle"
+       ]
+      }
+     },
+     "dest": [
+      "take",
+      "over"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "They called it overcontrolling parenting.",
+     "v": {
+      "dir": {
+       "k": "selo",
+       "t": [
+        "OVERCONTROLLING",
+        "PARENTING."
+       ]
+      }
+     },
+     "dest": [
+      "overcontrolling"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Then they checked on the same kids at five. The children of the take-over parents were worse at two things. Managing their emotions. And controlling their impulses.",
+     "v": {
+      "dir": {
+       "k": "itens",
+       "cab": [
+        "At age 5: worse at"
+       ],
+       "n": 2,
+       "auto": 1,
+       "it": [
+        "Managing emotions",
+        "Controlling impulses"
+       ]
+      }
+     },
+     "dest": [
+      "emotions",
+      "impulses"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "And at ten? Those kids reported more emotional problems and more trouble at school. Their teachers saw weaker social skills.",
+     "v": {
+      "dir": {
+       "k": "itens",
+       "cab": [
+        "At age 10:"
+       ],
+       "n": 3,
+       "auto": 1,
+       "it": [
+        "More emotional problems",
+        "More trouble at school",
+        "Weaker social skills"
+       ]
+      }
+     },
+     "dest": [
+      "ten"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "These parents weren't cold. They were trying to help.",
+     "v": {
+      "rod": "THEY WERE TRYING TO HELP."
+     },
+     "dest": [
+      "help"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "But a child who never gets to struggle never gets to practice calming down.",
+     "v": {
+      "rod": "NO STRUGGLE. NO PRACTICE."
+     },
+     "dest": [
+      "practice"
+     ],
+     "p": 0
+    }
+   ],
+   "pre": 2.3
+  },
+  {
+   "id": "c25",
+   "cena": "duo",
+   "idade": 12,
+   "et": "Age 12: The science fair",
+   "cap": {
+    "n": "THREE",
+    "tit": "THE SCIENCE FAIR"
+   },
+   "falas": [
+    {
+     "txt": "Twelve. The science fair. Back to the story.",
+     "v": {
+      "ca": 0,
+      "cb": 1
+     },
+     "dest": [
+      "science",
+      "fair"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "In the first home, the volcano is magnificent. A parent stayed up until two in the morning building it. It wins a ribbon.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "I FINISHED IT",
+        "FOR YOU."
+       ],
+       "q": "p",
+       "d": [
+        "I"
+       ]
+      },
+      "oa": [
+       "nota:1st"
+      ]
+     },
+     "dest": [
+      "magnificent"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Sam stands next to it. And can't explain how it works.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "HOW DOES IT",
+        "WORK?"
+       ],
+       "q": "k",
+       "d": [
+        "HOW"
+       ],
+       "pensa": 1
+      },
+      "fa": {
+       "triste": 1
+      }
+     },
+     "dest": [
+      "can't",
+      "explain"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "In the second home, the volcano leaks. The label is crooked. It wins nothing.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "ob": [
+       "nota:—"
+      ]
+     },
+     "dest": [
+      "leaks"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "But when a judge asks a question, Sam talks for five minutes.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "SO, THE VINEGAR",
+        "REACTS WITH..."
+       ],
+       "q": "k",
+       "d": [
+        "VINEGAR"
+       ]
+      },
+      "ob": [
+       "nota:—",
+       "carimbo2:BUILT IT ALONE"
+      ],
+      "cb": 2
+     },
+     "dest": [
+      "five",
+      "minutes"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "One kid has a ribbon. The other one has a volcano.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null,
+      "big": {
+       "e": "A RIBBON",
+       "d": "A VOLCANO",
+       "tam": 120
+      }
+     },
+     "dest": [
+      "ribbon",
+      "volcano"
+     ],
+     "p": 0
+    }
+   ],
+   "pre": 2.3
+  },
+  {
+   "id": "c3",
+   "cena": "duo",
+   "idade": 16,
+   "et": "Age 16: The failed test",
+   "cap": {
+    "n": "FOUR",
+    "tit": "THE FAILED TEST"
+   },
+   "falas": [
+    {
+     "txt": "Sixteen. Back to the story. Both Sams fail a chemistry test.",
+     "v": {
+      "ca": 0,
+      "cb": 2,
+      "oa": [
+       "nota:F"
+      ],
+      "ob": [
+       "nota:F"
+      ],
+      "fa": {
+       "triste": 1
+      },
+      "fb": {
+       "triste": 1
+      }
+     },
+     "dest": [
+      "fail"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "In the first home, a parent emails the teacher that night. Argues the grade. Gets it changed.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "I'LL TALK TO",
+        "YOUR TEACHER."
+       ],
+       "q": "p",
+       "d": [
+        "I'LL"
+       ]
+      },
+      "oa": [
+       "nota:C",
+       "carimbo:FIXED FOR SAM"
+      ],
+      "fa": null
+     },
+     "dest": [
+      "emails"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Sam learns chemistry isn't the lesson. The lesson is: problems are for parents.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "MOM WILL",
+        "HANDLE IT."
+       ],
+       "q": "k",
+       "d": [
+        "MOM"
+       ],
+       "pensa": 1
+      }
+     },
+     "dest": [
+      "parents"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "In the second home, the answer is the old one. \"What's your plan?\"",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "WHAT'S",
+        "YOUR PLAN?"
+       ],
+       "q": "p",
+       "d": [
+        "PLAN"
+       ]
+      }
+     },
+     "dest": [
+      "plan"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "So Sam walks into the teacher's room alone. Terrified. Asks for a retake. Studies. Gets a C plus.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": null,
+      "ob": [
+       "nota:C+",
+       "carimbo2:DID IT ALONE"
+      ],
+      "cb": 3,
+      "fb": null
+     },
+     "dest": [
+      "alone"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Almost the same grade in the end. A completely different lesson.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null,
+      "big": {
+       "e": "FIXED FOR ME",
+       "d": "FIXED BY ME",
+       "tam": 92
+      }
+     },
+     "dest": [
+      "lesson"
+     ],
+     "p": 0
+    }
+   ],
+   "pre": 2.3
+  },
+  {
+   "id": "cta1",
+   "cena": "texto",
+   "falas": [
+    {
+     "txt": "Quick question before we keep going. Which kid were you?",
+     "v": {
+      "big": {
+       "e": "WHICH ONE",
+       "d": "WERE YOU?",
+       "tam": 96
+      }
+     },
+     "dest": [
+      "which",
+      "kid"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Comment \"rescued\" or \"figured it out\". I read these, and I want to know which home you grew up in.",
+     "v": {
+      "chips": [
+       "“rescued”",
+       "“figured it out”"
+      ],
+      "sub": "COMMENT BELOW"
+     },
+     "dest": [
+      "comment"
+     ],
+     "p": 0
+    }
+   ]
+  },
+  {
+   "id": "c4",
+   "cena": "duo",
+   "idade": 22,
+   "et": "Age 22: The first apartment",
+   "cap": {
+    "n": "FIVE",
+    "tit": "THE FIRST APARTMENT"
+   },
+   "falas": [
+    {
+     "txt": "Twenty-two. First apartment. And both landlords refuse to return the deposit.",
+     "v": {
+      "ca": 0,
+      "cb": 4,
+      "oa": [
+       "email"
+      ],
+      "ob": [
+       "email"
+      ],
+      "fa": {
+       "triste": 1
+      },
+      "fb": {
+       "triste": 1
+      }
+     },
+     "dest": [
+      "deposit"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "The first Sam does what has always worked. Picks up the phone.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "MOM, CAN YOU",
+        "CALL THEM?"
+       ],
+       "q": "k",
+       "d": [
+        "MOM"
+       ]
+      }
+     },
+     "dest": [
+      "phone"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "And a parent calls the landlord. For a twenty-two-year-old.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "oa": [
+       "email",
+       "carimbo:MOM CALLED"
+      ],
+      "fa": null
+     },
+     "dest": [
+      "twenty-two"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "The first Sam isn't lazy. Sam has simply never once been the person who fixes it.",
+     "v": {
+      "foco": "a",
+      "bb": null
+     },
+     "dest": [
+      "never"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "And notice who is exhausted. A parent, still on call, twenty-two years in.",
+     "v": {
+      "foco": "a",
+      "bb": null
+     },
+     "dest": [
+      "exhausted"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "The second Sam hates this just as much. Reads the lease. Writes a firm email. Gets half the money back.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "OKAY.",
+        "WHERE DO I START?"
+       ],
+       "q": "k",
+       "d": [],
+       "pensa": 1
+      },
+      "ob": [
+       "email",
+       "carimbo2:HALF BACK"
+      ],
+      "cb": 5,
+      "fb": null
+     },
+     "dest": [
+      "half"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Half. Not a victory. But it's Sam's half.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null,
+      "big": {
+       "e": "ALL OF IT, BY MOM",
+       "d": "HALF OF IT, BY SAM",
+       "tam": 66
+      }
+     },
+     "dest": [
+      "half"
+     ],
+     "p": 0
+    }
+   ],
+   "pre": 2.3
+  },
+  {
+   "id": "c5",
+   "cena": "duo",
+   "idade": 30,
+   "et": "Age 30: The terrible day",
+   "cap": {
+    "n": "SIX",
+    "tit": "THE TERRIBLE DAY"
+   },
+   "falas": [
+    {
+     "txt": "Thirty. A project falls apart at work. Publicly. For both of them.",
+     "v": {
+      "ca": 0,
+      "cb": 6,
+      "oa": [
+       "oferta"
+      ],
+      "ob": [
+       "oferta"
+      ],
+      "fa": {
+       "triste": 1
+      },
+      "fb": {
+       "triste": 1
+      }
+     },
+     "dest": [
+      "publicly"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "The first Sam spirals. Not because the problem is bigger. Because the feeling is new.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "SOMEONE NEEDS",
+        "TO FIX THIS."
+       ],
+       "q": "k",
+       "d": [
+        "SOMEONE"
+       ],
+       "pensa": 1
+      }
+     },
+     "dest": [
+      "spirals"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "No one ever let Sam find out that a bad feeling passes. So Sam calls in sick.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": null,
+      "oa": [
+       "oferta",
+       "carimbo:CALLED IN SICK"
+      ]
+     },
+     "dest": [
+      "passes"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "The second Sam feels just as awful. But there's a quiet voice from every ugly shoelace and every failed test.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "I'VE BEEN",
+        "HERE BEFORE."
+       ],
+       "q": "k",
+       "d": [
+        "BEFORE"
+       ],
+       "pensa": 1
+      }
+     },
+     "dest": [
+      "voice"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Sam shows up the next morning.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": null,
+      "ob": [
+       "oferta",
+       "carimbo2:SHOWED UP"
+      ],
+      "cb": 7,
+      "fb": null
+     },
+     "dest": [
+      "shows",
+      "up"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "And here's the cruel part. The first Sam looks less capable than Sam really is. The ability is there. The proof isn't.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": null
+     },
+     "dest": [
+      "proof"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Look at the count at the top. Problems solved alone.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null,
+      "conta": 1,
+      "cb": 8
+     },
+     "dest": [
+      "alone"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "That isn't confidence. It's evidence. Thirty years of proof that Sam survives hard things.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null,
+      "conta": null,
+      "big": {
+       "e": "NO EVIDENCE",
+       "d": "EVIDENCE",
+       "tam": 110
+      }
+     },
+     "dest": [
+      "evidence"
+     ],
+     "p": 0
+    }
+   ],
+   "pre": 2.3
+  },
+  {
+   "id": "c6",
+   "cena": "duo",
+   "idade": 45,
+   "et": "Age 45: The shoelace, again",
+   "cap": {
+    "n": "SEVEN",
+    "tit": "THE SHOELACE, AGAIN"
+   },
+   "falas": [
+    {
+     "txt": "Forty-five. Both Sams have a six-year-old who can't tie a shoe. And everybody is late.",
+     "v": {
+      "ca": 0,
+      "cb": 8
+     },
+     "dest": [
+      "late"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "The first Sam kneels down and ties it. Fast. Kind. Done.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "LET ME",
+        "DO IT."
+       ],
+       "q": "p",
+       "d": [
+        "ME"
+       ]
+      }
+     },
+     "dest": [
+      "ties"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "It's love. It was always love.",
+     "v": {
+      "foco": "a",
+      "bb": null
+     },
+     "dest": [
+      "love"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "The second Sam puts both hands in both pockets. \"You try first.\"",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "YOU TRY",
+        "FIRST."
+       ],
+       "q": "p",
+       "d": [
+        "YOU"
+       ]
+      }
+     },
+     "dest": [
+      "pockets"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "It takes three minutes. It is the longest three minutes of Sam's day.",
+     "v": {
+      "foco": "b",
+      "ba": null
+     },
+     "dest": [
+      "longest"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Watching your kid fight with a knot you could fix in four seconds is one of the hardest things a parent does.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null
+     },
+     "dest": [
+      "hardest"
+     ],
+     "p": 0
+    }
+   ],
+   "pre": 2.3
+  },
+  {
+   "id": "cta2",
+   "cena": "texto",
+   "falas": [
+    {
+     "txt": "If you know a parent who can't stop fixing things, send them this. Gently. They're doing it out of love.",
+     "v": {
+      "big": {
+       "e": "SEND THIS",
+       "d": "TO THEM",
+       "tam": 110
+      },
+      "sub": "GENTLY",
+      "icone": "share"
+     },
+     "dest": [
+      "send"
+     ],
+     "p": 0
+    }
+   ]
+  },
+  {
+   "id": "c7",
+   "cena": "duo",
+   "idade": 60,
+   "et": "Age 60: The flat tire",
+   "cap": {
+    "n": "EIGHT",
+    "tit": "THE FLAT TIRE"
+   },
+   "falas": [
+    {
+     "txt": "Sixty. The second Sam's daughter gets a flat tire two hours from home. She changes it herself. Then calls to brag.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": {
+       "t": [
+        "GUESS WHAT",
+        "I JUST DID!"
+       ],
+       "q": "p",
+       "d": [
+        "GUESS"
+       ]
+      },
+      "ca": 0,
+      "cb": 8
+     },
+     "dest": [
+      "brag"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "The first Sam's son gets the same flat tire. He calls before the car has stopped rolling.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "DAD, COME",
+        "GET ME."
+       ],
+       "q": "p",
+       "d": [
+        "COME"
+       ]
+      },
+      "oa": [
+       "lista"
+      ]
+     },
+     "dest": [
+      "calls"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "And Sam, at sixty, gets in the car.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": {
+       "t": [
+        "I'M COMING."
+       ],
+       "q": "k",
+       "d": []
+      }
+     },
+     "dest": [
+      "sixty"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Sam is needed. That feels a lot like love. But Sam is tired. And worried about what happens after.",
+     "v": {
+      "foco": "a",
+      "bb": null,
+      "ba": null,
+      "fa": {
+       "triste": 1
+      }
+     },
+     "dest": [
+      "tired"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "The second Sam worried just as much, for forty years. Letting a kid struggle isn't the easy path. You have to stand there and watch.",
+     "v": {
+      "foco": "b",
+      "ba": null,
+      "bb": null
+     },
+     "dest": [
+      "watch"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "One parent is still needed. The other one is trusted.",
+     "v": {
+      "foco": null,
+      "ba": null,
+      "bb": null,
+      "big": {
+       "e": "NEEDED",
+       "d": "TRUSTED",
+       "tam": 130
+      }
+     },
+     "dest": [
+      "needed",
+      "trusted"
+     ],
+     "p": 0
+    }
+   ],
+   "pre": 2.3
+  },
+  {
+   "id": "vida",
+   "cena": "vida",
+   "et": "The whole life, side by side",
+   "falas": [
+    {
+     "txt": "Here's the whole life, side by side.",
+     "v": {
+      "n": 0
+     },
+     "dest": [
+      "side"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Six. \"Let me do it.\" \"You try first.\"",
+     "v": {
+      "n": 1
+     },
+     "dest": [],
+     "p": 0
+    },
+    {
+     "txt": "Sixteen. A parent fixes the grade. Sam faces the teacher.",
+     "v": {
+      "n": 2
+     },
+     "dest": [],
+     "p": 0
+    },
+    {
+     "txt": "Thirty. Calls in sick. Shows up anyway.",
+     "v": {
+      "n": 3
+     },
+     "dest": [],
+     "p": 0
+    },
+    {
+     "txt": "Sixty. Still fixing. Gets the brag call.",
+     "v": {
+      "n": 4
+     },
+     "dest": [
+      "brag"
+     ],
+     "p": 0
+    }
+   ]
+  },
+  {
+   "id": "honesto",
+   "cena": "honesto",
+   "et": "The honest part",
+   "falas": [
+    {
+     "txt": "Now, the honest part. Because helping is not the problem.",
+     "v": {
+      "n": 0
+     },
+     "dest": [
+      "helping"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "That eight-year study found a link. Not a law. Plenty of kids with hovering parents turn out fine.",
+     "v": {
+      "n": 1,
+      "x": 1
+     },
+     "dest": [
+      "link"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "And in twenty twelve, a study of nearly six hundred grown children found something awkward for this video.",
+     "v": {
+      "n": 2,
+      "x": 1
+     },
+     "dest": [
+      "awkward"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "The ones who got intense support from their parents, advice, money, a listening ear, were doing better. Not worse.",
+     "v": {
+      "n": 2,
+      "x": 1
+     },
+     "dest": [
+      "better"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "So what's the difference? Support says, I'm here while you do it. Rescue says, step aside, I'll do it.",
+     "v": {
+      "n": 3,
+      "x": 1
+     },
+     "dest": [
+      "difference"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "One builds a person. The other replaces them.",
+     "v": {
+      "rod": "ONE BUILDS A PERSON. ONE REPLACES THEM."
+     },
+     "dest": [
+      "builds"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "The trick is the age. A two-year-old needs you to step in. A twelve-year-old needs you to step back. A little more every year.",
+     "v": {
+      "rod": "STEP BACK A LITTLE MORE EVERY YEAR."
+     },
+     "dest": [
+      "step",
+      "back"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "And some rescues are right. A child in real danger is not a teaching moment.",
+     "v": {
+      "rod": "REAL DANGER IS NOT A LESSON."
+     },
+     "dest": [
+      "danger"
+     ],
+     "p": 0
+    }
+   ]
+  },
+  {
+   "id": "trocas",
+   "cena": "trocas",
+   "et": "It's never too late",
+   "falas": [
+    {
+     "txt": "And this can change at any age. Theirs, or yours.",
+     "v": {
+      "n": 0,
+      "tit": 1
+     },
+     "dest": [
+      "change"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Three swaps, for the next time you feel your hands reaching in.",
+     "v": {
+      "n": 0,
+      "tit": null
+     },
+     "dest": [
+      "three",
+      "swaps"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Instead of \"let me do it,\" try \"you try first. I'm here.\"",
+     "v": {
+      "n": 1
+     },
+     "dest": [
+      "first"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Instead of \"I'll call them,\" try \"what's your plan?\"",
+     "v": {
+      "n": 2
+     },
+     "dest": [
+      "plan"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "And instead of \"it's okay, I fixed it,\" try \"that was hard. And you did it.\"",
+     "v": {
+      "n": 3
+     },
+     "dest": [
+      "you",
+      "did"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "And if you were the rescued kid, start small. One problem this week that you solve before you call anyone.",
+     "v": {
+      "n": 3,
+      "yet": 1
+     },
+     "dest": [
+      "before"
+     ],
+     "p": 0
+    }
+   ]
+  },
+  {
+   "id": "fim1",
+   "cena": "duo",
+   "idade": 6,
+   "gap": 0.2,
+   "falas": [
+    {
+     "txt": "Same kid. Same shoelace. Two different homes.",
+     "v": {
+      "ba": {
+       "t": [
+        "LET ME",
+        "DO IT."
+       ],
+       "q": "p",
+       "d": [
+        "ME"
+       ]
+      },
+      "bb": {
+       "t": [
+        "YOU TRY",
+        "FIRST."
+       ],
+       "q": "p",
+       "d": [
+        "YOU"
+       ]
+      }
+     },
+     "dest": [
+      "homes"
+     ],
+     "p": 0
+    }
+   ]
+  },
+  {
+   "id": "fim2",
+   "cena": "fim",
+   "falas": [
+    {
+     "txt": "Next time, same kid again, two new homes. One who was paid for every A. And one who was trusted to learn.",
+     "v": {
+      "n": 1
+     },
+     "dest": [
+      "paid",
+      "trusted"
+     ],
+     "p": 0
+    },
+    {
+     "txt": "Subscribe so you don't miss it. I'll see you in the next childhood.",
+     "v": {
+      "n": 2
+     },
+     "dest": [
+      "subscribe"
+     ],
+     "p": 0
+    }
+   ]
+  }
+ ]
+}
