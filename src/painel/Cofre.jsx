@@ -3,7 +3,7 @@ import { supabase } from '../lib/supabase'
 import { CANAIS } from './canais'
 import { usePainel } from './Painel'
 import { Janela } from './Pipeline'
-import { CanaisCofre, EmailsDisponiveis } from './CofreExtra'
+import { CanaisCofre, EmailsDisponiveis, REDES_USO, canalDoUso, livre } from './CofreExtra'
 
 // Cofre de acessos (cadeado no menu): logins, e-mails e senhas das contas de cada perfil.
 // A senha mestra nunca sai deste navegador: dela sai a chave (PBKDF2) que criptografa cada acesso (AES-GCM).
@@ -12,6 +12,7 @@ const TRANCA_MIN = 10
 const VERIFICA = 'cofre-tavin-ok'
 const REDES = ['Instagram', 'TikTok', 'YouTube', 'E-mail', 'Facebook', 'Kiwify', 'Outro']
 const SLOTS = ['Instagram', 'TikTok', 'YouTube', 'E-mail']
+const mesmo = (a, b) => String(a || '').trim().toLowerCase() === String(b || '').trim().toLowerCase()
 const VAZIO = { canal: '', rede: 'Instagram', conta: '', login: '', email: '', senha: '', telefone: '', recuperacao: '', notas: '' }
 // @ que o painel já conhece de cada canal (preenche sozinho ao adicionar)
 const CONHECIDAS = {
@@ -85,7 +86,7 @@ function Acesso({ i, editar, apagar, setApagar, remover }) {
   )
 }
 
-function Formulario({ inicial, salvar, cancelar }) {
+function Formulario({ inicial, salvar, cancelar, estoque = [] }) {
   const [f, setF] = useState({ ...VAZIO, ...inicial })
   const [verSenha, setVerSenha] = useState(!inicial?.senha)
   const set = (k) => (e) => setF({ ...f, [k]: e.target.value })
@@ -103,7 +104,15 @@ function Formulario({ inicial, salvar, cancelar }) {
         </label>
         <label className="p-campo">Conta (@ ou nome)<input value={f.conta} onChange={set('conta')} placeholder="@zerando.90" required /></label>
         <label className="p-campo">Usuário / login<input value={f.login} onChange={set('login')} placeholder="zerando.90" /></label>
-        <label className="p-campo">E-mail ligado<input type="email" value={f.email} onChange={set('email')} placeholder="conta@gmail.com" /></label>
+        <label className="p-campo">E-mail ligado
+          <input type="email" list="cf-estoque" value={f.email} placeholder="conta@gmail.com" onChange={(e) => {
+            const v = e.target.value
+            const c = estoque.find((x) => mesmo(x.email, v))
+            setF({ ...f, email: v, login: f.login || (c ? v : f.login), senha: f.senha || (c && f.rede === 'YouTube' ? c.senha || '' : f.senha) })
+          }} />
+          <datalist id="cf-estoque">{estoque.filter((x) => !REDES_USO.includes(f.rede) || livre(x, f.rede) || mesmo(x.email, f.email)).map((x) => <option key={x.id} value={x.email} />)}</datalist>
+          {estoque.some((x) => mesmo(x.email, f.email)) && <small className="ce-liga">Do estoque: fica marcado como em uso neste canal</small>}
+        </label>
         <label className="p-campo">Telefone ligado<input value={f.telefone} onChange={set('telefone')} placeholder="+55 …" /></label>
         <label className="p-campo cf-largo">Senha
           <span className="cf-senha">
@@ -225,6 +234,16 @@ export default function Cofre() {
     const k = await chaveDe(senha, cfg.sal, cfg.iteracoes)
     try { if ((await decifrar(k, cfg.verificador)) !== VERIFICA) throw new Error() } catch { throw new Error('Senha errada.') }
     setChave(k); ultimo.current = Date.now(); await puxarFila(k, await carregar(k))
+    // e-mails que já estavam marcados com um canal do painel ganham o acesso em "Contas dos canais"
+    const abertos = await carregar(k)
+    const faltam = acessosDoEstoque((abertos || []).filter((i) => i.tipo === 'estoque'), abertos || [])
+    for (const a of faltam) {
+      const { id, atualizado_em, quebrado, ...dados } = a
+      const cif = await cifrar(k, dados)
+      if (id) await supabase.from('cofre').update({ dados: cif, atualizado_em: new Date().toISOString() }).eq('id', id)
+      else await supabase.from('cofre').insert({ dados: cif })
+    }
+    if (faltam.length) { avisar(`${faltam.length} ${faltam.length === 1 ? 'conta ligada' : 'contas ligadas'} aos canais pelo estoque de e-mails`); await carregar(k) }
   }
 
   async function salvar(f) {
@@ -234,13 +253,52 @@ export default function Cofre() {
       ? await supabase.from('cofre').update({ dados: cif, atualizado_em: new Date().toISOString() }).eq('id', id)
       : await supabase.from('cofre').insert({ dados: cif })
     if (error) { avisar('Não salvou'); return }
-    setEditando(null); avisar('Salvo no cofre'); carregar(chave)
+    const c = CANAIS.find((x) => x.id === dados.canal)
+    const e = c && REDES_USO.includes(dados.rede) && itens.find((x) => x.tipo === 'estoque' && mesmo(x.email, dados.email))
+    if (e && livre(e, dados.rede)) {
+      const novo = { ...e, usos: { ...(e.usos || {}), [dados.rede]: c.nome } }
+      if (!novo.senha && dados.rede === 'YouTube' && dados.senha) novo.senha = dados.senha
+      const { id: eid, atualizado_em: _a, quebrado: _q, ...resto } = novo
+      await supabase.from('cofre').update({ dados: await cifrar(chave, resto), atualizado_em: new Date().toISOString() }).eq('id', eid)
+    }
+    setEditando(null); avisar(e ? `Salvo e ${dados.email} marcado como em uso no ${c.nome}` : 'Salvo no cofre'); carregar(chave)
+  }
+
+  // E-mail do estoque escrito como uso de um canal do painel → cria/atualiza o acesso em "Contas dos canais"
+  function acessosDoEstoque(lista, base = itens) {
+    const atuais = base.filter((i) => i.tipo !== 'estoque' && !i.quebrado)
+    const saida = []
+    for (const f of lista) {
+      if (!f.email) continue
+      for (const r of REDES_USO) {
+        const c = canalDoUso(f.usos?.[r])
+        if (!c) continue
+        const ja = atuais.find((i) => i.canal === c.id && i.rede === r && mesmo(i.email, f.email))
+          || atuais.find((i) => i.canal === c.id && i.rede === r && !i.email)
+        const senha = r === 'YouTube' ? f.senha || '' : ''
+        if (ja) {
+          const novo = { ...ja, email: ja.email || f.email, login: ja.login || f.email, senha: ja.senha || senha }
+          if (novo.email !== ja.email || novo.login !== ja.login || novo.senha !== ja.senha) saida.push(novo)
+        } else {
+          const handle = { YouTube: c.youtube, TikTok: c.tiktok, Instagram: c.instagram }[r] || CONHECIDAS[c.id]?.[r] || ''
+          saida.push({ ...VAZIO, canal: c.id, rede: r, conta: handle || c.nome, login: f.email, email: f.email, senha,
+            notas: r === 'YouTube' ? 'Ligado pelo estoque de e-mails (login Google)' : 'Ligado pelo estoque de e-mails. Senha da rede, se for diferente da do Google, colocar aqui.' })
+        }
+      }
+    }
+    return saida
   }
 
   // estoque de e-mails: vários de uma vez (importação) e um por vez (edição)
   async function salvarVarios(lista) {
     let n = 0
     const novos = []
+    for (const a of acessosDoEstoque(lista)) {
+      const { id, atualizado_em, quebrado, ...dados } = a
+      const cif = await cifrar(chave, dados)
+      if (id) await supabase.from('cofre').update({ dados: cif, atualizado_em: new Date().toISOString() }).eq('id', id)
+      else await supabase.from('cofre').insert({ dados: cif })
+    }
     for (const f of lista) {
       const { id, atualizado_em, quebrado, ...dados } = f
       const cif = await cifrar(chave, { ...dados, tipo: 'estoque' })
@@ -318,7 +376,7 @@ export default function Cofre() {
 
       {editando && (
         <Janela titulo={editando.id ? 'Editar acesso' : 'Novo acesso'} sub={CANAIS.find((c) => c.id === editando.canal)?.nome || ''} fechar={() => setEditando(null)}>
-          <Formulario inicial={editando} salvar={salvar} cancelar={() => setEditando(null)} />
+          <Formulario inicial={editando} salvar={salvar} cancelar={() => setEditando(null)} estoque={estoque} />
         </Janela>
       )}
 

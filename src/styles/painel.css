@@ -1734,3 +1734,28 @@ a.crm-btn { text-decoration: none; display: inline-flex; align-items: center; }
 @media (max-width: 680px) { .rd-grade, .rd-canais-capas { grid-template-columns: minmax(0, 1fr); } }
 .rd-ver { justify-self: start; background: none; border: 1px solid var(--linha); border-radius: 10px; padding: 8px 12px; font: inherit; font-size: 14px; cursor: pointer; color: inherit; }
 .rd-ver:hover { border-color: var(--cinza); }
+
+/* Cofre · filtros do estoque de e-mails */
+.ce-filtros { display: flex; flex-wrap: wrap; gap: 8px 18px; background: var(--branco); border: 1px solid var(--linha); border-radius: 14px; padding: 12px 14px; }
+.ce-grupo { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.ce-grupo-rot { font-size: 11.5px; font-weight: 700; color: var(--cinza); margin-right: 2px; }
+.ce-grupo button { font: inherit; font-size: 12.5px; font-weight: 600; border: 1px solid var(--linha); background: #fff; color: #4A4252; border-radius: 999px; padding: 4px 11px; cursor: pointer; display: inline-flex; gap: 6px; align-items: center; }
+.ce-grupo button small { font-size: 11px; color: var(--cinza); font-variant-numeric: tabular-nums; }
+.ce-grupo button.on { background: #2A2230; border-color: #2A2230; color: #fff; }
+.ce-grupo button.on small { color: #D9D2E0; }
+.ce-grupo button:focus-visible, .ce-link:focus-visible { outline: 2px solid #B600F6; outline-offset: 2px; }
+.ce-grupo select { font: inherit; font-size: 12.5px; padding: 5px 10px; border: 1px solid var(--linha); border-radius: 999px; background: #fff; color: inherit; margin-right: 8px; }
+.ce-resumo { margin: 0; }
+.ce-link { font: inherit; background: none; border: 0; padding: 0; color: #8A00BD; font-weight: 700; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
+.ce-col-on { background: #FAF6FD; border-radius: 6px; }
+.ce-chip--canal { display: inline-flex; align-items: center; gap: 5px; background: color-mix(in srgb, var(--c) 14%, #fff); color: #2A2230; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c) 45%, #fff); }
+.ce-chip--canal img, .ce-chip--canal i { width: 14px; height: 14px; border-radius: 50%; object-fit: cover; background: var(--c); flex: none; }
+.ce-chip--sem { border: 1px dashed #D9A400; background: #FFF8E1; color: #7A5B00; cursor: pointer; font: inherit; font-size: 11.5px; font-weight: 600; }
+.ce-liga { color: #116B3C; font-weight: 600; }
+.ce-nada { padding: 14px; margin: 0; }
+@media (max-width: 760px) {
+  .ce-filtros { padding: 10px; gap: 10px; }
+  .ce-grupo { width: 100%; }
+  .ce-acoes .p-btn { flex: 1 1 calc(50% - 8px); }
+  .ce-linha > span[data-rede]::before { content: attr(data-rede); display: block; font-size: 10.5px; font-weight: 700; color: var(--cinza); margin-bottom: 2px; }
+}
