@@ -14,7 +14,25 @@ const ha = (iso) => {
 }
 const canalUrl = (id) => `https://www.youtube.com/channel/${encodeURIComponent(id)}`
 const videoUrl = (id) => `https://www.youtube.com/watch?v=${encodeURIComponent(id)}`
-const IDIOMA = { en: 'Inglês', es: 'Espanhol', de: 'Alemão', fr: 'Francês', pt: 'Português' }
+const IDIOMA = { en: 'Inglês', es: 'Espanhol', de: 'Alemão', fr: 'Francês', pl: 'Polonês', pt: 'Português' }
+const capaUrl = (id) => `https://i.ytimg.com/vi/${encodeURIComponent(id)}/mqdefault.jpg`
+const minutos = (s) => (s ? `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}` : '')
+
+// Capas dos vídeos mais vistos do canal (vêm prontas do radar_painel, sem chamada nova ao YouTube).
+function Capas({ videos, larga }) {
+  if (!videos?.length) return null
+  return (
+    <div className={`rd-capas${larga ? ' rd-capas--larga' : ''}`}>
+      {videos.map((v) => (
+        <a key={v.id} className="rd-capa" href={videoUrl(v.id)} target="_blank" rel="noreferrer" title={v.t}>
+          <span className="rd-capa-img"><img src={capaUrl(v.id)} alt="" loading="lazy" />{v.s ? <em>{minutos(v.s)}</em> : null}</span>
+          <span className="rd-capa-tit">{v.t}</span>
+          <span className="rd-capa-views">{mil(v.v)} views</span>
+        </a>
+      ))}
+    </div>
+  )
+}
 const COMPLEX = { 'fácil': 'facil', 'média': 'media', 'difícil': 'dificil', 'não dá': 'nao' }
 
 function Chip({ c }) {
@@ -35,7 +53,8 @@ function Cartao({ c }) {
         <div><b>{c.n_longos}</b><span>longos</span></div>
       </div>
       <div className="rd-card-tags"><span className="rd-formato">{c.formato}</span><Chip c={c.complexidade} /></div>
-      {c.top_video && <a className="rd-card-video" href={videoUrl(c.top_video)} target="_blank" rel="noreferrer">▶ {c.top_titulo}</a>}
+      {c.videos?.length ? <Capas videos={c.videos} />
+        : c.top_video && <a className="rd-card-video" href={videoUrl(c.top_video)} target="_blank" rel="noreferrer">▶ {c.top_titulo}</a>}
     </article>
   )
 }
@@ -60,9 +79,10 @@ function Aposta({ i }) {
           </div>
           <div>
             <h4>Canais para estudar</h4>
-            <ul>{(i.referencias || []).map((r) => (
+            <ul className="rd-canais-capas">{(i.referencias || []).map((r) => (
               <li key={r.id}><a href={canalUrl(r.id)} target="_blank" rel="noreferrer">{r.nome}</a> <span className="rd-cinza">· típico {mil(r.mediana)}</span>
-                {r.top_video && <a className="rd-card-video" href={videoUrl(r.top_video)} target="_blank" rel="noreferrer">▶ {r.top_titulo} ({mil(r.top_views)})</a>}</li>
+                {r.videos?.length ? <Capas videos={r.videos} />
+                  : r.top_video && <a className="rd-card-video" href={videoUrl(r.top_video)} target="_blank" rel="noreferrer">▶ {r.top_titulo} ({mil(r.top_views)})</a>}</li>
             ))}</ul>
           </div>
         </div>
@@ -92,9 +112,10 @@ function Nicho({ n, i, onVer }) {
         {n.rpm_min != null && <p className="rd-cinza">Valor estimado: US$ {n.rpm_min} a {n.rpm_max} por mil views.</p>}
         <div>
           <h4>Canais novos que estão pegando</h4>
-          <ul className="rd-nicho-lista">{n.canais.slice(0, 6).map((c) => (
-            <li key={c.canal_id}><a href={canalUrl(c.canal_id)} target="_blank" rel="noreferrer">{c.nome}</a> <span className="rd-cinza">· {c.dias} dias · típico {mil(c.mediana_longo)} · {IDIOMA[c.idioma] || c.idioma || '—'}</span>
-              {c.top_video && <a className="rd-card-video" href={videoUrl(c.top_video)} target="_blank" rel="noreferrer">▶ {c.top_titulo}</a>}</li>
+          <ul className="rd-nicho-lista rd-canais-capas">{n.canais.slice(0, 6).map((c) => (
+            <li key={c.canal_id}><a href={canalUrl(c.canal_id)} target="_blank" rel="noreferrer">{c.nome}</a> <span className="rd-cinza">· {c.dias} dias · típico {mil(c.mediana_longo)} · {IDIOMA[c.idioma] || c.idioma || '—'} · {c.pais}</span>
+              {c.videos?.length ? <Capas videos={c.videos} larga />
+                : c.top_video && <a className="rd-card-video" href={videoUrl(c.top_video)} target="_blank" rel="noreferrer">▶ {c.top_titulo}</a>}</li>
           ))}</ul>
         </div>
         <button type="button" className="rd-ver" onClick={() => onVer(n.formato)}>Ver só esse nicho na tabela</button>
