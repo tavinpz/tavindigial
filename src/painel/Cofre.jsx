@@ -221,6 +221,35 @@ export default function Cofre() {
     if (n) { avisar(`${n} e-mails entraram no estoque do cofre`); await carregar(k) }
   }
 
+  // fila temporária cofre_fila (e-mails com senha e acessos vindos de planilha): criptografa aqui e apaga a linha
+  async function puxarFilaCompleta(k) {
+    const { data } = await supabase.from('cofre_fila').select('id,tipo,dados').order('id')
+    if (!data?.length) return
+    const abertos = (await carregar(k)) || []
+    const porEmail = Object.fromEntries(abertos.filter((i) => i.tipo === 'estoque').map((e) => [String(e.email).toLowerCase(), e]))
+    const acessos = abertos.filter((i) => i.tipo !== 'estoque' && !i.quebrado)
+    let ne = 0, na = 0
+    for (const { id: fid, tipo, dados: p } of data) {
+      let r = { error: null }
+      if (tipo === 'estoque') {
+        const atual = porEmail[String(p.email).toLowerCase()]
+        const usos = { ...(p.usos || {}) }
+        for (const [rd, v] of Object.entries(atual?.usos || {})) if (String(v || '').trim()) usos[rd] = v
+        const notas = [atual?.notas, p.notas].filter(Boolean).filter((x, i, l) => l.indexOf(x) === i).join(' · ')
+        const d = { tipo: 'estoque', email: atual?.email || p.email, senha: atual?.senha || p.senha || '', perfil: atual?.perfil || p.perfil || '', duas_etapas: atual?.duas_etapas ?? p.duas_etapas ?? null, usos, notas }
+        const cif = await cifrar(k, d)
+        r = atual ? await supabase.from('cofre').update({ dados: cif, atualizado_em: new Date().toISOString() }).eq('id', atual.id) : await supabase.from('cofre').insert({ dados: cif })
+        if (!r.error) { ne++; porEmail[String(d.email).toLowerCase()] = { ...d, id: atual?.id } }
+      } else {
+        const ja = acessos.find((i) => i.rede === p.rede && mesmo(i.login, p.login) && mesmo(i.conta, p.conta))
+        if (!ja) { r = await supabase.from('cofre').insert({ dados: await cifrar(k, { ...VAZIO, ...p }) }); if (!r.error) { na++; acessos.push(p) } }
+      }
+      if (!r.error) await supabase.from('cofre_fila').delete().eq('id', fid)
+    }
+    avisar(`Planilha importada: ${ne} e-mails e ${na} acessos guardados no cofre`)
+    await carregar(k)
+  }
+
   async function abrir(senha) {
     if (!cfg) {
       const sal = b64(crypto.getRandomValues(new Uint8Array(16)))
@@ -233,7 +262,7 @@ export default function Cofre() {
     }
     const k = await chaveDe(senha, cfg.sal, cfg.iteracoes)
     try { if ((await decifrar(k, cfg.verificador)) !== VERIFICA) throw new Error() } catch { throw new Error('Senha errada.') }
-    setChave(k); ultimo.current = Date.now(); await puxarFila(k, await carregar(k))
+    setChave(k); ultimo.current = Date.now(); await puxarFila(k, await carregar(k)); await puxarFilaCompleta(k)
     // e-mails que já estavam marcados com um canal do painel ganham o acesso em "Contas dos canais"
     const abertos = await carregar(k)
     const faltam = acessosDoEstoque((abertos || []).filter((i) => i.tipo === 'estoque'), abertos || [])
