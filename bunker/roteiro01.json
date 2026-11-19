@@ -1,0 +1,273 @@
+{
+ "id": "bk001",
+ "titulo": "365 Tage im Bunker eingesperrt – die erste Woche hätte mich fast getötet (Teil 1)",
+ "titulos_alt": [
+  "1 Jahr im Bunker: Am 5. Tag ging mir die Luft aus (Teil 1)",
+  "365 Tage eingesperrt: Was im Bunker wirklich gefährlich ist (Teil 1)"
+ ],
+ "blocos": [
+  {
+   "id": "gancho",
+   "cena": "porta",
+   "pt": "Gancho: a porta fecha por 365 dias; promessa de que algo invisível quase o mata na primeira semana.",
+   "falas": [
+    "Tag eins.",
+    "Die Tür ist zu. Und sie geht erst in dreihundertfünfundsechzig Tagen wieder auf.",
+    "Ich habe vierhundert Dosen, zweitausend Liter Wasser und eine Kurbellampe.",
+    "Kein Fenster. Kein Handy. Kein Netz.",
+    "Klingt machbar? Dachte ich auch.",
+    "Aber schon in der ersten Woche hätte mich fast etwas umgebracht, das man weder sehen noch riechen kann.",
+    "Und es war nicht der Hunger."
+   ]
+  },
+  {
+   "id": "plano",
+   "cena": "planta",
+   "pt": "Apresenta o Ben e o bunker (6 x 4 x 2,5 m) e diz o que o vídeo cobre: os 7 primeiros dias.",
+   "falas": [
+    "Ich heiße Ben. Und das hier ist mein Zuhause für ein ganzes Jahr.",
+    "Sechs Meter lang. Vier Meter breit. Zweieinhalb Meter hoch.",
+    "Ein Bett. Ein Tisch. Ein Regal. Und eine Toilette hinter einem Vorhang.",
+    "Über mir liegen drei Meter Erde und eine Stahltür, die sich von innen nicht öffnen lässt.",
+    "In diesem Video zeige ich dir die ersten sieben Tage.",
+    "Was ich esse. Was ich trinke. Wie ich schlafe.",
+    "Und den einen Fehler, den ich fast nicht überlebt hätte."
+   ]
+  },
+  {
+   "id": "comida",
+   "cena": "estoque",
+   "pt": "Comida: 400 latas dão pouco mais de 1 por dia; arroz e aveia salvam; plano de refeições.",
+   "falas": [
+    "Fangen wir mit dem Essen an.",
+    "Vierhundert Dosen. Bohnen, Linsen, Ravioli und Pfirsiche.",
+    "Wenn man davorsteht, sieht das aus wie ein Berg.",
+    "Aber rechne mal nach.",
+    "Vierhundert Dosen. Dreihundertfünfundsechzig Tage.",
+    "Das ist etwas mehr als eine Dose am Tag.",
+    "Eine Dose. Für Frühstück, Mittagessen und Abendessen zusammen.",
+    "Davon wird kein Mensch satt.",
+    "Zum Glück stehen ganz unten im Regal noch zwei Säcke Reis und ein großer Eimer Haferflocken.",
+    "Also mache ich einen Plan.",
+    "Morgens Haferflocken. Mittags Reis. Und abends die Dose.",
+    "Die Dose ist ab jetzt das Highlight meines Tages.",
+    "Und Pfirsiche gibt es nur sonntags."
+   ]
+  },
+  {
+   "id": "agua",
+   "cena": "agua",
+   "pt": "Água: 2.000 L dão 5,5 L por dia; beber, cozinhar, lavar; banho de pano.",
+   "falas": [
+    "Beim Wasser sieht es besser aus.",
+    "Zweitausend Liter. Geteilt durch dreihundertfünfundsechzig.",
+    "Das sind rund fünfeinhalb Liter am Tag.",
+    "Zwei bis drei davon trinke ich. Der Rest ist zum Kochen und zum Waschen.",
+    "Duschen? Gibt es nicht.",
+    "Es gibt einen Lappen, eine Schüssel und einen halben Liter Wasser.",
+    "Luxus sieht anders aus. Aber es funktioniert."
+   ]
+  },
+  {
+   "id": "energia",
+   "cena": "energia",
+   "pt": "Energia: bateria carregada na bicicleta ergométrica; 1 hora pedalando dá luz para a noite. Vira o exercício do dia.",
+   "falas": [
+    "Bleibt noch der Strom.",
+    "Eine Steckdose gibt es hier unten nicht.",
+    "Es gibt eine Batterie. Und ein altes Fahrrad, das sie auflädt.",
+    "Eine Stunde treten bedeutet Licht für einen Abend.",
+    "Das klingt nach Strafe. Aber es ist das Beste, was mir passieren konnte.",
+    "Denn so bewege ich mich jeden Tag. Ob ich will oder nicht.",
+    "Nach drei Tagen habe ich Beine wie ein Radprofi. Na ja. Fast.",
+    "Und wenn die Batterie doch einmal leer ist, bleibt mir nur die Kurbellampe."
+   ]
+  },
+  {
+   "id": "noite1",
+   "cena": "noite",
+   "pt": "Primeira noite: silêncio total, e um arranhão dentro da parede (pista do que vem).",
+   "falas": [
+    "Die erste Nacht ist die schlimmste.",
+    "Nicht, weil etwas passiert. Sondern weil nichts passiert.",
+    "Kein Auto. Kein Wind. Kein Vogel. Nur der kleine Ventilator in der Wand.",
+    "Ich liege wach und höre meinem eigenen Herzschlag zu.",
+    "Und dann höre ich noch etwas.",
+    "Ein Kratzen. Ganz leise. Irgendwo hinter der Wand.",
+    "Ich rede mir ein: Das ist nur das Rohr, das abkühlt.",
+    "Und schlafe ein."
+   ]
+  },
+  {
+   "id": "rotina",
+   "cena": "rotina",
+   "pt": "Dias 2 e 3: sem sol o corpo perde a hora; regras de luz, risco na parede, tarefas. Vai bem demais.",
+   "falas": [
+    "Tag zwei.",
+    "Ich merke, was hier unten wirklich fehlt. Die Sonne.",
+    "Ohne Fenster weiß mein Körper nicht mehr, wann Tag ist und wann Nacht.",
+    "Also stelle ich Regeln auf.",
+    "Licht an um sieben. Licht aus um zehn.",
+    "Und jeden Morgen kommt ein Strich an die Wand.",
+    "Tag drei.",
+    "Ich putze. Ich sortiere die Dosen nach Farben. Ich lese das erste von zwölf Büchern.",
+    "Es läuft erstaunlich gut.",
+    "Ehrlich gesagt: zu gut."
+   ]
+  },
+  {
+   "id": "cabeca",
+   "cena": "cabeca",
+   "pt": "O inimigo do dia 3 é a cabeça: fala sozinho, dá nome às coisas, cria tarefas para não pensar nos 362 dias que faltam.",
+   "falas": [
+    "Am Abend von Tag drei merke ich, dass es hier unten noch einen Gegner gibt.",
+    "Meinen eigenen Kopf.",
+    "Wenn nichts zu tun ist, fängt er an zu rechnen.",
+    "Dreihundertzweiundsechzig Tage. Das sind über achttausend Stunden.",
+    "Also gebe ich ihm Arbeit.",
+    "Ich führe ein Tagebuch. Ich mache jeden Tag zwanzig Liegestütze. Und ich rede laut mit mir selbst.",
+    "Der Batterie habe ich einen Namen gegeben. Sie heißt Gisela.",
+    "Das klingt verrückt. Aber wer redet, bleibt wach im Kopf.",
+    "Und Gisela widerspricht wenigstens nicht."
+   ]
+  },
+  {
+   "id": "comentario",
+   "cena": "pergunta",
+   "pt": "Pedido de comentário: quais 3 coisas você levaria para um bunker?",
+   "falas": [
+    "Kurze Frage an dich.",
+    "Wenn du nur drei Dinge in einen Bunker mitnehmen dürftest: Welche wären das?",
+    "Schreib es in die Kommentare. Ich bin gespannt, wer an das Wichtigste denkt.",
+    "Denn ich habe es vergessen."
+   ]
+  },
+  {
+   "id": "problema",
+   "cena": "sintomas",
+   "pt": "Dias 4 e 5: dor de cabeça, cansaço, falta de ar; ele olha o medidor: CO2 em 2,8% (lá fora é 0,04%).",
+   "falas": [
+    "Tag vier.",
+    "Ich wache mit Kopfschmerzen auf.",
+    "Ich bin müde, obwohl ich neun Stunden geschlafen habe.",
+    "Ich denke: Du hast zu wenig getrunken. Also trinke ich mehr.",
+    "Tag fünf.",
+    "Die Kopfschmerzen sind stärker. Und nach zehn Minuten auf dem Fahrrad bekomme ich kaum noch Luft.",
+    "Ich setze mich auf den Boden.",
+    "Und da fällt mein Blick zum ersten Mal auf das kleine Messgerät neben der Tür.",
+    "Kohlendioxid: zwei Komma acht Prozent.",
+    "Draußen an der frischen Luft sind es null Komma null vier."
+   ]
+  },
+  {
+   "id": "explica",
+   "cena": "lousa_co2",
+   "pt": "Explicação com conta: em lugar fechado o CO2 pega antes de faltar oxigênio. 500 L por dia em 60 mil L de ar = quase 1% por dia. Faixas de sintoma. Sobram uns 3 dias.",
+   "falas": [
+    "Und jetzt kommt der Teil, den fast niemand weiß.",
+    "In einem geschlossenen Raum geht dir nicht zuerst der Sauerstoff aus.",
+    "Dich erwischt vorher das, was du selbst ausatmest.",
+    "Ein Mensch atmet am Tag rund fünfhundert Liter Kohlendioxid aus.",
+    "Mein Bunker hat sechzig Kubikmeter Luft. Das sind sechzigtausend Liter.",
+    "Fünfhundert geteilt durch sechzigtausend.",
+    "Ohne Lüftung steigt der Wert jeden Tag um fast ein Prozent.",
+    "Ab einem Prozent wird man schläfrig.",
+    "Bei zwei bis drei Prozent kommt die Atemnot.",
+    "Bei fünf Prozent rast der Puls, und man schwitzt.",
+    "Und irgendwo zwischen sieben und zehn Prozent wird man bewusstlos.",
+    "Ich bin bei fast drei. Nach fünf Tagen.",
+    "Das heißt: Ich habe keine dreihundertsechzig Tage mehr.",
+    "Ich habe vielleicht noch drei."
+   ]
+  },
+  {
+   "id": "investiga",
+   "cena": "duto",
+   "pt": "A ventilação deveria resolver: o ventilador roda, mas não sai ar. Ele desparafusa a grade e ilumina o duto: dois olhos.",
+   "falas": [
+    "Genau dafür gibt es eigentlich die Lüftung.",
+    "Ein Rohr nach oben. Ein Filter. Und ein kleiner Ventilator.",
+    "Der Ventilator läuft. Ich höre ihn ja.",
+    "Aber als ich die Hand vor das Gitter halte, spüre ich: nichts.",
+    "Kein Luftzug. Gar nichts.",
+    "Ich hole den Schraubenzieher.",
+    "Vier Schrauben. Meine Hände zittern, und ich weiß nicht, ob vor Angst oder weil mir die Luft fehlt.",
+    "Die erste Schraube. Die zweite. Die dritte klemmt.",
+    "Ich drücke mit aller Kraft. Sie gibt nach.",
+    "Das Gitter fällt auf den Boden.",
+    "Ich nehme die Kurbellampe und leuchte in den Schacht.",
+    "Und aus dem Dunkeln leuchten zwei Augen zurück."
+   ]
+  },
+  {
+   "id": "revela",
+   "cena": "marta",
+   "pt": "Revelação: não é monstro, é uma marta (Marder) que fez ninho no duto com folhas, lã de isolamento e o filtro. Era o arranhão da primeira noite.",
+   "falas": [
+    "Kein Monster.",
+    "Ein Marder.",
+    "Er hat sich im Lüftungsrohr ein Nest gebaut. Aus Laub, aus Dämmwolle und aus meinem Luftfilter.",
+    "Das war das Kratzen in der ersten Nacht.",
+    "Wer in Deutschland ein Auto hat, kennt diese Tiere. Sie zerbeißen Kabel und Schläuche.",
+    "Und jetzt sitzt einer in dem einzigen Rohr, durch das ich atme."
+   ]
+  },
+  {
+   "id": "resolve",
+   "cena": "conserto",
+   "pt": "Solução: tira o ninho com colher de pau e luva; a marta foge para baixo da cama; filtro de volta; o ar volta e o CO2 cai para 2,1% e depois 0,6%.",
+   "falas": [
+    "Ich kann ihn nicht rauslassen. Die Tür bleibt zu.",
+    "Ich kann ihn aber auch nicht dort lassen. Dann ersticke ich.",
+    "Also räume ich das Nest heraus. Stück für Stück. Mit einem Kochlöffel und einem Handschuh.",
+    "Der Marder faucht. Er springt an mir vorbei. Und verschwindet unter dem Bett.",
+    "Ich setze den Filter wieder ein und schraube das Gitter fest.",
+    "Dann halte ich noch einmal die Hand davor.",
+    "Luft.",
+    "Kalte, frische Luft.",
+    "Nach einer Stunde zeigt das Messgerät zwei Komma eins.",
+    "Am nächsten Morgen: null Komma sechs.",
+    "Und die Kopfschmerzen sind weg."
+   ]
+  },
+  {
+   "id": "armadilha",
+   "cena": "armadilha",
+   "pt": "Dia 6: tenta pegar a marta com uma caixa, um graveto e ravióli de isca. Ela come a isca, derruba a caixa e some. Ele perde uma lata e ganha um colega de quarto.",
+   "falas": [
+    "Tag sechs.",
+    "Die Luft ist wieder gut. Aber ich habe einen Mitbewohner, den ich nicht eingeladen habe.",
+    "Also baue ich eine Falle.",
+    "Eine Kiste. Ein Stöckchen. Eine Schnur. Und als Köder: ein Löffel Ravioli.",
+    "Ja, ich opfere Ravioli. So ernst ist die Lage.",
+    "Ich lege mich auf das Bett, halte die Schnur fest und warte.",
+    "Zehn Minuten. Zwanzig Minuten. Eine Stunde.",
+    "Dann kommt eine kleine schwarze Nase unter dem Bett hervor.",
+    "Der Marder schleicht zur Kiste. Er schnuppert. Er frisst.",
+    "Ich ziehe an der Schnur.",
+    "Die Kiste fällt. Daneben.",
+    "Der Marder schaut mich an. Er nimmt sich in aller Ruhe die letzte Nudel. Und geht zurück unter das Bett.",
+    "Ergebnis des Tages: Marder eins, Ben null.",
+    "Und ich habe einen Löffel Ravioli weniger."
+   ]
+  },
+  {
+   "id": "fecho",
+   "cena": "fim",
+   "pt": "Dia 7: lição (o que mata é o que você não controla), checagem diária de ar, água e comida; gancho para a parte 2 (a marta com fome e o apagão do dia 12); inscrição.",
+   "falas": [
+    "Tag sieben.",
+    "Ich lebe. Ich habe einen Essensplan, genug Wasser und wieder Luft.",
+    "Und ich habe etwas gelernt.",
+    "Hier unten bringt dich nicht das um, wovor du Angst hast.",
+    "Sondern das, was du nicht kontrollierst.",
+    "Ab heute prüfe ich jeden Morgen drei Dinge. Luft. Wasser. Vorräte.",
+    "Nur ein Problem ist noch offen.",
+    "Unter meinem Bett wohnt jetzt ein Marder. Und der hat Hunger.",
+    "In Teil zwei siehst du, was er mit meinen Vorräten macht.",
+    "Und warum ich an Tag zwölf plötzlich im Dunkeln sitze.",
+    "Abonniere den Kanal, damit du Tag acht nicht verpasst."
+   ]
+  }
+ ]
+}
