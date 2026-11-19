@@ -1,6 +1,7 @@
 import React from 'react';
 import { AbsoluteFill, Easing, interpolate, random, useCurrentFrame } from 'remotion';
 import T from '../../public/bunker/v01/tempos.json';
+import './fontes';
 import { Ben, Sala, Defs, Lata, Proibido, Humor } from './Teste';
 import {
   W, H, CHAO, AB, GIZ, ip, pop, Etq, Nao, ISol, IDucha, ITomada, Prateleira, Barris, Caixote, Kurbel, Lousa, Quadro, Certo, Visor, Cama, Mesa,
