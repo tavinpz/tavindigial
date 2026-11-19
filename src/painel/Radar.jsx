@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { supabase } from '../lib/supabase'
 
 // Aba "Radar": canais novos que estão pegando no YouTube, achados pela varredura automática (tabelas radar_* no Supabase).
@@ -19,25 +19,32 @@ const capaUrl = (id) => `https://i.ytimg.com/vi/${encodeURIComponent(id)}/mqdefa
 const minutos = (s) => (s ? `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}` : '')
 
 // Capas dos vídeos mais vistos do canal (vêm prontas do radar_painel, sem chamada nova ao YouTube).
-function Capas({ videos, larga }) {
+function Capas({ videos }) {
+  const ref = useRef(null)
+  const arrasto = useRef(null)
   if (!videos?.length) return null
+  // Arrastar com o mouse (no celular o dedo já rola sozinho).
+  const desce = (e) => { if (e.pointerType === 'mouse') arrasto.current = { x: e.clientX, s: ref.current.scrollLeft, andou: false } }
+  const move = (e) => {
+    const a = arrasto.current
+    if (!a) return
+    const dx = e.clientX - a.x
+    if (Math.abs(dx) > 4) a.andou = true
+    ref.current.scrollLeft = a.s - dx
+  }
+  const solta = () => { const a = arrasto.current; arrasto.current = null; if (a?.andou) ref.current.dataset.arrastou = '1' }
+  const clique = (e) => { if (ref.current.dataset.arrastou) { e.preventDefault(); delete ref.current.dataset.arrastou } }
   return (
-    <div className={`rd-capas${larga ? ' rd-capas--larga' : ''}`}>
+    <div className="rd-capas" ref={ref} onPointerDown={desce} onPointerMove={move} onPointerUp={solta} onPointerLeave={solta} onClickCapture={clique}>
       {videos.map((v) => (
-        <a key={v.id} className="rd-capa" href={videoUrl(v.id)} target="_blank" rel="noreferrer" title={v.t}>
-          <span className="rd-capa-img"><img src={capaUrl(v.id)} alt="" loading="lazy" />{v.s ? <em>{minutos(v.s)}</em> : null}</span>
+        <a key={v.id} className="rd-capa" href={videoUrl(v.id)} target="_blank" rel="noreferrer" title={v.t} draggable={false}>
+          <span className="rd-capa-img"><img src={capaUrl(v.id)} alt="" loading="lazy" draggable={false} />{v.s ? <em>{minutos(v.s)}</em> : null}</span>
           <span className="rd-capa-tit">{v.t}</span>
-          <span className="rd-capa-views">{mil(v.v)} views</span>
+          <span className="rd-capa-views">{mil(v.v)} views{v.d ? ` · ${data(v.d)}` : ''}</span>
         </a>
       ))}
     </div>
   )
-}
-const COMPLEX = { 'fácil': 'facil', 'média': 'media', 'difícil': 'dificil', 'não dá': 'nao' }
-
-function Chip({ c }) {
-  const k = COMPLEX[c] || 'sem'
-  return <span className={`rd-chip rd-chip--${k}`}>{c === '?' || !c ? 'não avaliado' : c === 'não dá' ? 'não dá para fazer' : `fazer: ${c}`}</span>
 }
 
 function Cartao({ c }) {
@@ -77,7 +84,7 @@ function Aposta({ i }) {
             <h4>5 primeiros vídeos</h4>
             <ol>{(i.pilotos || []).map((t) => <li key={t}>{t}</li>)}</ol>
           </div>
-          <div>
+          <div className="rd-col-cheia">
             <h4>Canais para estudar</h4>
             <ul className="rd-canais-capas">{(i.referencias || []).map((r) => (
               <li key={r.id}><a href={canalUrl(r.id)} target="_blank" rel="noreferrer">{r.nome}</a> <span className="rd-cinza">· típico {mil(r.mediana)}</span>
@@ -114,7 +121,7 @@ function Nicho({ n, i, onVer }) {
           <h4>Canais novos que estão pegando</h4>
           <ul className="rd-nicho-lista rd-canais-capas">{n.canais.slice(0, 6).map((c) => (
             <li key={c.canal_id}><a href={canalUrl(c.canal_id)} target="_blank" rel="noreferrer">{c.nome}</a> <span className="rd-cinza">· {c.dias} dias · típico {mil(c.mediana_longo)} · {IDIOMA[c.idioma] || c.idioma || '—'} · {c.pais}</span>
-              {c.videos?.length ? <Capas videos={c.videos} larga />
+              {c.videos?.length ? <Capas videos={c.videos} />
                 : c.top_video && <a className="rd-card-video" href={videoUrl(c.top_video)} target="_blank" rel="noreferrer">▶ {c.top_titulo}</a>}</li>
           ))}</ul>
         </div>
