@@ -1,0 +1,11 @@
+[
+ {"id":"a1","t":"Tag eins.","pausa":0.5},
+ {"id":"a2","t":"Die Tür ist zu. Und sie geht erst in dreihundertfünfundsechzig Tagen wieder auf.","pausa":0.55},
+ {"id":"b1","t":"Ich habe vierhundert Dosen, zweitausend Liter Wasser und eine Kurbellampe.","pausa":0.35},
+ {"id":"b2","t":"Kein Fenster. Kein Handy. Kein Netz.","pausa":0.5},
+ {"id":"c1","t":"Klingt nach viel?","pausa":0.3},
+ {"id":"c2","t":"Rechne mal nach: Das ist etwas mehr als eine Dose am Tag.","pausa":0.6},
+ {"id":"d0","t":"In der ersten Nacht flackert plötzlich das Licht.","pausa":0.45},
+ {"id":"d1","t":"Und das Schlimmste weiß ich da noch gar nicht.","pausa":0.4},
+ {"id":"d2","t":"Etwas hier unten verbraucht meine Luft. Und ich bin es nicht.","pausa":1.2}
+]
