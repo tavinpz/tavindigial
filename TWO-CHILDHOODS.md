@@ -4,10 +4,15 @@ Canal no painel: `two-childhoods`. Pautas: tc001 (smart x trying), tc002 (fear x
 Vídeo-modelo: "Parents Who Yell vs Parents Who Ask: The Whole Life" (Which One Are You, id _UvjEWaIwug, 8:03).
 Ambiente, voz, render, painel: ver `CROSSWIND.md`. Fila de 20 máquinas: repo `tavinpz/render-videos` (`fila/<id>.txt`, linha 2 = "<Composição> <pasta em public>").
 
-## Estado
-- **#01 (tc001) FEITO em 18/11/2026: 8:37**, no painel (vídeo 40,7 MB + 3 capas, linha `tc001-praised-smart` preenchida). Aguardando o Tavin aprovar esta primeira versão antes do tc002/tc003.
-- Padrão visual aprovado pelo Tavin em 18/11 ("visualmente gostei muito").
-- Voz: Kokoro `af_heart`, velocidade 0.9 (escolha minha, ainda não confirmada por ele).
+## Estado (18/11/2026, noite)
+- **5 vídeos prontos e no painel**, todos com o visual v2 e 3 capas v3: tc001 smart x trying (8:37), tc002 fear x respect (8:28), tc003 rescued x allowed to fail (8:12), tc004 paid for grades x trusted to learn (8:09), tc005 loved for winning x loved anyway (8:06).
+- O Tavin aprovou o visual v2 ("infinitamente melhor") e o roteiro do #01, e pediu capas baseadas em referências do nicho: feitas (capas v3).
+- Voz: Kokoro `af_heart`, velocidade 0.9 (ele ainda não comentou a voz).
+- Roteiros do #02 ao #05: `atlas-motion/tc_series.py` (um dicionário por vídeo, com `cfg` + blocos). O #01 fica em `tc01_roteiro.py`.
+- Cada vídeo tem um `cfg` no roteiro.json: títulos das casas, rótulo da contagem, idades, resumo, cartões da parte honesta, trocas, próximo vídeo, lista e capas (`thumbs`). O motor lê isso de `tempos.cfg`.
+- Capas: `node _thumbs_tc.mjs $PWD/src/index.ts public/tc/v02,public/tc/v03 /tmp/capas`. Três moldes: a (AGE x → AGE y, antes e depois), b (duas palavras gigantes + VS), c (pergunta + placar).
+- Estudos: conferir sempre no resumo original. O caminho que funcionou foi a API do Europe PMC aberta pelo navegador (busca por TITLE:"..."), lendo o resumo em pedaços de até ~900 caracteres. Não inventar PMID, volume ou página.
+- Fila: o disparo por `gh workflow run` não funciona nesta sessão; usar um commit por vídeo mudando `fila/<id>.txt`.
 
 ## Como produzir um vídeo (medido no #01)
 1. Roteiro em `atlas-motion/tcNN_roteiro.py` (copiar `tc01_roteiro.py`): blocos com `cena` (duo, estudo, texto, vida, honesto, trocas, fim), `idade`, `cap` (cartão de capítulo, com `pre` de silêncio) e, em cada fala, o estado da tela em `v`. Gera `public/tc/vNN/roteiro.json`. Meta: 8 a 12 min, ~1.350+ palavras.

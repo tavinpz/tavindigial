@@ -74,7 +74,7 @@ const C: React.FC<{ c: T }> = ({ c }) => (
     <circle cx={MEIO + 8} cy={590} r={236} fill="#000" opacity={0.35} /><circle cx={MEIO} cy={580} r={236} fill="#0B1730" stroke="#FFE14A" strokeWidth={16} />
     <text x={MEIO - 26} y={640} textAnchor="end" fontFamily={SLAB} fontSize={210} fill="#FF5A47">{c.placar[0]}</text><text x={MEIO + 26} y={640} fontFamily={SLAB} fontSize={c.placar[1].length > 1 ? 150 : 210} fill="#FFE14A">{c.placar[1]}</text>
     <rect x={MEIO - 5} y={480} width={10} height={170} rx={5} fill="#fff" opacity={0.5} />
-    <text x={MEIO} y={736} textAnchor="middle" fontFamily={SANS} fontWeight={900} fontSize={Math.min(30, 400 / (c.rot.length * 0.66))} fill="#fff" letterSpacing={1}>{c.rot}</text>
+    <text x={MEIO} y={736} textAnchor="middle" fontFamily={SANS} fontWeight={900} fontSize={Math.min(30, 400 / (c.rot.length * 0.82))} fill="#fff" letterSpacing={1}>{c.rot}</text>
     <Frase x={400} y={1040} t={c.txE} tam={110} larg={760} /><Frase x={MEIO + 560} y={1040} t={c.txD} tam={110} larg={760} cor="#FFE14A" />
   </>
 );

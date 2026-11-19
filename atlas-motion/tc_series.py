@@ -1,6 +1,6 @@
 # Two Childhoods #02 a #05: roteiros com o que aparece na tela em cada fala. Uso: python3 tc_series.py  -> public/tc/v02..v05/roteiro.json
 # Mesmo formato do tc01_roteiro.py, agora com `cfg` por vídeo (títulos das casas, contagem, resumo, estudos, trocas, próximo vídeo, capas).
-# Estudos conferidos nos resumos originais (Europe PMC) em 18/11/2026; o que cada um diz está no campo `fontes` do cfg.
+# Estudos conferidos nos resumos originais (Europe PMC) em 18/11/2026; as referências completas estão na descrição de cada vídeo no painel (links de busca no Google Scholar pelo título).
 import json, os
 def F(txt, dest=(), p=0, **v): return {'txt': txt, 'v': v, 'dest': list(dest), 'p': p}
 def A(txt, dest=(), **v): return F(txt, dest, **{'foco': 'a', 'bb': None, **v})          # foco na Casa A
@@ -36,7 +36,6 @@ V['02'] = {'cfg': {'id': 'tc002', 'titA': '“Because I said so.”', 'titB': '�
   'trocas': [['“Because I said so.”', '“Here\'s why.”'], ['“What\'s wrong with you?”', '“What happened?”'], ['“Go to your room.”', '“Let\'s fix it together.”']],
   'yet': {'e': 'GIVE', 'd': 'REASONS.', 'tam': 170}, 'lista': {'tit': 'NEVER TOLD SAM', 'it': ['The lost job', 'The breakup', 'The hard year']},
   'prox': {'e1': 'ALWAYS', 'e2': 'RESCUED', 'd1': 'ALLOWED TO', 'd2': 'FAIL', 'tam2': 150},
-  'fontes': ['https://europepmc.org/search?query=TITLE%3A%22Punitive%20environment%20fosters%20children%27s%20dishonesty%22', 'https://pubmed.ncbi.nlm.nih.gov/1756655/', 'https://pubmed.ncbi.nlm.nih.gov/27055181/'],
   'thumbs': {'a': {'tagE': 'AGE 5', 'tagD': 'AGE 60', 'falaE': ['BECAUSE I', 'SAID SO!'], 'pensaD': ['THEY NEVER', 'TELL ME.'], 'dest': ['SAID', 'SO', 'NEVER'], 'txE': 'RAISED BY FEAR', 'txD': 'LAST TO KNOW', 'pE': {'humor': 'choque', 'lagrima': 1, 'olhar': [0.4, -0.4]}, 'pD': {'velho': 1, 'humor': 'triste', 'lagrima': 1, 'olhar': [-0.2, 0.4]}},
              'b': {'palE': 'FEAR', 'palD': 'RESPECT', 'txE': 'OBEYS. HIDES.', 'txD': 'TELLS THE TRUTH', 'pE': {'humor': 'choque', 'lagrima': 1, 'olhar': [0.2, 0.3]}, 'pD': {'humor': 'riso', 'olhar': [-0.2, -0.2], 'incl': 3}},
              'c': {'perg': 'WHO TELLS THE TRUTH?', 'placar': ['0', '6'], 'rot': 'TIMES THEY TOLD THE TRUTH', 'txE': '“I SAID SO”', 'txD': '“HERE\'S WHY”', 'pE': {'velho': 1, 'humor': 'triste', 'lagrima': 1, 'olhar': [0.3, 0.5]}, 'pD': {'velho': 1, 'humor': 'riso', 'olhar': [-0.3, -0.2]}}}},
@@ -179,7 +178,6 @@ V['03'] = {'cfg': {'id': 'tc003', 'titA': '“Let me do it.”', 'titB': '“You
   'trocas': [['“Let me do it.”', '“You try first. I\'m here.”'], ['“I\'ll call them.”', '“What\'s your plan?”'], ['“It\'s okay, I fixed it.”', '“That was hard. You did it.”']],
   'yet': {'e': 'YOU', 'd': 'FIRST.', 'tam': 200}, 'lista': {'tit': 'STILL FIXING', 'it': ['His taxes', 'His landlord', 'His flat tire']},
   'prox': {'e1': 'PAID FOR', 'e2': 'EVERY A', 'd1': 'TRUSTED', 'd2': 'TO LEARN', 'tam2': 130},
-  'fontes': ['https://pubmed.ncbi.nlm.nih.gov/29911880/', 'https://pubmed.ncbi.nlm.nih.gov/26336323/'],
   'thumbs': {'a': {'tagE': 'AGE 6', 'tagD': 'AGE 30', 'falaE': ['LET ME', 'DO IT!'], 'pensaD': ['SOMEONE', 'FIX THIS!'], 'dest': ['ME', 'FIX'], 'txE': 'ALWAYS RESCUED', 'txD': "CAN'T COPE", 'pE': SAM6, 'pD': {'humor': 'choque', 'lagrima': 1, 'olhar': [-0.2, 0.2]}},
              'b': {'palE': 'RESCUED', 'palD': 'FAILED', 'txE': 'HELPLESS AT 30', 'txD': 'UNSHAKABLE AT 30', 'pE': {'humor': 'choque', 'lagrima': 1, 'olhar': [0.2, 0.3]}, 'pD': {'humor': 'riso', 'olhar': [-0.2, -0.2], 'incl': 3}},
              'c': {'perg': 'WHO CAN HANDLE IT?', 'placar': ['0', '8'], 'rot': 'PROBLEMS SOLVED ALONE', 'txE': '“LET ME DO IT”', 'txD': '“YOU TRY FIRST”', 'pE': {'humor': 'triste', 'lagrima': 1, 'olhar': [0.3, 0.5]}, 'pD': {'humor': 'riso', 'olhar': [-0.3, -0.2]}}}},
@@ -322,7 +320,6 @@ V['04'] = {'cfg': {'id': 'tc004', 'titA': '“I\'ll pay you for it.”', 'titB':
   'trocas': [['“I\'ll pay you for it.”', '“Tell me about it.”'], ['“What did you get?”', '“What did you learn?”'], ['“Good job. Here\'s $5.”', '“You looked like you loved that.”']],
   'yet': {'e': 'FOR', 'd': 'FREE.', 'tam': 210}, 'lista': {'tit': 'THINGS I LIKE', 'it': ['?', '?', '?']},
   'prox': {'e1': 'LOVED FOR', 'e2': 'WINNING', 'd1': 'LOVED', 'd2': 'ANYWAY', 'tam2': 140},
-  'fontes': ['https://psycnet.apa.org/doi/10.1037/h0035519', 'https://pubmed.ncbi.nlm.nih.gov/10589297/'],
   'thumbs': {'a': {'tagE': 'AGE 6', 'tagD': 'AGE 60', 'falaE': ['$1 PER', 'DRAWING!'], 'pensaD': ['WHAT DO I', 'EVEN LIKE?'], 'dest': ['$1', 'LIKE'], 'txE': 'PAID TO DRAW', 'txD': 'NEVER DREW AGAIN', 'pE': SAM6, 'pD': {'velho': 1, 'humor': 'triste', 'lagrima': 1, 'olhar': [-0.2, 0.3]}},
              'b': {'palE': 'PAID', 'palD': 'TRUSTED', 'txE': 'QUIT AT 16', 'txD': 'STILL CREATING', 'pE': {'humor': 'triste', 'lagrima': 1, 'olhar': [0.2, 0.5], 'incl': -3}, 'pD': {'humor': 'riso', 'olhar': [-0.2, -0.2], 'incl': 3}},
              'c': {'perg': 'WHO STILL LOVES IT?', 'placar': ['0', '7'], 'rot': 'THINGS DONE JUST FOR FUN', 'txE': '“I\'LL PAY YOU”', 'txD': '“TELL ME MORE”', 'pE': {'velho': 1, 'humor': 'triste', 'lagrima': 1, 'olhar': [0.3, 0.5]}, 'pD': {'velho': 1, 'humor': 'riso', 'olhar': [-0.3, -0.2]}}}},
@@ -462,7 +459,6 @@ V['05'] = {'cfg': {'id': 'tc005', 'titA': '“Proud when you win.”', 'titB': '
   'trocas': [['“So proud you won.”', '“I love watching you play.”'], ['“What happened?”', '“Rough one. I\'m here.”'], ['(silence)', '“Ice cream?”']],
   'yet': {'e': 'ENOUGH', 'd': 'ALREADY.', 'tam': 160}, 'lista': {'tit': 'WON', 'it': ['Every award', 'Every title', 'No rest']},
   'prox': {'e1': 'SAME KID', 'e2': 'AGAIN', 'd1': 'TWO NEW', 'd2': 'HOMES', 'tam2': 150},
-  'fontes': ['https://pubmed.ncbi.nlm.nih.gov/14686884/', 'https://pubmed.ncbi.nlm.nih.gov/19586183/', 'https://pubmed.ncbi.nlm.nih.gov/29283599/'],
   'thumbs': {'a': {'tagE': 'AGE 6', 'tagD': 'AGE 60', 'falaE': ['YOU', 'LOST?!'], 'pensaD': ['AM I', 'ENOUGH?'], 'dest': ['LOST', 'ENOUGH'], 'txE': 'LOVED FOR WINNING', 'txD': 'NEVER ENOUGH', 'pE': {'humor': 'triste', 'lagrima': 1, 'olhar': [0.3, 0.4]}, 'pD': {'velho': 1, 'humor': 'triste', 'lagrima': 1, 'olhar': [-0.2, 0.3]}},
              'b': {'palE': 'WINNER', 'palD': 'LOVED', 'txE': "CAN'T STOP", 'txD': 'CAN REST', 'pE': {'humor': 'choque', 'lagrima': 1, 'olhar': [0.2, 0.3]}, 'pD': {'humor': 'riso', 'olhar': [-0.2, -0.2], 'incl': 3}},
              'c': {'perg': 'WHO FEELS ENOUGH?', 'placar': ['1', '7'], 'rot': 'RISKS TAKEN', 'txE': '“WHEN YOU WIN”', 'txD': '“NO MATTER WHAT”', 'pE': {'velho': 1, 'humor': 'triste', 'lagrima': 1, 'olhar': [0.3, 0.5]}, 'pD': {'velho': 1, 'humor': 'riso', 'olhar': [-0.3, -0.2]}}}},
