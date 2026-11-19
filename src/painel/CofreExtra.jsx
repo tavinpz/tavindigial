@@ -18,8 +18,9 @@ export function canalDoUso(v) {
   return CANAIS.find((c) => [c.nome, c.id, c.youtube, c.tiktok, c.instagram].some((x) => x && norm(x) === n)) || null
 }
 // Lista de canais do painel para o campo de uso (aparece ao digitar)
-export function ListaCanais({ id }) {
-  return <datalist id={id}>{CANAIS.map((c) => <option key={c.id} value={c.nome} />)}</datalist>
+export function ListaCanais({ id, extras = [] }) {
+  const nomes = [...new Set([...CANAIS.map((c) => c.nome), ...extras])]
+  return <datalist id={id}>{nomes.map((n) => <option key={n} value={n} />)}</datalist>
 }
 
 // Linhas coladas da planilha (Google Sheets separa as colunas com TAB)
@@ -56,7 +57,7 @@ function Copiavel({ valor, segredo }) {
   )
 }
 
-function EditarEmail({ e, salvar, fechar, remover }) {
+function EditarEmail({ e, salvar, fechar, remover, extras = [] }) {
   const [f, setF] = useState({ ...e, usos: { ...(e.usos || {}) } })
   const [apagar, setApagar] = useState(false)
   return (
@@ -85,7 +86,7 @@ function EditarEmail({ e, salvar, fechar, remover }) {
             </label>
           )
         })}
-        <ListaCanais id="ce-canais" />
+        <ListaCanais id="ce-canais" extras={extras} />
         <label className="p-campo cf-largo">Observações<textarea rows={2} value={f.notas || ''} onChange={(x) => setF({ ...f, notas: x.target.value })} placeholder="Ex.: pede verificação por SMS, telefone 4947" /></label>
       </div>
     </Janela>
@@ -157,6 +158,9 @@ export function EmailsDisponiveis({ estoque, salvarVarios, salvarUm, remover }) 
   const t = busca.trim().toLowerCase()
   const redesDe = (r) => (r ? [r] : REDES_USO)
   const canaisDe = (e) => REDES_USO.map((r) => canalDoUso(e.usos?.[r])?.id).filter(Boolean)
+  // chave de cada uso: canal do painel pelo id, o resto pelo nome escrito (assim aparece tudo, não só o que está no painel)
+  const chaveUso = (v) => { const c = canalDoUso(v); return c ? c.id : `x:${norm(v)}` }
+  const usosDe = (e) => REDES_USO.filter((r) => !livre(e, r)).map((r) => chaveUso(e.usos[r]))
 
   // cada filtro sozinho (para os números dos botões levarem em conta os outros filtros)
   const testa = {
@@ -165,7 +169,7 @@ export function EmailsDisponiveis({ estoque, salvarVarios, salvarUm, remover }) 
     senha: (e, f) => !f.senha || (f.senha === 'com' ? !!e.senha : !e.senha),
     perfil: (e, f) => !f.perfil || e.perfil === f.perfil,
     duas: (e, f) => !f.duas || (f.duas === 'sim' ? e.duas_etapas === true : e.duas_etapas !== true),
-    canal: (e, f) => !f.canal || (f.canal === 'painel' ? canaisDe(e).length > 0 : canaisDe(e).includes(f.canal)),
+    canal: (e, f) => !f.canal || (f.canal === 'painel' ? canaisDe(e).length > 0 : f.canal === 'fora' ? usosDe(e).some((k) => k.startsWith('x:')) : usosDe(e).includes(f.canal)),
     busca: (e) => !t || [e.email, e.notas, ...Object.values(e.usos || {})].some((x) => String(x || '').toLowerCase().includes(t)),
   }
   const passa = (e, f, menos) => Object.entries(testa).every(([k, fn]) => k === menos || fn(e, f))
@@ -178,7 +182,17 @@ export function EmailsDisponiveis({ estoque, salvarVarios, salvarUm, remover }) 
         : a.email.localeCompare(b.email))
   const algumFiltro = Object.values(fi).some(Boolean) || t
   const semSenha = estoque.filter((e) => !e.senha).length
-  const canaisLigados = CANAIS.filter((c) => estoque.some((e) => canaisDe(e).includes(c.id)))
+  // todos os canais que aparecem nas contas, com quantos e-mails cada um
+  const todosCanais = (() => {
+    const m = {}
+    for (const e of estoque) for (const r of REDES_USO) {
+      if (livre(e, r)) continue
+      const v = String(e.usos[r]).trim(), c = canalDoUso(v), k = c ? c.id : `x:${norm(v)}`
+      m[k] = m[k] || { k, nome: c ? c.nome : v, painel: !!c, emails: new Set() }
+      m[k].emails.add(e.email)
+    }
+    return Object.values(m).sort((a, b) => a.nome.localeCompare(b.nome, 'pt'))
+  })()
 
   async function importar(linhas, uso) {
     const porEmail = Object.fromEntries(estoque.map((e) => [e.email, e]))
@@ -231,7 +245,9 @@ export function EmailsDisponiveis({ estoque, salvarVarios, salvarUm, remover }) 
             <select id="ce-canal" value={fi.canal} onChange={(e) => muda('canal')(e.target.value)}>
               <option value="">Todos</option>
               <option value="painel">Ligados a um canal do painel</option>
-              {canaisLigados.map((c) => <option key={c.id} value={c.id}>{c.nome}</option>)}
+              <option value="fora">Canais fora do painel</option>
+              {todosCanais.some((c) => c.painel) && <optgroup label="No painel">{todosCanais.filter((c) => c.painel).map((c) => <option key={c.k} value={c.k}>{c.nome} ({c.emails.size})</option>)}</optgroup>}
+              {todosCanais.some((c) => !c.painel) && <optgroup label="Fora do painel">{todosCanais.filter((c) => !c.painel).map((c) => <option key={c.k} value={c.k}>{c.nome} ({c.emails.size})</option>)}</optgroup>}
             </select>
             <label className="ce-grupo-rot" htmlFor="ce-ordem">Ordem</label>
             <select id="ce-ordem" value={ordem} onChange={(e) => setOrdem(e.target.value)}>
@@ -263,7 +279,7 @@ export function EmailsDisponiveis({ estoque, salvarVarios, salvarUm, remover }) 
           {lista.length === 0 && <p className="p-meta ce-nada">Nada com esses filtros.</p>}
         </div>
       )}
-      {editando && <EditarEmail e={editando} fechar={() => setEditando(null)} salvar={async (f) => { await salvarUm(f); setEditando(null) }} remover={async (id) => { await remover(id); setEditando(null) }} />}
+      {editando && <EditarEmail e={editando} extras={todosCanais.filter((c) => !c.painel).map((c) => c.nome)} fechar={() => setEditando(null)} salvar={async (f) => { await salvarUm(f); setEditando(null) }} remover={async (id) => { await remover(id); setEditando(null) }} />}
       {importando && <Importar fechar={() => setImportando(false)} importar={importar} />}
     </section>
   )
