@@ -18,9 +18,9 @@ const CORTE2 = fr(fala('c1').ini - 0.25);
 const CORTE3 = fr(fala('d0').ini - 0.35);
 const FIM = fr(fala('d2').fim + 0.55);
 
-type Humor = 'neutro' | 'preocupado' | 'cetico' | 'medo' | 'sorriso';
+export type Humor = 'neutro' | 'preocupado' | 'cetico' | 'medo' | 'sorriso';
 
-const Defs: React.FC = () => (
+export const Defs: React.FC = () => (
   <defs>
     <linearGradient id="parede" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stopColor="#6f8280" /><stop offset="0.62" stopColor="#566866" /><stop offset="1" stopColor="#465654" />
@@ -79,7 +79,7 @@ const Defs: React.FC = () => (
 );
 
 // Sala do bunker: parede de concreto com textura, faixa pintada, canos, lâmpada com luz quente e piso em perspectiva.
-const Sala: React.FC<{ luz?: number; frio?: number; children?: React.ReactNode }> = ({ luz = 1, frio = 0, children }) => {
+export const Sala: React.FC<{ luz?: number; frio?: number; frente?: React.ReactNode; children?: React.ReactNode }> = ({ luz = 1, frio = 0, frente, children }) => {
   const f = useCurrentFrame();
   return (
     <g>
@@ -125,6 +125,7 @@ const Sala: React.FC<{ luz?: number; frio?: number; children?: React.ReactNode }
       })}
       {/* noite fria */}
       <rect width={W} height={H} fill="#0a1830" opacity={frio} style={{ mixBlendMode: 'multiply' }} />
+      {frente}
       <rect width={W} height={H} fill="url(#vinheta)" />
       <rect width={W} height={H} filter="url(#grao)" opacity={0.2} style={{ mixBlendMode: 'overlay' }} />
     </g>
@@ -132,13 +133,13 @@ const Sala: React.FC<{ luz?: number; frio?: number; children?: React.ReactNode }
 };
 
 // Ben: personagem com rosto expressivo, boca sincronizada com a voz, piscada e respiração.
-const Ben: React.FC<{ x: number; y: number; k?: number; humor?: Humor; olhar?: number; olharY?: number; apontar?: number; fala?: number; inclina?: number }> = ({
-  x, y, k = 1, humor = 'neutro', olhar = 0, olharY = 0, apontar = 0, fala: boca = 0, inclina = 0,
+export const Ben: React.FC<{ x: number; y: number; k?: number; humor?: Humor; olhar?: number; olharY?: number; apontar?: number; fala?: number; inclina?: number; gesto?: number; anda?: number; semPernas?: boolean; soCabeca?: boolean; dorme?: boolean; maoCabeca?: boolean }> = ({
+  x, y, k = 1, humor = 'neutro', olhar = 0, olharY = 0, apontar = 0, fala: boca = 0, inclina = 0, gesto = 0, anda, semPernas = false, soCabeca = false, dorme = false, maoCabeca = false,
 }) => {
   const f = useCurrentFrame();
   const resp = Math.sin(f / 16) * 3;
   const ciclo = f % 96;
-  const pisca = ciclo < 5 ? 1 - Math.abs(ciclo - 2) / 2.5 : 0;
+  const pisca = dorme ? 1 : ciclo < 5 ? 1 - Math.abs(ciclo - 2) / 2.5 : 0;
   const medo = humor === 'medo';
   const abre = (medo ? 1.22 : 1) * (1 - 0.92 * Math.max(0, pisca));
   const sob = {
@@ -148,18 +149,31 @@ const Ben: React.FC<{ x: number; y: number; k?: number; humor?: Humor; olhar?: n
   const maoD = { x: 108 + apontar * 96, y: -176 - apontar * 168 };
   const tremor = medo ? Math.sin(f * 1.9) * 1.6 : 0;
   const aberta = Math.min(1, boca * 1.5);
+  const passo = anda === undefined ? 0 : Math.sin(anda) * 20;
+  const quique = anda === undefined ? 0 : -Math.abs(Math.cos(anda)) * 7;
+  const maoE = maoCabeca ? { x: -92, y: -512 } : { x: -112 - gesto * 50, y: -172 - gesto * 150 };
+  const cotE = maoCabeca ? { x: -176, y: -400 } : { x: -128 - gesto * 34, y: -250 - gesto * 30 };
   return (
     <g transform={`translate(${x + tremor} ${y}) scale(${k})`}>
-      <ellipse cx={0} cy={4} rx={130} ry={22} fill="#000" opacity={0.42} filter="url(#suave2)" />
-      {/* pernas e botas */}
-      <rect x={-54} y={-158} width={46} height={150} rx={16} fill="#2b3c53" />
-      <rect x={8} y={-158} width={46} height={150} rx={16} fill="#24344a" />
-      <rect x={-66} y={-34} width={64} height={36} rx={14} fill="#5b3b27" /><rect x={2} y={-34} width={64} height={36} rx={14} fill="#4b2f1f" />
-      <rect x={-66} y={-10} width={64} height={12} rx={6} fill="#22140c" /><rect x={2} y={-10} width={64} height={12} rx={6} fill="#22140c" />
-      <g transform={`translate(0 ${resp})`}>
+      {!soCabeca && <ellipse cx={0} cy={4} rx={130} ry={22} fill="#000" opacity={0.42} filter="url(#suave2)" />}
+      {/* pernas e botas (com passo) */}
+      {!soCabeca && !semPernas && (
+        <g>
+          <g transform={`rotate(${passo} -31 -158)`}>
+            <rect x={-54} y={-158} width={46} height={150} rx={16} fill="#2b3c53" />
+            <rect x={-66} y={-34} width={64} height={36} rx={14} fill="#5b3b27" /><rect x={-66} y={-10} width={64} height={12} rx={6} fill="#22140c" />
+          </g>
+          <g transform={`rotate(${-passo} 31 -158)`}>
+            <rect x={8} y={-158} width={46} height={150} rx={16} fill="#24344a" />
+            <rect x={2} y={-34} width={64} height={36} rx={14} fill="#4b2f1f" /><rect x={2} y={-10} width={64} height={12} rx={6} fill="#22140c" />
+          </g>
+        </g>
+      )}
+      <g transform={`translate(0 ${resp + quique})`}>
+        {!soCabeca && (<g>
         {/* braço esquerdo */}
-        <path d={`M-92 -304 Q-128 -250 -112 -186`} stroke="#c9631f" strokeWidth={46} strokeLinecap="round" fill="none" />
-        <circle cx={-112} cy={-172} r={25} fill="url(#pele)" />
+        <path d={`M-92 -304 Q${cotE.x} ${cotE.y} ${maoE.x} ${maoE.y + 14}`} stroke="#c9631f" strokeWidth={46} strokeLinecap="round" fill="none" />
+        {!maoCabeca && <circle cx={maoE.x} cy={maoE.y} r={25} fill="url(#pele)" />}
         {/* tronco */}
         <path d="M-104 -326 Q-112 -340 -70 -344 L70 -344 Q112 -340 104 -326 L88 -150 Q0 -132 -88 -150 Z" fill="url(#macacao)" />
         <path d="M-104 -326 L-88 -150 Q-60 -144 -36 -141 L-50 -344 L-70 -344 Q-112 -340 -104 -326 Z" fill="#7a3a12" opacity={0.28} />
@@ -172,6 +186,7 @@ const Ben: React.FC<{ x: number; y: number; k?: number; humor?: Humor; olhar?: n
         <circle cx={maoD.x} cy={maoD.y} r={25} fill="url(#pele)" />
         {/* pescoço e cabeça */}
         <rect x={-26} y={-372} width={52} height={40} rx={14} fill="#d99a6c" />
+        </g>)}
         <g transform={`rotate(${inclina + olhar * 3} 0 -360) translate(${olhar * 6} 0)`}>
           <circle cx={-100} cy={-438} r={22} fill="#e2a877" /><circle cx={100} cy={-438} r={22} fill="#eab586" />
           <rect x={-98} y={-548} width={196} height={204} rx={88} fill="url(#pele)" />
@@ -208,6 +223,7 @@ const Ben: React.FC<{ x: number; y: number; k?: number; humor?: Humor; olhar?: n
               stroke="#5a2018" strokeWidth={6} fill="none" strokeLinecap="round"
             />
           )}
+          {maoCabeca && <circle cx={-96} cy={-520} r={25} fill="url(#pele)" />}
           {medo && <path d="M84 -500 q10 16 0 24 q-10 -8 0 -24" fill="#9fd4ff" opacity={0.85} transform={`translate(0 ${(f % 40) * 0.9})`} />}
         </g>
       </g>
@@ -224,7 +240,7 @@ const Placa: React.FC<{ f: number }> = ({ f }) => (
   </g>
 );
 
-const Lata: React.FC<{ x: number; y: number; cor: string; s: number }> = ({ x, y, cor, s }) => (
+export const Lata: React.FC<{ x: number; y: number; cor: string; s: number }> = ({ x, y, cor, s }) => (
   <g transform={`translate(${x} ${y}) scale(${s})`}>
     <rect x={-22} y={-62} width={44} height={62} rx={5} fill="#c7d0d2" />
     <rect x={-22} y={-50} width={44} height={36} fill={cor} />
@@ -235,7 +251,7 @@ const Lata: React.FC<{ x: number; y: number; cor: string; s: number }> = ({ x, y
   </g>
 );
 
-const Proibido: React.FC<{ x: number; y: number; s: number; tipo: 'janela' | 'celular' | 'rede' }> = ({ x, y, s, tipo }) => (
+export const Proibido: React.FC<{ x: number; y: number; s: number; tipo: 'janela' | 'celular' | 'rede' }> = ({ x, y, s, tipo }) => (
   <g transform={`translate(${x} ${y}) scale(${s})`}>
     <circle r={84} fill="#000" opacity={0.35} transform="translate(4 7)" />
     <circle r={80} fill="#f3ead8" stroke="#d63b2f" strokeWidth={13} />
@@ -257,7 +273,7 @@ const Legenda: React.FC<{ f: number }> = ({ f }) => {
   );
 };
 
-const Cena: React.FC<{ f: number; ini: number; fim: number; zoom?: [number, number]; panX?: [number, number]; foco?: [number, number]; children: React.ReactNode }> = ({ f, ini, fim, zoom = [1.02, 1.07], panX = [0, 0], foco = [W / 2, H / 2], children }) => {
+export const Cena: React.FC<{ f: number; ini: number; fim: number; zoom?: [number, number]; panX?: [number, number]; foco?: [number, number]; children: React.ReactNode }> = ({ f, ini, fim, zoom = [1.02, 1.07], panX = [0, 0], foco = [W / 2, H / 2], children }) => {
   if (f < ini || f >= fim) return null;
   const z = ip(f, ini, fim, zoom[0], zoom[1]);
   const px = ip(f, ini, fim, panX[0], panX[1]);
