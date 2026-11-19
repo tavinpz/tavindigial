@@ -1,0 +1,3364 @@
+[
+ {
+  "cena": "gancho",
+  "trava": null,
+  "nome": null,
+  "fonte": "ASML · TRUMPF",
+  "falas": [
+   {
+    "txt": "This laser just hit a droplet of molten tin, thinner than a human hair, flying at two hundred and fifty kilometers an hour.",
+    "p": 0,
+    "v": {
+     "d": "tiro",
+     "n": 1,
+     "k": "A droplet thinner than a hair, at *250 km/h*.",
+     "tit": null,
+     "it": null,
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "Then it hit the same droplet again.",
+    "p": 0,
+    "v": {
+     "n": 2,
+     "k": "Then it hit it *again*."
+    }
+   },
+   {
+    "txt": "It does that fifty thousand times a second. All day. For years.",
+    "p": 0.3,
+    "v": {
+     "n": 3,
+     "k": null
+    }
+   }
+  ]
+ },
+ {
+  "cena": "chips",
+  "trava": null,
+  "nome": null,
+  "fonte": "TRUMPF (EUV LITHOGRAPHY)",
+  "falas": [
+   {
+    "txt": "Every advanced AI chip on Earth starts with that flash of light.",
+    "p": 0,
+    "v": {
+     "d": "big",
+     "n": 0,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": "EVERY AI CHIP",
+     "rot": "IT STARTS WITH THIS FLASH",
+     "sub": null,
+     "cor": "luz",
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "The machine that uses it is built by A-S-M-L. The laser is not.",
+    "p": 0,
+    "v": {
+     "d": "duas",
+     "n": 1,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": "The machine: built by ASML.",
+     "l2": "",
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "A-S-M-L buys it from one family owned company in southern Germany.",
+    "p": 0.3,
+    "v": {
+     "n": 2,
+     "l2": "The laser: one family company in Germany."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "caso",
+  "trava": null,
+  "nome": null,
+  "fonte": "TRUMPF",
+  "falas": [
+   {
+    "txt": "On paper, it doesn't sound hard. You need a laser.",
+    "p": 0,
+    "v": {
+     "d": "check",
+     "n": 1,
+     "k": null,
+     "tit": null,
+     "it": [
+      [
+       "A LASER",
+       1
+      ],
+      [
+       "40 KILOWATTS OF POWER",
+       1
+      ],
+      [
+       "A DROPLET OF TIN",
+       1
+      ],
+      [
+       "A SECOND SUPPLIER ON EARTH",
+       0
+      ]
+     ],
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": "WHAT YOU NEED, ON PAPER",
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "A powerful one. About forty kilowatts.",
+    "p": 0,
+    "v": {
+     "n": 2
+    }
+   },
+   {
+    "txt": "And a droplet of tin to aim it at.",
+    "p": 0,
+    "v": {
+     "n": 3
+    }
+   },
+   {
+    "txt": "Lasers that powerful have cut steel in factories for decades.",
+    "p": 0,
+    "v": {
+     "k": "Lasers this powerful have *cut steel for decades*."
+    }
+   },
+   {
+    "txt": "And yet there is no second supplier. Anywhere.",
+    "p": 0.4,
+    "v": {
+     "n": 4,
+     "k": null
+    }
+   }
+  ]
+ },
+ {
+  "cena": "mapa",
+  "trava": null,
+  "nome": null,
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "So why can't anyone copy a laser?",
+    "p": 0,
+    "v": {
+     "d": "big",
+     "n": 0,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": "WHY?",
+     "rot": null,
+     "sub": "Why can't anyone copy a laser?",
+     "cor": "ambar",
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "There are five locks.",
+    "p": 0,
+    "v": {
+     "d": "travas",
+     "n": 1,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": 0,
+     "at": 0,
+     "tl": [
+      "Five locks."
+     ],
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": [
+      [
+       "THE TARGET",
+       "A speck of tin at 250 km/h"
+      ],
+      [
+       "THE TWO SHOTS",
+       "Hit it twice, 50,000 times a second"
+      ],
+      [
+       "THE POWER",
+       "A few watts become 40 kilowatts"
+      ],
+      [
+       "THE ECHO",
+       "The target shoots back"
+      ],
+      [
+       "? ? ?",
+       "Not technology at all"
+      ]
+     ],
+     "grupo": "PHYSICS + ENGINEERING",
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "Four are physics and engineering.",
+    "p": 0,
+    "v": {
+     "n": 2
+    }
+   },
+   {
+    "txt": "The fifth is about who would ever pay you to try.",
+    "p": 0,
+    "v": {
+     "n": 3,
+     "tl": [
+      "Five locks.",
+      "The last one",
+      "is *about money*."
+     ]
+    }
+   },
+   {
+    "txt": "And it's the one no engineer can fix.",
+    "p": 0.4,
+    "v": {
+     "k": "The one *no engineer* can fix."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "alvo0",
+  "trava": 1,
+  "nome": "THE TARGET",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "Lock one. The target.",
+    "p": 0,
+    "v": {
+     "d": "big",
+     "n": 0,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": "THE TARGET",
+     "rot": "LOCK 1 OF 5",
+     "sub": null,
+     "cor": "ambar",
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   }
+  ]
+ },
+ {
+  "cena": "alvo1",
+  "trava": 1,
+  "nome": "THE TARGET",
+  "fonte": "ASML (HOW EUV LIGHT IS MADE) · LASER FOCUS WORLD",
+  "falas": [
+   {
+    "txt": "Inside the machine, there's a vacuum chamber.",
+    "p": 0,
+    "v": {
+     "d": "alvo",
+     "n": 0,
+     "k": null,
+     "tit": [
+      "The target: a speck of tin, *already gone*."
+     ],
+     "it": null,
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "A nozzle fires a stream of molten tin droplets across it.",
+    "p": 0,
+    "v": {
+     "n": 1
+    }
+   },
+   {
+    "txt": "Each droplet is about thirty thousandths of a millimeter wide. Less than half a human hair.",
+    "p": 0,
+    "v": {
+     "n": 2
+    }
+   },
+   {
+    "txt": "They leave the nozzle at seventy meters per second. That's two hundred and fifty kilometers an hour.",
+    "p": 0,
+    "v": {
+     "n": 3
+    }
+   },
+   {
+    "txt": "And there are fifty thousand of them, every second.",
+    "p": 0,
+    "v": {
+     "n": 4
+    }
+   },
+   {
+    "txt": "Your laser has to find each one, in flight, and hit it dead center.",
+    "p": 0,
+    "v": {
+     "k": "Find each one, in flight. Hit it *dead center*."
+    }
+   },
+   {
+    "txt": "Miss by a hair, literally, and that droplet makes no light at all.",
+    "p": 0.3,
+    "v": {
+     "k": "Miss by a hair, and you get *no light*."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "dois0",
+  "trava": 2,
+  "nome": "THE TWO SHOTS",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "Lock two. The two shots.",
+    "p": 0,
+    "v": {
+     "d": "big",
+     "n": 0,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": "THE TWO SHOTS",
+     "rot": "LOCK 2 OF 5",
+     "sub": null,
+     "cor": "ambar",
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   }
+  ]
+ },
+ {
+  "cena": "dois1",
+  "trava": 2,
+  "nome": "THE TWO SHOTS",
+  "fonte": "TRUMPF (EUV DRIVE LASER) · ASML",
+  "falas": [
+   {
+    "txt": "Here's the problem. A round droplet is a terrible target.",
+    "p": 0,
+    "v": {
+     "d": "duplo",
+     "n": 0,
+     "k": null,
+     "tit": [
+      "One shot shapes it. *The next one* burns it."
+     ],
+     "it": null,
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "It's tiny, and most of the laser beam would fly right past it.",
+    "p": 0,
+    "v": {
+     "n": 1
+    }
+   },
+   {
+    "txt": "So the laser shoots twice.",
+    "p": 0,
+    "v": {
+     "n": 1,
+     "k": "So the laser shoots *twice*."
+    }
+   },
+   {
+    "txt": "The first shot is weak. It's called the pre pulse. It doesn't destroy the droplet. It flattens it, into a thin disc, like a pancake.",
+    "p": 0,
+    "v": {
+     "n": 2,
+     "k": null
+    }
+   },
+   {
+    "txt": "Now the target is wide, and thin.",
+    "p": 0,
+    "v": {
+     "n": 3
+    }
+   },
+   {
+    "txt": "A split second later, the main pulse arrives, and turns that pancake into a plasma, hotter than the surface of the Sun.",
+    "p": 0,
+    "v": {
+     "n": 4
+    }
+   },
+   {
+    "txt": "That plasma gives off the light that prints the chip.",
+    "p": 0,
+    "v": {
+     "n": 5
+    }
+   }
+  ]
+ },
+ {
+  "cena": "dois2",
+  "trava": 2,
+  "nome": "THE TWO SHOTS",
+  "fonte": "TRUMPF · ASML",
+  "falas": [
+   {
+    "txt": "Two shots per droplet. Fifty thousand droplets a second.",
+    "p": 0,
+    "v": {
+     "d": "nums",
+     "n": 2,
+     "k": null,
+     "tit": null,
+     "it": [
+      [
+       "2",
+       "SHOTS PER DROPLET"
+      ],
+      [
+       "50,000",
+       "DROPLETS PER SECOND"
+      ],
+      [
+       "100,000",
+       "HITS EVERY SECOND"
+      ]
+     ],
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "That's a hundred thousand hits, every second.",
+    "p": 0,
+    "v": {
+     "n": 3
+    }
+   },
+   {
+    "txt": "And the second shot has to land on a target that the first shot just changed.",
+    "p": 0,
+    "v": {
+     "k": "Shot two hits a target that shot one *just changed*."
+    }
+   },
+   {
+    "txt": "If the timing between them drifts, the pancake is the wrong shape, and the light fades.",
+    "p": 0.3,
+    "v": {
+     "k": "Wrong timing, wrong shape, *less light*."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "pot0",
+  "trava": 3,
+  "nome": "THE POWER",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "Lock three. The power.",
+    "p": 0,
+    "v": {
+     "d": "big",
+     "n": 0,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": "THE POWER",
+     "rot": "LOCK 3 OF 5",
+     "sub": null,
+     "cor": "ambar",
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   }
+  ]
+ },
+ {
+  "cena": "pot1",
+  "trava": 3,
+  "nome": "THE POWER",
+  "fonte": "TRUMPF (EUV DRIVE LASER)",
+  "falas": [
+   {
+    "txt": "The pulse doesn't start out powerful.",
+    "p": 0,
+    "v": {
+     "d": "amp",
+     "n": 0,
+     "k": null,
+     "tit": [
+      "From a few watts to *40 kilowatts*."
+     ],
+     "it": null,
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "It begins in a small seed laser, at just a few watts. About as much as a phone charger.",
+    "p": 0,
+    "v": {
+     "n": 1
+    }
+   },
+   {
+    "txt": "That's on purpose. A weak pulse is easy to shape precisely.",
+    "p": 0,
+    "v": {
+     "n": 1,
+     "k": "A weak pulse is *easy to shape*."
+    }
+   },
+   {
+    "txt": "Then it goes through a chain of amplifiers, one after another.",
+    "p": 0,
+    "v": {
+     "n": 2,
+     "k": null
+    }
+   },
+   {
+    "txt": "Each one adds energy, without ruining the shape.",
+    "p": 0,
+    "v": {
+     "n": 3
+    }
+   },
+   {
+    "txt": "By the end, the pulse has been amplified more than ten thousand times.",
+    "p": 0,
+    "v": {
+     "n": 4
+    }
+   },
+   {
+    "txt": "Up to forty kilowatts of average power. With peaks in the millions of watts.",
+    "p": 0,
+    "v": {
+     "n": 5
+    }
+   },
+   {
+    "txt": "The company that builds it calls it the most powerful pulsed industrial laser in the world.",
+    "p": 0.3,
+    "v": {
+     "k": "The most powerful pulsed industrial laser *in the world*."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "pot2",
+  "trava": 3,
+  "nome": "THE POWER",
+  "fonte": "TRUMPF (\"FLASHES OF LIGHT IN A VACUUM\") · LASER FOCUS WORLD",
+  "falas": [
+   {
+    "txt": "And here's the painful part. Almost all of that power is wasted.",
+    "p": 0,
+    "v": {
+     "d": "barras",
+     "n": 1,
+     "k": null,
+     "tit": [
+      "Almost all of it is *wasted*."
+     ],
+     "it": [
+      [
+       "LASER GOES IN",
+       30000,
+       "30,000+ W",
+       "verm"
+      ],
+      [
+       "EUV LIGHT OUT",
+       400,
+       "A FEW HUNDRED W",
+       "luz"
+      ]
+     ],
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": "POWER, IN WATTS (ROUNDED)",
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "Tens of thousands of watts of laser go in. A few hundred watts of usable light come out.",
+    "p": 0,
+    "v": {
+     "n": 2
+    }
+   },
+   {
+    "txt": "Only a few percent of the energy becomes the light you actually want.",
+    "p": 0,
+    "v": {
+     "k": "Only *a few percent* becomes useful light."
+    }
+   },
+   {
+    "txt": "So you can't build a smaller, easier laser. You need all of it, just to get that little.",
+    "p": 0.3,
+    "v": {
+     "k": "You can't build a smaller one. You need *all of it*."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "cta1",
+  "trava": 3,
+  "nome": "THE POWER",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "Quick question, before the next lock.",
+    "p": 0,
+    "v": {
+     "d": "cta",
+     "n": 0,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": [
+      "QUICK QUESTION"
+     ],
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": "com",
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "You fire the most powerful laser of its kind at a tiny ball of liquid metal. What do you think the metal does to the laser?",
+    "p": 0,
+    "v": {
+     "n": 1,
+     "t": [
+      "WHAT DOES THE METAL",
+      "DO TO THE LASER?"
+     ]
+    }
+   },
+   {
+    "txt": "Put your guess in the comments. The answer is lock four.",
+    "p": 0,
+    "v": {
+     "n": 2,
+     "s": "Comment your guess"
+    }
+   }
+  ]
+ },
+ {
+  "cena": "eco0",
+  "trava": 4,
+  "nome": "THE ECHO",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "Lock four. The echo.",
+    "p": 0,
+    "v": {
+     "d": "big",
+     "n": 0,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": "THE ECHO",
+     "rot": "LOCK 4 OF 5",
+     "sub": null,
+     "cor": "ambar",
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   }
+  ]
+ },
+ {
+  "cena": "eco1",
+  "trava": 4,
+  "nome": "THE ECHO",
+  "fonte": "TRUMPF (EUV DRIVE LASER)",
+  "falas": [
+   {
+    "txt": "The laser isn't even in the same room as the droplet.",
+    "p": 0,
+    "v": {
+     "d": "eco",
+     "n": 0,
+     "k": null,
+     "tit": [
+      "The target *shoots back*."
+     ],
+     "it": null,
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "It sits on the floor below, in the basement of the chip factory.",
+    "p": 0,
+    "v": {
+     "n": 1
+    }
+   },
+   {
+    "txt": "The beam travels up through a transport system that can be thirty meters long, and is focused onto the droplet at the very end.",
+    "p": 0,
+    "v": {
+     "n": 2
+    }
+   },
+   {
+    "txt": "Now remember what the droplet is. Liquid metal. And metal is a mirror.",
+    "p": 0,
+    "v": {
+     "n": 3,
+     "k": "Liquid metal is *a mirror*."
+    }
+   },
+   {
+    "txt": "So part of that enormous pulse bounces straight back, down the same path it came from.",
+    "p": 0,
+    "v": {
+     "n": 4,
+     "k": null
+    }
+   },
+   {
+    "txt": "Back toward amplifiers that are built to make any light passing through them stronger.",
+    "p": 0,
+    "v": {
+     "n": 5
+    }
+   },
+   {
+    "txt": "Without protection, the laser would amplify its own reflection, and aim it at its most delicate part. The seed.",
+    "p": 0.3,
+    "v": {
+     "k": "It would amplify *its own echo*, and aim it at the seed."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "eco2",
+  "trava": 4,
+  "nome": "THE ECHO",
+  "fonte": "TRUMPF FIGURES (LASER AMPLIFIER)",
+  "falas": [
+   {
+    "txt": "So the machine is full of defenses. Guards against reflections. Three separate cooling circuits. Optics that have to stay perfectly clean.",
+    "p": 0,
+    "v": {
+     "d": "cadeia",
+     "n": 3,
+     "k": null,
+     "tit": null,
+     "it": [
+      [
+       "REFLECTION GUARDS",
+       "PROTECT THE SEED",
+       "menta"
+      ],
+      [
+       "3 COOLING CIRCUITS",
+       "CARRY THE HEAT AWAY",
+       "ambar"
+      ],
+      [
+       "CLEAN OPTICS",
+       "NO DUST ALLOWED",
+       "osso"
+      ]
+     ],
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "One laser amplifier has four hundred and fifty seven thousand, three hundred and twenty nine parts.",
+    "p": 0,
+    "v": {
+     "d": "nums",
+     "n": 1,
+     "k": null,
+     "tit": null,
+     "it": [
+      [
+       "457,329",
+       "PARTS"
+      ],
+      [
+       "7.3 km",
+       "OF CABLE"
+      ],
+      [
+       "17 t",
+       "TOTAL WEIGHT"
+      ]
+     ],
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "More than seven kilometers of cable.",
+    "p": 0,
+    "v": {
+     "n": 2
+    }
+   },
+   {
+    "txt": "And it weighs seventeen tons.",
+    "p": 0,
+    "v": {
+     "n": 3
+    }
+   },
+   {
+    "txt": "That's not a laser. That's a building's worth of machine, with one job. Hit the droplet. Twice.",
+    "p": 0.3,
+    "v": {
+     "k": "One job: *hit the droplet. Twice.*"
+    }
+   }
+  ]
+ },
+ {
+  "cena": "recap",
+  "trava": 4,
+  "nome": "THE ECHO",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "That's four locks.",
+    "p": 0,
+    "v": {
+     "d": "travas",
+     "n": 3,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": 0,
+     "at": 0,
+     "tl": [
+      "Four locks."
+     ],
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": [
+      [
+       "THE TARGET",
+       "A speck of tin at 250 km/h"
+      ],
+      [
+       "THE TWO SHOTS",
+       "Hit it twice, 50,000 times a second"
+      ],
+      [
+       "THE POWER",
+       "A few watts become 40 kilowatts"
+      ],
+      [
+       "THE ECHO",
+       "The target shoots back"
+      ],
+      [
+       "? ? ?",
+       "Not technology at all"
+      ]
+     ],
+     "grupo": "PHYSICS + ENGINEERING",
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "A target smaller than a hair.",
+    "p": 0,
+    "v": {
+     "ab": 1
+    }
+   },
+   {
+    "txt": "Two shots, a hundred thousand times a second.",
+    "p": 0,
+    "v": {
+     "ab": 2
+    }
+   },
+   {
+    "txt": "Forty kilowatts, built up from almost nothing.",
+    "p": 0,
+    "v": {
+     "ab": 3
+    }
+   },
+   {
+    "txt": "And an echo that tries to destroy the laser.",
+    "p": 0,
+    "v": {
+     "ab": 4
+    }
+   },
+   {
+    "txt": "All four are solvable. There are brilliant laser companies in America, Japan and China.",
+    "p": 0,
+    "v": {
+     "tl": [
+      "Four locks.",
+      "*Solvable*, in theory."
+     ],
+     "k": "There are brilliant laser companies everywhere."
+    }
+   },
+   {
+    "txt": "So why hasn't one of them built a second one?",
+    "p": 0,
+    "v": {
+     "k": "So why hasn't anyone built *a second one*?"
+    }
+   },
+   {
+    "txt": "The fifth lock.",
+    "p": 0,
+    "v": {
+     "d": "travas",
+     "n": 3,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": 4,
+     "at": 5,
+     "tl": [
+      "The fifth lock",
+      "is *different*."
+     ],
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": [
+      [
+       "THE TARGET",
+       "A speck of tin at 250 km/h"
+      ],
+      [
+       "THE TWO SHOTS",
+       "Hit it twice, 50,000 times a second"
+      ],
+      [
+       "THE POWER",
+       "A few watts become 40 kilowatts"
+      ],
+      [
+       "THE ECHO",
+       "The target shoots back"
+      ],
+      [
+       "? ? ?",
+       "Not technology at all"
+      ]
+     ],
+     "grupo": "PHYSICS + ENGINEERING",
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "It has nothing to do with lasers.",
+    "p": 0.6,
+    "v": {
+     "k": "It has *nothing to do* with lasers."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "cli0",
+  "trava": 5,
+  "nome": "? ? ?",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "Lock five.",
+    "p": 0.3,
+    "v": {
+     "d": "big",
+     "n": 0,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": "? ? ?",
+     "rot": "LOCK 5 OF 5",
+     "sub": null,
+     "cor": "ambar",
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   }
+  ]
+ },
+ {
+  "cena": "cli1",
+  "trava": 5,
+  "nome": "? ? ?",
+  "fonte": "TRUMPF ANNUAL REPORT 2025/26",
+  "falas": [
+   {
+    "txt": "The company that builds this laser is called TRUMPF. It was founded in nineteen twenty three, near Stuttgart.",
+    "p": 0,
+    "v": {
+     "d": "big",
+     "n": 0,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": "TRUMPF",
+     "rot": "DITZINGEN, NEAR STUTTGART",
+     "sub": "Founded in 1923. Still owned by one family.",
+     "cor": "osso",
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "And it isn't really a chip company at all.",
+    "p": 0.2,
+    "v": {}
+   },
+   {
+    "txt": "Most of its money comes from machines that cut and bend sheet metal.",
+    "p": 0,
+    "v": {
+     "d": "barras",
+     "n": 1,
+     "k": null,
+     "tit": [
+      "Its day job is *cutting steel*."
+     ],
+     "it": [
+      [
+       "MACHINE TOOLS",
+       2.38,
+       "€2.38 bn"
+      ],
+      [
+       "LASER TECHNOLOGY",
+       1.17,
+       "€1.17 bn"
+      ],
+      [
+       "EUV LASERS",
+       0.791,
+       "€0.79 bn",
+       "menta"
+      ]
+     ],
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": "TRUMPF SALES BY BUSINESS, FISCAL 2025/26, € BILLION",
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "Then industrial lasers.",
+    "p": 0,
+    "v": {
+     "n": 2
+    }
+   },
+   {
+    "txt": "The lasers for chip machines are the smallest of the three. Seven hundred and ninety one million euros, out of more than four billion.",
+    "p": 0,
+    "v": {
+     "n": 3
+    }
+   },
+   {
+    "txt": "That's the secret. This laser was never invented for chips.",
+    "p": 0.3,
+    "v": {
+     "k": "This laser was *never invented for chips*."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "cli2",
+  "trava": 5,
+  "nome": "THE DAY JOB",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "That's lock five. The day job.",
+    "p": 0,
+    "v": {
+     "d": "big",
+     "n": 0,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": "THE DAY JOB",
+     "rot": "LOCK 5 OF 5",
+     "sub": null,
+     "cor": "menta",
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "TRUMPF spent decades building this kind of laser for a completely different reason. To cut steel in factories.",
+    "p": 0,
+    "v": {
+     "sub": "Decades of building this laser, to cut steel."
+    }
+   },
+   {
+    "txt": "Thousands of machines. Thousands of customers. Every one of them paid for a little more experience.",
+    "p": 0,
+    "v": {
+     "sub": "Thousands of machines paid for the experience."
+    }
+   },
+   {
+    "txt": "By the time the chip industry needed an impossible laser, one company had already been paid to learn how.",
+    "p": 0.3,
+    "v": {
+     "sub": "One company had already been paid to learn how."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "cli3",
+  "trava": 5,
+  "nome": "THE DAY JOB",
+  "fonte": "TRUMPF, FISCAL YEAR 2024/25 AND 2025/26 RESULTS",
+  "falas": [
+   {
+    "txt": "Now look at it from a copycat's side.",
+    "p": 0,
+    "v": {
+     "d": "versus",
+     "n": 0,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": "A NEW RIVAL",
+     "b": "TRUMPF",
+     "la": [
+      "No steel cutting business to learn from",
+      "Exactly one possible customer",
+      "That customer already has a supplier"
+     ],
+     "lb": [
+      "Learned on thousands of machines",
+      "The one customer is a partner",
+      "Owned by a family, not for sale"
+     ],
+     "ra": "STARTING TODAY",
+     "rb": "SINCE 1923",
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "You'd have no day job to learn from. Much of the cutting industry has since moved on to a newer kind of laser.",
+    "p": 0,
+    "v": {
+     "n": 1
+    }
+   },
+   {
+    "txt": "You'd have exactly one possible customer on Earth. A-S-M-L.",
+    "p": 0,
+    "v": {
+     "n": 2
+    }
+   },
+   {
+    "txt": "And that customer already has a supplier it has worked with for years.",
+    "p": 0,
+    "v": {
+     "n": 3
+    }
+   },
+   {
+    "txt": "And even for the original, one customer is a dangerous thing.",
+    "p": 0,
+    "v": {
+     "d": "barras",
+     "n": 1,
+     "k": null,
+     "tit": null,
+     "it": [
+      [
+       "2023/24",
+       943,
+       "€943 m"
+      ],
+      [
+       "2024/25",
+       724,
+       "€724 m",
+       "verm"
+      ],
+      [
+       "2025/26",
+       791,
+       "€791 m",
+       "menta"
+      ]
+     ],
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": "TRUMPF EUV SALES, € MILLION",
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "In a single year, when A-S-M-L ordered fewer machines, TRUMPF's laser sales to it fell twenty three percent.",
+    "p": 0,
+    "v": {
+     "n": 2
+    }
+   },
+   {
+    "txt": "They've only partly recovered.",
+    "p": 0,
+    "v": {
+     "n": 3
+    }
+   },
+   {
+    "txt": "So who spends ten years and billions of dollars, to become the backup supplier to a single customer?",
+    "p": 0.4,
+    "v": {
+     "k": "Who spends billions to be *the backup* for one customer?"
+    }
+   }
+  ]
+ },
+ {
+  "cena": "cli4",
+  "trava": 5,
+  "nome": "THE DAY JOB",
+  "fonte": "TRUMPF ANNUAL REPORT 2025/26",
+  "falas": [
+   {
+    "txt": "And you can't buy your way in, either.",
+    "p": 0,
+    "v": {
+     "d": "big",
+     "n": 0,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": "NOT FOR SALE",
+     "rot": "TRUMPF",
+     "sub": null,
+     "cor": "verm",
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "TRUMPF isn't on the stock market. Ninety percent belongs to one family. The other ten, to the family's foundation.",
+    "p": 0,
+    "v": {
+     "sub": "90% one family. 10% the family foundation."
+    }
+   },
+   {
+    "txt": "So here's what a real copy would need.",
+    "p": 0,
+    "v": {
+     "d": "check",
+     "n": 0,
+     "k": null,
+     "tit": null,
+     "it": [
+      [
+       "A LASER THAT HITS TWICE",
+       0
+      ],
+      [
+       "40 KILOWATTS THAT SURVIVE THE ECHO",
+       0
+      ],
+      [
+       "DECADES OF A DAY JOB",
+       0
+      ],
+      [
+       "A CUSTOMER THAT NEEDS A SECOND ONE",
+       0
+      ]
+     ],
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": "WHAT A REAL COPY WOULD NEED",
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "A laser that hits twice.",
+    "p": 0,
+    "v": {
+     "n": 1
+    }
+   },
+   {
+    "txt": "Forty kilowatts that survive their own echo.",
+    "p": 0,
+    "v": {
+     "n": 2
+    }
+   },
+   {
+    "txt": "Decades of a day job that taught you how.",
+    "p": 0,
+    "v": {
+     "n": 3
+    }
+   },
+   {
+    "txt": "And a customer that actually needs a second supplier.",
+    "p": 0,
+    "v": {
+     "n": 4
+    }
+   },
+   {
+    "txt": "You can copy the laser.",
+    "p": 0,
+    "v": {
+     "d": "duas",
+     "n": 1,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": "You can copy the laser.",
+     "l2": "",
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "You can't copy the reason it exists.",
+    "p": 0.7,
+    "v": {
+     "n": 2,
+     "l2": "You can't copy the reason it exists."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "cta2",
+  "trava": 5,
+  "nome": "THE DAY JOB",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "If you know someone who thinks the chip race is only about chips, send them this video.",
+    "p": 0,
+    "v": {
+     "d": "cta",
+     "n": 1,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": [
+      "SEND THIS",
+      "to that friend"
+     ],
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": "env",
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "Because it's about to get harder.",
+    "p": 0,
+    "v": {
+     "n": 2,
+     "s": "It's about to get harder"
+    }
+   }
+  ]
+ },
+ {
+  "cena": "fecho1",
+  "trava": null,
+  "nome": null,
+  "fonte": "ASML (1,000 W SOURCE ROADMAP), VIA HEISE AND TOM'S HARDWARE",
+  "falas": [
+   {
+    "txt": "One last thing.",
+    "p": 0,
+    "v": {
+     "d": "big",
+     "n": 0,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": "ONE LAST THING",
+     "rot": null,
+     "sub": null,
+     "cor": "osso",
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "A-S-M-L wants its machines to print about fifty percent more wafers by twenty thirty.",
+    "p": 0,
+    "v": {
+     "d": "nums",
+     "n": 1,
+     "k": null,
+     "tit": null,
+     "it": [
+      [
+       "+50%",
+       "MORE WAFERS PER MACHINE BY 2030"
+      ],
+      [
+       "1,000 W",
+       "THE EUV LIGHT SOURCE IT NEEDS"
+      ]
+     ],
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "To do that, the light source has to reach a thousand watts.",
+    "p": 0,
+    "v": {
+     "n": 2
+    }
+   },
+   {
+    "txt": "The plan for getting there is public. Twice as many droplets. And three laser pulses on each one, instead of two.",
+    "p": 0,
+    "v": {
+     "d": "nums",
+     "n": 2,
+     "k": null,
+     "tit": null,
+     "it": [
+      [
+       "100,000",
+       "DROPLETS PER SECOND"
+      ],
+      [
+       "3",
+       "PULSES ON EACH DROPLET"
+      ]
+     ],
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "The target is about to get twice as fast.",
+    "p": 0.3,
+    "v": {
+     "k": "The target is about to get *twice as fast*."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "fecho2",
+  "trava": null,
+  "nome": null,
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "So that's the real reason nobody can copy this laser.",
+    "p": 0,
+    "v": {
+     "d": "tiro",
+     "n": 3,
+     "k": "The real reason nobody can copy this laser:",
+     "tit": null,
+     "it": null,
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "By the time you learn to hit the droplet twice, the original is already hitting it three times.",
+    "p": 0.9,
+    "v": {
+     "k": "Learn to hit it twice, and the original is *hitting it three times*."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "fim",
+  "trava": null,
+  "nome": null,
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "The laser is one link in a chain. And almost every link has a company like this hiding in it.",
+    "p": 0,
+    "v": {
+     "d": "fim",
+     "n": 0,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": "THE LASER",
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "Next, we open another one.",
+    "p": 0,
+    "v": {
+     "n": 1
+    }
+   },
+   {
+    "txt": "Subscribe, so it finds you.",
+    "p": 0,
+    "v": {
+     "n": 2
+    }
+   },
+   {
+    "txt": "And tell me in the comments which company you want taken apart next.",
+    "p": 0,
+    "v": {
+     "n": 3
+    }
+   }
+  ]
+ }
+]

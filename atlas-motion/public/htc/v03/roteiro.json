@@ -1,0 +1,3511 @@
+[
+ {
+  "cena": "gancho",
+  "trava": null,
+  "nome": null,
+  "fonte": "NVIDIA NEWSROOM, NOVEMBER 12, 2026",
+  "falas": [
+   {
+    "txt": "This is Nvidia. Thirty three years of work, with one man at the top.",
+    "p": 0,
+    "v": {
+     "d": "pilha",
+     "n": 5,
+     "k": "Thirty three years. *One CEO*.",
+     "tit": null,
+     "it": [
+      [
+       "THE CHIPS",
+       "DESIGNED BY NVIDIA",
+       "fantasma"
+      ],
+      [
+       "THE NETWORK",
+       "LINKS THOUSANDS OF CHIPS",
+       "fantasma"
+      ],
+      [
+       "THE SOFTWARE",
+       "RUNS ONLY ON THESE CHIPS",
+       "menta"
+      ],
+      [
+       "7.5 MILLION DEVELOPERS",
+       "TRAINED ON THAT SOFTWARE",
+       "fantasma"
+      ],
+      [
+       "THE FOUNDER",
+       "CEO FOR 33 YEARS",
+       "ambar"
+      ]
+     ],
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": 4,
+     "sn": 6,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "On November twelfth, twenty twenty six, he resigned.",
+    "p": 0,
+    "v": {
+     "n": 6,
+     "k": "November 12, 2026: *he resigned*."
+    }
+   },
+   {
+    "txt": "And the tower didn't move.",
+    "p": 0.3,
+    "v": {
+     "k": "The tower *didn't move*."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "cinco",
+  "trava": null,
+  "nome": null,
+  "fonte": "NVIDIA, Q3 FISCAL 2027 RESULTS (NOVEMBER 17, 2026)",
+  "falas": [
+   {
+    "txt": "Five days later, Nvidia reported its biggest quarter ever.",
+    "p": 0,
+    "v": {
+     "d": "big",
+     "n": 0,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": "$115.8 BILLION",
+     "rot": "FIVE DAYS LATER",
+     "sub": "Revenue in a single quarter. Up 103% in a year.",
+     "cor": "ambar",
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "A hundred and fifteen point eight billion dollars in three months. Double the year before.",
+    "p": 0.2,
+    "v": {}
+   },
+   {
+    "txt": "Its customers didn't leave. Because they can't.",
+    "p": 0.3,
+    "v": {
+     "d": "big",
+     "n": 0,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": "THEY CAN'T LEAVE",
+     "rot": null,
+     "sub": "The customers didn't leave. They can't.",
+     "cor": "menta",
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   }
+  ]
+ },
+ {
+  "cena": "caso",
+  "trava": null,
+  "nome": null,
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "Think about how strange that is. Rivals have built faster chips for some jobs.",
+    "p": 0,
+    "v": {
+     "d": "check",
+     "n": 1,
+     "k": null,
+     "tit": null,
+     "it": [
+      [
+       "A FASTER CHIP",
+       1
+      ],
+      [
+       "A CHEAPER CHIP",
+       1
+      ],
+      [
+       "BILLIONS OF DOLLARS",
+       1
+      ],
+      [
+       "NVIDIA'S CUSTOMERS",
+       0
+      ]
+     ],
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": "WHAT THE RIVALS HAVE",
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "They've built cheaper chips.",
+    "p": 0,
+    "v": {
+     "n": 2
+    }
+   },
+   {
+    "txt": "They have billions of dollars, and some of the best engineers alive.",
+    "p": 0,
+    "v": {
+     "n": 3
+    }
+   },
+   {
+    "txt": "And they still can't pull Nvidia's customers away.",
+    "p": 0,
+    "v": {
+     "n": 4
+    }
+   },
+   {
+    "txt": "Because the thing holding those customers isn't the chip.",
+    "p": 0.4,
+    "v": {
+     "k": "What holds them *isn't the chip*."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "mapa",
+  "trava": null,
+  "nome": null,
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "So what is it?",
+    "p": 0,
+    "v": {
+     "d": "big",
+     "n": 0,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": "SO WHAT IS IT?",
+     "rot": null,
+     "sub": null,
+     "cor": "ambar",
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "There are five locks.",
+    "p": 0,
+    "v": {
+     "d": "travas",
+     "n": 1,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": 0,
+     "at": 0,
+     "tl": [
+      "Five locks."
+     ],
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": [
+      [
+       "THE LANGUAGE",
+       "A way to talk to the chip"
+      ],
+      [
+       "THE LIBRARIES",
+       "Twenty years of finished work"
+      ],
+      [
+       "THE HABIT",
+       "7.5 million people trained on it"
+      ],
+      [
+       "THE WHOLE MACHINE",
+       "Chips, network and software as one"
+      ],
+      [
+       "? ? ?",
+       "Not technology at all"
+      ]
+     ],
+     "grupo": "SOFTWARE + HARDWARE",
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "Four of them are software and hardware.",
+    "p": 0,
+    "v": {
+     "n": 2
+    }
+   },
+   {
+    "txt": "The fifth is something almost no company is willing to do.",
+    "p": 0,
+    "v": {
+     "n": 3,
+     "tl": [
+      "Five locks.",
+      "The last one",
+      "*almost nobody will do*."
+     ]
+    }
+   },
+   {
+    "txt": "And it's the one that left the building on November twelfth.",
+    "p": 0.4,
+    "v": {
+     "k": "It may have *left the building* on November 12."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "ling0",
+  "trava": 1,
+  "nome": "THE LANGUAGE",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "Lock one. The language.",
+    "p": 0,
+    "v": {
+     "d": "big",
+     "n": 0,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": "THE LANGUAGE",
+     "rot": "LOCK 1 OF 5",
+     "sub": null,
+     "cor": "ambar",
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   }
+  ]
+ },
+ {
+  "cena": "ling1",
+  "trava": 1,
+  "nome": "THE LANGUAGE",
+  "fonte": "NVIDIA · ILLUSTRATION, SIMPLIFIED CODE",
+  "falas": [
+   {
+    "txt": "Twenty years ago, a graphics chip did one thing. It drew video games.",
+    "p": 0,
+    "v": {
+     "d": "codigo",
+     "n": 0,
+     "k": null,
+     "tit": [
+      "A graphics chip only spoke *one language*."
+     ],
+     "it": null,
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "It was incredibly good at doing thousands of small calculations at the same time.",
+    "p": 0,
+    "v": {
+     "n": 1
+    }
+   },
+   {
+    "txt": "Scientists wanted that power. But to use it, they had to disguise their math as a picture, and trick the chip into drawing it.",
+    "p": 0,
+    "v": {
+     "n": 2
+    }
+   },
+   {
+    "txt": "In two thousand six, Nvidia announced a way out. It's called CUDA.",
+    "p": 0,
+    "v": {
+     "n": 3,
+     "tit": [
+      "2006: *CUDA*. Talk to the chip in normal code."
+     ]
+    }
+   },
+   {
+    "txt": "With CUDA, you write ordinary code, and the chip runs it on thousands of cores at once.",
+    "p": 0,
+    "v": {
+     "n": 4
+    }
+   },
+   {
+    "txt": "And Nvidia gave it away for free.",
+    "p": 0.3,
+    "v": {
+     "k": "And it was *free*."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "ling2",
+  "trava": 1,
+  "nome": "THE LANGUAGE",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "Free sounds generous. It's also the lock.",
+    "p": 0,
+    "v": {
+     "d": "duas",
+     "n": 1,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": "Free sounds generous.",
+     "l2": "",
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "Because CUDA only runs on Nvidia chips.",
+    "p": 0.3,
+    "v": {
+     "n": 2,
+     "l2": "It only runs on Nvidia chips."
+    }
+   },
+   {
+    "txt": "Every line of code written in it, is a line that can't simply move to anyone else.",
+    "p": 0,
+    "v": {
+     "k": "Every line written is a line that *can't simply move*."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "lib0",
+  "trava": 2,
+  "nome": "THE LIBRARIES",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "Lock two. The libraries.",
+    "p": 0,
+    "v": {
+     "d": "big",
+     "n": 0,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": "THE LIBRARIES",
+     "rot": "LOCK 2 OF 5",
+     "sub": null,
+     "cor": "ambar",
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   }
+  ]
+ },
+ {
+  "cena": "lib1",
+  "trava": 2,
+  "nome": "THE LIBRARIES",
+  "fonte": "NVIDIA FORM 10-K, FISCAL 2026",
+  "falas": [
+   {
+    "txt": "Almost nobody writes CUDA directly anymore.",
+    "p": 0,
+    "v": {
+     "d": "pilha",
+     "n": 2,
+     "k": null,
+     "tit": [
+      "Nobody starts from zero. *They start here*."
+     ],
+     "it": [
+      [
+       "THE CHIP",
+       "NVIDIA GPU",
+       "fantasma"
+      ],
+      [
+       "CUDA",
+       "THE LANGUAGE · 2006",
+       "menta"
+      ]
+     ],
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "They use libraries. Finished, tested pieces of software that sit on top of it.",
+    "p": 0,
+    "v": {
+     "it": [
+      [
+       "THE CHIP",
+       "NVIDIA GPU",
+       "fantasma"
+      ],
+      [
+       "CUDA",
+       "THE LANGUAGE · 2006",
+       "menta"
+      ],
+      [
+       "THE LIBRARIES",
+       "HUNDREDS OF THEM",
+       "menta"
+      ]
+     ],
+     "n": 3
+    }
+   },
+   {
+    "txt": "One for neural networks. One for weather. One for chemistry. One for video.",
+    "p": 0,
+    "v": {
+     "n": 3
+    }
+   },
+   {
+    "txt": "Nvidia's own filings count hundreds of them.",
+    "p": 0,
+    "v": {
+     "n": 3
+    }
+   },
+   {
+    "txt": "Each one took years to write. And years more to make fast.",
+    "p": 0,
+    "v": {
+     "n": 3,
+     "k": "Years to write. *Years more* to make fast."
+    }
+   },
+   {
+    "txt": "And on top of those sit the tools the whole AI world builds with.",
+    "p": 0,
+    "v": {
+     "it": [
+      [
+       "THE CHIP",
+       "NVIDIA GPU",
+       "fantasma"
+      ],
+      [
+       "CUDA",
+       "THE LANGUAGE · 2006",
+       "menta"
+      ],
+      [
+       "THE LIBRARIES",
+       "HUNDREDS OF THEM",
+       "menta"
+      ],
+      [
+       "THE AI TOOLS",
+       "WHAT RESEARCHERS ACTUALLY TOUCH",
+       "osso"
+      ]
+     ],
+     "n": 4
+    }
+   },
+   {
+    "txt": "Then the models. Then the apps you actually use.",
+    "p": 0,
+    "v": {
+     "it": [
+      [
+       "THE CHIP",
+       "NVIDIA GPU",
+       "fantasma"
+      ],
+      [
+       "CUDA",
+       "THE LANGUAGE · 2006",
+       "menta"
+      ],
+      [
+       "THE LIBRARIES",
+       "HUNDREDS OF THEM",
+       "menta"
+      ],
+      [
+       "THE AI TOOLS",
+       "WHAT RESEARCHERS ACTUALLY TOUCH",
+       "osso"
+      ],
+      [
+       "THE MODELS AND APPS",
+       "WHAT YOU ACTUALLY USE",
+       "osso"
+      ]
+     ],
+     "n": 5
+    }
+   }
+  ]
+ },
+ {
+  "cena": "lib2",
+  "trava": 2,
+  "nome": "THE LIBRARIES",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "So when a rival ships a new chip, it isn't competing with a chip.",
+    "p": 0,
+    "v": {
+     "d": "versus",
+     "n": 1,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": "A NEW RIVAL CHIP",
+     "b": "AN NVIDIA CHIP",
+     "la": [
+      "Fast hardware",
+      "Its own new software",
+      "Most tools: support comes later"
+     ],
+     "lb": [
+      "Fast hardware",
+      "Twenty years of software",
+      "Most tools: work out of the box"
+     ],
+     "ra": "DAY ONE",
+     "rb": "DAY ONE",
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "It's competing with twenty years of software that already works.",
+    "p": 0,
+    "v": {
+     "n": 2
+    }
+   },
+   {
+    "txt": "The new tools usually run on Nvidia first. Everyone else gets support later, if they get it at all.",
+    "p": 0,
+    "v": {
+     "n": 3
+    }
+   },
+   {
+    "txt": "A faster chip that can't run your code, isn't faster. It's a paperweight.",
+    "p": 0.4,
+    "v": {
+     "k": "A faster chip that can't run your code is *a paperweight*."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "hab0",
+  "trava": 3,
+  "nome": "THE HABIT",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "Lock three. The habit.",
+    "p": 0,
+    "v": {
+     "d": "big",
+     "n": 0,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": "THE HABIT",
+     "rot": "LOCK 3 OF 5",
+     "sub": null,
+     "cor": "ambar",
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   }
+  ]
+ },
+ {
+  "cena": "hab1",
+  "trava": 3,
+  "nome": "THE HABIT",
+  "fonte": "COMPUTER HISTORY MUSEUM (ALEXNET SOURCE CODE)",
+  "falas": [
+   {
+    "txt": "In twenty twelve, three researchers in Toronto entered a contest to recognize objects in photos.",
+    "p": 0,
+    "v": {
+     "d": "big",
+     "n": 0,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": "2012",
+     "rot": "TORONTO",
+     "sub": "Three researchers enter an image recognition contest.",
+     "cor": "osso",
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "They trained their program on two Nvidia gaming cards. The kind you could buy in a store.",
+    "p": 0,
+    "v": {
+     "d": "nums",
+     "n": 1,
+     "k": null,
+     "tit": null,
+     "it": [
+      [
+       "2",
+       "GAMING CARDS"
+      ],
+      [
+       "≈ 6,000",
+       "LINES OF CUDA CODE"
+      ]
+     ],
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "The code was about six thousand lines of CUDA.",
+    "p": 0,
+    "v": {
+     "n": 2
+    }
+   },
+   {
+    "txt": "It crushed everything else in the contest. It's called AlexNet, and it started the modern AI boom.",
+    "p": 0,
+    "v": {
+     "k": "Its name: *AlexNet*. It started the AI boom."
+    }
+   },
+   {
+    "txt": "And from that day on, if you wanted to do AI research, you did it the way they did.",
+    "p": 0.3,
+    "v": {
+     "k": "From then on, everyone did it *their way*."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "hab2",
+  "trava": 3,
+  "nome": "THE HABIT",
+  "fonte": "NVIDIA ANNUAL REVIEW, FISCAL 2026",
+  "falas": [
+   {
+    "txt": "Today, Nvidia says more than seven and a half million developers use CUDA and its tools.",
+    "p": 0,
+    "v": {
+     "d": "grade",
+     "n": 1,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": 750,
+     "lit": 0,
+     "r1": [
+      7500000,
+      "DEVELOPERS USING CUDA AND NVIDIA TOOLS",
+      "+"
+     ],
+     "r2": null,
+     "cada": "EACH DOT = 10,000 DEVELOPERS",
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "That's seven and a half million people who learned on it at university,",
+    "p": 0,
+    "v": {
+     "k": "They *learned* on it."
+    }
+   },
+   {
+    "txt": "got hired because they knew it,",
+    "p": 0,
+    "v": {
+     "k": "They got *hired* for it."
+    }
+   },
+   {
+    "txt": "and wrote years of working code in it.",
+    "p": 0,
+    "v": {
+     "k": "They wrote *years of code* in it."
+    }
+   },
+   {
+    "txt": "To switch chips, a company doesn't just buy new hardware. It has to retrain its people, and rewrite and re-test what they built.",
+    "p": 0.3,
+    "v": {
+     "k": "Switching means *retraining people* and *rewriting code*."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "cta1",
+  "trava": 3,
+  "nome": "THE HABIT",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "Quick question, before the next lock.",
+    "p": 0,
+    "v": {
+     "d": "cta",
+     "n": 0,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": [
+      "QUICK QUESTION"
+     ],
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": "com",
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "If you ran an AI company, how much cheaper would a rival chip have to be, before you'd rewrite everything? Twenty percent? Fifty?",
+    "p": 0,
+    "v": {
+     "n": 1,
+     "t": [
+      "HOW MUCH CHEAPER",
+      "TO SWITCH?"
+     ]
+    }
+   },
+   {
+    "txt": "Put your number in the comments. Then see if lock four changes it.",
+    "p": 0,
+    "v": {
+     "n": 2,
+     "s": "Comment your number"
+    }
+   }
+  ]
+ },
+ {
+  "cena": "maq0",
+  "trava": 4,
+  "nome": "THE WHOLE MACHINE",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "Lock four. The whole machine.",
+    "p": 0,
+    "v": {
+     "d": "big",
+     "n": 0,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": "THE WHOLE MACHINE",
+     "rot": "LOCK 4 OF 5",
+     "sub": null,
+     "cor": "ambar",
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   }
+  ]
+ },
+ {
+  "cena": "maq1",
+  "trava": 4,
+  "nome": "THE WHOLE MACHINE",
+  "fonte": "NVIDIA (MELLANOX ACQUISITION, COMPLETED APRIL 2020)",
+  "falas": [
+   {
+    "txt": "A modern AI model isn't trained on one chip. It's trained on thousands of them, acting as one.",
+    "p": 0,
+    "v": {
+     "d": "cadeia",
+     "n": 1,
+     "k": null,
+     "tit": [
+      "One chip is useless. *Thousands, acting as one*."
+     ],
+     "it": [
+      [
+       "THE CHIPS",
+       "THOUSANDS OF THEM",
+       "fantasma"
+      ],
+      [
+       "THE NETWORK",
+       "MAKES THEM ACT AS ONE",
+       "ambar"
+      ],
+      [
+       "THE SOFTWARE",
+       "TELLS THEM WHAT TO DO",
+       "menta"
+      ]
+     ],
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "Which means the connections between the chips matter as much as the chips.",
+    "p": 0,
+    "v": {
+     "n": 2
+    }
+   },
+   {
+    "txt": "In twenty twenty, Nvidia bought a networking company called Mellanox, for about seven billion dollars.",
+    "p": 0,
+    "v": {
+     "n": 2,
+     "k": "2020: Nvidia buys Mellanox for about *$7 billion*."
+    }
+   },
+   {
+    "txt": "At the time, it looked like a side business.",
+    "p": 0,
+    "v": {
+     "k": "It looked like *a side business*."
+    }
+   },
+   {
+    "txt": "Now Nvidia doesn't sell you a chip. It sells you the chips, the network between them, and the software on top. Designed together, delivered as one rack.",
+    "p": 0,
+    "v": {
+     "n": 3,
+     "k": null
+    }
+   },
+   {
+    "txt": "And it replaces that whole machine with a new generation about once a year.",
+    "p": 0,
+    "v": {
+     "k": "A new generation *about once a year*."
+    }
+   },
+   {
+    "txt": "By the time a rival matches one, the next one is already shipping.",
+    "p": 0.3,
+    "v": {
+     "k": "Match one, and *the next is already shipping*."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "maq2",
+  "trava": 4,
+  "nome": "THE WHOLE MACHINE",
+  "fonte": "NVIDIA ANNUAL REVIEW, FISCAL 2026",
+  "falas": [
+   {
+    "txt": "In fiscal twenty twenty six, Nvidia's data center business brought in a hundred and ninety four billion dollars.",
+    "p": 0,
+    "v": {
+     "d": "nums",
+     "n": 1,
+     "k": null,
+     "tit": null,
+     "it": [
+      [
+       "$194 bn",
+       "DATA CENTER REVENUE · FISCAL 2026"
+      ],
+      [
+       "+142%",
+       "DATA CENTER NETWORKING, SAME YEAR"
+      ]
+     ],
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "And its data center networking revenue grew a hundred and forty two percent in a single year.",
+    "p": 0,
+    "v": {
+     "n": 2
+    }
+   },
+   {
+    "txt": "So a rival doesn't have to beat one product. It has to beat three, that were built to fit each other.",
+    "p": 0.3,
+    "v": {
+     "k": "Not one product. *Three*, built to fit each other."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "recap",
+  "trava": 4,
+  "nome": "THE WHOLE MACHINE",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "That's four locks.",
+    "p": 0,
+    "v": {
+     "d": "travas",
+     "n": 3,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": 0,
+     "at": 0,
+     "tl": [
+      "Four locks."
+     ],
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": [
+      [
+       "THE LANGUAGE",
+       "A way to talk to the chip"
+      ],
+      [
+       "THE LIBRARIES",
+       "Twenty years of finished work"
+      ],
+      [
+       "THE HABIT",
+       "7.5 million people trained on it"
+      ],
+      [
+       "THE WHOLE MACHINE",
+       "Chips, network and software as one"
+      ],
+      [
+       "? ? ?",
+       "Not technology at all"
+      ]
+     ],
+     "grupo": "SOFTWARE + HARDWARE",
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "A language only their chips speak.",
+    "p": 0,
+    "v": {
+     "ab": 1
+    }
+   },
+   {
+    "txt": "Twenty years of libraries.",
+    "p": 0,
+    "v": {
+     "ab": 2
+    }
+   },
+   {
+    "txt": "Seven and a half million trained people.",
+    "p": 0,
+    "v": {
+     "ab": 3
+    }
+   },
+   {
+    "txt": "And a whole machine, sold as one.",
+    "p": 0,
+    "v": {
+     "ab": 4
+    }
+   },
+   {
+    "txt": "All four can be copied. With enough money, and enough engineers.",
+    "p": 0,
+    "v": {
+     "tl": [
+      "Four locks.",
+      "*Copyable*, in theory."
+     ],
+     "k": "Money. Engineers. Time."
+    }
+   },
+   {
+    "txt": "A-M-D is trying. Intel is trying. Google builds its own chips, with its own software.",
+    "p": 0,
+    "v": {
+     "k": "AMD, Intel and Google are all trying."
+    }
+   },
+   {
+    "txt": "The fifth lock is why it's taking them so long.",
+    "p": 0,
+    "v": {
+     "d": "travas",
+     "n": 3,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": 4,
+     "at": 5,
+     "tl": [
+      "The fifth lock",
+      "is *why it takes so long*."
+     ],
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": [
+      [
+       "THE LANGUAGE",
+       "A way to talk to the chip"
+      ],
+      [
+       "THE LIBRARIES",
+       "Twenty years of finished work"
+      ],
+      [
+       "THE HABIT",
+       "7.5 million people trained on it"
+      ],
+      [
+       "THE WHOLE MACHINE",
+       "Chips, network and software as one"
+      ],
+      [
+       "? ? ?",
+       "Not technology at all"
+      ]
+     ],
+     "grupo": "SOFTWARE + HARDWARE",
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "And it has nothing to do with engineering.",
+    "p": 0.6,
+    "v": {
+     "k": "It has *nothing to do* with engineering."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "dec0",
+  "trava": 5,
+  "nome": "? ? ?",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "Lock five.",
+    "p": 0.3,
+    "v": {
+     "d": "big",
+     "n": 0,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": "? ? ?",
+     "rot": "LOCK 5 OF 5",
+     "sub": null,
+     "cor": "ambar",
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   }
+  ]
+ },
+ {
+  "cena": "dec1",
+  "trava": 5,
+  "nome": "? ? ?",
+  "fonte": "THE NEW YORKER (2023), VIA SECONDARY REPORTS",
+  "falas": [
+   {
+    "txt": "Go back to two thousand six. Nvidia is a company that sells graphics cards to gamers.",
+    "p": 0,
+    "v": {
+     "d": "linhaT",
+     "n": 1,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": [
+      [
+       2006,
+       "CUDA",
+       "ANNOUNCED"
+      ],
+      [
+       2008,
+       "STOCK DOWN",
+       "ABOUT 70%",
+       "verm"
+      ],
+      [
+       2012,
+       "ALEXNET",
+       "TWO GAMING CARDS",
+       "menta"
+      ],
+      [
+       2016,
+       "WALL STREET",
+       "STARTS TO BELIEVE",
+       "ambar"
+      ]
+     ],
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": 2006,
+     "ate": 2016,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "And its C-E-O decides to put CUDA on every single chip. Including the ones for people who will never use it.",
+    "p": 0,
+    "v": {
+     "k": "CUDA went on *every* chip. Even for people who never used it."
+    }
+   },
+   {
+    "txt": "That made every chip more expensive to design. And for years, almost nobody wanted it.",
+    "p": 0,
+    "v": {
+     "k": "More cost. For years, *almost no demand*."
+    }
+   },
+   {
+    "txt": "Investors hated it. By the end of two thousand eight, Nvidia's stock had reportedly fallen about seventy percent.",
+    "p": 0,
+    "v": {
+     "n": 2,
+     "k": null
+    }
+   },
+   {
+    "txt": "Nvidia kept paying for it anyway. Through two thousand nine. Ten. Eleven.",
+    "p": 0,
+    "v": {
+     "k": "Nvidia *kept paying* anyway."
+    }
+   },
+   {
+    "txt": "Then AlexNet happened.",
+    "p": 0,
+    "v": {
+     "n": 3,
+     "k": null
+    }
+   },
+   {
+    "txt": "And by one account, it still took until around twenty sixteen for Wall Street to believe it.",
+    "p": 0,
+    "v": {
+     "n": 4
+    }
+   },
+   {
+    "txt": "Ten years, of paying for something the market didn't want.",
+    "p": 0.4,
+    "v": {
+     "n": 5,
+     "vao": [
+      "10 YEARS",
+      "OF PAYING FOR SOMETHING THE MARKET DID NOT WANT"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "cena": "dec2",
+  "trava": 5,
+  "nome": "THE LOST DECADE",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "That's lock five. The lost decade.",
+    "p": 0,
+    "v": {
+     "d": "big",
+     "n": 0,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": "THE LOST DECADE",
+     "rot": "LOCK 5 OF 5",
+     "sub": null,
+     "cor": "menta",
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "Any big company can afford the engineers.",
+    "p": 0,
+    "v": {
+     "sub": "Any big company can afford the engineers."
+    }
+   },
+   {
+    "txt": "Almost none can afford to look wrong for ten years in a row.",
+    "p": 0.3,
+    "v": {
+     "sub": "Almost none can afford to look wrong for ten years."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "dec3",
+  "trava": 5,
+  "nome": "THE LOST DECADE",
+  "fonte": "NVIDIA, Q3 FISCAL 2027 RESULTS",
+  "falas": [
+   {
+    "txt": "And it's worse for a rival today than it was for Nvidia then.",
+    "p": 0,
+    "v": {
+     "d": "versus",
+     "n": 0,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": "A RIVAL, STARTING NOW",
+     "b": "NVIDIA",
+     "la": [
+      "Must fund software for a decade",
+      "Against a 20 year head start",
+      "While answering to investors every quarter"
+     ],
+     "lb": [
+      "Already has the software",
+      "Adds to it every single day",
+      "Earns over $100 billion a quarter"
+     ],
+     "ra": "THE NEXT TEN YEARS",
+     "rb": "THE NEXT TEN YEARS",
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "A rival has to fund ten years of software.",
+    "p": 0,
+    "v": {
+     "n": 1
+    }
+   },
+   {
+    "txt": "Against a twenty year head start.",
+    "p": 0,
+    "v": {
+     "n": 2
+    }
+   },
+   {
+    "txt": "While the company it's chasing earns more than a hundred billion dollars a quarter, and spends part of it widening the gap.",
+    "p": 0,
+    "v": {
+     "n": 3
+    }
+   },
+   {
+    "txt": "The only ones seriously trying are the ones rich enough to build chips for themselves. Google. Amazon. Microsoft.",
+    "p": 0,
+    "v": {
+     "k": "The ones trying: companies *rich enough to wait*."
+    }
+   },
+   {
+    "txt": "They're not copying Nvidia to sell against it. They're copying it to stop paying it.",
+    "p": 0.3,
+    "v": {
+     "k": "Not to sell against Nvidia. To *stop paying* it."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "furo",
+  "trava": 5,
+  "nome": "THE LOST DECADE",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "Is this lock perfect? No. And you should know where the cracks are.",
+    "p": 0,
+    "v": {
+     "d": "big",
+     "n": 0,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": "THE CRACKS",
+     "rot": "TO BE FAIR",
+     "sub": null,
+     "cor": "verm",
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "Training a brand new model is where CUDA is strongest.",
+    "p": 0,
+    "v": {
+     "d": "cadeia",
+     "n": 1,
+     "k": null,
+     "tit": null,
+     "it": [
+      [
+       "TRAINING",
+       "WHERE CUDA IS STRONGEST",
+       "menta"
+      ],
+      [
+       "RUNNING THE MODEL",
+       "EASIER TO MOVE",
+       "ambar"
+      ]
+     ],
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "But running a finished model, millions of times a day, is simpler work. It's easier to move to another chip.",
+    "p": 0,
+    "v": {
+     "n": 2
+    }
+   },
+   {
+    "txt": "And that's exactly where the custom chips are aimed.",
+    "p": 0,
+    "v": {
+     "leg": "THIS IS WHERE THE CUSTOM CHIPS ARE AIMED",
+     "ln": 2
+    }
+   },
+   {
+    "txt": "So the lock isn't that nobody can ever leave. It's that leaving costs years. And almost nobody has years to spare.",
+    "p": 0.3,
+    "v": {
+     "k": "Leaving costs years. Almost nobody has *years to spare*."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "dec4",
+  "trava": 5,
+  "nome": "THE LOST DECADE",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "So here's what a real copy would need.",
+    "p": 0,
+    "v": {
+     "d": "check",
+     "n": 0,
+     "k": null,
+     "tit": null,
+     "it": [
+      [
+       "A LANGUAGE PEOPLE ACTUALLY USE",
+       0
+      ],
+      [
+       "20 YEARS OF LIBRARIES",
+       0
+      ],
+      [
+       "7.5 MILLION TRAINED DEVELOPERS",
+       0
+      ],
+      [
+       "A DECADE OF LOOKING WRONG",
+       0
+      ]
+     ],
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": "WHAT A REAL COPY WOULD NEED",
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "A language people actually use.",
+    "p": 0,
+    "v": {
+     "n": 1
+    }
+   },
+   {
+    "txt": "Twenty years of libraries.",
+    "p": 0,
+    "v": {
+     "n": 2
+    }
+   },
+   {
+    "txt": "Millions of trained developers.",
+    "p": 0,
+    "v": {
+     "n": 3
+    }
+   },
+   {
+    "txt": "And a leader willing to look wrong for a decade.",
+    "p": 0,
+    "v": {
+     "n": 4
+    }
+   },
+   {
+    "txt": "You can copy a chip in three years.",
+    "p": 0,
+    "v": {
+     "d": "duas",
+     "n": 1,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": "You can copy a chip in three years.",
+     "l2": "",
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "You can't copy a decade nobody wanted to pay for.",
+    "p": 0.7,
+    "v": {
+     "n": 2,
+     "l2": "You can't copy a decade nobody wanted."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "cta2",
+  "trava": 5,
+  "nome": "THE LOST DECADE",
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "If you know someone who thinks Nvidia is finished because its founder is gone, send them this video.",
+    "p": 0,
+    "v": {
+     "d": "cta",
+     "n": 1,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": [
+      "SEND THIS",
+      "to that friend"
+     ],
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": "env",
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "Because there's one thing they'd be right about.",
+    "p": 0,
+    "v": {
+     "n": 2,
+     "s": "The one thing they'd be right about"
+    }
+   }
+  ]
+ },
+ {
+  "cena": "fecho1",
+  "trava": null,
+  "nome": null,
+  "fonte": "NVIDIA NEWSROOM, NOVEMBER 12, 2026",
+  "falas": [
+   {
+    "txt": "Go back to the tower.",
+    "p": 0,
+    "v": {
+     "d": "pilha",
+     "n": 5,
+     "k": null,
+     "tit": null,
+     "it": [
+      [
+       "THE CHIPS",
+       "DESIGNED BY NVIDIA",
+       "fantasma"
+      ],
+      [
+       "THE NETWORK",
+       "LINKS THOUSANDS OF CHIPS",
+       "fantasma"
+      ],
+      [
+       "THE SOFTWARE",
+       "RUNS ONLY ON THESE CHIPS",
+       "menta"
+      ],
+      [
+       "7.5 MILLION DEVELOPERS",
+       "TRAINED ON THAT SOFTWARE",
+       "fantasma"
+      ],
+      [
+       "THE FOUNDER",
+       "CEO FOR 33 YEARS",
+       "ambar"
+      ]
+     ],
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": 4,
+     "sn": 6,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "The founder is gone. The chips, the network, the software and the developers are all still there.",
+    "p": 0,
+    "v": {
+     "n": 6
+    }
+   },
+   {
+    "txt": "Nvidia's board says the roadmap continues without interruption. And for now, the numbers agree.",
+    "p": 0,
+    "v": {
+     "k": "The board: the roadmap continues *without interruption*."
+    }
+   },
+   {
+    "txt": "The four locks don't need him.",
+    "p": 0.3,
+    "v": {
+     "k": "Four locks *don't need him*."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "fecho2",
+  "trava": null,
+  "nome": null,
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "But the fifth one did.",
+    "p": 0,
+    "v": {
+     "d": "big",
+     "n": 0,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": "NEEDED HIM",
+     "rot": "THE FIFTH LOCK",
+     "sub": null,
+     "cor": "ambar",
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "CUDA exists because one person was allowed to be wrong for ten years.",
+    "p": 0,
+    "v": {
+     "sub": "CUDA exists because one person could be wrong for ten years."
+    }
+   },
+   {
+    "txt": "A founder can do that. An interim C-E-O, with a board and a search committee, almost never can.",
+    "p": 0.3,
+    "v": {
+     "sub": "A founder can do that. A caretaker almost never can."
+    }
+   }
+  ]
+ },
+ {
+  "cena": "fecho3",
+  "trava": null,
+  "nome": null,
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "So that's the real reason nobody can copy Nvidia.",
+    "p": 0,
+    "v": {
+     "d": "big",
+     "n": 0,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": "THE REAL REASON",
+     "rot": null,
+     "sub": null,
+     "cor": "osso",
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "Nobody can copy the last twenty years.",
+    "p": 0,
+    "v": {
+     "d": "duas",
+     "n": 1,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": "Nobody can copy the last twenty years.",
+     "l2": "",
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": null,
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "The real question is who, inside Nvidia, gets to start the next ten.",
+    "p": 0.9,
+    "v": {
+     "n": 2,
+     "l2": "Who gets to start the next ten?"
+    }
+   }
+  ]
+ },
+ {
+  "cena": "fim",
+  "trava": null,
+  "nome": null,
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "The software is one link in a chain. And almost every link has a company like this hiding in it.",
+    "p": 0,
+    "v": {
+     "d": "fim",
+     "n": 0,
+     "k": null,
+     "tit": null,
+     "it": null,
+     "t": null,
+     "rot": null,
+     "sub": null,
+     "cor": null,
+     "ab": null,
+     "at": null,
+     "tl": null,
+     "cab": null,
+     "rev": null,
+     "l1": null,
+     "l2": null,
+     "ic": null,
+     "s": null,
+     "nomes": null,
+     "grupo": null,
+     "pts": null,
+     "vao": null,
+     "a": null,
+     "b": null,
+     "la": null,
+     "lb": null,
+     "ra": null,
+     "rb": null,
+     "fl": null,
+     "fala": null,
+     "elo": "THE SOFTWARE",
+     "pc": null,
+     "linhas": null,
+     "resto": null,
+     "pre": null,
+     "tot": null,
+     "lit": null,
+     "r1": null,
+     "r2": null,
+     "cada": null,
+     "x": null,
+     "xn": null,
+     "leg": null,
+     "ln": null,
+     "sai": null,
+     "sn": null,
+     "N": null,
+     "base": null,
+     "base2": null,
+     "ex": null,
+     "ey": null,
+     "f1": null,
+     "de": null,
+     "ate": null,
+     "v0": null,
+     "v1": null,
+     "ca": null,
+     "cb": null,
+     "id": null
+    }
+   },
+   {
+    "txt": "Next, we open another one.",
+    "p": 0,
+    "v": {
+     "n": 1
+    }
+   },
+   {
+    "txt": "Subscribe, so it finds you.",
+    "p": 0,
+    "v": {
+     "n": 2
+    }
+   },
+   {
+    "txt": "And tell me in the comments which company you want taken apart next.",
+    "p": 0,
+    "v": {
+     "n": 3
+    }
+   }
+  ]
+ }
+]

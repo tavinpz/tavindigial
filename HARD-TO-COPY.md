@@ -23,10 +23,30 @@ O **#01, "The Mirror ASML Can't Make" (hc001, 10:27)**, é a régua. O Tavin apr
 - Capas: olhar as que mais renderam no nicho antes de fazer. Padrão do Tradeoff Layer (ASML 43x a média do canal): fundo claro e saturado, traço preto grosso, 1 ou 2 palavras gigantes com contorno e sombra, um objeto concreto e um sinal simples (X vermelho, "?"). Nós fazemos sem rosto de pessoa real e sem logotipo.
 - No vídeo: menta = o original, tracejado cinza = a cópia, âmbar = medida e número, violeta = luz. Empresa aparece só como texto.
 
+## Atualização de 18/11/2026 (noite): lote hc002 a hc005
+O motor agora serve a qualquer vídeo, sem mexer no `Video.tsx`:
+- `ferramentas/htc/htc_comum.py`: `Roteiro(NOMES, grupo)` com `B`, `TRAVA`, `TR` (quadro das 5 travas com os nomes do vídeo) e `salva()`. O roteiro novo é só `hcNNN_roteiro.py`.
+- `src/htc/Gen.tsx`: diagramas genéricos guiados pelos dados do roteiro: `barras`, `cadeia`, `linhaT`, `par`, `rosca`, `grade`, `versus`, `pilha`, `comp`. Usar estes antes de desenhar um novo.
+- `src/htc/D0N.tsx`: diagramas sob medida de cada vídeo (2 a 5 por vídeo, sempre o do gancho), registrados em `Extras.tsx`.
+- `src/htc/Capas.tsx`: capas do hc002 em diante (`HTCThumb` com `v` = "02a", "03b"...), com peças prontas (Chip, Fabrica, Aviao, Grana, Lamina, Cadeado, Placa, Cadeira, Canhao, Estouro, Globo, Chapa, Saleiro, Camadas).
+- `ferramentas/htc/`: `mixar.sh` (mixagem), `folha.py` (folha de contato automática: `python3 ferramentas/htc/folha.py htc/vNN /tmp/fNN`), `rev.py` (troca só o visual do `tempos.json` sem narrar de novo, quando o texto não mudou), `painel.py` (copia para o ramo de envio e imprime o SQL do `videos_envio` e os capítulos).
+- Tempo medido por vídeo: narração 6 min, folha de contato 2 min, render no GitHub 5 a 15 min (a fila é dividida com outros canais).
+
+Lições do lote:
+- 1.250 palavras dão 8 min. Para ter folga acima de 8 min, escrever 1.350 a 1.450.
+- Texto de valor comprido estoura a barra (`barras`): rótulo curto, detalhe no `cab`.
+- Bloco que começa com `n=0` e fala longa fica vazio na tela: dar um diagrama já na primeira fala.
+- Título: o molde puro "Why No One Can Copy X" está saturado de clones com menos de mil views (TSMC tem mais de dez). O que funciona no nicho é nome grande + objeto ou fato estranho (o padrão do hc001).
+- Notícia quente vale ouro: a saída do Jensen Huang da Nvidia (12/11/2026) tinha vídeos de 1 milhão de views no radar; o hc003 foi ancorado nela.
+
 ## Pautas
 | # | Tema | Estado |
 |---|---|---|
-| 01 | Espelhos da ZEISS | Feito, no painel (18/11/2026) |
-| 02 | TSMC | Pauta no painel; tema batido, conferir ângulo |
-| 03 | Nvidia / CUDA | Pauta no painel; o título atual é idêntico ao do canal clone, trocar |
-| 04, 05 | A definir | Outros elos da cadeia de chips (laser da TRUMPF, ARM, fotorresiste, wafers) |
+| 01 | Espelhos da ZEISS, "The Mirror ASML Can't Make" | Feito, no painel (18/11/2026). Números da ASML de 2025 conferidos no 20-F: compras de € 4.406,9 mi, citação do "cease to be able to conduct our business" confirmada |
+| 02 | TSMC, "TSMC Is Spending $265 Billion to Copy Itself" (8:51) | Feito, no painel (18/11/2026) |
+| 03 | Nvidia / CUDA, "Nvidia Lost Its Founder. It Didn't Lose This." (8:36) | Feito, no painel (18/11/2026). Depende da notícia: se o Jensen voltar ao cargo, rever título e fecho antes de publicar |
+| 04 | Laser da TRUMPF, "The Laser ASML Can't Build" (8:15) | Feito, no painel (18/11/2026) |
+| 05 | Filme ABF da Ajinomoto, "The Seasoning Company Nvidia Can't Replace" (8:01) | Feito, no painel (18/11/2026) |
+| 06+ | A definir | ARM (o Tradeoff Layer fez 320 mil views com "Why Everyone Pays ARM?"), fotorresiste do Japão, wafers da Shin-Etsu, memória HBM da SK Hynix, EDA (Synopsys/Cadence) |
+
+Fontes de cada vídeo: coluna `fontes` da linha em `videos` no painel e o rodapé "SOURCE" de cada bloco no `hcNNN_roteiro.py`.

@@ -2,6 +2,7 @@ import React from 'react';
 import { AbsoluteFill } from 'remotion';
 import '@fontsource/inter/900.css';
 import DE from './alemanha.json';
+import { CAPAS } from './Capas';
 
 // Hard to Copy: thumbnails 1280×720 (props.v = a | b | c).
 // Padrão tirado das capas que mais renderam no nicho (Tradeoff Layer, nov/2026): fundo claro e saturado, traço preto grosso,
@@ -82,4 +83,4 @@ const C: React.FC = () => (
   </svg>
 );
 
-export const HTCThumb: React.FC<{ v: string }> = ({ v }) => <AbsoluteFill style={{ background: '#000' }}>{v === 'b' ? <B /> : v === 'c' ? <C /> : <A />}</AbsoluteFill>;
+export const HTCThumb: React.FC<{ v: string }> = ({ v }) => { const N = CAPAS[v]; return <AbsoluteFill style={{ background: '#000' }}>{N ? <N /> : v === 'b' ? <B /> : v === 'c' ? <C /> : <A />}</AbsoluteFill>; };

@@ -2,6 +2,8 @@ import React from 'react';
 import { AbsoluteFill, Easing, Img, interpolate, spring, staticFile, useCurrentFrame } from 'remotion';
 import { Cota, Defs, Fundo, H, M, MONO, P, Rot, SANS, TIT, Titulo, W } from './lib';
 import DE from './alemanha.json';
+import { GEN } from './Gen';
+import { EXTRA } from './Extras';
 
 // Hard to Copy: motor do vídeo longo. Cada fala do tempos.json traz em `v` o que aparece (ver hc001_roteiro.py):
 // d = diagrama, n = passo do diagrama, k = frase de apoio, tit = título. O estado acumula dentro do bloco (chave null apaga).
@@ -102,9 +104,9 @@ const Alemanha: React.FC<Ctx> = ({ g, a }) => {
   );
 };
 
-const NOMES = [['THE LIGHT', 'Absorbed by air and glass'], ['THE COATING', '100 layers, nanometers thick'], ['THE SHAPE', 'Germany-sized, 0.1 mm bump'], ['THE MEASUREMENT', 'A ruler that had to be invented'], ['? ? ?', 'Not technology at all']];
+const NOMES1 = [['THE LIGHT', 'Absorbed by air and glass'], ['THE COATING', '100 layers, nanometers thick'], ['THE SHAPE', 'Germany-sized, 0.1 mm bump'], ['THE MEASUREMENT', 'A ruler that had to be invented'], ['? ? ?', 'Not technology at all']];
 const Travas: React.FC<Ctx> = ({ g, v, a, t0, quando }) => {
-  const x = 1010, y0 = 196, p = 136, tl: string[] = v.tl || [], ab = v.ab || 0, at = v.at || 0;
+  const x = 1010, y0 = 196, p = 136, tl: string[] = v.tl || [], ab = v.ab || 0, at = v.at || 0, NOMES: string[][] = v.nomes || NOMES1, grupo: string = v.grupo || 'PHYSICS + ENGINEERING';
   return (
     <g>
       <g opacity={a(1, 12)}><Titulo x={M} y={500 - (tl.length - 1) * 50} linhas={tl} tam={Math.min(104, 860 / (0.5 * Math.max(8, ...tl.map((l) => l.replace(/\*/g, '').length))))} /></g>
@@ -125,7 +127,7 @@ const Travas: React.FC<Ctx> = ({ g, v, a, t0, quando }) => {
       })}
       <g opacity={a(2, 10) * (1 - a(3, 8))}>
         <path d={`M 990,${y0 + 6} h -22 v ${4 * p - 34} h 22`} fill="none" stroke={P.ambar} strokeWidth={3} />
-        <text x={950} y={y0 + 2 * p - 10} transform={`rotate(-90 950 ${y0 + 2 * p - 10})`} textAnchor="middle" fontFamily={MONO} fontWeight={700} fontSize={22} fill={P.ambar} letterSpacing={3}>PHYSICS + ENGINEERING</text>
+        <text x={950} y={y0 + 2 * p - 10} transform={`rotate(-90 950 ${y0 + 2 * p - 10})`} textAnchor="middle" fontFamily={MONO} fontWeight={700} fontSize={22} fill={P.ambar} letterSpacing={3}>{grupo}</text>
       </g>
     </g>
   );
@@ -535,7 +537,7 @@ const Gargalo: React.FC<Ctx> = ({ g, a }) => {
   );
 };
 
-const Fim: React.FC<Ctx> = ({ g, a, q }) => {
+const Fim: React.FC<Ctx> = ({ g, v, a, q }) => {
   const n = 7, lw = 230, x0 = 960 - ((n - 1) * 190) / 2, y = 400;
   return (
     <g>
@@ -544,7 +546,7 @@ const Fim: React.FC<Ctx> = ({ g, a, q }) => {
           <rect x={-lw / 2} y={-52} width={lw} height={104} rx={52} fill="none" stroke={cor} strokeWidth={esp || prox ? 12 : 9} />
           {!esp && <Txt x={0} y={18} textAnchor="middle" s={50} c={cor} opacity={0.9}>?</Txt>}
         </g>); })}
-      <Rot x={x0 + 3 * 190} y={y + 120} t="THE MIRROR" anc="middle" cor={P.menta} peso={700} tam={22} />
+      <Rot x={x0 + 3 * 190} y={y + 120} t={v.elo || "THE MIRROR"} anc="middle" cor={P.menta} peso={700} tam={22} />
       <g opacity={a(1, 10)}><Rot x={x0 + 4 * 190} y={y - 96} t="NEXT" anc="middle" cor={P.ambar} peso={700} tam={22} /></g>
       <g opacity={a(2, 8)} transform={`translate(960,690) scale(${0.8 + 0.2 * pop(g, q(2))})`}><rect x={-290} y={-62} width={580} height={124} rx={62} fill={P.osso} /><Txt x={0} y={22} textAnchor="middle" s={64} c={P.fundo} ls={3}>SUBSCRIBE</Txt></g>
       <g opacity={a(3, 10)}><Rot x={960} y={850} t="COMMENT: WHICH COMPANY SHOULD WE TAKE APART NEXT?" anc="middle" cor={P.menta} peso={700} tam={26} /></g>
@@ -552,7 +554,7 @@ const Fim: React.FC<Ctx> = ({ g, a, q }) => {
   );
 };
 
-const DIAG: Record<string, React.FC<any>> = { check: Check, alemanha: Alemanha, travas: Travas, espectro: Espectro, absorve: Absorve, gota: Gota, feixe: Feixe, camadas: Camadas, copia: Copia, lua: Lua, cta: Cta, polir: Polir, camara: Camara, nums: Nums, tres: Tres, linha: Linha, casamento: Casamento, pontos: Pontos, duas: Duas, gargalo: Gargalo, fim: Fim };
+const DIAG: Record<string, React.FC<any>> = { check: Check, alemanha: Alemanha, travas: Travas, espectro: Espectro, absorve: Absorve, gota: Gota, feixe: Feixe, camadas: Camadas, copia: Copia, lua: Lua, cta: Cta, polir: Polir, camara: Camara, nums: Nums, tres: Tres, linha: Linha, casamento: Casamento, pontos: Pontos, duas: Duas, gargalo: Gargalo, fim: Fim, ...GEN, ...EXTRA };
 
 const Cena: React.FC<{ g: number; D: number; b: Bloco; ini: number; zero?: boolean }> = ({ g, D, b, ini, zero }) => {
   // zero: no 1º bloco do vídeo a imagem já entra no quadro 0, antes da voz (o começo não pode ficar parado no preto)
@@ -560,7 +562,7 @@ const Cena: React.FC<{ g: number; D: number; b: Bloco; ini: number; zero?: boole
   const est = React.useMemo(() => { const arr: V[] = []; let s: V = {}; for (const f of b.falas) { s = { ...s, ...(f.v || {}) }; for (const k of Object.keys(s)) if (s[k] === null) delete s[k]; arr.push(s); } return arr; }, [b]);
   let i = 0; for (let k = 0; k < ts.length; k++) if (g >= ts[k]) i = k;
   const v = est[i];
-  const id = (e: V) => e.d + '|' + (e.d === 'check' || e.d === 'nums' ? J(e.it) : e.d === 'duas' ? e.l1 : '');
+  const id = (e: V) => e.d + '|' + (e.d === 'duas' ? e.l1 : e.d === 'travas' || e.d === 'big' || e.d === 'cta' || e.d === 'fim' ? '' : J([e.it, e.pts, e.a, e.b, e.id]));
   let j0 = i; while (j0 > 0 && id(est[j0 - 1]) === id(v)) j0--;
   const t0 = Math.max(0, ts[j0]);
   const quando = (p: (e: V) => boolean) => { for (let j = j0; j <= i; j++) if (p(est[j])) return Math.max(0, ts[j]); return 1e9; };
