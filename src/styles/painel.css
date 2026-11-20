@@ -1772,16 +1772,17 @@ a.crm-btn { text-decoration: none; display: inline-flex; align-items: center; }
 .yl-cfg-sec h4 { margin: 0 0 4px; font-size: 13px; }
 .yl-cfg-sec ul { margin: 0; padding-left: 18px; display: grid; gap: 3px; font-size: 13.5px; line-height: 1.45; }
 .yl-copiar-cab { margin: 6px 0 -4px; font-size: 13px; color: var(--cinza); }
-.yl-ab { background: var(--branco); border: 1px solid var(--linha); border-radius: 14px; padding: 14px 16px; margin-bottom: 16px; }
-.yl-ab header { margin-bottom: 12px; }
-.yl-ab h2 { margin: 0 0 4px; font-family: var(--f-display); font-size: 18px; font-weight: 800; }
-.yl-ab-lista { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-.yl-ab-item { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
-.yl-ab-n { font-size: 12px; font-weight: 700; color: var(--cinza); }
-.yl-ab-item img, .yl-ab-sem { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 10px; display: block; background: var(--noite); }
-.yl-ab-sem { display: grid; place-items: center; color: #fff; font-size: 13px; }
-.yl-ab-tit { margin: 0; font-size: 15px; font-weight: 700; line-height: 1.35; }
-.yl-ab-item .p-acoes { flex-wrap: wrap; gap: 6px; }
-@media (max-width: 900px) {
-  .yl-ab-lista { grid-template-columns: 1fr; }
+.yl-ab { margin-top: 12px; }
+.yl-ab header { margin-bottom: 8px; }
+.yl-ab h2 { margin: 0 0 2px; font-size: 14px; font-weight: 800; }
+.yl-ab .v-dica { font-size: 12px; }
+.yl-ab-lista { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.yl-ab-item { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.yl-ab-n { font-size: 11px; font-weight: 700; color: var(--cinza); }
+.yl-ab-item img, .yl-ab-sem { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 8px; display: block; background: var(--noite); }
+.yl-ab-sem { display: grid; place-items: center; color: #fff; font-size: 12px; }
+.yl-ab-tit { margin: 0; font-size: 12.5px; font-weight: 700; line-height: 1.3; }
+.yl-ab-item .p-acoes { flex-wrap: wrap; gap: 4px; }
+@media (max-width: 600px) {
+  .yl-ab-lista { grid-template-columns: 1fr 1fr; }
 }

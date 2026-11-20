@@ -154,7 +154,7 @@ function TesteAB({ v, titulo, capas, titulos }) {
     <section className="yl-ab">
       <header>
         <h2>Teste A/B · {pares.length} versões</h2>
-        <p className="v-dica">No Studio: Thumbnail → "Testar e comparar" → modo "Título e thumbnail". Suba cada capa com o título dela. Não mexa por 3 a 4 dias.</p>
+        <p className="v-dica">Studio → Thumbnail → "Testar e comparar" → "Título e thumbnail". Capa N com título N. Não mexer por 3–4 dias.</p>
       </header>
       <div className="yl-ab-lista">
         {pares.map((par, k) => (
@@ -258,11 +258,10 @@ function Detalhe({ v, c, fechar, recarregar, mover, vizinhos }) {
         </div>
       </div>
 
-      <TesteAB v={v} titulo={titulo} capas={capas} titulos={titulos} />
-
       <div className="v-grade v-grade--longo">
         <div className="v-player v-player--longo">
           {v.video_url ? <video src={v.video_url} poster={capas[0]?.url} controls playsInline preload="metadata" /> : <div className="v-semvideo">Vídeo ainda em produção…</div>}
+          <TesteAB v={v} titulo={titulo} capas={capas} titulos={titulos} />
         </div>
 
         <div className="v-plataformas">
