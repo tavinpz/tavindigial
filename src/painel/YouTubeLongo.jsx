@@ -52,6 +52,127 @@ function Bloco({ titulo, texto, linhas = 3 }) {
   )
 }
 
+
+// Configuração do canal (canais.perfil.configuracao): texto com seções em CAIXA ALTA ("GRADE", "EM CADA VÍDEO"…)
+function secoesCfg(cfg) {
+  const out = []
+  for (const linha of String(cfg || '').split('\n')) {
+    const t = linha.trim()
+    if (!t) continue
+    if (!/^[-\d]/.test(t) && t === t.toUpperCase() && /[A-ZÀ-Ú]/.test(t)) out.push({ titulo: t, linhas: [] })
+    else if (out.length) out.at(-1).linhas.push(t.replace(/^-\s*/, ''))
+    else out.push({ titulo: 'GERAL', linhas: [t.replace(/^-\s*/, '')] })
+  }
+  return out
+}
+const cap = (t) => t.charAt(0) + t.slice(1).toLowerCase()
+const ehVideo = (t) => /^EM CADA V[ÍI]DEO/.test(t)
+const ehGrade = (t) => /^GRADE/.test(t)
+const ehRegra = (t) => /^(REGRAS|SEGURAN)/.test(t)
+const gradeDo = (c) => secoesCfg(c?.perfil?.configuracao).find((x) => ehGrade(x.titulo))?.linhas.join(' ') || ''
+
+// Faixa com o essencial do canal: para quem é, idioma, categoria e quando postar
+export function ResumoCanal({ c }) {
+  const p = c?.perfil || {}
+  const g = gradeDo(c)
+  const itens = [['Público-alvo', p.pais], ['Idioma', p.idioma], ['Categoria', p.categoria], ['Quando postar', g]].filter(([, v]) => v)
+  if (!itens.length) return null
+  return (
+    <dl className="yl-resumo">
+      {itens.map(([k, v]) => <div key={k} className={k === 'Quando postar' ? 'yl-resumo-grade' : ''}><dt>{k}</dt><dd>{v}</dd></div>)}
+    </dl>
+  )
+}
+
+function Lista({ titulo, linhas }) {
+  if (!linhas?.length) return null
+  return (
+    <div className="yl-cfg-sec">
+      <h4>{titulo}</h4>
+      <ul>{linhas.map((l, k) => <li key={k}>{l}</li>)}</ul>
+    </div>
+  )
+}
+
+// Passo a passo do upload no YouTube Studio, na ordem das telas, com os campos deste canal
+export function ConfigVideo({ c }) {
+  const p = c?.perfil || {}
+  const idioma = p.idioma || '—'
+  const doCanal = secoesCfg(p.configuracao).filter((x) => ehVideo(x.titulo)).flatMap((x) => x.linhas)
+  return (
+    <div className="yl-cfg">
+      <Lista titulo="1. Detalhes" linhas={[
+        'Título: o da versão 1 do teste A/B.',
+        'Descrição: colar a do painel (capítulos, fontes e avisos).',
+        'Thumbnail: "Testar e comparar" → modo "Título e thumbnail" → capa 1 com título 1, capa 2 com título 2, capa 3 com título 3.',
+        'Playlist: a playlist única do canal.',
+        'Público: "Não, não é conteúdo para crianças". Restrição de idade: não.',
+      ]} />
+      <Lista titulo="2. Mostrar mais" linhas={[
+        'Promoção paga: deixar desmarcado.',
+        'Conteúdo alterado ou sintético: seguir a regra do canal (abaixo).',
+        'Tags: as do painel.',
+        `Idioma do vídeo e do título/descrição: ${idioma}. Certificação de legendas: nenhuma.`,
+        'Data e local da gravação: em branco.',
+        'Licença: padrão do YouTube. Permitir incorporação: sim. Publicar no feed de inscrições e notificar: sim.',
+        'Remixar Shorts: permitir vídeo e áudio (os cortes podem trazer público).',
+        `Categoria: ${p.categoria || '—'}.`,
+        'Comentários: ativados, com "Reter comentários potencialmente inadequados". Ordenar por "Mais votados". Mostrar o número de curtidas: sim.',
+      ]} />
+      <Lista titulo="3. Elementos do vídeo" linhas={[
+        'Tela final nos últimos 5 a 20 s: botão de inscrição + o vídeo anterior da série (ou "Melhor para o espectador").',
+        'Card no meio do vídeo apontando para o vídeo anterior, quando existir.',
+      ]} />
+      <Lista titulo="4. Verificações" linhas={['Esperar "Nenhum problema encontrado" antes de programar.']} />
+      <Lista titulo="5. Visibilidade" linhas={['Programar no dia e horário que estão no painel (horário de Brasília). Subir com antecedência para o HD processar.']} />
+      <Lista titulo="Depois de publicar" linhas={['Fixar o comentário do painel.', 'Não trocar título nem capa antes de 3 a 4 dias (o teste A/B precisa desse tempo).', 'Não mandar o link para família e grupos.']} />
+      <Lista titulo="Regra deste canal" linhas={doCanal} />
+    </div>
+  )
+}
+
+// Configuração do canal, separada: o que fazer uma vez × regras
+function ConfigCanal({ c }) {
+  const secs = secoesCfg(c?.perfil?.configuracao)
+  if (!secs.length) return <p className="v-dica">Este canal ainda não tem a configuração escrita.</p>
+  const uma = secs.filter((x) => !ehVideo(x.titulo) && !ehGrade(x.titulo) && !ehRegra(x.titulo))
+  const regras = secs.filter((x) => ehRegra(x.titulo))
+  return (
+    <div className="yl-cfg">
+      {uma.map((x) => <Lista key={x.titulo} titulo={cap(x.titulo)} linhas={x.linhas} />)}
+      {regras.map((x) => <Lista key={x.titulo} titulo={cap(x.titulo)} linhas={x.linhas} />)}
+    </div>
+  )
+}
+
+// Teste A/B: cada capa com o título que vai junto, pronto para copiar
+function TesteAB({ v, titulo, capas, titulos }) {
+  const n = Math.max(capas.length, titulos.length)
+  if (!n) return null
+  const pares = Array.from({ length: Math.min(n, 3) }, (_, k) => ({ capa: capas[k], titulo: titulos[k] || titulos[0] || titulo }))
+  return (
+    <section className="yl-ab">
+      <header>
+        <h2>Teste A/B · {pares.length} versões</h2>
+        <p className="v-dica">No Studio: Thumbnail → "Testar e comparar" → modo "Título e thumbnail". Suba cada capa com o título dela. Não mexa por 3 a 4 dias.</p>
+      </header>
+      <div className="yl-ab-lista">
+        {pares.map((par, k) => (
+          <article key={k} className="yl-ab-item">
+            <span className="yl-ab-n">Versão {k + 1}{k === 0 ? ' · principal' : ''}</span>
+            {par.capa ? <img src={par.capa.url} alt={`Capa da versão ${k + 1}`} loading="lazy" /> : <div className="yl-ab-sem">Sem capa</div>}
+            <p className="yl-ab-tit">{par.titulo}</p>
+            <div className="p-acoes">
+              <Copiar texto={par.titulo} rotulo={`Copiar título ${k + 1}`} />
+              {par.capa && <a className="p-btn p-btn--mini" href={comDownload(par.capa.url, `${v.id}-capa-${k + 1}.jpg`)}>Baixar capa {k + 1}</a>}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  )
+}
+
 // Perfil do canal: tudo o que vai no YouTube Studio → Personalização, com os arquivos para baixar
 export function PerfilCanal({ c, fechar }) {
   const p = c.perfil || {}
@@ -74,6 +195,16 @@ export function PerfilCanal({ c, fechar }) {
             </div>
           </div>
         </div>
+        <ResumoCanal c={c} />
+        <details className="yl-dobra" open>
+          <summary>Configurar o canal (uma vez)</summary>
+          <ConfigCanal c={c} />
+        </details>
+        <details className="yl-dobra" open>
+          <summary>Configurar cada vídeo no YouTube Studio</summary>
+          <ConfigVideo c={c} />
+        </details>
+        <h4 className="yl-copiar-cab">Textos para copiar</h4>
         <Bloco titulo="Nome do canal" texto={c.nome} linhas={1} />
         <Bloco titulo="Identificador (@)" texto={p.handle} linhas={1} />
         <Bloco titulo="Descrição do canal" texto={p.descricao} linhas={7} />
@@ -110,6 +241,7 @@ function Detalhe({ v, c, fechar, recarregar, mover, vizinhos }) {
         <div>
           <button className="p-voltar" onClick={fechar}>{c.nome}</button>
           <h1>{num(v)} {titulo}</h1>
+          <ResumoCanal c={c} />
           <p className="p-sub">{NOME_FASE[e]}{v.duracao ? ` · ${minutos(v.duracao)}` : ''}{v.yt_programado_para ? ` · programado para ${fmtQuando(v.yt_programado_para)}` : ''}</p>
           <div className="v-etapas" role="group" aria-label="Mudar de etapa">
             {FASES.map((f) => (
@@ -126,33 +258,24 @@ function Detalhe({ v, c, fechar, recarregar, mover, vizinhos }) {
         </div>
       </div>
 
+      <TesteAB v={v} titulo={titulo} capas={capas} titulos={titulos} />
+
       <div className="v-grade v-grade--longo">
         <div className="v-player v-player--longo">
           {v.video_url ? <video src={v.video_url} poster={capas[0]?.url} controls playsInline preload="metadata" /> : <div className="v-semvideo">Vídeo ainda em produção…</div>}
-          {capas.length > 0 && (
-            <div className="yl-capas">
-              <strong>Thumbnails {capas.length > 1 ? '(suba todas no "Testar e comparar": até 3)' : ''}</strong>
-              <div className="yl-capas-lista">
-                {capas.map((cp, k) => (
-                  <figure key={cp.url}>
-                    <img src={cp.url} alt={`Thumbnail ${k + 1}`} loading="lazy" />
-                    <figcaption>{cp.nome || `Opção ${String.fromCharCode(65 + k)}`}<a className="p-btn p-btn--mini" href={comDownload(cp.url, `${v.id}-thumb-${String.fromCharCode(97 + k)}.jpg`)}>Baixar</a></figcaption>
-                  </figure>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
 
         <div className="v-plataformas">
           <article className="v-plat">
             <header><h2>YouTube</h2></header>
-            <Bloco titulo="Título" texto={titulo} linhas={2} />
-            {titulos.length > 1 && <Bloco titulo='Títulos para o "Testar e comparar"' texto={titulos.join('\n')} linhas={3} />}
+            <Bloco titulo="Título (versão 1)" texto={titulos[0] || titulo} linhas={2} />
             <Bloco titulo="Descrição (com capítulos e fontes)" texto={v.yt_descricao} linhas={8} />
             <Bloco titulo="Tags (campo Tags, em Mostrar mais)" texto={v.yt_tags} linhas={2} />
             <Bloco titulo="Comentário para fixar" texto={v.comentario_fixado} linhas={2} />
-            <p className="v-dica">No upload: não é para crianças · Conteúdo alterado ou sintético: Não (dados reais; só a voz é sintética) · Categoria: {c.perfil?.categoria || 'Educação'}.</p>
+            <details className="yl-dobra">
+              <summary>Configuração deste vídeo no Studio</summary>
+              <ConfigVideo c={c} />
+            </details>
             <label className="v-quando">Programar para
               <input type="datetime-local" value={quando} onChange={(ev) => setQuando(ev.target.value)} />
             </label>
