@@ -1759,3 +1759,29 @@ a.crm-btn { text-decoration: none; display: inline-flex; align-items: center; }
   .ce-acoes .p-btn { flex: 1 1 calc(50% - 8px); }
   .ce-linha > span[data-rede]::before { content: attr(data-rede); display: block; font-size: 10.5px; font-weight: 700; color: var(--cinza); margin-bottom: 2px; }
 }
+
+/* Canal longo: resumo (público, idioma, quando postar), configuração e teste A/B */
+.yl-resumo { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 4px; }
+.yl-resumo div { background: var(--papel); border: 1px solid var(--linha); border-radius: 10px; padding: 6px 10px; min-width: 0; }
+.yl-resumo dt { font-size: 11px; font-weight: 700; color: var(--cinza); text-transform: uppercase; letter-spacing: .03em; }
+.yl-resumo dd { margin: 2px 0 0; font-size: 13.5px; font-weight: 600; }
+.yl-resumo .yl-resumo-grade { flex: 1 1 100%; border-color: var(--c, var(--linha)); }
+.yl-dobra { background: var(--branco); border: 1px solid var(--linha); border-radius: 12px; padding: 10px 14px; }
+.yl-dobra > summary { cursor: pointer; font-weight: 800; font-size: 15px; }
+.yl-cfg { display: grid; gap: 12px; margin-top: 10px; }
+.yl-cfg-sec h4 { margin: 0 0 4px; font-size: 13px; }
+.yl-cfg-sec ul { margin: 0; padding-left: 18px; display: grid; gap: 3px; font-size: 13.5px; line-height: 1.45; }
+.yl-copiar-cab { margin: 6px 0 -4px; font-size: 13px; color: var(--cinza); }
+.yl-ab { background: var(--branco); border: 1px solid var(--linha); border-radius: 14px; padding: 14px 16px; margin-bottom: 16px; }
+.yl-ab header { margin-bottom: 12px; }
+.yl-ab h2 { margin: 0 0 4px; font-family: var(--f-display); font-size: 18px; font-weight: 800; }
+.yl-ab-lista { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.yl-ab-item { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.yl-ab-n { font-size: 12px; font-weight: 700; color: var(--cinza); }
+.yl-ab-item img, .yl-ab-sem { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 10px; display: block; background: var(--noite); }
+.yl-ab-sem { display: grid; place-items: center; color: #fff; font-size: 13px; }
+.yl-ab-tit { margin: 0; font-size: 15px; font-weight: 700; line-height: 1.35; }
+.yl-ab-item .p-acoes { flex-wrap: wrap; gap: 6px; }
+@media (max-width: 900px) {
+  .yl-ab-lista { grid-template-columns: 1fr; }
+}
