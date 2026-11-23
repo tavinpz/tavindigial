@@ -146,7 +146,7 @@ function ConfigCanal({ c }) {
 }
 
 // Teste A/B: cada capa com o título que vai junto, pronto para copiar
-function TesteAB({ v, titulo, capas, titulos }) {
+export function TesteAB({ v, titulo, capas, titulos }) {
   const n = Math.max(capas.length, titulos.length)
   if (!n) return null
   const pares = Array.from({ length: Math.min(n, 3) }, (_, k) => ({ capa: capas[k], titulo: titulos[k] || titulos[0] || titulo }))

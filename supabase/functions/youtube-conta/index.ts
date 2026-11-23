@@ -17,6 +17,10 @@ const json = (status: number, body: unknown) => new Response(JSON.stringify(body
 const REDIRECT = "https://vvlzverpxojrecxysmhm.supabase.co/functions/v1/youtube-conta";
 const PAINEL = "https://tavindigital.online/painel";
 
+// avisos mostrados no painel
+const AVISO_COTA_APP = "a cota diária do Google acabou (vale para todos os canais); volta às 5h e sobe sozinho";
+const AVISO_LIMITE_CANAL = "o canal chegou no limite de envios do YouTube; sobe sozinho quando liberar";
+
 // o domínio das funções não mostra página HTML (vira texto): volta para o painel com o resultado na URL
 function pagina(ok: boolean, titulo: string, texto: string, canal = "") {
   const q = new URLSearchParams({ yt: ok ? "ok" : "erro", msg: `${titulo}: ${texto}`, ...(canal ? { canal } : {}) });
@@ -97,16 +101,45 @@ async function enviados24h(token: string) {
   return ((pl.items ?? []) as { snippet?: { publishedAt?: string } }[]).filter((i) => i.snippet?.publishedAt && new Date(i.snippet.publishedAt).getTime() > desde).length;
 }
 
+// horário que já passou (vídeo atrasado por cota/limite): vai para o mesmo horário no próximo dia possível
+function proximoMesmoHorario(quando: Date) {
+  const d = new Date(quando);
+  while (d.getTime() <= Date.now() + 15 * 60000) d.setUTCDate(d.getUTCDate() + 1);
+  return d;
+}
+
+// vídeo deitado / longo (mais de 3 min): link normal e capa própria; curto vai como Short
+const ehLongo = (v: Record<string, any>) => v.formato === "horizontal" || (v.formato !== "vertical" && Number(v.duracao) > 180);
+
+// capa 1 do vídeo longo (canal precisa ter o telefone verificado); se falhar, o vídeo fica com a capa automática
+async function porCapa(token: string, v: Record<string, any>, id: string) {
+  const url = (Array.isArray(v.capas) && v.capas[0]?.url) || v.capa_url;
+  if (!url) return "";
+  try {
+    const img = await fetch(url);
+    if (!img.ok) return "capa não baixou";
+    const r = await fetch(`https://www.googleapis.com/upload/youtube/v3/thumbnails/set?videoId=${id}`, {
+      method: "POST", headers: { Authorization: `Bearer ${token}`, "Content-Type": img.headers.get("content-type") || "image/jpeg" }, body: new Uint8Array(await img.arrayBuffer()),
+    });
+    if (!r.ok) { const d = await r.json().catch(() => ({})); return `capa não entrou: ${d.error?.message || r.status}`; }
+    return "";
+  } catch (e) { return `capa não entrou: ${(e as Error).message}`; }
+}
+
 // sobe um vídeo: com data (o YouTube publica no horário) ou, em "rascunho", privado e sem data para programar depois
 async function subir(db: SupabaseClient, v: Record<string, any>, rascunho = false) {
   const token = await tokenDe(db, v.canal);
   const { data: c } = await db.from("canais").select("yt_sintetico").eq("id", v.canal).maybeSingle();
-  const quando = v.yt_programado_para ? new Date(v.yt_programado_para) : null;
+  let quando = v.yt_programado_para ? new Date(v.yt_programado_para) : null;
+  // perdeu o horário (passou mais de 10 min): não publica de surpresa, remarca para o mesmo horário do próximo dia
+  let remarcado = false;
+  if (!rascunho && quando && quando.getTime() < Date.now() - 10 * 60000) { quando = proximoMesmoHorario(quando); remarcado = true; }
   const futuro = !rascunho && quando && quando.getTime() > Date.now() + 5 * 60000;
+  const longo = ehLongo(v);
   let tags: string[] = [], soma = 0;
   for (const t of String(v.yt_tags || "").split(",").map((x) => x.trim()).filter(Boolean)) { if (soma + t.length + 2 > 480) break; tags.push(t); soma += t.length + 2; }
   const meta = {
-    snippet: { title: String(v.yt_titulo || v.titulo || "Vídeo").slice(0, 100), description: String(v.yt_descricao || "").slice(0, 4900), tags, categoryId: "22" },
+    snippet: { title: String((longo && Array.isArray(v.yt_titulos) && v.yt_titulos[0]) || v.yt_titulo || v.titulo || "Vídeo").slice(0, 100), description: String(v.yt_descricao || "").slice(0, 4900), tags, categoryId: "22" },
     status: { privacyStatus: futuro || rascunho ? "private" : "public", ...(futuro ? { publishAt: quando!.toISOString() } : {}), selfDeclaredMadeForKids: false, containsSyntheticMedia: c?.yt_sintetico ?? true },
   };
   const arq = await fetch(v.video_url);
@@ -123,11 +156,13 @@ async function subir(db: SupabaseClient, v: Record<string, any>, rascunho = fals
   const fim = await fetch(destino, { method: "PUT", headers: { "Content-Type": "video/mp4" }, body: bytes });
   const d = await fim.json().catch(() => ({}));
   if (!fim.ok || !d.id) throw new Error(d.error?.message || `envio falhou (${fim.status})`);
+  const avisoCapa = longo ? await porCapa(token, v, d.id) : "";
   await db.from("videos").update({
-    yt_id: d.id, yt_link: `https://youtube.com/shorts/${d.id}`, yt_erro: null, yt_tentativas: 0, yt_subido_em: new Date().toISOString(),
+    yt_id: d.id, yt_link: longo ? `https://youtube.com/watch?v=${d.id}` : `https://youtube.com/shorts/${d.id}`, yt_erro: avisoCapa || null, yt_tentativas: 0, yt_subido_em: new Date().toISOString(),
+    ...(remarcado && quando ? { yt_programado_para: quando.toISOString() } : {}),
     ...(rascunho ? { yt_status: "pendente" } : futuro ? { yt_status: "programado" } : { yt_status: "postado", yt_postado_em: new Date().toISOString() }),
   }).eq("id", v.id);
-  return rascunho ? "privado no YouTube (falta programar)" : futuro ? `programado ${quando!.toISOString()}` : "publicado agora";
+  return rascunho ? "privado no YouTube (falta programar)" : futuro ? `programado ${quando!.toISOString()}${remarcado ? " (remarcado: tinha perdido o horário)" : ""}` : "publicado agora";
 }
 
 // muda o horário (ou tira do ar) de um vídeo que já subiu
@@ -148,12 +183,19 @@ async function mudarStatus(db: SupabaseClient, v: Record<string, any>, cancelar:
 }
 
 async function processar(db: SupabaseClient) {
-  const sel = "id,canal,titulo,yt_titulo,yt_descricao,yt_tags,yt_programado_para,yt_status,yt_id,yt_tentativas,video_url";
+  const sel = "id,canal,titulo,yt_titulo,yt_descricao,yt_tags,yt_programado_para,yt_status,yt_id,yt_tentativas,video_url,duracao,capa_url,capas,yt_titulos";
   // primeiro o que tem data (programar, mudar horário, cancelar), do mais próximo ao mais longe; depois os novos que vão como privados
   // quem já está no YouTube (só muda data) vem separado, para não ficar atrás da fila de envios
   const { data: a1 } = await db.from("videos").select(sel).in("yt_status", ["agendado", "cancelar"]).not("yt_id", "is", null).order("yt_programado_para", { ascending: true, nullsFirst: false }).limit(40);
-  const { data: a2 } = await db.from("videos").select(sel).in("yt_status", ["agendado", "cancelar"]).is("yt_id", null).order("yt_programado_para", { ascending: true, nullsFirst: false }).limit(40);
-  const a = [...(a1 ?? []), ...(a2 ?? [])];
+  const { data: a2 } = await db.from("videos").select(sel).in("yt_status", ["agendado", "cancelar"]).is("yt_id", null).order("yt_programado_para", { ascending: true, nullsFirst: false }).limit(80);
+  // fila justa entre canais: intercala os envios novos por canal (o mais próximo de cada canal primeiro),
+  // para a fila grande de um canal não segurar o vídeo do dia de outro
+  const porCanal: Record<string, Record<string, any>[]> = {};
+  for (const v of a2 ?? []) (porCanal[v.canal] ??= []).push(v);
+  const filas = Object.values(porCanal).sort((x, y) => new Date(x[0].yt_programado_para ?? 8.64e15).getTime() - new Date(y[0].yt_programado_para ?? 8.64e15).getTime());
+  const novos: Record<string, any>[] = [];
+  for (let i = 0; filas.some((q) => q.length > i); i++) for (const q of filas) if (q[i]) novos.push(q[i]);
+  const a = [...(a1 ?? []), ...novos];
   const { data: b } = await db.from("videos").select(sel).eq("yt_status", "subir").order("created_at", { ascending: true }).limit(40);
   const { yt_limite_dia } = await cfg(db, ["yt_limite_dia"]);
   const limite = Number(yt_limite_dia) || 15;
@@ -164,7 +206,7 @@ async function processar(db: SupabaseClient) {
   for (const v of [...(a ?? []), ...(b ?? [])]) {
     try {
       if (v.yt_status === "cancelar" || v.yt_id) {
-        if (semPermissao.has(v.canal)) continue;
+        if (semPermissao.has(v.canal) || cotaProjeto) continue;
         // só muda o status de quem já está no YouTube (rápido): até 15 por rodada
         if (mudancas >= 15) continue;
         mudancas++;
@@ -184,15 +226,17 @@ async function processar(db: SupabaseClient) {
       enviados[v.canal]++;
     } catch (e) {
       const msg = (e as Error).message, motivo = (e as Error & { motivo?: string }).motivo ?? "";
-      const cota = /quota|uploadLimitExceeded|rateLimit|exceeded the number of videos/i.test(motivo + msg);
+      // cota do app do Google (todos os canais juntos) x limite de envios do próprio canal
+      const cotaApp = /quotaExceeded|dailyLimitExceeded|for consumer 'project|exceeded your quota/i.test(motivo + " " + msg);
+      const limiteCanal = !cotaApp && /uploadLimitExceeded|rateLimit|exceeded the number of videos/i.test(motivo + " " + msg);
       const permissao = /insufficientPermissions|insufficient authentication scopes|conecte de novo/i.test(motivo + msg);
-      const n = (v.yt_tentativas || 0) + (cota || permissao ? 0 : 1);
-      const aviso = cota ? `o canal chegou no limite de envios do YouTube; sobe sozinho quando liberar` : permissao ? "falta reconectar a conta do YouTube (permissão nova)" : msg;
+      const n = (v.yt_tentativas || 0) + (cotaApp || limiteCanal || permissao ? 0 : 1);
+      const aviso = cotaApp ? AVISO_COTA_APP : limiteCanal ? AVISO_LIMITE_CANAL : permissao ? "falta reconectar a conta do YouTube (permissão nova)" : msg;
       await db.from("videos").update({ yt_erro: aviso, yt_tentativas: n, ...(n >= 3 ? { yt_status: "erro" } : {}) }).eq("id", v.id);
       r[v.id] = `erro: ${msg}`;
-      if (cota) enviados[v.canal] = limite;
-      // limite do projeto do Google (vale para todos os canais): para de enviar nesta rodada
-      if (/for consumer 'project/i.test(msg)) cotaProjeto = true;
+      if (limiteCanal) enviados[v.canal] = limite;
+      // cota do app acabou: vale para todos os canais, para de chamar o YouTube nesta rodada
+      if (cotaApp) cotaProjeto = true;
       if (permissao) semPermissao.add(v.canal);
     }
   }

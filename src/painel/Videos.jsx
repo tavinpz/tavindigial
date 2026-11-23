@@ -4,6 +4,7 @@ import { usePainel } from './Painel'
 import Pipeline, { useConexoes } from './Pipeline'
 import { CANAIS } from './canais'
 import BotoesThata from './ThataConteudo'
+import { TesteAB } from './YouTubeLongo'
 
 // Vídeos curtos de um canal (Thata, Concrete Atlas, Zerando…): em produção → para programar → upload feito → programado → postado.
 // Cada rede (YouTube, TikTok, Instagram) tem a própria situação. O que foi programado vira "postado" sozinho no horário,
@@ -60,7 +61,11 @@ const REDES = [
 ]
 // TikTok só conta para canais com @ do TikTok cadastrado (o painel não posta no TikTok: é marcação manual)
 const temTT = (canalId) => !!CANAIS.find((c) => c.id === canalId)?.tiktok
-const redesDe = (v) => REDES.filter((r) => r.k !== 'tt' || temTT(v.canal))
+// Vídeo deitado (16:9, vídeo longo do YouTube) no mesmo quadro dos curtos: player e capas em 16:9, teste A/B de título e capa,
+// e sem Reels (o Instagram não recebe vídeo deitado). Coluna `formato` manda; sem ela, mais de 3 min = deitado.
+export const deitado = (v) => v.formato === 'horizontal' || (v.formato !== 'vertical' && (Number(v.duracao) || 0) > 180)
+const minutos = (s) => `${Math.floor(s / 60)}:${String(Math.round(s % 60)).padStart(2, '0')}`
+const redesDe = (v) => REDES.filter((r) => (r.k !== 'tt' || temTT(v.canal)) && (r.k !== 'ig' || !deitado(v)))
 // canais com a conta do YouTube conectada: o painel sobe o vídeo e o YouTube publica no horário
 const YT_AUTO = new Set()
 function situacao(v, k) {
@@ -105,7 +110,7 @@ function etapa(v, rede = null) {
   if (!v.video_url) return 'producao'
   // a coluna segue o YouTube e o Instagram juntos: só vai para Programado quando os dois estão programados (ou já no ar),
   // e para Postado quando os dois saíram. O TikTok aparece só no selo do cartão. Cada rede tem seu selo (IG ◷ / IG ✓).
-  const ss = (rede ? [rede] : ['yt', 'ig']).map((k) => situacao(v, k).s)
+  const ss = (rede ? [rede] : redesDe(v).map((r) => r.k).filter((k) => k !== 'tt')).map((k) => situacao(v, k).s)
   if (ss.includes('pendente')) return v.subido_em ? 'subido' : 'programar'
   if (ss.includes('programado')) return 'programado'
   return 'postado'
@@ -264,6 +269,9 @@ function Detalhe({ v, fechar, recarregar, igOk, voltar = 'Vídeos', mover, vizin
     <ul className="v-redes v-redes--detalhe"><Rede v={v} k={k} nome={nome} recarregar={recarregar} igOk={igOk} aberto={aberto === k} abrir={abrir} /></ul>
   )
   const igSt = situacao(v, 'ig')
+  const longo = deitado(v)
+  const capas = Array.isArray(v.capas) && v.capas.length ? v.capas : v.capa_url ? [{ url: v.capa_url }] : []
+  const titulos = Array.isArray(v.yt_titulos) ? v.yt_titulos : []
 
   return (
     <section className="v-detalhe">
@@ -271,7 +279,7 @@ function Detalhe({ v, fechar, recarregar, igOk, voltar = 'Vídeos', mover, vizin
         <div>
           <button className="p-voltar" onClick={fechar}>{voltar}</button>
           <h1>{num(v)} {v.yt_titulo}</h1>
-          <p className="p-sub">Sugestão: {fmtQuando(sugestao(v))} · {Math.round(v.duracao || 0)} s</p>
+          <p className="p-sub">Sugestão: {fmtQuando(sugestao(v))} · {longo ? `${minutos(Number(v.duracao) || 0)} · vídeo deitado` : `${Math.round(v.duracao || 0)} s`}</p>
           {mover && v.video_url && (
             <div className="v-etapas" role="group" aria-label="Mudar de coluna">
               {FASES.filter((f) => f.k !== 'producao').map((f) => {
@@ -289,20 +297,23 @@ function Detalhe({ v, fechar, recarregar, igOk, voltar = 'Vídeos', mover, vizin
         </div>
       </div>
 
-      <div className="v-grade">
-        <div className="v-player">
-          {v.video_url ? <video src={v.video_url} poster={v.capa_url || undefined} controls autoPlay playsInline preload="auto" /> : <div className="v-semvideo">Vídeo ainda em produção…</div>}
+      <div className={`v-grade ${longo ? 'v-grade--longo' : ''}`}>
+        <div className={`v-player ${longo ? 'v-player--longo' : ''}`}>
+          {v.video_url ? <video src={v.video_url} poster={capas[0]?.url || undefined} controls autoPlay={!longo} playsInline preload={longo ? 'metadata' : 'auto'} /> : <div className="v-semvideo">Vídeo ainda em produção…</div>}
+          {longo && <TesteAB v={v} titulo={v.yt_titulo || v.titulo} capas={capas} titulos={titulos} />}
         </div>
 
         <div className="v-plataformas">
           <article className={`v-plat v-plat--${situacao(v, 'yt').s}`}>
-            <header><h2>YouTube Shorts</h2></header>
+            <header><h2>{longo ? 'YouTube · vídeo longo' : 'YouTube Shorts'}</h2></header>
             {rede('yt', 'YouTube')}
-            <Bloco titulo="Título" texto={v.yt_titulo} linhas={2} />
-            <Bloco titulo="Descrição" texto={v.yt_descricao} linhas={4} />
+            <Bloco titulo={longo ? 'Título (versão 1)' : 'Título'} texto={titulos[0] || v.yt_titulo} linhas={2} />
+            <Bloco titulo={longo ? 'Descrição (com capítulos)' : 'Descrição'} texto={v.yt_descricao} linhas={longo ? 8 : 4} />
             {v.yt_tags && <Bloco titulo="Tags (campo Tags, em Mostrar mais)" texto={v.yt_tags} linhas={2} />}
             <Bloco titulo="Comentário para fixar" texto={v.comentario_fixado} linhas={2} />
-            <p className="v-dica">No upload: não é para crianças · Conteúdo alterado ou sintético = Sim · Programar para {fmtQuando(sugestao(v))}.</p>
+            <p className="v-dica">{longo
+              ? <>O painel sobe com o título 1 e a capa 1. Depois, no Studio: Thumbnail → "Testar e comparar" → capa N com título N · fixar o comentário · não é para crianças.</>
+              : <>No upload: não é para crianças · Conteúdo alterado ou sintético = Sim · Programar para {fmtQuando(sugestao(v))}.</>}</p>
             <div className="p-acoes">
               <a className="p-btn" href="https://studio.youtube.com" target="_blank" rel="noreferrer">Abrir YouTube Studio</a>
               {celular && v.video_url && <button className="p-btn" onClick={() => compartilhar(v, v.yt_titulo, avisar)}>Mandar para o app (copia o título)</button>}
@@ -320,7 +331,7 @@ function Detalhe({ v, fechar, recarregar, igOk, voltar = 'Vídeos', mover, vizin
             </div>
           </article>}
 
-          <article className={`v-plat v-plat--${igSt.s}`}>
+          {!longo && <article className={`v-plat v-plat--${igSt.s}`}>
             <header><h2>Instagram Reels</h2></header>
             {rede('ig', 'Insta')}
             <div className="v-ig-opcoes">
@@ -345,7 +356,7 @@ function Detalhe({ v, fechar, recarregar, igOk, voltar = 'Vídeos', mover, vizin
               )}
               {celular && igSt.s !== 'postado' && v.video_url && <button className="p-btn p-btn--mini" onClick={() => compartilhar(v, legIG, avisar)}>Mandar para o app</button>}
             </div>
-          </article>
+          </article>}
 
           {v.fontes?.length > 0 && (
             <details className="v-fontes"><summary>Fontes dos fatos</summary>
@@ -381,9 +392,9 @@ function paraItem(v) {
   const post = sts.map((st) => st.postado).filter(Boolean).sort()
   return {
     chave: v.id, bruto: v,
-    fase: e,
+    fase: e, ...(deitado(v) ? { tipo: 'longo', tipoNome: minutos(Number(v.duracao) || 0) } : {}),
     titulo: v.yt_titulo || v.titulo || num(v), num: num(v),
-    video_url: v.video_url, capa_url: v.capa_url, baixar: baixarUrl(v),
+    video_url: v.video_url, capa_url: (Array.isArray(v.capas) && v.capas[0]?.url) || v.capa_url, baixar: baixarUrl(v),
     quando: prog[0] || null, postado: post.at(-1) || null,
     views: (v.yt_views || 0) + (v.ig_views || 0),
     erro: sts.find((st) => st.erro)?.erro || '',
