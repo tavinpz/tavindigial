@@ -8,7 +8,8 @@ import { createPortal } from 'react-dom'
 
 const temHover = () => typeof window !== 'undefined' && !!window.matchMedia?.('(hover: hover) and (pointer: fine)').matches
 
-export function MiniVideo({ src, capa, onClick, rotulo, className = '', children }) {
+// deitado: vídeo 16:9 (vídeo longo do YouTube); sem ele, 9:16 (Shorts, Reels)
+export function MiniVideo({ src, capa, onClick, rotulo, className = '', children, deitado = false }) {
   const ref = useRef(null)
   const timer = useRef(0)
   const [pos, setPos] = useState(null)
@@ -19,7 +20,7 @@ export function MiniVideo({ src, capa, onClick, rotulo, className = '', children
     timer.current = setTimeout(() => {
       const r = ref.current?.getBoundingClientRect()
       if (!r) return
-      const w = 216, h = Math.round((w * 16) / 9)
+      const w = deitado ? 400 : 216, h = deitado ? Math.round((w * 9) / 16) : Math.round((w * 16) / 9)
       const x = r.right + 14 + w < window.innerWidth ? r.right + 14 : Math.max(8, r.left - 14 - w)
       const y = Math.min(Math.max(8, r.top + r.height / 2 - h / 2), window.innerHeight - h - 8)
       setPos({ x, y, w, h })
@@ -71,7 +72,7 @@ export function Previa({ lista, id, setId, abrirFicha }) {
     <div className="pv-fundo" onClick={() => setId(null)}>
       <div className="pv-janela" role="dialog" aria-modal="true" aria-label={`Prévia: ${v.titulo}`} onClick={(e) => e.stopPropagation()}>
         <button type="button" className="pv-seta pv-seta--ant" onClick={() => ir(-1)} disabled={i <= 0} aria-label="Vídeo anterior">‹</button>
-        <video key={v.id} className="pv-video" src={v.video_url} poster={v.capa_url || undefined} autoPlay controls playsInline />
+        <video key={v.id} className={`pv-video ${v.deitado ? 'pv-video--deitado' : ''}`} src={v.video_url} poster={v.capa_url || undefined} autoPlay controls playsInline />
         <button type="button" className="pv-seta pv-seta--seg" onClick={() => ir(1)} disabled={i >= lista.length - 1} aria-label="Próximo vídeo">›</button>
         <div className="pv-info">
           <small>{i + 1} de {lista.length}{v.sub ? ` · ${v.sub}` : ''}</small>

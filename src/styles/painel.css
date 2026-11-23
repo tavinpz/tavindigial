@@ -762,6 +762,7 @@ body:has(.p-fantasma) { cursor: grabbing; }
 @keyframes pv-fade { from { opacity: 0; } }
 .pv-janela { display: grid; grid-template-columns: auto auto auto; grid-template-rows: auto auto; align-items: center; gap: 14px 16px; max-height: 100%; }
 .pv-video { grid-column: 2; height: min(78vh, 760px); aspect-ratio: 9 / 16; max-width: calc(100vw - 140px); border-radius: 18px; background: #000; display: block; }
+.pv-video--deitado { height: auto; width: min(1100px, calc(100vw - 140px)); max-height: 78vh; aspect-ratio: 16 / 9; }
 .pv-seta { width: 46px; height: 46px; border-radius: 50%; border: 0; background: rgba(255,255,255,.12); color: #fff; font-size: 28px; line-height: 1; cursor: pointer; }
 .pv-seta:hover:not(:disabled) { background: rgba(255,255,255,.24); }
 .pv-seta:disabled { opacity: .25; cursor: default; }
@@ -775,6 +776,7 @@ body:has(.p-fantasma) { cursor: grabbing; }
   .pv-fundo { padding: 12px 8px; }
   .pv-janela { grid-template-columns: 1fr 1fr; }
   .pv-video { grid-column: 1 / -1; grid-row: 1; height: auto; width: min(100%, calc(70vh * 9 / 16)); max-width: 100%; justify-self: center; }
+  .pv-video--deitado { width: 100%; height: auto; }
   .pv-seta--ant { grid-row: 2; justify-self: start; } .pv-seta--seg { grid-row: 2; justify-self: end; grid-column: 2; }
   .pv-info { grid-row: 3; }
 }

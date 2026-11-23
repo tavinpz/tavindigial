@@ -117,7 +117,7 @@ function Cartao({ item, fase, papel, fases, abrir, previa, arrastar, arrastando,
       onDragStart={(e) => { e.dataTransfer.effectAllowed = 'move'; e.dataTransfer.setData('text/plain', item.chave); arrastar(item.chave) }}
       onDragEnd={() => arrastar(null)}>
       {item.video_url
-        ? <MiniVideo className="pl-mini" src={item.video_url} capa={item.capa_url} rotulo={`Ver a prévia de ${item.titulo}`} onClick={() => previa(item.chave)}><Miniatura item={item} /></MiniVideo>
+        ? <MiniVideo className="pl-mini" src={item.video_url} capa={item.capa_url} rotulo={`Ver a prévia de ${item.titulo}`} deitado={item.tipo === 'longo'} onClick={() => previa(item.chave)}><Miniatura item={item} /></MiniVideo>
         : <button type="button" className="pl-mini" onClick={() => abrir(item)} aria-label={`Abrir ${item.titulo}`} tabIndex={-1}><Miniatura item={item} /></button>}
       <button type="button" className="pl-txt" onClick={() => abrir(item)}>
         <strong>{item.num && <b className="pl-num">{item.num}</b>}{item.titulo}</strong>
@@ -564,7 +564,7 @@ export default function Pipeline({ canal, fases = FASES_PADRAO, itens, mover, pr
   const fila = fases.filter((f) => f.papel === 'programado').flatMap((f) => col[f.k]).map((i) => i.quando).filter(Boolean).sort().at(-1)
   const programaveis = itens.filter((i) => i.programavel && deFase(fase(i))?.papel === 'fila')
   const listaPrevia = visiveis.flatMap((f) => col[f.k]).filter((i) => i.video_url)
-    .map((i) => ({ id: i.chave, video_url: i.video_url, capa_url: i.capa_url, titulo: `${i.num ? `${i.num} ` : ''}${i.titulo}`, sub: deFase(fase(i))?.nome, baixar: i.baixar }))
+    .map((i) => ({ id: i.chave, video_url: i.video_url, capa_url: i.capa_url, titulo: `${i.num ? `${i.num} ` : ''}${i.titulo}`, sub: deFase(fase(i))?.nome, baixar: i.baixar, deitado: i.tipo === 'longo' }))
 
   return (
     <section className="pl" style={{ '--c': canal.cor }}>
