@@ -126,6 +126,32 @@ async function porCapa(token: string, v: Record<string, any>, id: string) {
   } catch (e) { return `capa não entrou: ${(e as Error).message}`; }
 }
 
+// partes da versão em alta, na ordem, como um fluxo só (sem carregar na memória)
+async function partesHD(db: SupabaseClient, id: string) {
+  const { data } = await db.storage.from("videos").list(`hd/${id}`, { limit: 100, sortBy: { column: "name", order: "asc" } });
+  const ps = ((data ?? []) as { name: string; metadata?: { size?: number } }[]).filter((f) => /^part_\d+$/.test(f.name)).sort((x, y) => x.name.localeCompare(y.name));
+  if (!ps.length) return null;
+  const base = `${Deno.env.get("SUPABASE_URL")}/storage/v1/object/public/videos/hd/${id}/`;
+  const total = ps.reduce((t, f) => t + Number(f.metadata?.size || 0), 0);
+  let i = 0, leitor: ReadableStreamDefaultReader<Uint8Array> | null = null;
+  const corpo = new ReadableStream<Uint8Array>({
+    async pull(ctl) {
+      while (true) {
+        if (!leitor) {
+          if (i >= ps.length) { ctl.close(); return; }
+          const r = await fetch(base + ps[i++].name);
+          if (!r.ok || !r.body) { ctl.error(new Error(`parte ${i - 1} não baixou (${r.status})`)); return; }
+          leitor = r.body.getReader();
+        }
+        const { done, value } = await leitor.read();
+        if (done) { leitor = null; continue; }
+        ctl.enqueue(value); return;
+      }
+    },
+  });
+  return { corpo, total };
+}
+
 // sobe um vídeo: com data (o YouTube publica no horário) ou, em "rascunho", privado e sem data para programar depois
 async function subir(db: SupabaseClient, v: Record<string, any>, rascunho = false) {
   const token = await tokenDe(db, v.canal);
@@ -142,12 +168,18 @@ async function subir(db: SupabaseClient, v: Record<string, any>, rascunho = fals
     snippet: { title: String((longo && Array.isArray(v.yt_titulos) && v.yt_titulos[0]) || v.yt_titulo || v.titulo || "Vídeo").slice(0, 100), description: String(v.yt_descricao || "").slice(0, 4900), tags, categoryId: "22" },
     status: { privacyStatus: futuro || rascunho ? "private" : "public", ...(futuro ? { publishAt: quando!.toISOString() } : {}), selfDeclaredMadeForKids: false, containsSyntheticMedia: c?.yt_sintetico ?? true },
   };
-  const arq = await fetch(v.video_url);
-  if (!arq.ok) throw new Error(`não consegui baixar o vídeo (${arq.status})`);
-  // vídeo em alta passa de 200 MB: vai em fluxo (sem carregar tudo na memória da função)
-  const tam = Number(arq.headers.get("content-length") || 0);
-  const corpo: BodyInit = tam > 0 && arq.body ? arq.body : new Uint8Array(await arq.arrayBuffer());
-  const total = tam > 0 && arq.body ? tam : (corpo as Uint8Array).length;
+  // versão em alta (o armazenamento aceita até 50 MB por arquivo): partes em videos/hd/<id>/part_NN, juntadas em fluxo;
+  // sem partes, vai o video_url (a versão do painel)
+  const hd = await partesHD(db, v.id);
+  let corpo: BodyInit, total: number;
+  if (hd) { corpo = hd.corpo; total = hd.total; }
+  else {
+    const arq = await fetch(v.video_url);
+    if (!arq.ok) throw new Error(`não consegui baixar o vídeo (${arq.status})`);
+    const tam = Number(arq.headers.get("content-length") || 0);
+    corpo = tam > 0 && arq.body ? arq.body : new Uint8Array(await arq.arrayBuffer());
+    total = tam > 0 && arq.body ? tam : (corpo as Uint8Array).length;
+  }
   const ini = await fetch("https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet,status", {
     method: "POST",
     headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json; charset=UTF-8", "X-Upload-Content-Length": String(total), "X-Upload-Content-Type": "video/mp4" },
