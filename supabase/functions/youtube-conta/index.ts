@@ -144,16 +144,19 @@ async function subir(db: SupabaseClient, v: Record<string, any>, rascunho = fals
   };
   const arq = await fetch(v.video_url);
   if (!arq.ok) throw new Error(`não consegui baixar o vídeo (${arq.status})`);
-  const bytes = new Uint8Array(await arq.arrayBuffer());
+  // vídeo em alta passa de 200 MB: vai em fluxo (sem carregar tudo na memória da função)
+  const tam = Number(arq.headers.get("content-length") || 0);
+  const corpo: BodyInit = tam > 0 && arq.body ? arq.body : new Uint8Array(await arq.arrayBuffer());
+  const total = tam > 0 && arq.body ? tam : (corpo as Uint8Array).length;
   const ini = await fetch("https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet,status", {
     method: "POST",
-    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json; charset=UTF-8", "X-Upload-Content-Length": String(bytes.length), "X-Upload-Content-Type": "video/mp4" },
+    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json; charset=UTF-8", "X-Upload-Content-Length": String(total), "X-Upload-Content-Type": "video/mp4" },
     body: JSON.stringify(meta),
   });
   if (!ini.ok) { const d = await ini.json().catch(() => ({})); const e = new Error(d.error?.message || `HTTP ${ini.status}`); (e as Error & { motivo?: string }).motivo = d.error?.errors?.[0]?.reason; throw e; }
   const destino = ini.headers.get("location");
   if (!destino) throw new Error("o YouTube não abriu o envio");
-  const fim = await fetch(destino, { method: "PUT", headers: { "Content-Type": "video/mp4" }, body: bytes });
+  const fim = await fetch(destino, { method: "PUT", headers: { "Content-Type": "video/mp4", "Content-Length": String(total) }, body: corpo, ...(corpo instanceof ReadableStream ? { duplex: "half" } : {}) } as RequestInit);
   const d = await fim.json().catch(() => ({}));
   if (!fim.ok || !d.id) throw new Error(d.error?.message || `envio falhou (${fim.status})`);
   const avisoCapa = longo ? await porCapa(token, v, d.id) : "";
