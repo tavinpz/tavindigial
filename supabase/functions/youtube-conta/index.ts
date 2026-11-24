@@ -1,6 +1,6 @@
 // youtube-conta — a conta do YouTube de cada canal, ligada pela conta Google (OAuth).
 //   GET  ?code&state             → volta do Google: guarda o acesso do canal e mostra "conectado"
-//   POST { acao: "processar" }   → (pg_cron a cada 5 min) sobe no YouTube o que foi programado pelo painel,
+//   POST { acao: "processar" }   → (pg_cron a cada 5 min) sobe no YouTube o que foi programado pelo painel (HD grande: em partes, várias rodadas),
 //                                  com a data de publicação (o YouTube solta sozinho no horário);
 //                                  muda o horário de quem já subiu e tira do ar programado quando cancela
 //   POST { acao: "testar", canal } → confere a conta ligada
@@ -126,13 +126,66 @@ async function porCapa(token: string, v: Record<string, any>, id: string) {
   } catch (e) { return `capa não entrou: ${(e as Error).message}`; }
 }
 
-// partes da versão em alta, na ordem, como um fluxo só (sem carregar na memória)
-async function partesHD(db: SupabaseClient, id: string) {
+// lista das partes da versão em alta (videos/hd/<id>/part_NN), na ordem
+async function listaHD(db: SupabaseClient, id: string) {
   const { data } = await db.storage.from("videos").list(`hd/${id}`, { limit: 100, sortBy: { column: "name", order: "asc" } });
   const ps = ((data ?? []) as { name: string; metadata?: { size?: number } }[]).filter((f) => /^part_\d+$/.test(f.name)).sort((x, y) => x.name.localeCompare(y.name));
   if (!ps.length) return null;
   const base = `${Deno.env.get("SUPABASE_URL")}/storage/v1/object/public/videos/hd/${id}/`;
   const total = ps.reduce((t, f) => t + Number(f.metadata?.size || 0), 0);
+  return { ps, base, total };
+}
+
+// HD grande (a função cai se manda tudo de uma vez): envio retomável do YouTube, uma parte de 45 MB por vez,
+// ao longo de várias rodadas. O endereço do envio e a parte atual ficam em app_config (yt_envio_<id>).
+async function enviarEmPartes(db: SupabaseClient, token: string, v: Record<string, any>, meta: unknown, h: { ps: { name: string; metadata?: { size?: number } }[]; base: string; total: number }) {
+  const t0 = Date.now();
+  const chave = `yt_envio_${v.id}`;
+  const salvo = (await cfg(db, [chave]))[chave];
+  let st = salvo ? JSON.parse(salvo) as { destino: string; total: number; parte: number } : null;
+  if (st && st.total !== h.total) st = null; // a HD mudou: recomeça
+  if (!st) {
+    const ini = await fetch("https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet,status", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json; charset=UTF-8", "X-Upload-Content-Length": String(h.total), "X-Upload-Content-Type": "video/mp4" },
+      body: JSON.stringify(meta),
+    });
+    if (!ini.ok) { const d = await ini.json().catch(() => ({})); const e = new Error(d.error?.message || `HTTP ${ini.status}`); (e as Error & { motivo?: string }).motivo = d.error?.errors?.[0]?.reason; throw e; }
+    const destino = ini.headers.get("location");
+    if (!destino) throw new Error("o YouTube não abriu o envio");
+    st = { destino, total: h.total, parte: 0 };
+    await guardar(db, chave, JSON.stringify(st));
+  }
+  let ini = 0;
+  for (let k = 0; k < st.parte; k++) ini += Number(h.ps[k].metadata?.size || 0);
+  while (st.parte < h.ps.length) {
+    if (Date.now() - t0 > 60000) return { pronto: false, msg: `enviando a HD ao YouTube: parte ${st.parte + 1} de ${h.ps.length}` };
+    const r = await fetch(h.base + h.ps[st.parte].name);
+    if (!r.ok) throw new Error(`parte ${st.parte} não baixou (${r.status})`);
+    const buf = new Uint8Array(await r.arrayBuffer());
+    const fim = ini + buf.length - 1;
+    const res = await fetch(st.destino, { method: "PUT", headers: { "Content-Length": String(buf.length), "Content-Range": `bytes ${ini}-${fim}/${st.total}` }, body: buf });
+    if (res.status === 308) {
+      const faixa = res.headers.get("range");
+      if (faixa && Number(faixa.split("-")[1]) !== fim) { await db.from("app_config").delete().eq("key", chave); throw new Error(`o YouTube recebeu só até ${faixa}; recomeça o envio`); }
+      st.parte++; ini = fim + 1;
+      await guardar(db, chave, JSON.stringify(st));
+      continue;
+    }
+    if (res.status === 404 || res.status === 410) { await db.from("app_config").delete().eq("key", chave); throw new Error("o envio do YouTube venceu; recomeça na próxima rodada"); }
+    const d = await res.json().catch(() => ({}));
+    if (!res.ok || !d.id) throw new Error(d.error?.message || `envio falhou (${res.status})`);
+    await db.from("app_config").delete().eq("key", chave);
+    return { pronto: true, id: d.id as string };
+  }
+  throw new Error("as partes acabaram sem o YouTube confirmar o envio");
+}
+
+// partes da versão em alta, na ordem, como um fluxo só (sem carregar na memória)
+async function partesHD(db: SupabaseClient, id: string) {
+  const h = await listaHD(db, id);
+  if (!h) return null;
+  const { ps, base, total } = h;
   let i = 0, leitor: ReadableStreamDefaultReader<Uint8Array> | null = null;
   const corpo = new ReadableStream<Uint8Array>({
     async pull(ctl) {
@@ -168,8 +221,14 @@ async function subir(db: SupabaseClient, v: Record<string, any>, rascunho = fals
     snippet: { title: String((longo && Array.isArray(v.yt_titulos) && v.yt_titulos[0]) || v.yt_titulo || v.titulo || "Vídeo").slice(0, 100), description: String(v.yt_descricao || "").slice(0, 4900), tags, categoryId: "22" },
     status: { privacyStatus: futuro || rascunho ? "private" : "public", ...(futuro ? { publishAt: quando!.toISOString() } : {}), selfDeclaredMadeForKids: false, containsSyntheticMedia: c?.yt_sintetico ?? true },
   };
-  // versão em alta (o armazenamento aceita até 50 MB por arquivo): partes em videos/hd/<id>/part_NN, juntadas em fluxo;
-  // sem partes, vai o video_url (a versão do painel)
+  // versão em alta (o armazenamento aceita até 50 MB por arquivo): partes em videos/hd/<id>/part_NN;
+  // HD grande vai em partes ao longo de várias rodadas; pequena, juntada em fluxo; sem partes, vai o video_url
+  const hl = await listaHD(db, v.id);
+  if (hl && hl.total > 95e6) {
+    const ep = await enviarEmPartes(db, token, v, meta, hl);
+    if (!ep.pronto) { await db.from("videos").update({ yt_erro: ep.msg }).eq("id", v.id); return ep.msg; }
+    return await concluir(db, token, v, ep.id!, longo, rascunho, futuro, quando, remarcado);
+  }
   const hd = await partesHD(db, v.id);
   let corpo: BodyInit, total: number;
   if (hd) { corpo = hd.corpo; total = hd.total; }
@@ -191,9 +250,14 @@ async function subir(db: SupabaseClient, v: Record<string, any>, rascunho = fals
   const fim = await fetch(destino, { method: "PUT", headers: { "Content-Type": "video/mp4", "Content-Length": String(total) }, body: corpo, ...(corpo instanceof ReadableStream ? { duplex: "half" } : {}) } as RequestInit);
   const d = await fim.json().catch(() => ({}));
   if (!fim.ok || !d.id) throw new Error(d.error?.message || `envio falhou (${fim.status})`);
-  const avisoCapa = longo ? await porCapa(token, v, d.id) : "";
+  return await concluir(db, token, v, d.id, longo, rascunho, futuro, quando, remarcado);
+}
+
+// depois que o YouTube confirmou o envio: capa e situação no painel
+async function concluir(db: SupabaseClient, token: string, v: Record<string, any>, id: string, longo: boolean, rascunho: boolean, futuro: any, quando: Date | null, remarcado: boolean) {
+  const avisoCapa = longo ? await porCapa(token, v, id) : "";
   await db.from("videos").update({
-    yt_id: d.id, yt_link: longo ? `https://youtube.com/watch?v=${d.id}` : `https://youtube.com/shorts/${d.id}`, yt_erro: avisoCapa || null, yt_tentativas: 0, yt_subido_em: new Date().toISOString(),
+    yt_id: id, yt_link: longo ? `https://youtube.com/watch?v=${id}` : `https://youtube.com/shorts/${id}`, yt_erro: avisoCapa || null, yt_tentativas: 0, yt_subido_em: new Date().toISOString(),
     ...(remarcado && quando ? { yt_programado_para: quando.toISOString() } : {}),
     ...(rascunho ? { yt_status: "pendente" } : futuro ? { yt_status: "programado" } : { yt_status: "postado", yt_postado_em: new Date().toISOString() }),
   }).eq("id", v.id);
@@ -258,6 +322,8 @@ async function processar(db: SupabaseClient) {
       }
       envios++;
       r[v.id] = await subir(db, v, v.yt_status === "subir");
+      // HD em partes ocupa a rodada inteira (não cabe outro envio no tempo da função)
+      if (r[v.id].startsWith("enviando a HD")) { envios = 3; continue; }
       enviados[v.canal]++;
     } catch (e) {
       const msg = (e as Error).message, motivo = (e as Error & { motivo?: string }).motivo ?? "";
