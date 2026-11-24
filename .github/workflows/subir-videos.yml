@@ -1,0 +1,31 @@
+name: subir-videos
+on:
+  push:
+    branches: [envio-videos]
+jobs:
+  subir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Enviar para o Supabase Storage
+        run: |
+          # envio/<arquivo>          -> thata/<arquivo>
+          # envio/<canal>/<arquivo>  -> <canal>/<arquivo>
+          # Cada arquivo precisa estar registrado antes em videos_envio (caminho, sha256).
+          falhas=0
+          while IFS= read -r f; do
+            rel=${f#envio/}
+            case "$rel" in */*) caminho="$rel";; *) caminho="thata/$rel";; esac
+            nome=$(basename "$f")
+            sha=$(sha256sum "$f" | cut -d' ' -f1)
+            resp=$(curl -sS -X POST "https://vvlzverpxojrecxysmhm.supabase.co/functions/v1/receber-video" -H "content-type: application/json" -d "{\"caminho\":\"$caminho\",\"sha256\":\"$sha\"}")
+            url=$(echo "$resp" | jq -r '.url // empty')
+            if [ -z "$url" ]; then echo "pulou $caminho: $resp"; continue; fi
+            case "$nome" in *.mp4|part_[0-9]*) tipo=video/mp4;; *.png) tipo=image/png;; *) tipo=image/jpeg;; esac
+            if curl -sS --fail --retry 4 --retry-all-errors --retry-delay 5 -X PUT "$url" -H "content-type: $tipo" -H "x-upsert: true" -H "cache-control: max-age=31536000" --data-binary @"$f" > /dev/null; then
+              echo "ok $caminho"
+            else
+              echo "FALHOU $caminho"; falhas=$((falhas+1))
+            fi
+          done < <(find envio -type f \( -name '*.mp4' -o -name '*.jpg' -o -name '*.png' -o -name 'part_[0-9]*' \) | sort)
+          [ "$falhas" -eq 0 ]
