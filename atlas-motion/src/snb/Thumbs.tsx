@@ -67,6 +67,28 @@ const CAPAS: Record<string, React.ReactNode> = {
   b5: <><P p="academia" x={340} a={1000} base={1090} />
     <Svg><T x={930} y={270} t="*5* habits" s={124} /><T x={930} y={400} t="keep you weak" s={92} /><Seta x1={900} y1={450} x2={580} y2={520} c={-0.25} /></Svg></>,
   c5: <><Mao /><Svg><T x={900} y={130} t="lose the" s={104} /><T x={900} y={240} t="*straps*" s={104} />{SetaMao}</Svg></>,
+  // #06 What If 2x mais forte: capas do método do doc 57 (conflito, rosto com emoção, objeto que conta a história, fundo testado claro × escuro)
+  a6: <><div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 35% 45%, #fff7e8 0%, #f1e6d2 55%, #d8c8ad 100%)' }} />
+    <P p="academia_choque" x={1060} a={700} base={960} />
+    <P p="heroi_barra_dobra" x={380} a={600} base={790} />
+    <Svg><text x={930} y={125} textAnchor="middle" fontFamily={NUN} fontWeight={800} fontSize={108} fill="#111">same <tspan fill={K.verm}>body</tspan></text>
+      <Seta x1={790} y1={170} x2={520} y2={360} c={0.25} /></Svg>
+    <div style={{ position: 'absolute', left: 0, top: 0, width: 1280, height: 720, boxShadow: 'inset 0 0 120px rgba(0,0,0,.25)' }} /></>,
+  b6: <><Img src={staticFile('snb/poses/rosto_dor.png')} style={{ position: 'absolute', left: 560, top: 40, width: 760 }} />
+    <Svg>
+      <g transform="translate(60,520)"><path d="M 0,0 Q 120,-40 230,10" fill="none" stroke={K.verm} strokeWidth={34} strokeLinecap="round" /><path d="M 300,30 Q 400,-10 520,-60" fill="none" stroke={K.verm} strokeWidth={34} strokeLinecap="round" />
+        <circle cx={265} cy={20} r={70} fill={K.verm} opacity={0.35} />{[0, 1, 2, 3, 4, 5].map((i) => <path key={i} d={`M 265,20 l ${Math.cos(i) * 110},${Math.sin(i * 1.7) * 90}`} stroke="#fff" strokeWidth={8} strokeLinecap="round" />)}</g>
+      <T x={300} y={170} t="it" s={150} /><T x={300} y={330} t="*snaps*" s={150} />
+    </Svg></>,
+  c6: <><div style={{ position: 'absolute', inset: 0, background: '#E3311D' }} />
+    <P p="heroi_deboche" x={330} a={700} base={840} />
+    <Svg>
+      <g transform="translate(870,420) scale(1.55)"><rect x={-230} y={-40} width={460} height={110} rx={34} fill="#F1ECE2" stroke="#0B0B0C" strokeWidth={7} />
+        <rect x={-120} y={-18} width={240} height={64} rx={10} fill="#10241a" stroke="#0B0B0C" strokeWidth={5} />
+        <text x={0} y={30} textAnchor="middle" fontFamily='"Anton", sans-serif' fontSize={50} fill={K.verde} letterSpacing={3}>+0.0 KG</text></g>
+      <text x={870} y={190} textAnchor="middle" fontFamily={NUN} fontWeight={800} fontSize={120} fill="#fff">2x stronger</text>
+      <path d="M 700,240 Q 560,330 540,430" fill="none" stroke="#fff" strokeWidth={15} strokeLinecap="round" /><path d="M 515,395 L 540,430 L 572,400" fill="none" stroke="#fff" strokeWidth={15} strokeLinecap="round" strokeLinejoin="round" />
+    </Svg></>,
 };
 export const SNBThumb: React.FC<{ v: string }> = ({ v }) => (
   <AbsoluteFill style={{ background: '#000', overflow: 'hidden' }}>{CAPAS[v] || CAPAS[v + '1']}</AbsoluteFill>

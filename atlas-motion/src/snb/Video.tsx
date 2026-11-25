@@ -1,6 +1,7 @@
 import React from 'react';
 import { AbsoluteFill, Img, staticFile, useCurrentFrame } from 'remotion';
 import { Anel, Etiqueta, K, L, SANS, TIT, pop } from './lib';
+import { Linha, Objetos, Rosto } from './Extra';
 
 // Strong Not Big: motor do vídeo longo. Cada fala do tempos.json traz em `v` o que aparece na tela (ver snb01_roteiro.py).
 // O estado da tela é acumulado dentro do bloco: a fala herda o `v` anterior, e chave com null apaga.
@@ -86,7 +87,8 @@ const Cena: React.FC<{ g: number; D: number; b: Bloco; ini: number }> = ({ g, D,
   const desde = (ch: string, sub?: (x: any) => any) => { const pega = (e: V) => J(sub ? sub(e[ch]) : e[ch]); let j = i; while (j > 0 && pega(est[j - 1]) === pega(v)) j--; return Math.max(0, ts[j]); };
   const figs: V[] = v.figs || [];
   const lado = figs.length > 0 || v.mao || v.icone; const centro = v.c || !lado;
-  const tx = centro ? 960 : (figs.length > 1 ? 1180 : COL), anc = centro ? 'middle' : 'start', larg = centro ? 1560 : W - tx - 120;
+  const fw = v.face ? (v.face.w || 760) : 0;
+  const tx = v.face ? (v.face.lado === 'e' ? fw + 120 : 110) : centro ? 960 : (figs.length > 1 ? 1180 : COL), anc = v.face ? 'start' : centro ? 'middle' : 'start', larg = v.face ? W - fw - 260 : centro ? 1560 : W - tx - 120;
   const punch = 1 + 0.012 * L(g, [ts[i], ts[i] + 9], [1, 0]);
   const anda = figs.some((f) => f.anda);
   const el: React.ReactNode[] = [];
@@ -176,11 +178,20 @@ const Cena: React.FC<{ g: number; D: number; b: Bloco; ini: number }> = ({ g, D,
   }
   if (v.aviso) {
     const t0 = desde('aviso');
-    el.push(<g key="av" opacity={L(g, [t0 + 10, t0 + 22], [0, 1])}><rect x={1370} y={64} width={440} height={50} fill="none" stroke={K.ambar} strokeWidth={2.5} /><text x={1590} y={98} textAnchor="middle" fontFamily={SANS} fontWeight={700} fontSize={24} fill={K.ambar}>BE SAFE · go slowly · stop if it hurts</text></g>);
+    el.push(<g key="av" opacity={L(g, [t0 + 10, t0 + 22], [0, 1])} transform={`translate(0,${v.tl !== undefined ? 90 : 0})`}><rect x={1370} y={64} width={440} height={50} fill="none" stroke={K.ambar} strokeWidth={2.5} /><text x={1590} y={98} textAnchor="middle" fontFamily={SANS} fontWeight={700} fontSize={24} fill={K.ambar}>BE SAFE · go slowly · stop if it hurts</text></g>);
   }
   const tm = v.mao ? desde('mao') : 0, em = entra(g, tm);
-  return (
-    <AbsoluteFill style={{ transform: `scale(${(1 + 0.035 * Math.min(1, g / D)) * punch})` }}>
+  // câmera (#06+): zoom e foco passam da fala anterior para a atual em 18 quadros
+  const ant = i > 0 ? est[i - 1] : est[i], kz = L(g, [ts[i], ts[i] + 18], [0, 1]);
+  const z0 = ant.zoom || 1, z1 = v.zoom || 1, f0 = ant.foco || [960, 540], f1 = v.foco || [960, 540];
+  const zc = z0 + (z1 - z0) * kz, fx = f0[0] + (f1[0] - f0[0]) * kz, fy = f0[1] + (f1[1] - f0[1]) * kz;
+  const imp = (b.falas[i].v || {}).imp ? g - ts[i] : 1e9, sh = imp >= 0 && imp < 8 ? (imp % 2 ? 1 : -1) * 9 * (1 - imp / 8) : 0;
+  const objs: V[] = v.obj || [];
+  const desdeObj = (n: number) => desde('obj', (x) => x && x[n]);
+  const antesObj = (n: number) => { let j = i; while (j > 0 && J(est[j - 1].obj && est[j - 1].obj[n]) === J(v.obj && v.obj[n])) j--; return j > 0 ? (est[j - 1].obj || [])[n] : undefined; };
+  return (<>
+    <AbsoluteFill style={{ transformOrigin: `${fx}px ${fy}px`, transform: `translate(${sh}px,${sh * 0.6}px) scale(${zc * (1 + 0.035 * Math.min(1, g / D)) * punch})` }}>
+      {objs.length > 0 && <svg viewBox={`0 0 ${W} ${H}`} width={W} height={H} style={{ position: 'absolute', left: 0, top: 0 }}><Objetos g={g} lista={objs} desde={desdeObj} antes={antesObj} /></svg>}
       {v.mao && <div style={{ position: 'absolute', left: 90 - (1 - em.o) * 40, top: 170 + Math.sin(g / 15) * 4, width: 800, opacity: em.o }}>
         <Img src={staticFile('snb/poses/mao_close.png')} style={{ width: 800, transform: `rotate(${Math.sin(g / 21) * 0.8}deg)` }} />
       </div>}
@@ -190,11 +201,14 @@ const Cena: React.FC<{ g: number; D: number; b: Bloco; ini: number }> = ({ g, D,
         {anda && Array.from({ length: 9 }).map((_, n) => { const x = ((n * 150 - g * 9) % 1350 + 1350) % 1350 + 60; return <rect key={n} x={x} y={BASE + 22} width={70} height={5} fill={K.osso} opacity={0.22 * Math.min(1, x / 200, (1410 - x) / 200) * (lado && !centro ? 1 : 0.6)} />; })}
         {figs.length === 2 && figs[0].x < 600 && !v.cart && <text x={(figs[0].x + figs[1].x) / 2} y={600} textAnchor="middle" fontFamily={TIT} fontSize={64} fill={K.cinza} opacity={0.75 * L(g, [8, 18], [0, 1])}>VS</text>}
         {el}
-        {b.et && <Etiqueta g={g} ini={4} txt={b.et} />}
+        {b.et && v.tl === undefined && <Etiqueta g={g} ini={4} txt={b.et} />}
         {b.fonte && <text x={960} y={1034} textAnchor="middle" fontFamily={SANS} fontWeight={500} fontSize={25} fill={K.cinza} opacity={L(g, [10, 22], [0, 1])}>{b.fonte}</text>}
       </svg>
     </AbsoluteFill>
-  );
+    {v.face && <Rosto g={g} t0={desde('face', (x) => x && x.p)} f={v.face} />}
+    {v.tl !== undefined && <svg viewBox={`0 0 ${W} ${H}`} width={W} height={H} style={{ position: 'absolute', left: 0, top: 0 }}><Linha g={g} tl={v.tl} ini={desde('tl')} /></svg>}
+    {imp >= 0 && imp < 10 && <AbsoluteFill style={{ background: K.verm, opacity: 0.32 * (1 - imp / 10), mixBlendMode: 'screen' }} />}
+  </>);
 };
 
 export const SNBVideo: React.FC<{ tempos: TemposSNB }> = ({ tempos }) => {

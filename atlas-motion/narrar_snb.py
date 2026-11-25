@@ -17,7 +17,10 @@ for bi, b in enumerate(rot):
     falas = []; ini = t
     for fl in b['falas']:
         fl = fl if isinstance(fl, dict) else {'txt': fl}; txt = fl['txt']
-        a, sr = k.create(txt, voice=voz, speed=VEL, lang='en-us')
+        import hashlib, os
+        ck = f'/home/claude/tts/cache/{hashlib.md5((txt + str(VEL)).encode()).hexdigest()}.npy'; os.makedirs(os.path.dirname(ck), exist_ok=True)
+        if os.path.exists(ck): a, sr = np.load(ck), 24000
+        else: a, sr = k.create(txt, voice=voz, speed=VEL, lang='en-us'); np.save(ck, a)
         idx = np.where(np.abs(a) > 0.01)[0]; a = a[max(0, idx[0] - 240):idx[-1] + 600]
         falas.append({'t': round(t, 3), 'd': round(len(a) / sr, 3), 'txt': txt, 'v': fl.get('v', {})}); partes.append(a); t += len(a) / sr
         pausa = (0.42 if txt.endswith(('.', '?')) else 0.25) + fl.get('p', 0)

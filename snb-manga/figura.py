@@ -92,7 +92,32 @@ def meio(pose, esp, destaque, pe, calca=None, bota=None):
     o.append(f'<path d="{sil.replace("M 0,30 L 58,30", "M 58,30").replace(" L 0,860 Z", "")}" fill="none" stroke="{TINTA}" stroke-width="8.5" stroke-linejoin="round" stroke-linecap="round"/>')
     if mao: o.append(P(mao))
     o.append('</g>'); return '\n'.join(o)
-def cabeca():
+def expressao(exp):
+    """Camada de expressão desenhada por cima do rosto (mesmas coordenadas de cabeca(), antes da escala)."""
+    if not exp: return ''
+    O, T = OSSO, TINTA
+    tapa = f'<path d="M -24,4 L 24,4 L 24,28 L -24,28 Z" fill="{O}"/>'   # cobre a boca neutra
+    lin = lambda d, w=5: f'<path d="{d}" fill="none" stroke="{T}" stroke-width="{w}" stroke-linecap="round" stroke-linejoin="round"/>'
+    esp = lambda x: x.replace('M ', 'M -').replace(' L ', ' L -').replace(' C ', ' C -').replace(' Q ', ' Q -').replace(', ', ',').replace(' ', ' ')
+    def par(d, w=5):
+        return lin(d, w) + f'<g transform="scale(-1,1)">{lin(d, w)}</g>'
+    olho_br = lambda: ''.join(f'<ellipse cx="{s*33}" cy="-76" rx="16" ry="14" fill="{O}" stroke="{T}" stroke-width="3.5"/><circle cx="{s*31}" cy="-74" r="5" fill="{T}"/>' for s in (-1, 1))
+    if exp == 'choque':
+        return (olho_br() + par('M 12,-118 C 28,-132 50,-130 64,-114', 6) + tapa
+                + f'<ellipse cx="0" cy="17" rx="13" ry="17" fill="{T}"/><ellipse cx="0" cy="25" rx="7" ry="5" fill="#7a2a22"/>')
+    if exp == 'deboche':
+        return (tapa + lin('M -20,16 Q 0,20 22,4', 4.6) + lin('M 22,4 q 5,-2 6,-7', 3)
+                + lin('M -12,-118 C -28,-130 -48,-128 -62,-114', 6) + par('M 14,-70 C 30,-74 48,-72 60,-64', 5))
+    if exp == 'esforco':
+        dentes = ''.join(f'<path d="M {x},6 L {x},26" stroke="{T}" stroke-width="2.4"/>' for x in (-12, -4, 4, 12))
+        return (par('M 8,-56 L 62,-82', 7) + tapa + f'<rect x="-22" y="5" width="44" height="22" rx="5" fill="{O}" stroke="{T}" stroke-width="3.6"/>'
+                + f'<path d="M -22,16 L 22,16" stroke="{T}" stroke-width="2.4"/>' + dentes
+                + f'<path d="M 82,-122 C 90,-108 94,-98 88,-90 C 82,-84 74,-90 76,-100 C 78,-108 80,-114 82,-122 Z" fill="#cfe9ff" stroke="{T}" stroke-width="2.5"/>')
+    if exp == 'dor':
+        return (par('M 16,-84 L 46,-74 L 16,-64', 6) + par('M 10,-112 L 60,-100', 6) + tapa
+                + f'<path d="M -26,6 Q 0,0 26,6 L 22,28 Q 0,34 -22,28 Z" fill="{T}"/><path d="M -22,8 Q 0,3 22,8 L 21,13 Q 0,9 -21,13 Z" fill="{O}"/>')
+    return ''
+def cabeca(exp=None):
     meia = "M 0,-150 C 42,-152 68,-124 68,-80 C 69,-50 64,-22 52,2 C 42,20 22,34 0,38 Z"
     cab = "M 0,-166 C 50,-170 82,-134 76,-84 C 74,-70 72,-62 70,-54 C 64,-80 52,-98 34,-102 C 20,-94 8,-100 0,-106 Z"
     olho = "M 0,-106 C 8,-100 20,-94 34,-102 C 52,-98 64,-80 70,-54 L 66,-46 C 42,-60 20,-62 0,-60 Z"
@@ -108,6 +133,7 @@ def cabeca():
                  f'<path d="M 8,-62 C 24,-68 46,-64 60,-52" fill="none" stroke="{TINTA}" stroke-width="6" stroke-linecap="round"/></g>')
     o.append(f'<path d="M 2,-30 L -5,-10 L 4,-8" fill="none" stroke="{TINTA}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>'
              f'<path d="M -18,12 L 16,12" fill="none" stroke="{TINTA}" stroke-width="4.4" stroke-linecap="round"/><path d="M -8,22 L 8,22" stroke="{TINTA}" stroke-width="2.4" opacity=".7"/>')
+    o.append(expressao(exp))
     return '<g transform="translate(0,34) scale(1.42) translate(0,-34)">' + '\n'.join(o) + '</g>'
 CINZA, CINZA_E = '#4A4A52', '#2E2E34'
 def chapeu():
@@ -117,7 +143,7 @@ def chapeu():
             f'<path d="M -112,-232 C -60,-214 60,-214 112,-232 L 112,-206 C 60,-190 -60,-190 -112,-206 Z" fill="{VERM}" stroke="{TINTA}" stroke-width="5"/>'
             f'<path d="M 40,-336 C 92,-320 112,-270 110,-236 C 86,-226 70,-224 56,-222 C 70,-262 64,-306 40,-336 Z" fill="url(#hD)"/>'
             f'<path d="M -70,-330 C -40,-300 -30,-262 -34,-226 M -20,-338 C 4,-304 10,-262 6,-222" fill="none" stroke="{TINTA}" stroke-width="2" opacity=".6"/>')
-def figura(pose, destaque=False, larg=1.0, roupa='short', cor=None, chap=False, pe=None, reto=False):
+def figura(pose, destaque=False, larg=1.0, roupa='short', cor=None, chap=False, pe=None, reto=False, exp=None):
     """roupa: 'short' (cor = VERM por padrão) ou 'macacao' (calça comprida + peitilho + alças). larg alarga o corpo sem mexer na cabeça."""
     cor = cor or VERM; esc = {VERM: '#9E1F10', CINZA: CINZA_E}.get(cor, '#9E1F10')
     pe = pe or ('solto' if pose == 'pendurado' else 'chao'); mac = roupa == 'macacao'
@@ -138,7 +164,7 @@ def figura(pose, destaque=False, larg=1.0, roupa='short', cor=None, chap=False, 
                      f'<circle cx="78" cy="428" r="11" fill="{OSSO}" stroke="{TINTA}" stroke-width="4"/>'
                      f'<path d="M 0,520 L 52,520 L 52,590 C 36,604 16,606 0,606" fill="none" stroke="{TINTA}" stroke-width="4"/>')
         o.append('</g>')
-    o.append('</g>'); o.append(cabeca())
+    o.append('</g>'); o.append(cabeca(exp))
     if chap: o.append(chapeu())
     return '\n'.join(o)
 DEFS = f'''<defs>

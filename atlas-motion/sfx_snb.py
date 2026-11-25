@@ -76,6 +76,37 @@ for bi, b in enumerate(T['blocos']):
         if any(x.get('anda') for x in s.get('figs') or []):   # passos casados com o balanço da figura (um a cada 16,34 quadros do bloco)
             per = 5.2 * np.pi / 30; k = np.ceil((t0 - round(ini * 30) / 30) / per)
             while round(ini * 30) / 30 + k * per < prox: poe(passo(), round(ini * 30) / 30 + k * per, 0.3); k += 1
+        # chaves do #06 em diante (Extra.tsx): objetos, impacto, close de rosto, linha do tempo
+        fv = f.get('v') or {}
+        if fv.get('imp'): poe(hit(40, 1.1), t0, 0.8); poe(hit(90, 0.35), t0, 0.3)
+        if s.get('face') and J(s.get('face')) != J(ant.get('face')): poe(whoosh(0.3), t0 - 0.06, 0.3)
+        if s.get('tl') is not None and s.get('tl') != ant.get('tl'): poe(blip(740, 0.22), t0 + 0.1, 0.18)
+        if (s.get('zoom') or 1) != (ant.get('zoom') or 1): poe(whoosh(0.6), t0 - 0.05, 0.16)
+        for n, o in enumerate(s.get('obj') or []):
+            oa = (ant.get('obj') or [None] * 9)[n] if n < len(ant.get('obj') or []) else None
+            if J(o) == J(oa): continue
+            tt = o.get('t')
+            poe(whoosh(0.32), t0 - 0.05, 0.2)
+            if tt == 'galao' and o.get('voa'): poe(whoosh(0.3)[::-1], t0 + 4 / 30, 0.4); poe(hit(48, 0.9), t0 + 13 / 30, 0.9); poe(hit(120, 0.3), t0 + 13 / 30, 0.4)
+            if tt == 'balanca':
+                for k in range(6): poe(tick(1200 + 80 * k, 0.03), t0 + k * 0.11, 0.18)
+                poe(blip(990, 0.25), t0 + 0.75, 0.25)
+            if tt == 'cadeados':
+                for k in range(o.get('n', 3)): poe(hit(70, 0.3), t0 + k * 0.2, 0.25)
+                if o.get('novo'): poe(tick(2600, 0.05), t0 + 0.4, 0.5); poe(blip(880, 0.3), t0 + 0.45, 0.3)
+            if tt == 'corda':
+                n = int(0.9 * SR); r = rng.standard_normal(n) * np.exp(-np.arange(n) / SR * 3); poe(np.convolve(r, np.ones(60) / 60, 'same') * 6, t0 + 0.2, 0.25)
+                poe(hit(58, 0.6), t0 + 0.5, 0.35)
+            if tt == 'motor' and o.get('estado') == 'rompe':
+                n = int(0.25 * SR); poe(rng.standard_normal(n) * np.exp(-np.arange(n) / SR * 18), t0 + 6 / 30, 0.9); poe(hit(36, 1.5), t0 + 6 / 30, 1.0)
+            if tt == 'enquete':
+                poe(blip(600), t0, 0.25); poe(blip(760), t0 + 0.2, 0.25)
+                if o.get('marca'): poe(blip(880, 0.35), t0 + 0.1, 0.35); poe(blip(1320, 0.35), t0 + 0.25, 0.25)
+            if tt == 'inscrever': poe(tick(2200, 0.04), t0 + 26 / 30, 0.6); poe(blip(1480, 0.6), t0 + 28 / 30, 0.3)
+            if tt == 'calend':
+                for k in range(6): poe(tick(900, 0.05), t0 + (4 + k * 6) / 30, 0.25)
+            if tt in ('cartao', 'grafico', 'cubo', 'cerebro'): poe(hit(62, 0.5), t0 + 0.05, 0.35)
+            if tt == 'sacolas': poe(whoosh(1.2)[::-1], t0, 0.25)
         ant = s
 for k in np.arange(0.6, T['total'], 60 / 96): poe(hit(46, 0.35), k, 0.09)
 out = np.tanh(out * 1.3) * 0.8

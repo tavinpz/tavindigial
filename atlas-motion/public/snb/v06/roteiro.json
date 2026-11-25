@@ -1,0 +1,2982 @@
+[
+ {
+  "cena": "abertura",
+  "et": null,
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "What if tomorrow morning you woke up twice as strong, and you didn't gain a single pound?",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi_barra_dobra",
+       "x": 640,
+       "a": 660
+      },
+      {
+       "p": "academia_choque",
+       "x": 1360,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": 1.06,
+     "foco": [
+      900,
+      520
+     ]
+    }
+   },
+   {
+    "txt": "Same body. Same T-shirt. Same number on the scale.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi_deboche",
+       "x": 470,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "balanca",
+       "n": "72.4 KG",
+       "x": 1260,
+       "y": 700,
+       "igual": 1
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null
+    }
+   },
+   {
+    "txt": "But the bar that crushed you yesterday now bends in your hands.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi_barra_dobra",
+       "x": 960,
+       "a": 660
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": 1.15,
+     "foco": [
+      960,
+      470
+     ],
+     "imp": 1
+    }
+   },
+   {
+    "txt": "And part of this has already been measured. In real people.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "cartao",
+       "tit": "MEASURED IN REAL PEOPLE",
+       "l": [
+        "1979 · strength jumps, muscle barely grows",
+        "2004 · stronger without lifting anything"
+       ]
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null
+    }
+   },
+   {
+    "txt": "But the reason it works is also the reason it could hurt you.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "motor",
+       "estado": "rompe"
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "imp": 1
+    }
+   },
+   {
+    "txt": "So let's run it. Day by day. And find out what breaks first.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "cadeados",
+       "n": 3,
+       "ab": 0,
+       "y": 600,
+       "rot": [
+        "?",
+        "?",
+        "?"
+       ]
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 0
+    }
+   }
+  ]
+ },
+ {
+  "cena": "dia1",
+  "et": null,
+  "fonte": "Moritani & deVries 1979 · Am J Phys Med · 15 young adults · 8 weeks",
+  "falas": [
+   {
+    "txt": "Day one. You walk into the kitchen, half asleep, and grab the milk.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 430,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "galao",
+       "x": 980,
+       "y": 660
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 0
+    }
+   },
+   {
+    "txt": "It flies straight up and hits the cabinet.",
+    "p": 0,
+    "v": {
+     "obj": [
+      {
+       "t": "galao",
+       "x": 980,
+       "y": 660,
+       "voa": 1
+      }
+     ],
+     "imp": 1
+    }
+   },
+   {
+    "txt": "You didn't try harder. Your body didn't change overnight. So what did?",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "WHAT CHANGED?",
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": 1,
+     "c": null,
+     "obj": null,
+     "face": {
+      "p": "rosto_choque",
+      "lado": "d",
+      "w": 820,
+      "treme": 1
+     },
+     "zoom": null,
+     "foco": null,
+     "tl": 0
+    }
+   },
+   {
+    "txt": "Guess before I tell you. Is it your muscles, or your brain?",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "enquete"
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 0
+    }
+   },
+   {
+    "txt": "Drop one word in the comments. Muscle, or brain. The answer is coming in a few seconds.",
+    "p": 0.4,
+    "v": {}
+   },
+   {
+    "txt": "Here's the thing nobody tells you.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi_esforco",
+       "x": 960,
+       "a": 760
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": 1.2,
+     "foco": [
+      960,
+      440
+     ],
+     "tl": 0
+    }
+   },
+   {
+    "txt": "Your muscle is made of thousands of fibers, and your brain never fires all of them at once.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "corda",
+       "on": 0.4
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 0
+    }
+   },
+   {
+    "txt": "Picture a rope with a hundred workers on it. On a normal day, only some of them pull.",
+    "p": 0,
+    "v": {
+     "obj": [
+      {
+       "t": "corda",
+       "on": 0.4
+      }
+     ]
+    }
+   },
+   {
+    "txt": "Twice as strong, with no new muscle, means getting more of them to pull. At the same moment.",
+    "p": 0,
+    "v": {
+     "obj": [
+      {
+       "t": "corda",
+       "on": 1.0
+      }
+     ]
+    }
+   },
+   {
+    "txt": "And it's not just how many pull. Your brain can also fire each one faster, so every worker pulls harder, more often.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "FASTER",
+     "sub": "every fiber fires MORE often",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi_esforco",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 0
+    }
+   },
+   {
+    "txt": "Then there are the muscles fighting you. When you lift, the muscle on the other side of the joint tightens too, like a brake. Training teaches it to let go.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "LESS BRAKE",
+     "sub": "the OPPOSITE muscle relaxes",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi_barra",
+       "x": 520,
+       "a": 640
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 0
+    }
+   },
+   {
+    "txt": "And that is exactly what happens to every beginner.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi_deboche",
+       "x": 960,
+       "a": 760
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": 1.1,
+     "foco": [
+      960,
+      460
+     ],
+     "tl": 0
+    }
+   },
+   {
+    "txt": "In 1979, Moritani and de Vries trained fifteen young people for eight weeks and tracked what changed.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "cartao",
+       "tit": "MORITANI & DE VRIES · 1979",
+       "l": [
+        "15 young adults · 8 weeks of training",
+        "strength vs muscle size, week by week"
+       ]
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 0
+    }
+   },
+   {
+    "txt": "Strength jumped early. Muscle size barely moved.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "grafico"
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 0
+    }
+   },
+   {
+    "txt": "For the first three to five weeks, most of the gain came from the nervous system.",
+    "p": 0,
+    "v": {}
+   },
+   {
+    "txt": "So if you commented brain, you got it. And if you said muscle, don't worry. Almost everyone does.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "enquete",
+       "marca": "BRAIN"
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 0
+    }
+   },
+   {
+    "txt": "Your day one is the first month of training, squeezed into a single night.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "calend",
+       "x": 960,
+       "rot": [
+        "DAY 1",
+        "DAY 30"
+       ]
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 0
+    }
+   },
+   {
+    "txt": "But your nervous system is only the first lock. There are two more.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "cadeados",
+       "n": 3,
+       "ab": 1,
+       "novo": 1,
+       "rot": [
+        "NERVES",
+        "?",
+        "?"
+       ]
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 0
+    }
+   }
+  ]
+ },
+ {
+  "cena": "semana1",
+  "et": null,
+  "fonte": "Weightlifting, 1988 Olympic Games · 60 kg class · clean & jerk 190 kg at 59.7 kg body weight",
+  "falas": [
+   {
+    "txt": "Week one. You walk into the gym.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 960,
+       "a": 760,
+       "anda": 1
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 1
+    }
+   },
+   {
+    "txt": "You load what you usually bench. It feels like a broomstick.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": {
+      "ate": 60,
+      "suf": " KG",
+      "rot": "what you usually lift"
+     },
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi_deboche",
+       "x": 430,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 1
+    }
+   },
+   {
+    "txt": "So you double it.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": {
+      "ate": 120,
+      "suf": " KG",
+      "rot": "same body"
+     },
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi_barra_dobra",
+       "x": 430,
+       "a": 640
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 1,
+     "imp": 1
+    }
+   },
+   {
+    "txt": "The guy next to you, twice your size, stops in the middle of his set.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi_deboche",
+       "x": 430,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": {
+      "p": "rosto_academia_choque",
+      "lado": "d",
+      "w": 820,
+      "treme": 1
+     },
+     "zoom": null,
+     "foco": null,
+     "tl": 1
+    }
+   },
+   {
+    "txt": "He's bigger. He has more muscle. Shouldn't he win?",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 640,
+       "a": 760
+      },
+      {
+       "p": "academia_choque",
+       "x": 1300,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 1
+    }
+   },
+   {
+    "txt": "Here's the dirty secret of every gym. Size and strength are not the same thing.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "SIZE ≠ STRENGTH",
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 1
+    }
+   },
+   {
+    "txt": "Your weight grows with your whole volume. Length, times width, times height.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "cubo"
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 1
+    }
+   },
+   {
+    "txt": "But your strength grows mostly with how thick the muscle is. Its cross section.",
+    "p": 0,
+    "v": {}
+   },
+   {
+    "txt": "So the bigger a body gets, the faster its weight runs ahead of its strength.",
+    "p": 0,
+    "v": {}
+   },
+   {
+    "txt": "Think of an ant carrying a leaf many times its own weight. Scale that ant up to your size, and it could barely carry itself.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "cubo"
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 1
+    }
+   },
+   {
+    "txt": "That's why, pound for pound, the strongest humans alive are usually the small ones.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi_deboche",
+       "x": 640,
+       "a": 720
+      },
+      {
+       "p": "academia_choque",
+       "x": 1300,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 1
+    }
+   },
+   {
+    "txt": "In 1988, a lifter who weighed just under sixty kilos put a hundred and ninety kilos over his head.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": {
+      "ate": 190,
+      "suf": " KG",
+      "rot": "overhead · lifter weighing 59.7 kg · 1988"
+     },
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 1
+    }
+   },
+   {
+    "txt": "More than three times his own body weight.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": {
+      "it": [
+       [
+        "HIS BODY",
+        59.7,
+        "cinza"
+       ],
+       [
+        "THE BAR",
+        190,
+        "verm"
+       ]
+      ],
+      "un": " kg",
+      "nota": "3.2×"
+     },
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 1
+    }
+   },
+   {
+    "txt": "For a two hundred kilo giant to match that, he'd need over six hundred kilos overhead. Nobody has ever come close.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": {
+      "it": [
+       [
+        "GIANT",
+        200,
+        "cinza"
+       ],
+       [
+        "TO MATCH",
+        636,
+        "verm"
+       ]
+      ],
+      "un": " kg",
+      "nota": "NEVER"
+     },
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 1
+    }
+   },
+   {
+    "txt": "Back in your gym, the big guy finally walks over and asks what program you're on.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 560,
+       "a": 760
+      },
+      {
+       "p": "academia",
+       "x": 1250,
+       "a": 800,
+       "anda": 1
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 1
+    }
+   },
+   {
+    "txt": "You tell him the truth. It's called Strong Not Big. Real studies, every week, no size required.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi_deboche",
+       "x": 430,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "inscrever",
+       "x": 1300,
+       "y": 560
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 1
+    }
+   },
+   {
+    "txt": "And if you're watching this right now, that button is right under the video. It's free, and it's how you get the next upgrade.",
+    "p": 0,
+    "v": {}
+   },
+   {
+    "txt": "But in week three, something strange happens. To your other arm.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "YOUR OTHER ARM",
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": 1,
+     "c": null,
+     "obj": null,
+     "face": {
+      "p": "rosto_choque",
+      "lado": "d",
+      "w": 760
+     },
+     "zoom": null,
+     "foco": null,
+     "tl": 1
+    }
+   }
+  ]
+ },
+ {
+  "cena": "semana3",
+  "et": null,
+  "fonte": "Munn et al. 2004 · J Appl Physiol · meta-analysis  |  Ranganathan et al. 2004 · Neuropsychologia",
+  "falas": [
+   {
+    "txt": "Week three. You tweak your left wrist, so you only train your right arm.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "RIGHT ARM",
+     "sub": "ONLY. left one RESTS.",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi_esforco",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 2
+    }
+   },
+   {
+    "txt": "Two weeks later, you test the left one. The arm you never trained.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "LEFT ARM",
+     "sub": "NEVER trained",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 2
+    }
+   },
+   {
+    "txt": "It's stronger.",
+    "p": 0.3,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": {
+      "p": "rosto_choque",
+      "lado": "d",
+      "w": 860,
+      "treme": 1
+     },
+     "zoom": null,
+     "foco": null,
+     "tl": 2,
+     "imp": 1
+    }
+   },
+   {
+    "txt": "This is real. It's called cross education. Train one side, and the other side gets stronger too.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "cerebro",
+       "lado": -1
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 2
+    }
+   },
+   {
+    "txt": "When researchers pooled the controlled studies, the untrained side gained about eight percent on average.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": {
+      "ate": 7.8,
+      "suf": "%",
+      "rot": "average gain in the arm that did NOTHING"
+     },
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 2
+    }
+   },
+   {
+    "txt": "Moritani's 1979 study saw it too. In the arm nobody trained.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "cartao",
+       "tit": "MORITANI & DE VRIES · 1979",
+       "l": [
+        "the untrained arm got stronger too"
+       ]
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 2
+    }
+   },
+   {
+    "txt": "Because the upgrade isn't living in your arm. It's living in your brain.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "cerebro"
+      }
+     ],
+     "face": null,
+     "zoom": 1.12,
+     "foco": [
+      960,
+      420
+     ],
+     "tl": 2
+    }
+   },
+   {
+    "txt": "Which brings us to the strangest experiment in this whole video.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi_deboche",
+       "x": 960,
+       "a": 760
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": 1.2,
+     "foco": [
+      960,
+      440
+     ],
+     "tl": 2
+    }
+   },
+   {
+    "txt": "In 2004, researchers at the Cleveland Clinic had people train only in their heads.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "cartao",
+       "tit": "RANGANATHAN ET AL · 2004",
+       "l": [
+        "Cleveland Clinic · 12 weeks",
+        "15 minutes a day · no movement at all"
+       ]
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 2
+    }
+   },
+   {
+    "txt": "No movement. Just imagining their hardest possible contraction, fifteen minutes a day.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "IMAGINE",
+     "sub": "your HARDEST rep. DON'T move.",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": {
+      "p": "rosto_esforco",
+      "lado": "d",
+      "w": 780
+     },
+     "zoom": null,
+     "foco": null,
+     "tl": 2
+    }
+   },
+   {
+    "txt": "After twelve weeks, the group that imagined a little finger exercise was thirty five percent stronger.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": {
+      "ate": 35,
+      "suf": "%",
+      "rot": "stronger · from thinking only"
+     },
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 2
+    }
+   },
+   {
+    "txt": "The group that actually trained it gained fifty three.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": {
+      "it": [
+       [
+        "THOUGHT ONLY",
+        35,
+        "ambar"
+       ],
+       [
+        "REAL TRAINING",
+        53,
+        "verm"
+       ]
+      ],
+      "un": "%"
+     },
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 2
+    }
+   },
+   {
+    "txt": "The researchers also measured brain signals. The command going from the brain to the muscle got stronger, even though the muscle never moved.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "cerebro"
+      }
+     ],
+     "face": null,
+     "zoom": 1.1,
+     "foco": [
+      960,
+      420
+     ],
+     "tl": 2
+    }
+   },
+   {
+    "txt": "Thinking won't build you a body. But it proves the point. A huge part of your strength is software.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "SOFTWARE",
+     "sub": "a HUGE part of strength",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 2
+    }
+   },
+   {
+    "txt": "And by month one, your software is maxed out.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "cadeados",
+       "n": 3,
+       "ab": 1,
+       "rot": [
+        "NERVES",
+        "?",
+        "?"
+       ]
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 2
+    }
+   }
+  ]
+ },
+ {
+  "cena": "mes1",
+  "et": null,
+  "fonte": "Mersmann, Bohm & Arampatzis 2017 · Frontiers in Physiology · review",
+  "falas": [
+   {
+    "txt": "Month one. You start noticing it outside the gym.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "calend",
+       "x": 960,
+       "rot": [
+        "WEEK 3",
+        "MONTH 1"
+       ]
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 3
+    }
+   },
+   {
+    "txt": "You jump for a high branch, and catch it.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pendurado",
+       "x": 960,
+       "a": 640
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": 1.12,
+     "foco": [
+      960,
+      480
+     ],
+     "tl": 3
+    }
+   },
+   {
+    "txt": "Every grocery bag. One trip.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi_deboche",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "sacolas",
+       "x": 1080
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 3
+    }
+   },
+   {
+    "txt": "The jar your dad gave up on? Open.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pai_choque",
+       "x": 640,
+       "a": 820
+      },
+      {
+       "p": "heroi_deboche",
+       "x": 1250,
+       "a": 780
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 3
+    }
+   },
+   {
+    "txt": "Quick test for you while we're here. Make a fist as hard as you can for three seconds. Feel how your forearm tightens all the way to the elbow?",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "3 SECONDS",
+     "sub": "make a FIST. feel the FOREARM.",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi_esforco",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 3
+    }
+   },
+   {
+    "txt": "That tightness running up your arm? Those are the tendons your fingers pull on. Keep that feeling in mind, because it's about to matter.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "TENDONS",
+     "sub": "you just FELT them",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": 1,
+     "c": null,
+     "obj": null,
+     "face": {
+      "p": "rosto_esforco",
+      "lado": "d",
+      "w": 760
+     },
+     "zoom": null,
+     "foco": null,
+     "tl": 3
+    }
+   },
+   {
+    "txt": "Here's what's happening. Strength isn't only how hard a muscle pulls. It's how much of that pull reaches the bone.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "motor",
+       "estado": "firme"
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 3
+    }
+   },
+   {
+    "txt": "Between muscle and bone there's a tendon. Think of it as a rope between an engine and a wheel.",
+    "p": 0,
+    "v": {}
+   },
+   {
+    "txt": "A slack rope wastes the engine.",
+    "p": 0,
+    "v": {
+     "obj": [
+      {
+       "t": "motor",
+       "estado": "frouxa"
+      }
+     ]
+    }
+   },
+   {
+    "txt": "A stiff rope sends all of it straight to the wheel.",
+    "p": 0,
+    "v": {
+     "obj": [
+      {
+       "t": "motor",
+       "estado": "firme"
+      }
+     ]
+    }
+   },
+   {
+    "txt": "Heavy training makes tendons stiffer. But here's the catch.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "THE CATCH",
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": 1,
+     "c": null,
+     "obj": null,
+     "face": {
+      "p": "rosto_choque",
+      "lado": "d",
+      "w": 700
+     },
+     "zoom": null,
+     "foco": null,
+     "tl": 3
+    }
+   },
+   {
+    "txt": "Muscles and tendons don't adapt on the same schedule. They respond to different kinds of load, at different speeds.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "cartao",
+       "tit": "MERSMANN, BOHM & ARAMPATZIS · 2017",
+       "l": [
+        "muscle and tendon adapt on different timelines",
+        "a gap between them = more strain on the tendon"
+       ]
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 3
+    }
+   },
+   {
+    "txt": "And you just upgraded the engine overnight.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": {
+      "it": [
+       [
+        "ENGINE",
+        2,
+        "verm"
+       ],
+       [
+        "ROPE",
+        1,
+        "cinza"
+       ]
+      ],
+      "un": "×"
+     },
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 3
+    }
+   },
+   {
+    "txt": "In real life, that gap opens slowly, and your body has time to close it. In our what if, it opened in a single night.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "calend",
+       "x": 960,
+       "rot": [
+        "1 NIGHT",
+        "MONTHS"
+       ]
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 3
+    }
+   }
+  ]
+ },
+ {
+  "cena": "mes6",
+  "et": null,
+  "fonte": "Mersmann, Bohm & Arampatzis 2017 · Frontiers in Physiology",
+  "falas": [
+   {
+    "txt": "Month six. You're lifting weights that make the whole gym stop and stare.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi_barra",
+       "x": 960,
+       "a": 640
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": 1.08,
+     "foco": null,
+     "tl": 4
+    }
+   },
+   {
+    "txt": "Halfway up, you hear it.",
+    "p": 1.1,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi_barra",
+       "x": 960,
+       "a": 640
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": 1.3,
+     "foco": [
+      960,
+      470
+     ],
+     "tl": 4
+    }
+   },
+   {
+    "txt": "Not your muscle. Your tendon.",
+    "p": 0.4,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "motor",
+       "estado": "rompe",
+       "motor": "MUSCLE 2X",
+       "corda": "TENDON 1X"
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 4,
+     "imp": 1
+    }
+   },
+   {
+    "txt": "You doubled the engine. You never upgraded the rope.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": {
+      "it": [
+       [
+        "ENGINE",
+        2,
+        "verm"
+       ],
+       [
+        "ROPE",
+        1,
+        "cinza"
+       ]
+      ],
+      "un": "×",
+      "nota": "GAP"
+     },
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 4
+    }
+   },
+   {
+    "txt": "Researchers who study athletes describe exactly this. When muscle strength outgrows the tendon, the strain on the tendon goes up, and so does the risk of injury.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "cartao",
+       "tit": "MUSCLE–TENDON IMBALANCE",
+       "l": [
+        "muscle outgrows tendon",
+        "more tendon strain → higher injury risk"
+       ]
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 4
+    }
+   },
+   {
+    "txt": "And it might be one reason your nervous system holds back in the first place.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "corda",
+       "on": 0.4
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 4
+    }
+   },
+   {
+    "txt": "A lot of scientists see that hidden strength as a safety margin. Your brain keeping force below what your body can handle.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "cerebro"
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 4
+    }
+   },
+   {
+    "txt": "You've heard the stories. Someone lifts a car off a person in an emergency. Most of those stories can't be verified, and some are clearly exaggerated.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "CAR LIFT?",
+     "sub": "most stories CAN'T be verified",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 4
+    }
+   },
+   {
+    "txt": "But the idea behind them is real. Under the right pressure, the brain lets more of the rope pull. And it doesn't ask the tendon first.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "corda",
+       "on": 1.0
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 4
+    }
+   },
+   {
+    "txt": "So the real question was never, how do I get twice as strong?",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "2× STRONGER?",
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 4
+    }
+   },
+   {
+    "txt": "It's, how do I get twice as strong, without breaking the rope?",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "WITHOUT",
+     "sub": "breaking the ROPE",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 4
+    }
+   }
+  ]
+ },
+ {
+  "cena": "ano1",
+  "et": null,
+  "fonte": "Tendon loading: Mersmann, Bohm & Arampatzis 2017 (≈3 s high-strain contractions)",
+  "falas": [
+   {
+    "txt": "Year one. Here's how you'd actually do it. One lock at a time.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "cadeados",
+       "n": 3,
+       "ab": 0,
+       "rot": [
+        "NERVES",
+        "TENDONS",
+        "TIME"
+       ]
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 5
+    }
+   },
+   {
+    "txt": "Lock one, your nervous system. Lift heavy, in low reps, with clean form. That's what teaches every worker on the rope to show up.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "cadeados",
+       "n": 3,
+       "ab": 1,
+       "novo": 1,
+       "rot": [
+        "NERVES",
+        "TENDONS",
+        "TIME"
+       ]
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 5
+    }
+   },
+   {
+    "txt": "A simple starting point: sets of three to five reps, with a weight you could still lift one or two more times. Heavy, but never ugly.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "3 TO 5 REPS",
+     "sub": "with 1 or 2 left in the TANK",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi_barra",
+       "x": 520,
+       "a": 640
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 5
+    }
+   },
+   {
+    "txt": "Lock two, your tendons. Hold hard contractions for about three seconds at a time. That's the kind of load tendon researchers use to make tendons stiffer.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "HOLD 3 SEC",
+     "sub": "HARD contractions · a few SETS",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "pendurado",
+       "x": 520,
+       "a": 640
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 5
+    }
+   },
+   {
+    "txt": "One program used in tendon research does five sets of four holds, each one close to a maximal effort. You can start much easier than that and build up.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "5 × 4 HOLDS",
+     "sub": "in RESEARCH · start EASIER",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": 1,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 5
+    }
+   },
+   {
+    "txt": "Lock three, time. Add weight slowly, so the rope always keeps up with the engine. Tendons change over months, not days.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "cadeados",
+       "n": 3,
+       "ab": 3,
+       "novo": 1,
+       "rot": [
+        "NERVES",
+        "TENDONS",
+        "TIME"
+       ]
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 5
+    }
+   },
+   {
+    "txt": "Start light, progress slowly, and if something hurts, stop. This is education, not medical advice.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "GO SLOW",
+     "sub": "this is EDUCATION, not medical advice",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": 1,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 5
+    }
+   },
+   {
+    "txt": "You won't double overnight. But month after month, you'll get stronger, and you'll look almost exactly the same.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi_deboche",
+       "x": 470,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "balanca",
+       "n": "72.4 KG",
+       "x": 1260,
+       "y": 700,
+       "igual": 1
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "tl": 5
+    }
+   },
+   {
+    "txt": "That's the real superpower. Nobody sees it coming.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi_deboche",
+       "x": 960,
+       "a": 760
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": 1.15,
+     "foco": [
+      960,
+      460
+     ],
+     "tl": 5
+    }
+   },
+   {
+    "txt": "The bar bends. The scale doesn't move. And the big guy next to you finally asks, how?",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi_barra_dobra",
+       "x": 640,
+       "a": 660
+      },
+      {
+       "p": "academia_choque",
+       "x": 1360,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": 1.06,
+     "foco": [
+      900,
+      520
+     ],
+     "tl": 5
+    }
+   },
+   {
+    "txt": "Now you know.",
+    "p": 0.4,
+    "v": {
+     "icone": null,
+     "big": "NOW YOU KNOW",
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": null,
+     "mao": null,
+     "aviso": null,
+     "bigy": 1,
+     "c": null,
+     "obj": null,
+     "face": {
+      "p": "rosto_deboche",
+      "lado": "d",
+      "w": 820
+     },
+     "zoom": null,
+     "foco": null,
+     "tl": 5
+    }
+   }
+  ]
+ },
+ {
+  "cena": "final",
+  "et": null,
+  "fonte": null,
+  "falas": [
+   {
+    "txt": "Your turn. What's the heaviest thing you've ever lifted, and how much did you weigh at the time? Tell me in the comments.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "YOUR TURN",
+     "sub": "HEAVIEST lift + your WEIGHT",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi_deboche",
+       "x": 520,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null
+    }
+   },
+   {
+    "txt": "And if you want to know who wins between a farmer and a gym guy, that's the next video.",
+    "p": 4.5,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "fazendeiro",
+       "x": 640,
+       "a": 820
+      },
+      {
+       "p": "academia",
+       "x": 1300,
+       "a": 860
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null
+    }
+   }
+  ]
+ }
+]
