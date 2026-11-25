@@ -18,9 +18,9 @@ GRANDE = lambda x=1360, p='academia_choque', **o: fig(p, x, 800, **o)
 # ---------------- 0:00 abertura: o 1º quadro é a capa; a 1ª frase é o título ----------------
 B('abertura', falas=[
  F("What if tomorrow morning you woke up twice as strong, and you didn't gain a single pound?",
-   **N(figs=[HEROI_BARRA(), GRANDE()], zoom=1.06, foco=[900, 520])),
+   **N(figs=[HEROI_BARRA(ja=1), GRANDE(ja=1)], zoom=1.06, foco=[900, 520], big='2X STRONGER · +0 KG', bigy=1, c=1)),
  F("Same body. Same T-shirt. Same number on the scale.", **N(figs=[fig('heroi_deboche', 470)], obj=[dict(t='balanca', n='72.4 KG', x=1260, y=700, igual=1)])),
- F("But the bar that crushed you yesterday now bends in your hands.", **N(figs=[HEROI_BARRA(960)], zoom=1.15, foco=[960, 470], imp=1)),
+ F("But the bar that crushed you yesterday now bends in your hands.", **N(figs=[HEROI_BARRA(960)], zoom=1.15, foco=[960, 470], imp=1, big='IT BENDS', bigy=1, c=1)),
  F("And part of this has already been measured. In real people.", **N(obj=[dict(t='cartao', tit='MEASURED IN REAL PEOPLE', l=['1979 · strength jumps, muscle barely grows', '2004 · stronger without lifting anything'])])),
  F("But the reason it works is also the reason it could hurt you.", **N(obj=[dict(t='motor', estado='rompe')], imp=1)),
  F("So let's run it. Day by day. And find out what breaks first.", **N(tl=0, obj=[dict(t='cadeados', n=3, ab=0, y=600, rot=['?', '?', '?'])])),
@@ -33,13 +33,13 @@ B('dia1', falas=[
  F("You didn't try harder. Your body didn't change overnight. So what did?", **N(tl=0, face=dict(p='rosto_choque', lado='d', w=820, treme=1), big='WHAT CHANGED?', bigy=1)),
  F("Guess before I tell you. Is it your muscles, or your brain?", **N(tl=0, obj=[dict(t='enquete')])),
  F("Drop one word in the comments. Muscle, or brain. The answer is coming in a few seconds.", p=0.4),
- F("Here's the thing nobody tells you.", **N(tl=0, figs=[fig('heroi_esforco', 960, 760)], zoom=1.2, foco=[960, 440])),
+ F("Here's the thing nobody tells you.", **N(tl=0, figs=[fig('heroi_esforco', 960, 760)], zoom=1.2, foco=[960, 440], big='NOBODY TELLS YOU THIS', bigy=1, c=1)),
  F("Your muscle is made of thousands of fibers, and your brain never fires all of them at once.", **N(tl=0, obj=[dict(t='corda', on=0.4)])),
  F("Picture a rope with a hundred workers on it. On a normal day, only some of them pull.", obj=[dict(t='corda', on=0.4)]),
  F("Twice as strong, with no new muscle, means getting more of them to pull. At the same moment.", obj=[dict(t='corda', on=1.0)]),
- F("And it's not just how many pull. Your brain can also fire each one faster, so every worker pulls harder, more often.", **N(tl=0, figs=[fig('heroi_esforco', 520)], big='FASTER', sub='every fiber fires MORE often')),
+ F("And it's not just how many pull. Your brain can also fire each one faster, so every worker pulls harder, more often.", **N(tl=0, obj=[dict(t='corda', on=1.0, rapido=1)])),
  F("Then there are the muscles fighting you. When you lift, the muscle on the other side of the joint tightens too, like a brake. Training teaches it to let go.", **N(tl=0, figs=[fig('heroi_barra', 520, 640)], big='LESS BRAKE', sub='the OPPOSITE muscle relaxes')),
- F("And that is exactly what happens to every beginner.", **N(tl=0, figs=[fig('heroi_deboche', 960, 760)], zoom=1.1, foco=[960, 460])),
+ F("And that is exactly what happens to every beginner.", **N(tl=0, figs=[fig('heroi_deboche', 960, 760)], zoom=1.1, foco=[960, 460], big='EVERY BEGINNER', bigy=1, c=1)),
  F("In 1979, Moritani and de Vries trained fifteen young people for eight weeks and tracked what changed.",
    **N(tl=0, obj=[dict(t='cartao', tit='MORITANI & DE VRIES · 1979', l=['15 young adults · 8 weeks of training', 'strength vs muscle size, week by week'])])),
  F("Strength jumped early. Muscle size barely moved.", **N(tl=0, obj=[dict(t='grafico')])),
@@ -47,41 +47,41 @@ B('dia1', falas=[
  F("So if you commented brain, you got it. And if you said muscle, don't worry. Almost everyone does.", **N(tl=0, obj=[dict(t='enquete', marca='BRAIN')])),
  F("Your day one is the first month of training, squeezed into a single night.", **N(tl=0, obj=[dict(t='calend', x=960, rot=['DAY 1', 'DAY 30'])])),
  F("But your nervous system is only the first lock. There are two more.", **N(tl=0, obj=[dict(t='cadeados', n=3, ab=1, novo=1, rot=['NERVES', '?', '?'])])),
-], fonte='Moritani & deVries 1979 · Am J Phys Med · 15 young adults · 8 weeks')
+])
 
 # ---------------- WEEK 1 ----------------
 B('semana1', falas=[
- F("Week one. You walk into the gym.", **N(tl=1, figs=[fig('heroi', 960, 760, anda=1)])),
+ F("Week one. You walk into the gym.", **N(tl=1, figs=[fig('heroi', 960, 760, anda=1)], big='SAME BODY', sub='walking into the GYM', bigy=1, c=1)),
  F("You load what you usually bench. It feels like a broomstick.", **N(tl=1, figs=[fig('heroi_deboche', 430)], num=dict(ate=60, suf=' KG', rot='what you usually lift'))),
  F("So you double it.", **N(tl=1, figs=[fig('heroi_barra_dobra', 430, 640)], num=dict(ate=120, suf=' KG', rot='same body'), imp=1)),
- F("The guy next to you, twice your size, stops in the middle of his set.", **N(tl=1, face=dict(p='rosto_academia_choque', lado='d', w=820, treme=1), figs=[fig('heroi_deboche', 430)])),
- F("He's bigger. He has more muscle. Shouldn't he win?", **N(tl=1, figs=[fig('heroi', 640, 760), GRANDE(1300)], big=None)),
+ F("The guy next to you, twice your size, stops in the middle of his set.", **N(tl=1, face=dict(p='rosto_academia_choque', lado='d', w=820, treme=1), big='TWICE YOUR SIZE', sub='and he just STOPPED', bigy=1)),
+ F("He's bigger. He has more muscle. Shouldn't he win?", **N(tl=1, figs=[fig('heroi', 640, 760), GRANDE(1300)], big='BIGGER = STRONGER?', bigy=1, c=1)),
  F("Here's the dirty secret of every gym. Size and strength are not the same thing.", **N(tl=1, big='SIZE ≠ STRENGTH', c=1)),
  F("Your weight grows with your whole volume. Length, times width, times height.", **N(tl=1, obj=[dict(t='cubo')])),
  F("But your strength grows mostly with how thick the muscle is. Its cross section."),
  F("So the bigger a body gets, the faster its weight runs ahead of its strength."),
  F("Think of an ant carrying a leaf many times its own weight. Scale that ant up to your size, and it could barely carry itself.", **N(tl=1, obj=[dict(t='cubo')], big=None)),
- F("That's why, pound for pound, the strongest humans alive are usually the small ones.", **N(tl=1, figs=[fig('heroi_deboche', 640, 720), GRANDE(1300)])),
+ F("That's why, pound for pound, the strongest humans alive are usually the small ones.", **N(tl=1, figs=[fig('heroi_deboche', 640, 720), GRANDE(1300)], big='POUND FOR POUND', sub='the SMALL ones win', bigy=1, c=1)),
  F("In 1988, a lifter who weighed just under sixty kilos put a hundred and ninety kilos over his head.", **N(tl=1, num=dict(ate=190, suf=' KG', rot='overhead · lifter weighing 59.7 kg · 1988'))),
  F("More than three times his own body weight.", **N(tl=1, barras=dict(it=[['HIS BODY', 59.7, 'cinza'], ['THE BAR', 190, 'verm']], un=' kg', nota='3.2×'))),
  F("For a two hundred kilo giant to match that, he'd need over six hundred kilos overhead. Nobody has ever come close.",
    **N(tl=1, barras=dict(it=[['GIANT', 200, 'cinza'], ['TO MATCH', 636, 'verm']], un=' kg', nota='NEVER'))),
- F("Back in your gym, the big guy finally walks over and asks what program you're on.", **N(tl=1, figs=[fig('heroi', 560, 760), GRANDE(1250, 'academia', anda=1)])),
+ F("Back in your gym, the big guy finally walks over and asks what program you're on.", **N(tl=1, figs=[fig('heroi', 640, 760), GRANDE(1250, 'academia', anda=1)], big='"WHAT PROGRAM ARE YOU ON?"', bigy=1, c=1)),
  F("You tell him the truth. It's called Strong Not Big. Real studies, every week, no size required.", **N(tl=1, figs=[fig('heroi_deboche', 430)], obj=[dict(t='inscrever', x=1300, y=560)])),
  F("And if you're watching this right now, that button is right under the video. It's free, and it's how you get the next upgrade."),
  F("But in week three, something strange happens. To your other arm.", **N(tl=1, face=dict(p='rosto_choque', lado='d', w=760), big='YOUR OTHER ARM', bigy=1)),
-], fonte='Weightlifting, 1988 Olympic Games · 60 kg class · clean & jerk 190 kg at 59.7 kg body weight')
+])
 
 # ---------------- WEEK 3 ----------------
 B('semana3', falas=[
  F("Week three. You tweak your left wrist, so you only train your right arm.", **N(tl=2, figs=[fig('heroi_esforco', 520)], big='RIGHT ARM', sub='ONLY. left one RESTS.')),
  F("Two weeks later, you test the left one. The arm you never trained.", **N(tl=2, figs=[fig('heroi', 520)], big='LEFT ARM', sub='NEVER trained')),
- F("It's stronger.", p=0.3, **N(tl=2, face=dict(p='rosto_choque', lado='d', w=860, treme=1), imp=1)),
+ F("It's stronger.", p=0.3, **N(tl=2, face=dict(p='rosto_choque', lado='d', w=860, treme=1), imp=1, big='STRONGER', sub='and you NEVER trained it', bigy=1)),
  F("This is real. It's called cross education. Train one side, and the other side gets stronger too.", **N(tl=2, obj=[dict(t='cerebro', lado=-1)])),
  F("When researchers pooled the controlled studies, the untrained side gained about eight percent on average.", **N(tl=2, num=dict(ate=7.8, suf='%', rot='average gain in the arm that did NOTHING'))),
  F("Moritani's 1979 study saw it too. In the arm nobody trained.", **N(tl=2, obj=[dict(t='cartao', tit='MORITANI & DE VRIES · 1979', l=['the untrained arm got stronger too'])])),
  F("Because the upgrade isn't living in your arm. It's living in your brain.", **N(tl=2, obj=[dict(t='cerebro')], zoom=1.12, foco=[960, 420])),
- F("Which brings us to the strangest experiment in this whole video.", **N(tl=2, figs=[fig('heroi_deboche', 960, 760)], zoom=1.2, foco=[960, 440])),
+ F("Which brings us to the strangest experiment in this whole video.", **N(tl=2, figs=[fig('heroi_deboche', 960, 760)], zoom=1.2, foco=[960, 440], big='THE STRANGEST EXPERIMENT', bigy=1, c=1)),
  F("In 2004, researchers at the Cleveland Clinic had people train only in their heads.",
    **N(tl=2, obj=[dict(t='cartao', tit='RANGANATHAN ET AL · 2004', l=['Cleveland Clinic · 12 weeks', '15 minutes a day · no movement at all'])])),
  F("No movement. Just imagining their hardest possible contraction, fifteen minutes a day.", **N(tl=2, face=dict(p='rosto_esforco', lado='d', w=780), big='IMAGINE', sub='your HARDEST rep. DON\'T move.')),
@@ -90,14 +90,14 @@ B('semana3', falas=[
  F("The researchers also measured brain signals. The command going from the brain to the muscle got stronger, even though the muscle never moved.", **N(tl=2, obj=[dict(t='cerebro')], zoom=1.1, foco=[960, 420])),
  F("Thinking won't build you a body. But it proves the point. A huge part of your strength is software.", **N(tl=2, big='SOFTWARE', sub='a HUGE part of strength', c=1)),
  F("And by month one, your software is maxed out.", **N(tl=2, obj=[dict(t='cadeados', n=3, ab=1, rot=['NERVES', '?', '?'])])),
-], fonte='Munn et al. 2004 · J Appl Physiol · meta-analysis  |  Ranganathan et al. 2004 · Neuropsychologia')
+])
 
 # ---------------- MONTH 1 ----------------
 B('mes1', falas=[
  F("Month one. You start noticing it outside the gym.", **N(tl=3, obj=[dict(t='calend', x=960, rot=['WEEK 3', 'MONTH 1'])])),
- F("You jump for a high branch, and catch it.", **N(tl=3, figs=[fig('pendurado', 960, 640)], zoom=1.12, foco=[960, 480])),
+ F("You jump for a high branch, and catch it.", **N(tl=3, figs=[fig('pendurado', 960, 640)], zoom=1.12, foco=[960, 480], big='ONE JUMP. CAUGHT.', bigy=1, c=1)),
  F("Every grocery bag. One trip.", **N(tl=3, figs=[fig('heroi_deboche', 520)], obj=[dict(t='sacolas', x=1080)])),
- F("The jar your dad gave up on? Open.", **N(tl=3, figs=[fig('pai_choque', 640, 820), fig('heroi_deboche', 1250, 780)])),
+ F("The jar your dad gave up on? Open.", **N(tl=3, figs=[fig('pai_choque', 640, 760), fig('heroi_deboche', 1250, 740)], big="DAD GAVE UP. YOU DIDN'T.", bigy=1, c=1)),
  F("Quick test for you while we're here. Make a fist as hard as you can for three seconds. Feel how your forearm tightens all the way to the elbow?", **N(tl=3, figs=[fig('heroi_esforco', 520)], big='3 SECONDS', sub='make a FIST. feel the FOREARM.')),
  F("That tightness running up your arm? Those are the tendons your fingers pull on. Keep that feeling in mind, because it's about to matter.", **N(tl=3, face=dict(p='rosto_esforco', lado='d', w=760), big='TENDONS', sub='you just FELT them', bigy=1)),
  F("Here's what's happening. Strength isn't only how hard a muscle pulls. It's how much of that pull reaches the bone.", **N(tl=3, obj=[dict(t='motor', estado='firme')])),
@@ -109,11 +109,11 @@ B('mes1', falas=[
    **N(tl=3, obj=[dict(t='cartao', tit='MERSMANN, BOHM & ARAMPATZIS · 2017', l=['muscle and tendon adapt on different timelines', 'a gap between them = more strain on the tendon'])])),
  F("And you just upgraded the engine overnight.", **N(tl=3, barras=dict(it=[['ENGINE', 2, 'verm'], ['ROPE', 1, 'cinza']], un='×'))),
  F("In real life, that gap opens slowly, and your body has time to close it. In our what if, it opened in a single night.", **N(tl=3, obj=[dict(t='calend', x=960, rot=['1 NIGHT', 'MONTHS'])])),
-], fonte='Mersmann, Bohm & Arampatzis 2017 · Frontiers in Physiology · review')
+])
 
 # ---------------- MONTH 6 (a virada) ----------------
 B('mes6', falas=[
- F("Month six. You're lifting weights that make the whole gym stop and stare.", **N(tl=4, figs=[fig('heroi_barra', 960, 640)], num=None, zoom=1.08)),
+ F("Month six. You're lifting weights that make the whole gym stop and stare.", **N(tl=4, figs=[fig('heroi_barra', 640, 640), GRANDE(1320)], big='THE WHOLE GYM STARES', bigy=1, c=1)),
  F("Halfway up, you hear it.", p=1.1, **N(tl=4, figs=[fig('heroi_barra', 960, 640)], zoom=1.3, foco=[960, 470])),
  F("Not your muscle. Your tendon.", p=0.4, **N(tl=4, obj=[dict(t='motor', estado='rompe', motor='MUSCLE 2X', corda='TENDON 1X')], imp=1)),
  F("You doubled the engine. You never upgraded the rope.", **N(tl=4, barras=dict(it=[['ENGINE', 2, 'verm'], ['ROPE', 1, 'cinza']], un='×', nota='GAP'))),
@@ -125,7 +125,7 @@ B('mes6', falas=[
  F("But the idea behind them is real. Under the right pressure, the brain lets more of the rope pull. And it doesn't ask the tendon first.", **N(tl=4, obj=[dict(t='corda', on=1.0)])),
  F("So the real question was never, how do I get twice as strong?", **N(tl=4, big='2× STRONGER?', c=1)),
  F("It's, how do I get twice as strong, without breaking the rope?", **N(tl=4, big='WITHOUT', sub='breaking the ROPE', c=1)),
-], fonte='Mersmann, Bohm & Arampatzis 2017 · Frontiers in Physiology')
+])
 
 # ---------------- YEAR 1: o que fazer de verdade ----------------
 B('ano1', falas=[
@@ -140,17 +140,17 @@ B('ano1', falas=[
  F("Start light, progress slowly, and if something hurts, stop. This is education, not medical advice.", **N(tl=5, figs=[fig('heroi', 520)], big='GO SLOW', sub='this is EDUCATION, not medical advice', aviso=1)),
  F("You won't double overnight. But month after month, you'll get stronger, and you'll look almost exactly the same.",
    **N(tl=5, figs=[fig('heroi_deboche', 470)], obj=[dict(t='balanca', n='72.4 KG', x=1260, y=700, igual=1)])),
- F("That's the real superpower. Nobody sees it coming.", **N(tl=5, figs=[fig('heroi_deboche', 960, 760)], zoom=1.15, foco=[960, 460])),
- F("The bar bends. The scale doesn't move. And the big guy next to you finally asks, how?", **N(tl=5, figs=[HEROI_BARRA(), GRANDE()], zoom=1.06, foco=[900, 520])),
+ F("That's the real superpower. Nobody sees it coming.", **N(tl=5, figs=[fig('heroi_deboche', 960, 760)], zoom=1.15, foco=[960, 460], big='NOBODY SEES IT COMING', bigy=1, c=1)),
+ F("The bar bends. The scale doesn't move. And the big guy next to you finally asks, how?", **N(tl=5, figs=[HEROI_BARRA(), GRANDE()], zoom=1.06, foco=[900, 520], big='"HOW?"', bigy=1, c=1)),
  F("Now you know.", p=0.4, **N(tl=5, face=dict(p='rosto_deboche', lado='d', w=820), big='NOW YOU KNOW', bigy=1)),
-], fonte='Tendon loading: Mersmann, Bohm & Arampatzis 2017 (≈3 s high-strain contractions)')
+])
 
 # ---------------- fim: pergunta + próximo vídeo ----------------
 B('final', falas=[
  F("Your turn. What's the heaviest thing you've ever lifted, and how much did you weigh at the time? Tell me in the comments.",
    **N(figs=[fig('heroi_deboche', 520)], big='YOUR TURN', sub='HEAVIEST lift + your WEIGHT')),
  F("And if you want to know who wins between a farmer and a gym guy, that's the next video.", p=4.5,
-   **N(figs=[fig('fazendeiro', 640, 820), fig('academia', 1300, 860)], big=None)),
+   **N(figs=[fig('fazendeiro', 640, 760), fig('academia', 1300, 800)], big='NEXT: FARMER VS GYM GUY', bigy=1, c=1)),
 ])
 
 os.makedirs('public/snb/v06', exist_ok=True)

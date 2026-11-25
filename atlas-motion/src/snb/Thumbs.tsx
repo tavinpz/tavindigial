@@ -29,6 +29,14 @@ const Svg: React.FC<{ children: React.ReactNode }> = ({ children }) => <svg view
 const Mao: React.FC = () => <Img src={staticFile('snb/poses/mao_close.png')} style={{ position: 'absolute', left: -150, top: 110, width: 1000 }} />;
 const SetaMao = <Seta x1={1000} y1={280} x2={760} y2={470} c={-0.3} />;
 
+// seta do canal com contorno preto (para fundo colorido)
+const SetaC: React.FC<{ x1: number; y1: number; x2: number; y2: number; c?: number; cor?: string }> = ({ x1, y1, x2, y2, c = 0.3, cor = K.verm }) => {
+  const mx = (x1 + x2) / 2 - (y2 - y1) * c, my = (y1 + y2) / 2 + (x2 - x1) * c;
+  const ang = Math.atan2(y2 - my, x2 - mx), L = 54, ab = 0.5;
+  const p = (d: number) => `${x2 - L * Math.cos(ang + d)},${y2 - L * Math.sin(ang + d)}`;
+  const d1 = `M ${x1},${y1} Q ${mx},${my} ${x2},${y2}`, d2 = `M ${p(ab)} L ${x2},${y2} L ${p(-ab)}`;
+  return <g fill="none" strokeLinecap="round" strokeLinejoin="round"><path d={d1} stroke="#111" strokeWidth={30} /><path d={d2} stroke="#111" strokeWidth={30} /><path d={d1} stroke={cor} strokeWidth={16} /><path d={d2} stroke={cor} strokeWidth={16} /></g>;
+};
 const CAPAS: Record<string, React.ReactNode> = {
   // #01 Farmers: os dois com o saco
   a1: <><P p="academia_saco" x={270} a={1040} base={1150} /><P p="fazendeiro_saco_ambar" x={1010} a={1040} base={1170} />
@@ -67,27 +75,36 @@ const CAPAS: Record<string, React.ReactNode> = {
   b5: <><P p="academia" x={340} a={1000} base={1090} />
     <Svg><T x={930} y={270} t="*5* habits" s={124} /><T x={930} y={400} t="keep you weak" s={92} /><Seta x1={900} y1={450} x2={580} y2={520} c={-0.25} /></Svg></>,
   c5: <><Mao /><Svg><T x={900} y={130} t="lose the" s={104} /><T x={900} y={240} t="*straps*" s={104} />{SetaMao}</Svg></>,
-  // #06 What If 2x mais forte: capas do método do doc 57 (conflito, rosto com emoção, objeto que conta a história, fundo testado claro × escuro)
-  a6: <><div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 35% 45%, #fff7e8 0%, #f1e6d2 55%, #d8c8ad 100%)' }} />
-    <P p="academia_choque" x={1060} a={700} base={960} />
-    <P p="heroi_barra_dobra" x={380} a={600} base={790} />
-    <Svg><text x={930} y={125} textAnchor="middle" fontFamily={NUN} fontWeight={800} fontSize={108} fill="#111">same <tspan fill={K.verm}>body</tspan></text>
-      <Seta x1={790} y1={170} x2={520} y2={360} c={0.25} /></Svg>
-    <div style={{ position: 'absolute', left: 0, top: 0, width: 1280, height: 720, boxShadow: 'inset 0 0 120px rgba(0,0,0,.25)' }} /></>,
-  b6: <><Img src={staticFile('snb/poses/rosto_dor.png')} style={{ position: 'absolute', left: 560, top: 40, width: 760 }} />
+  // #06 What If 2x mais forte (refeitas 25/11, 2ª versão): cor de fundo forte e diferente em cada capa, texto com contorno,
+  // seta só na cor do canal (vermelha com contorno preto). A = amarelo · B = preto + vermelho · C = azul + amarelo.
+  a6: <><div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 40% 45%, #FFE07A 0%, #FFC531 50%, #F2A900 100%)' }} />
+    <P p="heroi_barra_dobra" x={360} a={600} base={800} />
+    <P p="academia_choque" x={1060} a={700} base={980} />
     <Svg>
-      <g transform="translate(60,520)"><path d="M 0,0 Q 120,-40 230,10" fill="none" stroke={K.verm} strokeWidth={34} strokeLinecap="round" /><path d="M 300,30 Q 400,-10 520,-60" fill="none" stroke={K.verm} strokeWidth={34} strokeLinecap="round" />
-        <circle cx={265} cy={20} r={70} fill={K.verm} opacity={0.35} />{[0, 1, 2, 3, 4, 5].map((i) => <path key={i} d={`M 265,20 l ${Math.cos(i) * 110},${Math.sin(i * 1.7) * 90}`} stroke="#fff" strokeWidth={8} strokeLinecap="round" />)}</g>
-      <T x={300} y={170} t="it" s={150} /><T x={300} y={330} t="*snaps*" s={150} />
+      <text x={900} y={130} textAnchor="middle" fontFamily={NUN} fontWeight={900} fontSize={108} fill="#111" stroke="#FFE9A8" strokeWidth={10} paintOrder="stroke">same <tspan fill={K.verm}>body</tspan></text>
+      <SetaC x1={720} y1={190} x2={500} y2={330} c={0.28} />
     </Svg></>,
-  c6: <><div style={{ position: 'absolute', inset: 0, background: '#E3311D' }} />
-    <P p="heroi_deboche" x={330} a={700} base={840} />
+  b6: <><div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 30% 70%, #3a0d08 0%, #120403 45%, #000 100%)' }} />
+    <Img src={staticFile('snb/poses/rosto_dor.png')} style={{ position: 'absolute', left: 610, top: 30, width: 740 }} />
     <Svg>
-      <g transform="translate(870,420) scale(1.55)"><rect x={-230} y={-40} width={460} height={110} rx={34} fill="#F1ECE2" stroke="#0B0B0C" strokeWidth={7} />
-        <rect x={-120} y={-18} width={240} height={64} rx={10} fill="#10241a" stroke="#0B0B0C" strokeWidth={5} />
-        <text x={0} y={30} textAnchor="middle" fontFamily='"Anton", sans-serif' fontSize={50} fill={K.verde} letterSpacing={3}>+0.0 KG</text></g>
-      <text x={870} y={190} textAnchor="middle" fontFamily={NUN} fontWeight={800} fontSize={120} fill="#fff">2x stronger</text>
-      <path d="M 700,240 Q 560,330 540,430" fill="none" stroke="#fff" strokeWidth={15} strokeLinecap="round" /><path d="M 515,395 L 540,430 L 572,400" fill="none" stroke="#fff" strokeWidth={15} strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx={300} cy={520} r={190} fill={K.verm} opacity={0.28} />
+      {/* tendão rompido: duas pontas grossas com as fibras soltas */}
+      {[-1, 1].map((l) => <g key={l} transform={`translate(${300 + l * 40},520) scale(${l},1)`}>
+        <path d="M 250,-30 Q 120,-50 30,-26 L 30,26 Q 120,50 250,30 Z" fill="#F1ECE2" stroke="#000" strokeWidth={6} />
+        <path d="M 240,-14 Q 140,-22 40,-8 M 240,10 Q 140,18 40,8" stroke="#b9b1a2" strokeWidth={4} fill="none" />
+        {Array.from({ length: 9 }).map((_, k) => <path key={k} d={`M 32,${-22 + k * 5.5} q ${-30 - (k % 3) * 14},${(k - 4) * 6} ${-46 - (k % 4) * 10},${(k - 4) * 14}`} stroke={k % 2 ? K.verm : '#F1ECE2'} strokeWidth={5} fill="none" strokeLinecap="round" />)}
+      </g>)}
+      {[0, 1, 2, 3, 4, 5, 6, 7].map((k) => { const a = k * 0.785; return <path key={k} d={`M ${300 + 70 * Math.cos(a)},${520 + 70 * Math.sin(a)} L ${300 + 140 * Math.cos(a)},${520 + 140 * Math.sin(a)}`} stroke="#FFB020" strokeWidth={8} strokeLinecap="round" />; })}
+      <text x={300} y={190} textAnchor="middle" fontFamily={NUN} fontWeight={900} fontSize={150} fill="#fff">it</text>
+      <text x={300} y={340} textAnchor="middle" fontFamily={NUN} fontWeight={900} fontSize={170} fill={K.verm} stroke="#000" strokeWidth={8} paintOrder="stroke">snaps</text>
+    </Svg></>,
+  c6: <><div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 30% 50%, #2F6BFF 0%, #1546C7 55%, #0B2A80 100%)' }} />
+    <P p="academia_choque" x={760} a={540} base={720} />
+    <P p="academia_choque" x={1150} a={540} base={720} />
+    <P p="academia_choque" x={955} a={620} base={790} />
+    <P p="heroi_barra_dobra" x={300} a={600} base={860} />
+    <Svg>
+      <text x={860} y={130} textAnchor="middle" fontFamily={NUN} fontWeight={900} fontSize={96} fill="#fff" stroke="#0B1E5C" strokeWidth={12} paintOrder="stroke">they're <tspan fill="#FFC531">weaker</tspan></text>
     </Svg></>,
 };
 export const SNBThumb: React.FC<{ v: string }> = ({ v }) => (

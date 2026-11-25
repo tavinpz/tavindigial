@@ -19,8 +19,10 @@ const Tx: React.FC<{ txt: string; cor?: string; dest?: string }> = ({ txt, cor =
 );
 const entra = (g: number, ini: number) => ({ o: L(g, [ini, ini + 5], [0, 1]), s: Math.min(1.12, pop(g, ini)) });
 
-const Pose: React.FC<{ g: number; ini: number; f: V; brilho?: string }> = ({ g, ini, f, brilho }) => {
-  const k = f.a / 1772, { o } = entra(g, ini);
+const Pose: React.FC<{ g: number; ini: number; f: V; brilho?: string; enc?: number }> = ({ g, ini, f, brilho, enc = 0 }) => {
+  // enc: com legenda embaixo (bigy), o boneco encolhe e sobe para os pés ficarem acima do texto
+  const BASEY = enc ? 822 : BASE;
+  const k = (f.a * (enc ? 0.72 : 1)) / 1772, { o } = f.ja ? { o: 1 } : entra(g, ini);
   const bob = f.anda ? Math.abs(Math.sin(g / 5.2)) * -9 : Math.sin(g / 17) * 1.6;
   const rot = f.anda ? Math.sin(g / 5.2) * 1.1 : 0;
   const tx = f.treme ? Math.sin(g * 2.1) * 3.5 * Math.max(0.25, 1 - (g - ini) / 40) : 0;
@@ -29,7 +31,7 @@ const Pose: React.FC<{ g: number; ini: number; f: V; brilho?: string }> = ({ g, 
   // brilho âmbar sobre o tronco ou o quadril (multiplica só onde há desenho claro)
   const b = brilho === 'tronco' ? { t: 0.36, a: 0.2 } : brilho === 'quadril' ? { t: 0.5, a: 0.13 } : null;
   return (
-    <div style={{ position: 'absolute', left: f.x - 650 * k + tx, top: BASE - 2172 * k + bob + (1 - o) * 26, width: w, height: h, opacity: o, transform: `rotate(${rot}deg)`, transformOrigin: '50% 96%' }}>
+    <div style={{ position: 'absolute', left: f.x - 650 * k + tx, top: BASEY - 2172 * k + bob + (1 - o) * 26, width: w, height: h, opacity: o, transform: `rotate(${rot}deg)`, transformOrigin: '50% 96%' }}>
       <Img src={src} style={{ width: w, height: h }} />
       {b && <div style={{ position: 'absolute', left: w * 0.32, top: h * b.t, width: w * 0.36, height: h * b.a, background: K.ambar, mixBlendMode: 'multiply', opacity: 0.55 + 0.3 * Math.sin(g / 5), borderRadius: '38%', filter: 'blur(14px)' }} />}
     </div>
@@ -96,10 +98,10 @@ const Cena: React.FC<{ g: number; D: number; b: Bloco; ini: number }> = ({ g, D,
   if (v.big) {
     const t0 = desde('big'), { o, s } = entra(g, t0), tam = Math.min(v.bigy ? 150 : centro ? 250 : 220, larg / (0.52 * Math.max(2, v.big.length)));
     const y = v.bigy ? 935 : (v.sub ? 500 : 560) + tam * 0.18;
-    el.push(<text key="big" x={tx} y={y + (1 - Math.min(1, s)) * 30} textAnchor={anc} fontFamily={TIT} fontSize={tam * (0.86 + 0.14 * s)} fill={K.osso} opacity={o} letterSpacing={2}><Tx txt={v.big} cor={K.osso} dest={K.osso} /></text>);
+    el.push(<text key="big" x={tx} y={y + (1 - Math.min(1, s)) * 30} textAnchor={anc} fontFamily={TIT} fontSize={tam * (0.86 + 0.14 * s)} fill={K.osso} opacity={o} letterSpacing={2} {...(v.bigy ? { stroke: K.fundo, strokeWidth: 18, paintOrder: 'stroke', strokeLinejoin: 'round' } : {})}><Tx txt={v.big} cor={K.osso} dest={K.osso} /></text>);
     if (v.sub) {
       const t1 = Math.max(desde('sub'), t0 + 5), e2 = entra(g, t1), ts2 = Math.min(58, larg / (0.54 * v.sub.length));
-      el.push(<text key="sub" x={tx} y={y + 78 + (1 - Math.min(1, e2.s)) * 18} textAnchor={anc} fontFamily={SANS} fontWeight={800} fontSize={ts2} fill={K.osso} opacity={e2.o} letterSpacing={-0.5}><Tx txt={v.sub} /></text>);
+      el.push(<text key="sub" x={tx} y={y + 78 + (1 - Math.min(1, e2.s)) * 18} textAnchor={anc} fontFamily={SANS} fontWeight={800} fontSize={ts2} fill={K.osso} opacity={e2.o} letterSpacing={-0.5} {...(v.bigy ? { stroke: K.fundo, strokeWidth: 12, paintOrder: 'stroke', strokeLinejoin: 'round' } : {})}><Tx txt={v.sub} /></text>);
     }
   }
   if (v.num) {
@@ -183,20 +185,25 @@ const Cena: React.FC<{ g: number; D: number; b: Bloco; ini: number }> = ({ g, D,
   const tm = v.mao ? desde('mao') : 0, em = entra(g, tm);
   // câmera (#06+): zoom e foco passam da fala anterior para a atual em 18 quadros
   const ant = i > 0 ? est[i - 1] : est[i], kz = L(g, [ts[i], ts[i] + 18], [0, 1]);
-  const z0 = ant.zoom || 1, z1 = v.zoom || 1, f0 = ant.foco || [960, 540], f1 = v.foco || [960, 540];
+  const zz = (e: V) => (e.bigy && !e.face ? Math.min(e.zoom || 1, 1.04) : e.zoom || 1), z0 = zz(ant), z1 = zz(v), f0 = ant.foco || [960, 540], f1 = v.foco || [960, 540];
   const zc = z0 + (z1 - z0) * kz, fx = f0[0] + (f1[0] - f0[0]) * kz, fy = f0[1] + (f1[1] - f0[1]) * kz;
+  // movimento contínuo (#06+, só quando a fala usa as chaves novas): câmera nunca parada e um "reenquadre" no meio das falas longas
+  const novo = v.tl !== undefined, di = (i + 1 < ts.length ? ts[i + 1] : D) - ts[i], u = g - ts[i];
+  const drift = novo ? 1 + 0.045 * Math.min(1, u / Math.max(30, di)) : 1;
+  const pan = novo ? (i % 2 ? 1 : -1) * 28 * Math.min(1, u / Math.max(30, di)) : 0;
+  const snap = novo && di > 105 ? 0.07 * L(g, [ts[i] + Math.round(di * 0.5), ts[i] + Math.round(di * 0.5) + 6], [0, 1]) : 0;
   const imp = (b.falas[i].v || {}).imp ? g - ts[i] : 1e9, sh = imp >= 0 && imp < 8 ? (imp % 2 ? 1 : -1) * 9 * (1 - imp / 8) : 0;
   const objs: V[] = v.obj || [];
   const desdeObj = (n: number) => desde('obj', (x) => x && x[n]);
   const antesObj = (n: number) => { let j = i; while (j > 0 && J(est[j - 1].obj && est[j - 1].obj[n]) === J(v.obj && v.obj[n])) j--; return j > 0 ? (est[j - 1].obj || [])[n] : undefined; };
   return (<>
-    <AbsoluteFill style={{ transformOrigin: `${fx}px ${fy}px`, transform: `translate(${sh}px,${sh * 0.6}px) scale(${zc * (1 + 0.035 * Math.min(1, g / D)) * punch})` }}>
+    <AbsoluteFill style={{ transformOrigin: `${fx}px ${fy}px`, transform: `translate(${sh + pan}px,${sh * 0.6}px) scale(${zc * (novo ? drift + snap : 1 + 0.035 * Math.min(1, g / D)) * punch})` }}>
       {objs.length > 0 && <svg viewBox={`0 0 ${W} ${H}`} width={W} height={H} style={{ position: 'absolute', left: 0, top: 0 }}><Objetos g={g} lista={objs} desde={desdeObj} antes={antesObj} /></svg>}
       {v.mao && <div style={{ position: 'absolute', left: 90 - (1 - em.o) * 40, top: 170 + Math.sin(g / 15) * 4, width: 800, opacity: em.o }}>
         <Img src={staticFile('snb/poses/mao_close.png')} style={{ width: 800, transform: `rotate(${Math.sin(g / 21) * 0.8}deg)` }} />
       </div>}
       {v.icone && <Icone g={g} ini={desde('icone')} tipo={v.icone} />}
-      {figs.map((f, n) => <Pose key={f.p + f.x} g={g} ini={desde('figs', (x) => x && x[n] && [x[n].p, x[n].x])} f={f} brilho={n === 0 ? v.brilho : undefined} />)}
+      {figs.map((f, n) => <Pose key={f.p + f.x} g={g} ini={desde('figs', (x) => x && x[n] && [x[n].p, x[n].x])} f={f} brilho={n === 0 ? v.brilho : undefined} enc={v.bigy && !v.face ? 1 : 0} />)}
       <svg viewBox={`0 0 ${W} ${H}`} width={W} height={H} style={{ position: 'absolute', left: 0, top: 0 }}>
         {anda && Array.from({ length: 9 }).map((_, n) => { const x = ((n * 150 - g * 9) % 1350 + 1350) % 1350 + 60; return <rect key={n} x={x} y={BASE + 22} width={70} height={5} fill={K.osso} opacity={0.22 * Math.min(1, x / 200, (1410 - x) / 200) * (lado && !centro ? 1 : 0.6)} />; })}
         {figs.length === 2 && figs[0].x < 600 && !v.cart && <text x={(figs[0].x + figs[1].x) / 2} y={600} textAnchor="middle" fontFamily={TIT} fontSize={64} fill={K.cinza} opacity={0.75 * L(g, [8, 18], [0, 1])}>VS</text>}
@@ -223,7 +230,7 @@ export const SNBVideo: React.FC<{ tempos: TemposSNB }> = ({ tempos }) => {
       })}
       <AbsoluteFill style={{ background: 'radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(0,0,0,.55) 100%)' }} />
       <AbsoluteFill style={{ opacity: 0.05, mixBlendMode: 'overlay' }}><Img src={staticFile(`fx/grain${f % 4}.png`)} style={{ width: '100%', height: '100%', objectFit: 'cover' }} /></AbsoluteFill>
-      <AbsoluteFill style={{ background: '#000', opacity: Math.max(L(f, [0, 8], [1, 0]), L(f, [fimV - 20, fimV - 2], [0, 1])) }} />
+      <AbsoluteFill style={{ background: '#000', opacity: Math.max(0, L(f, [fimV - 20, fimV - 2], [0, 1])) }} />
     </AbsoluteFill>
   );
 };

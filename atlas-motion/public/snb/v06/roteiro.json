@@ -9,7 +9,7 @@
     "p": 0,
     "v": {
      "icone": null,
-     "big": null,
+     "big": "2X STRONGER · +0 KG",
      "sub": null,
      "num": null,
      "lista": null,
@@ -22,18 +22,20 @@
       {
        "p": "heroi_barra_dobra",
        "x": 640,
-       "a": 660
+       "a": 660,
+       "ja": 1
       },
       {
        "p": "academia_choque",
        "x": 1360,
-       "a": 800
+       "a": 800,
+       "ja": 1
       }
      ],
      "mao": null,
      "aviso": null,
-     "bigy": null,
-     "c": null,
+     "bigy": 1,
+     "c": 1,
      "obj": null,
      "face": null,
      "zoom": 1.06,
@@ -87,7 +89,7 @@
     "p": 0,
     "v": {
      "icone": null,
-     "big": null,
+     "big": "IT BENDS",
      "sub": null,
      "num": null,
      "lista": null,
@@ -105,8 +107,8 @@
      ],
      "mao": null,
      "aviso": null,
-     "bigy": null,
-     "c": null,
+     "bigy": 1,
+     "c": 1,
      "obj": null,
      "face": null,
      "zoom": 1.15,
@@ -225,7 +227,7 @@
  {
   "cena": "dia1",
   "et": null,
-  "fonte": "Moritani & deVries 1979 · Am J Phys Med · 15 young adults · 8 weeks",
+  "fonte": null,
   "falas": [
    {
     "txt": "Day one. You walk into the kitchen, half asleep, and grab the milk.",
@@ -351,7 +353,7 @@
     "p": 0,
     "v": {
      "icone": null,
-     "big": null,
+     "big": "NOBODY TELLS YOU THIS",
      "sub": null,
      "num": null,
      "lista": null,
@@ -369,8 +371,8 @@
      ],
      "mao": null,
      "aviso": null,
-     "bigy": null,
-     "c": null,
+     "bigy": 1,
+     "c": 1,
      "obj": null,
      "face": null,
      "zoom": 1.2,
@@ -441,8 +443,8 @@
     "p": 0,
     "v": {
      "icone": null,
-     "big": "FASTER",
-     "sub": "every fiber fires MORE often",
+     "big": null,
+     "sub": null,
      "num": null,
      "lista": null,
      "cart": null,
@@ -450,18 +452,18 @@
      "barras": null,
      "anel": null,
      "brilho": null,
-     "figs": [
-      {
-       "p": "heroi_esforco",
-       "x": 520,
-       "a": 800
-      }
-     ],
+     "figs": null,
      "mao": null,
      "aviso": null,
      "bigy": null,
      "c": null,
-     "obj": null,
+     "obj": [
+      {
+       "t": "corda",
+       "on": 1.0,
+       "rapido": 1
+      }
+     ],
      "face": null,
      "zoom": null,
      "foco": null,
@@ -505,7 +507,7 @@
     "p": 0,
     "v": {
      "icone": null,
-     "big": null,
+     "big": "EVERY BEGINNER",
      "sub": null,
      "num": null,
      "lista": null,
@@ -523,8 +525,8 @@
      ],
      "mao": null,
      "aviso": null,
-     "bigy": null,
-     "c": null,
+     "bigy": 1,
+     "c": 1,
      "obj": null,
      "face": null,
      "zoom": 1.1,
@@ -714,15 +716,15 @@
  {
   "cena": "semana1",
   "et": null,
-  "fonte": "Weightlifting, 1988 Olympic Games · 60 kg class · clean & jerk 190 kg at 59.7 kg body weight",
+  "fonte": null,
   "falas": [
    {
     "txt": "Week one. You walk into the gym.",
     "p": 0,
     "v": {
      "icone": null,
-     "big": null,
-     "sub": null,
+     "big": "SAME BODY",
+     "sub": "walking into the GYM",
      "num": null,
      "lista": null,
      "cart": null,
@@ -740,8 +742,8 @@
      ],
      "mao": null,
      "aviso": null,
-     "bigy": null,
-     "c": null,
+     "bigy": 1,
+     "c": 1,
      "obj": null,
      "face": null,
      "zoom": null,
@@ -827,8 +829,8 @@
     "p": 0,
     "v": {
      "icone": null,
-     "big": null,
-     "sub": null,
+     "big": "TWICE YOUR SIZE",
+     "sub": "and he just STOPPED",
      "num": null,
      "lista": null,
      "cart": null,
@@ -836,16 +838,10 @@
      "barras": null,
      "anel": null,
      "brilho": null,
-     "figs": [
-      {
-       "p": "heroi_deboche",
-       "x": 430,
-       "a": 800
-      }
-     ],
+     "figs": null,
      "mao": null,
      "aviso": null,
-     "bigy": null,
+     "bigy": 1,
      "c": null,
      "obj": null,
      "face": {
@@ -864,7 +860,7 @@
     "p": 0,
     "v": {
      "icone": null,
-     "big": null,
+     "big": "BIGGER = STRONGER?",
      "sub": null,
      "num": null,
      "lista": null,
@@ -887,8 +883,8 @@
      ],
      "mao": null,
      "aviso": null,
-     "bigy": null,
-     "c": null,
+     "bigy": 1,
+     "c": 1,
      "obj": null,
      "face": null,
      "zoom": null,
@@ -997,8 +993,8 @@
     "p": 0,
     "v": {
      "icone": null,
-     "big": null,
-     "sub": null,
+     "big": "POUND FOR POUND",
+     "sub": "the SMALL ones win",
      "num": null,
      "lista": null,
      "cart": null,
@@ -1020,8 +1016,8 @@
      ],
      "mao": null,
      "aviso": null,
-     "bigy": null,
-     "c": null,
+     "bigy": 1,
+     "c": 1,
      "obj": null,
      "face": null,
      "zoom": null,
@@ -1146,7 +1142,7 @@
     "p": 0,
     "v": {
      "icone": null,
-     "big": null,
+     "big": "\"WHAT PROGRAM ARE YOU ON?\"",
      "sub": null,
      "num": null,
      "lista": null,
@@ -1158,7 +1154,7 @@
      "figs": [
       {
        "p": "heroi",
-       "x": 560,
+       "x": 640,
        "a": 760
       },
       {
@@ -1170,8 +1166,8 @@
      ],
      "mao": null,
      "aviso": null,
-     "bigy": null,
-     "c": null,
+     "bigy": 1,
+     "c": 1,
      "obj": null,
      "face": null,
      "zoom": null,
@@ -1257,7 +1253,7 @@
  {
   "cena": "semana3",
   "et": null,
-  "fonte": "Munn et al. 2004 · J Appl Physiol · meta-analysis  |  Ranganathan et al. 2004 · Neuropsychologia",
+  "fonte": null,
   "falas": [
    {
     "txt": "Week three. You tweak your left wrist, so you only train your right arm.",
@@ -1328,8 +1324,8 @@
     "p": 0.3,
     "v": {
      "icone": null,
-     "big": null,
-     "sub": null,
+     "big": "STRONGER",
+     "sub": "and you NEVER trained it",
      "num": null,
      "lista": null,
      "cart": null,
@@ -1340,7 +1336,7 @@
      "figs": null,
      "mao": null,
      "aviso": null,
-     "bigy": null,
+     "bigy": 1,
      "c": null,
      "obj": null,
      "face": {
@@ -1488,7 +1484,7 @@
     "p": 0,
     "v": {
      "icone": null,
-     "big": null,
+     "big": "THE STRANGEST EXPERIMENT",
      "sub": null,
      "num": null,
      "lista": null,
@@ -1506,8 +1502,8 @@
      ],
      "mao": null,
      "aviso": null,
-     "bigy": null,
-     "c": null,
+     "bigy": 1,
+     "c": 1,
      "obj": null,
      "face": null,
      "zoom": 1.2,
@@ -1754,7 +1750,7 @@
  {
   "cena": "mes1",
   "et": null,
-  "fonte": "Mersmann, Bohm & Arampatzis 2017 · Frontiers in Physiology · review",
+  "fonte": null,
   "falas": [
    {
     "txt": "Month one. You start noticing it outside the gym.",
@@ -1796,7 +1792,7 @@
     "p": 0,
     "v": {
      "icone": null,
-     "big": null,
+     "big": "ONE JUMP. CAUGHT.",
      "sub": null,
      "num": null,
      "lista": null,
@@ -1814,8 +1810,8 @@
      ],
      "mao": null,
      "aviso": null,
-     "bigy": null,
-     "c": null,
+     "bigy": 1,
+     "c": 1,
      "obj": null,
      "face": null,
      "zoom": 1.12,
@@ -1868,7 +1864,7 @@
     "p": 0,
     "v": {
      "icone": null,
-     "big": null,
+     "big": "DAD GAVE UP. YOU DIDN'T.",
      "sub": null,
      "num": null,
      "lista": null,
@@ -1881,18 +1877,18 @@
       {
        "p": "pai_choque",
        "x": 640,
-       "a": 820
+       "a": 760
       },
       {
        "p": "heroi_deboche",
        "x": 1250,
-       "a": 780
+       "a": 740
       }
      ],
      "mao": null,
      "aviso": null,
-     "bigy": null,
-     "c": null,
+     "bigy": 1,
+     "c": 1,
      "obj": null,
      "face": null,
      "zoom": null,
@@ -2167,14 +2163,14 @@
  {
   "cena": "mes6",
   "et": null,
-  "fonte": "Mersmann, Bohm & Arampatzis 2017 · Frontiers in Physiology",
+  "fonte": null,
   "falas": [
    {
     "txt": "Month six. You're lifting weights that make the whole gym stop and stare.",
     "p": 0,
     "v": {
      "icone": null,
-     "big": null,
+     "big": "THE WHOLE GYM STARES",
      "sub": null,
      "num": null,
      "lista": null,
@@ -2186,17 +2182,22 @@
      "figs": [
       {
        "p": "heroi_barra",
-       "x": 960,
+       "x": 640,
        "a": 640
+      },
+      {
+       "p": "academia_choque",
+       "x": 1320,
+       "a": 800
       }
      ],
      "mao": null,
      "aviso": null,
-     "bigy": null,
-     "c": null,
+     "bigy": 1,
+     "c": 1,
      "obj": null,
      "face": null,
-     "zoom": 1.08,
+     "zoom": null,
      "foco": null,
      "tl": 4
     }
@@ -2521,7 +2522,7 @@
  {
   "cena": "ano1",
   "et": null,
-  "fonte": "Tendon loading: Mersmann, Bohm & Arampatzis 2017 (≈3 s high-strain contractions)",
+  "fonte": null,
   "falas": [
    {
     "txt": "Year one. Here's how you'd actually do it. One lock at a time.",
@@ -2803,7 +2804,7 @@
     "p": 0,
     "v": {
      "icone": null,
-     "big": null,
+     "big": "NOBODY SEES IT COMING",
      "sub": null,
      "num": null,
      "lista": null,
@@ -2821,8 +2822,8 @@
      ],
      "mao": null,
      "aviso": null,
-     "bigy": null,
-     "c": null,
+     "bigy": 1,
+     "c": 1,
      "obj": null,
      "face": null,
      "zoom": 1.15,
@@ -2838,7 +2839,7 @@
     "p": 0,
     "v": {
      "icone": null,
-     "big": null,
+     "big": "\"HOW?\"",
      "sub": null,
      "num": null,
      "lista": null,
@@ -2861,8 +2862,8 @@
      ],
      "mao": null,
      "aviso": null,
-     "bigy": null,
-     "c": null,
+     "bigy": 1,
+     "c": 1,
      "obj": null,
      "face": null,
      "zoom": 1.06,
@@ -2946,7 +2947,7 @@
     "p": 4.5,
     "v": {
      "icone": null,
-     "big": null,
+     "big": "NEXT: FARMER VS GYM GUY",
      "sub": null,
      "num": null,
      "lista": null,
@@ -2959,18 +2960,18 @@
       {
        "p": "fazendeiro",
        "x": 640,
-       "a": 820
+       "a": 760
       },
       {
        "p": "academia",
        "x": 1300,
-       "a": 860
+       "a": 800
       }
      ],
      "mao": null,
      "aviso": null,
-     "bigy": null,
-     "c": null,
+     "bigy": 1,
+     "c": 1,
      "obj": null,
      "face": null,
      "zoom": null,

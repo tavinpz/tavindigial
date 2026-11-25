@@ -104,7 +104,7 @@ const Corda: React.FC<{ g: number; t0: number; o: V; antes: number }> = ({ g, t0
     <text x={1700} y={y + 14} textAnchor="middle" fontFamily={TIT} fontSize={44} fill={K.osso}>BAR</text>
     {Array.from({ length: n }).map((_, i) => {
       const x = 300 + i * 132, era = i < Math.round(antes * n), eh = i < Math.round(on * n);
-      const k = eh ? (era ? 1 : L(g, [t0 + 6 + i * 3, t0 + 16 + i * 3], [0, 1])) : 0, puxa = k * (6 + 3 * Math.sin(g / 4 + i));
+      const k = eh ? (era ? 1 : L(g, [t0 + 6 + i * 3, t0 + 16 + i * 3], [0, 1])) : 0, puxa = k * (o.rapido ? 10 + 9 * Math.sin(g / 1.6 + i) : 6 + 3 * Math.sin(g / 4 + i));
       const cor = eh ? K.osso : '#4a4a50', hy = y - 150 + 70 * (1 - k);
       return <g key={i} transform={`translate(${x - puxa},0)`}>
         <circle cx={-k * 18} cy={hy - 30} r={26} fill={cor} />
@@ -113,7 +113,9 @@ const Corda: React.FC<{ g: number; t0: number; o: V; antes: number }> = ({ g, t0
         <path d={`M 0,${y + 60 - 30 * (1 - k)} L ${-30 - 20 * k},${y + 150} M 0,${y + 60 - 30 * (1 - k)} L ${40 - 30 * (1 - k)},${y + 150}`} {...st(cor, 12)} />
       </g>;
     })}
-    <text x={960} y={y + 250} textAnchor="middle" fontFamily={TIT} fontSize={70} fill={K.osso} letterSpacing={2}>{Math.round(on * 100)}<tspan fill={K.cinza} fontSize={44}> / 100 PULLING</tspan></text>
+    {o.rapido ? <text x={960} y={y + 250} textAnchor="middle" fontFamily={TIT} fontSize={70} fill={K.verm} letterSpacing={2}>FIRING FASTER<tspan fill={K.cinza} fontSize={44}> · EVERY ONE PULLS HARDER</tspan></text>
+      : <text x={960} y={y + 250} textAnchor="middle" fontFamily={TIT} fontSize={70} fill={K.osso} letterSpacing={2}>{Math.round(on * 100)}<tspan fill={K.cinza} fontSize={44}> / 100 PULLING</tspan></text>}
+    {o.rapido && Array.from({ length: 10 }).map((_, i) => <path key={'r' + i} d={`M ${300 + i * 132 - 60},${y - 200} l 16,-26 l 10,18 l 16,-30`} {...st(K.ambar, 6)} opacity={0.5 + 0.5 * Math.sin(g / 2 + i)} />)}
   </g>;
 };
 const Cartao: React.FC<{ g: number; t0: number; o: V }> = ({ g, t0, o }) => {
