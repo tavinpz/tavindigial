@@ -149,12 +149,12 @@ function ConfigCanal({ c }) {
 export function TesteAB({ v, titulo, capas, titulos }) {
   const n = Math.max(capas.length, titulos.length)
   if (!n) return null
-  const pares = Array.from({ length: Math.min(n, 3) }, (_, k) => ({ capa: capas[k], titulo: titulos[k] || titulos[0] || titulo }))
+  const pares = Array.from({ length: n }, (_, k) => ({ capa: capas[k], titulo: titulos[k] || titulos[0] || titulo }))
   return (
     <section className="yl-ab">
       <header>
         <h2>Teste A/B · {pares.length} versões</h2>
-        <p className="v-dica">Studio → Thumbnail → "Testar e comparar" → "Título e thumbnail". Capa N com título N. Não mexer por 3–4 dias.</p>
+        <p className="v-dica">Studio → Thumbnail → "Testar e comparar" → "Título e thumbnail". Capa N com título N. {pares.length > 3 ? 'O YouTube testa até 3: escolha 3 versões. ' : ''}Não mexer por 3–4 dias.</p>
       </header>
       <div className="yl-ab-lista">
         {pares.map((par, k) => (
