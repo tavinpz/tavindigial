@@ -5,7 +5,7 @@
   "fonte": null,
   "falas": [
    {
-    "txt": "What if tomorrow morning you woke up twice as strong, and you didn't gain a single pound?",
+    "txt": "What if tomorrow morning, you woke up twice as strong, and didn't gain a single pound?",
     "p": 0,
     "v": {
      "icone": null,
@@ -46,7 +46,111 @@
     }
    },
    {
-    "txt": "Same body. Same T-shirt. Same number on the scale.",
+    "txt": "Your heaviest grocery bags? Weightless.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": null,
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi_deboche",
+       "x": 470,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": null,
+     "c": null,
+     "obj": [
+      {
+       "t": "sacolas",
+       "x": 1080
+      }
+     ],
+     "face": null,
+     "zoom": null,
+     "foco": null
+    }
+   },
+   {
+    "txt": "The bar that crushed you yesterday? It bends.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "IT BENDS",
+     "sub": null,
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi_barra_dobra",
+       "x": 960,
+       "a": 660
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": 1,
+     "c": 1,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null,
+     "imp": 1
+    }
+   },
+   {
+    "txt": "The biggest guy in your gym? You out lift him. And you look exactly the same.",
+    "p": 0,
+    "v": {
+     "icone": null,
+     "big": "YOU OUT-LIFT HIM",
+     "sub": "and LOOK the same",
+     "num": null,
+     "lista": null,
+     "cart": null,
+     "rank": null,
+     "barras": null,
+     "anel": null,
+     "brilho": null,
+     "figs": [
+      {
+       "p": "heroi_deboche",
+       "x": 640,
+       "a": 720
+      },
+      {
+       "p": "academia_choque",
+       "x": 1300,
+       "a": 800
+      }
+     ],
+     "mao": null,
+     "aviso": null,
+     "bigy": 1,
+     "c": 1,
+     "obj": null,
+     "face": null,
+     "zoom": null,
+     "foco": null
+    }
+   },
+   {
+    "txt": "Same body. Same scale. Plus zero.",
     "p": 0,
     "v": {
      "icone": null,
@@ -73,10 +177,11 @@
      "obj": [
       {
        "t": "balanca",
-       "n": "72.4 KG",
+       "n": "+0.0 KG",
        "x": 1260,
        "y": 700,
-       "igual": 1
+       "igual": 1,
+       "fixo": 1
       }
      ],
      "face": null,
@@ -85,11 +190,11 @@
     }
    },
    {
-    "txt": "But the bar that crushed you yesterday now bends in your hands.",
+    "txt": "Sounds like a superpower.",
     "p": 0,
     "v": {
      "icone": null,
-     "big": "IT BENDS",
+     "big": "SUPERPOWER?",
      "sub": null,
      "num": null,
      "lista": null,
@@ -100,9 +205,9 @@
      "brilho": null,
      "figs": [
       {
-       "p": "heroi_barra_dobra",
+       "p": "heroi_deboche",
        "x": 960,
-       "a": 660
+       "a": 760
       }
      ],
      "mao": null,
@@ -111,16 +216,12 @@
      "c": 1,
      "obj": null,
      "face": null,
-     "zoom": 1.15,
-     "foco": [
-      960,
-      470
-     ],
-     "imp": 1
+     "zoom": 1.04,
+     "foco": null
     }
    },
    {
-    "txt": "And part of this has already been measured. In real people.",
+    "txt": "But the first part of it has already been measured, in real people.",
     "p": 0,
     "v": {
      "icone": null,
@@ -154,7 +255,7 @@
     }
    },
    {
-    "txt": "But the reason it works is also the reason it could hurt you.",
+    "txt": "And by month six, something goes very wrong.",
     "p": 0,
     "v": {
      "icone": null,
@@ -181,6 +282,7 @@
      "face": null,
      "zoom": null,
      "foco": null,
+     "tl": 4,
      "imp": 1
     }
    },

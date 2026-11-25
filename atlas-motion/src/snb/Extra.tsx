@@ -39,14 +39,14 @@ export const Rosto: React.FC<{ g: number; t0: number; f: V }> = ({ g, t0, f }) =
 
 // ---------- objetos ----------
 const Balanca: React.FC<{ g: number; t0: number; o: V }> = ({ g, t0, o }) => {
-  const { o: op, s } = ent(g, t0), x = o.x ?? 960, y = o.y ?? 760, roda = g - t0 < 22;
+  const { o: op, s } = ent(g, t0), x = o.x ?? 960, y = o.y ?? 760, roda = !o.fixo && g - t0 < 22;
   const num = roda ? (60 + ((g * 7.3) % 30)).toFixed(1) + ' KG' : o.n;
   return <g opacity={op} transform={`translate(${x},${y + (1 - Math.min(1, s)) * 30}) scale(1.45)`}>
     <rect x={-230} y={-40} width={460} height={110} rx={34} fill={K.osso} stroke={K.tinta} strokeWidth={7} />
     <rect x={-230} y={42} width={460} height={28} rx={14} fill="#c9c1b1" />
     <rect x={-120} y={-18} width={240} height={64} rx={10} fill="#10241a" stroke={K.tinta} strokeWidth={5} />
     <text x={0} y={30} textAnchor="middle" fontFamily={TIT} fontSize={50} fill={K.verde} letterSpacing={3}>{num}</text>
-    {!roda && o.igual && <text x={0} y={-70} textAnchor="middle" fontFamily={SANS} fontWeight={900} fontSize={44} fill={K.osso} opacity={L(g, [t0 + 24, t0 + 32], [0, 1])}>SAME NUMBER</text>}
+    {!roda && o.igual && <text x={0} y={-70} textAnchor="middle" fontFamily={SANS} fontWeight={900} fontSize={44} fill={K.osso} opacity={L(g, [t0 + (o.fixo ? 6 : 24), t0 + (o.fixo ? 14 : 32)], [0, 1])}>{o.fixo ? 'GAINED OVERNIGHT' : 'SAME NUMBER'}</text>}
   </g>;
 };
 const Galao: React.FC<{ g: number; t0: number; o: V }> = ({ g, t0, o }) => {

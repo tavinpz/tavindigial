@@ -17,12 +17,18 @@ GRANDE = lambda x=1360, p='academia_choque', **o: fig(p, x, 800, **o)
 
 # ---------------- 0:00 abertura: o 1º quadro é a capa; a 1ª frase é o título ----------------
 B('abertura', falas=[
- F("What if tomorrow morning you woke up twice as strong, and you didn't gain a single pound?",
+ # gancho = título; depois 4 batidas rápidas de prova (cada uma uma imagem nova), o "sério?" com estudo, o spoiler do mês 6 e o plano
+ F("What if tomorrow morning, you woke up twice as strong, and didn't gain a single pound?",
    **N(figs=[HEROI_BARRA(ja=1), GRANDE(ja=1)], zoom=1.06, foco=[900, 520], big='2X STRONGER · +0 KG', bigy=1, c=1)),
- F("Same body. Same T-shirt. Same number on the scale.", **N(figs=[fig('heroi_deboche', 470)], obj=[dict(t='balanca', n='72.4 KG', x=1260, y=700, igual=1)])),
- F("But the bar that crushed you yesterday now bends in your hands.", **N(figs=[HEROI_BARRA(960)], zoom=1.15, foco=[960, 470], imp=1, big='IT BENDS', bigy=1, c=1)),
- F("And part of this has already been measured. In real people.", **N(obj=[dict(t='cartao', tit='MEASURED IN REAL PEOPLE', l=['1979 · strength jumps, muscle barely grows', '2004 · stronger without lifting anything'])])),
- F("But the reason it works is also the reason it could hurt you.", **N(obj=[dict(t='motor', estado='rompe')], imp=1)),
+ F("Your heaviest grocery bags? Weightless.", **N(figs=[fig('heroi_deboche', 470)], obj=[dict(t='sacolas', x=1080)])),
+ F("The bar that crushed you yesterday? It bends.", **N(figs=[HEROI_BARRA(960)], imp=1, big='IT BENDS', bigy=1, c=1)),
+ F("The biggest guy in your gym? You out lift him. And you look exactly the same.",
+   **N(figs=[fig('heroi_deboche', 640, 720), GRANDE(1300)], big='YOU OUT-LIFT HIM', sub='and LOOK the same', bigy=1, c=1)),
+ F("Same body. Same scale. Plus zero.", **N(figs=[fig('heroi_deboche', 470)], obj=[dict(t='balanca', n='+0.0 KG', x=1260, y=700, igual=1, fixo=1)])),
+ F("Sounds like a superpower.", **N(figs=[fig('heroi_deboche', 960, 760)], zoom=1.04, big='SUPERPOWER?', bigy=1, c=1)),
+ F("But the first part of it has already been measured, in real people.",
+   **N(obj=[dict(t='cartao', tit='MEASURED IN REAL PEOPLE', l=['1979 · strength jumps, muscle barely grows', '2004 · stronger without lifting anything'])])),
+ F("And by month six, something goes very wrong.", **N(tl=4, obj=[dict(t='motor', estado='rompe')], imp=1)),
  F("So let's run it. Day by day. And find out what breaks first.", **N(tl=0, obj=[dict(t='cadeados', n=3, ab=0, y=600, rot=['?', '?', '?'])])),
 ])
 
