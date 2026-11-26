@@ -1788,3 +1788,15 @@ a.crm-btn { text-decoration: none; display: inline-flex; align-items: center; }
 @media (max-width: 600px) {
   .yl-ab-lista { grid-template-columns: 1fr 1fr; }
 }
+
+/* Formato do vídeo em todos os canais (YouTube longo × Short/Reels) */
+.pl-formato { margin-left: auto; flex: none; font-size: 10.5px; font-weight: 800; border-radius: 999px; padding: 1px 8px; white-space: nowrap; letter-spacing: .1px; }
+.pl-redes + .pl-formato { margin-left: 0; }
+.pl-formato--longo { background: #FFE3E0; color: #B3261E; }
+.pl-formato--curto { background: #F1E6FF; color: #5B2C83; }
+.pl-formatos { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; }
+.pl-formatos__b { border: 1px solid #E4DDEB; background: #fff; color: #3B3346; border-radius: 999px; padding: 5px 12px; font-size: 12.5px; font-weight: 700; cursor: pointer; }
+.pl-formatos__b b { font-weight: 800; opacity: .6; margin-left: 2px; }
+.pl-formatos__b.on { background: #2A2233; border-color: #2A2233; color: #fff; }
+.pl-formatos__b--longo.on { background: #B3261E; border-color: #B3261E; }
+.pl-formatos__b--curto.on { background: #5B2C83; border-color: #5B2C83; }
