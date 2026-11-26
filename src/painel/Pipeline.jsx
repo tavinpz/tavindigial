@@ -108,6 +108,16 @@ function Status({ item, papel }) {
   return null
 }
 
+// Formato do cartão em todos os canais: vídeo longo do YouTube (deitado) × vídeo curto (Short / Reels / TikTok).
+// Post estático e carrossel (Tavin Digital) não entram: continuam com o selo do tipo deles.
+export const formatoDe = (item) => item.tipo === 'longo' ? 'longo' : (!item.tipo || item.tipo === 'video') ? 'curto' : null
+function SeloFormato({ item }) {
+  const f = formatoDe(item)
+  if (f === 'longo') return <span className="pl-formato pl-formato--longo" title="Vídeo longo (horizontal) para o YouTube">▶ YouTube{item.tipoNome ? ` · ${item.tipoNome}` : ''}</span>
+  if (f === 'curto') return <span className="pl-formato pl-formato--curto" title="Vídeo curto (vertical): YouTube Shorts, Instagram Reels e TikTok">▮ Short · Reels</span>
+  return null
+}
+
 function Cartao({ item, fase, papel, fases, abrir, previa, arrastar, arrastando, mover }) {
   const [pode, setPode] = useState(true)
   const arrastavel = pode && item.movel !== false
@@ -128,7 +138,7 @@ function Cartao({ item, fase, papel, fases, abrir, previa, arrastar, arrastando,
               {item.redes.map((r) => <i key={r.sigla} className={`pl-rede pl-rede--${r.s}`} title={`${r.nome}: ${r.dica || r.s}`}>{r.sigla}{r.s === 'programado' ? ' ◷' : r.s === 'postado' ? ' ✓' : ''}</i>)}
             </span>
           )}
-          {item.tipoNome && <span className={`pl-tipo pl-tipo--${item.tipo}`}>{item.tipoNome}</span>}
+          {formatoDe(item) ? <SeloFormato item={item} /> : item.tipoNome && <span className={`pl-tipo pl-tipo--${item.tipo}`}>{item.tipoNome}</span>}
         </span>
       </button>
       {item.movel !== false && (
@@ -552,8 +562,13 @@ export default function Pipeline({ canal, fases = FASES_PADRAO, itens, mover, pr
     setLocal((l) => { const x = { ...l }; delete x[chave]; return x })
   }
 
+  const temLongo = itens.some((i) => formatoDe(i) === 'longo'), temCurto = itens.some((i) => formatoDe(i) === 'curto')
+  const [formato, setFormato] = useState(() => lerLS(`pl-formato-${canal.id}`, 'todos'))
+  useEffect(() => gravarLS(`pl-formato-${canal.id}`, formato), [formato, canal.id])
+  const ambos = temLongo && temCurto
+  const noFiltro = (i) => !ambos || formato === 'todos' || formatoDe(i) === formato
   const col = Object.fromEntries(fases.map((f) => [f.k, []]))
-  for (const i of itens) col[fase(i)]?.push(i)
+  for (const i of itens) if (noFiltro(i)) col[fase(i)]?.push(i)
   for (const f of fases) {
     if (f.papel === 'programado') col[f.k].sort((a, b) => (a.quando || '').localeCompare(b.quando || '') || b.ordem.localeCompare(a.ordem))
     else if (f.papel === 'postado') col[f.k].sort((a, b) => (b.postado || '').localeCompare(a.postado || '') || b.ordem.localeCompare(a.ordem))
@@ -593,6 +608,13 @@ export default function Pipeline({ canal, fases = FASES_PADRAO, itens, mover, pr
       </header>
       {ocupado && <p className="pl-ocupado" role="status">{ocupado}</p>}
 
+      {ambos && (
+        <div className="pl-formatos" role="group" aria-label="Filtrar por formato">
+          {[['todos', 'Todos', itens.length], ['longo', '▶ YouTube longos', itens.filter((i) => formatoDe(i) === 'longo').length], ['curto', '▮ Shorts · Reels', itens.filter((i) => formatoDe(i) === 'curto').length]].map(([k, nome, n]) => (
+            <button key={k} type="button" aria-pressed={formato === k} className={`pl-formatos__b pl-formatos__b--${k} ${formato === k ? 'on' : ''}`} onClick={() => setFormato(k)}>{nome} <b>{n}</b></button>
+          ))}
+        </div>
+      )}
       <div className="pl-vistas" role="tablist" aria-label="Ver como">
         <button type="button" role="tab" aria-selected={vista === 'quadro'} className={vista === 'quadro' ? 'on' : ''} onClick={() => setVista('quadro')}>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h5v16H4zM10 4h5v10h-5zM16 4h4v13h-4z" /></svg>Quadro
