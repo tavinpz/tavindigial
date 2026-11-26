@@ -106,6 +106,9 @@ const CAPAS: Record<string, React.ReactNode> = {
     <Svg>
       <text x={860} y={130} textAnchor="middle" fontFamily={NUN} fontWeight={900} fontSize={96} fill="#fff" stroke="#0B1E5C" strokeWidth={12} paintOrder="stroke">they're <tspan fill="#FFC531">weaker</tspan></text>
     </Svg></>,
+  // #06 refeita no padrão do canal (26/11): fundo preto, herói grande com antebraço âmbar, 2 palavras, seta vermelha
+  d6: <><P p="heroi_barra_dobra_ambar" x={380} a={740} base={1010} />
+    <Svg><T x={910} y={330} t="same *body*" s={112} /><Seta x1={800} y1={380} x2={560} y2={470} c={-0.25} /></Svg></>,
 };
 export const SNBThumb: React.FC<{ v: string }> = ({ v }) => (
   <AbsoluteFill style={{ background: '#000', overflow: 'hidden' }}>{CAPAS[v] || CAPAS[v + '1']}</AbsoluteFill>

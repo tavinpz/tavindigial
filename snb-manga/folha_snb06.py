@@ -27,6 +27,7 @@ def pose(nome):
     if nome.startswith('heroi_') and nome.split('_')[1] in ('choque', 'deboche', 'esforco', 'dor'):
         return figura('frente', exp=nome.split('_')[1])
     if nome == 'heroi_barra_dobra': return barra_dobrada(-452) + figura('pendurado', pe='chao', exp='deboche')
+    if nome == 'heroi_barra_dobra_ambar': return barra_dobrada(-452) + figura('pendurado', True, pe='chao', exp='deboche')
     if nome == 'heroi_barra':       return halter_barra(-452) + figura('pendurado', pe='chao', exp='esforco')
     if nome == 'heroi_barra_dor':   return halter_barra(-452) + figura('pendurado', True, pe='chao', exp='dor')
     if nome == 'academia_choque':   return figura('frente', larg=1.24, cor=CINZA, reto=True, exp='choque')
@@ -35,7 +36,7 @@ def pose(nome):
     if nome.startswith('rosto_'):   return figura('frente', exp=nome.split('_')[1])
     raise SystemExit(nome)
 
-CORPO = ['heroi_choque', 'heroi_deboche', 'heroi_esforco', 'heroi_dor', 'heroi_barra_dobra', 'heroi_barra', 'heroi_barra_dor', 'academia_choque', 'pai_choque']
+CORPO = ['heroi_barra_dobra_ambar', 'heroi_choque', 'heroi_deboche', 'heroi_esforco', 'heroi_dor', 'heroi_barra_dobra', 'heroi_barra', 'heroi_barra_dor', 'academia_choque', 'pai_choque']
 ROSTO = ['rosto_choque', 'rosto_deboche', 'rosto_esforco', 'rosto_dor', 'rosto_academia_choque']
 
 def svg_pose(nome):
