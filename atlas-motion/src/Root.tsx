@@ -22,8 +22,10 @@ import { TCVideo } from './tc/Video';
 import { BunkerTeste, BUNKER_FRAMES } from './bunker/Teste';
 import { Bunker01, BUNKER01_FRAMES } from './bunker/Video01';
 import { BunkerThumb, BunkerMarca } from './bunker/Thumbs';
+import { BunkerThumbV2 } from './bunker/ThumbsV2';
 import { BunkerEp } from './bunker/Serie';
 import { TCThumb } from './tc/Thumbs';
+import { TCThumbV4 } from './tc/ThumbsV4';
 import temposSNB from '../public/snb/teste/tempos.json';
 import { Thumb } from './b52/Thumbs';
 import temposCW01 from '../public/b52/tempos.json';
@@ -31,6 +33,7 @@ import { Crosswind02 } from './sr71/Crosswind02';
 import { Thumb02 } from './sr71/Thumbs02';
 import { Crosswind03 } from './a380/Crosswind03';
 import { Thumb03 } from './a380/Thumbs03';
+import { CWThumbV3 } from './b52/ThumbsV3';
 import temposCW03 from '../public/a380/tempos.json';
 import temposCW02 from '../public/sr71/tempos.json';
 import marcasB52v2 from '../public/b52/marcas2.json';
@@ -60,6 +63,7 @@ export const Root: React.FC = () => (
       <Composition id="SNBTeste" component={SNBTeste as any} width={1920} height={1080} fps={30} durationInFrames={Math.ceil(temposSNB.total * 30)} defaultProps={{ tempos: temposSNB as any }} />
       <Composition id="CWThumb" component={Thumb as any} durationInFrames={1} fps={30} width={1280} height={720} defaultProps={{ v: 'a' }} />
     <Composition id="Crosswind03" component={Crosswind03 as any} durationInFrames={Math.ceil(temposCW03.total * 30)} fps={30} width={1920} height={1080} defaultProps={{ tempos: temposCW03 }} />
+    <Composition id="CWThumbV3" component={CWThumbV3 as any} durationInFrames={1} fps={30} width={1280} height={720} defaultProps={{ v: '1a' }} />
     <Composition id="CWThumb03" component={Thumb03 as any} durationInFrames={1} fps={30} width={1280} height={720} defaultProps={{ v: 'a' }} />
     <Composition id="CWThumb02" component={Thumb02 as any} durationInFrames={1} fps={30} width={1280} height={720} defaultProps={{ v: 'a' }} />
     <Composition id="Crosswind02" component={Crosswind02 as any} durationInFrames={Math.ceil(temposCW02.total * 30)} fps={30} width={1920} height={1080} defaultProps={{ tempos: temposCW02 }} />
@@ -147,10 +151,12 @@ export const Root: React.FC = () => (
     <Composition id="BunkerTeste" component={BunkerTeste as any} width={1920} height={1080} fps={30} durationInFrames={BUNKER_FRAMES} />
     <Composition id="BunkerLogo" component={BunkerMarca as any} width={800} height={800} fps={30} durationInFrames={1} defaultProps={{ tipo: 'logo' }} />
     <Composition id="BunkerBanner" component={BunkerMarca as any} width={2560} height={1440} fps={30} durationInFrames={1} defaultProps={{ tipo: 'banner' }} />
+    <Composition id="BunkerThumbV2" component={BunkerThumbV2 as any} width={1280} height={720} fps={30} durationInFrames={1} defaultProps={{ v: '1a' }} />
     <Composition id="BunkerThumb" component={BunkerThumb as any} width={1280} height={720} fps={30} durationInFrames={1} defaultProps={{ v: 'a' }} />
     <Composition id="BunkerEp" component={BunkerEp as any} width={1920} height={1080} fps={30} durationInFrames={300} defaultProps={{ pasta: 'bunker/v02' }}
       calculateMetadata={async ({ props }: any) => { const tempos = await fetch(staticFile(`${props.pasta}/tempos.json`)).then((x) => x.json()); return { durationInFrames: props.n || Math.ceil(tempos.total * 30), props: { ...props, tempos } }; }} />
     <Composition id="Bunker01" component={Bunker01 as any} width={1920} height={1080} fps={30} durationInFrames={BUNKER01_FRAMES} />
+    <Composition id="TCThumbV4" component={TCThumbV4 as any} width={1280} height={720} fps={30} durationInFrames={1} defaultProps={{ v: '1' }} />
     <Composition id="TCThumb" component={TCThumb as any} width={1280} height={720} fps={30} durationInFrames={1} defaultProps={{ v: 'a' }} />
   </>
 );
