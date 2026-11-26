@@ -112,3 +112,76 @@ export const TCThumbV4: React.FC<{ v?: string }> = ({ v = '1' }) => {
     </AbsoluteFill>
   );
 };
+
+// ---------- B: uma cena só (a consequência), fundo de cor própria por vídeo, pergunta gigante ----------
+const CORB: Record<string, [string, string]> = { '1': ['#24476e', '#173250'], '2': ['#3a2350', '#28173a'], '3': ['#5a2a1e', '#3e1c14'], '4': ['#1f4d45', '#133630'], '5': ['#4f3a12', '#36270b'] };
+const B_CFG: Record<string, { l1: string; l2: string; idade: string; cena: React.ReactNode }> = {
+  '1': { l1: 'WHY DID HE', l2: 'STOP TRYING?', idade: 'AGE 60', cena: (<>
+    <Peao x={520} base={1180} h={980} tipo="sam" cor={CRIANCA} velho oculos humor="triste" olhao lagrima olhar={[0.6, 0.4]} />
+    <g transform="translate(1390 690) rotate(8)"><rect x={-230} y={-290} width={460} height={580} rx={14} fill="#fff" stroke="#111" strokeWidth={10} />
+      <text x={0} y={-140} textAnchor="middle" fontFamily={AN} fontSize={120} fill="#bbb">A+</text>
+      <text x={0} y={190} textAnchor="middle" fontFamily={AN} fontSize={300} fill="#ff4a3d">?</text></g>
+  </>) },
+  '2': { l1: 'WHY NOBODY', l2: 'CALLS HIM', idade: 'AGE 60', cena: (<>
+    <Peao x={520} base={1180} h={980} tipo="pai" cor={ADULTO} velho oculos humor="triste" olhao olhar={[0.7, 0.4]} />
+    <g transform="translate(1400 680) scale(2.1)"><Fone x={0} y={0} t1="0" t2="CALLS" /></g>
+  </>) },
+  '3': { l1: "30 AND CAN'T", l2: 'PAY ONE BILL', idade: 'AGE 30', cena: (<>
+    <Peao x={520} base={1180} h={980} tipo="filho" cor={CRIANCA} humor="choque" olhao lagrima olhar={[0.6, 0.4]} />
+    {[0, 1, 2, 3].map((i) => <Papel key={i} x={1250 + i * 110} y={560 + (i % 2) * 120} nota="BILL" rot={-18 + i * 12} larg={260} cor={P.coral} />)}
+  </>) },
+  '4': { l1: 'HE NEVER', l2: 'DREW AGAIN', idade: 'AGE 60', cena: (<>
+    <Peao x={520} base={1180} h={980} tipo="filho" cor={CRIANCA} velho oculos humor="triste" olhao olhar={[0.6, 0.5]} />
+    <g transform="translate(1400 700) rotate(-6)"><rect x={-260} y={-300} width={520} height={600} fill="#f4efe2" stroke="#6b4a2a" strokeWidth={26} />
+      <rect x={-30} y={300} width={60} height={160} fill="#6b4a2a" /><g transform="translate(150 230) rotate(-40)"><rect x={-18} y={-150} width={36} height={300} fill="#ffd21f" stroke="#111" strokeWidth={6} /><path d="M-18 150 L0 200 L18 150 Z" fill="#f2c79a" stroke="#111" strokeWidth={6} /></g></g>
+  </>) },
+  '5': { l1: 'ALL THESE', l2: 'AND STILL SAD?', idade: 'AGE 60', cena: (<>
+    <Peao x={520} base={1180} h={980} tipo="filho" cor={CRIANCA} velho oculos humor="triste" olhao lagrima olhar={[0.6, 0.5]} />
+    {[[1250, 900, 3], [1450, 930, 3.6], [1650, 900, 3], [1350, 700, 2.6], [1560, 690, 2.6]].map(([x, y, k], i) => <g key={i} transform={`translate(${x} ${y}) scale(${k})`}><Trofeu x={0} lado="a" /></g>)}
+  </>) },
+};
+export const TCThumbV4B: React.FC<{ v?: string }> = ({ v = '1' }) => {
+  const c = B_CFG[v] || B_CFG['1']; const [c1, c2] = CORB[v] || CORB['1'];
+  return (
+    <AbsoluteFill style={{ background: '#000' }}>
+      <svg viewBox="0 0 1920 1080" width={1280} height={720}>
+        <rect width={1920} height={1080} fill={c1} /><rect y={BASE + 40} width={1920} height={200} fill={c2} />
+        <circle cx={1400} cy={640} r={420} fill="#fff" opacity={0.08} />
+        {c.cena}
+        <text x={1880} y={170} textAnchor="end" fontFamily={AN} fontSize={150} fill="#fff" stroke="#111" strokeWidth={14} paintOrder="stroke">{c.l1}</text>
+        <text x={1880} y={320} textAnchor="end" fontFamily={AN} fontSize={150} fill="#ff4a3d" stroke="#111" strokeWidth={14} paintOrder="stroke">{c.l2}</text>
+        <Idade x={40} t={c.idade} />
+      </svg>
+    </AbsoluteFill>
+  );
+};
+
+// ---------- C: as duas vidas na mesma idade + placar (molde "WHO GETS THE TRUTH? 0 vs 5") ----------
+const C_CFG: Record<string, { perg: string; pl: [string, string]; rot: string; e: string; d: string; idade: string; tipo: any; velho?: boolean }> = {
+  '1': { perg: 'WHO KEPT TRYING?', pl: ['1', '10'], rot: 'HARD THINGS TRIED', e: '"SO SMART"', d: '"WORKED HARD"', idade: 'AGE 60', tipo: 'sam', velho: true },
+  '2': { perg: 'WHO TELLS THE TRUTH?', pl: ['0', '6'], rot: 'TIMES THEY TOLD THE TRUTH', e: '"I SAID SO"', d: '"HERE\'S WHY"', idade: 'AGE 60', tipo: 'pai', velho: true },
+  '3': { perg: 'WHO CAN HANDLE IT?', pl: ['0', '8'], rot: 'PROBLEMS SOLVED ALONE', e: '"LET ME DO IT"', d: '"YOU TRY FIRST"', idade: 'AGE 30', tipo: 'filho' },
+  '4': { perg: 'WHO STILL LOVES IT?', pl: ['0', '7'], rot: 'THINGS DONE JUST FOR FUN', e: '"I\'LL PAY YOU"', d: '"TELL ME MORE"', idade: 'AGE 60', tipo: 'filho', velho: true },
+  '5': { perg: 'WHO FEELS ENOUGH?', pl: ['1', '7'], rot: 'RISKS TAKEN', e: '"WHEN YOU WIN"', d: '"NO MATTER WHAT"', idade: 'AGE 60', tipo: 'filho', velho: true },
+};
+export const TCThumbV4C: React.FC<{ v?: string }> = ({ v = '1' }) => {
+  const c = C_CFG[v] || C_CFG['1'];
+  return (
+    <AbsoluteFill style={{ background: '#000' }}>
+      <svg viewBox="0 0 1920 1080" width={1280} height={720}>
+        <Sala x={0} cor="#252848" cor2="#1a1c36" noite />
+        <Sala x={960} cor="#7a2f4c" cor2="#5e2239" />
+        <Peao x={420} base={1150} h={760} tipo={c.tipo} cor={CRIANCA} velho={c.velho} oculos={c.velho} humor="triste" olhao lagrima olhar={[0.4, 0.5]} />
+        <Peao x={1500} base={1150} h={760} tipo={c.tipo} cor={CRIANCA} velho={c.velho} oculos={c.velho} humor="riso" olhao olhar={[-0.4, -0.2]} />
+        <rect x={954} width={12} height={1080} fill="#111" />
+        <g transform="translate(960 560)"><circle r={190} fill="#111" stroke="#ffd21f" strokeWidth={14} />
+          <text x={-30} y={60} textAnchor="end" fontFamily={AN} fontSize={190} fill="#ff4a3d">{c.pl[0]}</text>
+          <text x={0} y={40} textAnchor="middle" fontFamily={AN} fontSize={90} fill="#fff">|</text>
+          <text x={30} y={60} fontFamily={AN} fontSize={c.pl[1].length > 1 ? 150 : 190} fill="#ffd21f">{c.pl[1]}</text>
+          <text y={140} textAnchor="middle" fontFamily={AN} fontSize={26} fill="#fff">{c.rot}</text></g>
+        <text x={960} y={160} textAnchor="middle" fontFamily={AN} fontSize={140} fill="#fff" stroke="#111" strokeWidth={14} paintOrder="stroke">{c.perg}</text>
+        <Frase x={480} t={c.e} cor="#ff4a3d" /><Frase x={1440} t={c.d} cor="#ffffff" />
+      </svg>
+    </AbsoluteFill>
+  );
+};

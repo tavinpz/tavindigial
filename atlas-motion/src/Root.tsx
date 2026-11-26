@@ -25,7 +25,7 @@ import { BunkerThumb, BunkerMarca } from './bunker/Thumbs';
 import { BunkerThumbV2 } from './bunker/ThumbsV2';
 import { BunkerEp } from './bunker/Serie';
 import { TCThumb } from './tc/Thumbs';
-import { TCThumbV4 } from './tc/ThumbsV4';
+import { TCThumbV4, TCThumbV4B, TCThumbV4C } from './tc/ThumbsV4';
 import temposSNB from '../public/snb/teste/tempos.json';
 import { Thumb } from './b52/Thumbs';
 import temposCW01 from '../public/b52/tempos.json';
@@ -156,6 +156,8 @@ export const Root: React.FC = () => (
     <Composition id="BunkerEp" component={BunkerEp as any} width={1920} height={1080} fps={30} durationInFrames={300} defaultProps={{ pasta: 'bunker/v02' }}
       calculateMetadata={async ({ props }: any) => { const tempos = await fetch(staticFile(`${props.pasta}/tempos.json`)).then((x) => x.json()); return { durationInFrames: props.n || Math.ceil(tempos.total * 30), props: { ...props, tempos } }; }} />
     <Composition id="Bunker01" component={Bunker01 as any} width={1920} height={1080} fps={30} durationInFrames={BUNKER01_FRAMES} />
+    <Composition id="TCThumbV4B" component={TCThumbV4B as any} width={1280} height={720} fps={30} durationInFrames={1} defaultProps={{ v: '1' }} />
+    <Composition id="TCThumbV4C" component={TCThumbV4C as any} width={1280} height={720} fps={30} durationInFrames={1} defaultProps={{ v: '1' }} />
     <Composition id="TCThumbV4" component={TCThumbV4 as any} width={1280} height={720} fps={30} durationInFrames={1} defaultProps={{ v: '1' }} />
     <Composition id="TCThumb" component={TCThumb as any} width={1280} height={720} fps={30} durationInFrames={1} defaultProps={{ v: 'a' }} />
   </>
