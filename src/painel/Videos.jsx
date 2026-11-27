@@ -30,8 +30,11 @@ const fmtNum = (n) => Intl.NumberFormat('pt-BR', { notation: 'compact', maximumF
 const num = (v) => `#${String(v.numero ?? (v.id.match(/v(\d+)/)?.[1] || '')).padStart(3, '0')}`
 // O arquivo baixa com o título do YouTube no nome: o YouTube usa o nome do arquivo como título no upload.
 // Só saem os caracteres que o sistema não aceita em nome de arquivo (/ \ : * ? " < > |).
-export const nomeArquivo = (v) => `${String(v.yt_titulo || v.titulo || v.id).replace(/[\\/:*?"<>|]+/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 95) || v.id}.mp4`
-const baixarUrl = (v) => (v.video_url ? `${v.video_url}?download=${encodeURIComponent(nomeArquivo(v))}` : null)
+// Post estático (imagem 4:5 para o feed do Instagram): coluna formato = 'post'; a imagem fica em capa_url, sem vídeo
+export const ehPost = (v) => v.formato === 'post'
+const arquivoDe = (v) => (ehPost(v) ? v.capa_url : v.video_url)
+export const nomeArquivo = (v) => `${String(v.yt_titulo || v.titulo || v.id).replace(/[\\/:*?"<>|]+/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 95) || v.id}.${ehPost(v) ? 'jpg' : 'mp4'}`
+const baixarUrl = (v) => (arquivoDe(v) ? `${arquivoDe(v)}?download=${encodeURIComponent(nomeArquivo(v))}` : null)
 // Baixa vários de uma vez (o Chrome pede uma vez para "permitir vários downloads")
 export async function baixarVarios(lista, avisar) {
   const urls = lista.map(baixarUrl).filter(Boolean)
@@ -65,7 +68,7 @@ const temTT = (canalId) => !!CANAIS.find((c) => c.id === canalId)?.tiktok
 // e sem Reels (o Instagram não recebe vídeo deitado). Coluna `formato` manda; sem ela, mais de 3 min = deitado.
 export const deitado = (v) => v.formato === 'horizontal' || (v.formato !== 'vertical' && (Number(v.duracao) || 0) > 180)
 const minutos = (s) => `${Math.floor(s / 60)}:${String(Math.round(s % 60)).padStart(2, '0')}`
-const redesDe = (v) => REDES.filter((r) => (r.k !== 'tt' || temTT(v.canal)) && (r.k !== 'ig' || !deitado(v)))
+const redesDe = (v) => ehPost(v) ? REDES.filter((r) => r.k === 'ig') : REDES.filter((r) => (r.k !== 'tt' || temTT(v.canal)) && (r.k !== 'ig' || !deitado(v)))
 // canais com a conta do YouTube conectada: o painel sobe o vídeo e o YouTube publica no horário
 const YT_AUTO = new Set()
 function situacao(v, k) {
@@ -107,7 +110,7 @@ function campos(k, acao, iso, igAuto, v = null) {
 
 // rede = null: as 3 juntas; 'yt' | 'tt' | 'ig': só aquela rede (filtro do quadro)
 function etapa(v, rede = null) {
-  if (!v.video_url) return 'producao'
+  if (!arquivoDe(v)) return 'producao'
   // a coluna segue o YouTube e o Instagram juntos: só vai para Programado quando os dois estão programados (ou já no ar),
   // e para Postado quando os dois saíram. O TikTok aparece só no selo do cartão. Cada rede tem seu selo (IG ◷ / IG ✓).
   const ss = (rede ? [rede] : redesDe(v).map((r) => r.k).filter((k) => k !== 'tt')).map((k) => situacao(v, k).s)
@@ -151,8 +154,8 @@ function Bloco({ titulo, texto, linhas = 3 }) {
 async function compartilhar(v, legenda, avisar) {
   try {
     if (legenda) await navigator.clipboard.writeText(legenda).catch(() => {})
-    const blob = await (await fetch(v.video_url)).blob()
-    const arq = new File([blob], `${v.id}.mp4`, { type: 'video/mp4' })
+    const blob = await (await fetch(arquivoDe(v))).blob()
+    const arq = ehPost(v) ? new File([blob], `${v.id}.jpg`, { type: 'image/jpeg' }) : new File([blob], `${v.id}.mp4`, { type: 'video/mp4' })
     if (navigator.canShare?.({ files: [arq] })) {
       await navigator.share({ files: [arq], title: v.yt_titulo })
       return
@@ -198,7 +201,7 @@ function Editor({ v, k, nome, recarregar, igOk, fechar }) {
           </label>
           <div className="v-rede-botoes">
             {((k === 'ig' && igOk) || (k === 'yt' && YT_AUTO.has(v.canal))) && (
-              <button className="p-btn p-btn--mini p-btn--forte" disabled={!quando || !v.video_url} onClick={() => fazer('programar', { auto: true })}>
+              <button className="p-btn p-btn--mini p-btn--forte" disabled={!quando || !arquivoDe(v)} onClick={() => fazer('programar', { auto: true })}>
                 {st.auto ? 'Mudar horário' : k === 'yt' ? 'Painel sobe e programa' : 'Painel posta sozinho'}
               </button>
             )}
@@ -269,7 +272,7 @@ function Detalhe({ v, fechar, recarregar, igOk, voltar = 'Vídeos', mover, vizin
     <ul className="v-redes v-redes--detalhe"><Rede v={v} k={k} nome={nome} recarregar={recarregar} igOk={igOk} aberto={aberto === k} abrir={abrir} /></ul>
   )
   const igSt = situacao(v, 'ig')
-  const longo = deitado(v)
+  const longo = deitado(v), post = ehPost(v), temArq = !!arquivoDe(v)
   const capas = Array.isArray(v.capas) && v.capas.length ? v.capas : v.capa_url ? [{ url: v.capa_url }] : []
   const titulos = Array.isArray(v.yt_titulos) ? v.yt_titulos : []
 
@@ -279,8 +282,8 @@ function Detalhe({ v, fechar, recarregar, igOk, voltar = 'Vídeos', mover, vizin
         <div>
           <button className="p-voltar" onClick={fechar}>{voltar}</button>
           <h1>{num(v)} {v.yt_titulo}</h1>
-          <p className="p-sub">Sugestão: {fmtQuando(sugestao(v))} · {longo ? `${minutos(Number(v.duracao) || 0)} · vídeo deitado` : `${Math.round(v.duracao || 0)} s`}</p>
-          {mover && v.video_url && (
+          <p className="p-sub">Sugestão: {fmtQuando(sugestao(v))} · {post ? 'post estático 4:5 · Instagram' : longo ? `${minutos(Number(v.duracao) || 0)} · vídeo deitado` : `${Math.round(v.duracao || 0)} s`}</p>
+          {mover && temArq && (
             <div className="v-etapas" role="group" aria-label="Mudar de coluna">
               {FASES.filter((f) => f.k !== 'producao').map((f) => {
                 const atual = etapa(v) === f.k
@@ -292,19 +295,19 @@ function Detalhe({ v, fechar, recarregar, igOk, voltar = 'Vídeos', mover, vizin
         <div className="p-acoes">
           {vizinhos?.anterior && <button className="p-btn p-btn--fraco" onClick={vizinhos.anterior} aria-label="Vídeo anterior">‹</button>}
           {vizinhos?.proximo && <button className="p-btn p-btn--fraco" onClick={vizinhos.proximo} aria-label="Próximo vídeo">›</button>}
-          {v.video_url && <a className="p-btn p-btn--forte" href={baixar} title={nomeArquivo(v)}>Baixar com o título</a>}
-          {celular && v.video_url && <button className="p-btn" onClick={() => compartilhar(v, '', avisar)}>Compartilhar</button>}
+          {temArq && <a className="p-btn p-btn--forte" href={baixar} title={nomeArquivo(v)}>{post ? 'Baixar imagem' : 'Baixar com o título'}</a>}
+          {celular && temArq && <button className="p-btn" onClick={() => compartilhar(v, '', avisar)}>Compartilhar</button>}
         </div>
       </div>
 
-      <div className={`v-grade ${longo ? 'v-grade--longo' : ''}`}>
-        <div className={`v-player ${longo ? 'v-player--longo' : ''}`}>
-          {v.video_url ? <video src={v.video_url} poster={capas[0]?.url || undefined} controls autoPlay={!longo} playsInline preload={longo ? 'metadata' : 'auto'} /> : <div className="v-semvideo">Vídeo ainda em produção…</div>}
+      <div className={`v-grade ${longo ? 'v-grade--longo' : ''} ${post ? 'v-grade--post' : ''}`}>
+        <div className={`v-player ${longo ? 'v-player--longo' : ''} ${post ? 'v-player--post' : ''}`}>
+          {post ? (v.capa_url ? <img src={v.capa_url} alt={v.titulo || ''} /> : <div className="v-semvideo">Imagem ainda em produção…</div>) : v.video_url ? <video src={v.video_url} poster={capas[0]?.url || undefined} controls autoPlay={!longo} playsInline preload={longo ? 'metadata' : 'auto'} /> : <div className="v-semvideo">Vídeo ainda em produção…</div>}
           {longo && <TesteAB v={v} titulo={v.yt_titulo || v.titulo} capas={capas} titulos={titulos} />}
         </div>
 
         <div className="v-plataformas">
-          <article className={`v-plat v-plat--${situacao(v, 'yt').s}`}>
+          {!post && <article className={`v-plat v-plat--${situacao(v, 'yt').s}`}>
             <header><h2>{longo ? 'YouTube · vídeo longo' : 'YouTube Shorts'}</h2></header>
             {rede('yt', 'YouTube')}
             <Bloco titulo={longo ? 'Título (versão 1)' : 'Título'} texto={titulos[0] || v.yt_titulo} linhas={2} />
@@ -318,9 +321,9 @@ function Detalhe({ v, fechar, recarregar, igOk, voltar = 'Vídeos', mover, vizin
               <a className="p-btn" href="https://studio.youtube.com" target="_blank" rel="noreferrer">Abrir YouTube Studio</a>
               {celular && v.video_url && <button className="p-btn" onClick={() => compartilhar(v, v.yt_titulo, avisar)}>Mandar para o app (copia o título)</button>}
             </div>
-          </article>
+          </article>}
 
-          {temTT(v.canal) && <article className={`v-plat v-plat--${situacao(v, 'tt').s}`}>
+          {!post && temTT(v.canal) && <article className={`v-plat v-plat--${situacao(v, 'tt').s}`}>
             <header><h2>TikTok</h2></header>
             {rede('tt', 'TikTok')}
             <Bloco titulo="Legenda" texto={v.tt_legenda} linhas={3} />
@@ -332,9 +335,9 @@ function Detalhe({ v, fechar, recarregar, igOk, voltar = 'Vídeos', mover, vizin
           </article>}
 
           {!longo && <article className={`v-plat v-plat--${igSt.s}`}>
-            <header><h2>Instagram Reels</h2></header>
+            <header><h2>{post ? 'Instagram · post no feed' : 'Instagram Reels'}</h2></header>
             {rede('ig', 'Insta')}
-            <div className="v-ig-opcoes">
+            {!post && <div className="v-ig-opcoes">
               <label className="v-check"><input type="checkbox" checked={v.ig_feed !== false} disabled={igSt.s === 'postado' || igSt.processando}
                 onChange={(e) => salvar({ ig_feed: e.target.checked }, e.target.checked ? 'Vai para o feed e a aba Reels' : 'Só na aba Reels, fora do feed')} />
                 Mostrar também no feed <small>(desmarcado: fica só na aba Reels)</small></label>
@@ -344,17 +347,17 @@ function Detalhe({ v, fechar, recarregar, igOk, voltar = 'Vídeos', mover, vizin
               {v.ig_story && v.ig_story_status !== 'pendente' && (
                 <p className={`v-dica ${v.ig_story_status === 'erro' ? 'v-dica--erro' : ''}`}>Stories: {v.ig_story_status === 'publicado' ? 'publicado' : v.ig_story_status === 'processando' ? 'processando…' : `erro: ${v.ig_story_erro || ''}`}</p>
               )}
-            </div>
+            </div>}
             <label className="p-campo">Legenda <span className="v-cont">{legIG.length}/2200</span>
               <textarea rows={6} value={legIG} onChange={(e) => setLegIG(e.target.value)} maxLength={2200} />
             </label>
             <div className="p-acoes">
               <Copiar texto={legIG} rotulo="Copiar legenda" />
               {legIG !== (v.ig_legenda || '') && <button className="p-btn p-btn--mini" onClick={() => salvar({ ig_legenda: legIG }, 'Legenda salva')}>Salvar legenda</button>}
-              {igOk && igSt.s !== 'postado' && !igSt.processando && v.video_url && (
+              {igOk && igSt.s !== 'postado' && !igSt.processando && temArq && (
                 <button className="p-btn p-btn--mini" onClick={publicarAgora} disabled={ocupado}>{ocupado ? 'Publicando… (até 1 min)' : 'Publicar agora'}</button>
               )}
-              {celular && igSt.s !== 'postado' && v.video_url && <button className="p-btn p-btn--mini" onClick={() => compartilhar(v, legIG, avisar)}>Mandar para o app</button>}
+              {celular && igSt.s !== 'postado' && temArq && <button className="p-btn p-btn--mini" onClick={() => compartilhar(v, legIG, avisar)}>Mandar para o app</button>}
             </div>
           </article>}
 
@@ -392,7 +395,7 @@ function paraItem(v) {
   const post = sts.map((st) => st.postado).filter(Boolean).sort()
   return {
     chave: v.id, bruto: v,
-    fase: e, ...(deitado(v) ? { tipo: 'longo', tipoNome: minutos(Number(v.duracao) || 0) } : {}),
+    fase: e, ...(ehPost(v) ? { tipo: 'post' } : deitado(v) ? { tipo: 'longo', tipoNome: minutos(Number(v.duracao) || 0) } : {}),
     titulo: v.yt_titulo || v.titulo || num(v), num: num(v),
     video_url: v.video_url, capa_url: (Array.isArray(v.capas) && v.capas[0]?.url) || v.capa_url, baixar: baixarUrl(v),
     quando: prog[0] || null, postado: post.at(-1) || null,
@@ -403,7 +406,7 @@ function paraItem(v) {
     redes: redes.every((r) => r.s === 'pendente') ? null : redes,
     aviso: e === 'producao' ? 'Em produção' : '',
     programavel: e === 'programar' || e === 'subido',
-    movel: !!v.video_url,
+    movel: !!arquivoDe(v),
     // mais recente em cima (em Upload feito, o último que subiu)
     ordem: `${e === 'subido' ? v.subido_em || '' : ''}${v.created_at || ''}${String(v.numero ?? 0).padStart(6, '0')}`,
   }
@@ -433,7 +436,7 @@ export default function Videos({ canal = 'concrete-atlas', nome = 'Concrete Atla
     anterior: pos > 0 ? () => setAbertoId(ordemLista[pos - 1]) : null,
     proximo: pos >= 0 && pos < ordemLista.length - 1 ? () => setAbertoId(ordemLista[pos + 1]) : null,
   }
-  const paraSubir = lista.filter((v) => v.video_url && etapa(v) === 'programar')
+  const paraSubir = lista.filter((v) => v.video_url && !ehPost(v) && etapa(v) === 'programar')
 
   if (aberto) return <Detalhe v={aberto} fechar={() => setAbertoId(null)} recarregar={carregar} igOk={igOk} voltar={nome} mover={mover} vizinhos={vizinhos} />
 
@@ -464,10 +467,21 @@ export default function Videos({ canal = 'concrete-atlas', nome = 'Concrete Atla
   }
 
   // Subir vídeo: arquivo e capa no bucket "videos" (canal/id.mp4 e canal/id.jpg) e a linha nova em Prontos
-  async function subir(file, { titulo, capa, duracao }) {
+  async function subir(file, { titulo, capa, duracao, post = false }) {
     const numero = Math.max(0, ...lista.map((v) => v.numero || 0)) + 1
-    const id = `${(info.sigla || canal.slice(0, 2)).toLowerCase()}-v${numero}-${Date.now().toString(36)}`
+    const id = `${(info.sigla || canal.slice(0, 2)).toLowerCase()}-${post ? 'p' : 'v'}${numero}-${Date.now().toString(36)}`
     const pasta = supabase.storage.from('videos')
+    if (post) {
+      // a imagem já vem em JPEG (o bucket só aceita JPEG); fica em capa_url, sem vídeo
+      const up = await pasta.upload(`${canal}/${id}.jpg`, file, { contentType: 'image/jpeg', upsert: true, cacheControl: '31536000' })
+      if (up.error) { avisar(`Não subiu: ${up.error.message}`); return false }
+      const { error } = await supabase.from('videos').insert({
+        id, canal, numero, titulo, yt_titulo: titulo, arquivo: `${titulo}.jpg`, formato: 'post', ig_feed: true,
+        capa_url: pasta.getPublicUrl(`${canal}/${id}.jpg`).data.publicUrl,
+      })
+      if (error) { avisar('Subiu, mas não registrou'); return false }
+      avisar('Post em Para programar'); await carregar(); return true
+    }
     const up = await pasta.upload(`${canal}/${id}.mp4`, file, { contentType: 'video/mp4', upsert: true, cacheControl: '31536000' })
     if (up.error) { avisar(`Não subiu: ${up.error.message}`); return false }
     let capaUrl = null
