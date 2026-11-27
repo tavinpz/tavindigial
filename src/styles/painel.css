@@ -1808,3 +1808,4 @@ a.crm-btn { text-decoration: none; display: inline-flex; align-items: center; }
 .v-player--post img, .v-player--post .v-semvideo { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 16px; display: block; background: var(--noite); }
 .v-grade--post { grid-template-columns: minmax(260px, 420px) 1fr; }
 .pl-arquivo img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.v-apagar { color: #B3261E !important; }
