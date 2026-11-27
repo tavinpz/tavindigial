@@ -267,6 +267,22 @@ function Detalhe({ v, fechar, recarregar, igOk, voltar = 'Vídeos', mover, vizin
     avisar(error ? 'Não consegui falar com o servidor' : data?.ok ? (data.publicado ? 'Publicado no Instagram' : data.aviso) : `Erro: ${data?.erro}`)
     recarregar()
   }
+  // Arquivar (some do quadro, volta por "Arquivados") ou apagar de vez (a linha; num post, a imagem também)
+  async function arquivar() {
+    const volta = !!v.arquivado_em
+    const { error } = await supabase.from('videos').update({ arquivado_em: volta ? null : new Date().toISOString() }).eq('id', v.id)
+    avisar(error ? 'Não salvou' : volta ? `${num(v)} voltou para o quadro` : `${num(v)} arquivado`)
+    if (!error) { fechar(); recarregar() }
+  }
+  async function apagar() {
+    if (!window.confirm(`Apagar ${num(v)} "${v.yt_titulo || v.titulo}" do painel? Não dá para desfazer.`)) return
+    if (post && v.capa_url?.includes('/object/public/videos/')) {
+      await supabase.storage.from('videos').remove([decodeURIComponent(v.capa_url.split('/object/public/videos/')[1].split('?')[0])])
+    }
+    const { error } = await supabase.from('videos').delete().eq('id', v.id)
+    avisar(error ? 'Não apagou' : `${num(v)} apagado`)
+    if (!error) { fechar(); recarregar() }
+  }
   const baixar = baixarUrl(v)
   const rede = (k, nome) => (
     <ul className="v-redes v-redes--detalhe"><Rede v={v} k={k} nome={nome} recarregar={recarregar} igOk={igOk} aberto={aberto === k} abrir={abrir} /></ul>
@@ -297,6 +313,8 @@ function Detalhe({ v, fechar, recarregar, igOk, voltar = 'Vídeos', mover, vizin
           {vizinhos?.proximo && <button className="p-btn p-btn--fraco" onClick={vizinhos.proximo} aria-label="Próximo vídeo">›</button>}
           {temArq && <a className="p-btn p-btn--forte" href={baixar} title={nomeArquivo(v)}>{post ? 'Baixar imagem' : 'Baixar com o título'}</a>}
           {celular && temArq && <button className="p-btn" onClick={() => compartilhar(v, '', avisar)}>Compartilhar</button>}
+          <button className="p-btn p-btn--fraco" onClick={arquivar}>{v.arquivado_em ? 'Desarquivar' : 'Arquivar'}</button>
+          <button className="p-btn p-btn--fraco v-apagar" onClick={apagar}>Apagar</button>
         </div>
       </div>
 
@@ -425,7 +443,9 @@ export default function Videos({ canal = 'concrete-atlas', nome = 'Concrete Atla
     setLista(data || [])
   }
   useEffect(() => { carregar() }, [versao])
-  const itens = useMemo(() => (lista || []).map(paraItem), [lista])
+  const [verArq, setVerArq] = useState(false)
+  const nArq = (lista || []).filter((v) => v.arquivado_em).length
+  const itens = useMemo(() => (lista || []).filter((v) => !!v.arquivado_em === (verArq && nArq > 0)).map(paraItem), [lista, verArq, nArq])
 
   if (lista === null) return <p className="p-vazio">Carregando…</p>
   const igOk = cx.igOk
@@ -436,13 +456,13 @@ export default function Videos({ canal = 'concrete-atlas', nome = 'Concrete Atla
     anterior: pos > 0 ? () => setAbertoId(ordemLista[pos - 1]) : null,
     proximo: pos >= 0 && pos < ordemLista.length - 1 ? () => setAbertoId(ordemLista[pos + 1]) : null,
   }
-  const paraSubir = lista.filter((v) => v.video_url && !ehPost(v) && etapa(v) === 'programar')
+  const paraSubir = lista.filter((v) => v.video_url && !ehPost(v) && !v.arquivado_em && etapa(v) === 'programar')
 
   if (aberto) return <Detalhe v={aberto} fechar={() => setAbertoId(null)} recarregar={carregar} igOk={igOk} voltar={nome} mover={mover} vizinhos={vizinhos} />
 
   async function mover(item, alvo) {
     const v = item.bruto
-    if (!v.video_url || alvo === 'producao') return
+    if (!arquivoDe(v) || alvo === 'producao') return
     const d = dadosMover(v, alvo, igOk)
     if (!Object.keys(d).length) return
     const { error } = await supabase.from('videos').update(d).eq('id', v.id)
@@ -502,6 +522,7 @@ export default function Videos({ canal = 'concrete-atlas', nome = 'Concrete Atla
       cx={cx} recarregar={carregar} extra={<>
         {paraSubir.length > 0 && <button className="p-btn" onClick={() => baixarVarios(paraSubir, avisar)} title="Baixa os vídeos de Para programar com o título do YouTube no nome do arquivo">Baixar {paraSubir.length} para subir</button>}
         {canal === 'thata' ? <BotoesThata /> : null}
+        {nArq > 0 && <button className={`p-btn ${verArq ? 'p-btn--forte' : 'p-btn--fraco'}`} onClick={() => setVerArq(!verArq)} title="Itens arquivados não aparecem no quadro">{verArq ? 'Voltar ao quadro' : `Arquivados (${nArq})`}</button>}
       </>} />
   )
 }
