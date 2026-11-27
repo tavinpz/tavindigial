@@ -1800,3 +1800,11 @@ a.crm-btn { text-decoration: none; display: inline-flex; align-items: center; }
 .pl-formatos__b.on { background: #2A2233; border-color: #2A2233; color: #fff; }
 .pl-formatos__b--longo.on { background: #B3261E; border-color: #B3261E; }
 .pl-formatos__b--curto.on { background: #5B2C83; border-color: #5B2C83; }
+
+/* Post estático (imagem 4:5 para o feed do Instagram) nos canais de vídeo */
+.pl-card--post .pl-mini { aspect-ratio: 4 / 5; width: 56px; }
+.pl-formato--post { background: #E3F1FF; color: #0B4F8A; }
+.pl-formatos__b--post.on { background: #0B4F8A; border-color: #0B4F8A; }
+.v-player--post img, .v-player--post .v-semvideo { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 16px; display: block; background: var(--noite); }
+.v-grade--post { grid-template-columns: minmax(260px, 420px) 1fr; }
+.pl-arquivo img { width: 100%; height: 100%; object-fit: contain; display: block; }

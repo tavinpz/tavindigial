@@ -109,12 +109,14 @@ function Status({ item, papel }) {
 }
 
 // Formato do cartão em todos os canais: vídeo longo do YouTube (deitado) × vídeo curto (Short / Reels / TikTok).
-// Post estático e carrossel (Tavin Digital) não entram: continuam com o selo do tipo deles.
-export const formatoDe = (item) => item.tipo === 'longo' ? 'longo' : (!item.tipo || item.tipo === 'video') ? 'curto' : null
+// Post estático dos canais de vídeo (tipo 'post', imagem 4:5 para o feed) tem selo e filtro próprios.
+// Estático e carrossel da Tavin Digital não entram: continuam com o selo do tipo deles.
+export const formatoDe = (item) => item.tipo === 'longo' ? 'longo' : item.tipo === 'post' ? 'post' : (!item.tipo || item.tipo === 'video') ? 'curto' : null
 function SeloFormato({ item }) {
   const f = formatoDe(item)
   if (f === 'longo') return <span className="pl-formato pl-formato--longo" title="Vídeo longo (horizontal) para o YouTube">▶ YouTube{item.tipoNome ? ` · ${item.tipoNome}` : ''}</span>
   if (f === 'curto') return <span className="pl-formato pl-formato--curto" title="Vídeo curto (vertical): YouTube Shorts, Instagram Reels e TikTok">▮ Short · Reels</span>
+  if (f === 'post') return <span className="pl-formato pl-formato--post" title="Post estático (imagem 4:5) para o feed do Instagram">▣ Post</span>
   return null
 }
 
@@ -453,6 +455,20 @@ function capaDoVideo(url) {
   })
 }
 
+// Post: o bucket só aceita JPEG, então PNG/WebP viram JPEG (qualidade alta) antes de subir
+function paraJpeg(url) {
+  return new Promise((resolve) => {
+    const img = new Image()
+    img.onload = () => {
+      const c = document.createElement('canvas'); c.width = img.naturalWidth; c.height = img.naturalHeight
+      c.getContext('2d').drawImage(img, 0, 0)
+      c.toBlob((b) => resolve(b ? new File([b], 'post.jpg', { type: 'image/jpeg' }) : null), 'image/jpeg', 0.95)
+    }
+    img.onerror = () => resolve(null)
+    img.src = url
+  })
+}
+
 function SubirVideo({ canal, subir, fechar }) {
   const { avisar } = usePainel()
   const [arq, setArq] = useState(null)
@@ -461,9 +477,11 @@ function SubirVideo({ canal, subir, fechar }) {
   const [ocupado, setOcupado] = useState('')
   const entrada = useRef(null)
   useEffect(() => () => url && URL.revokeObjectURL(url), [url])
+  const ehImg = (f) => /^image\/(jpeg|png|webp)$/.test(f?.type || '') || /\.(jpe?g|png|webp)$/i.test(f?.name || '')
+  const post = ehImg(arq)
   function escolher(f) {
     if (!f) return
-    if (!/^video\/(mp4|quicktime)$/.test(f.type) && !/\.(mp4|mov)$/i.test(f.name)) { avisar('Escolha um arquivo .mp4'); return }
+    if (!ehImg(f) && !/^video\/(mp4|quicktime)$/.test(f.type) && !/\.(mp4|mov)$/i.test(f.name)) { avisar('Escolha um .mp4 ou uma imagem (post)'); return }
     if (f.size > 50 * 1024 * 1024) { avisar('O vídeo passa de 50 MB: exporte em 1080p H.264'); return }
     setArq(f); setUrl(URL.createObjectURL(f))
     if (!titulo) setTitulo(f.name.replace(/\.[^.]+$/, '').replace(/[_-]+/g, ' ').trim())
@@ -471,6 +489,15 @@ function SubirVideo({ canal, subir, fechar }) {
   async function enviar(e) {
     e.preventDefault()
     if (!arq) { entrada.current?.click(); return }
+    if (post) {
+      setOcupado('Subindo o post…')
+      const jpg = await paraJpeg(url)
+      const ok = jpg && await subir(jpg, { titulo: titulo.trim() || arq.name.replace(/\.[^.]+$/, ''), post: true })
+      if (!jpg) avisar('Não consegui ler a imagem')
+      setOcupado('')
+      if (ok) fechar()
+      return
+    }
     setOcupado('Preparando a capa…')
     const { capa, duracao } = await capaDoVideo(url)
     setOcupado('Subindo o vídeo…')
@@ -480,17 +507,17 @@ function SubirVideo({ canal, subir, fechar }) {
   }
   const mb = arq ? (arq.size / 1048576).toFixed(1).replace('.', ',') : ''
   return (
-    <Janela titulo="Subir vídeo" sub={`Entra no quadro de ${canal.nome}, pronto para programar`} fechar={ocupado ? () => {} : fechar}
+    <Janela titulo="Subir vídeo ou post" sub={`Entra no quadro de ${canal.nome}, pronto para programar`} fechar={ocupado ? () => {} : fechar}
       rodape={<>
-        <span className="pl-pe-txt">{ocupado || (arq ? `${arq.name} · ${mb} MB` : 'MP4 até 50 MB')}</span>
+        <span className="pl-pe-txt">{ocupado || (arq ? `${arq.name} · ${mb} MB${post ? ' · post estático' : ''}` : 'MP4 até 50 MB ou imagem (post 4:5)')}</span>
         <button className="p-btn p-btn--fraco" type="button" onClick={fechar} disabled={!!ocupado}>Cancelar</button>
         <button className="p-btn p-btn--forte" type="submit" form="pl-subir" disabled={!!ocupado || !arq}>{ocupado ? 'Subindo…' : 'Subir'}</button>
       </>}>
       <form id="pl-subir" className="pl-subir" onSubmit={enviar}>
         <label className={`pl-arquivo ${url ? 'pl-arquivo--com' : ''}`}
           onDragOver={(e) => e.preventDefault()} onDrop={(e) => { e.preventDefault(); escolher(e.dataTransfer.files?.[0]) }}>
-          {url ? <video src={url} muted playsInline controls preload="metadata" /> : <span><b>Escolher arquivo</b><small>ou arraste o MP4 para cá</small></span>}
-          <input ref={entrada} type="file" accept="video/mp4,video/quicktime,.mp4,.mov" onChange={(e) => { escolher(e.target.files?.[0]); e.target.value = '' }} />
+          {url ? (post ? <img src={url} alt="" /> : <video src={url} muted playsInline controls preload="metadata" />) : <span><b>Escolher arquivo</b><small>ou arraste o MP4 ou a imagem para cá</small></span>}
+          <input ref={entrada} type="file" accept="video/mp4,video/quicktime,.mp4,.mov,image/jpeg,image/png,image/webp" onChange={(e) => { escolher(e.target.files?.[0]); e.target.value = '' }} />
         </label>
         <div className="pl-subir-campos">
           <label className="p-campo">Título<input value={titulo} onChange={(e) => setTitulo(e.target.value)} placeholder="Nome do vídeo" required /></label>
@@ -562,10 +589,11 @@ export default function Pipeline({ canal, fases = FASES_PADRAO, itens, mover, pr
     setLocal((l) => { const x = { ...l }; delete x[chave]; return x })
   }
 
-  const temLongo = itens.some((i) => formatoDe(i) === 'longo'), temCurto = itens.some((i) => formatoDe(i) === 'curto')
+  const FORMATOS = [['longo', '▶ YouTube longos'], ['curto', '▮ Shorts · Reels'], ['post', '▣ Posts']]
+  const contagem = Object.fromEntries(FORMATOS.map(([k]) => [k, itens.filter((i) => formatoDe(i) === k).length]))
   const [formato, setFormato] = useState(() => lerLS(`pl-formato-${canal.id}`, 'todos'))
   useEffect(() => gravarLS(`pl-formato-${canal.id}`, formato), [formato, canal.id])
-  const ambos = temLongo && temCurto
+  const ambos = FORMATOS.filter(([k]) => contagem[k]).length > 1
   const noFiltro = (i) => !ambos || formato === 'todos' || formatoDe(i) === formato
   const col = Object.fromEntries(fases.map((f) => [f.k, []]))
   for (const i of itens) if (noFiltro(i)) col[fase(i)]?.push(i)
@@ -610,7 +638,7 @@ export default function Pipeline({ canal, fases = FASES_PADRAO, itens, mover, pr
 
       {ambos && (
         <div className="pl-formatos" role="group" aria-label="Filtrar por formato">
-          {[['todos', 'Todos', itens.length], ['longo', '▶ YouTube longos', itens.filter((i) => formatoDe(i) === 'longo').length], ['curto', '▮ Shorts · Reels', itens.filter((i) => formatoDe(i) === 'curto').length]].map(([k, nome, n]) => (
+          {[['todos', 'Todos', itens.length], ...FORMATOS.filter(([k]) => contagem[k]).map(([k, nome]) => [k, nome, contagem[k]])].map(([k, nome, n]) => (
             <button key={k} type="button" aria-pressed={formato === k} className={`pl-formatos__b pl-formatos__b--${k} ${formato === k ? 'on' : ''}`} onClick={() => setFormato(k)}>{nome} <b>{n}</b></button>
           ))}
         </div>

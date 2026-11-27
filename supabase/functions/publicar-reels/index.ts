@@ -1,4 +1,5 @@
 // publicar-reels — publica os vídeos do painel (aba Vídeos) como Reels no Instagram do canal.
+// Posts estáticos (videos.formato = 'post') saem como imagem no feed, pelo mesmo fluxo.
 // O Instagram processa o vídeo antes de publicar, então são 2 passos:
 //   1) cria o "container" com a URL pública do vídeo  -> ig_status = 'processando'
 //   2) quando o container fica FINISHED, publica         -> ig_status = 'publicado'
@@ -61,10 +62,17 @@ async function graph(c: Conta, caminho: string, params: Record<string, string>, 
   return d;
 }
 
-type Video = { id: string; canal: string; video_url: string | null; capa_url: string | null; ig_legenda: string | null; ig_container_id: string | null;
+type Video = { id: string; canal: string; formato?: string | null; video_url: string | null; capa_url: string | null; ig_legenda: string | null; ig_container_id: string | null;
   ig_feed?: boolean; ig_story?: boolean; ig_story_status?: string; ig_story_container?: string | null; ig_story_para?: string | null };
 
 async function criarContainer(db: SupabaseClient, c: Conta, v: Video) {
+  // Post estático (formato = 'post'): imagem única no feed, a partir de capa_url
+  if (v.formato === "post") {
+    if (!v.capa_url) throw new Error("post sem imagem no painel");
+    const d = await graph(c, `${c.userId}/media`, { image_url: v.capa_url, caption: v.ig_legenda ?? "" });
+    await db.from("videos").update({ ig_status: "processando", ig_container_id: d.id, ig_erro: null }).eq("id", v.id);
+    return d.id as string;
+  }
   if (!v.video_url) throw new Error("vídeo sem arquivo no painel");
   const d = await graph(c, `${c.userId}/media`, {
     media_type: "REELS", video_url: v.video_url, caption: v.ig_legenda ?? "", share_to_feed: v.ig_feed === false ? "false" : "true", // false = só na aba Reels, fora do feed
@@ -103,7 +111,7 @@ async function tentarStory(db: SupabaseClient, c: Conta, v: Video) {
 // devolve true se publicou, false se ainda está processando
 async function tentarPublicar(db: SupabaseClient, c: Conta, v: Video, container: string) {
   const st = await graph(c, container, { fields: "status_code,status" }, "GET");
-  if (st.status_code === "ERROR" || st.status_code === "EXPIRED") throw new Error(`o Instagram recusou o vídeo (${st.status || st.status_code})`);
+  if (st.status_code === "ERROR" || st.status_code === "EXPIRED") throw new Error(`o Instagram recusou ${v.formato === "post" ? "a imagem" : "o vídeo"} (${st.status || st.status_code})`);
   if (st.status_code !== "FINISHED") return false;
   // trava contra publicar duas vezes
   const { data: trava } = await db.from("videos").update({ ig_status: "publicado", ig_postado_em: new Date().toISOString() })
@@ -113,7 +121,7 @@ async function tentarPublicar(db: SupabaseClient, c: Conta, v: Video, container:
     const pub = await graph(c, `${c.userId}/media_publish`, { creation_id: container });
     await db.from("videos").update({ ig_media_id: pub.id, ig_erro: null }).eq("id", v.id);
     // Stories sem horário próprio sai junto com o Reel; com horário (ig_story_para), sai sozinho na hora dele
-    if (v.ig_story && !v.ig_story_para && (v.ig_story_status ?? "pendente") === "pendente") await criarStory(db, c, v).catch(() => {});
+    if (v.formato !== "post" && v.ig_story && !v.ig_story_para && (v.ig_story_status ?? "pendente") === "pendente") await criarStory(db, c, v).catch(() => {});
   } catch (e) {
     await db.from("videos").update({ ig_status: "processando", ig_postado_em: null }).eq("id", v.id);
     throw e;
@@ -149,7 +157,7 @@ Deno.serve(async (req) => {
     } catch (e) { return json(200, { ok: false, erro: (e as Error).message }); }
   }
 
-  const campos = "id,canal,video_url,capa_url,ig_legenda,ig_container_id,ig_feed,ig_story,ig_story_status,ig_story_container,ig_story_para";
+  const campos = "id,canal,formato,video_url,capa_url,ig_legenda,ig_container_id,ig_feed,ig_story,ig_story_status,ig_story_container,ig_story_para";
   const resultado: unknown[] = [];
 
   // 1) publicar agora (painel)
